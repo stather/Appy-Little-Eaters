@@ -108,7 +108,9 @@
     
     AppDelegate *appDeleget = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     appDeleget.topBarView.hidden= YES;
-
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        self.navigationController.navigationBar.translucent=NO;
+    }
 }
 
 #pragma mark -----------
@@ -333,7 +335,12 @@
     NSString *myText = nil;
     
     if (filePath) {
-        myText = [NSString stringWithContentsOfFile:filePath];
+        /*
+         Depracated NSString method changed with the newest one available
+         myText = [NSString stringWithContentsOfFile:filePath];
+         */
+        myText = [NSString stringWithContentsOfFile:filePath encoding:NSISOLatin1StringEncoding error:nil];
+        
         if (myText) {
             [dbHandler executeQuery:@"delete from currencySymbole_table"];
             NSArray *contentArray = [myText componentsSeparatedByString:@"\r"];
@@ -390,14 +397,14 @@
         
     }
 }
-
+/*
 -(void)showErrorMsg:(UIButton *)btn:(NSString *)ErrorText:(NSString *)isLogInWithFBOrTwitter
 {
     
     [btn btnWithoutActivityIndicator];
     [btn btnWithCrossImage];
 }
-
+*/
 -(IBAction) forgotpasswordBtnPressed:(id)sender
 {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.caxtonfxcard.com/secure_cfxcard/cfxcard_password_forget.aspx"]];
@@ -798,11 +805,13 @@
         NSString *myText = nil;
         
         if (filePath) {
-            myText = [NSString stringWithContentsOfFile:filePath];
-            if (myText) {
-            }
+            /*
+             Depracated NSString method changed with the newest one available
+             myText = [NSString stringWithContentsOfFile:filePath];
+             */
+            myText = [NSString stringWithContentsOfFile:filePath encoding:NSISOLatin1StringEncoding error:nil];
         }
-        NSString *content =  [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+        //NSString *content =  [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];   unused variable
         NSArray *contentArray = [myText componentsSeparatedByString:@"\r"];
         NSMutableArray *codesMA = [NSMutableArray new];
         NSMutableArray *CountryMA = [NSMutableArray new];
@@ -833,7 +842,7 @@
         {
             TBXMLElement *subcategoryEle = [TBXML childElementNamed:@"GetGlobalRatesResponse" parentElement:rootItemElem];
             TBXMLElement * GetGlobalRatesResult = [TBXML childElementNamed:@"GetGlobalRatesResult" parentElement:subcategoryEle];
-            TBXMLElement *baseCcy = [TBXML childElementNamed:@"a:baseCcy" parentElement:GetGlobalRatesResult];
+            //TBXMLElement *baseCcy = [TBXML childElementNamed:@"a:baseCcy" parentElement:GetGlobalRatesResult]; unused variable
             TBXMLElement *expiryTime = [TBXML childElementNamed:@"a:expiryTime" parentElement:GetGlobalRatesResult];
             NSString *expiryTimeStr = [TBXML textForElement:expiryTime];
             [[NSUserDefaults standardUserDefaults]setObject:expiryTimeStr forKey:@"expiryTime"];
@@ -964,7 +973,11 @@
 
 -(void)loadingFailedWithError:(NSString *)error withServiceName:(NSString *)service
 {
-    NSLog(@"%@",error);
+    if ([error isKindOfClass:[NSString class]]) {
+        NSLog(@"Service: %@ | Response is  : %@",service,error);
+    }else{
+        NSLog(@"Service: %@ | Response UKNOWN ERROR",service);
+    }
     
     [self showErrorMsg:@"Unfortunately our service is not available at the moment. But please do try again later."];
     UIButton *button = (UIButton*)[self.view viewWithTag:6];

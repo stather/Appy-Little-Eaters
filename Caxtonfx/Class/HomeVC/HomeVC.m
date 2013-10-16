@@ -62,11 +62,17 @@
     
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"showLogin" object:nil];
 }
-
+- (void)userTextSizeDidChange {
+	[self applyFonts];
+}
+- (void)applyFonts {
+    self.updateInfo.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+	self.mainLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+ 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(switchToMoreInfo:)
                                                  name:@"showMoreInfo"
@@ -84,6 +90,10 @@
     {
         [scrollView setFrame:CGRectMake(0, 33, 320, 326)];
     }
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        [scrollView setFrame:CGRectMake(0, 77, 320, 326)];
+    }
+    
     [updateInfo setFont:[UIFont fontWithName:@"OpenSans" size:14]];
     
     textArray = [[NSMutableArray alloc]initWithObjects:@"Top up your currency card",@"Check your balance",@"Monitor your spending", nil];
@@ -129,6 +139,13 @@
             }
         }
     }
+    
+    [self applyFonts];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(userTextSizeDidChange)
+												 name:UIContentSizeCategoryDidChangeNotification
+											   object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -139,6 +156,9 @@
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     appDelegate.customeTabBar.hidden = NO;
     appDelegate.topBarView.hidden= NO;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        self.navigationController.navigationBar.translucent=NO;
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -425,6 +445,8 @@
         
         y +=expectedLabelSize.height+2;
         
+        
+        
         [self.scrollView addSubview:lable];
     }
     
@@ -569,12 +591,16 @@
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"currencyflags_map" ofType:@"csv"];
         NSString *myText = nil;
         if (filePath) {
-            myText = [NSString stringWithContentsOfFile:filePath];
+            /*
+             Depracated NSString method changed with the newest one available
+             myText = [NSString stringWithContentsOfFile:filePath];
+             */
+            myText = [NSString stringWithContentsOfFile:filePath encoding:NSISOLatin1StringEncoding error:nil];
             if (myText) {
                
             }
         }
-        NSString *content =  [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+        //NSString *content =  [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil]; unused variable
         NSArray *contentArray = [myText componentsSeparatedByString:@"\r"]; // CSV ends with ACSI 13 CR 
         NSMutableArray *codesMA = [NSMutableArray new];
         for (NSString *item in contentArray)
@@ -594,7 +620,7 @@
         {
             TBXMLElement *subcategoryEle = [TBXML childElementNamed:@"GetGlobalRatesResponse" parentElement:rootItemElem];
             TBXMLElement * GetGlobalRatesResult = [TBXML childElementNamed:@"GetGlobalRatesResult" parentElement:subcategoryEle];
-            TBXMLElement *baseCcy = [TBXML childElementNamed:@"a:baseCcy" parentElement:GetGlobalRatesResult];
+            //TBXMLElement *baseCcy = [TBXML childElementNamed:@"a:baseCcy" parentElement:GetGlobalRatesResult]; unused variable
             TBXMLElement *expiryTime = [TBXML childElementNamed:@"a:expiryTime" parentElement:GetGlobalRatesResult];
             NSString *expiryTimeStr = [TBXML textForElement:expiryTime];
             [[NSUserDefaults standardUserDefaults]setObject:expiryTimeStr forKey:@"expiryTime"];
@@ -703,6 +729,11 @@
 
 -(void)loadingFailedWithError:(NSString *)error withServiceName:(NSString *)service
 {
+    if ([error isKindOfClass:[NSString class]]) {
+        NSLog(@"Service: %@ | Response is  : %@",service,error);
+    }else{
+        NSLog(@"Service: %@ | Response UKNOWN ERROR",service);
+    }
     if([service isEqualToString:@"GetPromo"])
         [self performSelectorOnMainThread:@selector(goMoreInfoPage) withObject:nil waitUntilDone:nil];
     

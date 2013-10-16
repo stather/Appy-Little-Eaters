@@ -1,4 +1,4 @@
-//
+  //
 //  MyCardsTableCell.m
 //  Caxtonfx
 //
@@ -50,9 +50,20 @@
     {
         if([[controllerArray objectAtIndex:i]isKindOfClass:[MyCardVC class]])
         {
-            NSIndexPath *myIndexPath = [(UITableView *)self.superview indexPathForCell: self];
-            [[controllerArray objectAtIndex:i] topupBtnPressed:myIndexPath];
-            break;
+            if([self.superview isKindOfClass:[UITableView class]]){
+                NSIndexPath *myIndexPath = [(UITableView *) self.superview indexPathForCell: self];
+                [[controllerArray objectAtIndex:i] topupBtnPressed:myIndexPath];
+                break;
+            }else if([self.superview.superview isKindOfClass:[UITableView class]]){
+                NSIndexPath *myIndexPath = [(UITableView *) self.superview.superview indexPathForCell: self];
+                [[controllerArray objectAtIndex:i] topupBtnPressed:myIndexPath];
+                break;
+            }else{
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Sorry this is not avaliable now.\n Try again later." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                [alert show];
+                break;
+            }
+            
         }
     }
 }

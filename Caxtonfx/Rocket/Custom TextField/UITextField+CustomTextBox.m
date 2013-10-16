@@ -75,13 +75,19 @@
 }
 
 
+
 - (void) drawPlaceholderInRect:(CGRect)rect {
     
+   
+    NSLog(@"%@", NSStringFromCGRect(rect));
     UIColor *color = UIColorFromRedGreenBlue(203, 201, 199);
     
      [color setFill];
-    
-    [[self placeholder] drawInRect:rect withFont:[UIFont fontWithName:@"OpenSans-Italic" size:13]];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        [[self placeholder] drawInRect:CGRectMake(rect.origin.x, rect.origin.y+10, rect.size.width, rect.size.height) withFont:[UIFont fontWithName:@"OpenSans-Italic" size:13]];
+    }else{
+         [[self placeholder] drawInRect:rect withFont:[UIFont fontWithName:@"OpenSans-Italic" size:13]];
+    }
 }
 
 @end

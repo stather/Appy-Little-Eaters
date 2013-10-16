@@ -813,18 +813,18 @@
             
             [inputAccView setAlpha: 1.0];
             
-            UIButton * forgetBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+            UIButton * forgetBtnLocal = [UIButton buttonWithType: UIButtonTypeRoundedRect];
             
-            [forgetBtn setFrame: CGRectMake(01.0, 0.0, 100, 42.0)];
-            [forgetBtn setBackgroundColor: [UIColor clearColor]];
-            forgetBtn.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17.0f];
-            forgetBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-            [forgetBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-            [forgetBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [forgetBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-            [forgetBtn setTitle:@"Remove Pin" forState:UIControlStateNormal];
-            [forgetBtn addTarget: self action: @selector(RemoveBtnPressed) forControlEvents: UIControlEventTouchUpInside];
-            [forgetBtn setBackgroundImage:[UIImage imageNamed:@"grayBtn"] forState:UIControlStateNormal];
+            [forgetBtnLocal setFrame: CGRectMake(01.0, 0.0, 100, 42.0)];
+            [forgetBtnLocal setBackgroundColor: [UIColor clearColor]];
+            forgetBtnLocal.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17.0f];
+            forgetBtnLocal.titleLabel.textAlignment = NSTextAlignmentCenter;
+            [forgetBtnLocal setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+            [forgetBtnLocal setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [forgetBtnLocal setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+            [forgetBtnLocal setTitle:@"Remove Pin" forState:UIControlStateNormal];
+            [forgetBtnLocal addTarget: self action: @selector(RemoveBtnPressed) forControlEvents: UIControlEventTouchUpInside];
+            [forgetBtnLocal setBackgroundImage:[UIImage imageNamed:@"grayBtn"] forState:UIControlStateNormal];
             
             
             UIButton * nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];

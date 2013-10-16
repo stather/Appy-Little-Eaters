@@ -110,6 +110,9 @@
     [UIView setAnimationDuration:0.3f];
     [[appDelegate bottomView] setFrame:CGRectMake(0.0f, appDelegate.window.frame.size.height-55.0f, 320.0f, 55.0f)];
     [UIView commitAnimations];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        self.navigationController.navigationBar.translucent=NO;
+    }
 }
 
 -(void)customizingNavigationBar
@@ -439,7 +442,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 -(void)loadingFailedWithError:(NSString *)error withServiceName:(NSString *)service
 {
-    NSLog(@"Error");
+    if ([error isKindOfClass:[NSString class]]) {
+        NSLog(@"Service: %@ | Response is  : %@",service,error);
+    }else{
+        NSLog(@"Service: %@ | Response UKNOWN ERROR",service);
+    }
      [self.refreshControl endRefreshing];
 }
 

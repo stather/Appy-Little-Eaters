@@ -453,6 +453,11 @@
 
 -(void)loadingFailedWithError:(NSString *)error withServiceName:(NSString *)service
 {
+    if ([error isKindOfClass:[NSString class]]) {
+        NSLog(@"Service: %@ | Response is  : %@",service,error);
+    }else{
+        NSLog(@"Service: %@ | Response UKNOWN ERROR",service);
+    }
     self.view.userInteractionEnabled = YES;
     if([service isEqualToString:@"TopUp"])
     {

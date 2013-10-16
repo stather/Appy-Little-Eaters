@@ -21,6 +21,7 @@
 
 
 
+
 @implementation AppDelegate
 @synthesize window,tabBarController,customeTabBar,mobileNumNotificationView;
 @synthesize mainNavigation;
@@ -158,6 +159,7 @@
     [self.tabBarController setSelectedIndex:1];
     
     [self.tabBarController.view addSubview:self.customeTabBar];
+    
     self.tabBarController.view.backgroundColor = [UIColor clearColor];
     
     [self.tabBarController.view addSubview:self.topBarView];
@@ -198,6 +200,14 @@
     
     [Flurry startSession:flurryID];
     
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        [application setStatusBarStyle:UIStatusBarStyleDefault];
+        self.window.clipsToBounds =YES;
+        self.window.frame =  CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height-20);
+        
+        //Added on 19th Sep 2013
+        self.window.bounds = CGRectMake(0, 20, self.window.frame.size.width, self.window.frame.size.height);
+    }
     return YES;
 }
 #pragma mark -
@@ -292,7 +302,11 @@
     NSString *myText = nil;
     
     if (filePath) {
-        myText = [NSString stringWithContentsOfFile:filePath];
+        /*
+         Depracated NSString method changed with the newest one available
+         myText = [NSString stringWithContentsOfFile:filePath];
+         */
+        myText = [NSString stringWithContentsOfFile:filePath encoding:NSISOLatin1StringEncoding error:nil];
         if (myText) {
             [dbHandler executeQuery:@"delete from currencySymbole_table"];
             NSArray *contentArray = [myText componentsSeparatedByString:@"\r"];
@@ -880,12 +894,16 @@
         NSString *myText = nil;
         
         if (filePath) {
-            myText = [NSString stringWithContentsOfFile:filePath];
+            /*
+             Depracated NSString method changed with the newest one available
+             myText = [NSString stringWithContentsOfFile:filePath];
+             */
+            myText = [NSString stringWithContentsOfFile:filePath encoding:NSISOLatin1StringEncoding error:nil];
             if (myText) {
                 //here
             }
         }
-        NSString *content =  [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+        //NSString *content =  [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil]; unused variable
         NSArray *contentArray = [myText componentsSeparatedByString:@"\r"]; // CSV ends with ACSI 13 CR (if stored on a Mac Excel 2008)
         NSMutableArray *codesMA = [NSMutableArray new];
         
@@ -902,69 +920,71 @@
         }
         
         NSMutableArray *glabalRatesMA  = [[NSMutableArray alloc] init];
-        
-        TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
-        TBXMLElement *root = tbxml.rootXMLElement;
-        TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
-        
-        if(rootItemElem)
-        {
-            TBXMLElement *subcategoryEle = [TBXML childElementNamed:@"GetGlobalRatesResponse" parentElement:rootItemElem];
-            TBXMLElement * GetGlobalRatesResult = [TBXML childElementNamed:@"GetGlobalRatesResult" parentElement:subcategoryEle];
-            TBXMLElement *baseCcy = [TBXML childElementNamed:@"a:baseCcy" parentElement:GetGlobalRatesResult];
-            TBXMLElement *expiryTime = [TBXML childElementNamed:@"a:expiryTime" parentElement:GetGlobalRatesResult];
-            NSString *expiryTimeStr = [TBXML textForElement:expiryTime];
+        if (![response isEqualToString:@"Response code 404/n"]) {
+            TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
+            TBXMLElement *root = tbxml.rootXMLElement;
+            TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
             
-            [[NSUserDefaults standardUserDefaults]setObject:expiryTimeStr forKey:@"expiryTime"];
-            [[NSUserDefaults standardUserDefaults]synchronize];
-            
-            TBXMLElement *rates = [TBXML childElementNamed:@"a:rates" parentElement:GetGlobalRatesResult];
-            if (rates)
+            if(rootItemElem)
             {
-                TBXMLElement *CFXExchangeRate = [TBXML childElementNamed:@"a:CFXExchangeRate" parentElement:rates];
-                while (CFXExchangeRate != nil) {
-                    TBXMLElement *currencyCode = [TBXML childElementNamed:@"a:CcyCode" parentElement:CFXExchangeRate];
-                    TBXMLElement *rate = [TBXML childElementNamed:@"a:Rate" parentElement:CFXExchangeRate];
-                    NSMutableDictionary *dict = [NSMutableDictionary new];
-                    [dict setObject:[TBXML textForElement:currencyCode] forKey:@"currencyCode"];
-                    [dict setObject:[TBXML textForElement:rate] forKey:@"rate"];
-                    int index = -1;
-                    NSString *imageName = @"";
-                    
-                    if ([codesMA containsObject:[dict objectForKey:@"currencyCode"]])
-                    {
-                        index=  [codesMA indexOfObject:[dict objectForKey:@"currencyCode"]];
+                TBXMLElement *subcategoryEle = [TBXML childElementNamed:@"GetGlobalRatesResponse" parentElement:rootItemElem];
+                TBXMLElement * GetGlobalRatesResult = [TBXML childElementNamed:@"GetGlobalRatesResult" parentElement:subcategoryEle];
+                //TBXMLElement *baseCcy = [TBXML childElementNamed:@"a:baseCcy" parentElement:GetGlobalRatesResult]; unused variable
+                TBXMLElement *expiryTime = [TBXML childElementNamed:@"a:expiryTime" parentElement:GetGlobalRatesResult];
+                NSString *expiryTimeStr = [TBXML textForElement:expiryTime];
+                
+                [[NSUserDefaults standardUserDefaults]setObject:expiryTimeStr forKey:@"expiryTime"];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+                
+                TBXMLElement *rates = [TBXML childElementNamed:@"a:rates" parentElement:GetGlobalRatesResult];
+                if (rates)
+                {
+                    TBXMLElement *CFXExchangeRate = [TBXML childElementNamed:@"a:CFXExchangeRate" parentElement:rates];
+                    while (CFXExchangeRate != nil) {
+                        TBXMLElement *currencyCode = [TBXML childElementNamed:@"a:CcyCode" parentElement:CFXExchangeRate];
+                        TBXMLElement *rate = [TBXML childElementNamed:@"a:Rate" parentElement:CFXExchangeRate];
+                        NSMutableDictionary *dict = [NSMutableDictionary new];
+                        [dict setObject:[TBXML textForElement:currencyCode] forKey:@"currencyCode"];
+                        [dict setObject:[TBXML textForElement:rate] forKey:@"rate"];
+                        int index = -1;
+                        NSString *imageName = @"";
+                        
+                        if ([codesMA containsObject:[dict objectForKey:@"currencyCode"]])
+                        {
+                            index=  [codesMA indexOfObject:[dict objectForKey:@"currencyCode"]];
+                            
+                        }
+                        if(index >=0)
+                        {
+                            NSString *item = [contentArray objectAtIndex:index];
+                            NSArray *itemArray = [item componentsSeparatedByString:@","];
+                            if (itemArray.count != 0) {
+                                imageName =[[[itemArray objectAtIndex:1] lowercaseString] stringByAppendingFormat:@" - %@",[[itemArray objectAtIndex:0] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]]];
+                            }
+                        }
+                        [dict setObject:imageName forKey:@"imageName"];
+                        
+                        if (dict) {
+                            [glabalRatesMA addObject:dict];
+                        }
+                        CFXExchangeRate = [TBXML nextSiblingNamed:@"a:CFXExchangeRate" searchFromElement:CFXExchangeRate];
                         
                     }
-                    if(index >=0)
-                    {
-                        NSString *item = [contentArray objectAtIndex:index];
-                        NSArray *itemArray = [item componentsSeparatedByString:@","];
-                        if (itemArray.count != 0) {
-                            imageName =[[[itemArray objectAtIndex:1] lowercaseString] stringByAppendingFormat:@" - %@",[[itemArray objectAtIndex:0] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]]];
-                        }
-                    }
-                    [dict setObject:imageName forKey:@"imageName"];
-                    
-                    if (dict) {
-                        [glabalRatesMA addObject:dict];
-                    }
-                    CFXExchangeRate = [TBXML nextSiblingNamed:@"a:CFXExchangeRate" searchFromElement:CFXExchangeRate];
                     
                 }
                 
-            }
-            
-            NSString *deleteQuerry = [NSString stringWithFormat:@"DELETE FROM globalRatesTable"];
-            DatabaseHandler *database = [[DatabaseHandler alloc]init];
-            [database executeQuery:deleteQuerry];
-            
-            for (NSMutableDictionary *dict in glabalRatesMA) {
-                NSString *value = [[DatabaseHandler getSharedInstance] getDataValue:[NSString stringWithFormat:@"select CardCurrencyDescription from myCards where CurrencyCardID = %@",currentId]];
-                NSString *query = [NSString stringWithFormat:@"insert into globalRatesTable ('CcyCode','Rate','imageName','cardName') values ('%@',%f,'%@','%@')",[dict objectForKey:@"currencyCode"] ,[[dict objectForKey:@"rate"] doubleValue],[dict objectForKey:@"imageName"],value];
-                [[DatabaseHandler getSharedInstance] executeQuery:query];
+                NSString *deleteQuerry = [NSString stringWithFormat:@"DELETE FROM globalRatesTable"];
+                DatabaseHandler *database = [[DatabaseHandler alloc]init];
+                [database executeQuery:deleteQuerry];
+                
+                for (NSMutableDictionary *dict in glabalRatesMA) {
+                    NSString *value = [[DatabaseHandler getSharedInstance] getDataValue:[NSString stringWithFormat:@"select CardCurrencyDescription from myCards where CurrencyCardID = %@",currentId]];
+                    NSString *query = [NSString stringWithFormat:@"insert into globalRatesTable ('CcyCode','Rate','imageName','cardName') values ('%@',%f,'%@','%@')",[dict objectForKey:@"currencyCode"] ,[[dict objectForKey:@"rate"] doubleValue],[dict objectForKey:@"imageName"],value];
+                    [[DatabaseHandler getSharedInstance] executeQuery:query];
+                }
             }
         }
+        
         
     }
     else if([service isEqualToString:@"GetPromo"])
@@ -1098,7 +1118,12 @@
 
 -(void)loadingFailedWithError:(NSString *)error  withServiceName:(NSString *)service
 {
-    NSLog(@"Response is  : %@",error);
+    if ([error isKindOfClass:[NSString class]]) {
+        NSLog(@"Service: %@ | Response is  : %@",service,error);
+    }else{
+        NSLog(@"Service: %@ | Response UKNOWN ERROR",service);
+    }
+    
 }
 
 #define shouldUseDelegateExample 1

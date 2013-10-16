@@ -21,10 +21,8 @@
 - (void)cleanUp;
 - (void)deviceOrientationDidChange:(NSNotification*)notification;
 - (void)launchExecution;
-- (void)deviceOrientationDidChange:(NSNotification *)notification;
 - (void)hideDelayed:(NSNumber *)animated;
-- (void)launchExecution;
-- (void)cleanUp;
+
 
 @property (strong) UIView *indicator;
 @property (assign) float width;

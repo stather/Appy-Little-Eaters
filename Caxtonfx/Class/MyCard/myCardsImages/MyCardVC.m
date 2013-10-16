@@ -165,7 +165,7 @@
 }
 
 
--(IBAction)topupBtnPressed:(NSIndexPath*)indexPath;
+-(void)topupBtnPressed:(NSIndexPath*)indexPath;
 {
     if([[[NSUserDefaults standardUserDefaults]objectForKey:@"userConactType"]isEqualToString:@"1"])
     {
@@ -292,6 +292,11 @@
 -(void)loadingFailedWithError:(NSString *)error withServiceName:(NSString *)service
 {
     
+    if ([error isKindOfClass:[NSString class]]) {
+        NSLog(@"Service: %@ | Response is  : %@",service,error);
+    }else{
+        NSLog(@"Service: %@ | Response UKNOWN ERROR",service);
+    }
     [refreshControl endRefreshing];
     self.tableView.userInteractionEnabled = YES;
     [[NSUserDefaults standardUserDefaults]setObject:[NSDate date] forKey:@"updateDate"];

@@ -527,6 +527,11 @@
 
 -(void)loadingFailedWithError:(NSString *)error withServiceName:(NSString *)service
 {
+    if ([error isKindOfClass:[NSString class]]) {
+        NSLog(@"Service: %@ | Response is  : %@",service,error);
+    }else{
+        NSLog(@"Service: %@ | Response UKNOWN ERROR",service);
+    }
     [self showErrorMsg:@"Unfortunately our service is not available at the moment. But please do try again later."];
     UIButton *button = (UIButton*)[self.view viewWithTag:6];
     [button btnWithoutActivityIndicator];

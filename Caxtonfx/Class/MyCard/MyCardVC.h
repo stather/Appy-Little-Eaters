@@ -20,6 +20,6 @@
 
 @property (nonatomic, strong) NSArray *contentArray;
 
--(IBAction)topupBtnPressed:(NSIndexPath*)indexPath;
+-(void)topupBtnPressed:(NSIndexPath*)indexPath;
 
 @end

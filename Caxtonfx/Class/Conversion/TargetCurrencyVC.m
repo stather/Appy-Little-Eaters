@@ -158,7 +158,18 @@
     [[[searchBar subviews] objectAtIndex:0] setBackgroundColor:[UIColor clearColor]];
     
     UITextField *searchField;
-    for(UIView *subView in searchBar.subviews)
+    NSArray *searchBarSubViews = nil;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        searchBarSubViews = [[self.searchBar.subviews objectAtIndex:0] subviews];
+        [[searchBarSubViews objectAtIndex:0] setBackgroundColor:[UIColor clearColor]];
+        [[searchBarSubViews objectAtIndex:0] removeFromSuperview];
+    }else{
+        searchBarSubViews = searchBar.subviews;
+        [[searchBarSubViews objectAtIndex:0] setBackgroundColor:[UIColor clearColor]];
+        [[searchBarSubViews objectAtIndex:0] removeFromSuperview];
+    }
+
+    for(UIView *subView in searchBarSubViews)
     {
         if ([subView isKindOfClass:[UITextField class]])
         {
@@ -179,7 +190,7 @@
         searchField.rightViewMode = UITextFieldViewModeAlways;
         
     }
-    for (UIView *searchBarSubview in [searchBar subviews]) {
+    for (UIView *searchBarSubview in searchBarSubViews) {
         if ([searchBarSubview conformsToProtocol:@protocol(UITextInputTraits)]) {
             @try {
                 [[UISearchBar appearance] setSearchFieldBackgroundImage:[UIImage imageNamed:@"srchTxtBox"]forState:UIControlStateNormal];

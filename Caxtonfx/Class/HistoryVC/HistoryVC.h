@@ -39,7 +39,7 @@ typedef int(^CustomBlock)(int number);
 
 - (IBAction)BottomButtonTouched:(UIButton *)sender;
 
-- (void) showReceipts;
-- (void) deleteFromDB:(NSMutableDictionary*) receiptInfo;
+//- (void) showReceipts;
+//- (void) deleteFromDB:(NSMutableDictionary*) receiptInfo;
 - (IBAction)imageCaptureButtonTouched:(id)sender;
 @end

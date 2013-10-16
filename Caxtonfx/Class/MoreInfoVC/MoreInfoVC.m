@@ -244,8 +244,13 @@
         [button errorSendButtonImage];
     }
 }
--(void)loadingFailedWithError:(NSString *)error
+-(void)loadingFailedWithError:(NSString *)error withServiceName:(NSString *)service
 {
+    if ([error isKindOfClass:[NSString class]]) {
+        NSLog(@"Service: %@ | Response is  : %@",service,error);
+    }else{
+        NSLog(@"Service: %@ | Response UKNOWN ERROR",service);
+    }
     self.waringLbl.text = @"Unfortunatel your service is not available at the moment. Please try again later.";
     UIButton *button = (UIButton*)[self.demoView viewWithTag:50];
     [button btnWithoutActivityIndicator];

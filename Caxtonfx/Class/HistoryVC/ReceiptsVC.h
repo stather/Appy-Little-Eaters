@@ -23,7 +23,7 @@
 
 - (IBAction)BottomButtonTouched:(UIButton *)sender;
 
-- (void) showReceipts;
+//- (void) showReceipts;
 - (void) deleteFromDB:(NSMutableDictionary*) receiptInfo;
 
 @end

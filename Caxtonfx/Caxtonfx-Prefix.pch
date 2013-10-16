@@ -31,7 +31,7 @@
 #define STARTED_CONVERSION @"started_conversion"
 
 #define IS_IPHONE ( [[[UIDevice currentDevice] model] isEqualToString:@"iPhone"])
-#define IS_HEIGHT_GTE_568 ([[UIScreen mainScreen ] bounds].size.height >= 568.0f)
+
 #define IS_IPHONE_5 ( IS_IPHONE && IS_HEIGHT_GTE_568 )
 
 #define kHandler [DatabaseHandler getSharedInstance]

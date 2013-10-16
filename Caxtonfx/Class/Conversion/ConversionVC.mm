@@ -4048,12 +4048,16 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
         NSString *myText = nil;
         
         if (filePath) {
-            myText = [NSString stringWithContentsOfFile:filePath];
+            /*
+             Depracated NSString method changed with the newest one available
+             myText = [NSString stringWithContentsOfFile:filePath];
+             */
+            myText = [NSString stringWithContentsOfFile:filePath encoding:NSISOLatin1StringEncoding error:nil];
             if (myText) {
                 //here
             }
         }
-        NSString *content =  [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+        //NSString *content =  [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil]; unused variable
         NSArray *contentArray = [myText componentsSeparatedByString:@"\r"]; // CSV ends with ACSI 13 CR (if stored on a Mac Excel 2008)
         NSMutableArray *codesMA = [NSMutableArray new];
         
@@ -4076,7 +4080,7 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
         {
             TBXMLElement *subcategoryEle = [TBXML childElementNamed:@"GetGlobalRatesResponse" parentElement:rootItemElem];
             TBXMLElement * GetGlobalRatesResult = [TBXML childElementNamed:@"GetGlobalRatesResult" parentElement:subcategoryEle];
-            TBXMLElement *baseCcy = [TBXML childElementNamed:@"a:baseCcy" parentElement:GetGlobalRatesResult];
+            //TBXMLElement *baseCcy = [TBXML childElementNamed:@"a:baseCcy" parentElement:GetGlobalRatesResult]; unused variable
             TBXMLElement *expiryTime = [TBXML childElementNamed:@"a:expiryTime" parentElement:GetGlobalRatesResult];
             NSString *expiryTimeStr = [TBXML textForElement:expiryTime];
             
@@ -4148,7 +4152,11 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
 
 -(void)loadingFailedWithError:(NSString *)error withServiceName:(NSString *)service
 {
-    NSLog(@"loadingFailedWithError");
+    if ([error isKindOfClass:[NSString class]]) {
+        NSLog(@"Service: %@ | Response is  : %@",service,error);
+    }else{
+        NSLog(@"Service: %@ | Response UKNOWN ERROR",service);
+    }
     if([service isEqualToString:@"GetPromo"])
     {
         MoreInfoVC *tempVC = [[MoreInfoVC alloc] init];

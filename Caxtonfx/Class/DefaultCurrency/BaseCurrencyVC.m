@@ -140,6 +140,9 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        self.navigationController.navigationBar.translucent=NO;
+    }
     [super viewWillAppear:YES];
 }
 
@@ -164,11 +167,21 @@
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 59, 320, 1)];
     lineView.backgroundColor = UIColorFromRedGreenBlue(245, 244, 243);
     searchBar.backgroundColor = [UIColor clearColor];
-    [[[searchBar subviews] objectAtIndex:0] removeFromSuperview];
-    [[[searchBar subviews] objectAtIndex:0] setBackgroundColor:[UIColor clearColor]];
     
+    NSArray *searchBarSubViews = nil;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        searchBar.searchTextPositionAdjustment=UIOffsetMake(10, 0);
+        searchBarSubViews = [[self.searchBar.subviews objectAtIndex:0] subviews];
+        [[searchBarSubViews objectAtIndex:0] setBackgroundColor:[UIColor clearColor]];
+        [[searchBarSubViews objectAtIndex:0] removeFromSuperview];
+    }else{
+        searchBarSubViews = searchBar.subviews;
+        [[searchBarSubViews objectAtIndex:0] setBackgroundColor:[UIColor clearColor]];
+        [[searchBarSubViews objectAtIndex:0] removeFromSuperview];
+    }
     UITextField *searchField;
-    for(UIView *subView in searchBar.subviews)
+    
+    for(UIView *subView in searchBarSubViews)
     {
         if ([subView isKindOfClass:[UITextField class]])
         {
@@ -185,13 +198,12 @@
         UIImageView *imageView ;
         imageView  = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 22, 18)];
         imageView.image = [UIImage imageNamed:@"srchIcon"];
-        
-        searchField.rightView = imageView;
         searchField.leftViewMode = UITextFieldViewModeNever;
         searchField.rightViewMode = UITextFieldViewModeAlways;
+        searchField.rightView = imageView;
     }
     
-    for (UIView *searchBarSubview in [searchBar subviews]) {
+    for (UIView *searchBarSubview in searchBarSubViews) {
         if ([searchBarSubview conformsToProtocol:@protocol(UITextInputTraits)]) {
             @try {
                 [[UISearchBar appearance] setSearchFieldBackgroundImage:[UIImage imageNamed:@"srchTxtBox"]forState:UIControlStateNormal];
