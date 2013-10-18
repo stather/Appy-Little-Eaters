@@ -78,7 +78,7 @@
     [titleLbl setFont:[UIFont fontWithName:@"OpenSans-Bold" size:20.0f]];
     [titleLbl setTextColor:[UIColor whiteColor]];
     
-    NSDate *date = [NSDate date];
+    //NSDate *date = [NSDate date];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"dd/MM/yyyy"];
 //    NSString *dateIs = [df stringFromDate:date];

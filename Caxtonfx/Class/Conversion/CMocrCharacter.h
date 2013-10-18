@@ -19,7 +19,7 @@
 
 
 // Returns YES if current character is bold.
-- (BOOL) isBold;
+//- (BOOL) isBold;
 
 
 @end

@@ -19,26 +19,26 @@
     if (self) {
        
     }
-    [customeSwitch setBackgroundImage:[UIImage imageNamed:@"Switch_Background"]];
-    [customeSwitch setKnobImage:[UIImage imageNamed:@"Switch_Knob"]];
-    [customeSwitch setOverlayImage:nil];
-    [customeSwitch setHighlightedKnobImage:nil];
-    [customeSwitch setCornerRadius:0];
-    [customeSwitch setKnobOffset:CGSizeMake(0, 0)];
-    [customeSwitch setTextShadowOffset:CGSizeMake(0, 0)];
-    [customeSwitch setFont:[UIFont boldSystemFontOfSize:14]];
-    [customeSwitch setTextOffset:CGSizeMake(0, 2) forLabel:RESwitchLabelOn];
-    [customeSwitch setTextOffset:CGSizeMake(3, 2) forLabel:RESwitchLabelOff];
-    [customeSwitch setTextColor:[UIColor blackColor] forLabel:RESwitchLabelOn];
-    [customeSwitch setTextColor:[UIColor colorWithRed:143/255.0 green:19/255.0 blue:24/255.0 alpha:1] forLabel:RESwitchLabelOff];
+    [self.customeSwitch setBackgroundImage:[UIImage imageNamed:@"Switch_Background"]];
+    [self.customeSwitch setKnobImage:[UIImage imageNamed:@"Switch_Knob"]];
+    [self.customeSwitch setOverlayImage:nil];
+    [self.customeSwitch setHighlightedKnobImage:nil];
+    [self.customeSwitch setCornerRadius:0];
+    [self.customeSwitch setKnobOffset:CGSizeMake(0, 0)];
+    [self.customeSwitch setTextShadowOffset:CGSizeMake(0, 0)];
+    [self.customeSwitch setFont:[UIFont boldSystemFontOfSize:14]];
+    [self.customeSwitch setTextOffset:CGSizeMake(0, 2) forLabel:RESwitchLabelOn];
+    [self.customeSwitch setTextOffset:CGSizeMake(3, 2) forLabel:RESwitchLabelOff];
+    [self.customeSwitch setTextColor:[UIColor blackColor] forLabel:RESwitchLabelOn];
+    [self.customeSwitch setTextColor:[UIColor colorWithRed:143/255.0 green:19/255.0 blue:24/255.0 alpha:1] forLabel:RESwitchLabelOff];
     
-    customeSwitch.layer.cornerRadius = 4;
-    customeSwitch.layer.borderColor = [UIColor colorWithRed:224/255.0 green:36/255.0 blue:24/255.0 alpha:1].CGColor;
-    customeSwitch.layer.borderWidth = 2;
-    customeSwitch.layer.masksToBounds = YES;
-    [customeSwitch addTarget:self action:@selector(stateChanged:) forControlEvents:UIControlEventValueChanged];
+    self.customeSwitch.layer.cornerRadius = 4;
+    self.customeSwitch.layer.borderColor = [UIColor colorWithRed:224/255.0 green:36/255.0 blue:24/255.0 alpha:1].CGColor;
+    self.customeSwitch.layer.borderWidth = 2;
+    self.customeSwitch.layer.masksToBounds = YES;
+    [self.customeSwitch addTarget:self action:@selector(stateChanged:) forControlEvents:UIControlEventValueChanged];
    
-    customeSwitch.on = NO;
+    self.customeSwitch.on = NO;
 
     return self;
 }

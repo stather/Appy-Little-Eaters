@@ -44,7 +44,7 @@
     [titleLbl setTextColor:UIColorFromRedGreenBlue(0.0f, 102.0f, 153.0f)];
     [titleLbl setShadowColor:[UIColor whiteColor]];
     [titleLbl setShadowOffset:CGSizeMake(0.0f, 0.5f)];
-    [titleLbl setTextAlignment:UITextAlignmentCenter];
+    [titleLbl setTextAlignment:NSTextAlignmentCenter];
     
     //check for picker type
     if (pickerType == 1) //preferredCurrency
@@ -257,7 +257,7 @@ numberOfRowsInComponent:(NSInteger)component
         NSString *symbol = [dic objectForKey:@"symbol"];
         
         if (symbol.length > 0)
-            currency = [NSString stringWithFormat:@"%@ %C",[dic objectForKey:@"name"],[[dic objectForKey:@"symbol"] intValue]];
+            currency = [NSString stringWithFormat:@"%@ %C",[dic objectForKey:@"name"],(unichar)[[dic objectForKey:@"symbol"] intValue]];
         else
             currency = [NSString stringWithFormat:@"%@",[dic objectForKey:@"name"]];
     }
@@ -268,7 +268,7 @@ numberOfRowsInComponent:(NSInteger)component
         NSString *symbol = [dic objectForKey:@"symbol"];
         
         if (symbol.length > 0)
-            currency = [NSString stringWithFormat:@"%@ %C",[dic objectForKey:@"name"],[[dic objectForKey:@"symbol"] intValue]];
+            currency = [NSString stringWithFormat:@"%@ %C",[dic objectForKey:@"name"],(unichar)[[dic objectForKey:@"symbol"] intValue]];
         else
             currency = [NSString stringWithFormat:@"%@",[dic objectForKey:@"name"]];
     }

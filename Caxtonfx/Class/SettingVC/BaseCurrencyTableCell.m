@@ -22,7 +22,7 @@
         // Initialization code
     }
     
-    imageView.layer.cornerRadius = 15;
+    self.imageView.layer.cornerRadius = 15;
     return self;
 }
 

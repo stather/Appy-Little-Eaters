@@ -43,6 +43,9 @@
     [self registerForNotifications];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLibrary) name:@"showGallery" object:nil];
     
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        self.navigationController.navigationBar.translucent=NO;
+    }
     
 }
 
@@ -104,16 +107,37 @@
     [imagePickerController setDelegate:self];
     [imagePickerController setAllowsEditing:TRUE];
     [imagePickerController setShowsCameraControls:FALSE];
+    [imagePickerController setWantsFullScreenLayout:YES];
+    
+    // Device's screen size (ignoring rotation intentionally):
+    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+    
+    // iOS is going to calculate a size which constrains the 4:3 aspect ratio
+    // to the screen size. We're basically mimicking that here to determine
+    // what size the system will likely display the image at on screen.
+    // NOTE: screenSize.width may seem odd in this calculation - but, remember,
+    // the devices only take 4:3 images when they are oriented *sideways*.
+    float cameraAspectRatio = 4.0 / 3.0;
+    float imageWidth = floorf(screenSize.width * cameraAspectRatio);
+    float scale = ceilf((screenSize.height / imageWidth) * 10.0) / 10.0;
+    
+    imagePickerController.cameraViewTransform = CGAffineTransformMakeScale(scale, scale);
     
     //set camera overlay
     covc = [[CameraOverlayVC alloc] initWithParent:imagePickerController];
     covc.imageVC = self;
-    if (IS_IPHONE_5)
+    if (IS_IPHONE_5){
         [covc.view setFrame:CGRectMake(0.0f, 0.0f, 320.0f, 568.0f)];
+    }
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        [covc.view setFrame:CGRectMake(covc.view.frame.origin.x, covc.view.frame.origin.y + 30.0f, covc.view.frame.size.width, covc.view.frame.size.height)];
+//        [imagePickerController.view setFrame:CGRectMake(imagePickerController.view.frame.origin.x, imagePickerController.view.frame.origin.y + 30.0f, imagePickerController.view.frame.size.width, imagePickerController.view.frame.size.height)];
+    }
     
     [covc showControls];
     
     [imagePickerController setCameraOverlayView:covc.view];
+    
     
     // [self showCamera];
 }
@@ -131,17 +155,37 @@
 
 - (void) showCamera
 {
+    
     if ([self presentedViewController])
     {
         [self dismissViewControllerAnimated:NO completion:nil];
     }
-    NSLog(@"%@",imagePickerController);
     
     [self presentViewController:imagePickerController animated:NO completion:nil];
     
     isCameraMode = TRUE;
     
     [covc showControls];
+     /*
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    } else {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    [imagePicker setDelegate:self];
+    [imagePicker setAllowsEditing:TRUE];
+    //[imagePicker setShowsCameraControls:FALSE];
+    [imagePicker setWantsFullScreenLayout:YES];
+    
+    [self presentViewController:imagePicker animated:NO completion:nil];
+    
+    isCameraMode = TRUE;
+    
+    [covc showControls];
+     */
 }
 
 - (void) showLibrary

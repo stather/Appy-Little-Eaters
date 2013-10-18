@@ -55,7 +55,7 @@
     [titleLbl setFont:[UIFont systemFontOfSize:10.0f]];
     [titleLbl setTextColor:[UIColor whiteColor]];
     [titleLbl setNumberOfLines:2];
-    [titleLbl setTextAlignment:UITextAlignmentCenter];
+    [titleLbl setTextAlignment:NSTextAlignmentCenter];
     [titleLbl setText:@"Checking for the latest exchange rate..."];
     [self addSubview:titleLbl];
 }

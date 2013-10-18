@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HistoryConversionsVC : UIViewController <UITableViewDelegate , UITableViewDataSource,sharedDelegate>
+@interface HistoryConversionsVC : UIViewController <UITableViewDelegate , UITableViewDataSource>
 {
     
     NSMutableArray *array;

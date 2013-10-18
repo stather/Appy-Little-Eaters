@@ -70,7 +70,7 @@
     [titleLbl setText:@"History"];
     [titleLbl setShadowColor:[UIColor whiteColor]];
     [titleLbl setShadowOffset:CGSizeMake(0.0f, 0.5f)];
-    [titleLbl setTextAlignment:UITextAlignmentCenter];
+    [titleLbl setTextAlignment:NSTextAlignmentCenter];
     [self.navigationItem setTitleView:titleLbl];
 }
 
@@ -218,7 +218,7 @@
     [titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:12.0f]];
     [titleLabel setBackgroundColor:[UIColor clearColor]];
     [titleLabel setTextColor:[UIColor whiteColor]];
-    [titleLabel setTextAlignment:UITextAlignmentLeft];
+    [titleLabel setTextAlignment:NSTextAlignmentLeft];
     NSString *sectionName = [[[historyArray objectAtIndex:section] objectAtIndex:0] objectForKey:@"date"];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"dd MMM yyyy"];
@@ -257,7 +257,7 @@
         [sourceCurrencyLabel setBackgroundColor:[UIColor clearColor]];
         [sourceCurrencyLabel setTextColor:[UIColor blackColor]];
         [sourceCurrencyLabel setTag:1];
-        sourceCurrencyLabel.textAlignment = UITextAlignmentLeft;
+        sourceCurrencyLabel.textAlignment = NSTextAlignmentLeft;
         [cell addSubview:sourceCurrencyLabel];
         
         // Adding 'TO' Label On Cell
@@ -267,7 +267,7 @@
         [tempLbl setBackgroundColor:[UIColor clearColor]];
         [tempLbl setTextColor:[UIColor blackColor]];
         [tempLbl setText:@"to"];
-        tempLbl.textAlignment = UITextAlignmentLeft;
+        tempLbl.textAlignment = NSTextAlignmentLeft;
         [cell addSubview:tempLbl];
         
         // Adding Target Currency Label On Cell
@@ -275,7 +275,7 @@
         [targetCurrencyLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:15.0f]];
         [targetCurrencyLabel setBackgroundColor:[UIColor clearColor]];
         [targetCurrencyLabel setTag:2];
-        targetCurrencyLabel.textAlignment = UITextAlignmentLeft;
+        targetCurrencyLabel.textAlignment = NSTextAlignmentLeft;
         [targetCurrencyLabel setTextColor:[UIColor blackColor]];
         [cell addSubview:targetCurrencyLabel];
         
@@ -284,7 +284,7 @@
         [nameLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:11.0f]];
         [nameLabel setBackgroundColor:[UIColor clearColor]];
         [nameLabel setTag:3];
-        nameLabel.textAlignment = UITextAlignmentLeft;
+        nameLabel.textAlignment = NSTextAlignmentLeft;
         [nameLabel setTextColor:[UIColor grayColor]];
         [cell addSubview:nameLabel];
         
@@ -293,7 +293,7 @@
         [dateLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:11.0f]];
         [dateLabel setBackgroundColor:[UIColor clearColor]];
         [dateLabel setTag:4];
-        dateLabel.textAlignment = UITextAlignmentLeft;
+        dateLabel.textAlignment = NSTextAlignmentLeft;
         [dateLabel setTextColor:[UIColor blackColor]];
         [cell addSubview:dateLabel];
         

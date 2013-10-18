@@ -29,7 +29,9 @@
 
 @implementation SettingVC
 
-@synthesize tableView,defaultconDic;;
+@synthesize tableView,defaultconDic;
+@synthesize pinLable,pinSecLable;
+@synthesize logoutTableCell;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,9 +45,19 @@
 #pragma mark ------
 #pragma mark View Life cycle Method
 
+- (void)userTextSizeDidChange {
+	[self applyFonts];
+    needsHeight = YES;
+    [self.tableView reloadData];
+}
+- (void)applyFonts {
+    logoutTableCell.lbl.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    needsHeight = NO;
     
     [[[self navigationController] navigationBar] setBackgroundImage:[UIImage imageNamed:@"topBar"] forBarMetrics:UIBarMetricsDefault];
     
@@ -55,6 +67,15 @@
     self.title = @"Settings";
     [CommonFunctions setNavigationTitle:@"Settings" ForNavigationItem:self.navigationItem];
     isOn = YES;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        [self applyFonts];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(userTextSizeDidChange)
+                                                     name:UIContentSizeCategoryDidChangeNotification
+                                                   object:nil];
+    }
+    
 }
 
 
@@ -91,10 +112,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row ==0)
-        return 151;
-    
-    return  51;
+    if(indexPath.row ==0){
+            return 151;
+        }
+        
+        return  51;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView1 cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -103,28 +125,29 @@
     static NSString *CellIdentifier2 = @"Cell2";
     if(indexPath.row == 0)
     {
-        LogoutTableCell *cell = (LogoutTableCell *)[tableView1 dequeueReusableCellWithIdentifier:[LogoutTableCell reuseIdentifier]];
+        logoutTableCell = (LogoutTableCell *)[tableView1 dequeueReusableCellWithIdentifier:[LogoutTableCell reuseIdentifier]];
         
-        if (cell == nil) {
+        if (logoutTableCell == nil) {
             NSArray* topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"LogoutTableCell" owner:self options:nil];
             for (id currentObject in topLevelObjects) {
                 if ([currentObject isKindOfClass:[UITableViewCell class]]) {
-                    cell = (LogoutTableCell *)currentObject;
+                    logoutTableCell = (LogoutTableCell *)currentObject;
                     break;
                 }
             }
         }
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.lbl.textColor = UIColorFromRedGreenBlue(102, 102, 102);
-        [cell.lbl setFont:[UIFont fontWithName:@"OpenSans" size:12.0f]];
-        [cell.btn setBackgroundImage:[UIImage imageNamed:@"logoutBtn1"] forState:UIControlStateNormal];
-        [cell.btn setBackgroundImage:[UIImage imageNamed:@"logoutBtnHover"] forState:UIControlStateHighlighted];
+        logoutTableCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        logoutTableCell.lbl.textColor = UIColorFromRedGreenBlue(102, 102, 102);
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7) {
+            [logoutTableCell.lbl setFont:[UIFont fontWithName:@"OpenSans" size:12.0f]];
+        }
+        [logoutTableCell.btn setBackgroundImage:[UIImage imageNamed:@"logoutBtn1"] forState:UIControlStateNormal];
+        [logoutTableCell.btn setBackgroundImage:[UIImage imageNamed:@"logoutBtnHover"] forState:UIControlStateHighlighted];
         
-        return cell;
+        return logoutTableCell;
         
     }else if (indexPath.row ==1)
     {
-        UILabel *pinLable,*pinSecLable;
         
         UITableViewCell *cell = (UITableViewCell *)[tableView1 dequeueReusableCellWithIdentifier:CellIdentifier2];
         
@@ -143,7 +166,7 @@
             pinSecLable = [[UILabel alloc]initWithFrame:CGRectMake(20, 22, 210,18)];
             pinSecLable.backgroundColor = [UIColor clearColor];
             pinSecLable.text = @"Log in using your PIN for added security";
-            pinSecLable.textColor = UIColorFromRedGreenBlue(102, 102, 102); 
+            pinSecLable.textColor = UIColorFromRedGreenBlue(102, 102, 102);
             [pinSecLable setFont:[UIFont fontWithName:@"OpenSans" size:11]];
             [cell addSubview:pinSecLable];
             

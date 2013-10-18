@@ -13,6 +13,7 @@
 @implementation sharedManager
 @synthesize mutableData;
 @synthesize serviceName;
+@synthesize delegate=_delegate;
 
 #pragma mark Singleton Method
 

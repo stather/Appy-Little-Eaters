@@ -190,6 +190,7 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
     [titleView addSubview:titleLbl];
     [self.navigationItem setTitleView:titleView];
     
+    /*
     //add let bar button item
     UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
     [leftBtn setImage:[UIImage imageNamed:@"topBackBtn.png"] forState:UIControlStateNormal];
@@ -197,6 +198,7 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
     [leftBtn addTarget:self action:@selector(leftBtnTap:) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
+    */
     [self.navigationItem setLeftBarButtonItem:nil];
     [self.navigationItem setHidesBackButton:YES];
     //===========
@@ -503,6 +505,39 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
         }
     }
 }
+- (int) getTableCount:(NSString*) tableName
+{
+    sqlite3 *database;
+    
+    NSString *sqlStatement = @"";
+    
+    NSString *count = @"0";
+    
+    if(sqlite3_open([DatabasePath UTF8String], &database) == SQLITE_OK)
+    {
+        sqlStatement = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@",tableName];
+        
+        sqlite3_stmt *compiledStatement;
+        
+        if(sqlite3_prepare_v2(database, [sqlStatement cStringUsingEncoding:NSUTF8StringEncoding], -1, &compiledStatement, NULL) == SQLITE_OK)
+        {
+            if(sqlite3_step(compiledStatement) == SQLITE_ROW)
+            {
+                count = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 0)];
+            }
+        }
+        else
+        {
+            NSLog(@"%s",sqlite3_errmsg(database));
+        }
+        
+        sqlite3_finalize(compiledStatement);
+        
+        sqlite3_close(database);
+    }
+    
+    return [count intValue];
+}
 
 //fetch banks detail from server
 - (void) fetchingBanksToDisplay
@@ -625,7 +660,7 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
 {
     [self setImage:newImage];
     //    [self recognize];
-    char* utf8Text = _tesseract->GetUTF8Text();
+    //char* utf8Text = _tesseract->GetUTF8Text();
     NSString *htmlText = [self recognizedText];
     [self currencyPatternRecognitionForData:[self extractDataFromHtml:htmlText forImage:newImage]];
 }
@@ -2728,7 +2763,7 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
             NSString *output;
             switch (result) {
                 case SLComposeViewControllerResultCancelled:
-                    output = @"Action Cancelled";
+                    //output = @"Action Cancelled";
                     break;
                 case SLComposeViewControllerResultDone:
                 {
@@ -2820,7 +2855,7 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
 
 -(void)downloadImageToDirectory:(NSString *)imageName
 {
-    NSError *error;
+    //NSError *error;
     NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* documentsDirectory = [paths objectAtIndex:0];
     NSString *patientPhotoFolder = [documentsDirectory stringByAppendingPathComponent:@"patientPhotoFolder"];
@@ -3685,7 +3720,7 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
                     int symbol = [symbolStr integerValue];
                     
                     if (symbol != 0)
-                        currencyName = [NSString stringWithFormat:@"%C",symbol];
+                        currencyName = [NSString stringWithFormat:@"%C",(unichar)symbol];
                     else
                         currencyName = @"";
                 }
@@ -3839,6 +3874,9 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
     _tesseract = new tesseract::TessBaseAPI();
     
     BOOL success = [self initEngine];
+    if (!success) {
+        NSLog(@"Engine failed to start");
+    }
 }
 
 - (BOOL)initEngine {

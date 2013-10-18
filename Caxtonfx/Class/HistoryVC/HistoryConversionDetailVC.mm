@@ -120,7 +120,7 @@ int const maxImagePixelsAmount = 8000000; // 8 MP
                     int symbol = [symbolStr integerValue];
                     
                     if (symbol != 0)
-                        currencyName = [NSString stringWithFormat:@"%C",symbol];
+                        currencyName = [NSString stringWithFormat:@"%C",(unichar)symbol];
                     else
                         currencyName = @"";
                 }

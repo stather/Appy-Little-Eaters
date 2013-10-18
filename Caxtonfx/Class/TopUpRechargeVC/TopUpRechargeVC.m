@@ -358,6 +358,8 @@
     manger.delegate = self;
     NSString *soapMessage =[NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:TopUp><tem:userName>%@</tem:userName><tem:password>%@</tem:password><tem:currencyCardID>%@</tem:currencyCardID><tem:TopUpAmount>%@</tem:TopUpAmount><tem:CardCurrency>%@</tem:CardCurrency></tem:TopUp></soapenv:Body></soapenv:Envelope>",username1,password1,[dataDict objectForKey:@"CurrencyCardID"],leftTxtField.text,[dataDict objectForKey:@"CardCurrencySymbol"]];
     
+    NSLog(@"Soap Message: %@",soapMessage);
+    
     [manger callServiceWithRequest:soapMessage methodName:@"TopUp" andDelegate:self];
     
 }

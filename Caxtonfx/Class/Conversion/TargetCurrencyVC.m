@@ -154,9 +154,6 @@
     lineView.backgroundColor = UIColorFromRedGreenBlue(245, 244, 243);
     searchBar.backgroundColor = [UIColor clearColor];
     
-    [[[searchBar subviews] objectAtIndex:0] removeFromSuperview];
-    [[[searchBar subviews] objectAtIndex:0] setBackgroundColor:[UIColor clearColor]];
-    
     UITextField *searchField;
     NSArray *searchBarSubViews = nil;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {

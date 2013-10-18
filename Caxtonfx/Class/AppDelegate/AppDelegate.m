@@ -1,3 +1,5 @@
+
+
 //
 //  AppDelegate.m
 //  Caxtonfx
@@ -98,7 +100,7 @@
     
     [CommonFunctions hideTabBar:tabBarController];
     
-    if([UIScreen mainScreen].bounds.size.height == 568.0)
+    if (IS_HEIGHT_GTE_568)
     {
         [customeTabBar setFrame:CGRectMake(0, 507, 320, 61)];
         
@@ -199,6 +201,8 @@
 
     
     [Flurry startSession:flurryID];
+    
+    //[Flurry setCrashReportingEnabled:YES];
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
         [application setStatusBarStyle:UIStatusBarStyleDefault];
@@ -1174,7 +1178,7 @@
     
     UIImageView *cameraImgView = [[UIImageView alloc] initWithFrame:CGRectMake(self.window.frame.origin.x, self.window.frame.origin.y-self.window.frame.size.height, self.window.frame.size.width, self.window.frame.size.height)];
     
-    if([UIScreen mainScreen].bounds.size.height == 568.0)
+    if (IS_HEIGHT_GTE_568)
         [cameraImgView setImage:[UIImage imageNamed:@"camera5"]];
     else
         [cameraImgView setImage:[UIImage imageNamed:@"camera4"]];
@@ -1222,7 +1226,7 @@
         
         float minY = -460.0f;
         
-        if([UIScreen mainScreen].bounds.size.height == 568.0)
+        if (IS_HEIGHT_GTE_568)
         {
             minY = - 548.0f;
         }
@@ -1241,7 +1245,7 @@
         float y = -460.0f;
         float minScrollY = 100.0f;
         
-        if([UIScreen mainScreen].bounds.size.height == 568.0)
+        if (IS_HEIGHT_GTE_568) 
         {
             y = -548.0f;
             minScrollY = 180.0f;
@@ -1281,7 +1285,7 @@
         ImagePickerVC *ivc = (ImagePickerVC*) [[[self mainNavigation] viewControllers] objectAtIndex:0];
         [ivc showCamera];
         
-        if([UIScreen mainScreen].bounds.size.height == 568.0)
+        if (IS_HEIGHT_GTE_568)
         {
             [topBarView setFrame:CGRectMake(0, -548, 320, CGRectGetHeight(topBarView.frame))];
         }
@@ -1313,7 +1317,7 @@
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     [UIView setAnimationDelegate:self];
     
-    if([UIScreen mainScreen].bounds.size.height == 568.0)
+    if (IS_HEIGHT_GTE_568)
     {
         [topBarView setFrame:CGRectMake(0, -548, 320, CGRectGetHeight(topBarView.frame))];
     }

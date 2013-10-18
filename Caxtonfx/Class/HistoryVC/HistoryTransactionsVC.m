@@ -63,7 +63,9 @@
         [self.refreshControl endRefreshing];
     }
 }
-
+- (void)userTextSizeDidChange {
+	[self.table reloadData];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -93,6 +95,14 @@
     }
     
     self.table.sectionHeaderHeight = 0.0f;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(userTextSizeDidChange)
+                                                     name:UIContentSizeCategoryDidChangeNotification
+                                                   object:nil];
+    }
+
 }
 
 
@@ -226,7 +236,12 @@
     [headerView addSubview:titleLabel];
     return nil;
 }
-
+- (UIFont*)fontForBodyTextStyle {
+    return [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+}
+- (UIFont*)fontForCaptionTextStyle {
+    return [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+}
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -244,6 +259,15 @@
         }
     
     NSMutableDictionary *dict = [historyArray objectAtIndex:indexPath.row];
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        cell.merchantNameLabel.font = [self fontForBodyTextStyle];
+        cell.currencyValueLabel.font = [self fontForBodyTextStyle];
+        cell.timeCountryDateLabel.font = [self fontForCaptionTextStyle];
+        cell.cardUsedLabel.font = [self fontForCaptionTextStyle];
+        
+    }
+    
     cell.merchantNameLabel.text =[dict objectForKey:@"vendor"];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];

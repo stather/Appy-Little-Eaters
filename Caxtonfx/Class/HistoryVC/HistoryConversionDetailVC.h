@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TBXML.h"
-@interface HistoryConversionDetailVC : UIViewController<UIScrollViewDelegate, NSURLConnectionDelegate, sharedDelegate>
+@interface HistoryConversionDetailVC : UIViewController<UIScrollViewDelegate, NSURLConnectionDelegate>
 {
     
 }

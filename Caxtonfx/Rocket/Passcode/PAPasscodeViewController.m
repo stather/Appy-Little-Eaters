@@ -40,6 +40,8 @@
 
 @implementation PAPasscodeViewController
 @synthesize skipButton,inputAccView,skipStr;
+@synthesize digitPanel;
+@synthesize isCreate;
 
 - (id)initForAction:(PasscodeAction)action {
     self = [super init];
@@ -52,8 +54,8 @@
                 // self.title = NSLocalizedString(@"Create a Pin", nil);
                 _enterPrompt = NSLocalizedString(@"For added security you can create a 4 digit PIN to access the Caxton FX app. Simply enter a PIN below. You can change or turn it off at any time by visiting ‘Settings’.", nil);
                 _confirmPrompt = NSLocalizedString(@"Please re-enter your PIN. You can change or turn it off at any time by visiting ‘Settings’.", nil);
-                  self.navigationController.navigationBarHidden = NO;
-                
+                self.navigationController.navigationBarHidden = NO;
+                self.isCreate=TRUE;
                 break;
                 
             case PasscodeActionEnter:
@@ -193,14 +195,14 @@
         [passcodeTextField addTarget:self action:@selector(passcodeChanged:) forControlEvents:UIControlEventEditingChanged];
         [contentView addSubview:passcodeTextField];
         
-        promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 45, 280, 60)];
+        promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 45, 280, 80)];
         promptLabel.backgroundColor = [UIColor clearColor];
         promptLabel.textColor = UIColorFromRedGreenBlue(102, 102, 102);
         
         promptLabel.font = [UIFont fontWithName:@"OpenSans" size:14];
         if(_action==0){
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < 60000
-            promptLabel.textAlignment = UITextAlignmentLeft;
+            promptLabel.textAlignment = NSTextAlignmentLeft;
 #else
             promptLabel.textAlignment = NSTextAlignmentCenter;
 #endif
@@ -218,7 +220,7 @@
         messageLabel.textColor = UIColorFromRedGreenBlue(213, 32, 50);
         messageLabel.font = [UIFont fontWithName:@"OpenSans-Bold" size:12];
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < 60000
-        messageLabel.textAlignment = UITextAlignmentCenter;
+        messageLabel.textAlignment = NSTextAlignmentCenter;
 #else
         messageLabel.textAlignment = NSTextAlignmentCenter;
 #endif
@@ -242,7 +244,7 @@
         failedAttemptsLabel.shadowColor = [UIColor blackColor];
         failedAttemptsLabel.shadowOffset = CGSizeMake(0, -1);
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < 60000
-        failedAttemptsLabel.textAlignment = UITextAlignmentCenter;
+        failedAttemptsLabel.textAlignment = NSTextAlignmentCenter;
 #else
         failedAttemptsLabel.textAlignment = NSTextAlignmentCenter;
 #endif
@@ -296,10 +298,12 @@
         CGFloat panelWidth = DIGIT_WIDTH*4+DIGIT_SPACING*3;
         if (_simple) {
             digitPanel = [[UIView alloc] initWithFrame:CGRectMake(0, 0, panelWidth, DIGIT_HEIGHT)];
-            if(_action==0)
+            if(_action==0){
                 digitPanel.frame = CGRectMake(47, 107, 222, 43);
-            else
+            }
+            else{
                 digitPanel.frame = CGRectMake(47, 82, 222, 43);
+            }
             // [contentView addSubview:digitPanel];
             [scrollView addSubview:digitPanel];
             
@@ -350,13 +354,18 @@
             promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 17, 280, 80)];
         else
             promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 16, 280, 20)];
+        
+        if (self.isCreate && [[[UIDevice currentDevice] systemVersion] floatValue] >= 7){
+            digitPanel.frame = CGRectMake(47, 130, 222, 43);
+            promptLabel.frame = CGRectMake(20, 17, 280, 100);
+        }
         promptLabel.backgroundColor = [UIColor clearColor];
         promptLabel.textColor = UIColorFromRedGreenBlue(102, 102, 102);
         
         promptLabel.font = [UIFont fontWithName:@"OpenSans" size:11];
         if(_action==0){
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < 60000
-            promptLabel.textAlignment = UITextAlignmentLeft;
+            promptLabel.textAlignment = NSTextAlignmentLeft;
 #else
             promptLabel.textAlignment = NSTextAlignmentLeft;
 #endif
@@ -365,8 +374,6 @@
             promptLabel.textAlignment = NSTextAlignmentCenter;
         }
         promptLabel.numberOfLines = 0;
-        
-        // [contentView addSubview:promptLabel];
         
         [scrollView addSubview:promptLabel];
         
@@ -379,7 +386,7 @@
         messageLabel.textColor = UIColorFromRedGreenBlue(213, 32, 39);
         messageLabel.font = [UIFont fontWithName:@"OpenSans-Bold" size:12];
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < 60000
-        messageLabel.textAlignment = UITextAlignmentCenter;
+        messageLabel.textAlignment = NSTextAlignmentCenter;
 #else
         messageLabel.textAlignment = NSTextAlignmentCenter;
 #endif
@@ -403,7 +410,7 @@
         failedAttemptsLabel.shadowColor = [UIColor blackColor];
         failedAttemptsLabel.shadowOffset = CGSizeMake(0, -1);
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < 60000
-        failedAttemptsLabel.textAlignment = UITextAlignmentCenter;
+        failedAttemptsLabel.textAlignment = NSTextAlignmentCenter;
 #else
         failedAttemptsLabel.textAlignment = NSTextAlignmentCenter;
 #endif
@@ -416,7 +423,12 @@
         self.view = view;
     }
 }
-
+- (void)userTextSizeDidChange {
+	[self applyFonts];
+}
+- (void)applyFonts {
+    promptLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -425,9 +437,7 @@
     errorImageView.hidden = YES;
     [digitPanel addSubview:errorImageView];
     
-    CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
-    
-    if (screenRect.size.height >= 548 )
+    if(IS_HEIGHT_GTE_568)
     {
         isiPhone5 = YES;
     }else
@@ -436,6 +446,16 @@
     }
     
      self.navigationController.navigationBarHidden = NO;
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        self.navigationController.navigationBar.translucent=NO;
+        [self applyFonts];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(userTextSizeDidChange)
+                                                     name:UIContentSizeCategoryDidChangeNotification
+                                                   object:nil];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

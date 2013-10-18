@@ -49,6 +49,7 @@ typedef enum {
     UIView *digitPanel;
     UIScrollView *scrollView;
     BOOL isiPhone5;
+    BOOL isCreate;
     int attemp;
     
 }
@@ -59,6 +60,7 @@ typedef enum {
 @property (strong) NSString *alternativePasscode;
 @property (strong) NSString *passcode;
 @property (assign) BOOL simple;
+@property (assign) BOOL isCreate;
 @property (assign) NSInteger failedAttempts;
 @property (strong) NSString *enterPrompt;
 @property (strong) NSString *confirmPrompt;
@@ -67,6 +69,7 @@ typedef enum {
 @property (nonatomic ,strong)  UIButton *skipButton;
 @property (nonatomic, strong)  UIView *inputAccView;
 @property (nonatomic, strong) NSString *skipStr;
+@property (nonatomic, strong) UIView *digitPanel;
 
 
 - (id)initForAction:(PasscodeAction)action;

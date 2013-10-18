@@ -138,7 +138,7 @@
     [titleLbl setText:@"My Banks"];
     [titleLbl setShadowColor:[UIColor whiteColor]];
     [titleLbl setShadowOffset:CGSizeMake(0.0f, 0.5f)];
-    [titleLbl setTextAlignment:UITextAlignmentCenter];
+    [titleLbl setTextAlignment:NSTextAlignmentCenter];
     [self.navigationItem setTitleView:titleLbl];
     
 }
@@ -186,7 +186,7 @@
         [banksLabel setBackgroundColor:[UIColor clearColor]];
         [banksLabel setTextColor:[UIColor blackColor]];//UIColorFromRedGreenBlue(160, 160, 160)];
         [banksLabel setTag:1];
-        banksLabel.textAlignment = UITextAlignmentLeft;
+        banksLabel.textAlignment = NSTextAlignmentLeft;
         [cell addSubview:banksLabel];
         
         // Adding choice Button On Cell

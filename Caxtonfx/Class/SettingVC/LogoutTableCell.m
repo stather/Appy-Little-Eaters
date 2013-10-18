@@ -20,6 +20,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        
     }
     
     return self;
@@ -79,10 +80,11 @@
     DatabaseHandler *dataBaseHandler = [[DatabaseHandler alloc]init];
     [dataBaseHandler executeQuery:query];
     
-    query = [NSString stringWithFormat:@"DELETE FROM getHistoryTable"];
+    query = @"DELETE FROM getHistoryTable";
     [dataBaseHandler executeQuery:query];
+    
     query = @"DELETE FROM myCards";
-     [dataBaseHandler executeQuery:@"DELETE FROM myCards" ];
+     [dataBaseHandler executeQuery:query ];
    
     NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* documentsDirectory = [paths objectAtIndex:0];

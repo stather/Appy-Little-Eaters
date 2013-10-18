@@ -97,11 +97,6 @@
         for (int i = 0; i < [currencyArr count]; i++)
         {
             TOcr_Word *tWord = (TOcr_Word*) [currencyArr objectAtIndex:i];
-
-        }
-        for (int i = 0; i < [currencyArr count]; i++)
-        {
-            TOcr_Word *tWord = (TOcr_Word*) [currencyArr objectAtIndex:i];
             
             float x = tWord.wordRect.origin.x - 3.0f;
             float y = tWord.wordRect.origin.y - 3.0f;

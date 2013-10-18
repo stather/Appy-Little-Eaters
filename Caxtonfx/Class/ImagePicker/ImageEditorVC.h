@@ -27,7 +27,7 @@
 
 - (IBAction) libraryBtnTap:(id)sender;
 - (IBAction) cameraBtnTap:(id)sender;
-- (IBAction) historyBtnTap:(id)sender;
+//- (IBAction) historyBtnTap:(id)sender;
 - (IBAction) doneBtnTap:(id)sender;
 
 - (id) initWithImage:(UIImage *) image;

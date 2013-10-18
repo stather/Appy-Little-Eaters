@@ -17,5 +17,5 @@ UIImage *scaleAndRotateImage(UIImage *image, int maxPixelsAmount);
 + (UIColor*) getPixelColorInImage:(UIImage *)image atLocation:(CGPoint)point ;
 
 +(UIImage*) drawCurrencies:(NSMutableArray*) currencies inImage:(UIImage*) image;
-+(float) maxFontSizeThatFitsForString:(NSString*)_string inRect:(CGRect)rect withFont:(NSString *)fontName onDevice:(int)device;
+//+(float) maxFontSizeThatFitsForString:(NSString*)_string inRect:(CGRect)rect withFont:(NSString *)fontName onDevice:(int)device;
 @end

@@ -47,7 +47,6 @@
     
     return self;
 }
-
 - (void) showControls
 {
     [UIView beginAnimations:nil context:nil];
@@ -55,8 +54,12 @@
     if (IS_HEIGHT_GTE_568) {
         self.controlsView.frame = CGRectMake(0, 499, 320, 69);
     }
-    else
+    else{
         self.controlsView.frame = CGRectMake(0, 411, 320, 69);
+    }
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        [self.controlsView setFrame:CGRectMake(self.controlsView.frame.origin.x, self.controlsView.frame.origin.y - 30.0f, self.controlsView.frame.size.width, self.controlsView.frame.size.height)];
+    }
     [UIView commitAnimations];
 }
 
@@ -168,6 +171,10 @@
     }
 
    [self setUpPopUpUI:(BOOL)[[NSUserDefaults standardUserDefaults]boolForKey:@"isLogin"]];
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        self.navigationController.navigationBar.translucent=NO;
+    }
 
 }
 // edit by sumit mundra
@@ -254,7 +261,7 @@
     //delegate.tabBarController.selectedIndex = 1;
     
     [delegate customTabBarBtnTap:btn];
-   [[UIApplication sharedApplication] setStatusBarHidden:NO animated:NO];
+   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     
     NSArray *arr = [AppDelegate getSharedInstance].mainNavigation.viewControllers;
     

@@ -66,7 +66,7 @@
 	[self applyFonts];
 }
 - (void)applyFonts {
-    self.updateInfo.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    self.updateInfo.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
 	self.mainLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
 - (void)viewDidLoad
@@ -90,9 +90,7 @@
     {
         [scrollView setFrame:CGRectMake(0, 33, 320, 326)];
     }
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
-        [scrollView setFrame:CGRectMake(0, 77, 320, 326)];
-    }
+    
     
     [updateInfo setFont:[UIFont fontWithName:@"OpenSans" size:14]];
     
@@ -139,13 +137,16 @@
             }
         }
     }
-    
-    [self applyFonts];
-	
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(userTextSizeDidChange)
-												 name:UIContentSizeCategoryDidChangeNotification
-											   object:nil];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        [self applyFonts];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(userTextSizeDidChange)
+                                                     name:UIContentSizeCategoryDidChangeNotification
+                                                   object:nil];
+        
+        [scrollView setFrame:CGRectMake(0, 77, 320, 326)];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated

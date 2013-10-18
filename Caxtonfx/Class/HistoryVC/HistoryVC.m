@@ -35,6 +35,8 @@
 @synthesize heightConstraint;
 @synthesize loadingView;
 
+
+
 -(NSInteger )hourSinceNow
 {
     NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"khistoryData"];
@@ -48,6 +50,10 @@
 
 #pragma mark ----
 #pragma mark View Life Cycle Method
+- (void)userTextSizeDidChange {
+	[self.table reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -79,6 +85,14 @@
     _tempMA = [[NSMutableArray alloc] init];
     historyArray = [[NSMutableArray alloc] init];
     conversionArray =[[NSMutableArray alloc] init];
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(userTextSizeDidChange)
+                                                     name:UIContentSizeCategoryDidChangeNotification
+                                                   object:nil];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -448,7 +462,12 @@
     
     return headerView;
 }
-
+- (UIFont*)fontForBodyTextStyle {
+		return [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+}
+- (UIFont*)fontForCaptionTextStyle {
+    return [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+}
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -568,7 +587,15 @@
                 }
                 
                 NSMutableDictionary *dict = [historyArray objectAtIndex:indexPath.row];
+                 if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+                     cell.merchantNameLabel.font = [self fontForBodyTextStyle];
+                     cell.currencyValueLabel.font = [self fontForBodyTextStyle];
+                     cell.timeCountryDateLabel.font = [self fontForCaptionTextStyle];
+                     cell.cardUsedLabel.font = [self fontForCaptionTextStyle];
+                    
+                 }
                 cell.merchantNameLabel.text =[dict objectForKey:@"vendor"];
+                
                 NSDateFormatter *df = [[NSDateFormatter alloc] init];
                 [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
                 NSLocale* formatterLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];

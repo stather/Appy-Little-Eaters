@@ -71,7 +71,16 @@
 - (IBAction) pullViewBtnTap:(id)sender;
 - (IBAction) hidePullViewBtnTap:(id)sender;
 
+/* commented becuase no implementation methods are created
+ *
+ *
 - (void) initializeRecognitionEngine;
+- (void) redrawImageWithNewCurrency;
+- (void) gotoImagePicker;
+ *
+ *
+*/
+- (int) getTableCount:(NSString*) tableName;
 - (void) setUpBankScroller;
 - (void) setImageForDownArrowBtn;
 - (void) setInstitutionInfo:(NSDictionary*) dic;
@@ -112,7 +121,7 @@
 - (NSString*) getCurrencyCode;
 - (NSString*) getConvertedCurrency:(NSString *) currencyStr;
 - (NSString*) getCurrencyNameForCurrencyCode:(NSString*) currencyCode;
-- (void) redrawImageWithNewCurrency;
+
 - (NSString*) addCurrencySymbolToCalculatedCurrency:(NSString*) currency;
 
 //+ (NSString*) stringFromMocrErrorCode:(TMocrErrorCode)errorCode;
@@ -131,8 +140,6 @@
 - (void) setupReachability;
 - (void) reachabilityChanged:(NSNotification*)note;
 - (void) getLatestCurrencyConversionRates;
-- (void) gotoImagePicker;
 - (void) fetchingBanksToDisplay;
-- (int) getTableCount:(NSString*) tableName;
 
 @end
