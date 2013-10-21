@@ -42,14 +42,7 @@ int const maxImagePixelsAmount = 8000000; // 8 MP
     [[[AppDelegate getSharedInstance] customeTabBar] setHidden:YES];
     [self customizingNavigationBar];
     
-    if (IS_HEIGHT_GTE_568)
-    {
-        self.headerView.frame = CGRectMake(0, 454, 320, 50);
-        self.imageView.frame = CGRectMake(0, -20, 320, 498);
-    }else
-    {
-        self.headerView.frame = CGRectMake(0, 366, 320, 50);
-    }
+    
 
     [sourceCurrencyLbl setText:[NSString stringWithFormat:@"%@ 1 = %@ %@",[detailsDict objectForKey:@"source"],[detailsDict objectForKey:@"multiplier"],[detailsDict objectForKey:@"target"]]];
     [bankNameLbl setText:[detailsDict objectForKey:@"name"]];
@@ -61,22 +54,34 @@ int const maxImagePixelsAmount = 8000000; // 8 MP
     scrollView.minimumZoomScale = scrollView.frame.size.width / imageView.frame.size.width;
     scrollView.maximumZoomScale = 1.0;
     [scrollView setZoomScale:scrollView.minimumZoomScale];
-    self.scrollView.frame = CGRectMake(0, 0, 320, self.view.frame.size.height-94);
+   // self.scrollView.frame = CGRectMake(0, 0, 320, self.view.frame.size.height-94);
     
     self.institutionNameLbl.text = @"CFX Global Rate";
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        self.navigationController.navigationBar.translucent=NO;
+    }else{
+        if (IS_HEIGHT_GTE_568)
+        {
+            self.headerView.frame = CGRectMake(0, 454, 320, 50);
+            self.imageView.frame = CGRectMake(0, -20, 320, 498);
+        }else
+        {
+            self.headerView.frame = CGRectMake(0, 366, 320, 50);
+        }
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:YES];
     
-    [[[AppDelegate getSharedInstance] customeTabBar] setHidden:YES];
+    [super viewWillAppear:YES];
     
     self.rateLbl.text = [detailsDict objectForKey:@"conversionRate"];
 
    [self.targetBtn setTitle:[NSString stringWithFormat:@"%@ %@",[detailsDict objectForKey:@"target"],[self getCurrencyNameForCurrencyCode:[detailsDict objectForKey:@"target"]]] forState:UIControlStateNormal];
     
     [self.preferredBtn setTitle:[NSString stringWithFormat:@"%@ %@",[detailsDict objectForKey:@"base"],[self getCurrencyNameForCurrencyCode:[detailsDict objectForKey:@"base"]]] forState:UIControlStateNormal];
+    
 }
 
 -(void)getImage : (NSString *)name

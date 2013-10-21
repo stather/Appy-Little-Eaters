@@ -3727,8 +3727,8 @@
 				384A796E17A39FC5007F5ED8 /* LoginVC.xib */,
 				95CB50031712D47C00A6490B /* LoginVC.h */,
 				95CB50021712D47C00A6490B /* LoginVC.m */,
-				38844065172FE14C00788217 /* UIButton+CustomDesign.m */,
 				38844066172FE14C00788217 /* UIButton+CustomDesign.h */,
+				38844065172FE14C00788217 /* UIButton+CustomDesign.m */,
 			);
 			path = LoginVC;
 			sourceTree = "<group>";

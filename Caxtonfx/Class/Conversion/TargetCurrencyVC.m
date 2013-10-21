@@ -110,7 +110,7 @@
     searchText = @"";
     selectedCurrency = preferredCurrency;
     
-    self.allRatesMA = [[NSMutableArray alloc] init];
+   
     
     // Do any additional setup after loading the view from its nib.
     UIBarButtonItem *backButton = [self backButton];
@@ -124,6 +124,7 @@
     NSString *query = [NSString stringWithFormat:@"select * from globalRatesTable"];
     
     self.array = [[NSMutableArray alloc]init];
+    self.allRatesMA = [[NSMutableArray alloc] init];
     self.array = [[DatabaseHandler getSharedInstance] fetchingGlobalRatesFromTable:query];
     self.allRatesMA = [self.array mutableCopy];
     [self.tableView removeConstraint:heightConstraint];

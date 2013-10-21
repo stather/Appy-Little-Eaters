@@ -19,7 +19,7 @@
 
 @implementation BaseCurrencyVC
 
-@synthesize searchBar,tableView,allRatesMA,heightConstraint;
+@synthesize searchBar,tableView,allRatesMA,heightConstraint,array;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -61,22 +61,25 @@
     
     if ([fromConversionSection isEqualToString:@"YES"])
     {
-        
-        isCurrencySettingsChanged = TRUE;
-        
-        NSMutableDictionary *dict = [self.array objectAtIndex:selectedRow];
-        NSLog(@"selected row  : %d",selectedRow);
-        targetCurrency  = [dict objectForKey:@"CcyCode"];
-        NSLog(@"targetCurrency in backbutton event : %@",targetCurrency);
+        if (selectedRow<=self.array.count) {
+            isCurrencySettingsChanged = TRUE;
+            
+            NSMutableDictionary *dict = [self.array objectAtIndex:selectedRow];
+            NSLog(@"selected row  : %d",selectedRow);
+            targetCurrency  = [dict objectForKey:@"CcyCode"];
+            NSLog(@"targetCurrency in backbutton event : %@",targetCurrency); 
+        }
         
     }
     else
     {
-               
-        NSMutableDictionary *dict = [self.array objectAtIndex:selectedRow];
-        [[NSUserDefaults standardUserDefaults] setObject:[dict objectForKey:@"CcyCode"] forKey:@"defaultCurrency"];
-        [[NSUserDefaults standardUserDefaults] setObject:[dict objectForKey:@"imageName"] forKey:@"defaultCurrencyImage"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        if (selectedRow<=self.array.count) {
+            NSMutableDictionary *dict = [self.array objectAtIndex:selectedRow];
+            [[NSUserDefaults standardUserDefaults] setObject:[dict objectForKey:@"CcyCode"] forKey:@"defaultCurrency"];
+            [[NSUserDefaults standardUserDefaults] setObject:[dict objectForKey:@"imageName"] forKey:@"defaultCurrencyImage"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        
     }
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -100,17 +103,20 @@
     }
     
     NSLog(@"%@",selectedCurrency);
-    self.allRatesMA = [[NSMutableArray alloc] init];
+   
     
     UIBarButtonItem *backButton = [self backButton];
     self.navigationItem.leftBarButtonItem = backButton;
     
     
     NSString *query = [NSString stringWithFormat:@"select * from globalRatesTable"];
-    self.array = [[NSMutableArray alloc]init];
-    self.array = [[DatabaseHandler getSharedInstance] fetchingGlobalRatesFromTable:query];
-    self.allRatesMA = [[DatabaseHandler getSharedInstance] fetchingGlobalRatesFromTable:query];
+  
     
+    self.array = [[NSMutableArray alloc]init];
+    self.allRatesMA = [[NSMutableArray alloc] init];
+    self.array = [[DatabaseHandler getSharedInstance] fetchingGlobalRatesFromTable:query];
+    self.allRatesMA = [self.array mutableCopy];
+
     [self.tableView removeConstraint:heightConstraint];
     
     if(IS_HEIGHT_GTE_568)
