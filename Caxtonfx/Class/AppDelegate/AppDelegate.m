@@ -200,7 +200,7 @@
     //    [self performSelectorInBackground:@selector(currencySymbole) withObject:nil];
 
     
-    [Flurry startSession:flurryID];
+    //[Flurry startSession:flurryID];
     
     //[Flurry setCrashReportingEnabled:YES];
     
@@ -212,6 +212,11 @@
         //Added on 19th Sep 2013
         self.window.bounds = CGRectMake(0, 20, self.window.frame.size.width, self.window.frame.size.height);
     }
+    
+    
+    //Testflight integration
+    [TestFlight takeOff:@"ed314d8d-300d-40d3-a4e5-9c94155c0bd9"];
+    
     return YES;
 }
 #pragma mark -

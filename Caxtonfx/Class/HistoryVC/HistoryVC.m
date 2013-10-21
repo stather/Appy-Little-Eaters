@@ -58,6 +58,8 @@
 {
     [super viewDidLoad];
     
+    [TestFlight passCheckpoint:@"HistoryVC"];
+    
     [self customizingNavigationBar];
     
     self.refreshControl = [[UIRefreshControl alloc] init];

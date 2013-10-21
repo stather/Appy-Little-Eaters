@@ -11,6 +11,7 @@
 #import <MessageUI/MFMailComposeViewController.h>
 #import "JJGActionSheet.h"
 #import "sharedManager.h"
+#import "TestFlight.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,sharedDelegate,MFMailComposeViewControllerDelegate,JJGActionSheetDelegate>
 {

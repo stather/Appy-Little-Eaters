@@ -848,6 +848,9 @@
 		95F34CAA1783F032006122F6 /* PACancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F34CA61783F032006122F6 /* PACancel@2x.png */; };
 		95F34CAB1783F032006122F6 /* PACancelSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F34CA71783F032006122F6 /* PACancelSelected.png */; };
 		95F34CAC1783F032006122F6 /* PACancelSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F34CA81783F032006122F6 /* PACancelSelected@2x.png */; };
+		B232045F181569B400336817 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2320459181569B400336817 /* libTestFlight.a */; };
+		B2320460181569B400336817 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B232045A181569B400336817 /* README.md */; };
+		B2320461181569B400336817 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = B232045B181569B400336817 /* release_notes.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1964,6 +1967,12 @@
 		95F34CA61783F032006122F6 /* PACancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PACancel@2x.png"; sourceTree = "<group>"; };
 		95F34CA71783F032006122F6 /* PACancelSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PACancelSelected.png; sourceTree = "<group>"; };
 		95F34CA81783F032006122F6 /* PACancelSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PACancelSelected@2x.png"; sourceTree = "<group>"; };
+		B2320459181569B400336817 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		B232045A181569B400336817 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		B232045B181569B400336817 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
+		B232045C181569B400336817 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
+		B232045D181569B400336817 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
+		B232045E181569B400336817 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1976,6 +1985,7 @@
 				1970847817266D8A00F72200 /* ImageIO.framework in Frameworks */,
 				1970847617266D8400F72200 /* OpenGLES.framework in Frameworks */,
 				1994CC3D1721274700396488 /* libsqlite3.dylib in Frameworks */,
+				B232045F181569B400336817 /* libTestFlight.a in Frameworks */,
 				1994CC3B1721273700396488 /* CoreImage.framework in Frameworks */,
 				1994CC391721272400396488 /* Accounts.framework in Frameworks */,
 				1994CC371721271700396488 /* MessageUI.framework in Frameworks */,
@@ -3664,6 +3674,7 @@
 		95CB4F901712D0AA00A6490B /* Caxtonfx */ = {
 			isa = PBXGroup;
 			children = (
+				B2320458181569B400336817 /* TestFlightSDK2 */,
 				1994CABC17211FDE00396488 /* Rocket */,
 				386A2281172029B1003AF502 /* Resource1 */,
 				95CB4FA71712D40600A6490B /* Class */,
@@ -3789,6 +3800,19 @@
 				95EAE97017A794C500E8B6F1 /* libFlurry_4.2.2.a */,
 			);
 			path = Flurry;
+			sourceTree = "<group>";
+		};
+		B2320458181569B400336817 /* TestFlightSDK2 */ = {
+			isa = PBXGroup;
+			children = (
+				B2320459181569B400336817 /* libTestFlight.a */,
+				B232045A181569B400336817 /* README.md */,
+				B232045B181569B400336817 /* release_notes.md */,
+				B232045C181569B400336817 /* TestFlight+AsyncLogging.h */,
+				B232045D181569B400336817 /* TestFlight+ManualSessions.h */,
+				B232045E181569B400336817 /* TestFlight.h */,
+			);
+			path = TestFlightSDK2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -4389,6 +4413,7 @@
 				196E89751767387E00703EF7 /* mv - Maldives.png in Resources */,
 				196E89761767387E00703EF7 /* mw - Malawi.png in Resources */,
 				196E89771767387E00703EF7 /* mx - Mexico.png in Resources */,
+				B2320460181569B400336817 /* README.md in Resources */,
 				196E89781767387E00703EF7 /* my - Malaysia.png in Resources */,
 				196E89791767387E00703EF7 /* mz - Mozambique.png in Resources */,
 				196E897A1767387E00703EF7 /* na - Namibia.png in Resources */,
@@ -4404,6 +4429,7 @@
 				196E89841767387E00703EF7 /* pa - Panama.png in Resources */,
 				196E89851767387E00703EF7 /* pe - Peru.png in Resources */,
 				196E89861767387E00703EF7 /* pg - Papua New Guinea.png in Resources */,
+				B2320461181569B400336817 /* release_notes.md in Resources */,
 				196E89871767387E00703EF7 /* ph - Philippines.png in Resources */,
 				196E89881767387E00703EF7 /* pk - Pakistan.png in Resources */,
 				196E89891767387E00703EF7 /* pl - Poland.png in Resources */,
@@ -4766,6 +4792,7 @@
 					"\"$(SRCROOT)/Caxtonfx/Rocket/tesseract-ios-lib-master/lib\"",
 					"\"$(SRCROOT)/Caxtonfx/Rocket/flurry\"",
 					"\"$(SRCROOT)/Caxtonfx/Rocket/Flurry\"",
+					"/Users/gbafal/Downloads/Caxton\\ Fx/Caxtonfx/Caxtonfx/TestFlightSDK2",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4792,6 +4819,7 @@
 					"\"$(SRCROOT)/Caxtonfx/Rocket/tesseract-ios-lib-master/lib\"",
 					"\"$(SRCROOT)/Caxtonfx/Rocket/flurry\"",
 					"\"$(SRCROOT)/Caxtonfx/Rocket/Flurry\"",
+					"/Users/gbafal/Downloads/Caxton\\ Fx/Caxtonfx/Caxtonfx/TestFlightSDK2",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";

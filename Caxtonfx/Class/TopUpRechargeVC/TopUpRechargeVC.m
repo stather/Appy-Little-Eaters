@@ -66,6 +66,8 @@
     defaultsArray = [[DatabaseHandler getSharedInstance]getData:[NSString stringWithFormat:@"select * from getDefaults where productID = \"%@\"",[dataDict objectForKey:@"ProductTypeID"]]];
 
     [self setupPage];
+    
+    [TestFlight passCheckpoint:@"TopUpRechargeVC"];
 }
 
 

@@ -84,6 +84,8 @@
     isRemember = NO;
     
     [self SetUpDesginPage];
+    
+    [TestFlight passCheckpoint:@"LoginVC"];
 
     
 }
