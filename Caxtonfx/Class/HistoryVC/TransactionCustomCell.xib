@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="H_Transactions_cell.png" translatesAutoresizingMaskIntoConstraints="NO" id="7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
+                        <rect key="frame" x="0.0" y="0.0" width="40" height="84"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Godiva" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24">
@@ -70,8 +70,8 @@
                         <color key="shadowColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                         <size key="shadowOffset" width="0.0" height="0.0"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" image="cardIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="114">
-                        <rect key="frame" x="21" y="11" width="320" height="59"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cardIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="114">
+                        <rect key="frame" x="21" y="57" width="23" height="13"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="251">
