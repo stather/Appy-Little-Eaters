@@ -482,18 +482,21 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     tempArray = [[DatabaseHandler getSharedInstance] fetchingHistoryDataFromTable:query];
     [historyArray removeAllObjects];
     historyArray = [tempArray mutableCopy];
-    [[self table] reloadData];
-    [self.refreshControl endRefreshing];
+    if (historyArray.count>0) {
+        [[self table] reloadData];
+        [self.refreshControl endRefreshing];
+        
+        NSMutableDictionary *dict = [historyArray objectAtIndex:0];
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        NSDate *date = [df dateFromString:[dict objectForKey:@"date"]];
+        [df setDateFormat:@"dd/MM/yyyy"];
+        NSString *dateIs = [df stringFromDate:date];
+        [df setDateFormat:@"HH:mm"];
+        NSString *timeIs = [df stringFromDate:date];
+        [self.titleNameLbl setText:[NSString stringWithFormat:@"%@ | %@",dateIs,timeIs]];
+    }
     
-    NSMutableDictionary *dict = [historyArray objectAtIndex:0];
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate *date = [df dateFromString:[dict objectForKey:@"date"]];
-    [df setDateFormat:@"dd/MM/yyyy"];
-    NSString *dateIs = [df stringFromDate:date];
-    [df setDateFormat:@"HH:mm"];
-    NSString *timeIs = [df stringFromDate:date];
-    [self.titleNameLbl setText:[NSString stringWithFormat:@"%@ | %@",dateIs,timeIs]];
 }
 
 - (void)viewDidUnload

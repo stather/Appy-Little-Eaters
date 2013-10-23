@@ -48,6 +48,7 @@ NSString *const kAppiraterDeclinedToRate			= @"kAppiraterDeclinedToRate";
 NSString *const kAppiraterReminderRequestDate		= @"kAppiraterReminderRequestDate";
 
 NSString *templateReviewURL = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=APP_ID";
+NSString *templateReviewURLIOS7 = @"itms-apps://itunes.apple.com/app/idAPP_ID";
 
 static NSString *_appId;
 static double _daysUntilPrompt = 30;
@@ -412,13 +413,24 @@ static id<AppiraterDelegate> _delegate;
 }
 
 + (void)rateApp {
+    NSString *reviewURL =nil;
 #if TARGET_IPHONE_SIMULATOR
 	NSLog(@"APPIRATER NOTE: iTunes App Store is not supported on the iOS simulator. Unable to open App Store page.");
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        reviewURL = [templateReviewURLIOS7 stringByReplacingOccurrencesOfString:@"APP_ID" withString:[NSString stringWithFormat:@"%@", _appId]];
+    }else{
+        reviewURL = [templateReviewURL stringByReplacingOccurrencesOfString:@"APP_ID" withString:[NSString stringWithFormat:@"%@", _appId]];
+    }
+    NSLog(@"%@",reviewURL);
 #else
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-
+    
 	// this URL Scheme should work in the iOS 6 App Store in addition to older stores
-	NSString *reviewURL = [templateReviewURL stringByReplacingOccurrencesOfString:@"APP_ID" withString:[NSString stringWithFormat:@"%@", _appId]];
+	if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        reviewURL = [templateReviewURLIOS7 stringByReplacingOccurrencesOfString:@"APP_ID" withString:[NSString stringWithFormat:@"%@", _appId]];
+    }else{
+        reviewURL = [templateReviewURL stringByReplacingOccurrencesOfString:@"APP_ID" withString:[NSString stringWithFormat:@"%@", _appId]];
+    }
 	
 	[userDefaults setBool:YES forKey:kAppiraterRatedCurrentVersion];
 	[userDefaults synchronize];
