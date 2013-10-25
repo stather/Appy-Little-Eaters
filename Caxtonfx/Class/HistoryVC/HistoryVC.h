@@ -19,7 +19,7 @@ typedef int(^CustomBlock)(int number);
     BOOL isLoadingViewAdded;
 }
 @property (nonatomic , copy) CustomBlock block;
-@property (nonatomic, strong)UIRefreshControl *refreshControl;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic , strong) NSMutableArray *_array;
 
 @property (nonatomic , strong) IBOutlet UILabel *titleNameLbl;

@@ -12,8 +12,9 @@
 #import "JJGActionSheet.h"
 #import "sharedManager.h"
 #import "TestFlight.h"
+#import "PAPasscodeViewController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate,sharedDelegate,MFMailComposeViewControllerDelegate,JJGActionSheetDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,sharedDelegate,MFMailComposeViewControllerDelegate,JJGActionSheetDelegate,PAPasscodeViewControllerDelegate>
 {
     CGPoint startPos;
     
@@ -39,7 +40,9 @@
 
 @property (nonatomic , strong) NSString *currentId;
 @property (nonatomic , strong) NSMutableArray *_array;
-@property (strong, nonatomic) dispatch_queue_t backgroundQueue;
+//@property (strong, nonatomic) dispatch_queue_t backgroundQueue;
+
+
 - (IBAction) customTabBarBtnTap:(id)sender;
 
 +(AppDelegate*) getSharedInstance;
@@ -59,5 +62,7 @@
 - (IBAction) handleTapGesture:(id)sender;
 
 -(IBAction) autoAnimation;
+
++ (dispatch_queue_t)sharedQueue;
 
 @end

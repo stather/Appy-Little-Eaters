@@ -34,6 +34,7 @@
 @synthesize conversionArray,currentId,_array;
 @synthesize heightConstraint;
 @synthesize loadingView;
+@synthesize refreshControl;
 
 
 

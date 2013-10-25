@@ -142,7 +142,8 @@
 
 -(void) setNavigationTitle:(NSString *) title
 {
-    [[[self navigationController] navigationBar] setBackgroundImage:[UIImage imageNamed:@"topBar"] forBarMetrics:UIBarMetricsDefault];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topBar"] forBarMetrics:UIBarMetricsDefault];
     
     self.navigationItem.hidesBackButton = YES;
     [self.navigationController.navigationBar setTintColor:[UIColor redColor]];

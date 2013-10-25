@@ -17,7 +17,8 @@
 
 @implementation MyCardVC
 
-@synthesize tableView,heightConstraint,cardsArray,refreshControl,contentArray;
+@synthesize tableView,heightConstraint,cardsArray,contentArray;
+@synthesize refreshControl;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,13 +57,13 @@
         [Appirater setDebug:YES];
     }
     
-    refreshControl = [[UIRefreshControl alloc] init];
-    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"updateDate"];
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:[CommonFunctions statusOfLastUpdate:date1]];
     
     // Configure View Controller
-    [self.tableView addSubview:refreshControl];
+    [self.tableView addSubview:self.refreshControl];
     [self.tableView removeConstraint:heightConstraint];
     
     if(IS_HEIGHT_GTE_568)
@@ -75,7 +76,7 @@
         [self.tableView addConstraint:heightConstraint];
     }
     
-    dispatch_async([[AppDelegate getSharedInstance]backgroundQueue], ^(void) {
+    dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
         [self getDataFromDataBse];
     });
     
@@ -143,7 +144,7 @@
         [self performSelectorInBackground:@selector(fetchTheData) withObject:self];
     }else
     {
-        [refreshControl endRefreshing];
+        [self.refreshControl endRefreshing];
         self.tableView.userInteractionEnabled = YES;
     }
 }
@@ -254,7 +255,7 @@
             [[DatabaseHandler getSharedInstance] executeQuery:@"DELETE FROM myCards" ];
             for(int i=0;i<array.count;i++)
             {
-                dispatch_async([[AppDelegate getSharedInstance]backgroundQueue], ^(void)
+                dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void)
                                {
                     NSMutableDictionary *dict = [array objectAtIndex:i];
                     NSString *queryStr = [NSString stringWithFormat:@"INSERT INTO myCards values (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",[dict objectForKey:@"CurrencyCardIDStr"],[dict objectForKey:@"CurrencyCardTypeIDStr"],[dict objectForKey:@"ProductTypeIDStr"],[dict objectForKey:@"CardCurrencyIDStr"],[dict objectForKey:@"cardBalanceStr"],[dict objectForKey:@"CardCurrencyDescriptionStr"],[dict objectForKey:@"CardCurrencySymbolStr"],[dict objectForKey:@"CardNameStr"],[dict objectForKey:@"CardNumberStr"],[dict objectForKey:@"CardTypeStr"],@"NO",@"NO"];
@@ -277,11 +278,11 @@
 }
 -(void) fetchTheValueFromDataBase
 {
-    dispatch_async([[AppDelegate getSharedInstance]backgroundQueue], ^(void)
+    dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void)
                    {
                        [self getDataFromDataBse];
                        
-                       [refreshControl endRefreshing];
+                       [self.refreshControl endRefreshing];
                    });
     
     
@@ -297,7 +298,7 @@
     }else{
         NSLog(@"Service: %@ | Response UKNOWN ERROR",service);
     }
-    [refreshControl endRefreshing];
+    [self.refreshControl endRefreshing];
     self.tableView.userInteractionEnabled = YES;
     [[NSUserDefaults standardUserDefaults]setObject:[NSDate date] forKey:@"updateDate"];
     [[NSUserDefaults standardUserDefaults]synchronize];

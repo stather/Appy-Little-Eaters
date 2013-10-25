@@ -63,7 +63,7 @@
 		<string>seguisli.ttf</string>
 	</array>
 	<key>UIApplicationExitsOnSuspend</key>
-	<true/>
+	<false/>
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -79,11 +79,11 @@
 			<key>TintColor</key>
 			<dict>
 				<key>Blue</key>
-				<real>0.075928789693813406</real>
+				<real>0.07592878969381341</real>
 				<key>Green</key>
-				<real>0.024394153563092231</real>
+				<real>0.02439415356309223</real>
 				<key>Red</key>
-				<real>0.84396229619565211</real>
+				<real>0.8439622961956521</real>
 			</dict>
 			<key>Translucent</key>
 			<false/>

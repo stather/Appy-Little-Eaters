@@ -26,6 +26,7 @@
 @synthesize titleNameLbl;
 @synthesize titletimeDateLbl,currentId,_array;
 @synthesize heightConstraint;
+@synthesize refreshControl;
 
 
 -(NSInteger )hourSinceNow

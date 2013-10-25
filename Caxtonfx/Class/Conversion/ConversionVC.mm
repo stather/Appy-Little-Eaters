@@ -4184,7 +4184,7 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
         [[NSUserDefaults standardUserDefaults] setValue:str forKey:@"moreInfoHtml"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
-        [self performSelectorOnMainThread:@selector(goMoreInfoPage) withObject:nil waitUntilDone:nil];
+        [self performSelectorOnMainThread:@selector(goMoreInfoPage) withObject:nil waitUntilDone:NO];
     }
 }
 

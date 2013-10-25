@@ -495,7 +495,7 @@
         [[NSUserDefaults standardUserDefaults] setValue:str forKey:@"moreInfoHtml"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
-        [self performSelectorOnMainThread:@selector(goMoreInfoPage) withObject:nil waitUntilDone:nil];
+        [self performSelectorOnMainThread:@selector(goMoreInfoPage) withObject:nil waitUntilDone:NO];
         
     }else if([service isEqualToString:@"CheckAuthGetCards"])
     {
@@ -736,7 +736,7 @@
         NSLog(@"Service: %@ | Response UKNOWN ERROR",service);
     }
     if([service isEqualToString:@"GetPromo"])
-        [self performSelectorOnMainThread:@selector(goMoreInfoPage) withObject:nil waitUntilDone:nil];
+        [self performSelectorOnMainThread:@selector(goMoreInfoPage) withObject:nil waitUntilDone:NO];
     
     else
     {

@@ -19,7 +19,7 @@ IBOutlet UILabel *navigationTitle;
     int selectedIndex;
 
 }
-@property (nonatomic, strong)UIRefreshControl *refreshControl;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic , strong) NSMutableArray *_array;
 @property (strong, nonatomic) IBOutlet UIButton *settingsButton;
 @property (nonatomic , strong) NSString *currentId;

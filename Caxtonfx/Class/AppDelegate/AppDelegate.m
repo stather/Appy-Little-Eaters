@@ -14,13 +14,15 @@
 #import "SplashVC.h"
 #import "ImagePickerVC.h"
 #import "AddMobileNoVC.h"
-#import "/usr/include/sqlite3.h"
+//#import "/usr/include/sqlite3.h"
+#include <sqlite3.h>
 #import "Appirater.h"
 #import <Twitter/Twitter.h>
 #import "DatabaseHandler.h"
 #import <Social/Social.h>
-#import "Flurry.h"
-
+//#import "Flurry.h"
+#import <Appsee/Appsee.h>
+#import "MyCardVC.h"
 
 
 
@@ -30,7 +32,7 @@
 @synthesize shareTabBar,currentId,_array,topBarView,cameraButton;
 @synthesize ratePopUpView;
 @synthesize cameraLayoutImgView;
-@synthesize backgroundQueue;
+//@synthesize backgroundQueue;
 -(NSDate *)getDateFromString:(NSString *)pstrDate
 {
     NSDateFormatter *df1 = [[NSDateFormatter alloc] init] ;
@@ -41,9 +43,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    backgroundQueue = dispatch_queue_create("com.tri-media.myelane-merchant", NULL);
+    //backgroundQueue = dispatch_queue_create("com.tri-media.myelane-merchant", NULL);
     
-    dispatch_async([[AppDelegate getSharedInstance]backgroundQueue], ^(void) {
+    dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
         if ([CommonFunctions reachabiltyCheck])
         {
             [self callgetGloableRateApi];
@@ -128,7 +130,7 @@
     NSString *countryCode = [locale objectForKey: NSLocaleCountryCode];
     UIButton *btn = (UIButton*)[customeTabBar viewWithTag:2];
     
-    dispatch_async([[AppDelegate getSharedInstance]backgroundQueue], ^(void) {
+    dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
         [self fetchCountryNameForCountryCode:countryCode];
     });
     
@@ -193,7 +195,7 @@
         //        }
     }
     
-    dispatch_async([[AppDelegate getSharedInstance]backgroundQueue], ^(void) {
+    dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
         [self currencySymbole];           //Deepesh
     });
     
@@ -216,6 +218,8 @@
     
     //Testflight integration
     [TestFlight takeOff:@"ed314d8d-300d-40d3-a4e5-9c94155c0bd9"];
+    
+    //[Appsee start:@"22727e51427f41e3a19156a13595c748"];
     
     return YES;
 }
@@ -378,6 +382,13 @@
     
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    if(![[NSUserDefaults standardUserDefaults]objectForKey:@"switchState"])
+    {
+        [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"switchState"];
+    }
+    
+    
+
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -402,8 +413,63 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+     NSString *setPin = [[NSUserDefaults standardUserDefaults] objectForKey:@"setPin"];
+        if([setPin isEqualToString:@"YES"])
+        {
+            KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"pss" accessGroup:nil];
+            [wrapper setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
+            //                NSString *suStr = [wrapper objectForKey:(__bridge id)kSecAttrAccount];
+            NSString *str =   [wrapper objectForKey :(__bridge id)kSecValueData];
+            
+            PAPasscodeViewController *passcodeViewController = [[PAPasscodeViewController alloc] initForAction:PasscodeActionEnter];
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+                passcodeViewController.backgroundView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+            }
+            passcodeViewController.skipStr = @"YES";
+            passcodeViewController.delegate = self;
+            passcodeViewController.simple = YES;
+            passcodeViewController.passcode = str;
+            UINavigationController *navController;
+            
+            UIViewController *rootViewController = self.window.rootViewController;
+            
+            if ([rootViewController isKindOfClass:[UITabBarController class]]) {
+                
+                navController =(UINavigationController*)[tabBarController selectedViewController];
+                
+            }else{
+                navController = self.mainNavigation;
+            }
+
+            [navController pushViewController:passcodeViewController animated:YES];
+        }
+    
+
+}
+- (void)PAPasscodeViewControllerDidEnterPasscode:(PAPasscodeViewController *)controller
+{
+    UINavigationController *navController;
+    
+    UIViewController *rootViewController = self.window.rootViewController;
+    
+    if ([rootViewController isKindOfClass:[UITabBarController class]]) {
+        
+        navController =(UINavigationController*)[tabBarController selectedViewController];
+        
+    }else{
+        navController = self.mainNavigation;
+    }
+    
+    MyCardVC *crdsVC = [[MyCardVC alloc]initWithNibName:@"MyCardVC" bundle:nil];
+    [navController pushViewController:crdsVC animated:YES];
+    
 }
 
+-(void)PAPasscodeViewControllerDidCancel:(PAPasscodeViewController *)controller
+{
+    NSLog(@"No cancel actions for this view now!");
+}
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
@@ -484,7 +550,17 @@
     
     return appDelegate;
 }
-
++ (dispatch_queue_t)sharedQueue
+{
+    static dispatch_once_t pred;
+    static dispatch_queue_t sharedDispatchQueue;
+    
+    dispatch_once(&pred, ^{
+        sharedDispatchQueue = dispatch_queue_create("com.tri-media.myelane-merchant", NULL);
+    });
+    
+    return sharedDispatchQueue;
+}
 - (void) showBottomBar
 {
     [UIView beginAnimations:nil context:nil];

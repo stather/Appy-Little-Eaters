@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PAPasscodeViewController.h"
 
-@interface HomeVC : UIViewController<UIScrollViewDelegate,sharedDelegate,NSXMLParserDelegate,PAPasscodeViewControllerDelegate>
+@interface HomeVC : UIViewController <UIScrollViewDelegate,sharedDelegate,NSXMLParserDelegate,PAPasscodeViewControllerDelegate>
 
 @property (nonatomic,strong) IBOutlet UIScrollView *scrollView;
 @property (nonatomic,strong) IBOutlet UIActivityIndicatorView *lodingView;
@@ -22,5 +22,7 @@
 -(IBAction)moreInfoBtnPressed:(id)sender;
 
 -(IBAction)LoginBtnPressed:(id)sender;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
 
 @end

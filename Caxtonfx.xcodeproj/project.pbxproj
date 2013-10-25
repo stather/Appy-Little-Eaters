@@ -851,6 +851,10 @@
 		B232045F181569B400336817 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2320459181569B400336817 /* libTestFlight.a */; };
 		B2320460181569B400336817 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B232045A181569B400336817 /* README.md */; };
 		B2320461181569B400336817 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = B232045B181569B400336817 /* release_notes.md */; };
+		B24DDCB1181933ED00D9621C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B24DDCB0181933ED00D9621C /* AVFoundation.framework */; };
+		B24DDCB31819340900D9621C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B24DDCB21819340900D9621C /* CoreMedia.framework */; };
+		B24DDCB51819341200D9621C /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B24DDCB41819341200D9621C /* CoreVideo.framework */; };
+		B24DDCB71819344000D9621C /* Appsee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B24DDCB61819344000D9621C /* Appsee.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1973,6 +1977,10 @@
 		B232045C181569B400336817 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
 		B232045D181569B400336817 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
 		B232045E181569B400336817 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		B24DDCB0181933ED00D9621C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B24DDCB21819340900D9621C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		B24DDCB41819341200D9621C /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		B24DDCB61819344000D9621C /* Appsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Appsee.framework; path = ../../Appsee/Appsee.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1980,6 +1988,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B24DDCB71819344000D9621C /* Appsee.framework in Frameworks */,
+				B24DDCB51819341200D9621C /* CoreVideo.framework in Frameworks */,
+				B24DDCB31819340900D9621C /* CoreMedia.framework in Frameworks */,
+				95CB4F8F1712D0AA00A6490B /* CoreGraphics.framework in Frameworks */,
+				B24DDCB1181933ED00D9621C /* AVFoundation.framework in Frameworks */,
 				95257D9E1741181F0065FD47 /* Twitter.framework in Frameworks */,
 				95D085C5172E8E5700B480FD /* CoreText.framework in Frameworks */,
 				1970847817266D8A00F72200 /* ImageIO.framework in Frameworks */,
@@ -1999,7 +2012,6 @@
 				95CB500D1712D87800A6490B /* CFNetwork.framework in Frameworks */,
 				95CB4F8B1712D0AA00A6490B /* UIKit.framework in Frameworks */,
 				95CB4F8D1712D0AA00A6490B /* Foundation.framework in Frameworks */,
-				95CB4F8F1712D0AA00A6490B /* CoreGraphics.framework in Frameworks */,
 				1994CC1C172125C900396488 /* liblept.a in Frameworks */,
 				1994CC1D172125CA00396488 /* libtesseract_all.a in Frameworks */,
 				95EAE97117A794C500E8B6F1 /* libFlurry_4.2.2.a in Frameworks */,
@@ -3660,6 +3672,10 @@
 		95CB4F891712D0AA00A6490B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B24DDCB61819344000D9621C /* Appsee.framework */,
+				B24DDCB41819341200D9621C /* CoreVideo.framework */,
+				B24DDCB21819340900D9621C /* CoreMedia.framework */,
+				B24DDCB0181933ED00D9621C /* AVFoundation.framework */,
 				95E1B8B0171FF756001906E9 /* QuartzCore.framework */,
 				95CB50101712D88600A6490B /* SystemConfiguration.framework */,
 				95CB500E1712D87F00A6490B /* Security.framework */,
@@ -4782,6 +4798,10 @@
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Caxton FX Ltd (F35CTZ6K75)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Caxton FX Ltd (F35CTZ6K75)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/gbafal/Downloads/Appsee,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Caxtonfx/Caxtonfx-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
@@ -4811,6 +4831,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Caxton FX Ltd (F35CTZ6K75)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Caxton FX Ltd (F35CTZ6K75)";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/gbafal/Downloads/Appsee,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Caxtonfx/Caxtonfx-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;

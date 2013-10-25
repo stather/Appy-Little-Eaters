@@ -16,7 +16,7 @@
 
 @property (nonatomic, strong) NSMutableArray *cardsArray;
 
-@property (nonatomic, strong)UIRefreshControl *refreshControl;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @property (nonatomic, strong) NSArray *contentArray;
 
