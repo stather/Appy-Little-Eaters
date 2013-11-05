@@ -855,6 +855,7 @@
 		B24DDCB31819340900D9621C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B24DDCB21819340900D9621C /* CoreMedia.framework */; };
 		B24DDCB51819341200D9621C /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B24DDCB41819341200D9621C /* CoreVideo.framework */; };
 		B24DDCB71819344000D9621C /* Appsee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B24DDCB61819344000D9621C /* Appsee.framework */; };
+		B2B03B02182806A200370819 /* cfxNew.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B2B03B01182806A200370819 /* cfxNew.sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1981,6 +1982,7 @@
 		B24DDCB21819340900D9621C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		B24DDCB41819341200D9621C /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		B24DDCB61819344000D9621C /* Appsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Appsee.framework; path = ../../Appsee/Appsee.framework; sourceTree = "<group>"; };
+		B2B03B01182806A200370819 /* cfxNew.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = cfxNew.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3262,6 +3264,7 @@
 		386A2281172029B1003AF502 /* Resource1 */ = {
 			isa = PBXGroup;
 			children = (
+				B2B03B01182806A200370819 /* cfxNew.sqlite */,
 				954C773717A6A0EE00CD7D76 /* topBg.png */,
 				198F677317799C6700DDB114 /* cfx.sqlite */,
 				954E0CB5176ADC2100E24BF6 /* currencyid-symbol-map.csv */,
@@ -4295,6 +4298,7 @@
 				19E57EC3174F3991001E08ED /* IC_POPUP.png in Resources */,
 				958055F11765B06900AF1BAA /* dolloeFlag.png in Resources */,
 				958055F21765B06900AF1BAA /* dolloeFlag@2x.png in Resources */,
+				B2B03B02182806A200370819 /* cfxNew.sqlite in Resources */,
 				958055F31765B06900AF1BAA /* euroFlag.png in Resources */,
 				958055F41765B06900AF1BAA /* euroFlag@2x.png in Resources */,
 				95E14A8F1765DA5B00CD191B /* dolloetrvall.png in Resources */,

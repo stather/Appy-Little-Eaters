@@ -119,7 +119,7 @@
     {
         self.cardsArray = [[NSMutableArray alloc]init];
     }
-    self.cardsArray = [[DatabaseHandler getSharedInstance] getData:@"select * from myCards"];
+    self.cardsArray = [[DatabaseHandler getSharedInstance] getData:@"select * from myCards;"];
     
     NSLog(@"%@", cardsArray);
     
@@ -252,13 +252,13 @@
                     CardElm = [TBXML nextSiblingNamed:@"a:card" searchFromElement:CardElm];
                 }
             }
-            [[DatabaseHandler getSharedInstance] executeQuery:@"DELETE FROM myCards" ];
+            //[[DatabaseHandler getSharedInstance] executeQuery:@"DELETE FROM myCards" ];
             for(int i=0;i<array.count;i++)
             {
                 dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void)
                                {
                     NSMutableDictionary *dict = [array objectAtIndex:i];
-                    NSString *queryStr = [NSString stringWithFormat:@"INSERT INTO myCards values (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",[dict objectForKey:@"CurrencyCardIDStr"],[dict objectForKey:@"CurrencyCardTypeIDStr"],[dict objectForKey:@"ProductTypeIDStr"],[dict objectForKey:@"CardCurrencyIDStr"],[dict objectForKey:@"cardBalanceStr"],[dict objectForKey:@"CardCurrencyDescriptionStr"],[dict objectForKey:@"CardCurrencySymbolStr"],[dict objectForKey:@"CardNameStr"],[dict objectForKey:@"CardNumberStr"],[dict objectForKey:@"CardTypeStr"],@"NO",@"NO"];
+                    NSString *queryStr = [NSString stringWithFormat:@"INSERT OR REPLACE INTO myCards values (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",[dict objectForKey:@"CurrencyCardIDStr"],[dict objectForKey:@"CurrencyCardTypeIDStr"],[dict objectForKey:@"ProductTypeIDStr"],[dict objectForKey:@"CardCurrencyIDStr"],[dict objectForKey:@"cardBalanceStr"],[dict objectForKey:@"CardCurrencyDescriptionStr"],[dict objectForKey:@"CardCurrencySymbolStr"],[dict objectForKey:@"CardNameStr"],[dict objectForKey:@"CardNumberStr"],[dict objectForKey:@"CardTypeStr"],@"NO",@"NO"];
                     
                     [[DatabaseHandler getSharedInstance]executeQuery:queryStr];
                 });

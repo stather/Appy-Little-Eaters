@@ -230,7 +230,8 @@
 {
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths objectAtIndex:0];
-	return [documentsDirectory stringByAppendingPathComponent:@"cfx.sqlite"];
+//	return [documentsDirectory stringByAppendingPathComponent:@"cfx.sqlite"];
+    return [documentsDirectory stringByAppendingPathComponent:@"cfxNew.sqlite"];
 }
 
 -(void) checkAndCreateDatabase{
@@ -244,8 +245,8 @@
 	NSFileManager *fileManager = [NSFileManager defaultManager];
 	
 	// Check if the database has already been created in the users filesystem
-	success = [fileManager fileExistsAtPath:[documentsDirectory stringByAppendingPathComponent:@"cfx.sqlite"]];
-	
+	//success = [fileManager fileExistsAtPath:[documentsDirectory stringByAppendingPathComponent:@"cfx.sqlite"]];
+	success = [fileManager fileExistsAtPath:[documentsDirectory stringByAppendingPathComponent:@"cfxNew.sqlite"]];
 	// If the database already exists then return without doing anything
 	if(success)
 	{
@@ -259,11 +260,13 @@
 	// If not then proceed to copy the database from the application to the users filesystem
 	
 	// Get the path to the database in the application package
-	NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"cfx.sqlite"];
+	//NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"cfx.sqlite"];
+    NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"cfxNew.sqlite"];
 	NSLog(@"databasePathFromApp %@",databasePathFromApp);
 	// Copy the database from the package to the users filesystem
     
-	[fileManager copyItemAtPath:databasePathFromApp toPath:[documentsDirectory stringByAppendingPathComponent:@"cfx.sqlite"] error:nil];
+	//[fileManager copyItemAtPath:databasePathFromApp toPath:[documentsDirectory stringByAppendingPathComponent:@"cfx.sqlite"] error:nil];
+    [fileManager copyItemAtPath:databasePathFromApp toPath:[documentsDirectory stringByAppendingPathComponent:@"cfxNew.sqlite"] error:nil];
     
 }
 

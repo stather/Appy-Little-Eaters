@@ -19,7 +19,8 @@
 
 NSString		*ShowPerPage			= @"20";
 
-NSString		*DatabaseName			= @"cfx.sqlite";
+//NSString		*DatabaseName			= @"cfx.sqlite";
+NSString		*DatabaseName			= @"cfxNew.sqlite";
 NSString		*DatabasePath;
 
 NSString	*preferredLang;
