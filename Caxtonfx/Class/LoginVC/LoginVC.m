@@ -85,7 +85,7 @@
     
     [self SetUpDesginPage];
     
-    [TestFlight passCheckpoint:@"LoginVC"];
+    //[TestFlight passCheckpoint:@"LoginVC"];
 
     
 }

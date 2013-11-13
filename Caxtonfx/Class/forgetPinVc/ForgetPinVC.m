@@ -42,7 +42,7 @@
     appDelegte.customeTabBar.hidden = YES;
     self.navigationController.navigationBarHidden = NO;
     
-    [TestFlight passCheckpoint:@"ForgetPinVC"];
+    //[TestFlight passCheckpoint:@"ForgetPinVC"];
 }
 
 -(void)viewWillAppear:(BOOL)animated

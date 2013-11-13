@@ -11,8 +11,8 @@
 #import <MessageUI/MFMailComposeViewController.h>
 #import "JJGActionSheet.h"
 #import "sharedManager.h"
-#import "TestFlight.h"
 #import "PAPasscodeViewController.h"
+#import "HomeVC.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,sharedDelegate,MFMailComposeViewControllerDelegate,JJGActionSheetDelegate,PAPasscodeViewControllerDelegate>
 {

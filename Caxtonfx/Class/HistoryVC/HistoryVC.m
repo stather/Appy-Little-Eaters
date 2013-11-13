@@ -59,7 +59,7 @@
 {
     [super viewDidLoad];
     
-    [TestFlight passCheckpoint:@"HistoryVC"];
+    //[TestFlight passCheckpoint:@"HistoryVC"];
     
     [self customizingNavigationBar];
     
@@ -118,11 +118,6 @@
     [[self table] setHidden:NO];
     [self.table reloadData];
     
-    
-//    dispatch_async([[AppDelegate getSharedInstance]backgroundQueue], ^(void) {
-//        [self fetchTheDataFromDB];
-//    });
-    
 }
 
 -(void) fetchTheDataFromDB
@@ -175,10 +170,6 @@
                    [self.view addSubview:self.loadingView];
                     isLoadingViewAdded = TRUE;
                     
-//                    dispatch_async([[AppDelegate getSharedInstance]backgroundQueue], ^(void) {
-//                        [self callServiceForFetchingHistoryData];
-//                    });
-                    
                     [self performSelectorInBackground:@selector(callServiceForFetchingHistoryData) withObject:nil];
                 }
                 else
@@ -229,9 +220,10 @@
         DatabaseHandler *dbHandler = [[DatabaseHandler alloc]init];
         conversionArray = [dbHandler getData:@"select * from conversionHistoryTable order by date desc"];
         dbHandler = nil;
+            [[self table] setHidden:NO];
+            [self.table reloadData];
+      
         
-        [[self table] setHidden:NO];
-       [self.table reloadData];
     }
 }
 
@@ -324,6 +316,9 @@
     {
         count+=1;
     }
+    if (historyArray.count == 0 && conversionArray.count==0) {
+        count+=1;
+    }
 	return count;
 }
 
@@ -357,6 +352,9 @@
                 return ([conversionArray count]>3)?3:[conversionArray count];
             }
         }
+    }
+    if (historyArray.count ==0 && conversionArray.count ==0){
+        return 1;
     }
     return 0;
 }
@@ -392,7 +390,9 @@
             }
         }
     }
-    
+    if (historyArray.count ==0 && conversionArray.count ==0){
+        return 82.0f;
+    }
     return 0.0f;
 }
 
@@ -412,7 +412,7 @@
     [rightArrow setImage:[UIImage imageNamed:@"rightArrow"]];
     [headerView addSubview:rightArrow];
     
-    NSString *sectionName= @"";
+    NSString *sectionName= @"Latest card transactions";
     
     UIButton *headerBtn = [[UIButton alloc] initWithFrame:headerView.frame];
     
@@ -683,6 +683,17 @@
             }
         }
     }
+    if((historyArray.count == 0) && (conversionArray.count == 0)){
+           UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+           cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+           [cell.textLabel setText:@"No transactions have been made in the past 2 months."];
+           cell.textLabel.font = [UIFont fontWithName:@"OpenSans" size:15];
+           cell.textLabel.textAlignment = NSTextAlignmentCenter;
+            cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+            cell.textLabel.numberOfLines = 0;
+           cell.textLabel.textColor = UIColorFromRedGreenBlue(204, 204, 204);
+           return cell;
+       }
     
     return nil;
 }
@@ -992,11 +1003,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
 
     self.table.userInteractionEnabled = YES;
-}
-
--(void) reloadTheTable
-{
-   
 }
 
 - (void)viewDidUnload

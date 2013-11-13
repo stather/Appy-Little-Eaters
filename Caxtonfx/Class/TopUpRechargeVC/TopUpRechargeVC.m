@@ -67,7 +67,7 @@
 
     [self setupPage];
     
-    [TestFlight passCheckpoint:@"TopUpRechargeVC"];
+    //[TestFlight passCheckpoint:@"TopUpRechargeVC"];
 }
 
 

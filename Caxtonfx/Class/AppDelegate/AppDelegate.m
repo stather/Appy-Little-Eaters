@@ -20,9 +20,12 @@
 #import <Twitter/Twitter.h>
 #import "DatabaseHandler.h"
 #import <Social/Social.h>
-//#import "Flurry.h"
-#import <Appsee/Appsee.h>
+#import "Flurry.h"
+//#import "TestFlight.h"
+//#import <Appsee/Appsee.h>
 #import "MyCardVC.h"
+#import "HistoryVC.h"
+#import "SettingVC.h"
 
 
 
@@ -202,10 +205,6 @@
     //    [self performSelectorInBackground:@selector(currencySymbole) withObject:nil];
 
     
-    //[Flurry startSession:flurryID];
-    
-    //[Flurry setCrashReportingEnabled:YES];
-    
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
         [application setStatusBarStyle:UIStatusBarStyleDefault];
         self.window.clipsToBounds =YES;
@@ -215,11 +214,27 @@
         self.window.bounds = CGRectMake(0, 20, self.window.frame.size.width, self.window.frame.size.height);
     }
     
+    /***
+     *
+     * Set any tracking SDK inside this box
+     *
+     ***/
     
     //Testflight integration
-    [TestFlight takeOff:@"ed314d8d-300d-40d3-a4e5-9c94155c0bd9"];
+    //[TestFlight takeOff:@"ed314d8d-300d-40d3-a4e5-9c94155c0bd9"];
     
     //[Appsee start:@"22727e51427f41e3a19156a13595c748"];
+    
+    
+    [Flurry startSession:flurryID];
+    
+    //[Flurry setCrashReportingEnabled:YES];
+    
+    /***
+     *
+     * End of tracking SDKs
+     *
+    ***/
     
     return YES;
 }
@@ -378,6 +393,36 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    NSString *setPin = [[NSUserDefaults standardUserDefaults] objectForKey:@"setPin"];
+    if([setPin isEqualToString:@"YES"])
+    {
+        KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"pss" accessGroup:nil];
+        [wrapper setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
+        //                NSString *suStr = [wrapper objectForKey:(__bridge id)kSecAttrAccount];
+        NSString *str =   [wrapper objectForKey :(__bridge id)kSecValueData];
+        
+        PAPasscodeViewController *passcodeViewController = [[PAPasscodeViewController alloc] initForAction:PasscodeActionEnter];
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+            passcodeViewController.backgroundView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        }
+        passcodeViewController.skipStr = @"YES";
+        passcodeViewController.delegate = self;
+        passcodeViewController.simple = YES;
+        passcodeViewController.passcode = str;
+        UINavigationController *navController;
+        
+        UIViewController *rootViewController = self.window.rootViewController;
+        
+        if ([rootViewController isKindOfClass:[UITabBarController class]]) {
+            
+            navController =(UINavigationController*)[tabBarController selectedViewController];
+            
+        }else{
+            navController = self.mainNavigation;
+        }
+        
+        [navController pushViewController:passcodeViewController animated:NO];
+    }
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -389,7 +434,36 @@
     {
         [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"switchState"];
     }
-    
+    NSString *setPin = [[NSUserDefaults standardUserDefaults] objectForKey:@"setPin"];
+    if([setPin isEqualToString:@"YES"])
+    {
+        KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"pss" accessGroup:nil];
+        [wrapper setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
+        //                NSString *suStr = [wrapper objectForKey:(__bridge id)kSecAttrAccount];
+        NSString *str =   [wrapper objectForKey :(__bridge id)kSecValueData];
+        
+        PAPasscodeViewController *passcodeViewController = [[PAPasscodeViewController alloc] initForAction:PasscodeActionEnter];
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+            passcodeViewController.backgroundView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        }
+        passcodeViewController.skipStr = @"YES";
+        passcodeViewController.delegate = self;
+        passcodeViewController.simple = YES;
+        passcodeViewController.passcode = str;
+        UINavigationController *navController;
+        
+        UIViewController *rootViewController = self.window.rootViewController;
+        
+        if ([rootViewController isKindOfClass:[UITabBarController class]]) {
+            
+            navController =(UINavigationController*)[tabBarController selectedViewController];
+            
+        }else{
+            navController = self.mainNavigation;
+        }
+        
+        [navController pushViewController:passcodeViewController animated:NO];
+    }
     
 
 }
@@ -445,10 +519,8 @@
                 navController = self.mainNavigation;
             }
 
-            [navController pushViewController:passcodeViewController animated:YES];
+            [navController pushViewController:passcodeViewController animated:NO];
         }
-    
-
 }
 - (void)PAPasscodeViewControllerDidEnterPasscode:(PAPasscodeViewController *)controller
 {
@@ -463,15 +535,81 @@
     }else{
         navController = self.mainNavigation;
     }
-    
-    MyCardVC *crdsVC = [[MyCardVC alloc]initWithNibName:@"MyCardVC" bundle:nil];
-    [navController pushViewController:crdsVC animated:YES];
-    
+    NSLog(@"%i",[tabBarController selectedIndex]);
+    UIViewController *VC =nil;
+    if ([tabBarController selectedIndex]==0) {
+        VC = [[HistoryVC alloc]initWithNibName:@"HistoryVC" bundle:nil];
+    }else if ([tabBarController selectedIndex]==1) {
+        VC = [[MyCardVC alloc]initWithNibName:@"MyCardVC" bundle:nil];
+    }else if ([tabBarController selectedIndex]==2) {
+        VC = [[SettingVC alloc]initWithNibName:@"SettingVC" bundle:nil];
+    }
+    [navController pushViewController:VC animated:YES];
 }
 
 -(void)PAPasscodeViewControllerDidCancel:(PAPasscodeViewController *)controller
 {
-    NSLog(@"No cancel actions for this view now!");
+    NSString *query  = @"";
+    
+    query = @"DELETE FROM conversionHistoryTable ";
+    DatabaseHandler *dataBaseHandler = [[DatabaseHandler alloc]init];
+    [dataBaseHandler executeQuery:query];
+    
+    query = @"DELETE FROM getHistoryTable";
+    [dataBaseHandler executeQuery:query];
+    
+    query = @"DELETE FROM myCards";
+    [dataBaseHandler executeQuery:query ];
+    
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString* documentsDirectory = [paths objectAtIndex:0];
+    NSString *patientPhotoFolder = [documentsDirectory stringByAppendingPathComponent:@"patientPhotoFolder"];
+    
+    NSString *dataPath = patientPhotoFolder;
+    BOOL isDir = NO;
+    NSFileManager *fileManager = [[NSFileManager alloc] init];
+    if (![fileManager fileExistsAtPath:dataPath
+                           isDirectory:&isDir] && isDir == NO) {
+        
+    }else
+    {
+        BOOL success = [fileManager removeItemAtPath:dataPath error:nil];
+        NSLog(@"%@",success?@"YES":@"NO");
+    }
+    
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
+    //    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultCurrency"];                //deepesh
+    //    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultCurrencyImage"];           //deepesh
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];                    //deepesh
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setPin"];                         //deepesh
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FirstTimeUser"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoginAttamp"];                    //deepesh
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"attemp"];
+    
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    
+    UIButton *tapBtn = (UIButton*)[appDelegate.customeTabBar viewWithTag:2];
+    [appDelegate customTabBarBtnTap:tapBtn];
+    
+    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"stayLogin"];
+    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"isLogin"];
+    
+    UINavigationController *navController = (UINavigationController*)[appDelegate.tabBarController selectedViewController];
+    NSArray *viewArray = navController.viewControllers;
+    NSLog(@"%@",viewArray);
+    for (int i=0; i<viewArray.count; i++) {
+        if([[viewArray objectAtIndex:i ]isKindOfClass:[HomeVC class]])
+        {
+            [navController popToViewController:[viewArray objectAtIndex:i] animated:YES];
+            break;
+            
+        }
+    }
 }
 - (void)applicationWillTerminate:(UIApplication *)application
 {

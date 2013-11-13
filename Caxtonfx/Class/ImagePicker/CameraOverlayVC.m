@@ -175,7 +175,7 @@
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
         self.navigationController.navigationBar.translucent=NO;
     }
-    [TestFlight passCheckpoint:@"CameraOverlayVC"];
+    //[TestFlight passCheckpoint:@"CameraOverlayVC"];
 }
 // edit by sumit mundra
 -(void)viewWillAppear:(BOOL)animated

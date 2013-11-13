@@ -4800,8 +4800,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Caxton FX Ltd (F35CTZ6K75)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Caxton FX Ltd (F35CTZ6K75)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/gbafal/Downloads/Appsee,
@@ -4820,8 +4820,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A2E62024-184F-4728-B84D-62784E7F1454";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A2E62024-184F-4728-B84D-62784E7F1454";
+				PROVISIONING_PROFILE = "AAB483F5-3681-4290-BB1D-168804A1D8E0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AAB483F5-3681-4290-BB1D-168804A1D8E0";
 				STRIP_INSTALLED_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};
@@ -4832,8 +4832,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Caxton FX Ltd (F35CTZ6K75)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Caxton FX Ltd (F35CTZ6K75)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4853,8 +4853,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A2E62024-184F-4728-B84D-62784E7F1454";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A2E62024-184F-4728-B84D-62784E7F1454";
+				PROVISIONING_PROFILE = "AAB483F5-3681-4290-BB1D-168804A1D8E0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AAB483F5-3681-4290-BB1D-168804A1D8E0";
 				STRIP_INSTALLED_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};
