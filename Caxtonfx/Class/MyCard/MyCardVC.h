@@ -22,4 +22,6 @@
 
 -(void)topupBtnPressed:(NSIndexPath*)indexPath;
 
+- (void)hudRefresh :(id)sender;
+
 @end

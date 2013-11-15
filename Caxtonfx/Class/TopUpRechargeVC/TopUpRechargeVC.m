@@ -367,7 +367,8 @@
 }
 -(void)loadingFinishedWithResponse:(NSString *)response withServiceName:(NSString *)service
 {
-       if([service isEqualToString:@"TopUp"]){
+    if([service isEqualToString:@"TopUp"]){
+        NSLog(@"Top Up Response: %@", response);
         TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
         TBXMLElement *root = tbxml.rootXMLElement;
         TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];

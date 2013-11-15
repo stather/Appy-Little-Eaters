@@ -26,6 +26,7 @@
 #import "MyCardVC.h"
 #import "HistoryVC.h"
 #import "SettingVC.h"
+#import "MBProgressHUD.h"
 
 
 
@@ -540,7 +541,12 @@
     if ([tabBarController selectedIndex]==0) {
         VC = [[HistoryVC alloc]initWithNibName:@"HistoryVC" bundle:nil];
     }else if ([tabBarController selectedIndex]==1) {
-        VC = [[MyCardVC alloc]initWithNibName:@"MyCardVC" bundle:nil];
+       MyCardVC* myVC = [[MyCardVC alloc]initWithNibName:@"MyCardVC" bundle:nil];
+        if ([CommonFunctions reachabiltyCheck])
+        {
+            [myVC hudRefresh:self];
+        }
+        [navController pushViewController:myVC animated:YES];
     }else if ([tabBarController selectedIndex]==2) {
         VC = [[SettingVC alloc]initWithNibName:@"SettingVC" bundle:nil];
     }

@@ -11,6 +11,7 @@
 #import "TopUpRechargeVC.h"
 #import "AppDelegate.h"
 #import "Appirater.h"
+#import "MBProgressHUD.h"
 @interface MyCardVC ()
 
 @end
@@ -79,7 +80,6 @@
     dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
         [self getDataFromDataBse];
     });
-    
 //    [self getDataFromDataBse];  Deepesh
 }
 
@@ -142,6 +142,26 @@
     if([CommonFunctions reachabiltyCheck])
     {
         [self performSelectorInBackground:@selector(fetchTheData) withObject:self];
+    }else
+    {
+        [self.refreshControl endRefreshing];
+        self.tableView.userInteractionEnabled = YES;
+    }
+}
+- (void)hudRefresh :(id)sender
+{
+    MBProgressHUD* HUD= [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    
+    self.tableView.userInteractionEnabled = NO;
+    
+    NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"updateDate"];
+    
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:[CommonFunctions statusOfLastUpdate:date1]];
+    
+    if([CommonFunctions reachabiltyCheck])
+    {
+        [HUD showWhileExecuting:@selector(fetchTheData) onTarget:self withObject:nil animated:YES];
     }else
     {
         [self.refreshControl endRefreshing];
@@ -452,9 +472,11 @@
 
 - (void)topupResult:(NSIndexPath*)path dict:(NSMutableDictionary *)dict1
 {
+    NSLog(@"Index path for updating result: %i",path.row);
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:dict1];
     [self.cardsArray replaceObjectAtIndex:path.row  withObject:dict];
     [self.tableView reloadData];
+    [self refresh:self];
 }
 
 
