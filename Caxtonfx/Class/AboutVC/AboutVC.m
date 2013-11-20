@@ -120,6 +120,7 @@
     newFrame.size.height = expectedLabelSize.height;
     textLable.frame = newFrame;
     
+    [Flurry logEvent:@"Visited About Screen"];
    
 }
 

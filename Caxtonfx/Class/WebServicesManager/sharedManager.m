@@ -38,10 +38,10 @@
     self.delegate = delegateObject;
     
     // test url
-    NSString *urlString = [NSString stringWithFormat:@"https://mobiledev.caxtonfx.com/Service.svc"];
+//    NSString *urlString = [NSString stringWithFormat:@"https://mobiledev.caxtonfx.com/Service.svc"];
     
     // live Url
-//   NSString *urlString = [NSString stringWithFormat:@"https://mobileapi.caxtonfx.com/service.svc"];
+   NSString *urlString = [NSString stringWithFormat:@"https://mobileapi.caxtonfx.com/service.svc"];
     
     NSURL *url = [NSURL URLWithString:urlString];
     self.serviceName = methodName;
@@ -62,10 +62,10 @@
     [theRequest addValue:msgLength forHTTPHeaderField:@"Content-Length"];
     
     // TEST
-  [theRequest addValue:@"mobiledev.caxtonfx.com" forHTTPHeaderField:@"Host"];
+//  [theRequest addValue:@"mobiledev.caxtonfx.com" forHTTPHeaderField:@"Host"];
     
     //Live
-//    [theRequest addValue:@"mobileapi.caxtonfx.com" forHTTPHeaderField:@"Host"];
+    [theRequest addValue:@"mobileapi.caxtonfx.com" forHTTPHeaderField:@"Host"];
     
     [theRequest addValue:@"Apache-HttpClient/4.1.1 (java 1.5)" forHTTPHeaderField:@"User-Agent"];
     [theRequest addValue:[NSString  stringWithFormat:@"http://tempuri.org/IPhoenixTestService/%@",methodName] forHTTPHeaderField:@"SOAPAction"];

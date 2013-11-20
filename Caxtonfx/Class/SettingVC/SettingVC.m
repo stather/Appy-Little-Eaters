@@ -76,6 +76,7 @@
                                                    object:nil];
     }
     
+    [Flurry logEvent:@"Visited Settings"];
 }
 
 
@@ -342,6 +343,9 @@
 
 
 - (void)setPasscode {
+    
+    [Flurry logEvent:@"User is setting a PIN"];
+    
     PAPasscodeViewController *passcodeViewController = [[PAPasscodeViewController alloc] initForAction:PasscodeActionSet];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         passcodeViewController.backgroundView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];

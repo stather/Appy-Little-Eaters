@@ -20,7 +20,6 @@
 #import <Twitter/Twitter.h>
 #import "DatabaseHandler.h"
 #import <Social/Social.h>
-#import "Flurry.h"
 //#import "TestFlight.h"
 //#import <Appsee/Appsee.h>
 #import "MyCardVC.h"
@@ -226,10 +225,10 @@
     
     //[Appsee start:@"22727e51427f41e3a19156a13595c748"];
     
+    [Flurry setCrashReportingEnabled:YES];
     
     [Flurry startSession:flurryID];
     
-    //[Flurry setCrashReportingEnabled:YES];
     
     /***
      *

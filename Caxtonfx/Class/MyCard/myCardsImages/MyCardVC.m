@@ -80,7 +80,8 @@
     dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
         [self getDataFromDataBse];
     });
-//    [self getDataFromDataBse];  Deepesh
+
+    [Flurry logEvent:@"Visited Cards Screen"];
 }
 
 

@@ -85,7 +85,7 @@
     
     [self SetUpDesginPage];
     
-    //[TestFlight passCheckpoint:@"LoginVC"];
+    [Flurry logEvent:@"Visited Login"];
 
     
 }

@@ -13,6 +13,7 @@
 #import "sharedManager.h"
 #import "PAPasscodeViewController.h"
 #import "HomeVC.h"
+#import "Flurry.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,sharedDelegate,MFMailComposeViewControllerDelegate,JJGActionSheetDelegate,PAPasscodeViewControllerDelegate>
 {

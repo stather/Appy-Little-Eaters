@@ -70,6 +70,8 @@
     
     [self setUpPage];
     self.waringLbl.text = @"";
+    
+    [Flurry logEvent:@"Visited More Info"];
 }
 
 #pragma mark -----

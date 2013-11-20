@@ -67,7 +67,7 @@
 
     [self setupPage];
     
-    //[TestFlight passCheckpoint:@"TopUpRechargeVC"];
+    [Flurry logEvent:@"Visited Top-Up"];
 }
 
 
