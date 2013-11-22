@@ -170,6 +170,7 @@
             [(UIButton*)sender btnWithOutCrossImage];
             [(UIButton*)sender btnWithActivityIndicator];
             
+            [Flurry logEvent:@"User sent Join Request"];
             
             [self sendRequest];
         }

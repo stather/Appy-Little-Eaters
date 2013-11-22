@@ -228,6 +228,8 @@
             [self.view endEditing:YES];
             
             [NSThread detachNewThreadSelector:@selector(sendLoginReqToServer) toTarget:self withObject:nil];
+            
+            [Flurry logEvent:@"User did a Login attempt."];
         }
     }
     else
@@ -721,7 +723,7 @@
                 [self performSelectorOnMainThread:@selector(showMsg:) withObject:@"Account locked due to wrong password entered too many times." waitUntilDone:NO];
                 [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"Lock"];
             }
-        }else
+        }else //it is not 000
         {
             if([statusCodeStr intValue]== 002)
             {

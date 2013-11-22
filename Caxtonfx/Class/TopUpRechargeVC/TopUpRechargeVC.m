@@ -368,6 +368,16 @@
 -(void)loadingFinishedWithResponse:(NSString *)response withServiceName:(NSString *)service
 {
     if([service isEqualToString:@"TopUp"]){
+        KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
+        [keychain setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
+        NSString *username1 = [keychain objectForKey:(__bridge id)kSecAttrAccount];
+        
+        NSDate *currDate = [NSDate date];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+        [dateFormatter setDateFormat:@"dd/MM/YY HH:mm:ss"];
+        NSString *dateString = [dateFormatter stringFromDate:currDate];
+        NSLog(@"%@",dateString);
+        
         NSLog(@"Top Up Response: %@", response);
         TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
         TBXMLElement *root = tbxml.rootXMLElement;
@@ -380,6 +390,13 @@
         NSString *successStr = [TBXML textForElement:success];
         if([successStr isEqualToString:@"False"])
         {
+            /*
+             * Remote Logging of Top-Up attempts Coversion/Failure
+             *
+             */
+            NSString *logMessage = [NSString stringWithFormat:@"UNSUCCESSFUL TOP-UP: User %@ did a Top-up of £ %@ amount on DATE %@.",username1,leftTxtField.text,dateString];
+            [Flurry logEvent:logMessage];
+            
             [self.dataDict setObject:@"YES" forKey:@"errorImageView"];
             [self.dataDict setObject:@"NO" forKey:@"successImageView"];
             UIButton *btn = (UIButton *)[self.view viewWithTag:17];
@@ -388,6 +405,13 @@
             [self performSelectorOnMainThread:@selector(topupResultget) withObject:nil waitUntilDone:NO];
         }else
         {
+            /*
+             * Remote Logging of Top-Up attempts Coversion/Failure
+             *
+             */
+            NSString *logMessage = [NSString stringWithFormat:@"SUCCESSFUL TOP-UP: User %@ did a Top-up of %@ amount on DATE %@.",username1,leftTxtField.text,dateString];
+            [Flurry logEvent:logMessage];
+            
             [self.dataDict setObject:@"YES" forKey:@"successImageView"];
             [self.dataDict setObject:@"NO" forKey:@"errorImageView"];
             [self.dataDict setObject:cardBalanceStr forKey:@"CardBalance"];
