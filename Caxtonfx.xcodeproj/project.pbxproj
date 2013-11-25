@@ -848,13 +848,10 @@
 		95F34CAA1783F032006122F6 /* PACancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F34CA61783F032006122F6 /* PACancel@2x.png */; };
 		95F34CAB1783F032006122F6 /* PACancelSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F34CA71783F032006122F6 /* PACancelSelected.png */; };
 		95F34CAC1783F032006122F6 /* PACancelSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F34CA81783F032006122F6 /* PACancelSelected@2x.png */; };
-		B232045F181569B400336817 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2320459181569B400336817 /* libTestFlight.a */; };
-		B2320460181569B400336817 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B232045A181569B400336817 /* README.md */; };
-		B2320461181569B400336817 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = B232045B181569B400336817 /* release_notes.md */; };
 		B24DDCB1181933ED00D9621C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B24DDCB0181933ED00D9621C /* AVFoundation.framework */; };
 		B24DDCB31819340900D9621C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B24DDCB21819340900D9621C /* CoreMedia.framework */; };
 		B24DDCB51819341200D9621C /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B24DDCB41819341200D9621C /* CoreVideo.framework */; };
-		B24DDCB71819344000D9621C /* Appsee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B24DDCB61819344000D9621C /* Appsee.framework */; };
+		B26B9D0C184340C800A21630 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B26B9D0B184340C800A21630 /* Images.xcassets */; };
 		B2B03B02182806A200370819 /* cfxNew.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B2B03B01182806A200370819 /* cfxNew.sqlite */; };
 /* End PBXBuildFile section */
 
@@ -1972,16 +1969,12 @@
 		95F34CA61783F032006122F6 /* PACancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PACancel@2x.png"; sourceTree = "<group>"; };
 		95F34CA71783F032006122F6 /* PACancelSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PACancelSelected.png; sourceTree = "<group>"; };
 		95F34CA81783F032006122F6 /* PACancelSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PACancelSelected@2x.png"; sourceTree = "<group>"; };
-		B2320459181569B400336817 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		B232045A181569B400336817 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		B232045B181569B400336817 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
-		B232045C181569B400336817 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
-		B232045D181569B400336817 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
-		B232045E181569B400336817 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		B24DDCB0181933ED00D9621C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B24DDCB21819340900D9621C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		B24DDCB41819341200D9621C /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		B24DDCB61819344000D9621C /* Appsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Appsee.framework; path = ../../Appsee/Appsee.framework; sourceTree = "<group>"; };
+		B26B9D0A184340C300A21630 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
+		B26B9D0B184340C800A21630 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B2B03B01182806A200370819 /* cfxNew.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = cfxNew.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1990,7 +1983,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B24DDCB71819344000D9621C /* Appsee.framework in Frameworks */,
 				B24DDCB51819341200D9621C /* CoreVideo.framework in Frameworks */,
 				B24DDCB31819340900D9621C /* CoreMedia.framework in Frameworks */,
 				95CB4F8F1712D0AA00A6490B /* CoreGraphics.framework in Frameworks */,
@@ -2000,7 +1992,6 @@
 				1970847817266D8A00F72200 /* ImageIO.framework in Frameworks */,
 				1970847617266D8400F72200 /* OpenGLES.framework in Frameworks */,
 				1994CC3D1721274700396488 /* libsqlite3.dylib in Frameworks */,
-				B232045F181569B400336817 /* libTestFlight.a in Frameworks */,
 				1994CC3B1721273700396488 /* CoreImage.framework in Frameworks */,
 				1994CC391721272400396488 /* Accounts.framework in Frameworks */,
 				1994CC371721271700396488 /* MessageUI.framework in Frameworks */,
@@ -3638,6 +3629,7 @@
 		95CB4F7B1712D0AA00A6490B = {
 			isa = PBXGroup;
 			children = (
+				B26B9D0A184340C300A21630 /* Icon-120.png */,
 				95B18D2B17B917BE00EAAAC9 /* iTunesArtwork */,
 				950CF9B217B272C7008DAE6E /* logo.png */,
 				950CF9B317B272C9008DAE6E /* logo@2x.png */,
@@ -3693,10 +3685,10 @@
 		95CB4F901712D0AA00A6490B /* Caxtonfx */ = {
 			isa = PBXGroup;
 			children = (
-				B2320458181569B400336817 /* TestFlightSDK2 */,
 				1994CABC17211FDE00396488 /* Rocket */,
 				386A2281172029B1003AF502 /* Resource1 */,
 				95CB4FA71712D40600A6490B /* Class */,
+				B26B9D0B184340C800A21630 /* Images.xcassets */,
 				95CB4F911712D0AA00A6490B /* Supporting Files */,
 			);
 			path = Caxtonfx;
@@ -3819,19 +3811,6 @@
 				95EAE97017A794C500E8B6F1 /* libFlurry_4.2.2.a */,
 			);
 			path = Flurry;
-			sourceTree = "<group>";
-		};
-		B2320458181569B400336817 /* TestFlightSDK2 */ = {
-			isa = PBXGroup;
-			children = (
-				B2320459181569B400336817 /* libTestFlight.a */,
-				B232045A181569B400336817 /* README.md */,
-				B232045B181569B400336817 /* release_notes.md */,
-				B232045C181569B400336817 /* TestFlight+AsyncLogging.h */,
-				B232045D181569B400336817 /* TestFlight+ManualSessions.h */,
-				B232045E181569B400336817 /* TestFlight.h */,
-			);
-			path = TestFlightSDK2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -4174,6 +4153,7 @@
 				19B6FCEF1741103A00B5B29D /* PinTableCell.xib in Resources */,
 				19B6FCF11741103A00B5B29D /* SetPinTableCell.xib in Resources */,
 				19B6FCF41741103A00B5B29D /* confirmLogInBg.png in Resources */,
+				B26B9D0C184340C800A21630 /* Images.xcassets in Resources */,
 				19B6FCF51741103A00B5B29D /* confirmLogInBg@2x.png in Resources */,
 				19B6FCF61741103A00B5B29D /* flag.png in Resources */,
 				19B6FCF71741103A00B5B29D /* flag@2x.png in Resources */,
@@ -4433,7 +4413,6 @@
 				196E89751767387E00703EF7 /* mv - Maldives.png in Resources */,
 				196E89761767387E00703EF7 /* mw - Malawi.png in Resources */,
 				196E89771767387E00703EF7 /* mx - Mexico.png in Resources */,
-				B2320460181569B400336817 /* README.md in Resources */,
 				196E89781767387E00703EF7 /* my - Malaysia.png in Resources */,
 				196E89791767387E00703EF7 /* mz - Mozambique.png in Resources */,
 				196E897A1767387E00703EF7 /* na - Namibia.png in Resources */,
@@ -4449,7 +4428,6 @@
 				196E89841767387E00703EF7 /* pa - Panama.png in Resources */,
 				196E89851767387E00703EF7 /* pe - Peru.png in Resources */,
 				196E89861767387E00703EF7 /* pg - Papua New Guinea.png in Resources */,
-				B2320461181569B400336817 /* release_notes.md in Resources */,
 				196E89871767387E00703EF7 /* ph - Philippines.png in Resources */,
 				196E89881767387E00703EF7 /* pk - Pakistan.png in Resources */,
 				196E89891767387E00703EF7 /* pl - Poland.png in Resources */,
@@ -4764,8 +4742,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "65FDBDC2-48EF-4029-8A6A-0770AF398BE9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "65FDBDC2-48EF-4029-8A6A-0770AF398BE9";
+				PROVISIONING_PROFILE = "E695DFB1-E947-43B0-A66D-36284CBC1BC4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E695DFB1-E947-43B0-A66D-36284CBC1BC4";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -4788,8 +4766,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "65FDBDC2-48EF-4029-8A6A-0770AF398BE9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "65FDBDC2-48EF-4029-8A6A-0770AF398BE9";
+				PROVISIONING_PROFILE = "E695DFB1-E947-43B0-A66D-36284CBC1BC4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E695DFB1-E947-43B0-A66D-36284CBC1BC4";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -4799,13 +4777,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/gbafal/Downloads/Appsee,
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Caxtonfx/Caxtonfx-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
@@ -4816,12 +4793,11 @@
 					"\"$(SRCROOT)/Caxtonfx/Rocket/tesseract-ios-lib-master/lib\"",
 					"\"$(SRCROOT)/Caxtonfx/Rocket/flurry\"",
 					"\"$(SRCROOT)/Caxtonfx/Rocket/Flurry\"",
-					"/Users/gbafal/Downloads/Caxton\\ Fx/Caxtonfx/Caxtonfx/TestFlightSDK2",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "65FDBDC2-48EF-4029-8A6A-0770AF398BE9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "65FDBDC2-48EF-4029-8A6A-0770AF398BE9";
+				PROVISIONING_PROFILE = "E695DFB1-E947-43B0-A66D-36284CBC1BC4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E695DFB1-E947-43B0-A66D-36284CBC1BC4";
 				STRIP_INSTALLED_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};
@@ -4831,14 +4807,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/gbafal/Downloads/Appsee,
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Caxtonfx/Caxtonfx-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
@@ -4849,12 +4824,11 @@
 					"\"$(SRCROOT)/Caxtonfx/Rocket/tesseract-ios-lib-master/lib\"",
 					"\"$(SRCROOT)/Caxtonfx/Rocket/flurry\"",
 					"\"$(SRCROOT)/Caxtonfx/Rocket/Flurry\"",
-					"/Users/gbafal/Downloads/Caxton\\ Fx/Caxtonfx/Caxtonfx/TestFlightSDK2",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "65FDBDC2-48EF-4029-8A6A-0770AF398BE9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "65FDBDC2-48EF-4029-8A6A-0770AF398BE9";
+				PROVISIONING_PROFILE = "E695DFB1-E947-43B0-A66D-36284CBC1BC4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E695DFB1-E947-43B0-A66D-36284CBC1BC4";
 				STRIP_INSTALLED_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};
