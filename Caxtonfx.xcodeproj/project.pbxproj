@@ -347,7 +347,6 @@
 		198CF2C4174608B700485A8B /* aboutPhotoFrame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 198CF2C2174608B700485A8B /* aboutPhotoFrame@2x.png */; };
 		198EB41B172905900044ADE1 /* gripDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 198EB419172905900044ADE1 /* gripDot.png */; };
 		198EB41C172905900044ADE1 /* gripDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 198EB41A172905900044ADE1 /* gripDot@2x.png */; };
-		198F677417799C6700DDB114 /* cfx.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 198F677317799C6700DDB114 /* cfx.sqlite */; };
 		199076CC17439B8C009582BE /* HistoryConversionDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 198EB40F1728F7D10044ADE1 /* HistoryConversionDetailVC.xib */; };
 		199160611725099400B49341 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1991605E1725099400B49341 /* NSDataAdditions.m */; };
 		199160621725099400B49341 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 199160601725099400B49341 /* TBXML.m */; };
@@ -1216,7 +1215,6 @@
 		198EB40F1728F7D10044ADE1 /* HistoryConversionDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HistoryConversionDetailVC.xib; path = ../../../HistoryConversionDetailVC.xib; sourceTree = "<group>"; };
 		198EB419172905900044ADE1 /* gripDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gripDot.png; sourceTree = "<group>"; };
 		198EB41A172905900044ADE1 /* gripDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gripDot@2x.png"; sourceTree = "<group>"; };
-		198F677317799C6700DDB114 /* cfx.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = cfx.sqlite; sourceTree = "<group>"; };
 		1991605D1725099400B49341 /* NSDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataAdditions.h; sourceTree = "<group>"; };
 		1991605E1725099400B49341 /* NSDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataAdditions.m; sourceTree = "<group>"; };
 		1991605F1725099400B49341 /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
@@ -3257,7 +3255,6 @@
 			children = (
 				B2B03B01182806A200370819 /* cfxNew.sqlite */,
 				954C773717A6A0EE00CD7D76 /* topBg.png */,
-				198F677317799C6700DDB114 /* cfx.sqlite */,
 				954E0CB5176ADC2100E24BF6 /* currencyid-symbol-map.csv */,
 				1907B83A1727BD7A00907FF2 /* Database */,
 				1970848A1726A60300F72200 /* NIB */,
@@ -4516,7 +4513,6 @@
 				9599AF9417787EDB0050460F /* GBPFlag@2x.png in Resources */,
 				9540D4BE1779643C0002AD60 /* btnBGCon@2x.png in Resources */,
 				9540D4BF1779643C0002AD60 /* btnBGCon.png in Resources */,
-				198F677417799C6700DDB114 /* cfx.sqlite in Resources */,
 				95F34CA91783F032006122F6 /* PACancel.png in Resources */,
 				95F34CAA1783F032006122F6 /* PACancel@2x.png in Resources */,
 				95F34CAB1783F032006122F6 /* PACancelSelected.png in Resources */,
@@ -4796,8 +4792,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E695DFB1-E947-43B0-A66D-36284CBC1BC4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E695DFB1-E947-43B0-A66D-36284CBC1BC4";
+				PROVISIONING_PROFILE = "1D52CA96-BBF6-4236-9808-0BF9F69C8669";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1D52CA96-BBF6-4236-9808-0BF9F69C8669";
 				STRIP_INSTALLED_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};
@@ -4827,8 +4823,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E695DFB1-E947-43B0-A66D-36284CBC1BC4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E695DFB1-E947-43B0-A66D-36284CBC1BC4";
+				PROVISIONING_PROFILE = "1D52CA96-BBF6-4236-9808-0BF9F69C8669";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1D52CA96-BBF6-4236-9808-0BF9F69C8669";
 				STRIP_INSTALLED_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};

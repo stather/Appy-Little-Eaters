@@ -12,6 +12,7 @@
 -(NSString *) dataFilePath;
 -(void) checkAndCreateDatabase;
 -(void)executeQuery:(NSString *)query;
+-(void)executeQueryUpdate:(NSString *)query;
 -(NSMutableArray *)fetchingDataFromTable:(NSString *)query;
 -(NSString *)getDataValue:(NSString *)query;
 -(BOOL)recordExistOrNot:(NSString *)query;

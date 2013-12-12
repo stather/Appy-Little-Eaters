@@ -94,6 +94,35 @@
 }
 
 /*==================================================================
+ METHOD FOR Updating Tables IN DATABASE
+ ==================================================================*/
+-(void)executeQueryUpdate:(NSString *)query
+{
+    sqlite3_stmt *statement;
+	if(sqlite3_open([[self dataFilePath] UTF8String], &database) == SQLITE_OK)
+	{
+		if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL) == SQLITE_OK)
+		{
+			if (sqlite3_step(statement) != SQLITE_DONE)
+			{
+				sqlite3_finalize(statement);
+			}
+		}
+		else
+		{
+			@throw [NSException exceptionWithName:@"executeQueryUpdate" reason:query userInfo:nil];
+		}
+		
+		sqlite3_finalize(statement);
+		sqlite3_close(database);
+	}
+	else
+	{
+		NSLog(@"Data not Opened");
+	}
+}
+
+/*==================================================================
  METHOD FOR Fetching DATA FROM DATABASE
  ==================================================================*/
 

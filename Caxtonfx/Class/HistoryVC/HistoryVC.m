@@ -97,7 +97,6 @@
                                                    object:nil];
     }
     
-    [Flurry logEvent:@"Visited History Screen"];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -227,6 +226,7 @@
       
         
     }
+    [Flurry logEvent:@"Visited History Screen"];
 }
 
 - (void)refresh :(id)sender

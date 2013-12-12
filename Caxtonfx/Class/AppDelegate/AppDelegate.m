@@ -147,20 +147,6 @@
     [userDefs setObject:@"flag" forKey:@"defaultCurrencyImage"];
     [userDefs synchronize];
     
-//    if (![userDefs objectForKey:@"defaultCurrency"])
-//    {
-//        preferredCurrency = @"GBP";
-//        [userDefs setObject:@"GBP" forKey:@"defaultCurrency"];
-//        [userDefs setObject:@"flag" forKey:@"defaultCurrencyImage"];
-//        [userDefs synchronize];
-//    }
-//    else
-//    {
-//         preferredCurrency = @"GBP";
-//        [userDefs setObject:@"GBP" forKey:@"defaultCurrency"];
-//    }
-//        preferredCurrency = [userDefs objectForKey:@"defaultCurrency"];
-//    
     [self customTabBarBtnTap:btn];
     
     [self.tabBarController setSelectedIndex:1];
@@ -174,36 +160,9 @@
     [self.window makeKeyAndVisible];
     
     
-    if(![[[NSUserDefaults standardUserDefaults] valueForKey:@"firstTime"] isEqualToString:@"Yes"])
-    {
-        [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"firstTime"];
-        //
-        //        [[NSUserDefaults standardUserDefaults] setInteger:([[NSUserDefaults standardUserDefaults] integerForKey:@"ApplaunchCount"] + 1) forKey:@"ApplaunchCount"];
-        //
-        //        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-    else
-    {
-        //        [[NSUserDefaults standardUserDefaults] setInteger:([[NSUserDefaults standardUserDefaults] integerForKey:@"ApplaunchCount"] + 1) forKey:@"ApplaunchCount"];
-        //        [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        //        if([[NSUserDefaults standardUserDefaults] integerForKey:@"ApplaunchCount"] % 3 ==0)
-        //        {
-        //            [Appirater appLaunched:YES];
-        //            [Appirater setAppId:appID];
-        //            [Appirater setDaysUntilPrompt:0];
-        //            [Appirater setDebug:YES];
-        //
-        //
-        //        }
-    }
-    
     dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
         [self currencySymbole];           //Deepesh
     });
-    
-    //    [self performSelectorInBackground:@selector(currencySymbole) withObject:nil];
-
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
         [application setStatusBarStyle:UIStatusBarStyleDefault];
@@ -213,7 +172,13 @@
         //Added on 19th Sep 2013
         self.window.bounds = CGRectMake(0, 20, self.window.frame.size.width, self.window.frame.size.height);
     }
-    
+    NSLog(@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"dbUpdated"]);
+    if([[[NSUserDefaults standardUserDefaults] valueForKey:@"dbUpdated"] isEqualToString:@"NO"] || ![[NSUserDefaults standardUserDefaults] valueForKey:@"dbUpdated"])
+    {
+        [self updateDatabase];
+        [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"dbUpdated"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
     /***
      *
      * Set any tracking SDK inside this box
@@ -266,7 +231,6 @@
 	if(success)
 	{
         NSLog(@"documentsDirectory %@",documentsDirectory);
-        
 		return;
 	}
 	else
@@ -283,6 +247,26 @@
 	//[fileManager copyItemAtPath:databasePathFromApp toPath:[documentsDirectory stringByAppendingPathComponent:@"cfx.sqlite"] error:nil];
     [fileManager copyItemAtPath:databasePathFromApp toPath:[documentsDirectory stringByAppendingPathComponent:@"cfxNew.sqlite"] error:nil];
     
+}
+-(void)updateDatabase {
+    @try {
+        DatabaseHandler *dbHandler = [[DatabaseHandler alloc] init];
+        NSString *query = @"DROP TABLE getHistoryTable;";
+        [dbHandler executeQueryUpdate:query];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"exception: %@",exception);
+        [Flurry logEvent:@"Drop getHistoryTable Exception"];
+    }
+    @try {
+        DatabaseHandler *dbHandler = [[DatabaseHandler alloc] init];
+        NSString *query1 = @"CREATE TABLE getHistoryTable (id INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , amount DOUBLE  , date DATETIME  , vendor VARCHAR  , currencyId VARCHAR, cardName VARCHAR)";
+        [dbHandler executeQueryUpdate:query1];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"exception: %@",exception);
+        [Flurry logEvent:@"Create getHistoryTable Exception"];
+    }
 }
 
 //fetch country name from Google API then select currency code for country name from database

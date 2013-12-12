@@ -189,6 +189,7 @@
 
 -(void)topupBtnPressed:(NSIndexPath*)indexPath;
 {
+    NSLog(@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:@"userConactType"]);
     if([[[NSUserDefaults standardUserDefaults]objectForKey:@"userConactType"]isEqualToString:@"1"])
     {
         TopUpRechargeVC *topupVC = [[TopUpRechargeVC alloc]initWithNibName:@"TopUpRechargeVC" bundle:nil];

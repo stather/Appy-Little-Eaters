@@ -271,11 +271,6 @@
     }
 }
 
--(void)callHistoryApi
-{
-    [self callServiceForFetchingHistoryData];
-}
-
 -(void)callServiceForFetchingHistoryData
 {
     NSString *query = [NSString stringWithFormat:@"select CurrencyCardID from myCards"];
@@ -345,8 +340,6 @@
         
         [dbHandler executeQuery:queryStr];
     }
-    
-   // [self performSelectorOnMainThread:@selector(topupResultget) withObject:nil waitUntilDone:NO];
 }
 
 -(void)sendtopuprequest : (UIButton*)btn
@@ -415,7 +408,7 @@
             [self.dataDict setObject:@"YES" forKey:@"successImageView"];
             [self.dataDict setObject:@"NO" forKey:@"errorImageView"];
             [self.dataDict setObject:cardBalanceStr forKey:@"CardBalance"];
-            [self callHistoryApi];
+            [self callServiceForFetchingHistoryData];
         }
     }else if([service isEqualToString:@"GetBalance"])
     {
@@ -465,8 +458,6 @@
             UIButton *btn = (UIButton *)[self.view viewWithTag:17];
             [btn btnWithoutActivityIndicator];
             [btn btnSuccess];
-//            [self performSelectorOnMainThread:@selector(topupResultget) withObject:nil waitUntilDone:NO];
-            
         }
         else if ([statusIs isEqualToString:@"001"])
         {
