@@ -64,6 +64,8 @@
 
 -(IBAction) autoAnimation;
 
+-(void)doLogout;
+
 + (dispatch_queue_t)sharedQueue;
 
 

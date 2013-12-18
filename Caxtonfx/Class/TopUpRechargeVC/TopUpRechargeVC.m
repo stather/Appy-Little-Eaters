@@ -142,8 +142,6 @@
           double conversn = [[[counveronCurrencyArray objectAtIndex:0]objectForKey:@"Rate" ] doubleValue];
         conversionLable.text = [NSString stringWithFormat:@"£1 = %@%f",sybolString,conversn];
     }
-  
-    
     
     UILabel *messageLable = (UILabel*)[self.scrollView viewWithTag:14];
     messageLable.font = [UIFont fontWithName:@"OpenSans" size:9];
@@ -387,8 +385,17 @@
              * Remote Logging of Top-Up attempts Coversion/Failure
              *
              */
-            NSString *logMessage = [NSString stringWithFormat:@"UNSUCCESSFUL TOP-UP: User %@ did a Top-up of £ %@ amount on DATE %@.",username1,leftTxtField.text,dateString];
-            [Flurry logEvent:logMessage];
+            //NSString *logMessage = [NSString stringWithFormat:@"UNSUCCESSFUL TOP-UP: User %@ did a Top-up of £ %@ amount on DATE %@.",username1,leftTxtField.text,dateString];
+            //[Flurry logEvent:logMessage];
+            
+            NSDictionary *articleParams =
+            [NSDictionary dictionaryWithObjectsAndKeys:
+             username1, @"UserId", // Capture author info
+             leftTxtField.text, @"Amount", // Capture user status
+             dateString, @"Date",
+             nil];
+            
+            [Flurry logEvent:@"UNSUCCESSFUL TOP-UP" withParameters:articleParams];
             
             [self.dataDict setObject:@"YES" forKey:@"errorImageView"];
             [self.dataDict setObject:@"NO" forKey:@"successImageView"];
@@ -402,8 +409,17 @@
              * Remote Logging of Top-Up attempts Coversion/Failure
              *
              */
-            NSString *logMessage = [NSString stringWithFormat:@"SUCCESSFUL TOP-UP: User %@ did a Top-up of %@ amount on DATE %@.",username1,leftTxtField.text,dateString];
-            [Flurry logEvent:logMessage];
+            //NSString *logMessage = [NSString stringWithFormat:@"SUCCESSFUL TOP-UP: User %@ did a Top-up of %@ amount on DATE %@.",username1,leftTxtField.text,dateString];
+            //[Flurry logEvent:logMessage];
+            
+            NSDictionary *articleParams =
+            [NSDictionary dictionaryWithObjectsAndKeys:
+             username1, @"UserId", // Capture author info
+             leftTxtField.text, @"Amount", // Capture user status
+             dateString, @"Date",
+             nil];
+            
+            [Flurry logEvent:@"SUCCESSFUL TOP-UP" withParameters:articleParams];
             
             [self.dataDict setObject:@"YES" forKey:@"successImageView"];
             [self.dataDict setObject:@"NO" forKey:@"errorImageView"];

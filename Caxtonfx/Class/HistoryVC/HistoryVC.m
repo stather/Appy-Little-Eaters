@@ -924,20 +924,21 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         [self updatingDatabase];
         
     }
-    else if ([statusIs isEqualToString:@"001"])
-    {
-        //    001 – card expired
-    }
-    else if ([statusIs isEqualToString:@"002"])
-    {
-        //    002 – account blocked
+    else {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Session Expired" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
         
+    }     
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    // the user clicked one of the OK/Cancel buttons
+    if (buttonIndex == 0)
+    {
+        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+        [appDelegate doLogout];
     }
-    
-  
     
 }
-
 -(void)loadingFailedWithError:(NSString *)error withServiceName:(NSString *)service
 {
     if ([error isKindOfClass:[NSString class]]) {

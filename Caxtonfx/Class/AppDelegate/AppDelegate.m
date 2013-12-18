@@ -267,6 +267,7 @@
         NSLog(@"exception: %@",exception);
         [Flurry logEvent:@"Create getHistoryTable Exception"];
     }
+    [self doLogout];
 }
 
 //fetch country name from Google API then select currency code for country name from database
@@ -1581,4 +1582,66 @@
     
 }
 
+-(void)doLogout
+{
+    NSString *query  = @"";
+    
+    query = @"DELETE FROM conversionHistoryTable ";
+    DatabaseHandler *dataBaseHandler = [[DatabaseHandler alloc]init];
+    [dataBaseHandler executeQuery:query];
+    
+    query = @"DELETE FROM getHistoryTable";
+    [dataBaseHandler executeQuery:query];
+    
+    query = @"DELETE FROM myCards";
+    [dataBaseHandler executeQuery:query ];
+    
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString* documentsDirectory = [paths objectAtIndex:0];
+    NSString *patientPhotoFolder = [documentsDirectory stringByAppendingPathComponent:@"patientPhotoFolder"];
+    
+    NSString *dataPath = patientPhotoFolder;
+    BOOL isDir = NO;
+    NSFileManager *fileManager = [[NSFileManager alloc] init];
+    if (![fileManager fileExistsAtPath:dataPath
+                           isDirectory:&isDir] && isDir == NO) {
+        
+    }else
+    {
+        BOOL success = [fileManager removeItemAtPath:dataPath error:nil];
+        NSLog(@"%@",success?@"YES":@"NO");
+    }
+    
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
+    //    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultCurrency"];                //deepesh
+    //    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultCurrencyImage"];           //deepesh
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];                    //deepesh
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setPin"];                         //deepesh
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FirstTimeUser"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoginAttamp"];                    //deepesh
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"attemp"];
+    
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+    UIButton *tapBtn = (UIButton*)[self.customeTabBar viewWithTag:2];
+    [self customTabBarBtnTap:tapBtn];
+    
+    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"stayLogin"];
+    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"isLogin"];
+    
+    UINavigationController *navController = (UINavigationController*)[self.tabBarController selectedViewController];
+    NSArray *viewArray = navController.viewControllers;
+    NSLog(@"%@",viewArray);
+    for (int i=0; i<viewArray.count; i++) {
+        if([[viewArray objectAtIndex:i ]isKindOfClass:[HomeVC class]])
+        {
+            [navController popToViewController:[viewArray objectAtIndex:i] animated:YES];
+            break;
+            
+        }
+    }
+}
 @end

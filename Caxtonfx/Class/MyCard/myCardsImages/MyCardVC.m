@@ -214,7 +214,8 @@
     TBXMLElement *checkAuthGetCardsResultElem = [TBXML childElementNamed:@"CheckAuthGetCardsResult" parentElement:checkAuthGetCardsResponseElem];
     TBXMLElement *statusCode = [TBXML childElementNamed:@"a:statusCode" parentElement:checkAuthGetCardsResultElem];
     NSString *statusCodeStr = [TBXML textForElement:statusCode];
-    if([statusCodeStr intValue]!= 001 || [statusCodeStr intValue]!= 002 )
+    NSLog(@"CheckAuthGetCards - > %i",[statusCodeStr intValue]);
+    if([statusCodeStr intValue] == 000 || [statusCodeStr intValue]== 003 || [statusCodeStr intValue] == 004)
     {
         TBXMLElement *DOBElem = [TBXML childElementNamed:@"a:bd" parentElement:checkAuthGetCardsResultElem];
         userDOBStr = [TBXML textForElement:DOBElem];
@@ -274,7 +275,6 @@
                     CardElm = [TBXML nextSiblingNamed:@"a:card" searchFromElement:CardElm];
                 }
             }
-            //[[DatabaseHandler getSharedInstance] executeQuery:@"DELETE FROM myCards" ];
             for(int i=0;i<array.count;i++)
             {
                 dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void)
@@ -292,12 +292,24 @@
             [[NSUserDefaults standardUserDefaults]synchronize];
 
         }
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Session Expired" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
     }
-//    [self performSelectorOnMainThread:@selector(fetchTheValueFromDataBase) withObject:nil waitUntilDone:NO];
     
     [self fetchTheValueFromDataBase];
     
 }
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    // the user clicked one of the OK/Cancel buttons
+    if (buttonIndex == 0)
+    {
+         AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+        [appDelegate doLogout];
+    }
+
+}
+
 -(void) fetchTheValueFromDataBase
 {
     dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void)
@@ -478,7 +490,9 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:dict1];
     [self.cardsArray replaceObjectAtIndex:path.row  withObject:dict];
     [self.tableView reloadData];
-    [self refresh:self];
+    
+    [self performSelector:@selector(hudRefresh:) withObject:self afterDelay:3.0 ];
+    
 }
 
 
