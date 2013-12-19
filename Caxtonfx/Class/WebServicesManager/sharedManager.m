@@ -54,7 +54,9 @@
                       cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60];
     }else{
         
-        theRequest = [NSMutableURLRequest requestWithURL:url];
+        theRequest = [NSMutableURLRequest
+                      requestWithURL:url
+                      cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:120];
     }
     NSString *msgLength = [NSString stringWithFormat:@"%d", [requestString length]];
     [theRequest addValue:@"gzip,deflate" forHTTPHeaderField:@"Accept-Encoding"];

@@ -49,8 +49,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    if([[NSUserDefaults standardUserDefaults] integerForKey:@"ApplaunchCount"] % 3 ==0)
+
+    if([[NSUserDefaults standardUserDefaults] integerForKey:@"ApplaunchCount"] % 3 ==0 && ![[NSUserDefaults standardUserDefaults] boolForKey:@"rateFlag"])
     {
         [Appirater appLaunched:YES];
         [Appirater setAppId:appID];
@@ -294,6 +294,7 @@
         }
     }else{
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Session Expired" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        alert.tag = 1;
         [alert show];
     }
     
@@ -301,13 +302,13 @@
     
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    // the user clicked one of the OK/Cancel buttons
-    if (buttonIndex == 0)
-    {
-         AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-        [appDelegate doLogout];
+    if (alertView.tag == 1 ){
+        if (buttonIndex == 0)
+        {
+            AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+            [appDelegate doLogout];
+        }
     }
-
 }
 
 -(void) fetchTheValueFromDataBase
@@ -318,15 +319,13 @@
                        
                        [self.refreshControl endRefreshing];
                    });
-    
-    
-    
-    
 }
 
 -(void)loadingFailedWithError:(NSString *)error withServiceName:(NSString *)service
 {
-    
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Communication Error" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    alert.tag = 1;
+    [alert show];
     if ([error isKindOfClass:[NSString class]]) {
         NSLog(@"Service: %@ | Response is  : %@",service,error);
     }else{
@@ -366,8 +365,10 @@
     {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-        [cell.textLabel setText:@"No cards currently active for this user."];
+        [cell.textLabel setText:@"No cards currently active for this user. \nPull down to refresh."];
         cell.textLabel.font = [UIFont fontWithName:@"OpenSans" size:15];
+        cell.textLabel.numberOfLines = 0;
+        cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
         cell.textLabel.textColor = UIColorFromRedGreenBlue(204, 204, 204);
         return cell;

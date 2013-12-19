@@ -14,14 +14,11 @@
 #import "SplashVC.h"
 #import "ImagePickerVC.h"
 #import "AddMobileNoVC.h"
-//#import "/usr/include/sqlite3.h"
 #include <sqlite3.h>
 #import "Appirater.h"
 #import <Twitter/Twitter.h>
 #import "DatabaseHandler.h"
 #import <Social/Social.h>
-//#import "TestFlight.h"
-//#import <Appsee/Appsee.h>
 #import "MyCardVC.h"
 #import "HistoryVC.h"
 #import "SettingVC.h"
@@ -185,11 +182,6 @@
      *
      ***/
     
-    //Testflight integration
-    //[TestFlight takeOff:@"ed314d8d-300d-40d3-a4e5-9c94155c0bd9"];
-    
-    //[Appsee start:@"22727e51427f41e3a19156a13595c748"];
-    
     [Flurry setCrashReportingEnabled:YES];
     
     [Flurry startSession:flurryID];
@@ -352,19 +344,30 @@
     
     UIButton *btn = (UIButton*) sender;
     
-	
+	NSLog(@"%ld",(long)btn.tag);
 	switch (btn.tag) {
 		case 1:
 		{
 			// they want to rate it
 			[Appirater rateApp];
+            [userDefaults setBool:YES forKey:@"rateFlag"];
+			[userDefaults synchronize];
 			break;
 		}
 		case 2:
+        {
 			// remind them later
 			[userDefaults setDouble:[[NSDate date] timeIntervalSince1970] forKey:@"kAppiraterReminderRequestDate"];
 			[userDefaults synchronize];
 			break;
+        }
+        case 3:
+		{
+			// they don't want to rate it
+			[userDefaults setBool:YES forKey:@"rateFlag"];
+			[userDefaults synchronize];
+			break;
+		}
 		default:
 			break;
     }
@@ -569,8 +572,6 @@
     
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
-    //    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultCurrency"];                //deepesh
-    //    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultCurrencyImage"];           //deepesh
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];                    //deepesh
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setPin"];                         //deepesh
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FirstTimeUser"];
