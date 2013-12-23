@@ -44,7 +44,6 @@
 
 #pragma mark ------
 #pragma mark View Life cycle Method
-
 - (void)userTextSizeDidChange {
 	[self applyFonts];
     needsHeight = YES;
@@ -85,7 +84,6 @@
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     [appDelegate.shareTabBar setHidden:YES];
     [appDelegate.shareTabBar removeFromSuperview];
-    
     if(IS_HEIGHT_GTE_568)
         [appDelegate.customeTabBar setFrame:CGRectMake(0, 507, 320, 60)];
     else
@@ -94,7 +92,6 @@
     [appDelegate.customeTabBar setHidden:NO];
     [appDelegate.tabBarController.view addSubview:appDelegate.customeTabBar];
     [self.tableView reloadData];
-    
 }
 
 
@@ -155,22 +152,18 @@
         if (cell == nil)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier2];
-            
             pinLable = [[UILabel alloc]initWithFrame:CGRectMake(20, 7, 210,20)];
             pinLable.backgroundColor = [UIColor clearColor];
             [pinLable setFont:[UIFont fontWithName:@"OpenSans-Bold" size:13]];
             pinLable.textColor = UIColorFromRedGreenBlue(102, 102, 102);
             pinLable.text = @"PIN";
             [cell addSubview:pinLable];
-            
-            
             pinSecLable = [[UILabel alloc]initWithFrame:CGRectMake(20, 22, 210,18)];
             pinSecLable.backgroundColor = [UIColor clearColor];
             pinSecLable.text = @"Log in using your PIN for added security";
             pinSecLable.textColor = UIColorFromRedGreenBlue(102, 102, 102);
             [pinSecLable setFont:[UIFont fontWithName:@"OpenSans" size:11]];
             [cell addSubview:pinSecLable];
-            
             UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 50, 320, 1)];
             view.backgroundColor = UIColorFromRedGreenBlue(220, 220, 220);
             [cell addSubview:view];
@@ -181,7 +174,6 @@
             RESwitch *switchView = (RESwitch*)[cell viewWithTag:100];
             [switchView removeFromSuperview];
         }
-        
         RESwitch *switchView = [[RESwitch alloc] initWithFrame:CGRectMake(245, 15, 65, 22)];
         [switchView setBackgroundImage:[UIImage imageNamed:@"toggleBg"]];
         [switchView setKnobImage:[UIImage imageNamed:@"switch"]];
@@ -192,16 +184,13 @@
         [switchView setTag:100];
         switchView.layer.masksToBounds = YES;
         NSString *switchStateStr =[[NSUserDefaults standardUserDefaults]objectForKey:@"switchState"];
-        
         if([switchStateStr isEqualToString:@"NO"])
         {
             switchView.on = NO;
-            
             isOn = NO;
         }else
         {
             switchView.on = YES;
-            
             isOn = YES;
         }
         [switchView addTarget:self action:@selector(switchViewChanged:) forControlEvents:UIControlEventValueChanged];
@@ -224,17 +213,11 @@
                 }
             }
         }
-        
         cell.lbl.textColor = UIColorFromRedGreenBlue(102, 102, 102);
         [cell.lbl setFont:[UIFont fontWithName:@"OpenSans-Bold" size:13]];
-        
         cell.currencyLbl.textColor = UIColorFromRedGreenBlue(102, 102, 102);
         [cell.currencyLbl setFont:[UIFont fontWithName:@"OpenSans" size:13]];
-        
-        
         UIImage *mask = [UIImage imageNamed:[[NSUserDefaults standardUserDefaults] objectForKey:@"defaultCurrencyImage"]];
-        
-        NSLog(@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultCurrency"]);
         cell.currencyLbl.text =  [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultCurrency"];
         if (mask)
         {
@@ -243,18 +226,12 @@
             mask = [mask resizedImage:CGSizeMake(24, 24) interpolationQuality:kCGInterpolationHigh];
             mask = [mask roundedCornerImage:12.0f borderSize:1];
             cell.flagImgView.image = mask;
-            
-            
-            // tmpCurrency was added because this setting was temporary and suppose to be removed in future. If you want it to relate to preferred cuurency (currency in which menus are going to be converted) then change this key "tmpCurrency" to "defaultCurrncy"
         }
         else
         {
-            
             cell.flagImgView.layer.cornerRadius = 12;
             cell.flagImgView.backgroundColor = [UIColor colorWithRed:220.0f/255.0f green:220.0f/255.0f blue:220.0f/255.0f alpha:1.0f];
         }
-        
-        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -271,7 +248,6 @@
                 }
             }
         }
-        
         cell.lbl.textColor = UIColorFromRedGreenBlue(102, 102, 102);
         [cell.lbl setFont:[UIFont fontWithName:@"OpenSans-Bold" size:13]];
         
@@ -301,22 +277,18 @@
         {
             NSLog(@"this is not set to add pin security");
         }
-        
     }
     else if(indexPath.row ==3)
     {
         fromConversionSection = @"NO";
-        
         BaseCurrencyVC *currencyVC = [[BaseCurrencyVC alloc]initWithNibName:@"BaseCurrencyVC" bundle:nil];
         [self.navigationController pushViewController:currencyVC animated:YES];
-        
     }
     else if(indexPath.row==4)
     {
         AboutVC *aboutVC = [[AboutVC alloc]initWithNibName:@"AboutVC" bundle:nil];
         [self.navigationController pushViewController:aboutVC animated:YES];
     }
-    
 }
 
 #pragma mark --------
@@ -325,27 +297,25 @@
 -(void)switchViewChanged:(id)sender
 {
     RESwitch *s = (RESwitch*)sender;
-
     if(s.on)
     {
         isOn = YES;
         [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"switchState"];
         [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"setPin"];
+        [self setPasscode];
     }else
     {
         isOn = NO;
         [[NSUserDefaults standardUserDefaults]setObject:@"NO" forKey:@"setPin"];
         [[NSUserDefaults standardUserDefaults]setObject:@"NO" forKey:@"switchState"];
     }
-    
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [self.tableView reloadData];
 }
 
 
 - (void)setPasscode {
-    
     [Flurry logEvent:@"User is setting a PIN"];
-    
     PAPasscodeViewController *passcodeViewController = [[PAPasscodeViewController alloc] initForAction:PasscodeActionSet];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         passcodeViewController.backgroundView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -361,7 +331,7 @@
 
 - (void)PAPasscodeViewControllerDidSetPasscode:(PAPasscodeViewController *)controller {
     
-    NSString *passcodeStr = controller.passcode ;
+    NSString *passcodeStr = controller.passcode;
     
     [self.navigationController popViewControllerAnimated:YES];
     
@@ -371,6 +341,7 @@
     [wrapper setObject:[NSString stringWithFormat:@"%@",@"CFX"] forKey:(__bridge id)kSecAttrAccount];
     [wrapper setObject:[NSString stringWithFormat:@"%@",passcodeStr] forKey:(__bridge id)kSecValueData];
     [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"setPin"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
 }
 

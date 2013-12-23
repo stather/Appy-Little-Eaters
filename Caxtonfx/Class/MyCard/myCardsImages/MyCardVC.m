@@ -112,17 +112,14 @@
 
 -(void)getDataFromDataBse
 {
-    
     if(self.cardsArray.count > 0)
     {
         [self.cardsArray removeAllObjects];
     }else
     {
-        self.cardsArray = [[NSMutableArray alloc]init];
+        self.cardsArray = [[NSMutableArray alloc] init];
     }
     self.cardsArray = [[DatabaseHandler getSharedInstance] getData:@"select * from myCards;"];
-    
-    NSLog(@"%@", cardsArray);
     
     dispatch_async(dispatch_get_main_queue(),
                    ^{
@@ -460,11 +457,11 @@
     
     NSString *blncLblStr = [NSString stringWithFormat:@"%@%.02f",symbolStr,[[[dic objectForKey:@"dict"] objectForKey:@"CardBalance"] floatValue]];
     
-    [self performSelectorOnMainThread:@selector(seTheLbl:) withObject:[NSDictionary dictionaryWithObjectsAndKeys:blncLblStr,@"blncLblStr",[dic objectForKey:@"lbl"],@"lbl", nil] waitUntilDone:NO];
+    [self performSelectorOnMainThread:@selector(setTheLbl:) withObject:[NSDictionary dictionaryWithObjectsAndKeys:blncLblStr,@"blncLblStr",[dic objectForKey:@"lbl"],@"lbl", nil] waitUntilDone:NO];
     
 }
 
--(void) seTheLbl:(NSDictionary *) dic
+-(void) setTheLbl:(NSDictionary *) dic
 {
     UILabel *lbl = (UILabel *)[dic objectForKey:@"lbl"];
     

@@ -101,22 +101,18 @@
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
     
     NSString *isfirstUser = [[NSUserDefaults standardUserDefaults]stringForKey:@"FirstTimeUser"];
-    if(![isfirstUser isEqualToString:@"NO"])
-    {
-       
-    }else
+    if([isfirstUser isEqualToString:@"NO"])
     {
         if([[NSUserDefaults standardUserDefaults]boolForKey:@"stayLogin"])
         {
-              [self loginWebServices];
-        }else 
+            [self loginWebServices];
+        }else
         {
             NSString *setPin = [[NSUserDefaults standardUserDefaults] objectForKey:@"setPin"];
             if([setPin isEqualToString:@"YES"])
             {
                 KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"pss" accessGroup:nil];
                 [wrapper setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
-//                NSString *suStr = [wrapper objectForKey:(__bridge id)kSecAttrAccount];
                 NSString *str =   [wrapper objectForKey :(__bridge id)kSecValueData];
                 
                 PAPasscodeViewController *passcodeViewController = [[PAPasscodeViewController alloc] initForAction:PasscodeActionEnter];
@@ -127,7 +123,7 @@
                 passcodeViewController.delegate = self;
                 passcodeViewController.simple = YES;
                 passcodeViewController.passcode = str;
-               
+                
                 [self.navigationController pushViewController:passcodeViewController animated:YES];
             }else
             {
@@ -203,12 +199,6 @@
 
 -(IBAction)moreInfoBtnPressed:(id)sender
 {
-//    MoreInfoVC *mivc = [[MoreInfoVC alloc]init];
-//    [self.navigationController pushViewController:mivc animated:YES];
-//    AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-//    self.view.userInteractionEnabled = YES;
-//    delegate.window.userInteractionEnabled = YES;
-    
     if ([CommonFunctions reachabiltyCheck])
     {
         UIActivityIndicatorView *actView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -327,25 +317,21 @@
         }
     }else
     {
-        MyCardVC *crdsVC = [[MyCardVC alloc]initWithNibName:@"MyCardVC" bundle:nil];
-        [self.navigationController pushViewController:crdsVC animated:YES];
+        [self performSelectorOnMainThread:@selector(goMyCardPage) withObject:nil waitUntilDone:nil];
     }
 }
 
 -(void)goMyCardPage
 {
     [[NSUserDefaults standardUserDefaults] setInteger:([[NSUserDefaults standardUserDefaults] integerForKey:@"ApplaunchCount"] + 1) forKey:@"ApplaunchCount"];
-    
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
     [self.lodingView stopAnimating];
     self.lodingView.alpha = 0.0;
     self.updateInfo.alpha = 0.0;
-     [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"isLogin"];
-     [[NSUserDefaults standardUserDefaults]synchronize];
+    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"isLogin"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
     MyCardVC *myCards = [[MyCardVC alloc]initWithNibName:@"MyCardVC" bundle:nil];
     [self.navigationController pushViewController:myCards animated:YES];
-    
 }
 
 -(void)goMoreInfoPage
@@ -409,9 +395,6 @@
     }
     
 }
-
-
-
 -(IBAction)LoginBtnPressed:(id)sender
 {
     LoginVC *loginVC = [[LoginVC alloc]initWithNibName:@"LoginVC" bundle:nil];
@@ -445,9 +428,6 @@
         lable.frame = newFrame;
         
         y +=expectedLabelSize.height+2;
-        
-        
-        
         [self.scrollView addSubview:lable];
     }
     
@@ -500,7 +480,6 @@
     }else if([service isEqualToString:@"CheckAuthGetCards"])
     {
         NSLog(@"CheckAuthGetCards - > %@",response);
-        
         NSMutableArray *array = [[NSMutableArray alloc]init];
         TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
         TBXMLElement *root = tbxml.rootXMLElement;
@@ -509,7 +488,7 @@
         TBXMLElement *checkAuthGetCardsResultElem = [TBXML childElementNamed:@"CheckAuthGetCardsResult" parentElement:checkAuthGetCardsResponseElem];
         TBXMLElement *statusCode = [TBXML childElementNamed:@"a:statusCode" parentElement:checkAuthGetCardsResultElem];
         NSString *statusCodeStr = [TBXML textForElement:statusCode];
-        if([statusCodeStr intValue]!= 001 || [statusCodeStr intValue]!= 002 ||[statusCodeStr intValue]!=005)
+        if([statusCodeStr intValue]== 000 || [statusCodeStr intValue]== 003)
         {
             TBXMLElement *DOBElem = [TBXML childElementNamed:@"a:bd" parentElement:checkAuthGetCardsResultElem];
             userDOBStr = [TBXML textForElement:DOBElem];
@@ -588,20 +567,14 @@
     }else if([service isEqualToString:@"GetGlobalRates"])
     {
         NSLog(@"Home  GetGlobalRates -> %@",response);
-        
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"currencyflags_map" ofType:@"csv"];
         NSString *myText = nil;
         if (filePath) {
-            /*
-             Depracated NSString method changed with the newest one available
-             myText = [NSString stringWithContentsOfFile:filePath];
-             */
             myText = [NSString stringWithContentsOfFile:filePath encoding:NSISOLatin1StringEncoding error:nil];
             if (myText) {
                
             }
         }
-        //NSString *content =  [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil]; unused variable
         NSArray *contentArray = [myText componentsSeparatedByString:@"\r"]; // CSV ends with ACSI 13 CR 
         NSMutableArray *codesMA = [NSMutableArray new];
         for (NSString *item in contentArray)
@@ -613,7 +586,6 @@
             }
         }
         NSMutableArray *glabalRatesMA  = [[NSMutableArray alloc] init];
-        
         TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
         TBXMLElement *root = tbxml.rootXMLElement;
         TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
@@ -621,12 +593,10 @@
         {
             TBXMLElement *subcategoryEle = [TBXML childElementNamed:@"GetGlobalRatesResponse" parentElement:rootItemElem];
             TBXMLElement * GetGlobalRatesResult = [TBXML childElementNamed:@"GetGlobalRatesResult" parentElement:subcategoryEle];
-            //TBXMLElement *baseCcy = [TBXML childElementNamed:@"a:baseCcy" parentElement:GetGlobalRatesResult]; unused variable
             TBXMLElement *expiryTime = [TBXML childElementNamed:@"a:expiryTime" parentElement:GetGlobalRatesResult];
             NSString *expiryTimeStr = [TBXML textForElement:expiryTime];
             [[NSUserDefaults standardUserDefaults]setObject:expiryTimeStr forKey:@"expiryTime"];
             [[NSUserDefaults standardUserDefaults]synchronize];
-            
             TBXMLElement *rates = [TBXML childElementNamed:@"a:rates" parentElement:GetGlobalRatesResult];
             if (rates)
             {
@@ -659,13 +629,10 @@
                     CFXExchangeRate = [TBXML nextSiblingNamed:@"a:CFXExchangeRate" searchFromElement:CFXExchangeRate];
                     }
             }
-            
             NSString *deleteQuerry = [NSString stringWithFormat:@"DELETE FROM globalRatesTable"];
             DatabaseHandler *database = [[DatabaseHandler alloc]init];
             [database executeQuery:deleteQuerry];
-            
             for (NSMutableDictionary *dict in glabalRatesMA) {
-        
                 NSString *query = [NSString stringWithFormat:@"insert into globalRatesTable ('CcyCode','Rate','imageName') values ('%@',%f,'%@')",[dict objectForKey:@"currencyCode"] ,[[dict objectForKey:@"rate"] doubleValue],[dict objectForKey:@"imageName"]];
                 [database executeQuery:query];
             }
@@ -675,14 +642,12 @@
     else if ([service isEqualToString:@"GetDefaults"])
     {
         NSMutableArray *getDefaultDataArr  = [[NSMutableArray alloc] init];
-        
         TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
         TBXMLElement *root = tbxml.rootXMLElement;
         TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
         TBXMLElement *getPromoResponseEle = [TBXML childElementNamed:@"GetDefaultsResponse" parentElement:rootItemElem];
         TBXMLElement *GetPromoResult = [TBXML childElementNamed:@"GetDefaultsResult" parentElement:getPromoResponseEle];
         TBXMLElement *GetPromoHtmlResult = [TBXML childElementNamed:@"a:products" parentElement:GetPromoResult];
-        
         TBXMLElement *phoenproduct = [TBXML childElementNamed:@"a:PhoenixProduct" parentElement:GetPromoHtmlResult];
         while (phoenproduct != nil)
         {
@@ -692,30 +657,23 @@
             TBXMLElement *maxTotalBalance = [TBXML childElementNamed:@"a:MaxTotalBalance" parentElement:phoenproduct];
             TBXMLElement *minTopUp = [TBXML childElementNamed:@"a:MinTopUp" parentElement:phoenproduct];
             TBXMLElement *productID = [TBXML childElementNamed:@"a:ProductID" parentElement:phoenproduct];
-            
             NSMutableDictionary *tempDic = [[NSMutableDictionary alloc]init];
-            
             [tempDic setValue:[TBXML textForElement:ccy] forKey:@"ccy"];
             [tempDic setValue:[TBXML textForElement:description] forKey:@"description"];
             [tempDic setValue:[TBXML textForElement:maxTopUp] forKey:@"maxTopUp"];
             [tempDic setValue:[TBXML textForElement:maxTotalBalance] forKey:@"maxTotalBalance"];
             [tempDic setValue:[TBXML textForElement:minTopUp] forKey:@"minTopUp"];
             [tempDic setValue:[TBXML textForElement:productID] forKey:@"productID"];
-            
             phoenproduct = [TBXML nextSiblingNamed:@"a:PhoenixProduct" searchFromElement:phoenproduct];
-            
             [getDefaultDataArr addObject:tempDic];
         }
-        
         NSString *deleteQuerry = [NSString stringWithFormat:@"DELETE FROM getDefaults"];
-        
         DatabaseHandler *database = [[DatabaseHandler alloc]init];
         [database executeQuery:deleteQuerry];
                 
         for (int i = 0; i < getDefaultDataArr.count ; i++)
         {
             NSString *query = [NSString stringWithFormat:@"insert into getDefaults values (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",[[getDefaultDataArr objectAtIndex:i] valueForKey:@"ccy"],[[getDefaultDataArr objectAtIndex:i]valueForKey:@"description"],[[getDefaultDataArr objectAtIndex:i]valueForKey:@"maxTopUp"],[[getDefaultDataArr objectAtIndex:i] valueForKey:@"maxTotalBalance"],[[getDefaultDataArr objectAtIndex:i]valueForKey:@"minTopUp"],[[getDefaultDataArr objectAtIndex:i]valueForKey:@"productID"]];
-            
                 [database executeQuery:query];
         }
         UIButton *button = (UIButton*)[self.view viewWithTag:6];
@@ -730,11 +688,7 @@
 
 -(void)loadingFailedWithError:(NSString *)error withServiceName:(NSString *)service
 {
-    if ([error isKindOfClass:[NSString class]]) {
-        NSLog(@"Service: %@ | Response is  : %@",service,error);
-    }else{
-        NSLog(@"Service: %@ | Response UKNOWN ERROR",service);
-    }
+    /*
     if([service isEqualToString:@"GetPromo"])
         [self performSelectorOnMainThread:@selector(goMoreInfoPage) withObject:nil waitUntilDone:NO];
     
@@ -745,20 +699,22 @@
         delegate.window.userInteractionEnabled = YES;
         self.view.userInteractionEnabled = YES;
     }
+     */
+    if([service isEqualToString:@"CheckAuthGetCards"] ||[service isEqualToString:@"GetPromo"]){
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Netwok Error" message:@"Please check your internet connection." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        alert.tag = 1;
+        [alert show];
+    }
     
 }
 
 -(void)performingUpdatesOnExpiryTime
 {
     NSDate * now = [NSDate date];
-   
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
     NSDate * mile = [df dateFromString:[[NSUserDefaults standardUserDefaults] objectForKey:@"expiryTime"]];
-    
     NSComparisonResult result = [now compare:mile];
-    
     switch (result)
     {
         case NSOrderedAscending:
@@ -769,7 +725,7 @@
             
         case NSOrderedDescending:
         {
-        [self callgetGloableRateApi];
+            [self callgetGloableRateApi];
         }
         break;
             
@@ -797,8 +753,7 @@
         [self.navigationController popViewControllerAnimated:YES];
     }
     else{
-        MyCardVC *crdsVC = [[MyCardVC alloc]initWithNibName:@"MyCardVC" bundle:nil];
-        [self.navigationController pushViewController:crdsVC animated:YES];
+        [self performSelectorOnMainThread:@selector(goMyCardPage) withObject:nil waitUntilDone:nil];
     }
 }
 

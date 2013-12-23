@@ -36,67 +36,21 @@
     return self;
 }
 
-
-//-(void)performingUpdatesOnExpiryTime
-//{
-//    NSDate * now = [NSDate date];
-//    NSLog(@"expire time : %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"expiryTime"]);
-//    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-//    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-//    NSDate * mile = [df dateFromString:[[NSUserDefaults standardUserDefaults] objectForKey:@"expiryTime"]];
-//    NSComparisonResult result = [now compare:mile];
-//    
-//    switch (result)
-//    {
-//        case NSOrderedAscending:{
-//            NSLog(@"%@ is in future from %@", mile, now);
-//            
-//            [self callDefaultsApi];
-//        }
-//            break;
-//        case NSOrderedDescending:
-//        {
-//            [self callgetGloableRateApi];
-//        }
-//            break;
-//        case NSOrderedSame:
-//        {
-//            [self callgetGloableRateApi];
-//
-//        }
-//            break;
-//            
-//        default:
-//        {
-//            [self callDefaultsApi];
-//
-//        }
-//            break;
-//    }
-//}
-
 #pragma mark ----
 #pragma mark AppLifeCycle Method
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     isRemember = NO;
-    
     [self SetUpDesginPage];
-    
     [Flurry logEvent:@"Visited Login"];
-
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-     // set navigtionBar
-    
-     [[[self navigationController] navigationBar] setBackgroundImage:[UIImage imageNamed:@"topBar"] forBarMetrics:UIBarMetricsDefault];
+
+    [[[self navigationController] navigationBar] setBackgroundImage:[UIImage imageNamed:@"topBar"] forBarMetrics:UIBarMetricsDefault];
     self.navigationItem.hidesBackButton = YES;
     self.navigationController.navigationBarHidden = NO;
     [CommonFunctions setNavigationTitle:@"Log in" ForNavigationItem:self.navigationItem];
@@ -152,16 +106,13 @@
 -(IBAction) rememberBtnPressed:(id)sender
 {
     [self.view endEditing:YES];
-    
     isRemember = !isRemember;
-    
     UIImageView *chekBoxImgView = (UIImageView*)[self.view viewWithTag:5];
-
     if(isRemember)
         chekBoxImgView.image = [UIImage imageNamed:@"checkboxSelectedRed"];
     else
         chekBoxImgView.image = [UIImage imageNamed:@"checkboxUnselected"];
-
+    
     [[NSUserDefaults standardUserDefaults]setBool:isRemember forKey:@"stayLogin"];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
@@ -181,7 +132,6 @@
             [emailTxtFld becomeFirstResponder];
             [self resetFields];
         }
-        
         else if([emailTxtFld.text length]==0)
         {
             [self showErrorMsg:@"Please enter the username."];
@@ -189,24 +139,20 @@
             loginCrossImgView.hidden=NO;
             [emailTxtFld incorrectDataTxtFld];
         }
-        
         else if (![Validate isValidUserName:emailTxtFld.text])
         {
             [self showErrorMsg:@"Unfortunately the entered username is not valid. Please try again."];
             [self loginWithAppAccount:0];
             loginCrossImgView.hidden=NO;
             [emailTxtFld incorrectDataTxtFld];
-            
         }
         else if ([passwordTxtFld.text length] > 200)
         {
             [self showErrorMsg:@"Unfortunately the entered password must be less then 200 characters. Please try again."];
-            
             [self loginWithAppAccount:1];
             loginCrossImgView.hidden=NO;
             [passwordTxtFld becomeFirstResponder];
             [passwordTxtFld incorrectDataTxtFld];
-            //[emailTxtFld correctDataTxtFld];
         }
         else if([passwordTxtFld.text length]==0)
         {
@@ -222,13 +168,9 @@
         {
             
             [self loginWithAppAccount:4];
-            
             [logInBtn btnWithActivityIndicator];
-            
             [self.view endEditing:YES];
-            
             [NSThread detachNewThreadSelector:@selector(sendLoginReqToServer) toTarget:self withObject:nil];
-            
             [Flurry logEvent:@"User did a Login attempt."];
         }
     }
@@ -292,17 +234,14 @@
 -(void)resetFields
 {
     UIButton *logInBtn = (UIButton*)[self.view viewWithTag:6];
-    
     [emailTxtFld removeData];
     [passwordTxtFld removeData];
     [self loginWithAppAccount:4];
     loginCrossImgView.hidden=YES;
     [logInBtn btnWithOutCrossImage];
-    
 }
 
 -(void)callDefaultsApi
-
 {
     if([CommonFunctions reachabiltyCheck])
     {
@@ -312,13 +251,11 @@
         
         [manger callServiceWithRequest:soapMessage methodName:@"GetDefaults" andDelegate:self];
     }
-    
 }
 
 
 -(void)callgetGloableRateApi
 {
-    
     if([CommonFunctions reachabiltyCheck])
     {
         sharedManager *manger = [[sharedManager alloc]init];
@@ -327,7 +264,6 @@
         
         [manger callServiceWithRequest:soapMessage methodName:@"GetGlobalRates" andDelegate:self];
     }
-    
 }
 
 
@@ -337,12 +273,7 @@
     
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"currencyid-symbol-map" ofType:@"csv"];
     NSString *myText = nil;
-    
     if (filePath) {
-        /*
-         Depracated NSString method changed with the newest one available
-         myText = [NSString stringWithContentsOfFile:filePath];
-         */
         myText = [NSString stringWithContentsOfFile:filePath encoding:NSISOLatin1StringEncoding error:nil];
         
         if (myText) {
@@ -366,7 +297,6 @@
             
         }
     }
-    
     [btn btnWithActivityIndicator];
     [btn btnWithOutCrossImage];
     [btn btnSuccess];
@@ -377,7 +307,6 @@
     
     [self performSelectorOnMainThread:@selector(goTopupScreen) withObject:nil waitUntilDone:nil];
     [self showErrorMsg:@""];
-    
 }
 
 -(void)goTopupScreen
@@ -401,14 +330,7 @@
         
     }
 }
-/*
--(void)showErrorMsg:(UIButton *)btn:(NSString *)ErrorText:(NSString *)isLogInWithFBOrTwitter
-{
-    
-    [btn btnWithoutActivityIndicator];
-    [btn btnWithCrossImage];
-}
-*/
+
 -(IBAction) forgotpasswordBtnPressed:(id)sender
 {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.caxtonfxcard.com/secure_cfxcard/cfxcard_password_forget.aspx"]];
@@ -490,28 +412,20 @@
         TBXMLElement *checkAuthGetCardsResultElem = [TBXML childElementNamed:@"CheckAuthGetCardsResult" parentElement:checkAuthGetCardsResponseElem];
         TBXMLElement *statusCode = [TBXML childElementNamed:@"a:statusCode" parentElement:checkAuthGetCardsResultElem];
         NSString *statusCodeStr = [TBXML textForElement:statusCode];
-        if(!([statusCodeStr intValue]== 001 || [statusCodeStr intValue]== 002 ||[statusCodeStr intValue]== 005))
+        if([statusCodeStr intValue]== 000 || [statusCodeStr intValue]== 003)
         {
             TBXMLElement *DOBElem = [TBXML childElementNamed:@"a:bd" parentElement:checkAuthGetCardsResultElem];
             userDOBStr = [TBXML textForElement:DOBElem];
-            
             KeychainItemWrapper *keychain1 = [[KeychainItemWrapper alloc] initWithIdentifier:@"userDOB" accessGroup:nil];
             [keychain1 setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
             [keychain1 setObject:userDOBStr forKey:(__bridge id)kSecAttrAccount];
             [keychain1 setObject:userDOBStr forKey:(__bridge id)kSecValueData];
-            
             TBXMLElement *contactTypeElem = [TBXML childElementNamed:@"a:contactType" parentElement:checkAuthGetCardsResultElem];
             userConactTypeStr = [TBXML textForElement:contactTypeElem];
-            
             [[NSUserDefaults standardUserDefaults]setObject:userConactTypeStr forKey:@"userConactType"];
             [[NSUserDefaults standardUserDefaults] synchronize];
-            
             TBXMLElement *mobileElem = [TBXML childElementNamed:@"a:mobile" parentElement:checkAuthGetCardsResultElem];
             userMobileStr = [TBXML textForElement:mobileElem];
-            
-            
-            
-            
             KeychainItemWrapper *keychain2 = [[KeychainItemWrapper alloc] initWithIdentifier:@"userMobile" accessGroup:nil];
             [keychain2 setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
             [keychain2 setObject:userMobileStr forKey:(__bridge id)kSecAttrAccount];
@@ -525,7 +439,6 @@
                     TBXMLElement *CardElm    = [TBXML childElementNamed:@"a:card" parentElement:cardsElem];
                     while (CardElm != nil)
                     {
-                        
                         TBXMLElement *cardBalance   = [TBXML childElementNamed:@"a:CardBalance" parentElement:CardElm];
                         NSString *cardBalanceStr = [TBXML textForElement:cardBalance];
                         
@@ -582,7 +495,6 @@
                 
                 // this work is done for remove histrory when user not set pin or remove pin
                 NSString *query  = @"";
-                
                 query = @"DELETE FROM conversionHistoryTable ";
                 DatabaseHandler *dataBaseHandler = [[DatabaseHandler alloc]init];
                 [dataBaseHandler executeQuery:query];
@@ -605,21 +517,14 @@
                     BOOL success = [fileManager removeItemAtPath:dataPath error:nil];
                     NSLog(@"%@",success?@"YES":@"NO");
                 }
-                
-                
                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
                 [[NSUserDefaults standardUserDefaults] synchronize];
-
                 // this is done for the remove history data.
-                
                 KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
                 [keychain setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
-                
                 // Get username from keychain (if it exists)
                 NSString *username1 = [keychain objectForKey:(__bridge id)kSecAttrAccount];
                 NSString *password1 = [keychain objectForKey:(__bridge id)kSecValueData];
-                
-                
                 if(username1)
                 {
                     if ([username1 isEqualToString:emailTxtFld.text]  && [password1 isEqualToString:passwordTxtFld.text] )
@@ -635,93 +540,30 @@
                         [keychain setObject:emailTxtFld.text forKey:(__bridge id)kSecAttrAccount];
                         // Store password to keychain
                         [keychain setObject:passwordTxtFld.text forKey:(__bridge id)kSecValueData];
-                        
-                        
                         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
-//                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultCurrency"];                //deepesh
-//                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultCurrencyImage"];           //deepesh
-                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];                    //deepesh
-                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setPin"];                         //deepesh
-                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FirstTimeUser"];                   //deepesh
-                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoginAttamp"];                    //deepesh
-                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"attemp"];                         //deepesh
-
+                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];
+                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setPin"];
+                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FirstTimeUser"];
+                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoginAttamp"];
+                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"attemp"];
                     }
                 }
-                
                 else{
                     
                     KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
                     [keychain setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
-                    
                     // Store username to keychain
                     [keychain setObject:emailTxtFld.text forKey:(__bridge id)kSecAttrAccount];
-                    
                     // Store password to keychain
                     [keychain setObject:passwordTxtFld.text forKey:(__bridge id)kSecValueData];
-                    
-                    
                     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
-//                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultCurrency"];                //deepesh
-//                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultCurrencyImage"];           //deepesh
-                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];                    //deepesh
-                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setPin"];                         //deepesh
-                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FirstTimeUser"];                  //deepesh
-                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoginAttamp"];                    //deepesh
-                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"attemp"];                         //deepesh
-                    
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setPin"];
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FirstTimeUser"];
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoginAttamp"];
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"attemp"];
                 }
-                               
                 [self  callgetGloableRateApi];
-            }
-            
-            if([statusCodeStr intValue]== 002)
-            {
-                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-                if([userDefaults doubleForKey:@"LoginTimeInterval"])
-                {
-                    double firstAttamp = [userDefaults doubleForKey:@"LoginTimeInterval"];
-                    NSDate *currentdate = [NSDate date];
-                    double currentTimeIntrval = [currentdate timeIntervalSince1970];
-                    double newTimeIntrval = [userDefaults doubleForKey:@"LoginnewTimeIntrval"];
-                    if(currentTimeIntrval>firstAttamp && currentTimeIntrval<newTimeIntrval)
-                    {
-                        LoginAttamp = [userDefaults integerForKey:@"LoginAttamp"];
-                        LoginAttamp = LoginAttamp +1;
-                        [userDefaults setInteger:LoginAttamp forKey:@"LoginAttamp"];
-                        
-                    }else
-                    {
-                        NSDate *currentdate = [NSDate date];
-                        double currentTimeIntrval = [currentdate timeIntervalSince1970];
-                        NSDate *newDate = [currentdate dateByAddingTimeInterval:60*60*24];
-                        NSLog(@"%@",newDate);
-                        double newTimeIntrval = [newDate timeIntervalSince1970];
-                        [userDefaults setDouble:currentTimeIntrval forKey:@"LoginTimeInterval"];
-                        [userDefaults setDouble:newTimeIntrval forKey:@"LoginnewTimeIntrval"];
-                        [userDefaults setInteger:1 forKey:@"LoginAttamp"];
-                        LoginAttamp = 1;
-                        [userDefaults synchronize];
-                    }
-                }
-                else
-                {
-                    NSDate *currentdate = [NSDate date];
-                    double currentTimeIntrval = [currentdate timeIntervalSince1970];
-                    NSDate *newDate = [currentdate dateByAddingTimeInterval:60*60*24];
-                    double newTimeIntrval = [newDate timeIntervalSince1970];
-                    
-                    [userDefaults setDouble:currentTimeIntrval forKey:@"LoginTimeInterval"];
-                    [userDefaults setDouble:newTimeIntrval forKey:@"LoginnewTimeIntrval"];
-                    [userDefaults setInteger:1 forKey:@"LoginAttamp"];
-                    [userDefaults synchronize];
-                    LoginAttamp = 1;
-                }
-            }
-            if([statusCodeStr intValue]==005)
-            {
-                [self performSelectorOnMainThread:@selector(showMsg:) withObject:@"Account locked due to wrong password entered too many times." waitUntilDone:NO];
-                [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"Lock"];
             }
         }else //it is not 000
         {
@@ -772,10 +614,7 @@
                 [userDefaults setObject:@"GBP" forKey:@"defaultCurrency"];
                 [userDefaults setObject:@"flag" forKey:@"defaultCurrencyImage"];
                 [userDefaults synchronize];
-
-                
             }
-            
             if([statusCodeStr intValue]==005)
             {
                 [self showErrorMsg:@"Your Caxton Fx account has been locked. To unlock your account please email info@caxtonfxcard.com"];
@@ -807,26 +646,18 @@
     {
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"currencyflags_map" ofType:@"csv"];
         NSString *myText = nil;
-        
         if (filePath) {
-            /*
-             Depracated NSString method changed with the newest one available
-             myText = [NSString stringWithContentsOfFile:filePath];
-             */
             myText = [NSString stringWithContentsOfFile:filePath encoding:NSISOLatin1StringEncoding error:nil];
         }
-        //NSString *content =  [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];   unused variable
         NSArray *contentArray = [myText componentsSeparatedByString:@"\r"];
         NSMutableArray *codesMA = [NSMutableArray new];
         NSMutableArray *CountryMA = [NSMutableArray new];
         NSMutableArray *CountryCode = [NSMutableArray new];
         NSMutableArray *Currency = [NSMutableArray new];
-        
         for (NSString *item in contentArray)
         {
             NSArray *itemArray = [item componentsSeparatedByString:@","];
             // log first item
-            
             if ([itemArray count] > 3)
             {
                 [codesMA addObject:[itemArray objectAtIndex:3]];
@@ -838,7 +669,6 @@
             }
         }
         NSMutableArray *glabalRatesMA  = [[NSMutableArray alloc] init];
-        
         TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
         TBXMLElement *root = tbxml.rootXMLElement;
         TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
@@ -846,12 +676,10 @@
         {
             TBXMLElement *subcategoryEle = [TBXML childElementNamed:@"GetGlobalRatesResponse" parentElement:rootItemElem];
             TBXMLElement * GetGlobalRatesResult = [TBXML childElementNamed:@"GetGlobalRatesResult" parentElement:subcategoryEle];
-            //TBXMLElement *baseCcy = [TBXML childElementNamed:@"a:baseCcy" parentElement:GetGlobalRatesResult]; unused variable
             TBXMLElement *expiryTime = [TBXML childElementNamed:@"a:expiryTime" parentElement:GetGlobalRatesResult];
             NSString *expiryTimeStr = [TBXML textForElement:expiryTime];
             [[NSUserDefaults standardUserDefaults]setObject:expiryTimeStr forKey:@"expiryTime"];
             [[NSUserDefaults standardUserDefaults]synchronize];
-            
             TBXMLElement *rates = [TBXML childElementNamed:@"a:rates" parentElement:GetGlobalRatesResult];
             if (rates)
             {
@@ -861,12 +689,7 @@
                     TBXMLElement *rate = [TBXML childElementNamed:@"a:Rate" parentElement:CFXExchangeRate];
                     NSMutableDictionary *dict = [NSMutableDictionary new];
                     [dict setObject:[TBXML textForElement:currencyCode] forKey:@"currencyCode"];
-                    
-//                    float mutiplier = [[TBXML textForElement:rate] floatValue];
-//                    NSNumberFormatter *nf = [[NSNumberFormatter alloc]init];
-//                    [nf setPositiveFormat:@"0.##"];
-                    
-                     [dict setObject:[TBXML textForElement:rate] forKey:@"rate"];
+                    [dict setObject:[TBXML textForElement:rate] forKey:@"rate"];
                     int index = -1;
                     NSString *imageName = @"";
                     
@@ -877,9 +700,6 @@
                     }
                     if(index >=0)
                     {
-                        NSLog(@"exceeds : %@",[dict objectForKey:@"currencyCode"]);
-                        
-                        
                         NSString *item = [contentArray objectAtIndex:index];
                         NSArray *itemArray = [item componentsSeparatedByString:@","];
                         if (itemArray.count != 0) {
@@ -897,11 +717,8 @@
             }
             
         }
-        
         [self performSelectorOnMainThread:@selector(updatingDatabase:) withObject:glabalRatesMA waitUntilDone:YES];
-        
         [self callDefaultsApi];
-        
     }
     else if([service isEqualToString:@"GetDefaults"])
     {
@@ -1034,15 +851,12 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 -(void)PAPasscodeViewControllerDidCancel:(PAPasscodeViewController *)controller
 {
     NSString *valueToSave = @"NO";
     [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"switchState"];
     [[NSUserDefaults standardUserDefaults]setObject:valueToSave forKey:@"setPin"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-//    NSString *isfirstUser = [[NSUserDefaults standardUserDefaults]stringForKey:@"FirstTimeUser"];
-    
     KeychainItemWrapper *keychain2 = [[KeychainItemWrapper alloc] initWithIdentifier:@"userMobile" accessGroup:nil];
     NSString *suStr = [keychain2 objectForKey:(__bridge id)kSecAttrAccount];
 
@@ -1055,10 +869,6 @@
         [self.navigationController pushViewController:mobileVC animated:YES];
         
     }
-//
-//    MoblieNoCheckedVC *mobileVC = [[MoblieNoCheckedVC alloc]initWithNibName:@"MoblieNoCheckedVC" bundle:nil];
-//    if(![isfirstUser isEqualToString:@"NO"])
-//        [self.navigationController pushViewController:mobileVC animated:YES];
 }
 
 #pragma mark ----

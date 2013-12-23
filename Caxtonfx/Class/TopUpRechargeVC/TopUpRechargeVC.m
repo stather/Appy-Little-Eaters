@@ -385,9 +385,6 @@
              * Remote Logging of Top-Up attempts Coversion/Failure
              *
              */
-            //NSString *logMessage = [NSString stringWithFormat:@"UNSUCCESSFUL TOP-UP: User %@ did a Top-up of £ %@ amount on DATE %@.",username1,leftTxtField.text,dateString];
-            //[Flurry logEvent:logMessage];
-            
             NSDictionary *articleParams =
             [NSDictionary dictionaryWithObjectsAndKeys:
              username1, @"UserId", // Capture author info
@@ -408,10 +405,7 @@
             /*
              * Remote Logging of Top-Up attempts Coversion/Failure
              *
-             */
-            //NSString *logMessage = [NSString stringWithFormat:@"SUCCESSFUL TOP-UP: User %@ did a Top-up of %@ amount on DATE %@.",username1,leftTxtField.text,dateString];
-            //[Flurry logEvent:logMessage];
-            
+             */            
             NSDictionary *articleParams =
             [NSDictionary dictionaryWithObjectsAndKeys:
              username1, @"UserId", // Capture author info

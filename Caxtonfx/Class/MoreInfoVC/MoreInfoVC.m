@@ -49,9 +49,7 @@
     
     [[self navigationController] setNavigationBarHidden:NO animated:NO];
     
-   [self setNavigationTitle:@"Join"];
-    
-//     [CommonFunctions setNavigationTitle:@"Join" ForNavigationItem:self.navigationItem];
+    [self setNavigationTitle:@"Join"];
     
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     backBtn.frame = CGRectMake(0,0,32,32);
@@ -124,12 +122,6 @@
 {
     CGFloat viewCenterY = theView.center.y;
     CGFloat y = viewCenterY +  webView.frame.size.height-120;
-    NSLog(@"%f",y);
-    //    if (y < 0)
-    //    {
-    //        y = 0;
-    //    }
-    //
     [scrollView setContentOffset:CGPointMake(0, y) animated:YES];
 	
 }
@@ -169,9 +161,7 @@
             thrdImgView.hidden = YES;
             [(UIButton*)sender btnWithOutCrossImage];
             [(UIButton*)sender btnWithActivityIndicator];
-            
             [Flurry logEvent:@"User sent Join Request"];
-            
             [self sendRequest];
         }
     }else
@@ -239,13 +229,18 @@
     {
         UIButton *button = (UIButton*)[self.demoView viewWithTag:50];
         [button btnSuccess];
-        NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(goHomePage) userInfo:nil repeats:YES];
-        [timer fire];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Thanks for getting in touch. We'll contact you shortly." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        alert.tag = 1;
+        [alert show];
+       
     }else
     {
         UIButton *button = (UIButton*)[self.demoView viewWithTag:50];
         [button errorSendButtonImage];
     }
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [self GoBackView];
 }
 -(void)loadingFailedWithError:(NSString *)error withServiceName:(NSString *)service
 {
@@ -254,17 +249,10 @@
     }else{
         NSLog(@"Service: %@ | Response UKNOWN ERROR",service);
     }
-    self.waringLbl.text = @"Unfortunatel your service is not available at the moment. Please try again later.";
+    self.waringLbl.text = @"Unfortunately your service is not available at the moment. Please try again later.";
     UIButton *button = (UIButton*)[self.demoView viewWithTag:50];
     [button btnWithoutActivityIndicator];
     [button btnWithCrossImage];
-}
-
--(void)goHomePage
-{
-    wait(20);
-    [self performSelectorOnMainThread:@selector(GoBackView) withObject:nil waitUntilDone:YES];
-    
 }
 
 -(void)GoBackView

@@ -101,18 +101,12 @@
         BOOL success = [fileManager removeItemAtPath:dataPath error:nil];
         NSLog(@"%@",success?@"YES":@"NO");
     }
-
-  
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"]; 
-//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultCurrency"];                //deepesh
-//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultCurrencyImage"];           //deepesh
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];                    //deepesh
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setPin"];                         //deepesh
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FirstTimeUser"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoginAttamp"];                    //deepesh
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"attemp"];
-      
-    
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [logoutView removeFromSuperview];
