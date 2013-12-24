@@ -93,13 +93,10 @@
     NSString *dataPath = patientPhotoFolder;
     BOOL isDir = NO;
     NSFileManager *fileManager = [[NSFileManager alloc] init];
-    if (![fileManager fileExistsAtPath:dataPath
+    if ([fileManager fileExistsAtPath:dataPath
                            isDirectory:&isDir] && isDir == NO) {
+        [fileManager removeItemAtPath:dataPath error:nil];
        
-    }else
-    {
-        BOOL success = [fileManager removeItemAtPath:dataPath error:nil];
-        NSLog(@"%@",success?@"YES":@"NO");
     }
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];                    //deepesh

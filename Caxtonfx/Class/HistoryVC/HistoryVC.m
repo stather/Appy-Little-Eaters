@@ -879,12 +879,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 }
 
 -(void)loadingFinishedWithResponse:(NSString *)response withServiceName:(NSString *)service
-{
-     DatabaseHandler *dbHandler = [[DatabaseHandler alloc]init];
-     NSString *value = [dbHandler getDataValue:[NSString stringWithFormat:@"select CardCurrencyDescription from myCards where CurrencyCardID = %@",currentId]];
-    
-    NSLog(@"%@ -> %@ - %@",service,value,response);
-    
+{    
     TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
     TBXMLElement *root = tbxml.rootXMLElement;
     TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
@@ -919,7 +914,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
                 CardElm = [TBXML nextSiblingNamed:@"a:CardHistory" searchFromElement:CardElm];
             }
         }
-//        [self performSelectorOnMainThread:@selector(updatingDatabase) withObject:nil waitUntilDone:YES];
         
         [self updatingDatabase];
         
@@ -967,7 +961,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         NSString *value = [dbHandler getDataValue:[NSString stringWithFormat:@"select CardCurrencyDescription from myCards where CurrencyCardID = %@",currentId]];
         NSString *queryStr = [NSString stringWithFormat:@"INSERT INTO getHistoryTable('amount','date','vendor','currencyId','cardName') values (%f,\"%@\",\"%@\",\"%@\",\"%@\")",[[dict objectForKey:@"amount"] floatValue],[dict objectForKey:@"date"],[dict objectForKey:@"vendor"],currentId,value];
 
-        NSLog(@"queryStr -> %@",queryStr);
         [dbHandler executeQuery:queryStr];
     }
     dbHandler = nil;
@@ -987,8 +980,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
           [historyArray removeAllObjects];
     
     historyArray = [[DatabaseHandler getSharedInstance] fetchingHistoryDataFromTable:@"SELECT * FROM getHistoryTable order by date DESC"];
-    
-    NSLog(@"historyArray get reloadTable  %@", historyArray);
     
     if (isLoadingViewAdded)
     {

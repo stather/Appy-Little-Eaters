@@ -275,7 +275,6 @@
     NSString *myText = nil;
     if (filePath) {
         myText = [NSString stringWithContentsOfFile:filePath encoding:NSISOLatin1StringEncoding error:nil];
-        
         if (myText) {
             [dbHandler executeQuery:@"delete from currencySymbole_table"];
             NSArray *contentArray = [myText componentsSeparatedByString:@"\r"];
@@ -283,7 +282,6 @@
             {
                 NSArray *itemArray = [item componentsSeparatedByString:@","];
                 // log first item
-                
                 if ([itemArray count] > 3)
                 {
                     NSString *mainSTr = [itemArray objectAtIndex:2];
@@ -399,9 +397,7 @@
 #pragma mark sharedManagerDelegate
 
 -(void)loadingFinishedWithResponse:(NSString *)response withServiceName:(NSString *)service
-{
-    NSLog(@"response - > %@",response);
-    
+{    
     if([service isEqualToString:@"CheckAuthGetCards"])
     {
         NSMutableArray *array = [[NSMutableArray alloc]init];
@@ -412,7 +408,7 @@
         TBXMLElement *checkAuthGetCardsResultElem = [TBXML childElementNamed:@"CheckAuthGetCardsResult" parentElement:checkAuthGetCardsResponseElem];
         TBXMLElement *statusCode = [TBXML childElementNamed:@"a:statusCode" parentElement:checkAuthGetCardsResultElem];
         NSString *statusCodeStr = [TBXML textForElement:statusCode];
-        if([statusCodeStr intValue]== 000 || [statusCodeStr intValue]== 003)
+        if([statusCodeStr intValue]== 000 || [statusCodeStr intValue]== 003 || [statusCodeStr intValue]== 004)
         {
             TBXMLElement *DOBElem = [TBXML childElementNamed:@"a:bd" parentElement:checkAuthGetCardsResultElem];
             userDOBStr = [TBXML textForElement:DOBElem];
@@ -502,54 +498,16 @@
                 query = [NSString stringWithFormat:@"DELETE FROM getHistoryTable"];
                 [dataBaseHandler executeQuery:query];
                 
-                NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-                NSString* documentsDirectory = [paths objectAtIndex:0];
-                NSString *patientPhotoFolder = [documentsDirectory stringByAppendingPathComponent:@"patientPhotoFolder"];
-                
-                NSString *dataPath = patientPhotoFolder;
-                BOOL isDir = NO;
-                NSFileManager *fileManager = [[NSFileManager alloc] init];
-                if (![fileManager fileExistsAtPath:dataPath
-                                       isDirectory:&isDir] && isDir == NO) {
-                    
-                }else
-                {
-                    BOOL success = [fileManager removeItemAtPath:dataPath error:nil];
-                    NSLog(@"%@",success?@"YES":@"NO");
-                }
                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
+                
                 // this is done for the remove history data.
                 KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
                 [keychain setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
                 // Get username from keychain (if it exists)
                 NSString *username1 = [keychain objectForKey:(__bridge id)kSecAttrAccount];
                 NSString *password1 = [keychain objectForKey:(__bridge id)kSecValueData];
-                if(username1)
+                if (!([username1 isEqualToString:emailTxtFld.text]  && [password1 isEqualToString:passwordTxtFld.text]))
                 {
-                    if ([username1 isEqualToString:emailTxtFld.text]  && [password1 isEqualToString:passwordTxtFld.text] )
-                    {
-                        
-                    }
-                    else
-                    {
-                        
-                        KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
-                        [keychain setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
-                        // Store username to keychain
-                        [keychain setObject:emailTxtFld.text forKey:(__bridge id)kSecAttrAccount];
-                        // Store password to keychain
-                        [keychain setObject:passwordTxtFld.text forKey:(__bridge id)kSecValueData];
-                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
-                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];
-                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setPin"];
-                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FirstTimeUser"];
-                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoginAttamp"];
-                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"attemp"];
-                    }
-                }
-                else{
-                    
                     KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
                     [keychain setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
                     // Store username to keychain
@@ -563,6 +521,7 @@
                     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoginAttamp"];
                     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"attemp"];
                 }
+                [[NSUserDefaults standardUserDefaults] synchronize];
                 [self  callgetGloableRateApi];
             }
         }else //it is not 000
@@ -602,7 +561,6 @@
                     double currentTimeIntrval = [currentdate timeIntervalSince1970];
                     NSDate *newDate = [currentdate dateByAddingTimeInterval:60*60*24];
                     double newTimeIntrval = [newDate timeIntervalSince1970];
-                    
                     [userDefaults setDouble:currentTimeIntrval forKey:@"LoginTimeInterval"];
                     [userDefaults setDouble:newTimeIntrval forKey:@"LoginnewTimeIntrval"];
                     [userDefaults setInteger:1 forKey:@"LoginAttamp"];
@@ -706,9 +664,7 @@
                             imageName =[[[itemArray objectAtIndex:1] lowercaseString] stringByAppendingFormat:@" - %@",[[itemArray objectAtIndex:0] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]]];
                         }
                     }
-                    
                     [dict setObject:imageName forKey:@"imageName"];
-                    
                     if (dict) {
                         [glabalRatesMA addObject:dict];
                     }
@@ -723,16 +679,13 @@
     else if([service isEqualToString:@"GetDefaults"])
     {
         NSLog(@"GetDefaults %@",response);
-        
         NSMutableArray *getDefaultDataArr  = [[NSMutableArray alloc] init];
-        
         TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
         TBXMLElement *root = tbxml.rootXMLElement;
         TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
         TBXMLElement *getPromoResponseEle = [TBXML childElementNamed:@"GetDefaultsResponse" parentElement:rootItemElem];
         TBXMLElement *GetPromoResult = [TBXML childElementNamed:@"GetDefaultsResult" parentElement:getPromoResponseEle];
         TBXMLElement *GetPromoHtmlResult = [TBXML childElementNamed:@"a:products" parentElement:GetPromoResult];
-        
         TBXMLElement *phoenproduct = [TBXML childElementNamed:@"a:PhoenixProduct" parentElement:GetPromoHtmlResult];
         while (phoenproduct != nil)
         {
@@ -744,7 +697,6 @@
             TBXMLElement *productID = [TBXML childElementNamed:@"a:ProductID" parentElement:phoenproduct];
                         
             NSMutableDictionary *tempDic = [[NSMutableDictionary alloc]init];
-            
             [tempDic setValue:[TBXML textForElement:ccy] forKey:@"ccy"];
             [tempDic setValue:[TBXML textForElement:description] forKey:@"description"];
             [tempDic setValue:[TBXML textForElement:maxTopUp] forKey:@"maxTopUp"];
@@ -799,12 +751,10 @@
     }else{
         NSLog(@"Service: %@ | Response UKNOWN ERROR",service);
     }
-    
     [self showErrorMsg:@"Unfortunately our service is not available at the moment. But please do try again later."];
     UIButton *button = (UIButton*)[self.view viewWithTag:6];
     [button btnWithoutActivityIndicator];
     [button btnWithCrossImage];
-    
 }
 
 #pragma mark --------
@@ -815,19 +765,15 @@
     NSString *valueToSave = @"YES";
     [[NSUserDefaults standardUserDefaults]setObject:valueToSave forKey:@"setPin"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-   
     NSString *passcodeStr = controller.passcode ;
     KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"pss" accessGroup:nil];
     [wrapper setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
-    
     // Store password to keychain
     [wrapper setObject:[NSString stringWithFormat:@"%@",@"CFX"] forKey:(__bridge id)kSecAttrAccount];
     [wrapper setObject:[NSString stringWithFormat:@"%@",passcodeStr] forKey:(__bridge id)kSecValueData];
     [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"switchState"];
-   
     KeychainItemWrapper *keychain2 = [[KeychainItemWrapper alloc] initWithIdentifier:@"userMobile" accessGroup:nil];
     NSString *suStr = [keychain2 objectForKey:(__bridge id)kSecAttrAccount];
-   
     if (suStr == (id)[NSNull null] || suStr.length == 0 )
     {
         AddMobileNoVC *addVC = [[AddMobileNoVC alloc]initWithNibName:@"AddMobileNoVC" bundle:nil];
@@ -835,7 +781,6 @@
     }else{
         MoblieNoCheckedVC *mobileVC = [[MoblieNoCheckedVC alloc]initWithNibName:@"MoblieNoCheckedVC" bundle:nil];
         [self.navigationController pushViewController:mobileVC animated:YES];
-        
     }
 }
 
@@ -867,7 +812,6 @@
     }else{
         MoblieNoCheckedVC *mobileVC = [[MoblieNoCheckedVC alloc]initWithNibName:@"MoblieNoCheckedVC" bundle:nil];
         [self.navigationController pushViewController:mobileVC animated:YES];
-        
     }
 }
 
@@ -881,92 +825,64 @@
     if(![Validate isValidUserName:emailTxtFld.text])
     {
         [self loginWithAppAccount:0];
-        
         [self showErrorMsg:@"Unfortunately the entered username is not valid. Please try again."];
-        
         [emailTxtFld incorrectDataTxtFld];
-        
         return NO;
     }
     else if ([emailTxtFld.text length]== 0)
     {
         [self loginWithAppAccount:0];
-        
         [self showErrorMsg:@"Unfortunately the entered username is not valid. Please try again."];
-        
         [emailTxtFld incorrectDataTxtFld];
-        
         return NO;
     }
     else if ((textField == emailTxtFld) && [Validate isValidUserName:emailTxtFld.text] && (![emailTxtFld.text length]== 0))
     {
         emailErrorimgView.hidden = YES;
-        
         [self showErrorMsg:@""];
-        
         [passwordTxtFld becomeFirstResponder];
     }
     else if ((textField == passwordTxtFld) && (!passwordTxtFld.text.length>0))
     {
         [self showErrorMsg:@"Please enter the password."];
-        
         passwordErrorimgView.hidden = NO;
-        
         [passwordTxtFld incorrectDataTxtFld];
-        
         [self loginWithAppAccount:1];
-        
         return  NO;
-        
     }
-    
- 
     else if((textField == passwordTxtFld) &&  ([passwordTxtFld.text length] > 200))
     {
         emailErrorimgView.hidden = YES;
-        
         passwordErrorimgView.hidden = NO;
         [self showErrorMsg:@"Unfortunately the entered password must be less then 200 characters. Please try again."];
-        
         [passwordTxtFld incorrectDataTxtFld];
-        
         return NO;
-        
     }else if((textField == passwordTxtFld) &&  [Validate isValidPassword:passwordTxtFld.text]){
-        
         passwordErrorimgView.hidden = YES;
         [textField resignFirstResponder];
-        
         UIButton *logInBtn = (UIButton*)[self.view viewWithTag:6];
         [self loginBtnPressed:logInBtn];
-        
         return YES;
     }
-    
     return YES;
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
     UIImageView *emailErrorimgView = (UIImageView *)[self.view viewWithTag:13];
-    
     UIImageView *passwordErrorimgView = (UIImageView *)[self.view viewWithTag:12];
     if(![Validate isValidUserName:emailTxtFld.text])
     {
         [self loginWithAppAccount:0];
-        
         [self showErrorMsg:@"Unfortunately the entered username is not valid. Please try again."];
-        
         [emailTxtFld incorrectDataTxtFld];
-        }
+    }
     else if ([emailTxtFld.text length]== 0)
     {
         [self loginWithAppAccount:0];
-        
         [self showErrorMsg:@"Unfortunately the entered username is not valid. Please try again."];
-        
         [emailTxtFld incorrectDataTxtFld];
-        }
+    }
     else if ((textField == emailTxtFld) && [Validate isValidUserName:emailTxtFld.text] && (![emailTxtFld.text length]== 0))
     {
         emailErrorimgView.hidden = YES;
@@ -976,23 +892,17 @@
     else if ((textField == passwordTxtFld) && (!passwordTxtFld.text.length>0))
     {
         passwordErrorimgView.hidden = NO;
-        
         [self showErrorMsg:@"Please enter the password."];
-        
         [passwordTxtFld incorrectDataTxtFld];
-        
         [self loginWithAppAccount:1];
     }
     else if((textField == passwordTxtFld) &&  ([passwordTxtFld.text length] > 200))
     {
         passwordErrorimgView.hidden = NO;
-        
         emailErrorimgView.hidden = YES;
-        
         [self showErrorMsg:@"Unfortunately the entered password must be less then 200 characters. Please try again."];
-        
         [passwordTxtFld incorrectDataTxtFld];
-        }else if((textField == passwordTxtFld) &&  [Validate isValidPassword:passwordTxtFld.text]){
+    }else if((textField == passwordTxtFld) &&  [Validate isValidPassword:passwordTxtFld.text]){
         passwordErrorimgView.hidden = YES;
     }
 }
@@ -1079,7 +989,5 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-
 
 @end

@@ -563,10 +563,13 @@
             [[NSUserDefaults standardUserDefaults]synchronize];
                     
             [self performSelectorInBackground:@selector(callgetGloableRateApi) withObject:nil];
+        }else{
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Session Expired" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            alert.tag = 2;
+            [alert show];
         }
     }else if([service isEqualToString:@"GetGlobalRates"])
     {
-        NSLog(@"Home  GetGlobalRates -> %@",response);
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"currencyflags_map" ofType:@"csv"];
         NSString *myText = nil;
         if (filePath) {
@@ -685,21 +688,17 @@
     }
     
 }
-
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (alertView.tag == 2 ){
+        if (buttonIndex == 0)
+        {
+            AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+            [appDelegate doLogout];
+        }
+    }
+}
 -(void)loadingFailedWithError:(NSString *)error withServiceName:(NSString *)service
 {
-    /*
-    if([service isEqualToString:@"GetPromo"])
-        [self performSelectorOnMainThread:@selector(goMoreInfoPage) withObject:nil waitUntilDone:NO];
-    
-    else
-    {
-        [self performSelectorOnMainThread:@selector(goMyCardPage) withObject:nil waitUntilDone:nil];
-        AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-        delegate.window.userInteractionEnabled = YES;
-        self.view.userInteractionEnabled = YES;
-    }
-     */
     if([service isEqualToString:@"CheckAuthGetCards"] ||[service isEqualToString:@"GetPromo"]){
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Netwok Error" message:@"Please check your internet connection." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         alert.tag = 1;

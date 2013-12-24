@@ -1,4 +1,4 @@
-
+ 
 
 //
 //  AppDelegate.m
@@ -43,8 +43,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //backgroundQueue = dispatch_queue_create("com.tri-media.myelane-merchant", NULL);
-    
     dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
         if ([CommonFunctions reachabiltyCheck])
         {
@@ -52,7 +50,6 @@
         }
         
     });
-    
     
     if(![[NSUserDefaults standardUserDefaults]objectForKey:@"switchState"])
     {
@@ -71,9 +68,7 @@
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDir = [documentPaths objectAtIndex:0];
     DatabasePath = [documentsDir stringByAppendingPathComponent:DatabaseName];
-    NSLog(@"DatabasePath = %@",DatabasePath);
     [self checkAndCreateDatabase];
-    
     if([[NSUserDefaults standardUserDefaults]boolForKey:@"isLogin"])
     {
         if (![[NSUserDefaults standardUserDefaults] objectForKey:@"khistoryData"]) {
@@ -83,7 +78,6 @@
         {
             NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"khistoryData"];
             NSDate* date2 =  [NSDate date];
-            
             NSTimeInterval distanceBetweenDates = [date1 timeIntervalSinceDate:date2];
             double secondsInAnHour = 3600;
             NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
@@ -92,16 +86,11 @@
             }
         }
     }
-    
     UILabel *headingLable = (UILabel *)[self.mobileNumNotificationView viewWithTag:1];
     headingLable.font = [UIFont fontWithName:@"OpenSans" size:16];
-
     [self aboutCustomeTabbar];
-    
     [self.window setRootViewController:self.tabBarController];
-    
     [CommonFunctions hideTabBar:tabBarController];
-    
     if (IS_HEIGHT_GTE_568)
     {
         [customeTabBar setFrame:CGRectMake(0, 507, 320, 61)];
@@ -125,38 +114,24 @@
     }
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
-    
     NSLocale *locale = [NSLocale currentLocale];
     NSString *countryCode = [locale objectForKey: NSLocaleCountryCode];
     UIButton *btn = (UIButton*)[customeTabBar viewWithTag:2];
-    
     dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
         [self fetchCountryNameForCountryCode:countryCode];
     });
     
-    
-    //[self fetchCountryNameForCountryCode:countryCode];  Deepesh Jain
-    
     NSUserDefaults *userDefs = [NSUserDefaults standardUserDefaults];
-    
     preferredCurrency = @"GBP";
     [userDefs setObject:@"GBP" forKey:@"defaultCurrency"];
     [userDefs setObject:@"flag" forKey:@"defaultCurrencyImage"];
     [userDefs synchronize];
-    
     [self customTabBarBtnTap:btn];
-    
     [self.tabBarController setSelectedIndex:1];
-    
     [self.tabBarController.view addSubview:self.customeTabBar];
-    
     self.tabBarController.view.backgroundColor = [UIColor clearColor];
-    
     [self.tabBarController.view addSubview:self.topBarView];
-    
     [self.window makeKeyAndVisible];
-    
-    
     dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
         [self currencySymbole];           //Deepesh
     });
@@ -169,7 +144,6 @@
         //Added on 19th Sep 2013
         self.window.bounds = CGRectMake(0, 20, self.window.frame.size.width, self.window.frame.size.height);
     }
-    NSLog(@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"dbUpdated"]);
     if([[[NSUserDefaults standardUserDefaults] valueForKey:@"dbUpdated"] isEqualToString:@"NO"] || ![[NSUserDefaults standardUserDefaults] valueForKey:@"dbUpdated"])
     {
         [self updateDatabase];
@@ -185,7 +159,6 @@
     [Flurry setCrashReportingEnabled:YES];
     
     [Flurry startSession:flurryID];
-    
     
     /***
      *
@@ -233,7 +206,6 @@
 	// Get the path to the database in the application package
 	//NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"cfx.sqlite"];
     NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"cfxNew.sqlite"];
-	NSLog(@"databasePathFromApp %@",databasePathFromApp);
 	// Copy the database from the package to the users filesystem
     
 	//[fileManager copyItemAtPath:databasePathFromApp toPath:[documentsDirectory stringByAppendingPathComponent:@"cfx.sqlite"] error:nil];
@@ -308,12 +280,7 @@
     DatabaseHandler *dbHandler = [[DatabaseHandler alloc]init];
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"currencyid-symbol-map" ofType:@"csv"];
     NSString *myText = nil;
-    
     if (filePath) {
-        /*
-         Depracated NSString method changed with the newest one available
-         myText = [NSString stringWithContentsOfFile:filePath];
-         */
         myText = [NSString stringWithContentsOfFile:filePath encoding:NSISOLatin1StringEncoding error:nil];
         if (myText) {
             [dbHandler executeQuery:@"delete from currencySymbole_table"];
@@ -321,14 +288,11 @@
             for (NSString *item in contentArray)
             {
                 NSArray *itemArray = [item componentsSeparatedByString:@","];
-                // log first item
-                
                 if ([itemArray count] > 3)
                 {
                     NSString *mainSTr = [itemArray objectAtIndex:2];
                     NSString *cId = [itemArray objectAtIndex:0];
                     NSString * cIdStr = [cId stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-                    
                     NSString *querryStr = [NSString stringWithFormat:@"insert into currencySymbole_table values (\"%@\",\"%@\"); ",cIdStr,mainSTr];
                     [dbHandler executeQuery:querryStr];
                 }
@@ -341,10 +305,7 @@
 -(IBAction) ratePopUpBtnPressed:(id)sender
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    
     UIButton *btn = (UIButton*) sender;
-    
-	NSLog(@"%ld",(long)btn.tag);
 	switch (btn.tag) {
 		case 1:
 		{
@@ -523,7 +484,6 @@
     }else{
         navController = self.mainNavigation;
     }
-    NSLog(@"%i",[tabBarController selectedIndex]);
     UIViewController *VC =nil;
     if ([tabBarController selectedIndex]==0) {
         VC = [[HistoryVC alloc]initWithNibName:@"HistoryVC" bundle:nil];
@@ -592,7 +552,6 @@
     
     UINavigationController *navController = (UINavigationController*)[appDelegate.tabBarController selectedViewController];
     NSArray *viewArray = navController.viewControllers;
-    NSLog(@"%@",viewArray);
     for (int i=0; i<viewArray.count; i++) {
         if([[viewArray objectAtIndex:i ]isKindOfClass:[HomeVC class]])
         {
@@ -863,7 +822,6 @@
                           otherButtonTitles:nil, nil] show];
     }
     UIViewController *rootViewController = self.window.rootViewController;
-    NSLog(@"RootVC is %@",rootViewController);
     UINavigationController *navController;
     if ([rootViewController isKindOfClass:[UITabBarController class]]) {
         
@@ -882,8 +840,6 @@
     UINavigationController *navController;
     
     UIViewController *rootViewController = self.window.rootViewController;
-    NSLog(@"RootVC is %@",rootViewController);
-    
     if ([rootViewController isKindOfClass:[UITabBarController class]]) {
         
         navController =(UINavigationController*)[tabBarController selectedViewController];
@@ -1103,56 +1059,38 @@
 
 -(void)loadingFinishedWithResponse:(NSString *)response withServiceName:(NSString *)service
 {
-    NSLog(@"service -> %@ response ->%@",service,response);
-    
     if([service isEqualToString:@"GetGlobalRates"])
     {
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"currencyflags_map" ofType:@"csv"];
         NSString *myText = nil;
         
         if (filePath) {
-            /*
-             Depracated NSString method changed with the newest one available
-             myText = [NSString stringWithContentsOfFile:filePath];
-             */
             myText = [NSString stringWithContentsOfFile:filePath encoding:NSISOLatin1StringEncoding error:nil];
-            if (myText) {
-                //here
-            }
         }
-        //NSString *content =  [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil]; unused variable
         NSArray *contentArray = [myText componentsSeparatedByString:@"\r"]; // CSV ends with ACSI 13 CR (if stored on a Mac Excel 2008)
         NSMutableArray *codesMA = [NSMutableArray new];
-        
         for (NSString *item in contentArray)
         {
             NSArray *itemArray = [item componentsSeparatedByString:@","];
             // log first item
-            
             if ([itemArray count] > 3)
             {
-                NSLog(@"%@",[itemArray objectAtIndex:3]);
                 [codesMA addObject:[itemArray objectAtIndex:3]];
             }
         }
-        
         NSMutableArray *glabalRatesMA  = [[NSMutableArray alloc] init];
         if (![response isEqualToString:@"Response code 404/n"]) {
             TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
             TBXMLElement *root = tbxml.rootXMLElement;
             TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
-            
             if(rootItemElem)
             {
                 TBXMLElement *subcategoryEle = [TBXML childElementNamed:@"GetGlobalRatesResponse" parentElement:rootItemElem];
                 TBXMLElement * GetGlobalRatesResult = [TBXML childElementNamed:@"GetGlobalRatesResult" parentElement:subcategoryEle];
-                //TBXMLElement *baseCcy = [TBXML childElementNamed:@"a:baseCcy" parentElement:GetGlobalRatesResult]; unused variable
                 TBXMLElement *expiryTime = [TBXML childElementNamed:@"a:expiryTime" parentElement:GetGlobalRatesResult];
                 NSString *expiryTimeStr = [TBXML textForElement:expiryTime];
-                
                 [[NSUserDefaults standardUserDefaults]setObject:expiryTimeStr forKey:@"expiryTime"];
                 [[NSUserDefaults standardUserDefaults]synchronize];
-                
                 TBXMLElement *rates = [TBXML childElementNamed:@"a:rates" parentElement:GetGlobalRatesResult];
                 if (rates)
                 {
@@ -1185,24 +1123,21 @@
                             [glabalRatesMA addObject:dict];
                         }
                         CFXExchangeRate = [TBXML nextSiblingNamed:@"a:CFXExchangeRate" searchFromElement:CFXExchangeRate];
-                        
                     }
-                    
                 }
-                
                 NSString *deleteQuerry = [NSString stringWithFormat:@"DELETE FROM globalRatesTable"];
                 DatabaseHandler *database = [[DatabaseHandler alloc]init];
                 [database executeQuery:deleteQuerry];
-                
-                for (NSMutableDictionary *dict in glabalRatesMA) {
-                    NSString *value = [[DatabaseHandler getSharedInstance] getDataValue:[NSString stringWithFormat:@"select CardCurrencyDescription from myCards where CurrencyCardID = %@",currentId]];
-                    NSString *query = [NSString stringWithFormat:@"insert into globalRatesTable ('CcyCode','Rate','imageName','cardName') values ('%@',%f,'%@','%@')",[dict objectForKey:@"currencyCode"] ,[[dict objectForKey:@"rate"] doubleValue],[dict objectForKey:@"imageName"],value];
-                    [[DatabaseHandler getSharedInstance] executeQuery:query];
+                if (currentId) {
+                    for (NSMutableDictionary *dict in glabalRatesMA) {
+                        NSString *value = [[DatabaseHandler getSharedInstance] getDataValue:[NSString stringWithFormat:@"select CardCurrencyDescription from myCards where CurrencyCardID = %@",currentId]];
+                        NSString *query = [NSString stringWithFormat:@"insert into globalRatesTable ('CcyCode','Rate','imageName','cardName') values ('%@',%f,'%@','%@')",[dict objectForKey:@"currencyCode"] ,[[dict objectForKey:@"rate"] doubleValue],[dict objectForKey:@"imageName"],value];
+                        [[DatabaseHandler getSharedInstance] executeQuery:query];
+                    }
                 }
+                
             }
         }
-        
-        
     }
     else if([service isEqualToString:@"GetPromo"])
     {
@@ -1213,7 +1148,6 @@
         TBXMLElement *GetPromoResult = [TBXML childElementNamed:@"GetPromoResult" parentElement:getPromoResponseEle];
         TBXMLElement *GetPromoHtmlResult = [TBXML childElementNamed:@"html" parentElement:GetPromoResult];
         NSString *str = [TBXML textForElement:GetPromoHtmlResult];
-        
         [[NSUserDefaults standardUserDefaults] setValue:str forKey:@"moreInfoHtml"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
@@ -1221,14 +1155,12 @@
     else if([service isEqualToString:@"GetDefaults"])
     {
         NSMutableArray *getDefaultDataArr  = [[NSMutableArray alloc] init];
-        
         TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
         TBXMLElement *root = tbxml.rootXMLElement;
         TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
         TBXMLElement *getPromoResponseEle = [TBXML childElementNamed:@"GetDefaultsResponse" parentElement:rootItemElem];
         TBXMLElement *GetPromoResult = [TBXML childElementNamed:@"GetDefaultsResult" parentElement:getPromoResponseEle];
         TBXMLElement *GetPromoHtmlResult = [TBXML childElementNamed:@"a:products" parentElement:GetPromoResult];
-        
         TBXMLElement *phoenproduct = [TBXML childElementNamed:@"a:PhoenixProduct" parentElement:GetPromoHtmlResult];
         while (phoenproduct != nil)
         {
@@ -1238,25 +1170,19 @@
             TBXMLElement *maxTotalBalance = [TBXML childElementNamed:@"a:MaxTotalBalance" parentElement:phoenproduct];
             TBXMLElement *minTopUp = [TBXML childElementNamed:@"a:MinTopUp" parentElement:phoenproduct];
             TBXMLElement *productID = [TBXML childElementNamed:@"a:ProductID" parentElement:phoenproduct];
-            
             NSMutableDictionary *tempDic = [[NSMutableDictionary alloc]init];
-            
             [tempDic setValue:[TBXML textForElement:ccy] forKey:@"ccy"];
             [tempDic setValue:[TBXML textForElement:description] forKey:@"description"];
             [tempDic setValue:[TBXML textForElement:maxTopUp] forKey:@"maxTopUp"];
             [tempDic setValue:[TBXML textForElement:maxTotalBalance] forKey:@"maxTotalBalance"];
             [tempDic setValue:[TBXML textForElement:minTopUp] forKey:@"minTopUp"];
             [tempDic setValue:[TBXML textForElement:productID] forKey:@"productID"];
-            
             phoenproduct = [TBXML nextSiblingNamed:@"a:PhoenixProduct" searchFromElement:phoenproduct];
             [getDefaultDataArr addObject:tempDic];
         }
-        
         NSString *deleteQuerry = [NSString stringWithFormat:@"DELETE FROM getDefaults"];
-        
         DatabaseHandler *database = [[DatabaseHandler alloc]init];
         [database executeQuery:deleteQuerry];
-        
         for (int i = 0; i < getDefaultDataArr.count ; i++)
         {
             NSString *query = [NSString stringWithFormat:@"insert into getDefaults values (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",[[getDefaultDataArr objectAtIndex:i] valueForKey:@"ccy"],[[getDefaultDataArr objectAtIndex:i]valueForKey:@"description"],[[getDefaultDataArr objectAtIndex:i]valueForKey:@"maxTopUp"],[[getDefaultDataArr objectAtIndex:i] valueForKey:@"maxTotalBalance"],[[getDefaultDataArr objectAtIndex:i]valueForKey:@"minTopUp"],[[getDefaultDataArr objectAtIndex:i]valueForKey:@"productID"]];
@@ -1271,14 +1197,9 @@
         TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
         TBXMLElement *checkAuthGetCardsResponseElem = [TBXML childElementNamed:@"GetHistoryResponse" parentElement:rootItemElem];
         TBXMLElement *checkAuthGetCardsResultElem = [TBXML childElementNamed:@"GetHistoryResult" parentElement:checkAuthGetCardsResponseElem];
-        
-        
         TBXMLElement *statusCode = [TBXML childElementNamed:@"a:statusCode" parentElement:checkAuthGetCardsResultElem];
-        
         NSString *statusIs = [TBXML textForElement:statusCode];
-        
         self._array = [[NSMutableArray alloc]init];
-        
         if ([statusIs isEqualToString:@"000"])
         {
             TBXMLElement *cardsElem = [TBXML childElementNamed:@"a:cardHistory" parentElement:checkAuthGetCardsResultElem];
@@ -1307,7 +1228,6 @@
                 }
             }
             [[DatabaseHandler getSharedInstance] executeQuery:[NSString stringWithFormat:@"DELETE FROM getHistoryTable where currencyId = '%@'",currentId]];
-            
             for(int i=0;i<self._array.count;i++)
             {
                 NSMutableDictionary *dict = [self._array objectAtIndex:i];
@@ -1320,16 +1240,6 @@
                 [[DatabaseHandler getSharedInstance]executeQuery:queryStr];
             }
         }
-        else if ([statusIs isEqualToString:@"001"])
-        {
-            //    001 – card expired
-        }
-        else if ([statusIs isEqualToString:@"002"])
-        {
-            //    002 – account blocked
-            
-        }
-        
     }
 }
 
@@ -1379,25 +1289,19 @@
     [self.window.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    
     self.window.rootViewController = self.mainNavigation;
-    
     ImagePickerVC *ivc = (ImagePickerVC*) [[[self mainNavigation] viewControllers] objectAtIndex:0];
     [ivc showCamera];
-    
     UIImageView *screenImgView = [[UIImageView alloc] initWithFrame:self.window.frame];
     [screenImgView setImage:image];
     [self.window addSubview:screenImgView];
-    
     UIImageView *cameraImgView = [[UIImageView alloc] initWithFrame:CGRectMake(self.window.frame.origin.x, self.window.frame.origin.y-self.window.frame.size.height, self.window.frame.size.width, self.window.frame.size.height)];
-    
     if (IS_HEIGHT_GTE_568)
         [cameraImgView setImage:[UIImage imageNamed:@"camera5"]];
     else
         [cameraImgView setImage:[UIImage imageNamed:@"camera4"]];
     
     [self.window addSubview:cameraImgView];
-    
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.5f];
     [cameraImgView setFrame:self.window.frame];
@@ -1429,13 +1333,9 @@
     else if ([sender state] == UIGestureRecognizerStateChanged)
     {
         CGPoint translate = [sender translationInView:self.topBarView.superview];
-        
-        NSLog(@"%@",NSStringFromCGPoint(translate));
-        
+    
         CGRect frame = self.topBarView.frame;
         frame.origin.y = startPos.y+translate.y;
-        
-        NSLog(@"---------------- %@",NSStringFromCGRect(frame));
         
         float minY = -460.0f;
         
@@ -1492,12 +1392,9 @@
     if (shouldShowImgPicker)
     {
         shouldShowImgPicker = NO;
-        
         self.window.rootViewController = self.mainNavigation;
-        
         ImagePickerVC *ivc = (ImagePickerVC*) [[[self mainNavigation] viewControllers] objectAtIndex:0];
         [ivc showCamera];
-        
         if (IS_HEIGHT_GTE_568)
         {
             [topBarView setFrame:CGRectMake(0, -548, 320, CGRectGetHeight(topBarView.frame))];
@@ -1580,7 +1477,6 @@
         default:
             break;
     }
-    
 }
 
 -(void)doLogout
@@ -1604,28 +1500,18 @@
     NSString *dataPath = patientPhotoFolder;
     BOOL isDir = NO;
     NSFileManager *fileManager = [[NSFileManager alloc] init];
-    if (![fileManager fileExistsAtPath:dataPath
+    if ([fileManager fileExistsAtPath:dataPath
                            isDirectory:&isDir] && isDir == NO) {
-        
-    }else
-    {
-        BOOL success = [fileManager removeItemAtPath:dataPath error:nil];
-        NSLog(@"%@",success?@"YES":@"NO");
+        [fileManager removeItemAtPath:dataPath error:nil];
     }
     
-    
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
-    //    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultCurrency"];                //deepesh
-    //    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultCurrencyImage"];           //deepesh
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];                    //deepesh
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setPin"];                         //deepesh
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FirstTimeUser"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoginAttamp"];                    //deepesh
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"attemp"];
-    
-    
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
     
     UIButton *tapBtn = (UIButton*)[self.customeTabBar viewWithTag:2];
     [self customTabBarBtnTap:tapBtn];
@@ -1633,15 +1519,14 @@
     [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"stayLogin"];
     [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"isLogin"];
     
+    //TO-DO: THIS IS NOT WORKING IF THE USER HAS 'STAY LOGGED IN' AND NO PIN
     UINavigationController *navController = (UINavigationController*)[self.tabBarController selectedViewController];
     NSArray *viewArray = navController.viewControllers;
-    NSLog(@"%@",viewArray);
     for (int i=0; i<viewArray.count; i++) {
         if([[viewArray objectAtIndex:i ]isKindOfClass:[HomeVC class]])
         {
             [navController popToViewController:[viewArray objectAtIndex:i] animated:YES];
             break;
-            
         }
     }
 }

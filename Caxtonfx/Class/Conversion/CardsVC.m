@@ -181,8 +181,6 @@
 {
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     UINavigationController *navControler = appDelegate.mainNavigation;
-    NSLog(@"navControler.viewControllers -> %@",navControler.viewControllers);
-    NSLog(@"navControler.visibleViewController -> %@",navControler.visibleViewController);
     ConversionVC *vc;
     [self.imageView setImage:image];
     NSArray *arry = navControler.viewControllers;

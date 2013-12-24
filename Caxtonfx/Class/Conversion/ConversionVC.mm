@@ -726,8 +726,6 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
                             
                         }
                         
-                        NSLog(@"-------> %@",wordStr);
-                        
                         NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789,.$£¥č€₪лв₨б₩๚"];
                         
                         set = [set invertedSet];
@@ -744,8 +742,6 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
                         
                         wordStr = [wordStr stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@","]];
                         
-                        NSLog(@"-------> %@",wordStr);
-                        
                         NSString *rectStr = [TBXML valueOfAttributeNamed:@"title" forElement:word];
                         
                         
@@ -757,8 +753,6 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
                         float h = [[components objectAtIndex:4] floatValue] - [[components objectAtIndex:2] floatValue];
                         
                         CGRect rect = CGRectMake(x, y, w, h);
-                        
-                        //NSLog(@"-------> x=%f y=%f w=%f h=%f",x,y,w,h);
                         
                         TOcr_Word *tWord = [[TOcr_Word alloc] init];
                         tWord.wordStr = wordStr;
@@ -3263,7 +3257,6 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
                 sqlStatement = [NSString stringWithFormat:@"SELECT multiplier FROM rates_table WHERE bank_id=%@ AND currency_code='%@'",[dic objectForKey:@"id"],preferredCurrency];
             }
             
-            NSLog(@"getConversionMultiplier -> sqlStatement -> %@",sqlStatement);
             
             sqlite3_stmt *compiledStatement;
             
@@ -3498,8 +3491,6 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
     {
         sqlStatement = [NSString stringWithFormat:@"SELECT * FROM currency_table WHERE code_name = '%@'",preferredCurrency];
         
-        NSLog(@"sqlStatement -> %@",sqlStatement);
-        
         sqlite3_stmt *compiledStatement;
         
         if(sqlite3_prepare_v2(database, [sqlStatement cStringUsingEncoding:NSUTF8StringEncoding], -1, &compiledStatement, NULL) == SQLITE_OK)
@@ -3526,8 +3517,6 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
         else
             currencyName = currency;
         
-        
-        NSLog(@"currencyName -> %@",currencyName);
         
         sqlite3_finalize(compiledStatement);
         
@@ -4171,7 +4160,6 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
         
     }else if([service isEqualToString:@"GetPromo"])
     {
-        NSLog(@"GetPromo -> %@",response);
         
         TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
         TBXMLElement *root = tbxml.rootXMLElement;

@@ -202,7 +202,6 @@
 -(void)loadingFinishedWithResponse:(NSString *)response withServiceName:(NSString *)service
 {
     NSLog(@"CheckAuthGetCards - > %@",response);
-    
     NSMutableArray *array = [[NSMutableArray alloc]init];
     TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
     TBXMLElement *root = tbxml.rootXMLElement;
@@ -216,26 +215,20 @@
     {
         TBXMLElement *DOBElem = [TBXML childElementNamed:@"a:bd" parentElement:checkAuthGetCardsResultElem];
         userDOBStr = [TBXML textForElement:DOBElem];
-        
         KeychainItemWrapper *keychain1 = [[KeychainItemWrapper alloc] initWithIdentifier:@"userDOB" accessGroup:nil];
         [keychain1 setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
         [keychain1 setObject:userDOBStr forKey:(__bridge id)kSecAttrAccount];
         [keychain1 setObject:userDOBStr forKey:(__bridge id)kSecValueData];
-        
         TBXMLElement *contactTypeElem = [TBXML childElementNamed:@"a:contactType" parentElement:checkAuthGetCardsResultElem];
         userConactTypeStr = [TBXML textForElement:contactTypeElem];
-        
         KeychainItemWrapper *keychain2 = [[KeychainItemWrapper alloc] initWithIdentifier:@"userMobile" accessGroup:nil];
         [keychain2 setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
         [keychain2 setObject:userMobileStr forKey:(__bridge id)kSecAttrAccount];
         [keychain2 setObject:userMobileStr forKey:(__bridge id)kSecValueData];
-        
         [[NSUserDefaults standardUserDefaults]setObject:userConactTypeStr forKey:@"userConactType"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        
         TBXMLElement *mobileElem = [TBXML childElementNamed:@"a:mobile" parentElement:checkAuthGetCardsResultElem];
         userMobileStr = [TBXML textForElement:mobileElem];
-        
         if([statusCodeStr intValue]!= 003)
         {
             TBXMLElement *cardsElem = [TBXML childElementNamed:@"a:cards" parentElement:checkAuthGetCardsResultElem];
@@ -264,11 +257,8 @@
                     NSString *ProductTypeIDStr = [TBXML textForElement:ProductTypeID];
                     TBXMLElement *CurrencyCardTypeID    = [TBXML childElementNamed:@"a:CurrencyCardTypeID" parentElement:CardElm];
                     NSString *CurrencyCardTypeIDStr = [TBXML textForElement:CurrencyCardTypeID];
-                    
                     NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithObjectsAndKeys:cardBalanceStr,@"cardBalanceStr",CardCurrencyDescriptionStr,@"CardCurrencyDescriptionStr",CardCurrencyIDStr,@"CardCurrencyIDStr",CardCurrencySymbolStr,@"CardCurrencySymbolStr",CardNameStr,@"CardNameStr",CardNumberStr,@"CardNumberStr",CurrencyCardIDStr,@"CurrencyCardIDStr",ProductTypeIDStr,@"ProductTypeIDStr",CurrencyCardTypeIDStr ,@"CurrencyCardTypeIDStr",CardTypeStr,@"CardTypeStr", nil];
-                    
                     [array addObject:dict];
-                    
                     CardElm = [TBXML nextSiblingNamed:@"a:card" searchFromElement:CardElm];
                 }
             }
@@ -278,25 +268,20 @@
                                {
                     NSMutableDictionary *dict = [array objectAtIndex:i];
                     NSString *queryStr = [NSString stringWithFormat:@"INSERT OR REPLACE INTO myCards values (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",[dict objectForKey:@"CurrencyCardIDStr"],[dict objectForKey:@"CurrencyCardTypeIDStr"],[dict objectForKey:@"ProductTypeIDStr"],[dict objectForKey:@"CardCurrencyIDStr"],[dict objectForKey:@"cardBalanceStr"],[dict objectForKey:@"CardCurrencyDescriptionStr"],[dict objectForKey:@"CardCurrencySymbolStr"],[dict objectForKey:@"CardNameStr"],[dict objectForKey:@"CardNumberStr"],[dict objectForKey:@"CardTypeStr"],@"NO",@"NO"];
-                    
                     [[DatabaseHandler getSharedInstance]executeQuery:queryStr];
                 });
             }
-            
             NSDate *today = [NSDate date];
             dateInString = [today description];
             [[NSUserDefaults standardUserDefaults]setObject:[NSDate date] forKey:@"updateDate"];
             [[NSUserDefaults standardUserDefaults]synchronize];
-
         }
     }else{
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Session Expired" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         alert.tag = 1;
         [alert show];
     }
-    
     [self fetchTheValueFromDataBase];
-    
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView.tag == 1 ){
@@ -332,14 +317,12 @@
     self.tableView.userInteractionEnabled = YES;
     [[NSUserDefaults standardUserDefaults]setObject:[NSDate date] forKey:@"updateDate"];
     [[NSUserDefaults standardUserDefaults]synchronize];
-    
 }
 
 #pragma mark -------
 #pragma mark TableViewMethod
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     if(self.cardsArray.count==0)
     {
         return 1;
@@ -380,26 +363,17 @@
                                                      owner:self options:nil];
         cell = [nib objectAtIndex:0];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        
         cell.accountNameLable.textColor = UIColorFromRedGreenBlue(102, 102, 102);
         [cell.accountNameLable setFont:[UIFont fontWithName:@"OpenSans" size:19]];
-        
         [cell.accountTypeLable setFont:[UIFont fontWithName:@"OpenSans" size:10]];
         cell.accountTypeLable.textColor = UIColorFromRedGreenBlue(204, 204, 204);
-        
         [cell.currentBlnceLable setFont:[UIFont fontWithName:@"OpenSans" size:13]];
         cell.currentBlnceLable.textColor = UIColorFromRedGreenBlue(39, 39, 39);
-        
         [cell.blnceLable setFont:[UIFont fontWithName:@"OpenSans" size:25]];
         cell.blnceLable.textColor = UIColorFromRedGreenBlue(39, 39, 39);
-        
         [cell.topupBtn setBackgroundImage:[UIImage imageNamed:@"topUpBtn"] forState:UIControlStateNormal];
         [cell.topupBtn setBackgroundImage:[UIImage imageNamed:@"topUpBtnSelected"] forState:UIControlStateHighlighted];
-        
         NSDictionary *dict = [self.cardsArray objectAtIndex:indexPath.row];
-        
-        NSLog(@"cardsArray dict %@",dict);
-        
         if([[dict objectForKey:@"CardCurrencyDescription"] isEqualToString:@"GB pound"])
         {
             cell.flagImgView.image = [UIImage imageNamed:@"GBPFlag"];
@@ -411,13 +385,10 @@
         {
             cell.flagImgView.image = [UIImage imageNamed:@"dolloeFlag"];
         }
-        
         [NSThread detachNewThreadSelector:@selector(setSymbolValue:) toTarget:self withObject:[NSDictionary dictionaryWithObjectsAndKeys:dict,@"dict",cell.blnceLable,@"lbl", nil]];
-        
         cell.accountNameLable.text = [dict objectForKey:@"CardName"];
         cell.accountTypeLable.text = [dict objectForKey:@"CardNumber"];//@"MAIN ACCOUNT CARD";
         cell.currentBlnceLable.text = @"Your current balance is";
-
         if([[dict objectForKey:@"errorImageView"] isEqualToString:@"YES"])
             cell.errorImgView.hidden= NO;
         else
@@ -434,10 +405,6 @@
 
 -(void) setSymbolValue:(NSDictionary*) dic
 {
-    NSString *querrystr = [NSString stringWithFormat:@"select * from currencySymbole_table where cardCurrencyId = %@",[[dic objectForKey:@"dict"] objectForKey:@"CardCurrencyID"]];
-    
-    NSLog(@"querrystr = %@",querrystr );
-    
     NSString *symbolStr = @"";
     NSString *CardCurrencyID =   [[dic objectForKey:@"dict"] objectForKey:@"CardCurrencyID"];
     switch ([CardCurrencyID intValue]) {
@@ -456,41 +423,32 @@
     }
     
     NSString *blncLblStr = [NSString stringWithFormat:@"%@%.02f",symbolStr,[[[dic objectForKey:@"dict"] objectForKey:@"CardBalance"] floatValue]];
-    
     [self performSelectorOnMainThread:@selector(setTheLbl:) withObject:[NSDictionary dictionaryWithObjectsAndKeys:blncLblStr,@"blncLblStr",[dic objectForKey:@"lbl"],@"lbl", nil] waitUntilDone:NO];
-    
 }
 
 -(void) setTheLbl:(NSDictionary *) dic
 {
     UILabel *lbl = (UILabel *)[dic objectForKey:@"lbl"];
-    
     lbl.text = @"";
     NSString *blncLblStr = [dic objectForKey:@"blncLblStr"];
-    
     UIColor *firstColor=UIColorFromRedGreenBlue(102, 102, 102);
     UIColor *secondColor=UIColorFromRedGreenBlue(39, 39, 39);
     UIFont *firstfont=[UIFont fontWithName:@"OpenSans" size:25.0f];
     UIFont *secondfont=[UIFont fontWithName:@"OpenSans" size:25.0f];
-    
     NSMutableAttributedString *attString=[[NSMutableAttributedString alloc] initWithString:blncLblStr];
     [attString addAttribute:NSFontAttributeName value:firstfont range:NSMakeRange(0, 1)];
     [attString addAttribute:NSFontAttributeName value:secondfont range:NSMakeRange(1, blncLblStr.length-1)];
     [attString addAttribute:NSForegroundColorAttributeName value:firstColor range:NSMakeRange(0, 1)];
     [attString addAttribute:NSForegroundColorAttributeName value:secondColor range:NSMakeRange(1, blncLblStr.length-1)];
-    
     lbl.attributedText = attString;
 }
 
 - (void)topupResult:(NSIndexPath*)path dict:(NSMutableDictionary *)dict1
 {
-    NSLog(@"Index path for updating result: %i",path.row);
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:dict1];
     [self.cardsArray replaceObjectAtIndex:path.row  withObject:dict];
     [self.tableView reloadData];
-    
-    [self performSelector:@selector(hudRefresh:) withObject:self afterDelay:3.0 ];
-    
+    [self performSelector:@selector(hudRefresh:) withObject:self afterDelay:5.0];
 }
 
 

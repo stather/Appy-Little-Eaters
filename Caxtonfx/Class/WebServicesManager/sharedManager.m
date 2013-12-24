@@ -45,7 +45,6 @@
     
     NSURL *url = [NSURL URLWithString:urlString];
     self.serviceName = methodName;
-     NSLog(@"serviceName - > %@",serviceName);
     NSMutableURLRequest *theRequest;
     if([self.serviceName isEqualToString:@"TopUp"])
     {
