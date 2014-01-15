@@ -24,8 +24,6 @@
 #import "SettingVC.h"
 #import "MBProgressHUD.h"
 
-
-
 @implementation AppDelegate
 @synthesize window,tabBarController,customeTabBar,mobileNumNotificationView;
 @synthesize mainNavigation;
@@ -45,17 +43,12 @@
 {
     dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
         if ([CommonFunctions reachabiltyCheck])
-        {
             [self callgetGloableRateApi];
-        }
-        
     });
-    
     if(![[NSUserDefaults standardUserDefaults]objectForKey:@"switchState"])
     {
         [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"switchState"];
     }
-    
     if([[NSUserDefaults standardUserDefaults]boolForKey:@"stayLogin"] ||[[[NSUserDefaults standardUserDefaults]objectForKey:@"setPin"] isEqualToString:@"YES"] )
     {
         [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"isLogin"];
@@ -63,8 +56,6 @@
     {
         [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"isLogin"];
     }
-    
-    
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDir = [documentPaths objectAtIndex:0];
     DatabasePath = [documentsDir stringByAppendingPathComponent:DatabaseName];
@@ -94,25 +85,17 @@
     if (IS_HEIGHT_GTE_568)
     {
         [customeTabBar setFrame:CGRectMake(0, 507, 320, 61)];
-        
         [self.ratePopUpView setFrame:CGRectMake(0.0f, 0.0f, 320, 568.0f)];
-        
         [topBarView setFrame:CGRectMake(0, -548, 320, CGRectGetHeight(topBarView.frame))];
         [cameraLayoutImgView setFrame:CGRectMake(0.0f, 0.0f, 320.0f, 568.0f)];
-        
         [cameraLayoutImgView setImage:[UIImage imageNamed:@"camera5.png"]];
     }
     else{
-        
         [customeTabBar setFrame:CGRectMake(0, 419, 320, 61)];
-        
         [topBarView setFrame:CGRectMake(0, -460, 320, 530)];
-        
         [cameraLayoutImgView setFrame:CGRectMake(0.0f, 0.0f, 320.0f, 480.0f)];
-        
         [cameraLayoutImgView setImage:[UIImage imageNamed:@"camera4.png"]];
     }
-    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     NSLocale *locale = [NSLocale currentLocale];
     NSString *countryCode = [locale objectForKey: NSLocaleCountryCode];
@@ -120,7 +103,6 @@
     dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
         [self fetchCountryNameForCountryCode:countryCode];
     });
-    
     NSUserDefaults *userDefs = [NSUserDefaults standardUserDefaults];
     preferredCurrency = @"GBP";
     [userDefs setObject:@"GBP" forKey:@"defaultCurrency"];
@@ -133,14 +115,12 @@
     [self.tabBarController.view addSubview:self.topBarView];
     [self.window makeKeyAndVisible];
     dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
-        [self currencySymbole];           //Deepesh
+        [self currencySymbole];            
     });
-    
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
         [application setStatusBarStyle:UIStatusBarStyleDefault];
         self.window.clipsToBounds =YES;
         self.window.frame =  CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height-20);
-        
         //Added on 19th Sep 2013
         self.window.bounds = CGRectMake(0, 20, self.window.frame.size.width, self.window.frame.size.height);
     }
@@ -175,7 +155,6 @@
 {
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths objectAtIndex:0];
-//	return [documentsDirectory stringByAppendingPathComponent:@"cfx.sqlite"];
     return [documentsDirectory stringByAppendingPathComponent:@"cfxNew.sqlite"];
 }
 
@@ -240,17 +219,12 @@
     if ([countryCode length] > 0)
     {
         sqlite3 *database;
-        
         NSString *sqlStatement = @"";
-        
         if(sqlite3_open([DatabasePath UTF8String], &database) == SQLITE_OK)
         {
             NSString * currencyCode = @"";
-            
             sqlStatement = [NSString stringWithFormat:@"select currency_code FROM country_table where country_code = '%@'",countryCode];
-            
             sqlite3_stmt *compiledStatement;
-            
             if(sqlite3_prepare_v2(database, [sqlStatement cStringUsingEncoding:NSUTF8StringEncoding], -1, &compiledStatement, NULL) == SQLITE_OK)
             {
                 if(sqlite3_step(compiledStatement) == SQLITE_ROW)
@@ -439,15 +413,12 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    
      NSString *setPin = [[NSUserDefaults standardUserDefaults] objectForKey:@"setPin"];
         if([setPin isEqualToString:@"YES"])
         {
             KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"pss" accessGroup:nil];
             [wrapper setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
-            //                NSString *suStr = [wrapper objectForKey:(__bridge id)kSecAttrAccount];
             NSString *str =   [wrapper objectForKey :(__bridge id)kSecValueData];
-            
             PAPasscodeViewController *passcodeViewController = [[PAPasscodeViewController alloc] initForAction:PasscodeActionEnter];
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
                 passcodeViewController.backgroundView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -457,16 +428,11 @@
             passcodeViewController.simple = YES;
             passcodeViewController.passcode = str;
             UINavigationController *navController;
-            
             UIViewController *rootViewController = self.window.rootViewController;
-            
-            if ([rootViewController isKindOfClass:[UITabBarController class]]) {
-                
+            if ([rootViewController isKindOfClass:[UITabBarController class]])
                 navController =(UINavigationController*)[tabBarController selectedViewController];
-                
-            }else{
+            else
                 navController = self.mainNavigation;
-            }
 
             [navController pushViewController:passcodeViewController animated:NO];
         }
@@ -474,25 +440,20 @@
 - (void)PAPasscodeViewControllerDidEnterPasscode:(PAPasscodeViewController *)controller
 {
     UINavigationController *navController;
-    
     UIViewController *rootViewController = self.window.rootViewController;
-    
-    if ([rootViewController isKindOfClass:[UITabBarController class]]) {
-        
+    if ([rootViewController isKindOfClass:[UITabBarController class]])
         navController =(UINavigationController*)[tabBarController selectedViewController];
-        
-    }else{
+    else
         navController = self.mainNavigation;
-    }
+
     UIViewController *VC =nil;
     if ([tabBarController selectedIndex]==0) {
         VC = [[HistoryVC alloc]initWithNibName:@"HistoryVC" bundle:nil];
     }else if ([tabBarController selectedIndex]==1) {
        MyCardVC* myVC = [[MyCardVC alloc]initWithNibName:@"MyCardVC" bundle:nil];
         if ([CommonFunctions reachabiltyCheck])
-        {
             [myVC hudRefresh:self];
-        }
+        
         [navController pushViewController:myVC animated:YES];
     }else if ([tabBarController selectedIndex]==2) {
         VC = [[SettingVC alloc]initWithNibName:@"SettingVC" bundle:nil];
@@ -503,21 +464,16 @@
 -(void)PAPasscodeViewControllerDidCancel:(PAPasscodeViewController *)controller
 {
     NSString *query  = @"";
-    
     query = @"DELETE FROM conversionHistoryTable ";
     DatabaseHandler *dataBaseHandler = [[DatabaseHandler alloc]init];
     [dataBaseHandler executeQuery:query];
-    
     query = @"DELETE FROM getHistoryTable";
     [dataBaseHandler executeQuery:query];
-    
     query = @"DELETE FROM myCards";
     [dataBaseHandler executeQuery:query ];
-    
     NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* documentsDirectory = [paths objectAtIndex:0];
     NSString *patientPhotoFolder = [documentsDirectory stringByAppendingPathComponent:@"patientPhotoFolder"];
-    
     NSString *dataPath = patientPhotoFolder;
     BOOL isDir = NO;
     NSFileManager *fileManager = [[NSFileManager alloc] init];
@@ -529,27 +485,18 @@
         BOOL success = [fileManager removeItemAtPath:dataPath error:nil];
         NSLog(@"%@",success?@"YES":@"NO");
     }
-    
-    
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];                    //deepesh
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setPin"];                         //deepesh
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];                     
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setPin"];                          
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FirstTimeUser"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoginAttamp"];                    //deepesh
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoginAttamp"];                     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"attemp"];
-    
-    
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-    
     UIButton *tapBtn = (UIButton*)[appDelegate.customeTabBar viewWithTag:2];
     [appDelegate customTabBarBtnTap:tapBtn];
-    
     [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"stayLogin"];
     [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"isLogin"];
-    
     UINavigationController *navController = (UINavigationController*)[appDelegate.tabBarController selectedViewController];
     NSArray *viewArray = navController.viewControllers;
     for (int i=0; i<viewArray.count; i++) {
@@ -557,7 +504,6 @@
         {
             [navController popToViewController:[viewArray objectAtIndex:i] animated:YES];
             break;
-            
         }
     }
 }
@@ -753,25 +699,16 @@
 }
 
 - (void)sendMail : (UIButton *)btn{
-    
     Class messageClass = (NSClassFromString(@"MFMessageComposeViewController"));
-    
     UINavigationController *navController;
-    
     UIViewController *rootViewController = self.window.rootViewController;
-    
-    if ([rootViewController isKindOfClass:[UITabBarController class]]) {
-        
+    if ([rootViewController isKindOfClass:[UITabBarController class]])
         navController =(UINavigationController*)[tabBarController selectedViewController];
-        
-    }else{
+      else
         navController = self.mainNavigation;
-    }
     
     if (messageClass != nil) {
-        
         if ([messageClass canSendText]) {
-            
             MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
             controller.mailComposeDelegate = self;
             [controller setToRecipients:[NSArray arrayWithObject:@"cards@caxtonfx.com"]];
@@ -787,20 +724,17 @@
 -(void)shareMail
 {
     UINavigationController *navController;
-    
     Class messageClass = (NSClassFromString(@"MFMessageComposeViewController"));
     UIViewController *rootViewController = self.window.rootViewController;
-    if ([rootViewController isKindOfClass:[UITabBarController class]]) {
+    if ([rootViewController isKindOfClass:[UITabBarController class]])
         navController =(UINavigationController*)[tabBarController selectedViewController];
-    }else{
+    else
         navController = self.mainNavigation;
-    }
+
     if (messageClass != nil) {
         if ([messageClass canSendText]) {
-            
             MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
             controller.mailComposeDelegate = self;
-            //            [controller setToRecipients:[NSArray arrayWithObject:@"cards@caxtonfx.com"]];
             [controller setMessageBody:@"I’ve just used the Caxton FX travel app that makes holiday spending simple. Convert currency in a snap of a photo and manage a Caxton FX account on the move. Download yours here. https://itunes.apple.com/us/app/caxtonfx-app/id687286642?ls=1&mt=8" isHTML:NO];
             [navController presentViewController:controller animated:YES completion:nil];
         }else{
@@ -809,11 +743,10 @@
         }
     }
 }
+
 #pragma mark -
 #pragma mark Compose Mail
-
 -(void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
-    
     if (result == MFMailComposeResultSent) {
         [[[UIAlertView alloc] initWithTitle:@"Success!"
                                     message:@"Your message has been sent. Thanks for sharing the Caxton FX app."
@@ -823,14 +756,10 @@
     }
     UIViewController *rootViewController = self.window.rootViewController;
     UINavigationController *navController;
-    if ([rootViewController isKindOfClass:[UITabBarController class]]) {
-        
+    if ([rootViewController isKindOfClass:[UITabBarController class]])
         navController =(UINavigationController*)[tabBarController selectedViewController];
-        
-    }else{
+    else
         navController = self.mainNavigation;
-        
-    }
     
     [navController dismissViewControllerAnimated:YES completion:NULL];
 }
@@ -840,13 +769,10 @@
     UINavigationController *navController;
     
     UIViewController *rootViewController = self.window.rootViewController;
-    if ([rootViewController isKindOfClass:[UITabBarController class]]) {
-        
+    if ([rootViewController isKindOfClass:[UITabBarController class]])
         navController =(UINavigationController*)[tabBarController selectedViewController];
-        
-    }else{
+    else
         navController = self.mainNavigation;
-    }
     
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
     {
@@ -857,7 +783,6 @@
         
         [navController presentViewController:composeController
                                     animated:YES completion:nil];
-        
         [composeController setCompletionHandler:^(SLComposeViewControllerResult result) {
             [navController dismissViewControllerAnimated:YES completion:nil];
             NSString *output;
@@ -886,13 +811,10 @@
     
     UIViewController *rootViewController = self.window.rootViewController;
     
-    if ([rootViewController isKindOfClass:[UITabBarController class]]) {
-        
+    if ([rootViewController isKindOfClass:[UITabBarController class]])
         navController =(UINavigationController*)[tabBarController selectedViewController];
-        
-    }else{
+     else
         navController = self.mainNavigation;
-    }
     
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
     {
@@ -923,26 +845,20 @@
                     break;
                 default:
                     break;
-                    
             }
         }];
     }
 }
 
-
 #pragma mark MobileADDNotifictionView Method
-
 -(IBAction)cancleBtnPressed:(id)sender
 {
     if(self.mobileNumNotificationView.tag==1)
-    {
         [self.mobileNumNotificationView removeFromSuperview];
-    }else
-    {
+    else {
         [self.mobileNumNotificationView removeFromSuperview];
         AddMobileNoVC *addVc = [[AddMobileNoVC alloc]initWithNibName:@"AddMobileNoVC" bundle:nil];
         UINavigationController *navController = (UINavigationController*)[tabBarController selectedViewController];
-        
         [navController pushViewController:addVc animated:YES];
     }
 }
@@ -950,11 +866,9 @@
 -(IBAction)okBtnPressed:(id)sender
 {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.caxtonfx.com/login/"]];
-    
     NSString *valueToSave = @"NO";
     [[NSUserDefaults standardUserDefaults]setObject:valueToSave forKey:@"FirstTimeUser"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
 }
 
 -(void)aboutCustomeTabbar
@@ -962,15 +876,12 @@
     UIButton *shareBtn = (UIButton *)[self.shareTabBar viewWithTag:1];
     [shareBtn setBackgroundImage:[UIImage imageNamed:@"shareTab"] forState:UIControlStateNormal];
     [shareBtn setBackgroundImage:[UIImage imageNamed:@"shareTabHover"] forState:UIControlStateHighlighted];
-    
     UIButton *rateMeButton = (UIButton *)[self.shareTabBar viewWithTag:2];
     [rateMeButton setBackgroundImage:[UIImage imageNamed:@"rateMeTab"] forState:UIControlStateNormal];
     [rateMeButton setBackgroundImage:[UIImage imageNamed:@"rateMeTabHover"] forState:UIControlStateHighlighted];
-    
     UIButton *feedbackBtn = (UIButton *)[self.shareTabBar viewWithTag:3];
     [feedbackBtn setBackgroundImage:[UIImage imageNamed:@"feedbackTab"] forState:UIControlStateNormal];
     [feedbackBtn setBackgroundImage:[UIImage imageNamed:@"feedbackTabHover"] forState:UIControlStateHighlighted];
-    
 }
 
 -(void)callgetGloableRateApi
@@ -980,7 +891,6 @@
         sharedManager *manger = [[sharedManager alloc]init];
         manger.delegate = self;
         NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetGlobalRates/></soapenv:Body></soapenv:Envelope>";
-        
         [manger callServiceWithRequest:soapMessage methodName:@"GetGlobalRates" andDelegate:self];
     }
 }
@@ -988,13 +898,10 @@
 -(void)callServiceForFetchingHistoryData
 {
     NSString *query = [NSString stringWithFormat:@"select CurrencyCardID from myCards"];
-    
     NSMutableArray *currencyIdMA = [kHandler fetchingDataFromTable:query];
-    BOOL state =         [CommonFunctions reachabiltyCheck];
+    BOOL state = [CommonFunctions reachabiltyCheck];
     if (state)
-    {
         [self fetchingHistoryData:currencyIdMA];
-    }
 }
 
 -(void)fetchingHistoryData:(NSMutableArray *)currencyIdMA
@@ -1003,7 +910,6 @@
     {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self fetchingTransactions:[currencyIdMA objectAtIndex:i]];
-            
         });
     }
 }
@@ -1014,7 +920,6 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
     [keychain setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
-    
     NSString *soapMessage = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">"
                              "<soapenv:Header/>"
                              "<soapenv:Body>"
@@ -1026,9 +931,7 @@
                              "</soapenv:Body>"
                              "</soapenv:Envelope>",[keychain objectForKey:(__bridge id)kSecAttrAccount],[keychain objectForKey:(__bridge id)kSecValueData],cardId];
     currentId = cardId;
-    
     [[sharedManager getSharedInstance] callServiceWithRequest:soapMessage methodName:@"GetHistory" andDelegate:self];
-    
 }
 -(void)callGetPromoApi
 {
@@ -1037,7 +940,6 @@
         sharedManager *manger = [[sharedManager alloc]init];
         manger.delegate = self;
         NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetPromo/></soapenv:Body></soapenv:Envelope>";
-        
         [manger callServiceWithRequest:soapMessage methodName:@"GetPromo" andDelegate:self];
     }
 }
@@ -1049,7 +951,6 @@
         sharedManager *manger = [[sharedManager alloc]init];
         manger.delegate = self;
         NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetDefaults/></soapenv:Body></soapenv:Envelope>";
-        
         [manger callServiceWithRequest:soapMessage methodName:@"GetDefaults" andDelegate:self];
     }
 }
@@ -1063,10 +964,9 @@
     {
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"currencyflags_map" ofType:@"csv"];
         NSString *myText = nil;
-        
-        if (filePath) {
+        if (filePath)
             myText = [NSString stringWithContentsOfFile:filePath encoding:NSISOLatin1StringEncoding error:nil];
-        }
+        
         NSArray *contentArray = [myText componentsSeparatedByString:@"\r"]; // CSV ends with ACSI 13 CR (if stored on a Mac Excel 2008)
         NSMutableArray *codesMA = [NSMutableArray new];
         for (NSString *item in contentArray)
@@ -1074,9 +974,7 @@
             NSArray *itemArray = [item componentsSeparatedByString:@","];
             // log first item
             if ([itemArray count] > 3)
-            {
                 [codesMA addObject:[itemArray objectAtIndex:3]];
-            }
         }
         NSMutableArray *glabalRatesMA  = [[NSMutableArray alloc] init];
         if (![response isEqualToString:@"Response code 404/n"]) {
@@ -1150,7 +1048,6 @@
         NSString *str = [TBXML textForElement:GetPromoHtmlResult];
         [[NSUserDefaults standardUserDefaults] setValue:str forKey:@"moreInfoHtml"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        
     }
     else if([service isEqualToString:@"GetDefaults"])
     {
@@ -1191,7 +1088,6 @@
     }
     else if([service isEqualToString:@"GetHistory"])
     {
-        
         TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
         TBXMLElement *root = tbxml.rootXMLElement;
         TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
@@ -1208,34 +1104,25 @@
                 TBXMLElement *CardElm    = [TBXML childElementNamed:@"a:CardHistory" parentElement:cardsElem];
                 while (CardElm != nil)
                 {
-                    
                     TBXMLElement *_amount   = [TBXML childElementNamed:@"a:TxnAmount" parentElement:CardElm];
                     NSString *amount = [TBXML textForElement:_amount];
-                    
                     TBXMLElement *_date    = [TBXML childElementNamed:@"a:TxnDate" parentElement:CardElm];
                     NSString *date = [TBXML textForElement:_date];
-                    
                     TBXMLElement *_vendor    = [TBXML childElementNamed:@"a:Vendor" parentElement:CardElm];
                     NSString *vendor = [TBXML textForElement:_vendor];
-                    
-                    
                     NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithObjectsAndKeys:amount,@"amount",date,@"date",vendor,@"vendor", nil];
-                    
                     [self._array addObject:dict];
-                    
                     CardElm = [TBXML nextSiblingNamed:@"a:CardHistory" searchFromElement:CardElm];
-                    
                 }
             }
             [[DatabaseHandler getSharedInstance] executeQuery:[NSString stringWithFormat:@"DELETE FROM getHistoryTable where currencyId = '%@'",currentId]];
             for(int i=0;i<self._array.count;i++)
             {
                 NSMutableDictionary *dict = [self._array objectAtIndex:i];
-                
                 NSString *value = [[DatabaseHandler getSharedInstance] getDataValue:[NSString stringWithFormat:@"select CardCurrencyDescription from myCards where CurrencyCardID = %@",currentId]];
-                if (!value | (value.length == 0)) {
+                if (!value | (value.length == 0))
                     value = @"";
-                }
+                
                 NSString *queryStr = [NSString stringWithFormat:@"INSERT INTO getHistoryTable('amount','date','vendor','currencyId','cardName') values (%f,'%@','%@','%@','%@')",[[dict objectForKey:@"amount"] floatValue],[dict objectForKey:@"date"],[dict objectForKey:@"vendor"],currentId,value];
                 [[DatabaseHandler getSharedInstance]executeQuery:queryStr];
             }
@@ -1245,17 +1132,14 @@
 
 -(void)loadingFailedWithError:(NSString *)error  withServiceName:(NSString *)service
 {
-    if ([error isKindOfClass:[NSString class]]) {
+    if ([error isKindOfClass:[NSString class]])
         NSLog(@"Service: %@ | Response is  : %@",service,error);
-    }else{
+    else
         NSLog(@"Service: %@ | Response UKNOWN ERROR",service);
-    }
-    
 }
 
 #define shouldUseDelegateExample 1
 - (void)showActionSheet {
-    
     JJGActionSheet *actionSheet = [[JJGActionSheet alloc] initWithTitle:nil cancelButtonTitle:@"" primaryButtonTitle:@"" destructiveButtonTitle:@"" otherButtonTitles:@"", nil];
     if (shouldUseDelegateExample) {
         actionSheet.delegate = self;
@@ -1312,7 +1196,6 @@
 - (IBAction) handleTapGesture:(id)sender
 {
     shouldShowImgPicker = YES;
-    
     CGRect frame = self.topBarView.frame;
     frame.origin.y = 0.0f;
     [UIView beginAnimations:nil context:NULL];
@@ -1333,7 +1216,6 @@
     else if ([sender state] == UIGestureRecognizerStateChanged)
     {
         CGPoint translate = [sender translationInView:self.topBarView.superview];
-    
         CGRect frame = self.topBarView.frame;
         frame.origin.y = startPos.y+translate.y;
         
@@ -1352,31 +1234,21 @@
     else if ([sender state] == UIGestureRecognizerStateEnded)
     {
         CGPoint translate = [sender translationInView:self.topBarView.superview];
-        
         shouldShowImgPicker = NO;
-        
         float y = -460.0f;
         float minScrollY = 100.0f;
-        
-        if (IS_HEIGHT_GTE_568) 
-        {
+        if (IS_HEIGHT_GTE_568){
             y = -548.0f;
             minScrollY = 180.0f;
         }
-        
-        if (translate.y > minScrollY)
-        {
+        if (translate.y > minScrollY){
             y = 0.0f;
             shouldShowImgPicker = YES;
         }
-        
         CGRect frame = self.topBarView.frame;
         frame.origin.y = y;
-        
         CGFloat velocityY = (0.2*[(UIPanGestureRecognizer*)sender velocityInView:self.topBarView].y);
-        
         CGFloat animationDuration = (ABS(velocityY)*.0002)+.2;
-        
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:animationDuration];
         [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
@@ -1396,13 +1268,9 @@
         ImagePickerVC *ivc = (ImagePickerVC*) [[[self mainNavigation] viewControllers] objectAtIndex:0];
         [ivc showCamera];
         if (IS_HEIGHT_GTE_568)
-        {
             [topBarView setFrame:CGRectMake(0, -548, 320, CGRectGetHeight(topBarView.frame))];
-        }
         else
-        {
             [topBarView setFrame:CGRectMake(0, -460, 320, CGRectGetHeight(topBarView.frame))];
-        }
     }
 }
 
@@ -1417,7 +1285,6 @@
     [UIView setAnimationDidStopSelector:@selector(animationFinish)];
     self.topBarView.frame = frame;
     [UIView commitAnimations];
-    
 }
 
 -(void) animationFinish
@@ -1426,53 +1293,27 @@
     [UIView setAnimationDuration:1.00f];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     [UIView setAnimationDelegate:self];
-    
     if (IS_HEIGHT_GTE_568)
-    {
         [topBarView setFrame:CGRectMake(0, -548, 320, CGRectGetHeight(topBarView.frame))];
-    }
     else
-    {
         [topBarView setFrame:CGRectMake(0, -460, 320, CGRectGetHeight(topBarView.frame))];
-    }
     
     [UIView commitAnimations];
-}
-
--(void)actionSheet:(JJGActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    NSLog(@"didDismissWithButtonIndex %d", buttonIndex);
-}
-
--(void)actionSheet:(JJGActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex {
-    NSLog(@"willDismissWithButtonIndex %d", buttonIndex);
-}
-
--(void)willPresentActionSheet:(JJGActionSheet *)actionSheet {
-    NSLog(@"willPresentActionSheet");
-}
-
--(void)didPresentActionSheet:(JJGActionSheet *)actionSheet {
-    NSLog(@"didPresentActionSheet");
 }
 
 -(void)actionSheet:(JJGActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch (buttonIndex) {
         case 1:
-            
             [self fbBtnPressed];
             break;
         case 2:
-            
             [self twitterBtnPressed];
             break;
         case 3:
-            
             [self shareMail];
             break;
-            
         case 0:
-            
             break;
         default:
             break;
@@ -1482,21 +1323,16 @@
 -(void)doLogout
 {
     NSString *query  = @"";
-    
     query = @"DELETE FROM conversionHistoryTable ";
     DatabaseHandler *dataBaseHandler = [[DatabaseHandler alloc]init];
     [dataBaseHandler executeQuery:query];
-    
     query = @"DELETE FROM getHistoryTable";
     [dataBaseHandler executeQuery:query];
-    
     query = @"DELETE FROM myCards";
     [dataBaseHandler executeQuery:query ];
-    
     NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* documentsDirectory = [paths objectAtIndex:0];
     NSString *patientPhotoFolder = [documentsDirectory stringByAppendingPathComponent:@"patientPhotoFolder"];
-    
     NSString *dataPath = patientPhotoFolder;
     BOOL isDir = NO;
     NSFileManager *fileManager = [[NSFileManager alloc] init];
@@ -1504,22 +1340,17 @@
                            isDirectory:&isDir] && isDir == NO) {
         [fileManager removeItemAtPath:dataPath error:nil];
     }
-    
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];                    //deepesh
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setPin"];                         //deepesh
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setPin"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FirstTimeUser"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoginAttamp"];                    //deepesh
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoginAttamp"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"attemp"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    UIButton *tapBtn = (UIButton*)[self.customeTabBar viewWithTag:2];
-    [self customTabBarBtnTap:tapBtn];
-    
     [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"stayLogin"];
     [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"isLogin"];
-    
-    //TO-DO: THIS IS NOT WORKING IF THE USER HAS 'STAY LOGGED IN' AND NO PIN
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    UIButton *tapBtn = (UIButton*)[self.customeTabBar viewWithTag:2];
+    [self customTabBarBtnTap:tapBtn];
     UINavigationController *navController = (UINavigationController*)[self.tabBarController selectedViewController];
     NSArray *viewArray = navController.viewControllers;
     for (int i=0; i<viewArray.count; i++) {
@@ -1529,5 +1360,25 @@
             break;
         }
     }
+}
+-(NSInteger )hourSinceNow
+{
+    NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"khistoryData"];
+    NSDate* date2 = [NSDate date];
+    NSTimeInterval distanceBetweenDates = [date2 timeIntervalSinceDate:date1];
+    double secondsInAnHour = 3600;
+    NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
+    NSLog(@"%d",hoursBetweenDates);
+    return hoursBetweenDates;
+}
+-(NSInteger )minutesSinceNow
+{
+    NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"khistoryData"];
+    NSDate* date2 = [NSDate date];
+    NSTimeInterval distanceBetweenDates = [date2 timeIntervalSinceDate:date1];
+    double secondsInAnMinute = 60;
+    NSInteger minutesBetweenDates = distanceBetweenDates / secondsInAnMinute;
+    NSLog(@"%d",minutesBetweenDates);
+    return minutesBetweenDates;
 }
 @end

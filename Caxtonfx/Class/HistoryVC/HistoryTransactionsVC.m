@@ -28,36 +28,13 @@
 @synthesize heightConstraint;
 @synthesize refreshControl;
 
-
--(NSInteger )hourSinceNow
-{
-    NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"khistoryData"];
-    NSDate* date2 =  [NSDate date];
-    
-    NSTimeInterval distanceBetweenDates = [date1 timeIntervalSinceDate:date2];
-    double secondsInAnHour = 3600;
-    NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
-    
-    return hoursBetweenDates;
-}
-
 - (void)refresh :(id)sender
 {
-    
     NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"khistoryData"];
-     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:[CommonFunctions statusOfLastUpdate:date1]];
-    
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:[CommonFunctions statusOfLastUpdate:date1]];
     if([CommonFunctions reachabiltyCheck])
     {
-        if ([self hourSinceNow] < 24)
-        {
-            [self performSelectorInBackground:@selector(callServiceForFetchingHistoryData) withObject:nil];
-        }
-        else
-        {
-            [self performSelectorInBackground:@selector(callServiceForFetchingHistoryData) withObject:nil];
-        }
-        
+       [self performSelectorInBackground:@selector(callServiceForFetchingHistoryData) withObject:nil];
     }
     else
     {
@@ -70,20 +47,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   
     self.refreshControl = [[UIRefreshControl alloc] init];
     // Configure Refresh Control
     [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"khistoryData"];
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:[CommonFunctions statusOfLastUpdate:date1]];
-    
     // Configure View Controller
     [self.table addSubview:self.refreshControl];
-    
     [self customizingNavigationBar];
-    
     _tempMA = [[NSMutableArray alloc] init];
-
     [self.table removeConstraint:heightConstraint];
     if(IS_HEIGHT_GTE_568)
     {
@@ -94,29 +66,23 @@
         heightConstraint = [NSLayoutConstraint constraintWithItem:self.table attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:nil multiplier:1 constant:416];
         [self.table addConstraint:heightConstraint];
     }
-    
     self.table.sectionHeaderHeight = 0.0f;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
-        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(userTextSizeDidChange)
                                                      name:UIContentSizeCategoryDidChangeNotification
                                                    object:nil];
     }
-
 }
 
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     AppDelegate *appDelegate = [AppDelegate getSharedInstance];
     [[appDelegate customeTabBar] setHidden:YES];
-
     UIButton *recieptsBtn = (UIButton*) [appDelegate.bottomView viewWithTag:1];
     [appDelegate BottomButtonTouched:recieptsBtn];
-    
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3f];
     [[appDelegate bottomView] setFrame:CGRectMake(0.0f, appDelegate.window.frame.size.height-55.0f, 320.0f, 55.0f)];
@@ -131,13 +97,10 @@
     //show navigation bar
     [self.navigationController setNavigationBarHidden:FALSE];
     [[[self navigationController] navigationBar] setBackgroundImage:[UIImage imageNamed:@"topBar"] forBarMetrics:UIBarMetricsDefault];
-    
     self.navigationItem.hidesBackButton = YES;
     [self.navigationController.navigationBar setTintColor:[UIColor redColor]];
-    
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     [titleView setBackgroundColor:[UIColor clearColor]];
-    
     //set title
     UILabel *titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(40.0f, 0.0f, 250.0f, 30.0f)];
     [titleLbl setBackgroundColor:[UIColor clearColor]];
@@ -150,7 +113,6 @@
     [titleLbl.layer setShadowOpacity:1.0f];
     [titleLbl setTextAlignment:NSTextAlignmentLeft];
     [titleView addSubview:titleLbl];
-    
     NSMutableDictionary *dict = [historyArray objectAtIndex:0];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
@@ -158,9 +120,7 @@
     [df setDateFormat:@"dd/MM/yyyy"];
     NSString *dateIs = [df stringFromDate:date];
     [df setDateFormat:@"HH:mm"];
-    
     NSString *timeIs = [df stringFromDate:date];
-    
     //set title
     self.titleNameLbl= [[UILabel alloc] initWithFrame:CGRectMake(85, 15.0f, 150.0f, 30.0f)];
     [self.titleNameLbl setBackgroundColor:[UIColor clearColor]];
@@ -174,9 +134,7 @@
     [self.titleNameLbl setTextAlignment:NSTextAlignmentLeft];
     [self.titleNameLbl setTextAlignment:NSTextAlignmentLeft];
     [titleView addSubview:self.titleNameLbl];
-    
     [self.navigationItem setTitleView:titleView];
-    
     /****** add custom left bar button (Back to history Button) at navigation bar  **********/
     UIButton *historyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     historyBtn.frame = CGRectMake(0,0,32,32);
@@ -185,7 +143,6 @@
     [historyBtn addTarget:self action:@selector(backToHistoryBtnTouched:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithCustomView:historyBtn];
     [self.navigationItem setLeftBarButtonItem:leftBtn];
-    
 }
 
 -(void)backToHistoryBtnTouched:(UIButton *)sender
@@ -216,13 +173,11 @@
 {
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
     [headerView setBackgroundColor:[UIColor darkGrayColor]];
-    
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 6, 200,22)];
     [titleLabel setFont:[UIFont fontWithName:@"OpenSans" size:16.0f]];
     [titleLabel setBackgroundColor:[UIColor clearColor]];
     [titleLabel setTextColor:[UIColor whiteColor]];
     [titleLabel setTextAlignment:NSTextAlignmentLeft];
-    
     NSString *sectionName= nil;
     switch (section) {
         case 0:
@@ -233,7 +188,6 @@
             break;
     }
     [titleLabel setText:sectionName];
-    
     [headerView addSubview:titleLabel];
     return nil;
 }
@@ -247,45 +201,35 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"TransactionCustomCellIdentifier";
-        
-        TransactionCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-        // If no cell is available, create a new one using the given identifier.
-        if (cell == nil)
-        {
-            cell = [[TransactionCustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TransactionCustomCell"
+    TransactionCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    // If no cell is available, create a new one using the given identifier.
+    if (cell == nil)
+    {
+        cell = [[TransactionCustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TransactionCustomCell"
                                                          owner:self options:nil];
-            cell = [nib objectAtIndex:0];
-            cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        }
-    
+        cell = [nib objectAtIndex:0];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    }
     NSMutableDictionary *dict = [historyArray objectAtIndex:indexPath.row];
-    
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
         cell.merchantNameLabel.font = [self fontForBodyTextStyle];
         cell.currencyValueLabel.font = [self fontForBodyTextStyle];
         cell.timeCountryDateLabel.font = [self fontForCaptionTextStyle];
         cell.cardUsedLabel.font = [self fontForCaptionTextStyle];
-        
     }
-    
     cell.merchantNameLabel.text =[dict objectForKey:@"vendor"];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSLocale* formatterLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
     [df setLocale:formatterLocale];
     NSDate *date = [df dateFromString:[dict objectForKey:@"date"]];
-    
     [df setDateFormat:@"dd/MM/yyyy"];
     NSString *dateIs = [df stringFromDate:date];
     [df setDateFormat:@"HH:mm"];
-    
     NSString *timeIs = [df stringFromDate:date];
-    
     cell.timeCountryDateLabel.text = [NSString stringWithFormat:@"%@ | %@",timeIs,dateIs];
-//    cell.cardUsedLabel.text = [dict objectForKey:@"cardName"];
     cell.currencyValueLabel.text = [NSString stringWithFormat:@"%.02f",[[dict objectForKey:@"amount"] floatValue]];
-    
     NSString *cardString ;
     NSString *cardNameString =[dict objectForKey:@"cardName"];
     if([cardNameString isEqualToString:@"Euro"])
@@ -298,18 +242,15 @@
     {
         cardString = @"Dollar Traveller card";
     }
-    
     cell.cardUsedLabel.text = cardString;
-    
     if (selectedIndex == indexPath.row)
-    [cell setBackgroundColor:[UIColor colorWithRed:244.0f/255.0f green:244.0f/255.0f blue:244.0f/255.0f alpha:1.0f]];
+        [cell setBackgroundColor:[UIColor colorWithRed:244.0f/255.0f green:244.0f/255.0f blue:244.0f/255.0f alpha:1.0f]];
    else
         [cell setBackgroundColor:[UIColor whiteColor]];
     
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 83, 320, 1)];
     [lineView setBackgroundColor:UIColorFromRedGreenBlue(220, 220, 220)];
     [cell addSubview:lineView];
-    
     return cell;
 }
 

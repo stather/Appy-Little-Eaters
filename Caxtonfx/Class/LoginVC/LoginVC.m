@@ -54,19 +54,15 @@
     self.navigationItem.hidesBackButton = YES;
     self.navigationController.navigationBarHidden = NO;
     [CommonFunctions setNavigationTitle:@"Log in" ForNavigationItem:self.navigationItem];
-    
     UIButton *logInBtn = (UIButton*)[self.view viewWithTag:6];
     [logInBtn btnWithOutCheckImage];
     [logInBtn btnWithOutCrossImage];
-    
     [emailTxtFld removeData];
     [passwordTxtFld removeData];
-    
     AppDelegate *appDeleget = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     appDeleget.topBarView.hidden= YES;
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
         self.navigationController.navigationBar.translucent=NO;
-    }
 }
 
 #pragma mark -----------
@@ -76,29 +72,22 @@
 {
     UILabel *topHeadLineLbl = (UILabel *) [self.view viewWithTag:1];
     [topHeadLineLbl setFont:[UIFont fontWithName:@"OpenSans" size:13.0f]];
-    
     UILabel *rememberLbl = (UILabel *) [self.view viewWithTag:4];
     [rememberLbl setFont:[UIFont fontWithName:@"OpenSans" size:13.0f]];
-    
     UIButton *infoBtn = (UIButton *) [self.view viewWithTag:7];
-    
     [infoBtn setBackgroundImage:[UIImage imageNamed:@"cancelBtnLogin"] forState:UIControlStateNormal];
     [infoBtn setBackgroundImage:[UIImage imageNamed:@"cancelBtnSelectedLogin"] forState:UIControlStateHighlighted];
-    
     UIButton *loginBtn = (UIButton *) [self.view viewWithTag:6];
     [loginBtn setBackgroundImage:[UIImage imageNamed:@"loginBtn"] forState:UIControlStateNormal];
     [loginBtn setBackgroundImage:[UIImage imageNamed:@"loginBtnSelected"] forState:UIControlStateHighlighted];
-    
     UILabel *errorLable = (UILabel*)[self.view viewWithTag:10];
     [errorLable setFont:[UIFont fontWithName:@"OpenSans-Bold" size:11]];
     errorLable.textColor = UIColorFromRedGreenBlue(213, 32, 39);
-    
     emailTxtFld.font = [UIFont fontWithName:@"OpenSans-Bold" size:13];
     emailTxtFld.textColor = UIColorFromRedGreenBlue(102, 102, 102);
     passwordTxtFld.font = [UIFont fontWithName:@"OpenSans-Bold" size:13];
     passwordTxtFld.textColor = UIColorFromRedGreenBlue(102, 102, 102);
 }
-
 
 #pragma mark -----------
 #pragma mark IBAction Method
@@ -121,7 +110,6 @@
 {
     UIButton *logInBtn = (UIButton*)[self.view viewWithTag:6];
     [logInBtn btnWithOutCrossImage];
-    
     if ([CommonFunctions reachabiltyCheck])
     {
         if ((emailTxtFld.text.length==0) && (passwordTxtFld.text.length==0))
@@ -166,7 +154,6 @@
         }
         else
         {
-            
             [self loginWithAppAccount:4];
             [logInBtn btnWithActivityIndicator];
             [self.view endEditing:YES];
@@ -197,7 +184,6 @@
                 manger.delegate = self;
                 
                 NSString *soapMessage = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:CheckAuthGetCards><tem:UserName>%@</tem:UserName><tem:Password>%@</tem:Password></tem:CheckAuthGetCards></soapenv:Body></soapenv:Envelope>",emailTxtFld.text,passwordTxtFld.text];
-                
                 [manger callServiceWithRequest:soapMessage methodName:@"CheckAuthGetCards" andDelegate:self];
             }else
             {
@@ -206,9 +192,7 @@
                 {
                     sharedManager *manger = [[sharedManager alloc]init];
                     manger.delegate = self;
-                    
                     NSString *soapMessage = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:CheckAuthGetCards><tem:UserName>%@</tem:UserName><tem:Password>%@</tem:Password></tem:CheckAuthGetCards></soapenv:Body></soapenv:Envelope>",emailTxtFld.text,passwordTxtFld.text];
-                    
                     [manger callServiceWithRequest:soapMessage methodName:@"CheckAuthGetCards" andDelegate:self];
                 }else
                 {
@@ -221,7 +205,6 @@
             manger.delegate = self;
             
             NSString *soapMessage = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:CheckAuthGetCards><tem:UserName>%@</tem:UserName><tem:Password>%@</tem:Password></tem:CheckAuthGetCards></soapenv:Body></soapenv:Envelope>",emailTxtFld.text,passwordTxtFld.text];
-            
             [manger callServiceWithRequest:soapMessage methodName:@"CheckAuthGetCards" andDelegate:self];
         }
     }else
@@ -248,7 +231,6 @@
         sharedManager *manger = [[sharedManager alloc]init];
         manger.delegate = self;
         NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetDefaults/></soapenv:Body></soapenv:Envelope>";
-        
         [manger callServiceWithRequest:soapMessage methodName:@"GetDefaults" andDelegate:self];
     }
 }
@@ -261,7 +243,6 @@
         sharedManager *manger = [[sharedManager alloc]init];
         manger.delegate = self;
         NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetGlobalRates/></soapenv:Body></soapenv:Envelope>";
-        
         [manger callServiceWithRequest:soapMessage methodName:@"GetGlobalRates" andDelegate:self];
     }
 }
@@ -270,7 +251,6 @@
 -(void)startSendingReq:(UIButton *)btn
 {
     DatabaseHandler *dbHandler = [[DatabaseHandler alloc]init];
-    
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"currencyid-symbol-map" ofType:@"csv"];
     NSString *myText = nil;
     if (filePath) {
@@ -298,11 +278,8 @@
     [btn btnWithActivityIndicator];
     [btn btnWithOutCrossImage];
     [btn btnSuccess];
-    
     [[NSUserDefaults standardUserDefaults] setInteger:([[NSUserDefaults standardUserDefaults] integerForKey:@"ApplaunchCount"] + 1) forKey:@"ApplaunchCount"];
-    
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
     [self performSelectorOnMainThread:@selector(goTopupScreen) withObject:nil waitUntilDone:nil];
     [self showErrorMsg:@""];
 }
@@ -320,12 +297,10 @@
         passcodeViewController.delegate = self;
         passcodeViewController.simple = YES;
         [self.navigationController pushViewController:passcodeViewController animated:YES];
-        
     }else
     {
         MyCardVC *cardVC = [[MyCardVC alloc]initWithNibName:@"MyCardVC" bundle:nil];
         [self.navigationController pushViewController:cardVC animated:YES];
-        
     }
 }
 
@@ -359,7 +334,6 @@
     [emailTxtFld incorrectDataTxtFld];
     [passwordTxtFld incorrectDataTxtFld];
 }
-
 
 -(void)loginWithAppAccount:(NSInteger)BtnTag
 {
@@ -426,7 +400,7 @@
             [keychain2 setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
             [keychain2 setObject:userMobileStr forKey:(__bridge id)kSecAttrAccount];
             [keychain2 setObject:userMobileStr forKey:(__bridge id)kSecValueData];
-            
+
             if([statusCodeStr intValue]!= 003)
             {
                 TBXMLElement *cardsElem = [TBXML childElementNamed:@"a:cards" parentElement:checkAuthGetCardsResultElem];
@@ -437,37 +411,25 @@
                     {
                         TBXMLElement *cardBalance   = [TBXML childElementNamed:@"a:CardBalance" parentElement:CardElm];
                         NSString *cardBalanceStr = [TBXML textForElement:cardBalance];
-                        
                         TBXMLElement *CardCurrencyDescription    = [TBXML childElementNamed:@"a:CardCurrencyDescription" parentElement:CardElm];
                         NSString *CardCurrencyDescriptionStr = [TBXML textForElement:CardCurrencyDescription];
-                        
                         TBXMLElement *CardCurrencyID    = [TBXML childElementNamed:@"a:CardCurrencyID" parentElement:CardElm];
                         NSString *CardCurrencyIDStr = [TBXML textForElement:CardCurrencyID];
-                        
                         TBXMLElement *CardCurrencySymbol    = [TBXML childElementNamed:@"a:CardCurrencySymbol" parentElement:CardElm];
                         NSString *CardCurrencySymbolStr = [TBXML textForElement:CardCurrencySymbol];
-                        
                         TBXMLElement *CardName    = [TBXML childElementNamed:@"a:CardName" parentElement:CardElm];
                         NSString *CardNameStr = [TBXML textForElement:CardName];
-                        
                         TBXMLElement *CardNumber    = [TBXML childElementNamed:@"a:CardNumber" parentElement:CardElm];
                         NSString *CardNumberStr = [TBXML textForElement:CardNumber];
-                        
                         TBXMLElement *CardType    = [TBXML childElementNamed:@"a:CardType" parentElement:CardElm];
                         NSString *CardTypeStr = [TBXML textForElement:CardType];
-                        
                         TBXMLElement *CurrencyCardID    = [TBXML childElementNamed:@"a:CurrencyCardID" parentElement:CardElm];
                         NSString *CurrencyCardIDStr = [TBXML textForElement:CurrencyCardID];
-                        
                         TBXMLElement *ProductTypeID    = [TBXML childElementNamed:@"a:ProductTypeID" parentElement:CardElm];
                         NSString *ProductTypeIDStr = [TBXML textForElement:ProductTypeID];
-                        
                         TBXMLElement *CurrencyCardTypeID    = [TBXML childElementNamed:@"a:CurrencyCardTypeID" parentElement:CardElm];
                         NSString *CurrencyCardTypeIDStr = [TBXML textForElement:CurrencyCardTypeID];
-                        
-                        
                         NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithObjectsAndKeys:cardBalanceStr,@"cardBalanceStr",CardCurrencyDescriptionStr,@"CardCurrencyDescriptionStr",CardCurrencyIDStr,@"CardCurrencyIDStr",CardCurrencySymbolStr,@"CardCurrencySymbolStr",CardNameStr,@"CardNameStr",CardNumberStr,@"CardNumberStr",CurrencyCardIDStr,@"CurrencyCardIDStr",ProductTypeIDStr,@"ProductTypeIDStr",CurrencyCardTypeIDStr ,@"CurrencyCardTypeIDStr",CardTypeStr,@"CardTypeStr", nil];
-                        
                         [array addObject:dict];
                         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLogin"];
                          [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"LoginAttamp"];
@@ -483,23 +445,18 @@
                     NSString *queryStr = [NSString stringWithFormat:@"INSERT INTO myCards values (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",[dict objectForKey:@"CurrencyCardIDStr"],[dict objectForKey:@"CurrencyCardTypeIDStr"],[dict objectForKey:@"ProductTypeIDStr"],[dict objectForKey:@"CardCurrencyIDStr"],[dict objectForKey:@"cardBalanceStr"],[dict objectForKey:@"CardCurrencyDescriptionStr"],[dict objectForKey:@"CardCurrencySymbolStr"],[dict objectForKey:@"CardNameStr"],[dict objectForKey:@"CardNumberStr"],[dict objectForKey:@"CardTypeStr"],@"NO",@"NO"];
                     [DBHandler executeQuery:queryStr];
                 }
-                
                 [[NSUserDefaults standardUserDefaults]setObject:[NSDate date] forKey:@"updateDate"];
                 [[NSUserDefaults standardUserDefaults]synchronize];
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLogin"];
                 [[NSUserDefaults standardUserDefaults]synchronize];
-                
                 // this work is done for remove histrory when user not set pin or remove pin
                 NSString *query  = @"";
                 query = @"DELETE FROM conversionHistoryTable ";
                 DatabaseHandler *dataBaseHandler = [[DatabaseHandler alloc]init];
                 [dataBaseHandler executeQuery:query];
-                
                 query = [NSString stringWithFormat:@"DELETE FROM getHistoryTable"];
                 [dataBaseHandler executeQuery:query];
-                
                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
-                
                 // this is done for the remove history data.
                 KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
                 [keychain setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
@@ -540,7 +497,6 @@
                         LoginAttamp = [userDefaults integerForKey:@"LoginAttamp"];
                         LoginAttamp = LoginAttamp +1;
                         [userDefaults setInteger:LoginAttamp forKey:@"LoginAttamp"];
-                        
                     }else
                     {
                         NSDate *currentdate = [NSDate date];
@@ -567,7 +523,6 @@
                     [userDefaults synchronize];
                     LoginAttamp = 1;
                 }
-                
                 preferredCurrency = @"GBP";
                 [userDefaults setObject:@"GBP" forKey:@"defaultCurrency"];
                 [userDefaults setObject:@"flag" forKey:@"defaultCurrencyImage"];
@@ -577,18 +532,16 @@
             {
                 [self showErrorMsg:@"Your Caxton Fx account has been locked. To unlock your account please email info@caxtonfxcard.com"];
                 [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"Lock"];
-                
                 UIButton *button = (UIButton*)[self.view viewWithTag:6];
                 [button btnWithoutActivityIndicator];
                 [button btnWithCrossImage];
                 [emailTxtFld incorrectDataTxtFld];
                 [passwordTxtFld incorrectDataTxtFld];
-                
             }else
             {
                 NSLog(@"LoginAttamp - > %d",LoginAttamp);
                 if(LoginAttamp == 1 || LoginAttamp == 0)
-                [self showErrorMsg:@"Your username or password cannot be verifield please try again."];
+                    [self showErrorMsg:@"Your username or password cannot be verifield please try again."];
                 else if (LoginAttamp == 2)
                     [self showErrorMsg:@"Your username or password cannot be verified please try again. If you are unsure of your password please use the link above to reset it."];
                 
@@ -604,9 +557,9 @@
     {
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"currencyflags_map" ofType:@"csv"];
         NSString *myText = nil;
-        if (filePath) {
+        if (filePath)
             myText = [NSString stringWithContentsOfFile:filePath encoding:NSISOLatin1StringEncoding error:nil];
-        }
+        
         NSArray *contentArray = [myText componentsSeparatedByString:@"\r"];
         NSMutableArray *codesMA = [NSMutableArray new];
         NSMutableArray *CountryMA = [NSMutableArray new];
@@ -650,11 +603,9 @@
                     [dict setObject:[TBXML textForElement:rate] forKey:@"rate"];
                     int index = -1;
                     NSString *imageName = @"";
-                    
                     if ([codesMA containsObject:[dict objectForKey:@"currencyCode"]])
                     {
                         index=  [codesMA indexOfObject:[dict objectForKey:@"currencyCode"]];
-                        
                     }
                     if(index >=0)
                     {
@@ -695,7 +646,6 @@
             TBXMLElement *maxTotalBalance = [TBXML childElementNamed:@"a:MaxTotalBalance" parentElement:phoenproduct];
             TBXMLElement *minTopUp = [TBXML childElementNamed:@"a:MinTopUp" parentElement:phoenproduct];
             TBXMLElement *productID = [TBXML childElementNamed:@"a:ProductID" parentElement:phoenproduct];
-                        
             NSMutableDictionary *tempDic = [[NSMutableDictionary alloc]init];
             [tempDic setValue:[TBXML textForElement:ccy] forKey:@"ccy"];
             [tempDic setValue:[TBXML textForElement:description] forKey:@"description"];
@@ -703,24 +653,19 @@
             [tempDic setValue:[TBXML textForElement:maxTotalBalance] forKey:@"maxTotalBalance"];
             [tempDic setValue:[TBXML textForElement:minTopUp] forKey:@"minTopUp"];
             [tempDic setValue:[TBXML textForElement:productID] forKey:@"productID"];
-            
             phoenproduct = [TBXML nextSiblingNamed:@"a:PhoenixProduct" searchFromElement:phoenproduct];
-            
             [getDefaultDataArr addObject:tempDic];
         }
         NSString *deleteQuerry = [NSString stringWithFormat:@"DELETE FROM getDefaults"];
         DatabaseHandler *database = [[DatabaseHandler alloc]init];
         [database executeQuery:deleteQuerry];
-        
         for (int i = 0; i < getDefaultDataArr.count ; i++)
         {
             NSString *query = [NSString stringWithFormat:@"insert into getDefaults values (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",[[getDefaultDataArr objectAtIndex:i] valueForKey:@"ccy"],[[getDefaultDataArr objectAtIndex:i]valueForKey:@"description"],[[getDefaultDataArr objectAtIndex:i]valueForKey:@"maxTopUp"],[[getDefaultDataArr objectAtIndex:i] valueForKey:@"maxTotalBalance"],[[getDefaultDataArr objectAtIndex:i]valueForKey:@"minTopUp"],[[getDefaultDataArr objectAtIndex:i]valueForKey:@"productID"]];
-            
             [database executeQuery:query];
         }
         UIButton *button = (UIButton*)[self.view viewWithTag:6];
         [button btnWithoutActivityIndicator];
-        
         [self startSendingReq:button];
     }
 }
@@ -732,12 +677,10 @@
     DatabaseHandler *database = [[DatabaseHandler alloc]init];
     [database executeQuery:deleteQuerry];
     [database executeQuery:sqlStatement];
-    
     for (NSMutableDictionary *dict in glabalRatesMA)
     {
         NSString *sqlStatement = [NSString stringWithFormat:@"insert into converion_rate_table (currency_code,multiplier) values ('%@','%@') ",[dict objectForKey:@"currencyCode"],[dict objectForKey:@"rate"]];
         [[DatabaseHandler getSharedInstance] executeQuery:sqlStatement];
-        
         NSString *query = [NSString stringWithFormat:@"insert into globalRatesTable ('CcyCode','Rate','imageName') values ('%@',%f,'%@')",[dict objectForKey:@"currencyCode"] ,[[dict objectForKey:@"rate"] doubleValue],[dict objectForKey:@"imageName"]];
         [[DatabaseHandler getSharedInstance] executeQuery:query];
     }
@@ -746,11 +689,11 @@
 
 -(void)loadingFailedWithError:(NSString *)error withServiceName:(NSString *)service
 {
-    if ([error isKindOfClass:[NSString class]]) {
+    if ([error isKindOfClass:[NSString class]])
         NSLog(@"Service: %@ | Response is  : %@",service,error);
-    }else{
+    else
         NSLog(@"Service: %@ | Response UKNOWN ERROR",service);
-    }
+    
     [self showErrorMsg:@"Unfortunately our service is not available at the moment. But please do try again later."];
     UIButton *button = (UIButton*)[self.view viewWithTag:6];
     [button btnWithoutActivityIndicator];
@@ -804,7 +747,6 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     KeychainItemWrapper *keychain2 = [[KeychainItemWrapper alloc] initWithIdentifier:@"userMobile" accessGroup:nil];
     NSString *suStr = [keychain2 objectForKey:(__bridge id)kSecAttrAccount];
-
     if (suStr == (id)[NSNull null] || suStr.length == 0 )
     {
         AddMobileNoVC *addVC = [[AddMobileNoVC alloc]initWithNibName:@"AddMobileNoVC" bundle:nil];
@@ -911,19 +853,15 @@
 {
     UIImageView *emailErrorimgView = (UIImageView *)[self.view viewWithTag:13];
     UIImageView *passwordErrorimgView = (UIImageView *)[self.view viewWithTag:12];
-    
-    [emailTxtFld        removeData];
+    [emailTxtFld removeData];
     emailErrorimgView.hidden = YES;
-    
-    [passwordTxtFld         removeData];
+    [passwordTxtFld removeData];
     passwordErrorimgView.hidden = YES;
-    
     [textField removeData];
     if (textField==emailTxtFld)
     {
         [self showErrorMsg:@""];
         [self resetFields];
-        
     }
 }
 
@@ -932,19 +870,17 @@
 {
     UIImageView *emailErrorimgView = (UIImageView *)[self.view viewWithTag:13];
     UIImageView *passwordErrorimgView = (UIImageView *)[self.view viewWithTag:12];
-    
     if ([textField.text length] + [string length] - range.length == 0)
     {
         //--------------------- if lenght of text field is equal to zero so in that case we will remove cross image and alert label -----------------
-        
         if ([textField isEqual:emailTxtFld])
         {
-            [emailTxtFld        removeData];
+            [emailTxtFld removeData];
             emailErrorimgView.hidden = YES;
         }
         else
         {
-            [passwordTxtFld         removeData];
+            [passwordTxtFld removeData];
             passwordErrorimgView.hidden = YES;
         }
     }
@@ -966,25 +902,20 @@
 
 #pragma mark ------
 #pragma mark touch Delegte Method
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];
 }
 
-
 #pragma mark - Other
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
 }
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);

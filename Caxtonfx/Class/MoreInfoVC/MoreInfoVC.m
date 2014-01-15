@@ -34,6 +34,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    
+    
     [self.view setAlpha:0.0f];
     
     if([CommonFunctions reachabiltyCheck]){
@@ -70,6 +73,7 @@
     self.waringLbl.text = @"";
     
     [Flurry logEvent:@"Visited More Info"];
+     
 }
 
 #pragma mark -----
@@ -123,7 +127,6 @@
     CGFloat viewCenterY = theView.center.y;
     CGFloat y = viewCenterY +  webView.frame.size.height-120;
     [scrollView setContentOffset:CGPointMake(0, y) animated:YES];
-	
 }
 
 #pragma mark -----------
@@ -178,7 +181,6 @@
         sharedManager *manger = [[sharedManager alloc]init];
         manger.delegate = self;
         NSString *soapMessage =[NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:SendContact><tem:emailAddress>%@</tem:emailAddress><tem:firstName>%@</tem:firstName><tem:lastName>%@</tem:lastName></tem:SendContact></soapenv:Body></soapenv:Envelope>",emailTxtFld.text,firstTxtFld.text,lastTxtFld.text];
-        
         [manger callServiceWithRequest:soapMessage methodName:@"SendContact" andDelegate:self];
     }else
     {
@@ -190,7 +192,6 @@
 {
     // Do whatever such as hiding the keyboard
     [self.view endEditing:YES];
-    
     [scrollView setContentOffset:CGPointMake(0, webView.frame.size.height) animated:YES];
 }
 
@@ -204,14 +205,11 @@
     webView.frame = CGRectMake(webView.frame.origin.x, webView.frame.origin.y, webView.frame.size.width, height);
     webView.scrollView.scrollEnabled = NO;
     webView.scrollView.bounces = NO;
-    
     CGRect frame = demoView.frame;
     frame.origin.y = height;
     demoView.frame = frame;
-    
     scrollView.contentSize = CGSizeMake(scrollView.frame.size.width, height+514);
-    
-      [self.view setAlpha:1.0f];
+    [self.view setAlpha:1.0f];
 }
 
 #pragma mark -------

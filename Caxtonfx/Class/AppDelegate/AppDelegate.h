@@ -67,6 +67,7 @@
 -(void)doLogout;
 
 + (dispatch_queue_t)sharedQueue;
-
+-(NSInteger )hourSinceNow;
+-(NSInteger )minutesSinceNow;
 
 @end

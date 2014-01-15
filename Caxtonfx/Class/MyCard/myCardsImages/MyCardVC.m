@@ -30,26 +30,11 @@
     return self;
 }
 
--(NSInteger )hourSinceNow
-{
-    NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"updateDate"];
-    NSDate* date2 =  [NSDate date];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init] ;
-    [dateFormatter setDateFormat:@"EEEE"];
-    NSLog(@"[dateFormatter stringFromDate:date2]  ->%@", [dateFormatter stringFromDate:date2]);
-    NSTimeInterval distanceBetweenDates = [date1 timeIntervalSinceDate:date1];
-    double secondsInAnHour = 3600;
-    NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
-    
-    return hoursBetweenDates;
-}
-
 #pragma mark -------
 #pragma mark view lyf cycle Method
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     if([[NSUserDefaults standardUserDefaults] integerForKey:@"ApplaunchCount"] % 3 ==0 && ![[NSUserDefaults standardUserDefaults] boolForKey:@"rateFlag"])
     {
         [Appirater appLaunched:YES];
@@ -57,16 +42,13 @@
         [Appirater setDaysUntilPrompt:0];
         [Appirater setDebug:YES];
     }
-    
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"updateDate"];
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:[CommonFunctions statusOfLastUpdate:date1]];
-    
     // Configure View Controller
     [self.tableView addSubview:self.refreshControl];
     [self.tableView removeConstraint:heightConstraint];
-    
     if(IS_HEIGHT_GTE_568)
     {
         heightConstraint = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:nil multiplier:1 constant:438];
@@ -76,11 +58,9 @@
         heightConstraint = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:nil multiplier:1 constant:350];
         [self.tableView addConstraint:heightConstraint];
     }
-    
     dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
         [self getDataFromDataBse];
     });
-
     [Flurry logEvent:@"Visited Cards Screen"];
 }
 
@@ -88,10 +68,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     [[[AppDelegate getSharedInstance] topBarView] setHidden:NO];
     [[[AppDelegate getSharedInstance] customeTabBar] setHidden:NO];
-    
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
 }
 
@@ -99,13 +77,16 @@
 {
     [super viewWillDisappear:YES];
     [[[AppDelegate getSharedInstance] topBarView] setHidden:YES];
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     [[[AppDelegate getSharedInstance] customeTabBar] setHidden:NO];
+    if ([[AppDelegate getSharedInstance] minutesSinceNow] > 10)
+    {
+        [self performSelector:@selector(hudRefresh:) withObject:self afterDelay:1.0];
+    }
 }
 
 #pragma mark other Method
@@ -120,11 +101,9 @@
         self.cardsArray = [[NSMutableArray alloc] init];
     }
     self.cardsArray = [[DatabaseHandler getSharedInstance] getData:@"select * from myCards;"];
-    
     dispatch_async(dispatch_get_main_queue(),
                    ^{
                        self.tableView.userInteractionEnabled = YES;
-                       
                        [self.tableView reloadData];
                    });
 }
@@ -132,11 +111,8 @@
 - (void)refresh :(id)sender
 {
     self.tableView.userInteractionEnabled = NO;
-    
     NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"updateDate"];
-    
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:[CommonFunctions statusOfLastUpdate:date1]];
-    
     if([CommonFunctions reachabiltyCheck])
     {
         [self performSelectorInBackground:@selector(fetchTheData) withObject:self];
@@ -150,13 +126,9 @@
 {
     MBProgressHUD* HUD= [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
-    
     self.tableView.userInteractionEnabled = NO;
-    
     NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"updateDate"];
-    
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:[CommonFunctions statusOfLastUpdate:date1]];
-    
     if([CommonFunctions reachabiltyCheck])
     {
         [HUD showWhileExecuting:@selector(fetchTheData) onTarget:self withObject:nil animated:YES];
@@ -169,24 +141,18 @@
 
 -(void) fetchTheData
 {
-    
     KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
     NSString *username1 = [keychain objectForKey:(__bridge id)kSecAttrAccount];
     NSString *password1 = [keychain objectForKey:(__bridge id)kSecValueData];
-    
     sharedManager *manger = [[sharedManager alloc]init];
     manger.delegate = self;
-    
     NSString *soapMessage = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:CheckAuthGetCards><tem:UserName>%@</tem:UserName><tem:Password>%@</tem:Password></tem:CheckAuthGetCards></soapenv:Body></soapenv:Envelope>",username1,password1];
-    
     [manger callServiceWithRequest:soapMessage methodName:@"CheckAuthGetCards" andDelegate:self];
-    
 }
 
 
 -(void)topupBtnPressed:(NSIndexPath*)indexPath;
 {
-    NSLog(@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:@"userConactType"]);
     if([[[NSUserDefaults standardUserDefaults]objectForKey:@"userConactType"]isEqualToString:@"1"])
     {
         TopUpRechargeVC *topupVC = [[TopUpRechargeVC alloc]initWithNibName:@"TopUpRechargeVC" bundle:nil];
@@ -210,7 +176,6 @@
     TBXMLElement *checkAuthGetCardsResultElem = [TBXML childElementNamed:@"CheckAuthGetCardsResult" parentElement:checkAuthGetCardsResponseElem];
     TBXMLElement *statusCode = [TBXML childElementNamed:@"a:statusCode" parentElement:checkAuthGetCardsResultElem];
     NSString *statusCodeStr = [TBXML textForElement:statusCode];
-    NSLog(@"CheckAuthGetCards - > %i",[statusCodeStr intValue]);
     if([statusCodeStr intValue] == 000 || [statusCodeStr intValue]== 003 || [statusCodeStr intValue] == 004)
     {
         TBXMLElement *DOBElem = [TBXML childElementNamed:@"a:bd" parentElement:checkAuthGetCardsResultElem];
@@ -298,7 +263,6 @@
     dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void)
                    {
                        [self getDataFromDataBse];
-                       
                        [self.refreshControl endRefreshing];
                    });
 }
@@ -330,7 +294,6 @@
     else
     {
         return [self.cardsArray count];
-        
     }
 }
 
@@ -355,9 +318,7 @@
     }else
     {
         static NSString *cellIdentifier = @"currencyCellIdentifier";
-        
         MyCardsTableCell *cell = [tableView1 dequeueReusableCellWithIdentifier:cellIdentifier];
-        
         cell = [[MyCardsTableCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"MyCardsTableCell"
                                                      owner:self options:nil];
@@ -414,7 +375,6 @@
         case 3:
             symbolStr = @"$";
             break;
-            
         case 4:
             symbolStr = @"€";
             break;

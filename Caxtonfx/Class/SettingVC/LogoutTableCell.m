@@ -99,10 +99,10 @@
        
     }
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];                    //deepesh
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setPin"];                         //deepesh
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];                     
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setPin"];                          
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FirstTimeUser"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoginAttamp"];                    //deepesh
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoginAttamp"];                     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"attemp"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     

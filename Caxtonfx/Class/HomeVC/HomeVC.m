@@ -35,31 +35,16 @@
     return self;
 }
 
--(NSInteger )hourSinceNow
-{
-    NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"updateDate"];
-    NSDate* date2 =  [NSDate date];
-    
-    NSTimeInterval distanceBetweenDates = [date1 timeIntervalSinceDate:date2];
-    double secondsInAnHour = 3600;
-    NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
-    
-    return hoursBetweenDates;
-}
-
 -(void)switchToMoreInfo:(NSNotification *)notification
 {
     MoreInfoVC *mivc = [[MoreInfoVC alloc]init];
     [self.navigationController pushViewController:mivc animated:YES];
-    
-//	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"showMoreInfo" object:nil];
 }
 
 -(void)switchToLogin:(NSNotification *)notification
 {
     LoginVC *loginVC = [[LoginVC alloc]initWithNibName:@"LoginVC" bundle:nil];
     [self.navigationController pushViewController:loginVC animated:YES];
-    
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"showLogin" object:nil];
 }
 - (void)userTextSizeDidChange {
@@ -72,17 +57,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
- 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(switchToMoreInfo:)
                                                  name:@"showMoreInfo"
                                                object:nil];
-   
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(switchToLogin:)
                                                  name:@"showLogin"
                                                object:nil];
-    
     if(IS_HEIGHT_GTE_568)
     {
         [scrollView setFrame:CGRectMake(0, 77, 320, 326)];
@@ -90,16 +72,10 @@
     {
         [scrollView setFrame:CGRectMake(0, 33, 320, 326)];
     }
-    
-    
     [updateInfo setFont:[UIFont fontWithName:@"OpenSans" size:14]];
-    
     textArray = [[NSMutableArray alloc]initWithObjects:@"Top up your currency card",@"Check your balance",@"Monitor your spending", nil];
-    
     [self setUpPage];
-    
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
-    
     NSString *isfirstUser = [[NSUserDefaults standardUserDefaults]stringForKey:@"FirstTimeUser"];
     if([isfirstUser isEqualToString:@"NO"])
     {
@@ -123,7 +99,6 @@
                 passcodeViewController.delegate = self;
                 passcodeViewController.simple = YES;
                 passcodeViewController.passcode = str;
-                
                 [self.navigationController pushViewController:passcodeViewController animated:YES];
             }else
             {
@@ -135,12 +110,10 @@
     }
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
         [self applyFonts];
-        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(userTextSizeDidChange)
                                                      name:UIContentSizeCategoryDidChangeNotification
                                                    object:nil];
-        
         [scrollView setFrame:CGRectMake(0, 77, 320, 326)];
     }
 }
@@ -148,7 +121,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     self.navigationController.navigationBarHidden = YES;
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     appDelegate.customeTabBar.hidden = NO;
@@ -161,29 +133,19 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
-    {
-        // app already launched
-    }
-    else
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
     {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        //[NSTimer timerWithTimeInterval:.05 target:self selector:@selector(autoAnimation) userInfo:nil repeats:NO];
-        // This is the first launch ever
-        
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(autoAnimation) userInfo:nil repeats:NO];
         [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     }
-
 }
 
 -(void)autoAnimation
 {
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     [appDelegate autoAnimation];
-
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -223,7 +185,6 @@
     sharedManager *manger = [[sharedManager alloc]init];
     manger.delegate = self;
     NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetPromo/></soapenv:Body></soapenv:Envelope>";
-    
     [manger callServiceWithRequest:soapMessage methodName:@"GetPromo" andDelegate:self];
 }
 
@@ -234,7 +195,6 @@
         sharedManager *manger = [[sharedManager alloc]init];
         manger.delegate = self;
         NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetDefaults/></soapenv:Body></soapenv:Envelope>";
-        
         [manger callServiceWithRequest:soapMessage methodName:@"GetDefaults" andDelegate:self];
     }
 }
@@ -246,14 +206,8 @@
         sharedManager *manger = [[sharedManager alloc]init];
         manger.delegate = self;
         NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetGlobalRates/></soapenv:Body></soapenv:Envelope>";
-        
         [manger callServiceWithRequest:soapMessage methodName:@"GetGlobalRates" andDelegate:self];
     }
-}
-
--(void)startSendingReq
-{
-    [self performSelectorOnMainThread:@selector(goTopupScreen) withObject:nil waitUntilDone:nil];
 }
 
 -(void)loginWebServices
@@ -692,10 +646,50 @@
     if (alertView.tag == 2 ){
         if (buttonIndex == 0)
         {
-            AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-            [appDelegate doLogout];
+            [self resetHome];
         }
     }
+}
+-(void)resetHome{
+    NSString *query  = @"";
+    
+    query = @"DELETE FROM conversionHistoryTable ";
+    DatabaseHandler *dataBaseHandler = [[DatabaseHandler alloc] init];
+    [dataBaseHandler executeQuery:query];
+    query = @"DELETE FROM getHistoryTable";
+    [dataBaseHandler executeQuery:query];
+    query = @"DELETE FROM myCards";
+    [dataBaseHandler executeQuery:query ];
+    
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString* documentsDirectory = [paths objectAtIndex:0];
+    NSString *patientPhotoFolder = [documentsDirectory stringByAppendingPathComponent:@"patientPhotoFolder"];
+    NSString *dataPath = patientPhotoFolder;
+    BOOL isDir = NO;
+    NSFileManager *fileManager = [[NSFileManager alloc] init];
+    if ([fileManager fileExistsAtPath:dataPath
+                          isDirectory:&isDir] && isDir == NO) {
+        [fileManager removeItemAtPath:dataPath error:nil];
+    }
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setPin"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FirstTimeUser"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoginAttamp"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"attemp"];
+    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"stayLogin"];
+    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"isLogin"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    //reset the Home Screen
+    self.scrollView.alpha=1.0;
+    self.lodingView.alpha=0.0;
+    self.updateInfo.alpha=0.0;
+    [self.lodingView stopAnimating];
+    self.view.userInteractionEnabled = YES;
+    AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    delegate.window.userInteractionEnabled = YES;
+
 }
 -(void)loadingFailedWithError:(NSString *)error withServiceName:(NSString *)service
 {

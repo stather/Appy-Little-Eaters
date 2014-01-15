@@ -31,12 +31,9 @@
 
 -(void)callServiceWithRequest:(NSString *)requestString methodName:(NSString *)methodName andDelegate:(id<sharedDelegate>)delegateObject
 {
-   
-    
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
     self.delegate = delegateObject;
-    
+
     // test url
     NSString *urlString = [NSString stringWithFormat:@"https://mobiledev.caxtonfx.com/Service.svc"];
     
@@ -63,7 +60,7 @@
     [theRequest addValue:msgLength forHTTPHeaderField:@"Content-Length"];
     
     // TEST
-  [theRequest addValue:@"mobiledev.caxtonfx.com" forHTTPHeaderField:@"Host"];
+    [theRequest addValue:@"mobiledev.caxtonfx.com" forHTTPHeaderField:@"Host"];
     
     //Live
 //  [theRequest addValue:@"mobileapi.caxtonfx.com" forHTTPHeaderField:@"Host"];
@@ -76,15 +73,13 @@
     
     NSURLConnection *con = [[NSURLConnection alloc]initWithRequest:theRequest delegate:self startImmediately:YES];
     
-    
-    if( con )
+    if(con)
     {
         mutableData = [[NSMutableData alloc] init];
     }
     while(!finished) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
     }
-    
 }
 
 #pragma mark -
@@ -116,9 +111,7 @@
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    
     NSString *xmlResponseString = [[NSString alloc] initWithBytes: [mutableData mutableBytes] length:[mutableData length] encoding:NSUTF8StringEncoding];
-    
     if ([xmlResponseString rangeOfString:@"<s:Envelope"].location == NSNotFound) {
         [self.delegate loadingFailedWithError:[xmlResponseString stringByDecodingHTMLEntities] withServiceName:serviceName];
     } else {
