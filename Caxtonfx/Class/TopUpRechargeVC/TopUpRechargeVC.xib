@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
@@ -13,11 +13,13 @@
                 <outlet property="leftSymbolImgView" destination="399" id="422"/>
                 <outlet property="leftTxtField" destination="240" id="261"/>
                 <outlet property="notMessageView" destination="993" id="1053"/>
+                <outlet property="recieveMoney" destination="vOs-Pn-vAT" id="0o9-ep-joE"/>
                 <outlet property="redView" destination="361" id="380"/>
                 <outlet property="rightSymbolImgView" destination="412" id="423"/>
                 <outlet property="rightTxtField" destination="247" id="262"/>
                 <outlet property="scndSymbolLbl" destination="776" id="817"/>
                 <outlet property="scrollView" destination="18" id="259"/>
+                <outlet property="sendMoney" destination="4hv-qv-hhy" id="6rV-0u-pvf"/>
                 <outlet property="textLbl" destination="487" id="727"/>
                 <outlet property="titleLable" destination="490" id="728"/>
                 <outlet property="twoTimeLable" destination="920" id="930"/>
@@ -240,6 +242,26 @@ dGl2ZSA
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOs-Pn-vAT">
+                            <rect key="frame" x="20" y="415" width="106" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Recieve Money">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="recieveMoney:" destination="-1" eventType="touchUpInside" id="sTn-fY-Dgc"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hv-qv-hhy">
+                            <rect key="frame" x="213" y="415" width="87" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Send Money">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="sendMoney:" destination="-1" eventType="touchUpInside" id="SJy-HY-PKX"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstItem="31" firstAttribute="leading" secondItem="18" secondAttribute="leading" constant="20" symbolic="YES" id="33"/>

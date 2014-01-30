@@ -14,8 +14,9 @@
 #import "PAPasscodeViewController.h"
 #import "HomeVC.h"
 #import "Flurry.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate,sharedDelegate,MFMailComposeViewControllerDelegate,JJGActionSheetDelegate,PAPasscodeViewControllerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,sharedDelegate,MFMailComposeViewControllerDelegate,JJGActionSheetDelegate,PAPasscodeViewControllerDelegate,CLLocationManagerDelegate>
 {
     CGPoint startPos;
     
@@ -69,5 +70,9 @@
 + (dispatch_queue_t)sharedQueue;
 -(NSInteger )hourSinceNow;
 -(NSInteger )minutesSinceNow;
+
+
+//LOCATION BASED TESTS 29/01/2014
+@property(retain,nonatomic)CLLocationManager *locationManager;
 
 @end

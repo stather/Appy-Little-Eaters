@@ -12,7 +12,6 @@
 #import "AppDelegate.h"
 #import "KeychainItemWrapper.h"
 
-
 @interface TopUpRechargeVC ()
 
 @end
@@ -20,7 +19,7 @@
 @implementation TopUpRechargeVC
 
 @synthesize scrollView,flagImgView,leftTxtField,rightTxtField,redView,dataDict,indexPath,defaultsArray,sybolString,counveronCurrencyString,counveronCurrencyArray,rightSymbolImgView,leftSymbolImgView,delegate;
-@synthesize alertView,titleLable,textLbl,inputAccView;
+@synthesize alertView,titleLable,textLbl;
 @synthesize currentId;
 @synthesize _array,notMessageView,warningLbl;
 
@@ -63,7 +62,7 @@
     
     counveronCurrencyArray = [[NSMutableArray alloc]init];
     defaultsArray = [[NSMutableArray alloc]init];
-    defaultsArray = [[DatabaseHandler getSharedInstance]getData:[NSString stringWithFormat:@"select * from getDefaults where productID = \"%@\"",[dataDict objectForKey:@"ProductTypeID"]]];
+    defaultsArray = [[DatabaseHandler getSharedInstance]getData:[NSString stringWithFormat:@"select * from getDefaults where productID = \"%@\"",[self.dataDict objectForKey:@"ProductTypeID"]]];
 
     [self setupPage];
     
@@ -203,6 +202,8 @@
 
 -(IBAction)cancleBtnPressed:(id)sender
 {
+    [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
+    [self.peripheralManager stopAdvertising];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -222,7 +223,7 @@
             {
                 NSString *sessionHeighScorestr = [[defaultsArray objectAtIndex:0]objectForKey:@"maxTopUp"];
                 NSNumberFormatter *formatter = [NSNumberFormatter new];
-                [formatter setNumberStyle:NSNumberFormatterDecimalStyle]; // this line is important!
+                [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
                 int highscore  = [sessionHeighScorestr intValue];
                  NSString *formatted = [formatter stringFromNumber:[NSNumber numberWithInteger:highscore]];
                 [self errorMsg:[NSString stringWithFormat:@"There is a maximum load value of %@%@. Please re-enter correct amount.",sybolString,formatted]];
@@ -256,7 +257,7 @@
             {
                 NSString *sessionHeighScorestr = [[defaultsArray objectAtIndex:0]objectForKey:@"maxTopUp"];
                 NSNumberFormatter *formatter = [NSNumberFormatter new];
-                [formatter setNumberStyle:NSNumberFormatterDecimalStyle]; // this line is important!
+                [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
                 int highscore  = [sessionHeighScorestr intValue];
                 NSString *formatted = [formatter stringFromNumber:[NSNumber numberWithInteger:highscore]];
                 [self errorMsg:[NSString stringWithFormat:@"There is a maximum load value of %@%@. Please re-enter correct amount.",sybolString,formatted]];
@@ -540,7 +541,7 @@
 {
 	[alertView removeFromSuperview];
 	
-	switch (result)                   // Notifies users about errors associated with the interface
+	switch (result)
 	{
 		case MessageComposeResultCancelled:
 			NSLog(@"MessageComposeResultCancelled");
@@ -559,6 +560,7 @@
 
 -(IBAction)OkBtnPressed:(id)sender
 {
+    [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
     [self.notMessageView removeFromSuperview];
 }
 -(IBAction)cancelBtnPressed:(id)sender
@@ -568,6 +570,8 @@
 
 -(void)topupResultget
 {
+    [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
+    [self.peripheralManager stopAdvertising];
     self.view.userInteractionEnabled = YES;
     [delegate topupResult:self.indexPath dict:self.dataDict];
     [self.navigationController popViewControllerAnimated:YES];
@@ -597,28 +601,7 @@
     
     [self.navigationItem setTitleView:view];
 }
--(void)createInputAccessoryView{
 
-    inputAccView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 45.0)];
-    [inputAccView setBackgroundColor:[UIColor clearColor]];
-    [inputAccView setAlpha: 1.0];
-
-    UIButton * btnDone = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btnDone setFrame:CGRectMake(10.0, 0.0f, 77.0f, 42.0f)];
-    [btnDone setBackgroundColor:[UIColor clearColor]];
-    [btnDone setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [btnDone addTarget:self action:@selector(doneBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-    [btnDone setBackgroundImage:[UIImage imageNamed:@"returnBtn"] forState:UIControlStateNormal];
-    
-    [inputAccView addSubview:btnDone];
-}
-
--(void)doneBtnPressed
-{
-    [self.view endEditing:YES];
-    [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
-    
-}
 - (void) scrollViewToCenterOfScreen:(UIView *)theView
 {
     CGFloat viewCenterY = theView.center.y;
@@ -638,18 +621,40 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    UIToolbar * keyboardToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
     
-    [textField setInputAccessoryView:inputAccView];
-    if(IS_HEIGHT_GTE_568){}else{
-        [self scrollViewToCenterOfScreen:textField];
-    }
-    UIButton *btn = (UIButton *)[self.view viewWithTag:17];
-    [btn btnWithoutActivityIndicator];
-    [btn btnWithOutCheckImage];
-    [btn btnWithOutCrossImage];
+    keyboardToolBar.barStyle = UIBarStyleDefault;
+    [keyboardToolBar setItems: [NSArray arrayWithObjects:
+                                [[UIBarButtonItem alloc]initWithTitle:@"Previous" style:UIBarButtonItemStyleBordered target:self action:@selector(previousTextField)],
+                                [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(nextTextField)],
+                                [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                                [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(resignKeyboard)],
+                                nil]];
+    textField.inputAccessoryView = keyboardToolBar;
+    [self scrollViewToCenterOfScreen:textField];
 
 }
+- (void)nextTextField {
+    if (leftTxtField) {
+        
+        [leftTxtField resignFirstResponder];
+        [rightTxtField becomeFirstResponder];
+        
+    }
+}
 
+-(void)previousTextField
+{
+    if (rightTxtField) {
+        [rightTxtField resignFirstResponder];
+        [leftTxtField becomeFirstResponder];
+    }
+}
+-(void)resignKeyboard{
+    [leftTxtField resignFirstResponder];
+    [rightTxtField resignFirstResponder];
+    [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+}
 - (BOOL)textField:(UITextField*)textField shouldChangeCharactersInRange:(NSRange)range
 replacementString: (NSString*) string {
     NSLog(@"textField.text %@",textField.text);
@@ -658,8 +663,6 @@ replacementString: (NSString*) string {
     [btn btnWithoutActivityIndicator];
     [btn btnWithOutCheckImage];
     [btn btnWithOutCrossImage];
-
-
     NSUInteger newLength = [textField.text length] + [string length] - range.length;
     if(newLength>5)
     {
@@ -667,34 +670,22 @@ replacementString: (NSString*) string {
         return NO;
     }
     
-    
     if(textField==leftTxtField)
     {
-        
         NSString * text = [leftTxtField.text stringByReplacingCharactersInRange:range
                                                                      withString: string];
         if([text length] !=0)
         {
-            
             leftTxtField.text = text;
-            
             float newprice  = 0.0f;
-            
             if (counveronCurrencyArray.count > 0)
             {
                 newprice = text.floatValue * [[[counveronCurrencyArray objectAtIndex:0]objectForKey:@"Rate"]floatValue];
-                
-               
             }
             else{
                 newprice = text.floatValue * 0.0f;
             }
-            
             rightTxtField.text = [NSString stringWithFormat:@"%.02f",newprice];
-            
-            NSLog(@"rightTxtField = %@", rightTxtField.text );
-
-            
         }
         else
         {
@@ -757,6 +748,143 @@ replacementString: (NSString*) string {
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+//TESTING iBeacons functionality for Caxton Fx app 27/01/2014
+-(IBAction)recieveMoney:(id)sender{
+    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
+        [keychain setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
+        
+        NSString *username1 = [keychain objectForKey:(__bridge id)kSecAttrAccount];
+        NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:@"23542266-18D1-4FE4-B4A1-23F8195B9D40"];
+        self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid
+                                                                    major:[username1 intValue]
+                                                                    minor:[[dataDict objectForKey:@"CurrencyCardID"] intValue]
+                                                               identifier:@"com.caxtonfx.myRegion"];
+        self.beaconPeripheralData = [self.beaconRegion peripheralDataWithMeasuredPower:nil];
+        self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self
+                                                                         queue:nil
+                                                                       options:nil];
+        [self.peripheralManager startAdvertising:self.beaconPeripheralData];
+        self.HUD= [[MBProgressHUD alloc] initWithView:self.view];
+        self.HUD.labelText =@"Bump phones";
+        [self.view addSubview:self.HUD];
+        [self.HUD show:YES];
+        [self performSelector:@selector(cancelTransfer) withObject:nil afterDelay:10.0];
+    
+}
+-(IBAction)sendMoney:(id)sender{
+    if((rightTxtField.text.floatValue >= [[[defaultsArray objectAtIndex:0]objectForKey:@"minTopUp"]floatValue]) && (rightTxtField.text.floatValue <=[[[defaultsArray objectAtIndex:0]objectForKey:@"maxTopUp"]floatValue]))
+        {
+            NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:@"23542266-18D1-4FE4-B4A1-23F8195B9D40"];
+            self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid identifier:@"com.caxtonfx.myRegion"];
+            self.beaconRegion.notifyOnEntry = YES;
+            self.beaconRegion.notifyOnExit = YES;
+            self.beaconRegion.notifyEntryStateOnDisplay = YES;
+            self.locationManager=[[CLLocationManager alloc] init];
+            self.locationManager.delegate =self;
+            [self.locationManager startMonitoringForRegion:self.beaconRegion];
+            [self.locationManager requestStateForRegion:self.beaconRegion];
+            [self.peripheralManager startAdvertising:self.beaconPeripheralData];
+            self.HUD= [[MBProgressHUD alloc] initWithView:self.view];
+            self.HUD.labelText =@"Bump phones";
+            [self.view addSubview:self.HUD];
+            [self.HUD show:YES];
+            [self performSelector:@selector(cancelTransfer) withObject:nil afterDelay:10.0];
+            [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
+            
+        }else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Money Transfer" message:[NSString stringWithFormat:@"There is a minimum load value of %@%d. Please re-enter correct amount.",sybolString,[[[defaultsArray objectAtIndex:0] objectForKey:@"minTopUp"] intValue]] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert show];
+        }
+
+    
+
+}
+-(void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral {
+    if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
+        NSLog(@"Powered On");
+        
+    } else if (peripheral.state == CBPeripheralManagerStatePoweredOff) {
+        NSLog(@"Powered Off");
+        [self.peripheralManager stopAdvertising];
+    }
+}
+- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
+    [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
+    [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
+}
+-(void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region {
+    CLBeacon *beacon = [[CLBeacon alloc] init];
+    beacon = [beacons lastObject];
+    if (beacon.proximity == CLProximityUnknown) {
+       
+    } else if (beacon.proximity == CLProximityImmediate) {
+        self.HUD.labelText =@"Done!";
+        [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
+        [self.peripheralManager stopAdvertising];
+        [self.HUD hide:YES];
+        [self confirmTransaction:beacon.major and:beacon.minor];
+    } else if (beacon.proximity == CLProximityNear) {
+        self.HUD.labelText =@"Get them closer...";
+    } else if (beacon.proximity == CLProximityFar) {
+        self.HUD.labelText =@"Get them closer...";
+    }
+}
+- (void)alertView:(UIAlertView *)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"buttonIndex %i",buttonIndex);
+    if (buttonIndex == 1) {
+        [self startMoneyTransfer];
+    }else{
+        [self cancelTransfer];
+    }
+}
+-(void)startMoneyTransfer{
+    self.HUD.labelText =@"Transfering money";
+    [self.HUD showWhileExecuting:@selector(doTransfer) onTarget:self withObject:nil animated:YES];
+}
+-(void)doTransfer{
+    NSString *deviceType = [UIDevice currentDevice].model;
+    //http://686e87f5.ngrok.com/
+    NSString *urlString =[NSString stringWithFormat:@"http://686e87f5.ngrok.com/APNSPhp/transfer.php?amount=%@&from=%@",self.leftTxtField.text,deviceType];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    NSURLResponse *response;
+    NSError *error;
+    //send it synchronous
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    // check for an error. If there is a network error, you should handle it here.
+    if(!error)
+    {
+        //log response
+        NSLog(@"Response from server = %@", responseString);
+    }
+    
+    float cardBalance =[[self.dataDict valueForKey:@"CardBalance"] floatValue]-[self.leftTxtField.text floatValue];
+    NSString *cardBalanceStr = [NSString stringWithFormat:@"%f",cardBalance];
+    [self.dataDict setObject:@"NO" forKey:@"errorImageView"];
+    [self.dataDict setObject:@"YES" forKey:@"successImageView"];
+    [self.dataDict setObject:cardBalanceStr forKey:@"CardBalance"];
+    [self topupResultget];
+}
+-(void)cancelTransfer{
+    [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
+    [self.peripheralManager stopAdvertising];
+    [self.HUD hide:YES];
+}
+-(void)confirmTransaction:(NSNumber*)major and:(NSNumber*)minor{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Money Transfer" message:[NSString stringWithFormat:@"Send £%@ to user %i with card %i",self.leftTxtField.text,[major intValue], [minor intValue]] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Confirm", nil];
+    [alert show];
+}
+-(void)viewDidDisappear:(BOOL)animated{
+    [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
+    [self.peripheralManager stopAdvertising];
 }
 
 @end

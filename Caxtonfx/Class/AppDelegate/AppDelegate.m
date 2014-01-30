@@ -30,7 +30,8 @@
 @synthesize shareTabBar,currentId,_array,topBarView,cameraButton;
 @synthesize ratePopUpView;
 @synthesize cameraLayoutImgView;
-//@synthesize backgroundQueue;
+@synthesize locationManager;
+
 -(NSDate *)getDateFromString:(NSString *)pstrDate
 {
     NSDateFormatter *df1 = [[NSDateFormatter alloc] init] ;
@@ -146,8 +147,54 @@
      *
     ***/
     
+    // and, push notification registration and setup
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound|UIRemoteNotificationTypeAlert)];
+    
+    
+    //LOCATION BASED TESTING 29/01/2014
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    [NSTimer scheduledTimerWithTimeInterval: 600.0 target: self
+                                                      selector: @selector(startLocationTracking) userInfo: nil repeats: YES];
+
+    [self startLocationTracking];
+    
     return YES;
 }
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    //TO-DO: Notify Back-End System for the device token
+    NSLog(@"Device Token=> %@",deviceToken);
+}
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+     NSLog(@"Error in registration. Error: %@", error.description);
+}
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    //TO-DO: Ask Business
+    NSLog(@"%@",userInfo);
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    if ([userInfo valueForKey:@"Rates"] !=nil) {
+        NSDictionary *ratesDic =[userInfo valueForKey:@"Rates"];
+        NSString *rates=[NSString stringWithFormat:@"Dollar:%@ \n Euro:%@",[ratesDic valueForKey:@"Dollar"],[ratesDic valueForKey:@"Euro"]];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Check out the current rates:" message:rates delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    if ([userInfo valueForKey:@"Transfer"] !=nil) {
+        NSDictionary *ratesDic =[userInfo valueForKey:@"Transfer"];
+        NSString *rates=[NSString stringWithFormat:@"Transfered Amount: £%@",[ratesDic valueForKey:@"Amount"]];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Funds Transfer Completed" message:rates delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    if ([userInfo valueForKey:@"Promo"] !=nil) {
+        NSDictionary *promoDic =[userInfo valueForKey:@"Promo"];
+        NSString *promo = [promoDic valueForKey:@"Message"];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Caxton Fx" message:promo delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+}
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    
+}
+
 #pragma mark -
 #pragma mark Creating Database if that not exists
 
@@ -394,7 +441,7 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     if(![[[NSUserDefaults standardUserDefaults] valueForKey:@"firstTime"] isEqualToString:@"Yes"])
     {
         [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"firstTime"];
@@ -413,6 +460,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
      NSString *setPin = [[NSUserDefaults standardUserDefaults] objectForKey:@"setPin"];
         if([setPin isEqualToString:@"YES"])
         {
@@ -510,6 +558,8 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [self.locationManager stopUpdatingLocation];
+    self.locationManager =nil;
 }
 
 - (IBAction) customTabBarBtnTap:(id)sender
@@ -1380,5 +1430,52 @@
     NSInteger minutesBetweenDates = distanceBetweenDates / secondsInAnMinute;
     NSLog(@"%d",minutesBetweenDates);
     return minutesBetweenDates;
+}
+
+//LOCATION BASED TESTS 20/01/2014
+-(void)startLocationTracking{
+    [self.locationManager stopUpdatingLocation];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
+    self.locationManager.distanceFilter = 100.0;
+    [self.locationManager startUpdatingLocation];
+}
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"didFailWithError: %@", error);
+    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to get your location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [errorAlert show];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    NSLog(@"didUpdateToLocation: %@", [locations lastObject]);
+    CLLocation *currentLocation = [locations lastObject];
+    if (currentLocation != nil) {
+        NSLog(@"cal longitude %f",currentLocation.coordinate.longitude);
+        NSLog(@"cal latitude %f", currentLocation.coordinate.latitude);
+    }
+    [self.locationManager stopUpdatingLocation];
+    
+    NSString *deviceType = [UIDevice currentDevice].model;
+    //http://686e87f5.ngrok.com/
+    NSString *urlString =[NSString stringWithFormat:@"http://686e87f5.ngrok.com/APNSPhp/locationTrack.php?lat=%f&lon=%f&device=%@",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude,deviceType];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    
+    //send it synchronous in a different thread
+    [self performSelector:@selector(sendLocation:) withObject:request];
+}
+-(void)sendLocation: (NSURLRequest*) request{
+    NSURLResponse *response;
+    NSError *error;
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    // check for an error. If there is a network error, you should handle it here.
+    if(!error)
+    {
+        //log response
+        NSLog(@"Response from server = %@", responseString);
+    }
 }
 @end

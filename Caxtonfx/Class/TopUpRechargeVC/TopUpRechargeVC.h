@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 #import "sharedManager.h"
+#import <CoreLocation/CoreLocation.h>
+#import <CoreBluetooth/CoreBluetooth.h>
+#import "MBProgressHUD.h"
+
 @class TopUpRechargeVC;
 
 @protocol TopUpRechargeVCDelegate
@@ -16,7 +20,7 @@
 @end
 
 
-@interface TopUpRechargeVC : UIViewController<UIGestureRecognizerDelegate,sharedDelegate,MFMessageComposeViewControllerDelegate,UINavigationControllerDelegate>
+@interface TopUpRechargeVC : UIViewController<UIGestureRecognizerDelegate,sharedDelegate,MFMessageComposeViewControllerDelegate,UINavigationControllerDelegate,CBPeripheralManagerDelegate,CLLocationManagerDelegate,UIAlertViewDelegate,MBProgressHUDDelegate>
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 
@@ -54,9 +58,9 @@
 
 @property (nonatomic, strong) IBOutlet UILabel *textLbl;
 
-@property (nonatomic, strong)  UIView *inputAccView;
+@property (nonatomic, strong)  IBOutlet UILabel *firstSymbolLbl;
 
-@property (nonatomic, strong)  IBOutlet UILabel *firstSymbolLbl,*warningLbl;
+@property (nonatomic, strong)  IBOutlet UILabel *warningLbl;
 
 @property (nonatomic, strong)  IBOutlet UILabel *scndSymbolLbl;
 
@@ -75,5 +79,20 @@
 -(IBAction)cancelBtnPressed:(id)sender;
 
 -(IBAction)OkBtnPressed:(id)sender;
+
+
+//Testing iBeacons functionalituy for Caxton Fx app
+@property (nonatomic, weak)  UIButton *sendMoney;
+
+@property (nonatomic, weak)  UIButton *recieveMoney;
+
+-(IBAction)recieveMoney:(id)sender;
+
+-(IBAction)sendMoney:(id)sender;
+@property (strong, nonatomic) CLBeaconRegion *beaconRegion;
+@property (strong, nonatomic) NSDictionary *beaconPeripheralData;
+@property (strong, nonatomic) CBPeripheralManager *peripheralManager;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) MBProgressHUD* HUD;
 
 @end
