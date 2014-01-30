@@ -59,7 +59,7 @@
                 [[controllerArray objectAtIndex:i] topupBtnPressed:myIndexPath];
                 break;
             }else{
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Sorry this is not avaliable now.\n Try again later." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Sorry this is not available now.\n Try again later." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
                 [alert show];
                 break;
             }

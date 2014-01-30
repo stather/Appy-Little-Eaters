@@ -41,8 +41,6 @@
     AppDelegate *appDelegte = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     appDelegte.customeTabBar.hidden = YES;
     self.navigationController.navigationBarHidden = NO;
-    
-    //[TestFlight passCheckpoint:@"ForgetPinVC"];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -391,7 +389,6 @@
                
                 
             }
-            
             if([statusCodeStr intValue]== 002)
             {
                 NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];

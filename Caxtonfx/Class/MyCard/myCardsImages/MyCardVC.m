@@ -168,7 +168,7 @@
 -(void)loadingFinishedWithResponse:(NSString *)response withServiceName:(NSString *)service
 {
     NSLog(@"CheckAuthGetCards - > %@",response);
-    NSMutableArray *array = [[NSMutableArray alloc]init];
+    NSMutableArray *array = [[NSMutableArray alloc] init];
     TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
     TBXMLElement *root = tbxml.rootXMLElement;
     TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
@@ -302,19 +302,24 @@
     return 173;
 }
 
+-(UITableViewCell *)emptyCell {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    [cell.textLabel setText:@"No cards currently active for this user. \nPull down to refresh."];
+    cell.textLabel.font = [UIFont fontWithName:@"OpenSans" size:15];
+    cell.textLabel.numberOfLines = 0;
+    cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    cell.textLabel.textColor = UIColorFromRedGreenBlue(204, 204, 204);
+    return cell;
+
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView1 cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"indexPath: %i",indexPath.row);
     if(self.cardsArray.count==0)
     {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-        [cell.textLabel setText:@"No cards currently active for this user. \nPull down to refresh."];
-        cell.textLabel.font = [UIFont fontWithName:@"OpenSans" size:15];
-        cell.textLabel.numberOfLines = 0;
-        cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
-        cell.textLabel.textColor = UIColorFromRedGreenBlue(204, 204, 204);
-        return cell;
+        return [self emptyCell];
     }else
     {
         static NSString *cellIdentifier = @"currencyCellIdentifier";
@@ -322,7 +327,11 @@
         cell = [[MyCardsTableCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"MyCardsTableCell"
                                                      owner:self options:nil];
-        cell = [nib objectAtIndex:0];
+        if (nib.count >0) {
+            cell = [nib objectAtIndex:0];
+        }else{
+            return [self emptyCell];
+        }
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
         cell.accountNameLable.textColor = UIColorFromRedGreenBlue(102, 102, 102);
         [cell.accountNameLable setFont:[UIFont fontWithName:@"OpenSans" size:19]];
@@ -334,7 +343,12 @@
         cell.blnceLable.textColor = UIColorFromRedGreenBlue(39, 39, 39);
         [cell.topupBtn setBackgroundImage:[UIImage imageNamed:@"topUpBtn"] forState:UIControlStateNormal];
         [cell.topupBtn setBackgroundImage:[UIImage imageNamed:@"topUpBtnSelected"] forState:UIControlStateHighlighted];
-        NSDictionary *dict = [self.cardsArray objectAtIndex:indexPath.row];
+        NSDictionary *dict;
+        if (self.cardsArray >0) {
+            dict = [self.cardsArray objectAtIndex:indexPath.row];
+        }else{
+            return [self emptyCell];
+        }
         if([[dict objectForKey:@"CardCurrencyDescription"] isEqualToString:@"GB pound"])
         {
             cell.flagImgView.image = [UIImage imageNamed:@"GBPFlag"];
@@ -405,10 +419,16 @@
 
 - (void)topupResult:(NSIndexPath*)path dict:(NSMutableDictionary *)dict1
 {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:dict1];
-    [self.cardsArray replaceObjectAtIndex:path.row  withObject:dict];
-    [self.tableView reloadData];
-    [self performSelector:@selector(hudRefresh:) withObject:self afterDelay:5.0];
+    @try {
+        NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:dict1];
+        [self.cardsArray replaceObjectAtIndex:path.row  withObject:dict];
+        [self.tableView reloadData];
+        [self performSelector:@selector(hudRefresh:) withObject:self afterDelay:10.0];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@",exception);
+    }
+    
 }
 
 

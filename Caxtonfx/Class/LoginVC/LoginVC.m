@@ -196,7 +196,7 @@
                     [manger callServiceWithRequest:soapMessage methodName:@"CheckAuthGetCards" andDelegate:self];
                 }else
                 {
-                    [self showErrorMsg:@"Your Caxton Fx account has been locked. To inlock your account please email info@caxtonfxcard.com"];
+                    [self showErrorMsg:@"Your Caxton Fx account has been locked. To unlock your account please email info@caxtonfxcard.com"];
                 }
             }
         }else

@@ -140,6 +140,7 @@
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(autoAnimation) userInfo:nil repeats:NO];
         [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     }
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 -(void)autoAnimation
@@ -694,7 +695,7 @@
 -(void)loadingFailedWithError:(NSString *)error withServiceName:(NSString *)service
 {
     if([service isEqualToString:@"CheckAuthGetCards"] ||[service isEqualToString:@"GetPromo"]){
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Netwok Error" message:@"Please check your internet connection." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Network Error" message:@"Please check your internet connection." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         alert.tag = 1;
         [alert show];
     }

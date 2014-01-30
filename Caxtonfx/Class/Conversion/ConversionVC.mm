@@ -3800,29 +3800,6 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
     ImagePickerVC *ivc = (ImagePickerVC*) [array objectAtIndex:0];
     [ivc showCamera];
     [self.navigationController popToRootViewControllerAnimated:YES];
-    
-    
-    //    AppDelegate *app =         (AppDelegate*)[[UIApplication sharedApplication]delegate];
-    //    UINavigationController *navController =(UINavigationController*) app.window.rootViewController;
-    //    for(int i=0;i<navController.viewControllers.count;i++)
-    //    {
-    //        if([[navController.viewControllers objectAtIndex:i]isKindOfClass:[ImagePickerVC class]])
-    //        {
-    //            [self.navigationController popToViewController:[navController.viewControllers objectAtIndex:i]  animated:YES];
-    //        }
-    //
-    //
-    //    }
-    //    [self.navigationController popToRootViewControllerAnimated:YES];
-    //    NSLog(@"viewControllers - > %@",navController.viewControllers);
-    //    if (alertView.tag == 1) // First time failed to recognize the image
-    //    {
-    //        [self.navigationController popViewControllerAnimated:TRUE];
-    //    }
-    //    else if (alertView.tag == 2)
-    //    {
-    //       [self.navigationController popViewControllerAnimated:TRUE];
-    //    }
 }
 
 - (void)viewDidUnload
