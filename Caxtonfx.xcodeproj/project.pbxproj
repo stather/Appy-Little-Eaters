@@ -847,6 +847,11 @@
 		95F34CAA1783F032006122F6 /* PACancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F34CA61783F032006122F6 /* PACancel@2x.png */; };
 		95F34CAB1783F032006122F6 /* PACancelSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F34CA71783F032006122F6 /* PACancelSelected.png */; };
 		95F34CAC1783F032006122F6 /* PACancelSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F34CA81783F032006122F6 /* PACancelSelected@2x.png */; };
+		B22E174B189AB5D300721C0E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B22E174A189AB5D300721C0E /* User.m */; };
+		B22E174E189BCC4900721C0E /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = B22E174D189BCC4900721C0E /* Card.m */; };
+		B22E1751189BEB1500721C0E /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = B22E1750189BEB1500721C0E /* Transaction.m */; };
+		B233212E18AB7A89001B4FAD /* GlobalRatesObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B233212D18AB7A89001B4FAD /* GlobalRatesObject.m */; };
+		B233213118AB863E001B4FAD /* DefaultsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B233213018AB863E001B4FAD /* DefaultsObject.m */; };
 		B242CFCD1896810200902768 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B242CFCC1896810200902768 /* CoreBluetooth.framework */; };
 		B242CFCF1896810800902768 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B242CFCE1896810800902768 /* CoreLocation.framework */; };
 		B24DDCB1181933ED00D9621C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B24DDCB0181933ED00D9621C /* AVFoundation.framework */; };
@@ -1969,6 +1974,16 @@
 		95F34CA61783F032006122F6 /* PACancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PACancel@2x.png"; sourceTree = "<group>"; };
 		95F34CA71783F032006122F6 /* PACancelSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PACancelSelected.png; sourceTree = "<group>"; };
 		95F34CA81783F032006122F6 /* PACancelSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PACancelSelected@2x.png"; sourceTree = "<group>"; };
+		B22E1749189AB5D300721C0E /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		B22E174A189AB5D300721C0E /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		B22E174C189BCC4900721C0E /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		B22E174D189BCC4900721C0E /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
+		B22E174F189BEB1500721C0E /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
+		B22E1750189BEB1500721C0E /* Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transaction.m; sourceTree = "<group>"; };
+		B233212C18AB7A89001B4FAD /* GlobalRatesObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalRatesObject.h; sourceTree = "<group>"; };
+		B233212D18AB7A89001B4FAD /* GlobalRatesObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalRatesObject.m; sourceTree = "<group>"; };
+		B233212F18AB863E001B4FAD /* DefaultsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultsObject.h; sourceTree = "<group>"; };
+		B233213018AB863E001B4FAD /* DefaultsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultsObject.m; sourceTree = "<group>"; };
 		B242CFCC1896810200902768 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		B242CFCE1896810800902768 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B24DDCB0181933ED00D9621C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -3690,6 +3705,7 @@
 		95CB4F901712D0AA00A6490B /* Caxtonfx */ = {
 			isa = PBXGroup;
 			children = (
+				B22E1748189AB59500721C0E /* Model */,
 				1994CABC17211FDE00396488 /* Rocket */,
 				386A2281172029B1003AF502 /* Resource1 */,
 				95CB4FA71712D40600A6490B /* Class */,
@@ -3816,6 +3832,23 @@
 				95EAE97017A794C500E8B6F1 /* libFlurry_4.2.2.a */,
 			);
 			path = Flurry;
+			sourceTree = "<group>";
+		};
+		B22E1748189AB59500721C0E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B233212F18AB863E001B4FAD /* DefaultsObject.h */,
+				B233213018AB863E001B4FAD /* DefaultsObject.m */,
+				B233212C18AB7A89001B4FAD /* GlobalRatesObject.h */,
+				B233212D18AB7A89001B4FAD /* GlobalRatesObject.m */,
+				B22E1749189AB5D300721C0E /* User.h */,
+				B22E174A189AB5D300721C0E /* User.m */,
+				B22E174C189BCC4900721C0E /* Card.h */,
+				B22E174D189BCC4900721C0E /* Card.m */,
+				B22E174F189BEB1500721C0E /* Transaction.h */,
+				B22E1750189BEB1500721C0E /* Transaction.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -4625,6 +4658,7 @@
 				1994CB231721207700396488 /* SBJsonStreamParserAccumulator.m in Sources */,
 				1994CB241721207700396488 /* SBJsonStreamParserAdapter.m in Sources */,
 				1994CB251721207700396488 /* SBJsonStreamParserState.m in Sources */,
+				B233212E18AB7A89001B4FAD /* GlobalRatesObject.m in Sources */,
 				1994CB261721207700396488 /* SBJsonStreamWriter.m in Sources */,
 				1994CB271721207700396488 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				1994CB281721207700396488 /* SBJsonStreamWriterState.m in Sources */,
@@ -4650,6 +4684,7 @@
 				95747A7517250331000BF56F /* FBEncryptorAES.m in Sources */,
 				95747A7617250331000BF56F /* NSData+Base64.m in Sources */,
 				199160611725099400B49341 /* NSDataAdditions.m in Sources */,
+				B22E174B189AB5D300721C0E /* User.m in Sources */,
 				199160621725099400B49341 /* TBXML.m in Sources */,
 				1970846B17266CD700F72200 /* SDImageCache.m in Sources */,
 				1970846C17266CD700F72200 /* SDWebImageCompat.m in Sources */,
@@ -4682,10 +4717,12 @@
 				950594261766E6D900981777 /* Appirater.m in Sources */,
 				9524B98817702D1800A6C98B /* ForgetPinVC.m in Sources */,
 				1915275D1769F42A00A4D112 /* UIImage+Resize.m in Sources */,
+				B22E174E189BCC4900721C0E /* Card.m in Sources */,
 				191527601769F44400A4D112 /* UIImage+RoundedCorner.m in Sources */,
 				191527631769F57D00A4D112 /* UIImage+Alpha.m in Sources */,
 				1994F6771774174B009DF5E6 /* TransactionCustomCell.m in Sources */,
 				1994F6791774174B009DF5E6 /* ImageConversionsCustomCell.m in Sources */,
+				B233213118AB863E001B4FAD /* DefaultsObject.m in Sources */,
 				1994F67E1774177A009DF5E6 /* HistoryTransactionsVC.m in Sources */,
 				1994F6981774199D009DF5E6 /* CardsVC.m in Sources */,
 				1994F6991774199D009DF5E6 /* CMocrCharacter.m in Sources */,
@@ -4696,6 +4733,7 @@
 				1994F6A31774199D009DF5E6 /* DefaultCurrencyCustomCell.m in Sources */,
 				9543AE1F17AF8282005D9C82 /* HTMLNode.m in Sources */,
 				9543AE2017AF8282005D9C82 /* HTMLParser.m in Sources */,
+				B22E1751189BEB1500721C0E /* Transaction.m in Sources */,
 				950EE1C417B514FB0081EE15 /* HistoryVC.m in Sources */,
 				950EE1C617B515300081EE15 /* MyCardVC.m in Sources */,
 				958520B217C23DD60069D341 /* AppDelegate.m in Sources */,

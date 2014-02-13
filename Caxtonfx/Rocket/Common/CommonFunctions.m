@@ -282,12 +282,12 @@
     
     Reachability * reach = [Reachability reachabilityForInternetConnection];
     
-    NSLog(@"status : %d",[reach currentReachabilityStatus]);
+    //NSLog(@"status : %d",[reach currentReachabilityStatus]);
     
     if([reach currentReachabilityStatus]==0)
     {
         status = NO;
-        NSLog(@"network not connected");
+        //NSLog(@"network not connected");
     }
     
     reach.reachableBlock = ^(Reachability * reachability)
@@ -310,7 +310,7 @@
 +(BOOL)reachabilityChanged:(NSNotification*)note
 {
     BOOL status =YES;
-    NSLog(@"reachabilityChanged");
+    //NSLog(@"reachabilityChanged");
     
     Reachability * reach = [note object];
     
@@ -318,7 +318,7 @@
     {
         //notificationLabel.text = @"Notification Says Reachable"
         status = YES;
-        NSLog(@"NetWork is Available");
+        //NSLog(@"NetWork is Available");
     }
     else
     {
@@ -396,7 +396,7 @@
 {       AppDelegate *app =(AppDelegate*) [[UIApplication sharedApplication]delegate];
     UITabBarController *tabbarcontroller = app.tabBarController;
     UINavigationController *navController = (UINavigationController*)[tabbarcontroller selectedViewController];
-    NSLog(@"controllers  : %@",navController.viewControllers);
+    //NSLog(@"controllers  : %@",navController.viewControllers);
     
     [navController popViewControllerAnimated:YES];
     
@@ -453,7 +453,7 @@
     date1 = [NSDate date];
     
     theTimeInterval = [date1 timeIntervalSinceDate:dateHis];
-    NSLog(@"timeinterval : %f",theTimeInterval);
+    //NSLog(@"timeinterval : %f",theTimeInterval);
     NSDate *date2 = [[NSDate alloc] initWithTimeInterval:theTimeInterval sinceDate:[NSDate date]];
     
     // Get conversion to months, days, hours, minutes
@@ -461,7 +461,7 @@
     
     NSDateComponents *breakdownInfo = [sysCalendar components:unitFlags fromDate:date1  toDate:date2  options:0];
     
-    NSLog(@"Break down: %d min : %d hours : %d days : %d months",[breakdownInfo minute], [breakdownInfo hour], [breakdownInfo day], [breakdownInfo month]);
+    //NSLog(@"Break down: %d min : %d hours : %d days : %d months",[breakdownInfo minute], [breakdownInfo hour], [breakdownInfo day], [breakdownInfo month]);
     
     // edit by Sumit mundra
     
@@ -493,7 +493,7 @@
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init] ;
         [dateFormatter setDateFormat:@"EEEE"];
-        NSLog(@"[dateFormatter stringFromDate:date2]  ->%@", [dateFormatter stringFromDate:date2]);
+        //NSLog(@"[dateFormatter stringFromDate:date2]  ->%@", [dateFormatter stringFromDate:date2]);
         
         string = [NSString stringWithFormat:@"On %@",[dateFormatter stringFromDate:date2]];
     }

@@ -44,18 +44,34 @@
 -(id) initWithDicticonary:(NSDictionary *)cardValues{
     self = [super init];
     if(self){//always use this pattern in a constructor.
-        self.CardCurrencyDescriptionStr = [cardValues valueForKey:@"CardCurrencyDescription"];
-        self.CardCurrencyIDStr = [cardValues valueForKey:@"CardCurrencyID"];
-        self.CardCurrencySymbolStr = [cardValues valueForKey:@"CardCurrencySymbol"];
-        self.CardNameStr = [cardValues valueForKey:@"CardName"];
-        self.CardNumberStr = [cardValues valueForKey:@"CardNumber"];
-        self.CardTypeStr = [cardValues valueForKey:@"CardType"];
-        self.CurrencyCardIDStr = [cardValues valueForKey:@"CurrencyCardID"];
-        self.CurrencyCardTypeIDStr = [cardValues valueForKey:@"CurrencyCardTypeID"];
-        self.ProductTypeIDStr = [cardValues valueForKey:@"ProductTypeID"];
-        self.cardBalanceStr = [cardValues valueForKey:@"CardBalance"];
-        self.successImage =[cardValues valueForKey:@"successImageView"];
-        self.failImage =[cardValues valueForKey:@"errorImageView"];
+        //NSLog(@"%@",cardValues);
+        if ([cardValues valueForKey:@"CardCurrencyDescription"] == nil) {
+            self.CardCurrencyDescriptionStr = [cardValues valueForKey:@"CardCurrencyDescriptionStr"];
+            self.CardCurrencyIDStr = [cardValues valueForKey:@"CardCurrencyIDStr"];
+            self.CardCurrencySymbolStr = [cardValues valueForKey:@"CardCurrencySymbolStr"];
+            self.CardNameStr = [cardValues valueForKey:@"CardNameStr"];
+            self.CardNumberStr = [cardValues valueForKey:@"CardNumberStr"];
+            self.CardTypeStr = [cardValues valueForKey:@"CardTypeStr"];
+            self.CurrencyCardIDStr = [cardValues valueForKey:@"CurrencyCardIDStr"];
+            self.CurrencyCardTypeIDStr = [cardValues valueForKey:@"CurrencyCardTypeIDStr"];
+            self.ProductTypeIDStr = [cardValues valueForKey:@"ProductTypeIDStr"];
+            self.cardBalanceStr = [cardValues valueForKey:@"cardBalanceStr"];
+            self.successImage =@"NO";
+            self.failImage =@"NO";
+        }else{
+            self.CardCurrencyDescriptionStr = [cardValues valueForKey:@"CardCurrencyDescription"];
+            self.CardCurrencyIDStr = [cardValues valueForKey:@"CardCurrencyID"];
+            self.CardCurrencySymbolStr = [cardValues valueForKey:@"CardCurrencySymbol"];
+            self.CardNameStr = [cardValues valueForKey:@"CardName"];
+            self.CardNumberStr = [cardValues valueForKey:@"CardNumber"];
+            self.CardTypeStr = [cardValues valueForKey:@"CardType"];
+            self.CurrencyCardIDStr = [cardValues valueForKey:@"CurrencyCardID"];
+            self.CurrencyCardTypeIDStr = [cardValues valueForKey:@"CurrencyCardTypeID"];
+            self.ProductTypeIDStr = [cardValues valueForKey:@"ProductTypeID"];
+            self.cardBalanceStr = [cardValues valueForKey:@"CardBalance"];
+            self.successImage =[cardValues valueForKey:@"successImageView"];
+            self.failImage =[cardValues valueForKey:@"errorImageView"];
+        }
     }
     return self;
 }

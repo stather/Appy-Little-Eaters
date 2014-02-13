@@ -11,7 +11,7 @@
 
 typedef int(^CustomBlock)(int number);
 
-@interface HistoryVC : UIViewController <UITableViewDelegate , UITableViewDataSource, UIAlertViewDelegate, sharedDelegate>
+@interface HistoryVC : UIViewController <UITableViewDelegate , UITableViewDataSource, UIAlertViewDelegate>
 {
     NSMutableArray *array;
     NSMutableArray *_tempMA;

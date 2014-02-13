@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TopUpRechargeVC.h"
-@interface MyCardVC : UIViewController<UITableViewDataSource,UITableViewDelegate,sharedDelegate,TopUpRechargeVCDelegate>
+@interface MyCardVC : UIViewController<UITableViewDataSource,UITableViewDelegate,TopUpRechargeVCDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 
@@ -23,5 +23,7 @@
 -(void)topupBtnPressed:(NSIndexPath*)indexPath;
 
 - (void)hudRefresh :(id)sender;
+
+- (void)noRefreshTopupResult:(NSIndexPath*)path dict:(NSMutableDictionary *)dict1;
 
 @end

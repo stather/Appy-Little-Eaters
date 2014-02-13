@@ -12,11 +12,17 @@
 #import <CoreLocation/CoreLocation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "MBProgressHUD.h"
+#import "Card.h"
+#import "GlobalRatesObject.h"
+#import "User.h"
+#import "DefaultsObject.h"
 
 @class TopUpRechargeVC;
 
 @protocol TopUpRechargeVCDelegate
 - (void)topupResult:(NSIndexPath*)path dict :(NSMutableDictionary*)dict1;
+- (void)topupResult:(NSIndexPath*)path WithCard :(Card*)myCard;
+- (void)noRefreshTopupResult:(NSIndexPath*)path dict:(NSMutableDictionary *)dict1;
 @end
 
 
@@ -38,17 +44,21 @@
 
 @property (nonatomic, strong) IBOutlet UILabel *twoTimeLable;
 
-@property (nonatomic, strong) NSMutableDictionary *dataDict;
+@property (nonatomic, strong) Card *dataDict;
 
 @property (nonatomic, strong) NSIndexPath *indexPath;
-
-@property (nonatomic, strong) NSMutableArray *defaultsArray;
 
 @property (nonatomic, strong) NSString *sybolString;
 
 @property (nonatomic, strong) NSString *counveronCurrencyString;
 
-@property (nonatomic, strong) NSMutableArray *counveronCurrencyArray;
+//@property (nonatomic, strong) NSMutableArray *defaultsArray;
+
+//@property (nonatomic, strong) NSMutableArray *counveronCurrencyArray;
+
+@property (nonatomic, strong)  DefaultsObject *myDefObj;
+
+@property (nonatomic, strong)  GlobalRatesObject *myGlobj;
 
 @property(nonatomic,strong)id <TopUpRechargeVCDelegate> delegate;
 

@@ -17,7 +17,8 @@
 #import "MyCardVC.h"
 #import "AppDelegate.h"
 #import "AddMobileNoVC.h"
-
+#import "User.h"
+#import "Card.h"
 @interface LoginVC ()
 
 @end
@@ -49,7 +50,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
     [[[self navigationController] navigationBar] setBackgroundImage:[UIImage imageNamed:@"topBar"] forBarMetrics:UIBarMetricsDefault];
     self.navigationItem.hidesBackButton = YES;
     self.navigationController.navigationBarHidden = NO;
@@ -223,7 +223,7 @@
     loginCrossImgView.hidden=YES;
     [logInBtn btnWithOutCrossImage];
 }
-
+/*
 -(void)callDefaultsApi
 {
     if([CommonFunctions reachabiltyCheck])
@@ -234,17 +234,29 @@
         [manger callServiceWithRequest:soapMessage methodName:@"GetDefaults" andDelegate:self];
     }
 }
-
+*/
 
 -(void)callgetGloableRateApi
 {
+    User *myUser = [User sharedInstance];
     if([CommonFunctions reachabiltyCheck])
     {
+        /*
         sharedManager *manger = [[sharedManager alloc]init];
         manger.delegate = self;
         NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetGlobalRates/></soapenv:Body></soapenv:Envelope>";
         [manger callServiceWithRequest:soapMessage methodName:@"GetGlobalRates" andDelegate:self];
+        */
+        
+        myUser.globalRates = [myUser loadGlobalRatesWithRemote:YES];
+        myUser.defaultsArray = [myUser loadDefaultsWithRemote:YES];
+    }else{
+        myUser.globalRates = [myUser loadGlobalRatesWithRemote:NO];
+        myUser.defaultsArray = [myUser loadDefaultsWithRemote:YES];
     }
+    UIButton *button = (UIButton*)[self.view viewWithTag:6];
+    [button btnWithoutActivityIndicator];
+    [self startSendingReq:button];
 }
 
 
@@ -371,7 +383,7 @@
 #pragma mark sharedManagerDelegate
 
 -(void)loadingFinishedWithResponse:(NSString *)response withServiceName:(NSString *)service
-{    
+{
     if([service isEqualToString:@"CheckAuthGetCards"])
     {
         NSMutableArray *array = [[NSMutableArray alloc]init];
@@ -400,7 +412,6 @@
             [keychain2 setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
             [keychain2 setObject:userMobileStr forKey:(__bridge id)kSecAttrAccount];
             [keychain2 setObject:userMobileStr forKey:(__bridge id)kSecValueData];
-
             if([statusCodeStr intValue]!= 003)
             {
                 TBXMLElement *cardsElem = [TBXML childElementNamed:@"a:cards" parentElement:checkAuthGetCardsResultElem];
@@ -480,7 +491,55 @@
                 }
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 [self  callgetGloableRateApi];
+            }else{
+                // this work is done for remove histrory when user not set pin or remove pin
+                NSString *query  = @"";
+                query = @"DELETE FROM conversionHistoryTable ";
+                DatabaseHandler *dataBaseHandler = [[DatabaseHandler alloc]init];
+                [dataBaseHandler executeQuery:query];
+                query = [NSString stringWithFormat:@"DELETE FROM getHistoryTable"];
+                [dataBaseHandler executeQuery:query];
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
+                // this is done for the remove history data.
+                KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
+                [keychain setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
+                // Get username from keychain (if it exists)
+                NSString *username1 = [keychain objectForKey:(__bridge id)kSecAttrAccount];
+                NSString *password1 = [keychain objectForKey:(__bridge id)kSecValueData];
+                if (!([username1 isEqualToString:emailTxtFld.text]  && [password1 isEqualToString:passwordTxtFld.text]))
+                {
+                    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
+                    [keychain setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
+                    // Store username to keychain
+                    [keychain setObject:emailTxtFld.text forKey:(__bridge id)kSecAttrAccount];
+                    // Store password to keychain
+                    [keychain setObject:passwordTxtFld.text forKey:(__bridge id)kSecValueData];
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setPin"];
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FirstTimeUser"];
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoginAttamp"];
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"attemp"];
+                }
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                [self  callgetGloableRateApi];
             }
+            
+            //POPULATE USER SINGLETON OBJECT
+            KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
+            [keychain setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
+            // Get username from keychain (if it exists)
+            NSString *username1 = [keychain objectForKey:(__bridge id)kSecAttrAccount];
+            NSString *password1 = [keychain objectForKey:(__bridge id)kSecValueData];
+            User *myUser=[User sharedInstance];
+            myUser.cards = [myUser loadCardsFromDatabasewithRemote:NO];
+            myUser.username =username1;
+            myUser.password =password1;
+            myUser.statusCode = statusCodeStr;
+            myUser.contactType = userConactTypeStr;
+            myUser.dateOfBirth = userDOBStr;
+            myUser.mobileNumber = userMobileStr;
+            myUser.transactions = [myUser loadTransactionsForUSer:@"" withRemote:YES];
         }else //it is not 000
         {
             if([statusCodeStr intValue]== 002)
@@ -553,6 +612,7 @@
             }
         }
     }
+    /*
     else if ([service isEqualToString:@"GetGlobalRates"])
     {
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"currencyflags_map" ofType:@"csv"];
@@ -627,6 +687,7 @@
         [self performSelectorOnMainThread:@selector(updatingDatabase:) withObject:glabalRatesMA waitUntilDone:YES];
         [self callDefaultsApi];
     }
+    
     else if([service isEqualToString:@"GetDefaults"])
     {
         NSLog(@"GetDefaults %@",response);
@@ -668,8 +729,9 @@
         [button btnWithoutActivityIndicator];
         [self startSendingReq:button];
     }
+     */
 }
-
+/*
 -(void)updatingDatabase:(NSMutableArray *)glabalRatesMA
 {
     NSString *deleteQuerry = [NSString stringWithFormat:@"DELETE FROM globalRatesTable"];
@@ -685,7 +747,7 @@
         [[DatabaseHandler getSharedInstance] executeQuery:query];
     }
 }
-
+*/
 
 -(void)loadingFailedWithError:(NSString *)error withServiceName:(NSString *)service
 {

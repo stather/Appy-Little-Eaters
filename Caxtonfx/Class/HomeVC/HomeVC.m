@@ -54,6 +54,7 @@
     self.updateInfo.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
 	self.mainLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -116,6 +117,7 @@
                                                    object:nil];
         [scrollView setFrame:CGRectMake(0, 77, 320, 326)];
     }
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -188,7 +190,7 @@
     NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetPromo/></soapenv:Body></soapenv:Envelope>";
     [manger callServiceWithRequest:soapMessage methodName:@"GetPromo" andDelegate:self];
 }
-
+/*
 -(void)callDefaultsApi
 {
     if([CommonFunctions reachabiltyCheck])
@@ -199,16 +201,30 @@
         [manger callServiceWithRequest:soapMessage methodName:@"GetDefaults" andDelegate:self];
     }
 }
-
+*/
 -(void)callgetGloableRateApi
 {
+    User *myUser = [User sharedInstance];
     if([CommonFunctions reachabiltyCheck])
     {
+        /*
         sharedManager *manger = [[sharedManager alloc]init];
         manger.delegate = self;
         NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetGlobalRates/></soapenv:Body></soapenv:Envelope>";
         [manger callServiceWithRequest:soapMessage methodName:@"GetGlobalRates" andDelegate:self];
+         */
+        myUser.globalRates = [myUser loadGlobalRatesWithRemote:YES];
+        myUser.defaultsArray = [myUser loadDefaultsWithRemote:YES];
+    }else{
+        myUser.globalRates = [myUser loadGlobalRatesWithRemote:NO];
+        myUser.defaultsArray = [myUser loadDefaultsWithRemote:YES];
     }
+    UIButton *button = (UIButton*)[self.view viewWithTag:6];
+    [button btnWithoutActivityIndicator];
+    self.view.userInteractionEnabled = YES;
+    AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    delegate.window.userInteractionEnabled = YES;
+    [self performSelectorOnMainThread:@selector(goMyCardPage) withObject:nil waitUntilDone:nil];
 }
 
 -(void)loginWebServices
@@ -221,19 +237,39 @@
     dateInString = [[NSUserDefaults standardUserDefaults]objectForKey:@"updateDate"];
     NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"updateDate"];
     self.updateInfo.text = [NSString stringWithFormat:@"Getting your account information ...\n%@",[CommonFunctions statusOfLastUpdate:date1]];
-   
+    
     [self performSelectorInBackground:@selector(callLoginApi) withObject:nil];
 }
 
 -(void)callLoginApi
 {
-    AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    //AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
-     [keychain setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
-    
+    [keychain setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
     // Get username from keychain (if it exists)
     NSString *username1 = [keychain objectForKey:(__bridge id)kSecAttrAccount];
     NSString *password1 = [keychain objectForKey:(__bridge id)kSecValueData];
+    User *myUser=[User sharedInstance];
+    myUser.username =username1;
+    myUser.password =password1;
+    myUser.contactType = userConactTypeStr;
+    myUser.dateOfBirth = userDOBStr;
+    myUser.mobileNumber = userMobileStr;
+    if([CommonFunctions reachabiltyCheck])
+    {
+        myUser.cards = [myUser loadCardsFromDatabasewithRemote:YES];
+        myUser.transactions = [myUser loadTransactionsForUSer:@"" withRemote:YES];
+        if ([myUser.statusCode isEqualToString:@"000"]) {
+            [self performSelectorInBackground:@selector(callgetGloableRateApi) withObject:nil];
+        }else{
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Session Expired" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            alert.tag = 2;
+            [alert show];
+        }
+    }else{
+         [self performSelectorOnMainThread:@selector(goMyCardPage) withObject:nil waitUntilDone:nil];
+    }
+    /*
     if([CommonFunctions reachabiltyCheck])
     {
         if([[NSUserDefaults standardUserDefaults]doubleForKey:@"LoginnewTimeIntrval"])
@@ -274,6 +310,8 @@
     {
         [self performSelectorOnMainThread:@selector(goMyCardPage) withObject:nil waitUntilDone:nil];
     }
+     */
+     
 }
 
 -(void)goMyCardPage
@@ -432,7 +470,9 @@
         
         [self performSelectorOnMainThread:@selector(goMoreInfoPage) withObject:nil waitUntilDone:NO];
         
-    }else if([service isEqualToString:@"CheckAuthGetCards"])
+    }
+    /*
+    else if([service isEqualToString:@"CheckAuthGetCards"])
     {
         NSLog(@"CheckAuthGetCards - > %@",response);
         NSMutableArray *array = [[NSMutableArray alloc]init];
@@ -523,7 +563,9 @@
             alert.tag = 2;
             [alert show];
         }
-    }else if([service isEqualToString:@"GetGlobalRates"])
+    }
+     
+    else if([service isEqualToString:@"GetGlobalRates"])
     {
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"currencyflags_map" ofType:@"csv"];
         NSString *myText = nil;
@@ -597,6 +639,7 @@
         }
         [self callDefaultsApi];
     }
+    
     else if ([service isEqualToString:@"GetDefaults"])
     {
         NSMutableArray *getDefaultDataArr  = [[NSMutableArray alloc] init];
@@ -641,6 +684,7 @@
         delegate.window.userInteractionEnabled = YES;
        [self performSelectorOnMainThread:@selector(goMyCardPage) withObject:nil waitUntilDone:nil];
     }
+      */
     
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

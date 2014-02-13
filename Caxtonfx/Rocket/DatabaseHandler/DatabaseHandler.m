@@ -70,9 +70,11 @@
 -(void)executeQuery:(NSString *)query
 {
     sqlite3_stmt *statement;
+    //NSLog(@"query: %@",query);
 	if(sqlite3_open([[self dataFilePath] UTF8String], &database) == SQLITE_OK)
 	{
-		if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL) == SQLITE_OK)
+        int SQL =sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL);
+		if (SQL == SQLITE_OK)
 		{
 			if (sqlite3_step(statement) != SQLITE_DONE)
 			{
@@ -81,9 +83,8 @@
 		}
 		else
 		{
-			NSLog(@"query Statement Not Compiled %@",query);
+			NSLog(@"query Statement Not Compiled %@ - ERROR CODE: %i",query, SQL);
 		}
-		
 		sqlite3_finalize(statement);
 		sqlite3_close(database);
 	}
@@ -756,8 +757,6 @@
 
 
 - (NSMutableArray*) getData:(NSString *)query {
-    NSLog(@"%@",query);
-    
     NSMutableArray *arr = [[NSMutableArray alloc] init];
     if(sqlite3_open([[self dataFilePath] UTF8String], &database) == SQLITE_OK)
     {

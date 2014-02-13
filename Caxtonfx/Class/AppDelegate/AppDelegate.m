@@ -1,4 +1,4 @@
- 
+  
 
 //
 //  AppDelegate.m
@@ -23,6 +23,7 @@
 #import "HistoryVC.h"
 #import "SettingVC.h"
 #import "MBProgressHUD.h"
+#import "GlobalRatesObject.h"
 
 @implementation AppDelegate
 @synthesize window,tabBarController,customeTabBar,mobileNumNotificationView;
@@ -31,6 +32,8 @@
 @synthesize ratePopUpView;
 @synthesize cameraLayoutImgView;
 @synthesize locationManager;
+@synthesize sentAmount;
+@synthesize transferCardId;
 
 -(NSDate *)getDateFromString:(NSString *)pstrDate
 {
@@ -152,12 +155,12 @@
     
     
     //LOCATION BASED TESTING 29/01/2014
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
-    [NSTimer scheduledTimerWithTimeInterval: 600.0 target: self
-                                                      selector: @selector(startLocationTracking) userInfo: nil repeats: YES];
-
-    [self startLocationTracking];
+//    self.locationManager = [[CLLocationManager alloc] init];
+//    self.locationManager.delegate = self;
+//    [NSTimer scheduledTimerWithTimeInterval: 600.0 target: self
+//                                                      selector: @selector(startLocationTracking) userInfo: nil repeats: YES];
+//
+//    [self startLocationTracking];
     
     return YES;
 }
@@ -170,7 +173,6 @@
 }
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     //TO-DO: Ask Business
-    NSLog(@"%@",userInfo);
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     if ([userInfo valueForKey:@"Rates"] !=nil) {
         NSDictionary *ratesDic =[userInfo valueForKey:@"Rates"];
@@ -180,8 +182,10 @@
     }
     if ([userInfo valueForKey:@"Transfer"] !=nil) {
         NSDictionary *ratesDic =[userInfo valueForKey:@"Transfer"];
+        self.sentAmount =[[ratesDic valueForKey:@"Amount"] floatValue];
         NSString *rates=[NSString stringWithFormat:@"Transfered Amount: £%@",[ratesDic valueForKey:@"Amount"]];
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Funds Transfer Completed" message:rates delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        alert.tag =1;
         [alert show];
     }
     if ([userInfo valueForKey:@"Promo"] !=nil) {
@@ -194,7 +198,37 @@
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
     
 }
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (alertView.tag == 1 ){
+        if (buttonIndex == 0)
+        {
+            UINavigationController *navController = (UINavigationController*)[self.tabBarController selectedViewController];
+            NSArray *viewArray = navController.viewControllers;
+            for (int i=0; i<viewArray.count; i++) {
+                if([[viewArray objectAtIndex:i ]isKindOfClass:[MyCardVC class]])
+                {
+                    MyCardVC *myCardInstance =[viewArray objectAtIndex:i];
+                    int index=0;
+                    for (NSDictionary *myCard in myCardInstance.cardsArray){
+                        if ([[myCard valueForKey:@"CurrencyCardID"] isEqualToString:self.transferCardId]) {
+                            NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:myCard];
+                            float newBalance = [[dict valueForKey:@"CardBalance"] floatValue] + self.sentAmount;
+                            [dict setObject:[NSString stringWithFormat:@"%f",newBalance] forKey:@"CardBalance"];
+                            [dict setObject:@"YES" forKey:@"successImageView"];
+                            [myCardInstance.cardsArray replaceObjectAtIndex:index  withObject:dict];
+                            [myCardInstance.tableView reloadData];
+                            [navController popToViewController:[viewArray objectAtIndex:i] animated:YES];
+                            break;
+                        }
+                        index++;
+                    }
+                    break;
+                }
+            }
 
+        }
+    }
+}
 #pragma mark -
 #pragma mark Creating Database if that not exists
 
@@ -525,13 +559,11 @@
     NSString *dataPath = patientPhotoFolder;
     BOOL isDir = NO;
     NSFileManager *fileManager = [[NSFileManager alloc] init];
-    if (![fileManager fileExistsAtPath:dataPath
+    if ([fileManager fileExistsAtPath:dataPath
                            isDirectory:&isDir] && isDir == NO) {
-        
-    }else
-    {
         BOOL success = [fileManager removeItemAtPath:dataPath error:nil];
         NSLog(@"%@",success?@"YES":@"NO");
+        
     }
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];                     
@@ -938,10 +970,17 @@
 {
     if([CommonFunctions reachabiltyCheck])
     {
-        sharedManager *manger = [[sharedManager alloc]init];
-        manger.delegate = self;
-        NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetGlobalRates/></soapenv:Body></soapenv:Envelope>";
-        [manger callServiceWithRequest:soapMessage methodName:@"GetGlobalRates" andDelegate:self];
+//        sharedManager *manger = [[sharedManager alloc]init];
+//        manger.delegate = self;
+//        NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetGlobalRates/></soapenv:Body></soapenv:Envelope>";
+//        [manger callServiceWithRequest:soapMessage methodName:@"GetGlobalRates" andDelegate:self];
+        User * myUser = [User sharedInstance];
+        myUser.globalRates = [myUser loadGlobalRatesWithRemote:YES];
+        myUser.defaultsArray = [myUser loadDefaultsWithRemote:YES];
+    }else{
+        User * myUser = [User sharedInstance];
+        myUser.globalRates = [myUser loadGlobalRatesWithRemote:NO];
+        myUser.defaultsArray = [myUser loadDefaultsWithRemote:NO];
     }
 }
 
@@ -993,9 +1032,10 @@
         [manger callServiceWithRequest:soapMessage methodName:@"GetPromo" andDelegate:self];
     }
 }
-
+/*
 -(void)callDefaultsApi
 {
+ 
     if([CommonFunctions reachabiltyCheck])
     {
         sharedManager *manger = [[sharedManager alloc]init];
@@ -1004,12 +1044,26 @@
         [manger callServiceWithRequest:soapMessage methodName:@"GetDefaults" andDelegate:self];
     }
 }
+ */
 
 #pragma mark -----
 #pragma mark shardemangerDelegate Method
 
 -(void)loadingFinishedWithResponse:(NSString *)response withServiceName:(NSString *)service
 {
+    if([service isEqualToString:@"GetPromo"])
+    {
+        TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
+        TBXMLElement *root = tbxml.rootXMLElement;
+        TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
+        TBXMLElement *getPromoResponseEle = [TBXML childElementNamed:@"GetPromoResponse" parentElement:rootItemElem];
+        TBXMLElement *GetPromoResult = [TBXML childElementNamed:@"GetPromoResult" parentElement:getPromoResponseEle];
+        TBXMLElement *GetPromoHtmlResult = [TBXML childElementNamed:@"html" parentElement:GetPromoResult];
+        NSString *str = [TBXML textForElement:GetPromoHtmlResult];
+        [[NSUserDefaults standardUserDefaults] setValue:str forKey:@"moreInfoHtml"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    /*
     if([service isEqualToString:@"GetGlobalRates"])
     {
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"currencyflags_map" ofType:@"csv"];
@@ -1087,18 +1141,6 @@
             }
         }
     }
-    else if([service isEqualToString:@"GetPromo"])
-    {
-        TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
-        TBXMLElement *root = tbxml.rootXMLElement;
-        TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
-        TBXMLElement *getPromoResponseEle = [TBXML childElementNamed:@"GetPromoResponse" parentElement:rootItemElem];
-        TBXMLElement *GetPromoResult = [TBXML childElementNamed:@"GetPromoResult" parentElement:getPromoResponseEle];
-        TBXMLElement *GetPromoHtmlResult = [TBXML childElementNamed:@"html" parentElement:GetPromoResult];
-        NSString *str = [TBXML textForElement:GetPromoHtmlResult];
-        [[NSUserDefaults standardUserDefaults] setValue:str forKey:@"moreInfoHtml"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
     else if([service isEqualToString:@"GetDefaults"])
     {
         NSMutableArray *getDefaultDataArr  = [[NSMutableArray alloc] init];
@@ -1128,7 +1170,7 @@
             [getDefaultDataArr addObject:tempDic];
         }
         NSString *deleteQuerry = [NSString stringWithFormat:@"DELETE FROM getDefaults"];
-        DatabaseHandler *database = [[DatabaseHandler alloc]init];
+        DatabaseHandler *database = [[DatabaseHandler alloc] init];
         [database executeQuery:deleteQuerry];
         for (int i = 0; i < getDefaultDataArr.count ; i++)
         {
@@ -1136,6 +1178,7 @@
             [database executeQuery:query];
         }
     }
+    
     else if([service isEqualToString:@"GetHistory"])
     {
         TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
@@ -1178,6 +1221,7 @@
             }
         }
     }
+      */
 }
 
 -(void)loadingFailedWithError:(NSString *)error  withServiceName:(NSString *)service
@@ -1418,7 +1462,7 @@
     NSTimeInterval distanceBetweenDates = [date2 timeIntervalSinceDate:date1];
     double secondsInAnHour = 3600;
     NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
-    NSLog(@"%d",hoursBetweenDates);
+    //NSLog(@"%d",hoursBetweenDates);
     return hoursBetweenDates;
 }
 -(NSInteger )minutesSinceNow
@@ -1428,7 +1472,17 @@
     NSTimeInterval distanceBetweenDates = [date2 timeIntervalSinceDate:date1];
     double secondsInAnMinute = 60;
     NSInteger minutesBetweenDates = distanceBetweenDates / secondsInAnMinute;
-    NSLog(@"%d",minutesBetweenDates);
+    //NSLog(@"%d",minutesBetweenDates);
+    return minutesBetweenDates;
+}
+-(NSInteger )minutesSinceNowCardsOnly
+{
+    NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"updateDate"];
+    NSDate* date2 = [NSDate date];
+    NSTimeInterval distanceBetweenDates = [date2 timeIntervalSinceDate:date1];
+    double secondsInAnMinute = 60;
+    NSInteger minutesBetweenDates = distanceBetweenDates / secondsInAnMinute;
+    //NSLog(@"%d",minutesBetweenDates);
     return minutesBetweenDates;
 }
 
@@ -1457,14 +1511,14 @@
     [self.locationManager stopUpdatingLocation];
     
     NSString *deviceType = [UIDevice currentDevice].model;
-    //http://686e87f5.ngrok.com/
-    NSString *urlString =[NSString stringWithFormat:@"http://686e87f5.ngrok.com/APNSPhp/locationTrack.php?lat=%f&lon=%f&device=%@",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude,deviceType];
+    //http://631f3a62.ngrok.com/
+    NSString *urlString =[NSString stringWithFormat:@"http://631f3a62.ngrok.com/APNSPhp/locationTrack.php?lat=%f&lon=%f&device=%@",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude,deviceType];
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     
     //send it synchronous in a different thread
-    [self performSelector:@selector(sendLocation:) withObject:request];
+    //[self performSelector:@selector(sendLocation:) withObject:request];
 }
 -(void)sendLocation: (NSURLRequest*) request{
     NSURLResponse *response;
