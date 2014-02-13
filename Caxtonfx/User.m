@@ -24,6 +24,7 @@
 @synthesize mutableData;
 @synthesize globalRates;
 @synthesize defaultsArray;
+@synthesize devMode;
 
 -(id) init{
     self = [super init];
@@ -38,6 +39,7 @@
         self.transactions =[NSMutableArray array];
         self.globalRates  =[NSMutableArray array];
         self.defaultsArray =[NSMutableArray array];
+        self.devMode =TRUE;
     }
     return self;
 }
@@ -235,11 +237,13 @@
 }
 -(NSMutableArray *)callWebServiceWithSoapRequest:(NSString* )soapRequest andMethodName:(NSString* )methodName{
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    // test url
-    NSString *urlString = [NSString stringWithFormat:@"https://mobiledev.caxtonfx.com/Service.svc"];
-    // live Url
-    //   NSString *urlString = [NSString stringWithFormat:@"https://mobileapi.caxtonfx.com/service.svc"];
-    
+    NSString *urlString;
+    if (self.devMode) {
+        urlString = [NSString stringWithFormat:@"https://mobiledev.caxtonfx.com/Service.svc"];
+    }else{
+        urlString = [NSString stringWithFormat:@"https://mobileapi.caxtonfx.com/service.svc"];
+    }
+
     NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *theRequest;
             theRequest = [NSMutableURLRequest
@@ -250,12 +254,13 @@
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     [theRequest addValue:msgLength forHTTPHeaderField:@"Content-Length"];
     
-    // TEST
-    [theRequest addValue:@"mobiledev.caxtonfx.com" forHTTPHeaderField:@"Host"];
-    
-    //Live
-    //  [theRequest addValue:@"mobileapi.caxtonfx.com" forHTTPHeaderField:@"Host"];
-    
+    if (self.devMode) {
+        // TEST
+        [theRequest addValue:@"mobiledev.caxtonfx.com" forHTTPHeaderField:@"Host"];
+    }else{
+        //Live
+        [theRequest addValue:@"mobileapi.caxtonfx.com" forHTTPHeaderField:@"Host"];
+    }
     [theRequest addValue:@"Apache-HttpClient/4.1.1 (java 1.5)" forHTTPHeaderField:@"User-Agent"];
     [theRequest addValue:[NSString  stringWithFormat:@"http://tempuri.org/IPhoenixTestService/%@",methodName] forHTTPHeaderField:@"SOAPAction"];
     [theRequest setHTTPMethod:@"POST"];

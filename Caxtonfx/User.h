@@ -20,6 +20,7 @@
     NSMutableArray* transactions;
     NSMutableArray *globalRates;
     NSMutableArray *defaultsArray;
+    BOOL devMode;
 }
 
 @property (nonatomic,strong) NSString *dateOfBirth;
@@ -32,7 +33,7 @@
 @property (nonatomic,strong) NSMutableArray* transactions;
 @property (nonatomic,strong) NSMutableArray *globalRates;
 @property (nonatomic,strong) NSMutableArray *defaultsArray;
-
+@property BOOL devMode;
 @property (nonatomic , strong) NSMutableData *mutableData;
 //@property (nonatomic , strong) NSString *serviceName;
 
