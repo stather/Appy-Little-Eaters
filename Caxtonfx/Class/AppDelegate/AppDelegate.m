@@ -46,8 +46,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
-        if ([CommonFunctions reachabiltyCheck])
-            [self callgetGloableRateApi];
+        User *myUser = [User sharedInstance];
+        if ([CommonFunctions reachabiltyCheck]){
+            myUser.globalRates = [myUser loadGlobalRatesWithRemote:YES];
+            myUser.defaultsArray = [myUser loadDefaultsWithRemote:YES];
+        }else{
+            myUser.globalRates = [myUser loadGlobalRatesWithRemote:NO];
+            myUser.defaultsArray = [myUser loadDefaultsWithRemote:NO];
+        }
     });
     if(![[NSUserDefaults standardUserDefaults]objectForKey:@"switchState"])
     {
@@ -198,6 +204,7 @@
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
     
 }
+/*
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView.tag == 1 ){
         if (buttonIndex == 0)
@@ -229,6 +236,7 @@
         }
     }
 }
+*/
 #pragma mark -
 #pragma mark Creating Database if that not exists
 
@@ -397,6 +405,7 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    /*
     NSString *setPin = [[NSUserDefaults standardUserDefaults] objectForKey:@"setPin"];
     if([setPin isEqualToString:@"YES"])
     {
@@ -427,6 +436,7 @@
         
         [navController pushViewController:passcodeViewController animated:NO];
     }
+     */
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -438,6 +448,7 @@
     {
         [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"switchState"];
     }
+    /*
     NSString *setPin = [[NSUserDefaults standardUserDefaults] objectForKey:@"setPin"];
     if([setPin isEqualToString:@"YES"])
     {
@@ -468,7 +479,7 @@
         
         [navController pushViewController:passcodeViewController animated:NO];
     }
-    
+    */
 
 }
 
@@ -531,16 +542,34 @@
     UIViewController *VC =nil;
     if ([tabBarController selectedIndex]==0) {
         VC = [[HistoryVC alloc]initWithNibName:@"HistoryVC" bundle:nil];
+        [navController pushViewController:VC animated:YES];
     }else if ([tabBarController selectedIndex]==1) {
-       MyCardVC* myVC = [[MyCardVC alloc]initWithNibName:@"MyCardVC" bundle:nil];
-        if ([CommonFunctions reachabiltyCheck])
-            [myVC hudRefresh:self];
-        
-        [navController pushViewController:myVC animated:YES];
+        UINavigationController *navController = (UINavigationController*)[self.tabBarController selectedViewController];
+        NSArray *viewArray = navController.viewControllers;
+        BOOL found =FALSE;
+        for (int i=0; i<viewArray.count; i++) {
+            if([[viewArray objectAtIndex:i ]isKindOfClass:[MyCardVC class]])
+            {
+                MyCardVC *myCardInstance =[viewArray objectAtIndex:i];
+                myCardInstance.loadingFromPin = TRUE;
+                [navController popToViewController:myCardInstance animated:YES];
+                if ([CommonFunctions reachabiltyCheck])
+                    [myCardInstance hudRefresh:self];
+                found = TRUE;
+                break;
+            }
+        }
+        if(!found){
+            MyCardVC* myVC = [[MyCardVC alloc]initWithNibName:@"MyCardVC" bundle:nil];
+            myVC.loadingFromPin = TRUE;
+            if ([CommonFunctions reachabiltyCheck])
+                [myVC hudRefresh:self];
+            
+            [navController pushViewController:myVC animated:YES];
+        }
     }else if ([tabBarController selectedIndex]==2) {
         VC = [[SettingVC alloc]initWithNibName:@"SettingVC" bundle:nil];
     }
-    [navController pushViewController:VC animated:YES];
 }
 
 -(void)PAPasscodeViewControllerDidCancel:(PAPasscodeViewController *)controller
@@ -658,6 +687,12 @@
         btn = (UIButton*)sender;
         if (newIndex == 2) {
             [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+            UIButton *btn;
+            
+            btn = (UIButton*) [self.customeTabBar viewWithTag:1];
+            [btn setImage:[UIImage imageNamed:@"historyTab"] forState:UIControlStateNormal];
+            btn = (UIButton*) [self.customeTabBar viewWithTag:3];
+            [btn setImage:[UIImage imageNamed:@"settingsTab"] forState:UIControlStateNormal];
         }
     }
 }
@@ -874,9 +909,8 @@
                     break;
                 case SLComposeViewControllerResultDone:
                 {
-                    output = @"Post Successfully";
+                    output = @"Post Successful";
                     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:output delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                    
                     [alert show];
                 }
                     break;
@@ -918,10 +952,8 @@
                     break;
                 case SLComposeViewControllerResultDone:
                 {
-                    output = @"Post Successfully";
-                    
+                    output = @"Post Successful";
                     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:output delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                    
                     [alert show];
                 }
                     break;
@@ -965,7 +997,7 @@
     [feedbackBtn setBackgroundImage:[UIImage imageNamed:@"feedbackTab"] forState:UIControlStateNormal];
     [feedbackBtn setBackgroundImage:[UIImage imageNamed:@"feedbackTabHover"] forState:UIControlStateHighlighted];
 }
-
+/*
 -(void)callgetGloableRateApi
 {
     if([CommonFunctions reachabiltyCheck])
@@ -975,15 +1007,23 @@
 //        NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetGlobalRates/></soapenv:Body></soapenv:Envelope>";
 //        [manger callServiceWithRequest:soapMessage methodName:@"GetGlobalRates" andDelegate:self];
         User * myUser = [User sharedInstance];
-        myUser.globalRates = [myUser loadGlobalRatesWithRemote:YES];
-        myUser.defaultsArray = [myUser loadDefaultsWithRemote:YES];
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+        dispatch_async(queue, ^(void) {
+            myUser.globalRates = [myUser loadGlobalRatesWithRemote:YES];
+            myUser.defaultsArray = [myUser loadDefaultsWithRemote:YES];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            });
+        });
+//        myUser.globalRates = [myUser loadGlobalRatesWithRemote:YES];
+//        myUser.defaultsArray = [myUser loadDefaultsWithRemote:YES];
     }else{
         User * myUser = [User sharedInstance];
         myUser.globalRates = [myUser loadGlobalRatesWithRemote:NO];
         myUser.defaultsArray = [myUser loadDefaultsWithRemote:NO];
     }
 }
-
+*/
 -(void)callServiceForFetchingHistoryData
 {
     NSString *query = [NSString stringWithFormat:@"select CurrencyCardID from myCards"];
@@ -1447,12 +1487,18 @@
     [self customTabBarBtnTap:tapBtn];
     UINavigationController *navController = (UINavigationController*)[self.tabBarController selectedViewController];
     NSArray *viewArray = navController.viewControllers;
+    BOOL found=NO;
     for (int i=0; i<viewArray.count; i++) {
         if([[viewArray objectAtIndex:i ]isKindOfClass:[HomeVC class]])
         {
             [navController popToViewController:[viewArray objectAtIndex:i] animated:YES];
+            found =YES;
             break;
         }
+    }
+    if (!found) {
+        HomeVC *homeViewController = [[HomeVC alloc] init];
+        [navController pushViewController:homeViewController animated:YES];
     }
 }
 -(NSInteger )hourSinceNow

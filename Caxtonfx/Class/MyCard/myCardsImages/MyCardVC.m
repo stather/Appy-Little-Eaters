@@ -14,6 +14,7 @@
 #import "MBProgressHUD.h"
 #import "User.h"
 #import "Card.h"
+#import "ImagePickerVC.h"
 @interface MyCardVC ()
 
 @end
@@ -22,6 +23,7 @@
 
 @synthesize tableView,heightConstraint,cardsArray,contentArray;
 @synthesize refreshControl;
+@synthesize loadingFromPin;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,13 +46,14 @@
         [Appirater setDaysUntilPrompt:0];
         [Appirater setDebug:YES];
     }
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"updateDate"];
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:[CommonFunctions statusOfLastUpdate:date1]];
+    self.tableView.delegate = self;
+    //self.refreshControl = [[UIRefreshControl alloc] init];
+    //[self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    //NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"updateDate"];
+    //self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:[CommonFunctions statusOfLastUpdate:date1]];
     // Configure View Controller
-    [self.tableView addSubview:self.refreshControl];
-    [self.tableView removeConstraint:heightConstraint];
+    //[self.tableView addSubview:self.refreshControl];
+    //[self.tableView removeConstraint:heightConstraint];
     if(IS_HEIGHT_GTE_568)
     {
         heightConstraint = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:nil multiplier:1 constant:438];
@@ -60,6 +63,13 @@
         heightConstraint = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:nil multiplier:1 constant:350];
         [self.tableView addConstraint:heightConstraint];
     }
+    
+    self.HUD= [[MBProgressHUD alloc] initWithView:self.view];
+    self.HUD.delegate = self;
+    [self.tableView addSubview:self.HUD];
+    [self.tableView bringSubviewToFront:self.HUD];
+    //[self.HUD show:YES];
+    //self.tableView.delegate = self;
     [Flurry logEvent:@"Visited Cards Screen"];
 }
 
@@ -71,6 +81,17 @@
     [[[AppDelegate getSharedInstance] customeTabBar] setHidden:NO];
     //[[self navigationController] setNavigationBarHidden:YES animated:NO];
     [self customizingNavigationBar];
+    dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
+        User *myUser = [User sharedInstance];
+        if ([CommonFunctions reachabiltyCheck]){
+            if ([[AppDelegate getSharedInstance] minutesSinceNowCardsOnly] > 10)
+            {
+                myUser.globalRates = [myUser loadGlobalRatesWithRemote:YES];
+            }
+        }else{
+            myUser.globalRates = [myUser loadGlobalRatesWithRemote:NO];
+        }
+    });
 }
 // custome navigtion bar
 -(void)customizingNavigationBar
@@ -105,10 +126,22 @@
                                                   target:self
                                                   action:@selector(hudRefresh:)];
     //TO-DO add custom image that is the same for iOS 6/7
-    doneButton.tintColor = [UIColor whiteColor];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        doneButton.tintColor = [UIColor whiteColor];
+    }else{
+        doneButton.tintColor =[UIColor colorWithRed:255.0/255.0 green:40.0/255.0 blue:25.0/255.0 alpha:1.0];
+    }
+
     [self.navigationItem setRightBarButtonItem:doneButton];
 }
 
+- (IBAction)imageCaptureButtonTouched:(id)sender
+{
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    [[appDelegate window] setRootViewController:[appDelegate mainNavigation]];
+    ImagePickerVC *ivc = (ImagePickerVC*) [[[appDelegate mainNavigation] viewControllers] objectAtIndex:0];
+    [ivc showCamera];
+}
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:YES];
@@ -120,7 +153,6 @@
     [super viewDidAppear:animated];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [[[AppDelegate getSharedInstance] customeTabBar] setHidden:NO];
-    NSLog(@"TIME: %ld",(long)[[AppDelegate getSharedInstance] minutesSinceNow]);
     User *myUser = [User sharedInstance];
     myUser.cards =[myUser loadCardsFromDatabasewithRemote:NO];
     if ([[AppDelegate getSharedInstance] minutesSinceNowCardsOnly] > 10)
@@ -128,8 +160,6 @@
         [self performSelector:@selector(hudRefresh:) withObject:self afterDelay:5.0];
     }
 }
-
-
 /*
 -(void)getDataFromDataBse
 {
@@ -150,13 +180,16 @@
 */
 - (void)refresh :(id)sender
 {
+    MBProgressHUD* HUD= [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
     self.tableView.userInteractionEnabled = NO;
     NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"updateDate"];
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:[CommonFunctions statusOfLastUpdate:date1]];
     if([CommonFunctions reachabiltyCheck])
     {
         //[self performSelectorInBackground:@selector(fetchTheData) withObject:self];
-        [self performSelectorInBackground:@selector(updateCards) withObject:nil];
+        //[HUD showWhileExecuting:@selector(updateCards) onTarget:self withObject:self animated:YES];
+        [self performSelectorInBackground:@selector(updateCards) withObject:self];
     }else
     {
         [self.refreshControl endRefreshing];
@@ -165,27 +198,49 @@
 }
 - (void)hudRefresh :(id)sender
 {
-    MBProgressHUD* HUD= [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:HUD];
+    
     self.tableView.userInteractionEnabled = NO;
     NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"updateDate"];
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:[CommonFunctions statusOfLastUpdate:date1]];
+    self.view.userInteractionEnabled = NO;
     if([CommonFunctions reachabiltyCheck])
     {
         //[HUD showWhileExecuting:@selector(fetchTheData) onTarget:self withObject:self animated:YES];
-        [HUD showWhileExecuting:@selector(updateCards) onTarget:self withObject:self animated:YES];
+        [self.HUD showWhileExecuting:@selector(updateCards) onTarget:self withObject:self animated:YES];
+        [self performSelector:@selector(refreshTheTable) withObject:nil afterDelay:2.0f];
     }else
     {
         [self.refreshControl endRefreshing];
         self.tableView.userInteractionEnabled = YES;
     }
+    
 }
 -(void) updateCards{
     User *myUser = [User sharedInstance];
-    [myUser loadCardsFromDatabasewithRemote:YES];
-    [self.refreshControl endRefreshing];
-    self.tableView.userInteractionEnabled = YES;
+    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
+    [keychain setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
+    KeychainItemWrapper *keychain1 = [[KeychainItemWrapper alloc] initWithIdentifier:@"userDOB" accessGroup:nil];
+    [keychain1 setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
+    KeychainItemWrapper *keychain2 = [[KeychainItemWrapper alloc] initWithIdentifier:@"userMobile" accessGroup:nil];
+    [keychain2 setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
+    myUser.username =[keychain objectForKey:(__bridge id)kSecAttrAccount];
+    myUser.password =[keychain objectForKey:(__bridge id)kSecValueData];
+    myUser.contactType = [[NSUserDefaults standardUserDefaults] objectForKey:@"userConactType"];
+    myUser.dateOfBirth = [keychain1 objectForKey:(__bridge id)kSecValueData];
+    myUser.mobileNumber = [keychain2 objectForKey:(__bridge id)kSecValueData];
+    myUser.cards = [myUser loadCardsFromDatabasewithRemote:YES];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    if (([myUser.statusCode intValue] != 000) && ([myUser.statusCode intValue] != 003)) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Session Expired" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        alert.tag = 1;
+        alert.delegate = self;
+        [alert show];
+    }
+}
+-(void)refreshTheTable{
+    self.view.userInteractionEnabled = YES;
+    self.tableView.userInteractionEnabled = YES;
+    [self.tableView reloadData];
 }
 /*
 -(void) fetchTheData
@@ -359,7 +414,12 @@
 -(UITableViewCell *)emptyCell {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-    [cell.textLabel setText:@"No cards currently active for this user. \nPull down to refresh."];
+    if (!self.loadingFromPin) {
+        [cell.textLabel setText:@"No cards currently active for this user. \nPlease Refresh."];
+    }else{
+        [cell.textLabel setText:@"Loading your information..."];
+        self.loadingFromPin = FALSE;
+    }
     cell.textLabel.font = [UIFont fontWithName:@"OpenSans" size:15];
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -481,7 +541,7 @@
     @try {
         NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:dict1];
         [self.cardsArray replaceObjectAtIndex:path.row  withObject:dict];
-        [self.tableView reloadData];
+        [self performSelector:@selector(refreshTheTable) withObject:nil afterDelay:2.0];
         [self performSelector:@selector(hudRefresh:) withObject:self afterDelay:10.0];
     }
     @catch (NSException *exception) {
@@ -491,7 +551,7 @@
 }
 - (void)topupResult:(NSIndexPath*)path WithCard :(Card*)myCard{
     @try {
-        [self.tableView reloadData];
+        [self refreshTheTable];
         }
     @catch (NSException *exception) {
         NSLog(@"%@",exception);
@@ -502,7 +562,7 @@
     @try {
         NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:dict1];
         [self.cardsArray replaceObjectAtIndex:path.row  withObject:dict];
-        [self.tableView reloadData];
+        [self performSelector:@selector(refreshTheTable) withObject:nil afterDelay:2.0];
     }
     @catch (NSException *exception) {
         NSLog(@"%@",exception);

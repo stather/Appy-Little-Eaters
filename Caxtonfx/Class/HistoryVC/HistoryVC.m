@@ -16,7 +16,6 @@
 #import "HistoryConversionsVC.h"
 #import "UIImage+Resize.h"
 #import "AppDelegate.h"
-#import "MBProgressHUD.h"
 #import "User.h"
 #import "Card.h"
 #import "Transaction.h"
@@ -39,6 +38,7 @@
 @synthesize heightConstraint;
 @synthesize loadingView;
 @synthesize refreshControl;
+@synthesize HUD;
 
 #pragma mark ----
 #pragma mark View Life Cycle Method
@@ -78,6 +78,10 @@
                                                      name:UIContentSizeCategoryDidChangeNotification
                                                    object:nil];
     }
+    
+    self.HUD= [[MBProgressHUD alloc] initWithView:self.view];
+    [self.table addSubview:self.HUD];
+    [self.table bringSubviewToFront:self.HUD];
     
 }
 
@@ -228,11 +232,9 @@
    
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Checking for transactions"];
     [self.refreshControl beginRefreshing];
-    
-    MBProgressHUD* HUD= [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:HUD];
     if([CommonFunctions reachabiltyCheck])
-        [HUD showWhileExecuting:@selector(refreshTransactionsinModel) onTarget:self withObject:nil animated:YES];
+        [self.HUD showWhileExecuting:@selector(refreshTransactionsinModel) onTarget:self withObject:nil animated:YES];
+    
     [self.refreshControl endRefreshing];
     /*
     if([CommonFunctions reachabiltyCheck])
@@ -243,10 +245,9 @@
 }
 - (void)hudRefresh
 {
-    MBProgressHUD* HUD= [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:HUD];
+    self.view.userInteractionEnabled = NO;
     if([CommonFunctions reachabiltyCheck])
-        [HUD showWhileExecuting:@selector(refreshTransactionsinModel) onTarget:self withObject:nil animated:YES];
+        [self.HUD showWhileExecuting:@selector(refreshTransactionsinModel) onTarget:self withObject:nil animated:YES];
     /*
     if([CommonFunctions reachabiltyCheck])
         [HUD showWhileExecuting:@selector(callServiceForFetchingHistoryData) onTarget:self withObject:nil animated:YES];
@@ -259,8 +260,23 @@
     myUser.transactions = [myUser loadTransactionsForUSer:@"" withRemote:YES];
     [self.table reloadData];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    self.view.userInteractionEnabled = YES;
+    if ([myUser.statusCode intValue] != 000) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Session Expired" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        alert.tag = 1;
+        alert.delegate = self;
+        [alert show];
+    }
 }
-
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (alertView.tag == 1 ){
+        if (buttonIndex == 0)
+        {
+            AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+            [appDelegate doLogout];
+        }
+    }
+}
 // custome navigtion bar
 -(void)customizingNavigationBar
 {
@@ -293,8 +309,16 @@
     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
      target:self
                                                   action:@selector(hudRefresh)];
+    
+    
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        doneButton.tintColor = [UIColor whiteColor];
+    }else{
+        doneButton.tintColor =[UIColor colorWithRed:255.0/255.0 green:40.0/255.0 blue:25.0/255.0 alpha:1.0];
+    }
     //TO-DO add custom image that is the same for iOS 6/7
-    doneButton.tintColor = [UIColor whiteColor];
+    //doneButton.tintColor = [UIColor whiteColor];
     [self.navigationItem setRightBarButtonItem:doneButton];
 }
 

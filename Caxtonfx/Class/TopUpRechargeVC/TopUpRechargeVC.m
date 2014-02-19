@@ -24,6 +24,8 @@
 @synthesize _array,notMessageView,warningLbl;
 @synthesize myGlobj;
 @synthesize myDefObj;
+@synthesize sendMoney;
+@synthesize recieveMoney;
 //@synthesize counveronCurrencyArray,defaultsArray;
 
 @synthesize firstSymbolLbl,scndSymbolLbl,twoTimeLable;
@@ -70,6 +72,7 @@
     [self setupPage];
     
     [Flurry logEvent:@"Visited Top-Up"];
+    
 }
 
 
@@ -80,6 +83,10 @@
     appDelegate.topBarView.hidden = YES;
     appDelegate.transferCardId = self.dataDict.CurrencyCardIDStr;
     NSLog(@"%@",appDelegate.transferCardId);
+    
+    self.sendMoney.hidden =YES;
+    
+    self.recieveMoney.hidden =YES;
 }
 
 -(void)setupPage
@@ -439,8 +446,8 @@
             self.dataDict.successImage = @"YES";
             self.dataDict.cardBalanceStr = cardBalanceStr;
             User *myUser = [User sharedInstance];
-            [myUser loadTransactionsForUSer:myUser.username withRemote:YES];
-            [self topupResultget];
+            myUser.transactions =  [myUser loadTransactionsForUSer:myUser.username withRemote:YES];
+            [self performSelectorOnMainThread:@selector(topupResultget) withObject:nil waitUntilDone:NO];
             //[self callServiceForFetchingHistoryData];
         }
     }else if([service isEqualToString:@"GetBalance"])

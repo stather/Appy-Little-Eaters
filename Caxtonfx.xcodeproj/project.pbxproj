@@ -847,6 +847,8 @@
 		95F34CAA1783F032006122F6 /* PACancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F34CA61783F032006122F6 /* PACancel@2x.png */; };
 		95F34CAB1783F032006122F6 /* PACancelSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F34CA71783F032006122F6 /* PACancelSelected.png */; };
 		95F34CAC1783F032006122F6 /* PACancelSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F34CA81783F032006122F6 /* PACancelSelected@2x.png */; };
+		B21F151D18B224280042E543 /* ContactVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B21F151B18B224280042E543 /* ContactVC.m */; };
+		B21F151E18B224280042E543 /* ContactVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21F151C18B224280042E543 /* ContactVC.xib */; };
 		B22E174B189AB5D300721C0E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B22E174A189AB5D300721C0E /* User.m */; };
 		B22E174E189BCC4900721C0E /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = B22E174D189BCC4900721C0E /* Card.m */; };
 		B22E1751189BEB1500721C0E /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = B22E1750189BEB1500721C0E /* Transaction.m */; };
@@ -1974,6 +1976,9 @@
 		95F34CA61783F032006122F6 /* PACancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PACancel@2x.png"; sourceTree = "<group>"; };
 		95F34CA71783F032006122F6 /* PACancelSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PACancelSelected.png; sourceTree = "<group>"; };
 		95F34CA81783F032006122F6 /* PACancelSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PACancelSelected@2x.png"; sourceTree = "<group>"; };
+		B21F151A18B224280042E543 /* ContactVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactVC.h; path = ContactVC/ContactVC.h; sourceTree = "<group>"; };
+		B21F151B18B224280042E543 /* ContactVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactVC.m; path = ContactVC/ContactVC.m; sourceTree = "<group>"; };
+		B21F151C18B224280042E543 /* ContactVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ContactVC.xib; path = ContactVC/ContactVC.xib; sourceTree = "<group>"; };
 		B22E1749189AB5D300721C0E /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		B22E174A189AB5D300721C0E /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		B22E174C189BCC4900721C0E /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
@@ -3732,6 +3737,7 @@
 		95CB4FA71712D40600A6490B /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				B21F151918B224020042E543 /* ContactVC */,
 				198CF2AE1746045800485A8B /* WebServicesManager */,
 				95CB4FA91712D40600A6490B /* AppDelegate */,
 				95CB4FAE1712D40600A6490B /* LoginVC */,
@@ -3832,6 +3838,16 @@
 				95EAE97017A794C500E8B6F1 /* libFlurry_4.2.2.a */,
 			);
 			path = Flurry;
+			sourceTree = "<group>";
+		};
+		B21F151918B224020042E543 /* ContactVC */ = {
+			isa = PBXGroup;
+			children = (
+				B21F151A18B224280042E543 /* ContactVC.h */,
+				B21F151B18B224280042E543 /* ContactVC.m */,
+				B21F151C18B224280042E543 /* ContactVC.xib */,
+			);
+			name = ContactVC;
 			sourceTree = "<group>";
 		};
 		B22E1748189AB59500721C0E /* Model */ = {
@@ -3943,6 +3959,7 @@
 				95747A53172500C3000BF56F /* papasscode_background.png in Resources */,
 				95747A54172500C3000BF56F /* papasscode_background@2x.png in Resources */,
 				95747A55172500C3000BF56F /* papasscode_failed_bg.png in Resources */,
+				B21F151E18B224280042E543 /* ContactVC.xib in Resources */,
 				95747A56172500C3000BF56F /* papasscode_failed_bg@2x.png in Resources */,
 				95747A57172500C3000BF56F /* papasscode_marker.png in Resources */,
 				1970848D1726A65A00F72200 /* ImageEditorVC.xib in Resources */,
@@ -4662,6 +4679,7 @@
 				1994CB261721207700396488 /* SBJsonStreamWriter.m in Sources */,
 				1994CB271721207700396488 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				1994CB281721207700396488 /* SBJsonStreamWriterState.m in Sources */,
+				B21F151D18B224280042E543 /* ContactVC.m in Sources */,
 				1994CB291721207700396488 /* SBJsonTokeniser.m in Sources */,
 				1994CB2A1721207700396488 /* SBJsonUTF8Stream.m in Sources */,
 				1994CB2B1721207700396488 /* SBJsonWriter.m in Sources */,
@@ -4822,8 +4840,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CODE_SIGN_IDENTITY = "iPhone Developer: George Bafaloukas (8LPQBYVRQH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: George Bafaloukas (8LPQBYVRQH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Caxton FX Ltd (F35CTZ6K75)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Caxton FX Ltd (F35CTZ6K75)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Caxtonfx/Caxtonfx-Prefix.pch";
@@ -4838,8 +4856,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "43F3F45A-3B13-4669-8445-C6A545B52DF5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "43F3F45A-3B13-4669-8445-C6A545B52DF5";
+				PROVISIONING_PROFILE = "F361A9CB-3729-4578-B518-320A493FBBF0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F361A9CB-3729-4578-B518-320A493FBBF0";
 				STRIP_INSTALLED_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};
@@ -4852,8 +4870,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CODE_SIGN_IDENTITY = "iPhone Developer: George Bafaloukas (8LPQBYVRQH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: George Bafaloukas (8LPQBYVRQH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Caxton FX Ltd (F35CTZ6K75)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Caxton FX Ltd (F35CTZ6K75)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4869,8 +4887,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "43F3F45A-3B13-4669-8445-C6A545B52DF5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "43F3F45A-3B13-4669-8445-C6A545B52DF5";
+				PROVISIONING_PROFILE = "F361A9CB-3729-4578-B518-320A493FBBF0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F361A9CB-3729-4578-B518-320A493FBBF0";
 				STRIP_INSTALLED_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};

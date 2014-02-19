@@ -51,7 +51,7 @@
                         <outlet property="delegate" destination="-1" id="185"/>
                     </connections>
                 </textField>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="5" contentMode="center" fixedFrame="YES" image="checkboxUnselected.png" translatesAutoresizingMaskIntoConstraints="NO" id="32">
+                <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="5" contentMode="center" fixedFrame="YES" image="checkboxUnselected.png" translatesAutoresizingMaskIntoConstraints="NO" id="32">
                     <rect key="frame" x="19" y="148" width="33" height="33"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
@@ -112,15 +112,15 @@ UGxlYXNlIGxvZyBpbiB0byB5b3VyIENheHRvbiBGWCBhY2NvdW50ICAgICAgICAgICAgDQoAA
                     <color key="textColor" red="0.33725490200000002" green="0.32549019610000002" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" fixedFrame="YES" text="Stay logged in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="122">
+                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" fixedFrame="YES" text="Stay logged in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="122">
                     <rect key="frame" x="61" y="154" width="100" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.33725490200000002" green="0.32549019610000002" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="294" userLabel="StayLoginBtn">
-                    <rect key="frame" x="19" y="146" width="142" height="36"/>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="294" userLabel="StayLoginBtn">
+                    <rect key="frame" x="5" y="492" width="142" height="36"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                     <state key="normal">
@@ -141,6 +141,18 @@ UGxlYXNlIGxvZyBpbiB0byB5b3VyIENheHRvbiBGWCBhY2NvdW50ICAgICAgICAgICAgDQoAA
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hif-Qc-Yb9">
+                    <rect key="frame" x="21" y="149" width="111" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                    <state key="normal" title="Contact Us">
+                        <color key="titleColor" red="0.63818359375" green="0.050855446202654322" blue="0.11873441777981464" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="ContactBtnPressed:" destination="-1" eventType="touchUpInside" id="dwB-ze-tnO"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

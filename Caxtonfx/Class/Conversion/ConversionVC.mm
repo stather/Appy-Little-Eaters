@@ -2721,7 +2721,7 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
                     break;
                 case SLComposeViewControllerResultDone:
                 {
-                    output = @"Post Successfully";
+                    output = @"Post Successful";
                     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:output delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
                      alert.tag = 505;
                     [alert show];
@@ -2761,8 +2761,7 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
                     break;
                 case SLComposeViewControllerResultDone:
                 {
-                    output = @"Post Successfully";
-                    
+                    output = @"Post Successful";
                     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:output delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
                      alert.tag = 505;
                     [alert show];

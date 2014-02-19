@@ -71,7 +71,9 @@
 {
     sqlite3_stmt *statement;
     //NSLog(@"query: %@",query);
-	if(sqlite3_open([[self dataFilePath] UTF8String], &database) == SQLITE_OK)
+    NSString *filePath = [[NSString alloc] init];
+    filePath = [self dataFilePath];
+	if(sqlite3_open([filePath UTF8String], &database) == SQLITE_OK)
 	{
         int SQL =sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL);
 		if (SQL == SQLITE_OK)

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import<AddressBook/AddressBook.h>
+#import "MBProgressHUD.h"
 
 typedef int(^CustomBlock)(int number);
 
@@ -18,6 +19,7 @@ typedef int(^CustomBlock)(int number);
     IBOutlet UILabel *navigationTitle;
     BOOL isLoadingViewAdded;
 }
+@property  MBProgressHUD* HUD;
 @property (nonatomic , copy) CustomBlock block;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic , strong) NSMutableArray *_array;

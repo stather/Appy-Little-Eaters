@@ -19,6 +19,7 @@
 #import "AddMobileNoVC.h"
 #import "User.h"
 #import "Card.h"
+#import "ContactVC.h"
 @interface LoginVC ()
 
 @end
@@ -44,6 +45,11 @@
     [super viewDidLoad];
     isRemember = NO;
     [self SetUpDesginPage];
+    
+    //FORCE STAY LOGGED IN
+    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"stayLogin"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    
     [Flurry logEvent:@"Visited Login"];
 }
 
@@ -63,8 +69,13 @@
     appDeleget.topBarView.hidden= YES;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
         self.navigationController.navigationBar.translucent=NO;
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
-
+-(IBAction)ContactBtnPressed:(id)sender{
+    ContactVC *contactView = [[ContactVC alloc]init];
+    [self.navigationController pushViewController:contactView animated:YES];
+}
 #pragma mark -----------
 #pragma mark SetUp - DesginPage Method
 
@@ -136,7 +147,7 @@
         }
         else if ([passwordTxtFld.text length] > 200)
         {
-            [self showErrorMsg:@"Unfortunately the entered password must be less then 200 characters. Please try again."];
+            [self showErrorMsg:@"Unfortunately the entered password must be less than 200 characters. Please try again."];
             [self loginWithAppAccount:1];
             loginCrossImgView.hidden=NO;
             [passwordTxtFld becomeFirstResponder];
@@ -196,7 +207,7 @@
                     [manger callServiceWithRequest:soapMessage methodName:@"CheckAuthGetCards" andDelegate:self];
                 }else
                 {
-                    [self showErrorMsg:@"Your Caxton Fx account has been locked. To unlock your account please email info@caxtonfxcard.com"];
+                    [self showErrorMsg:@"Your Caxton FX account has been locked. To unlock your account please email info@caxtonfxcard.com"];
                 }
             }
         }else
@@ -246,13 +257,21 @@
         manger.delegate = self;
         NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetGlobalRates/></soapenv:Body></soapenv:Envelope>";
         [manger callServiceWithRequest:soapMessage methodName:@"GetGlobalRates" andDelegate:self];
-        */
         
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+        dispatch_async(queue, ^(void) {
+            myUser.globalRates = [myUser loadGlobalRatesWithRemote:YES];
+            myUser.defaultsArray = [myUser loadDefaultsWithRemote:YES];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            });
+        });
+         */
         myUser.globalRates = [myUser loadGlobalRatesWithRemote:YES];
         myUser.defaultsArray = [myUser loadDefaultsWithRemote:YES];
     }else{
         myUser.globalRates = [myUser loadGlobalRatesWithRemote:NO];
-        myUser.defaultsArray = [myUser loadDefaultsWithRemote:YES];
+        myUser.defaultsArray = [myUser loadDefaultsWithRemote:NO];
     }
     UIButton *button = (UIButton*)[self.view viewWithTag:6];
     [button btnWithoutActivityIndicator];
@@ -589,7 +608,7 @@
             }
             if([statusCodeStr intValue]==005)
             {
-                [self showErrorMsg:@"Your Caxton Fx account has been locked. To unlock your account please email info@caxtonfxcard.com"];
+                [self showErrorMsg:@"Your Caxton FX account has been locked. To unlock your account please email info@caxtonfxcard.com"];
                 [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"Lock"];
                 UIButton *button = (UIButton*)[self.view viewWithTag:6];
                 [button btnWithoutActivityIndicator];
@@ -858,7 +877,7 @@
     {
         emailErrorimgView.hidden = YES;
         passwordErrorimgView.hidden = NO;
-        [self showErrorMsg:@"Unfortunately the entered password must be less then 200 characters. Please try again."];
+        [self showErrorMsg:@"Unfortunately the entered password must be less than 200 characters. Please try again."];
         [passwordTxtFld incorrectDataTxtFld];
         return NO;
     }else if((textField == passwordTxtFld) &&  [Validate isValidPassword:passwordTxtFld.text]){
@@ -904,7 +923,7 @@
     {
         passwordErrorimgView.hidden = NO;
         emailErrorimgView.hidden = YES;
-        [self showErrorMsg:@"Unfortunately the entered password must be less then 200 characters. Please try again."];
+        [self showErrorMsg:@"Unfortunately the entered password must be less than 200 characters. Please try again."];
         [passwordTxtFld incorrectDataTxtFld];
     }else if((textField == passwordTxtFld) &&  [Validate isValidPassword:passwordTxtFld.text]){
         passwordErrorimgView.hidden = YES;

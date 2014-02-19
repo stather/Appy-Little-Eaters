@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "TopUpRechargeVC.h"
-@interface MyCardVC : UIViewController<UITableViewDataSource,UITableViewDelegate,TopUpRechargeVCDelegate>
+@interface MyCardVC : UIViewController<UITableViewDataSource,UITableViewDelegate,TopUpRechargeVCDelegate,MBProgressHUDDelegate>
 
+@property MBProgressHUD* HUD;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint *heightConstraint;
@@ -19,6 +20,8 @@
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @property (nonatomic, strong) NSArray *contentArray;
+
+@property BOOL loadingFromPin;
 
 -(void)topupBtnPressed:(NSIndexPath*)indexPath;
 
