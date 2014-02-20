@@ -569,6 +569,7 @@
         }
     }else if ([tabBarController selectedIndex]==2) {
         VC = [[SettingVC alloc]initWithNibName:@"SettingVC" bundle:nil];
+        [navController pushViewController:VC animated:YES];
     }
 }
 
