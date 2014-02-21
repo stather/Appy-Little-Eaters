@@ -9,14 +9,24 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 #import "sharedManager.h"
+#import <CoreLocation/CoreLocation.h>
+#import <CoreBluetooth/CoreBluetooth.h>
+#import "MBProgressHUD.h"
+#import "Card.h"
+#import "GlobalRatesObject.h"
+#import "User.h"
+#import "DefaultsObject.h"
+
 @class TopUpRechargeVC;
 
 @protocol TopUpRechargeVCDelegate
 - (void)topupResult:(NSIndexPath*)path dict :(NSMutableDictionary*)dict1;
+- (void)topupResult:(NSIndexPath*)path WithCard :(Card*)myCard;
+- (void)noRefreshTopupResult:(NSIndexPath*)path dict:(NSMutableDictionary *)dict1;
 @end
 
 
-@interface TopUpRechargeVC : UIViewController<UIGestureRecognizerDelegate,sharedDelegate,MFMessageComposeViewControllerDelegate,UINavigationControllerDelegate>
+@interface TopUpRechargeVC : UIViewController<UIGestureRecognizerDelegate,sharedDelegate,MFMessageComposeViewControllerDelegate,UINavigationControllerDelegate,CBPeripheralManagerDelegate,CLLocationManagerDelegate,UIAlertViewDelegate,MBProgressHUDDelegate>
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 
@@ -34,17 +44,21 @@
 
 @property (nonatomic, strong) IBOutlet UILabel *twoTimeLable;
 
-@property (nonatomic, strong) NSMutableDictionary *dataDict;
+@property (nonatomic, strong) Card *dataDict;
 
 @property (nonatomic, strong) NSIndexPath *indexPath;
-
-@property (nonatomic, strong) NSMutableArray *defaultsArray;
 
 @property (nonatomic, strong) NSString *sybolString;
 
 @property (nonatomic, strong) NSString *counveronCurrencyString;
 
-@property (nonatomic, strong) NSMutableArray *counveronCurrencyArray;
+//@property (nonatomic, strong) NSMutableArray *defaultsArray;
+
+//@property (nonatomic, strong) NSMutableArray *counveronCurrencyArray;
+
+@property (nonatomic, strong)  DefaultsObject *myDefObj;
+
+@property (nonatomic, strong)  GlobalRatesObject *myGlobj;
 
 @property(nonatomic,strong)id <TopUpRechargeVCDelegate> delegate;
 
@@ -54,9 +68,9 @@
 
 @property (nonatomic, strong) IBOutlet UILabel *textLbl;
 
-@property (nonatomic, strong)  UIView *inputAccView;
+@property (nonatomic, strong)  IBOutlet UILabel *firstSymbolLbl;
 
-@property (nonatomic, strong)  IBOutlet UILabel *firstSymbolLbl,*warningLbl;
+@property (nonatomic, strong)  IBOutlet UILabel *warningLbl;
 
 @property (nonatomic, strong)  IBOutlet UILabel *scndSymbolLbl;
 
@@ -75,5 +89,20 @@
 -(IBAction)cancelBtnPressed:(id)sender;
 
 -(IBAction)OkBtnPressed:(id)sender;
+
+
+//Testing iBeacons functionalituy for Caxton Fx app
+@property (nonatomic, weak)  UIButton *sendMoney;
+
+@property (nonatomic, weak)  UIButton *recieveMoney;
+
+-(IBAction)recieveMoney:(id)sender;
+
+-(IBAction)sendMoney:(id)sender;
+@property (strong, nonatomic) CLBeaconRegion *beaconRegion;
+@property (strong, nonatomic) NSDictionary *beaconPeripheralData;
+@property (strong, nonatomic) CBPeripheralManager *peripheralManager;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) MBProgressHUD* HUD;
 
 @end

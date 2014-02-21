@@ -12,17 +12,21 @@
 #import "AppDelegate.h"
 #import "KeychainItemWrapper.h"
 
-
 @interface TopUpRechargeVC ()
 
 @end
 
 @implementation TopUpRechargeVC
 
-@synthesize scrollView,flagImgView,leftTxtField,rightTxtField,redView,dataDict,indexPath,defaultsArray,sybolString,counveronCurrencyString,counveronCurrencyArray,rightSymbolImgView,leftSymbolImgView,delegate;
-@synthesize alertView,titleLable,textLbl,inputAccView;
+@synthesize scrollView,flagImgView,leftTxtField,rightTxtField,redView,dataDict,indexPath,sybolString,counveronCurrencyString,rightSymbolImgView,leftSymbolImgView,delegate;
+@synthesize alertView,titleLable,textLbl;
 @synthesize currentId;
 @synthesize _array,notMessageView,warningLbl;
+@synthesize myGlobj;
+@synthesize myDefObj;
+@synthesize sendMoney;
+@synthesize recieveMoney;
+//@synthesize counveronCurrencyArray,defaultsArray;
 
 @synthesize firstSymbolLbl,scndSymbolLbl,twoTimeLable;
 
@@ -61,13 +65,14 @@
     gestureRecognizer.delegate = self;
     [scrollView addGestureRecognizer:gestureRecognizer];
     
-    counveronCurrencyArray = [[NSMutableArray alloc]init];
-    defaultsArray = [[NSMutableArray alloc]init];
-    defaultsArray = [[DatabaseHandler getSharedInstance]getData:[NSString stringWithFormat:@"select * from getDefaults where productID = \"%@\"",[dataDict objectForKey:@"ProductTypeID"]]];
+    //counveronCurrencyArray = [[NSMutableArray alloc]init];
+    //defaultsArray = [[NSMutableArray alloc]init];
+    //defaultsArray = [[DatabaseHandler getSharedInstance]getData:[NSString stringWithFormat:@"select * from getDefaults where productID = \"%@\"",self.dataDict.ProductTypeIDStr]];
 
     [self setupPage];
     
     [Flurry logEvent:@"Visited Top-Up"];
+    
 }
 
 
@@ -75,28 +80,45 @@
 {
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     [appDelegate.customeTabBar setHidden:YES];
-    appDelegate.topBarView.hidden = YES; 
+    appDelegate.topBarView.hidden = YES;
+    appDelegate.transferCardId = self.dataDict.CurrencyCardIDStr;
+    NSLog(@"%@",appDelegate.transferCardId);
+    
+    self.sendMoney.hidden =YES;
+    
+    self.recieveMoney.hidden =YES;
 }
 
 -(void)setupPage
 {
-    if([[dataDict objectForKey:@"CardCurrencyDescription"] isEqualToString:@"GB pound"])
+    User *myUser = [User sharedInstance];
+    for (DefaultsObject *myDefObjTemp in myUser.defaultsArray) {
+        if ([myDefObjTemp.productId isEqualToString:self.dataDict.ProductTypeIDStr]) {
+            self.myDefObj = myDefObjTemp;
+            break;
+        }
+    }
+    
+    if([self.dataDict.CardCurrencyDescriptionStr isEqualToString:@"GB pound"])
     {
         self.flagImgView.image = [UIImage imageNamed:@"GBPFlag"];
         sybolString = @"£";
-        counveronCurrencyArray = [[DatabaseHandler getSharedInstance] getData:@"select *from globalRatesTable where CcyCode = \"GBP\" "];
+        //counveronCurrencyArray = [[DatabaseHandler getSharedInstance] getData:@"select *from globalRatesTable where CcyCode = \"GBP\" "];
+        self.myGlobj = [myUser loadGlobalRateForCcyCode:@"GBP"];
     }
-    else if([[dataDict objectForKey:@"CardCurrencyDescription"] isEqualToString:@"Euro"])
+    else if([self.dataDict.CardCurrencyDescriptionStr isEqualToString:@"Euro"])
     {
         self.flagImgView.image = [UIImage imageNamed:@"topRightFlag"];
         sybolString = @"€";
-        counveronCurrencyArray = [[DatabaseHandler getSharedInstance] getData:@"select *from globalRatesTable where CcyCode = \"EUR\" "];
+        //counveronCurrencyArray = [[DatabaseHandler getSharedInstance] getData:@"select *from globalRatesTable where CcyCode = \"EUR\" "];
+        self.myGlobj = [myUser loadGlobalRateForCcyCode:@"EUR"];
     }
     else
     {
         self.flagImgView.image = [UIImage imageNamed:@"dolloetrvall"];
         sybolString = @"$";
-        counveronCurrencyArray = [[DatabaseHandler getSharedInstance] getData:@"select *from globalRatesTable where CcyCode = \"USD\" "];
+        //counveronCurrencyArray = [[DatabaseHandler getSharedInstance] getData:@"select *from globalRatesTable where CcyCode = \"USD\" "];
+        self.myGlobj = [myUser loadGlobalRateForCcyCode:@"USD"];
     }
     
     UILabel *currentBlance = (UILabel *)[self.scrollView viewWithTag:3];
@@ -110,7 +132,7 @@
     UIFont *firstfont=[UIFont fontWithName:@"OpenSans" size:36.0f];
     UIFont *secondfont=[UIFont fontWithName:@"OpenSans" size:65.0f];
     
-    NSString *infoString= [NSString stringWithFormat:@"%@%.02f",sybolString,[[dataDict objectForKey:@"CardBalance"] floatValue]];
+    NSString *infoString= [NSString stringWithFormat:@"%@%.02f",sybolString,[self.dataDict.cardBalanceStr floatValue]];
     
     NSMutableAttributedString *attString=[[NSMutableAttributedString alloc] initWithString:infoString];
     [attString addAttribute:NSFontAttributeName value:firstfont range:NSMakeRange(0, 1)];
@@ -126,9 +148,9 @@
     UILabel *minLable = (UILabel *)[self.scrollView viewWithTag:7];
     minLable.textColor = UIColorFromRedGreenBlue(102, 102, 102);
     minLable.font = [UIFont fontWithName:@"OpenSans" size:9];
-    minLable.text = [NSString stringWithFormat:@"(Minimum amount accepted is : %@%@)",sybolString,[[defaultsArray objectAtIndex:0]objectForKey:@"minTopUp"]];
-    NSLog(@"minLable.text - > %@",minLable.text);
-    NSLog(@"min topup %@",[defaultsArray objectAtIndex:0]);
+    minLable.text = [NSString stringWithFormat:@"(Minimum amount accepted is : %@%@)",sybolString,myDefObj.minTopUp];
+    //NSLog(@"minLable.text - > %@",minLable.text);
+    //NSLog(@"min topup %@",[defaultsArray objectAtIndex:0]);
     
     UILabel *rateofLable = (UILabel*)[self.scrollView viewWithTag:11];
     rateofLable.textColor = UIColorFromRedGreenBlue(102, 102, 102);
@@ -136,13 +158,14 @@
     
     UILabel *conversionLable = (UILabel*)[self.scrollView viewWithTag:12];
     conversionLable.font = [UIFont fontWithName:@"OpenSans-Bold" size:12];
-    conversionLable.text = @"";
+    conversionLable.text = [NSString stringWithFormat:@"£1 = %@%f",sybolString,[myGlobj.rate doubleValue]];
+    /*
     if (counveronCurrencyArray.count > 0)
     {
           double conversn = [[[counveronCurrencyArray objectAtIndex:0]objectForKey:@"Rate" ] doubleValue];
         conversionLable.text = [NSString stringWithFormat:@"£1 = %@%f",sybolString,conversn];
     }
-    
+    */
     UILabel *messageLable = (UILabel*)[self.scrollView viewWithTag:14];
     messageLable.font = [UIFont fontWithName:@"OpenSans" size:9];
     messageLable.textColor = UIColorFromRedGreenBlue(102, 102, 102);
@@ -169,11 +192,11 @@
     leftTxtField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     leftTxtField.placeholder =[NSString stringWithFormat:@"     GBP"];
     
-    rightTxtField.placeholder = [NSString stringWithFormat:@"     %@",[dataDict objectForKey:@"CardCurrencySymbol"]];
+    rightTxtField.placeholder = [NSString stringWithFormat:@"     %@",self.dataDict.CardCurrencySymbolStr];
     
     firstSymbolLbl.text = @"£";
     
-    NSString *querrystr = [NSString stringWithFormat:@"select * from currencySymbole_table where cardCurrencyId = %@",[dataDict objectForKey:@"CardCurrencyID"]];
+    NSString *querrystr = [NSString stringWithFormat:@"select * from currencySymbole_table where cardCurrencyId = %@",self.dataDict.CardCurrencyIDStr];
     
     NSMutableArray *CardSymbolArray =[[DatabaseHandler getSharedInstance]getData:querrystr];
     NSDictionary *CardSymbolDict = [CardSymbolArray objectAtIndex:0];
@@ -186,7 +209,7 @@
     UILabel *dataConnectionLbl = (UILabel *)[self.redView viewWithTag:20];
     dataConnectionLbl.font = [UIFont fontWithName:@"OpenSans-Bold" size:10];
     
-    rightSymbolImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[dataDict objectForKey:@"CardCurrencySymbol"]]];
+    rightSymbolImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",self.dataDict.CardCurrencySymbolStr]];
     
     redView.frame = CGRectMake(12, 235,294 , 55);
 }
@@ -203,16 +226,20 @@
 
 -(IBAction)cancleBtnPressed:(id)sender
 {
+    [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
+    [self.peripheralManager stopAdvertising];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(IBAction)topUpBtnPressed:(id)sender
 {
+    //Bla Bla do the fucking default object change....
+    //defaultsArray = [[DatabaseHandler getSharedInstance]getData:[NSString stringWithFormat:@"select * from getDefaults where productID = \"%@\"",self.dataDict.ProductTypeIDStr]];
     if([CommonFunctions reachabiltyCheck])
     {
-        if(rightTxtField.text.floatValue >= [[[defaultsArray objectAtIndex:0]objectForKey:@"minTopUp"]floatValue])
+        if(rightTxtField.text.floatValue >= [self.myDefObj.minTopUp floatValue])
         {
-            if(rightTxtField.text.floatValue <=[[[defaultsArray objectAtIndex:0]objectForKey:@"maxTopUp"]floatValue]){
+            if(rightTxtField.text.floatValue <=[self.myDefObj.maxTopUp floatValue]){
                 UIButton *topupBtn = (UIButton*)sender;
                 [topupBtn btnWithActivityIndicator];
                 [self.view setUserInteractionEnabled:NO];
@@ -220,24 +247,24 @@
             }
             else
             {
-                NSString *sessionHeighScorestr = [[defaultsArray objectAtIndex:0]objectForKey:@"maxTopUp"];
+                NSString *sessionHeighScorestr = self.myDefObj.maxTopUp;
                 NSNumberFormatter *formatter = [NSNumberFormatter new];
-                [formatter setNumberStyle:NSNumberFormatterDecimalStyle]; // this line is important!
+                [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
                 int highscore  = [sessionHeighScorestr intValue];
                  NSString *formatted = [formatter stringFromNumber:[NSNumber numberWithInteger:highscore]];
                 [self errorMsg:[NSString stringWithFormat:@"There is a maximum load value of %@%@. Please re-enter correct amount.",sybolString,formatted]];
             }
         }else
         {
-            [self errorMsg:[NSString stringWithFormat:@"There is a minimum load value of %@%d. Please re-enter correct amount.",sybolString,[[[defaultsArray objectAtIndex:0]objectForKey:@"minTopUp"] intValue]]];
+            [self errorMsg:[NSString stringWithFormat:@"There is a minimum load value of %@%d. Please re-enter correct amount.",sybolString,[self.myDefObj.minTopUp intValue]]];
         }
     }
     else
     {
         
-    if(rightTxtField.text.floatValue >= [[[defaultsArray objectAtIndex:0]objectForKey:@"minTopUp"]floatValue])
+    if(rightTxtField.text.floatValue >= [self.myDefObj.minTopUp floatValue])
         {
-            if(rightTxtField.text.floatValue <=[[[defaultsArray objectAtIndex:0]objectForKey:@"maxTopUp"]floatValue]){
+            if(rightTxtField.text.floatValue <=[self.myDefObj.maxTopUp floatValue]){
                 titleLable.font = [UIFont fontWithName:@"OpenSans-Bold" size:18];
                 
                 textLbl.font = [UIFont fontWithName:@"OpenSans" size:14];
@@ -254,9 +281,9 @@
 
             }else
             {
-                NSString *sessionHeighScorestr = [[defaultsArray objectAtIndex:0]objectForKey:@"maxTopUp"];
+                NSString *sessionHeighScorestr = self.myDefObj.maxTopUp;
                 NSNumberFormatter *formatter = [NSNumberFormatter new];
-                [formatter setNumberStyle:NSNumberFormatterDecimalStyle]; // this line is important!
+                [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
                 int highscore  = [sessionHeighScorestr intValue];
                 NSString *formatted = [formatter stringFromNumber:[NSNumber numberWithInteger:highscore]];
                 [self errorMsg:[NSString stringWithFormat:@"There is a maximum load value of %@%@. Please re-enter correct amount.",sybolString,formatted]];
@@ -264,11 +291,11 @@
         }else
         {
             
-            [self errorMsg:[NSString stringWithFormat:@"There is a minimum load value of %@%d. Please re-enter correct amount.",sybolString,[[[defaultsArray objectAtIndex:0]objectForKey:@"minTopUp"] intValue]]];
+            [self errorMsg:[NSString stringWithFormat:@"There is a minimum load value of %@%d. Please re-enter correct amount.",sybolString,[self.myDefObj.minTopUp intValue]]];
         }
     }
 }
-
+/*
 -(void)callServiceForFetchingHistoryData
 {
     NSString *query = [NSString stringWithFormat:@"select CurrencyCardID from myCards"];
@@ -339,7 +366,7 @@
         [dbHandler executeQuery:queryStr];
     }
 }
-
+*/
 -(void)sendtopuprequest : (UIButton*)btn
 {
     KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
@@ -349,7 +376,7 @@
     NSString *password1 = [keychain objectForKey:(__bridge id)kSecValueData];
     sharedManager *manger = [[sharedManager alloc]init];
     manger.delegate = self;
-    NSString *soapMessage =[NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:TopUp><tem:userName>%@</tem:userName><tem:password>%@</tem:password><tem:currencyCardID>%@</tem:currencyCardID><tem:TopUpAmount>%@</tem:TopUpAmount><tem:CardCurrency>%@</tem:CardCurrency></tem:TopUp></soapenv:Body></soapenv:Envelope>",username1,password1,[dataDict objectForKey:@"CurrencyCardID"],leftTxtField.text,[dataDict objectForKey:@"CardCurrencySymbol"]];
+    NSString *soapMessage =[NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:TopUp><tem:userName>%@</tem:userName><tem:password>%@</tem:password><tem:currencyCardID>%@</tem:currencyCardID><tem:TopUpAmount>%@</tem:TopUpAmount><tem:CardCurrency>%@</tem:CardCurrency></tem:TopUp></soapenv:Body></soapenv:Envelope>",username1,password1,self.dataDict.CurrencyCardIDStr,leftTxtField.text,self.dataDict.CardCurrencySymbolStr];
     
     NSLog(@"Soap Message: %@",soapMessage);
     
@@ -394,8 +421,8 @@
             
             [Flurry logEvent:@"UNSUCCESSFUL TOP-UP" withParameters:articleParams];
             
-            [self.dataDict setObject:@"YES" forKey:@"errorImageView"];
-            [self.dataDict setObject:@"NO" forKey:@"successImageView"];
+            self.dataDict.failImage = @"YES";
+            self.dataDict.successImage = @"NO";
             UIButton *btn = (UIButton *)[self.view viewWithTag:17];
             [btn btnWithoutActivityIndicator];
             [btn btnWithCrossImage];
@@ -415,10 +442,13 @@
             
             [Flurry logEvent:@"SUCCESSFUL TOP-UP" withParameters:articleParams];
             
-            [self.dataDict setObject:@"YES" forKey:@"successImageView"];
-            [self.dataDict setObject:@"NO" forKey:@"errorImageView"];
-            [self.dataDict setObject:cardBalanceStr forKey:@"CardBalance"];
-            [self callServiceForFetchingHistoryData];
+            self.dataDict.failImage = @"NO";
+            self.dataDict.successImage = @"YES";
+            self.dataDict.cardBalanceStr = cardBalanceStr;
+            User *myUser = [User sharedInstance];
+            myUser.transactions =  [myUser loadTransactionsForUSer:myUser.username withRemote:YES];
+            [self performSelectorOnMainThread:@selector(topupResultget) withObject:nil waitUntilDone:NO];
+            //[self callServiceForFetchingHistoryData];
         }
     }else if([service isEqualToString:@"GetBalance"])
     {
@@ -428,7 +458,7 @@
         TBXMLElement *TopUpResponse = [TBXML childElementNamed:@"GetBalanceResponse" parentElement:rootItemElem];
         TBXMLElement *TopUpResult = [TBXML childElementNamed:@"GetBalanceResult" parentElement:TopUpResponse];
         NSString *blanceStr = [TBXML textForElement:TopUpResult];
-        [self.dataDict setObject:blanceStr forKey:@"CardBalance"];
+        self.dataDict.cardBalanceStr = blanceStr;
     }else
     {
         TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
@@ -532,7 +562,7 @@
 	MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
 	picker.messageComposeDelegate = self;
     picker.recipients = [NSArray arrayWithObjects:@"+44 753 740 2025",nil];
-	picker.body = [NSString stringWithFormat:@" LOAD %@ %@ %@",[dataDict objectForKey:@"CardNumber"],DobStr,rightTxtField.text];
+	picker.body = [NSString stringWithFormat:@" LOAD %@ %@ %@",self.dataDict.CardNumberStr,DobStr,rightTxtField.text];
 	[self presentViewController:picker animated:YES completion:nil];
 }
 
@@ -540,7 +570,7 @@
 {
 	[alertView removeFromSuperview];
 	
-	switch (result)                   // Notifies users about errors associated with the interface
+	switch (result)
 	{
 		case MessageComposeResultCancelled:
 			NSLog(@"MessageComposeResultCancelled");
@@ -559,6 +589,7 @@
 
 -(IBAction)OkBtnPressed:(id)sender
 {
+    [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
     [self.notMessageView removeFromSuperview];
 }
 -(IBAction)cancelBtnPressed:(id)sender
@@ -568,8 +599,11 @@
 
 -(void)topupResultget
 {
+    [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
+    [self.peripheralManager stopAdvertising];
     self.view.userInteractionEnabled = YES;
-    [delegate topupResult:self.indexPath dict:self.dataDict];
+    //[delegate topupResult:self.indexPath dict:self.dataDict];
+    [delegate topupResult:self.indexPath WithCard:self.dataDict];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -597,28 +631,7 @@
     
     [self.navigationItem setTitleView:view];
 }
--(void)createInputAccessoryView{
 
-    inputAccView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 45.0)];
-    [inputAccView setBackgroundColor:[UIColor clearColor]];
-    [inputAccView setAlpha: 1.0];
-
-    UIButton * btnDone = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btnDone setFrame:CGRectMake(10.0, 0.0f, 77.0f, 42.0f)];
-    [btnDone setBackgroundColor:[UIColor clearColor]];
-    [btnDone setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [btnDone addTarget:self action:@selector(doneBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-    [btnDone setBackgroundImage:[UIImage imageNamed:@"returnBtn"] forState:UIControlStateNormal];
-    
-    [inputAccView addSubview:btnDone];
-}
-
--(void)doneBtnPressed
-{
-    [self.view endEditing:YES];
-    [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
-    
-}
 - (void) scrollViewToCenterOfScreen:(UIView *)theView
 {
     CGFloat viewCenterY = theView.center.y;
@@ -638,28 +651,49 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    UIToolbar * keyboardToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
     
-    [textField setInputAccessoryView:inputAccView];
-    if(IS_HEIGHT_GTE_568){}else{
-        [self scrollViewToCenterOfScreen:textField];
-    }
-    UIButton *btn = (UIButton *)[self.view viewWithTag:17];
-    [btn btnWithoutActivityIndicator];
-    [btn btnWithOutCheckImage];
-    [btn btnWithOutCrossImage];
+    keyboardToolBar.barStyle = UIBarStyleDefault;
+    [keyboardToolBar setItems: [NSArray arrayWithObjects:
+                                [[UIBarButtonItem alloc]initWithTitle:@"Previous" style:UIBarButtonItemStyleBordered target:self action:@selector(previousTextField)],
+                                [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(nextTextField)],
+                                [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                                [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(resignKeyboard)],
+                                nil]];
+    textField.inputAccessoryView = keyboardToolBar;
+    [self scrollViewToCenterOfScreen:textField];
 
 }
+- (void)nextTextField {
+    if (leftTxtField) {
+        
+        [leftTxtField resignFirstResponder];
+        [rightTxtField becomeFirstResponder];
+        
+    }
+}
 
+-(void)previousTextField
+{
+    if (rightTxtField) {
+        [rightTxtField resignFirstResponder];
+        [leftTxtField becomeFirstResponder];
+    }
+}
+-(void)resignKeyboard{
+    [leftTxtField resignFirstResponder];
+    [rightTxtField resignFirstResponder];
+    [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+}
 - (BOOL)textField:(UITextField*)textField shouldChangeCharactersInRange:(NSRange)range
 replacementString: (NSString*) string {
+    User *myUser = [User sharedInstance];
     NSLog(@"textField.text %@",textField.text);
     NSLog(@"string %@",string);
     UIButton *btn = (UIButton *)[self.view viewWithTag:17];
     [btn btnWithoutActivityIndicator];
     [btn btnWithOutCheckImage];
     [btn btnWithOutCrossImage];
-
-
     NSUInteger newLength = [textField.text length] + [string length] - range.length;
     if(newLength>5)
     {
@@ -667,34 +701,22 @@ replacementString: (NSString*) string {
         return NO;
     }
     
-    
     if(textField==leftTxtField)
     {
-        
         NSString * text = [leftTxtField.text stringByReplacingCharactersInRange:range
                                                                      withString: string];
         if([text length] !=0)
         {
-            
             leftTxtField.text = text;
-            
             float newprice  = 0.0f;
-            
-            if (counveronCurrencyArray.count > 0)
+            if (myUser.globalRates.count > 0)
             {
-                newprice = text.floatValue * [[[counveronCurrencyArray objectAtIndex:0]objectForKey:@"Rate"]floatValue];
-                
-               
+                newprice = text.floatValue * [self.myGlobj.rate floatValue];
             }
             else{
                 newprice = text.floatValue * 0.0f;
             }
-            
             rightTxtField.text = [NSString stringWithFormat:@"%.02f",newprice];
-            
-            NSLog(@"rightTxtField = %@", rightTxtField.text );
-
-            
         }
         else
         {
@@ -713,9 +735,9 @@ replacementString: (NSString*) string {
             
             rightTxtField.text = text;
             float newprice  = 0.0f;
-            if (counveronCurrencyArray.count > 0)
+            if (myUser.globalRates.count > 0)
             {
-                newprice = text.floatValue / [[[counveronCurrencyArray objectAtIndex:0]objectForKey:@"Rate"]floatValue];
+                newprice = text.floatValue / [self.myGlobj.rate floatValue];
                 
                
             }
@@ -757,6 +779,148 @@ replacementString: (NSString*) string {
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+//TESTING iBeacons functionality for Caxton Fx app 27/01/2014
+-(IBAction)recieveMoney:(id)sender{
+    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
+        [keychain setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
+        
+        NSString *username1 = [keychain objectForKey:(__bridge id)kSecAttrAccount];
+        NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:@"23542266-18D1-4FE4-B4A1-23F8195B9D40"];
+        self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid
+                                                                    major:[username1 intValue]
+                                                                    minor:[self.dataDict.CurrencyCardIDStr intValue]
+                                                               identifier:@"com.caxtonfx.myRegion"];
+        self.beaconPeripheralData = [self.beaconRegion peripheralDataWithMeasuredPower:nil];
+        self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self
+                                                                         queue:nil
+                                                                       options:nil];
+        [self.peripheralManager startAdvertising:self.beaconPeripheralData];
+        self.HUD= [[MBProgressHUD alloc] initWithView:self.view];
+        self.HUD.labelText =@"Bump phones";
+        [self.view addSubview:self.HUD];
+        [self.HUD show:YES];
+        [self performSelector:@selector(cancelTransfer) withObject:nil afterDelay:10.0];
+    
+}
+-(IBAction)sendMoney:(id)sender{
+    if((rightTxtField.text.floatValue >= [self.myDefObj.minTopUp floatValue]) && (rightTxtField.text.floatValue <=[self.myDefObj.maxTopUp floatValue]))
+        {
+            NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:@"23542266-18D1-4FE4-B4A1-23F8195B9D40"];
+            self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid identifier:@"com.caxtonfx.myRegion"];
+            self.beaconRegion.notifyOnEntry = YES;
+            self.beaconRegion.notifyOnExit = YES;
+            self.beaconRegion.notifyEntryStateOnDisplay = YES;
+            self.locationManager=[[CLLocationManager alloc] init];
+            self.locationManager.delegate =self;
+            [self.locationManager startMonitoringForRegion:self.beaconRegion];
+            [self.locationManager requestStateForRegion:self.beaconRegion];
+            [self.peripheralManager startAdvertising:self.beaconPeripheralData];
+            self.HUD= [[MBProgressHUD alloc] initWithView:self.view];
+            self.HUD.labelText =@"Bump phones";
+            [self.view addSubview:self.HUD];
+            [self.HUD show:YES];
+            [self performSelector:@selector(cancelTransfer) withObject:nil afterDelay:10.0];
+            [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
+            
+        }else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Money Transfer" message:[NSString stringWithFormat:@"There is a minimum load value of %@%d. Please re-enter correct amount.",sybolString,[self.myDefObj.minTopUp intValue]] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert show];
+        }
+
+    
+
+}
+-(void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral {
+    if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
+        NSLog(@"Powered On");
+        
+    } else if (peripheral.state == CBPeripheralManagerStatePoweredOff) {
+        NSLog(@"Powered Off");
+        [self.peripheralManager stopAdvertising];
+    }
+}
+- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
+    [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
+    [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
+}
+-(void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region {
+    CLBeacon *beacon = [[CLBeacon alloc] init];
+    beacon = [beacons lastObject];
+    if (beacon.proximity == CLProximityUnknown) {
+       
+    } else if (beacon.proximity == CLProximityImmediate) {
+        self.HUD.labelText =@"Done!";
+        [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
+        [self.peripheralManager stopAdvertising];
+        [self.HUD hide:YES];
+        [self confirmTransaction:beacon.major and:beacon.minor];
+    } else if (beacon.proximity == CLProximityNear) {
+        self.HUD.labelText =@"Get them closer...";
+    } else if (beacon.proximity == CLProximityFar) {
+        self.HUD.labelText =@"Get them closer...";
+    }
+}
+- (void)alertView:(UIAlertView *)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"buttonIndex %i",buttonIndex);
+    if (buttonIndex == 1) {
+        [self startMoneyTransfer];
+    }else{
+        [self cancelTransfer];
+    }
+}
+-(void)startMoneyTransfer{
+    self.HUD.labelText =@"Transfering money";
+    [self.HUD showWhileExecuting:@selector(doTransfer) onTarget:self withObject:nil animated:YES];
+}
+-(void)doTransfer{
+    NSString *deviceType = [UIDevice currentDevice].model;
+    //http://631f3a62.ngrok.com/
+    NSString *urlString =[NSString stringWithFormat:@"http://631f3a62.ngrok.com/APNSPhp/transfer.php?amount=%@&from=%@",self.leftTxtField.text,deviceType];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    NSURLResponse *response;
+    NSError *error;
+    //send it synchronous
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    // check for an error. If there is a network error, you should handle it here.
+    if(!error)
+    {
+        //log response
+        NSLog(@"Response from server = %@", responseString);
+    }
+    
+    float cardBalance =[[self.dataDict valueForKey:@"CardBalance"] floatValue]-[self.leftTxtField.text floatValue];
+    NSString *cardBalanceStr = [NSString stringWithFormat:@"%f",cardBalance];
+    self.dataDict.failImage =@"NO";
+    self.dataDict.successImage =@"YES";
+    self.dataDict.cardBalanceStr = cardBalanceStr;
+
+    [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
+    [self.peripheralManager stopAdvertising];
+    self.view.userInteractionEnabled = YES;
+    //[delegate noRefreshTopupResult:self.indexPath dict:self.dataDict];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+-(void)cancelTransfer{
+    [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
+    [self.peripheralManager stopAdvertising];
+    [self.HUD hide:YES];
+}
+-(void)confirmTransaction:(NSNumber*)major and:(NSNumber*)minor{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Money Transfer" message:[NSString stringWithFormat:@"Send £%@ to user %i with card %i",self.leftTxtField.text,[major intValue], [minor intValue]] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Confirm", nil];
+    [alert show];
+}
+-(void)viewDidDisappear:(BOOL)animated{
+    [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
+    [self.peripheralManager stopAdvertising];
 }
 
 @end

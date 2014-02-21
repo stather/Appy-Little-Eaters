@@ -144,7 +144,7 @@
         }
         else if ([passwordTxtFld.text length] > 200)
         {
-             [self showErrorMsg:@"Unfortunately the entered password must be less then 200 characters. Please try again."];
+             [self showErrorMsg:@"Unfortunately the entered password must be less than 200 characters. Please try again."];
             
             [self loginWithAppAccount:1];
             loginCrossImgView.hidden=NO;
@@ -497,7 +497,7 @@
             
             if([statusCodeStr intValue]==005)
             {
-                [self showErrorMsg:@"Your Caxton Fx account has been locked. To unlock your account please email info@caxtonfxcard.com"];
+                [self showErrorMsg:@"Your Caxton FX account has been locked. To unlock your account please email info@caxtonfxcard.com"];
                 [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"Lock"];
                 
                 UIButton *button = (UIButton*)[self.view viewWithTag:6];
@@ -589,7 +589,7 @@
         emailErrorimgView.hidden = YES;
         
         passwordErrorimgView.hidden = NO;
-        [self showErrorMsg:@"Unfortunately the entered password must be less then 200 characters. Please try again."];
+        [self showErrorMsg:@"Unfortunately the entered password must be less than 200 characters. Please try again."];
 
         [passwordTxtFld incorrectDataTxtFld];
         return NO;
@@ -651,7 +651,7 @@
         passwordErrorimgView.hidden = NO;
         emailErrorimgView.hidden = YES;
         
-        [self showErrorMsg:@"Unfortunately the entered password must be less then 200 characters. Please try again."];
+        [self showErrorMsg:@"Unfortunately the entered password must be less than 200 characters. Please try again."];
 
         
         [passwordTxtFld incorrectDataTxtFld];

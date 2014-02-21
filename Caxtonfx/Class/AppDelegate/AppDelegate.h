@@ -14,15 +14,19 @@
 #import "PAPasscodeViewController.h"
 #import "HomeVC.h"
 #import "Flurry.h"
+#import <CoreLocation/CoreLocation.h>
+#import "User.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate,sharedDelegate,MFMailComposeViewControllerDelegate,JJGActionSheetDelegate,PAPasscodeViewControllerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,sharedDelegate,MFMailComposeViewControllerDelegate,JJGActionSheetDelegate,PAPasscodeViewControllerDelegate,CLLocationManagerDelegate,UIAlertViewDelegate>
 {
     CGPoint startPos;
-    
+    float sentAmount;
+    NSString *transferCardId;
     BOOL shouldShowImgPicker;
 }
 
-
+@property float sentAmount;
+@property  (strong, nonatomic) NSString *transferCardId;
 @property (strong, nonatomic) IBOutlet UIWindow *window;
 
 @property (strong, nonatomic) IBOutlet UITabBarController *tabBarController;
@@ -69,5 +73,10 @@
 + (dispatch_queue_t)sharedQueue;
 -(NSInteger )hourSinceNow;
 -(NSInteger )minutesSinceNow;
+-(NSInteger )minutesSinceNowCardsOnly;
+
+
+//LOCATION BASED TESTS 29/01/2014
+@property(retain,nonatomic)CLLocationManager *locationManager;
 
 @end

@@ -8,16 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HistoryTransactionsVC : UIViewController <UITableViewDelegate , UITableViewDataSource,sharedDelegate>
+@interface HistoryTransactionsVC : UIViewController <UITableViewDelegate , UITableViewDataSource>
 {
-    
-NSMutableArray *array;
-NSMutableArray *_tempMA;
-IBOutlet UILabel *navigationTitle;
-
-
+    NSMutableArray *array;
+    NSMutableArray *_tempMA;
+    IBOutlet UILabel *navigationTitle;
     int selectedIndex;
-
 }
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic , strong) NSMutableArray *_array;
@@ -33,9 +29,5 @@ IBOutlet UILabel *navigationTitle;
 @property (strong, nonatomic) IBOutlet UIButton *captureButton;
 
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint *heightConstraint;
-
-- (IBAction)BottomButtonTouched:(UIButton *)sender;
-
-- (void) deleteFromDB:(NSMutableDictionary*) receiptInfo;
 
 @end

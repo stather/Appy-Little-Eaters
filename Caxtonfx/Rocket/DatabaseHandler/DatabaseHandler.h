@@ -7,7 +7,6 @@
 	
 }
 
-
 // Declaration of DataBase Creation and Database Path Location fetching Methods
 -(NSString *) dataFilePath;
 -(void) checkAndCreateDatabase;

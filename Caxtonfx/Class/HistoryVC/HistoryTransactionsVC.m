@@ -9,7 +9,8 @@
 #import "HistoryTransactionsVC.h"
 #import "TransactionCustomCell.h"
 #import "SettingVC.h"
-
+#import "User.h"
+#import "Transaction.h"
 
 @interface HistoryTransactionsVC ()
 
@@ -34,7 +35,10 @@
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:[CommonFunctions statusOfLastUpdate:date1]];
     if([CommonFunctions reachabiltyCheck])
     {
-       [self performSelectorInBackground:@selector(callServiceForFetchingHistoryData) withObject:nil];
+       //[self performSelectorInBackground:@selector(callServiceForFetchingHistoryData) withObject:nil];
+        User *myUser = [User sharedInstance];
+        myUser.transactions = [myUser loadTransactionsForUSer:myUser.username withRemote:YES];
+        [self performSelectorOnMainThread:@selector(reloadTable) withObject:nil waitUntilDone:YES];
     }
     else
     {
@@ -106,17 +110,17 @@
     [titleLbl setBackgroundColor:[UIColor clearColor]];
     [titleLbl setFont:[UIFont fontWithName:@"OpenSans-Bold" size:15.0f]];
     [titleLbl setTextColor:[UIColor whiteColor]];
-    [titleLbl setText:@"Latest card transactions"];
+    [titleLbl setText:@"Full transaction history"];
     [titleLbl.layer setShadowRadius:1.0f];
     [titleLbl.layer setShadowColor:[[UIColor colorWithRed:176.0f/255.0f green:19.0f/255.0f blue:25.0f/255.0f alpha:1.0f] CGColor]];
     [titleLbl.layer setShadowOffset:CGSizeMake(0.0, 0.0)];
     [titleLbl.layer setShadowOpacity:1.0f];
     [titleLbl setTextAlignment:NSTextAlignmentLeft];
     [titleView addSubview:titleLbl];
-    NSMutableDictionary *dict = [historyArray objectAtIndex:0];
+    Transaction *dict = [historyArray objectAtIndex:0];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate *date = [df dateFromString:[dict objectForKey:@"date"]];
+    NSDate *date = [df dateFromString:dict.txnDate];
     [df setDateFormat:@"dd/MM/yyyy"];
     NSString *dateIs = [df stringFromDate:date];
     [df setDateFormat:@"HH:mm"];
@@ -211,27 +215,27 @@
         cell = [nib objectAtIndex:0];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
     }
-    NSMutableDictionary *dict = [historyArray objectAtIndex:indexPath.row];
+    Transaction *dict = [historyArray objectAtIndex:indexPath.row];
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
         cell.merchantNameLabel.font = [self fontForBodyTextStyle];
         cell.currencyValueLabel.font = [self fontForBodyTextStyle];
         cell.timeCountryDateLabel.font = [self fontForCaptionTextStyle];
         cell.cardUsedLabel.font = [self fontForCaptionTextStyle];
     }
-    cell.merchantNameLabel.text =[dict objectForKey:@"vendor"];
+    cell.merchantNameLabel.text =dict.vendor;
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSLocale* formatterLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
     [df setLocale:formatterLocale];
-    NSDate *date = [df dateFromString:[dict objectForKey:@"date"]];
+    NSDate *date = [df dateFromString:dict.txnDate];
     [df setDateFormat:@"dd/MM/yyyy"];
     NSString *dateIs = [df stringFromDate:date];
     [df setDateFormat:@"HH:mm"];
     NSString *timeIs = [df stringFromDate:date];
     cell.timeCountryDateLabel.text = [NSString stringWithFormat:@"%@ | %@",timeIs,dateIs];
-    cell.currencyValueLabel.text = [NSString stringWithFormat:@"%.02f",[[dict objectForKey:@"amount"] floatValue]];
+    cell.currencyValueLabel.text = [NSString stringWithFormat:@"%.02f",[dict.txnAmount floatValue]];
     NSString *cardString ;
-    NSString *cardNameString =[dict objectForKey:@"cardName"];
+    NSString *cardNameString =dict.cardName;
     if([cardNameString isEqualToString:@"Euro"])
     {
         cardString = @"Europe Traveller card";
@@ -259,7 +263,7 @@
     selectedIndex = indexPath.row;
     
 }
-
+/*
 // Override to support conditional editing of the table view.
 // This only needs to be implemented if you are going to be returning NO
 // for some items. By default, all items are editable.
@@ -293,15 +297,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 
 
-- (IBAction)BottomButtonTouched:(UIButton *)sender
-{
-    if(sender.tag == 3)
-    {
-        SettingVC *tempVC = [[SettingVC alloc] initWithNibName:@"SettingVC" bundle:nil];
-        [[self navigationController] pushViewController:tempVC animated:YES];
-    }
-}
-
 
 -(void)callServiceForFetchingHistoryData
 {
@@ -321,8 +316,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self fetchingTransactions:[currencyIdMA objectAtIndex:i]];
-            
-            
         });
     }
 }
@@ -420,9 +413,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
      [self.refreshControl endRefreshing];
 }
-
+*/
 -(void)reloadTable
 {
+    /*
     NSMutableArray *tempArray = [NSMutableArray new];
     NSString *query = @"";
     query = [NSString stringWithFormat:@"SELECT * FROM getHistoryTable order by date DESC"];
@@ -443,7 +437,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         NSString *timeIs = [df stringFromDate:date];
         [self.titleNameLbl setText:[NSString stringWithFormat:@"%@ | %@",dateIs,timeIs]];
     }
-    
+    */
+    [self.table reloadData];
+    [self.refreshControl endRefreshing];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 - (void)viewDidUnload

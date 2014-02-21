@@ -17,7 +17,9 @@
 #import "MyCardVC.h"
 #import "AppDelegate.h"
 #import "AddMobileNoVC.h"
-
+#import "User.h"
+#import "Card.h"
+#import "ContactVC.h"
 @interface LoginVC ()
 
 @end
@@ -43,13 +45,17 @@
     [super viewDidLoad];
     isRemember = NO;
     [self SetUpDesginPage];
+    
+    //FORCE STAY LOGGED IN
+    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"stayLogin"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    
     [Flurry logEvent:@"Visited Login"];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
     [[[self navigationController] navigationBar] setBackgroundImage:[UIImage imageNamed:@"topBar"] forBarMetrics:UIBarMetricsDefault];
     self.navigationItem.hidesBackButton = YES;
     self.navigationController.navigationBarHidden = NO;
@@ -63,8 +69,13 @@
     appDeleget.topBarView.hidden= YES;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
         self.navigationController.navigationBar.translucent=NO;
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
-
+-(IBAction)ContactBtnPressed:(id)sender{
+    ContactVC *contactView = [[ContactVC alloc]init];
+    [self.navigationController pushViewController:contactView animated:YES];
+}
 #pragma mark -----------
 #pragma mark SetUp - DesginPage Method
 
@@ -136,7 +147,7 @@
         }
         else if ([passwordTxtFld.text length] > 200)
         {
-            [self showErrorMsg:@"Unfortunately the entered password must be less then 200 characters. Please try again."];
+            [self showErrorMsg:@"Unfortunately the entered password must be less than 200 characters. Please try again."];
             [self loginWithAppAccount:1];
             loginCrossImgView.hidden=NO;
             [passwordTxtFld becomeFirstResponder];
@@ -196,7 +207,7 @@
                     [manger callServiceWithRequest:soapMessage methodName:@"CheckAuthGetCards" andDelegate:self];
                 }else
                 {
-                    [self showErrorMsg:@"Your Caxton Fx account has been locked. To unlock your account please email info@caxtonfxcard.com"];
+                    [self showErrorMsg:@"Your Caxton FX account has been locked. To unlock your account please email info@caxtonfxcard.com"];
                 }
             }
         }else
@@ -223,7 +234,7 @@
     loginCrossImgView.hidden=YES;
     [logInBtn btnWithOutCrossImage];
 }
-
+/*
 -(void)callDefaultsApi
 {
     if([CommonFunctions reachabiltyCheck])
@@ -234,17 +245,37 @@
         [manger callServiceWithRequest:soapMessage methodName:@"GetDefaults" andDelegate:self];
     }
 }
-
+*/
 
 -(void)callgetGloableRateApi
 {
+    User *myUser = [User sharedInstance];
     if([CommonFunctions reachabiltyCheck])
     {
+        /*
         sharedManager *manger = [[sharedManager alloc]init];
         manger.delegate = self;
         NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetGlobalRates/></soapenv:Body></soapenv:Envelope>";
         [manger callServiceWithRequest:soapMessage methodName:@"GetGlobalRates" andDelegate:self];
+        
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+        dispatch_async(queue, ^(void) {
+            myUser.globalRates = [myUser loadGlobalRatesWithRemote:YES];
+            myUser.defaultsArray = [myUser loadDefaultsWithRemote:YES];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            });
+        });
+         */
+        myUser.globalRates = [myUser loadGlobalRatesWithRemote:YES];
+        myUser.defaultsArray = [myUser loadDefaultsWithRemote:YES];
+    }else{
+        myUser.globalRates = [myUser loadGlobalRatesWithRemote:NO];
+        myUser.defaultsArray = [myUser loadDefaultsWithRemote:NO];
     }
+    UIButton *button = (UIButton*)[self.view viewWithTag:6];
+    [button btnWithoutActivityIndicator];
+    [self startSendingReq:button];
 }
 
 
@@ -371,7 +402,7 @@
 #pragma mark sharedManagerDelegate
 
 -(void)loadingFinishedWithResponse:(NSString *)response withServiceName:(NSString *)service
-{    
+{
     if([service isEqualToString:@"CheckAuthGetCards"])
     {
         NSMutableArray *array = [[NSMutableArray alloc]init];
@@ -400,7 +431,6 @@
             [keychain2 setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
             [keychain2 setObject:userMobileStr forKey:(__bridge id)kSecAttrAccount];
             [keychain2 setObject:userMobileStr forKey:(__bridge id)kSecValueData];
-
             if([statusCodeStr intValue]!= 003)
             {
                 TBXMLElement *cardsElem = [TBXML childElementNamed:@"a:cards" parentElement:checkAuthGetCardsResultElem];
@@ -480,7 +510,55 @@
                 }
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 [self  callgetGloableRateApi];
+            }else{
+                // this work is done for remove histrory when user not set pin or remove pin
+                NSString *query  = @"";
+                query = @"DELETE FROM conversionHistoryTable ";
+                DatabaseHandler *dataBaseHandler = [[DatabaseHandler alloc]init];
+                [dataBaseHandler executeQuery:query];
+                query = [NSString stringWithFormat:@"DELETE FROM getHistoryTable"];
+                [dataBaseHandler executeQuery:query];
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
+                // this is done for the remove history data.
+                KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
+                [keychain setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
+                // Get username from keychain (if it exists)
+                NSString *username1 = [keychain objectForKey:(__bridge id)kSecAttrAccount];
+                NSString *password1 = [keychain objectForKey:(__bridge id)kSecValueData];
+                if (!([username1 isEqualToString:emailTxtFld.text]  && [password1 isEqualToString:passwordTxtFld.text]))
+                {
+                    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
+                    [keychain setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
+                    // Store username to keychain
+                    [keychain setObject:emailTxtFld.text forKey:(__bridge id)kSecAttrAccount];
+                    // Store password to keychain
+                    [keychain setObject:passwordTxtFld.text forKey:(__bridge id)kSecValueData];
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setPin"];
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FirstTimeUser"];
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoginAttamp"];
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"attemp"];
+                }
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                [self  callgetGloableRateApi];
             }
+            
+            //POPULATE USER SINGLETON OBJECT
+            KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
+            [keychain setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
+            // Get username from keychain (if it exists)
+            NSString *username1 = [keychain objectForKey:(__bridge id)kSecAttrAccount];
+            NSString *password1 = [keychain objectForKey:(__bridge id)kSecValueData];
+            User *myUser=[User sharedInstance];
+            myUser.cards = [myUser loadCardsFromDatabasewithRemote:NO];
+            myUser.username =username1;
+            myUser.password =password1;
+            myUser.statusCode = statusCodeStr;
+            myUser.contactType = userConactTypeStr;
+            myUser.dateOfBirth = userDOBStr;
+            myUser.mobileNumber = userMobileStr;
+            myUser.transactions = [myUser loadTransactionsForUSer:@"" withRemote:YES];
         }else //it is not 000
         {
             if([statusCodeStr intValue]== 002)
@@ -530,7 +608,7 @@
             }
             if([statusCodeStr intValue]==005)
             {
-                [self showErrorMsg:@"Your Caxton Fx account has been locked. To unlock your account please email info@caxtonfxcard.com"];
+                [self showErrorMsg:@"Your Caxton FX account has been locked. To unlock your account please email info@caxtonfxcard.com"];
                 [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"Lock"];
                 UIButton *button = (UIButton*)[self.view viewWithTag:6];
                 [button btnWithoutActivityIndicator];
@@ -553,6 +631,7 @@
             }
         }
     }
+    /*
     else if ([service isEqualToString:@"GetGlobalRates"])
     {
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"currencyflags_map" ofType:@"csv"];
@@ -627,6 +706,7 @@
         [self performSelectorOnMainThread:@selector(updatingDatabase:) withObject:glabalRatesMA waitUntilDone:YES];
         [self callDefaultsApi];
     }
+    
     else if([service isEqualToString:@"GetDefaults"])
     {
         NSLog(@"GetDefaults %@",response);
@@ -668,8 +748,9 @@
         [button btnWithoutActivityIndicator];
         [self startSendingReq:button];
     }
+     */
 }
-
+/*
 -(void)updatingDatabase:(NSMutableArray *)glabalRatesMA
 {
     NSString *deleteQuerry = [NSString stringWithFormat:@"DELETE FROM globalRatesTable"];
@@ -685,7 +766,7 @@
         [[DatabaseHandler getSharedInstance] executeQuery:query];
     }
 }
-
+*/
 
 -(void)loadingFailedWithError:(NSString *)error withServiceName:(NSString *)service
 {
@@ -796,7 +877,7 @@
     {
         emailErrorimgView.hidden = YES;
         passwordErrorimgView.hidden = NO;
-        [self showErrorMsg:@"Unfortunately the entered password must be less then 200 characters. Please try again."];
+        [self showErrorMsg:@"Unfortunately the entered password must be less than 200 characters. Please try again."];
         [passwordTxtFld incorrectDataTxtFld];
         return NO;
     }else if((textField == passwordTxtFld) &&  [Validate isValidPassword:passwordTxtFld.text]){
@@ -842,7 +923,7 @@
     {
         passwordErrorimgView.hidden = NO;
         emailErrorimgView.hidden = YES;
-        [self showErrorMsg:@"Unfortunately the entered password must be less then 200 characters. Please try again."];
+        [self showErrorMsg:@"Unfortunately the entered password must be less than 200 characters. Please try again."];
         [passwordTxtFld incorrectDataTxtFld];
     }else if((textField == passwordTxtFld) &&  [Validate isValidPassword:passwordTxtFld.text]){
         passwordErrorimgView.hidden = YES;

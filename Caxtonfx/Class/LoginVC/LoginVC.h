@@ -28,7 +28,7 @@
 -(IBAction) forgotpasswordBtnPressed:(id)sender;
 -(IBAction) moreInfoBtnPressed:(id)sender;
 -(void)loginWithAppAccount:(NSInteger)BtnTag;
-
+-(IBAction)ContactBtnPressed:(id)sender;
 @end
 
 

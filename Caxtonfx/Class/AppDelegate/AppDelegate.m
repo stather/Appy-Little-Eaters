@@ -1,4 +1,4 @@
- 
+  
 
 //
 //  AppDelegate.m
@@ -23,6 +23,7 @@
 #import "HistoryVC.h"
 #import "SettingVC.h"
 #import "MBProgressHUD.h"
+#import "GlobalRatesObject.h"
 
 @implementation AppDelegate
 @synthesize window,tabBarController,customeTabBar,mobileNumNotificationView;
@@ -30,7 +31,10 @@
 @synthesize shareTabBar,currentId,_array,topBarView,cameraButton;
 @synthesize ratePopUpView;
 @synthesize cameraLayoutImgView;
-//@synthesize backgroundQueue;
+@synthesize locationManager;
+@synthesize sentAmount;
+@synthesize transferCardId;
+
 -(NSDate *)getDateFromString:(NSString *)pstrDate
 {
     NSDateFormatter *df1 = [[NSDateFormatter alloc] init] ;
@@ -42,8 +46,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
-        if ([CommonFunctions reachabiltyCheck])
-            [self callgetGloableRateApi];
+        User *myUser = [User sharedInstance];
+        if ([CommonFunctions reachabiltyCheck]){
+            myUser.globalRates = [myUser loadGlobalRatesWithRemote:YES];
+            myUser.defaultsArray = [myUser loadDefaultsWithRemote:YES];
+        }else{
+            myUser.globalRates = [myUser loadGlobalRatesWithRemote:NO];
+            myUser.defaultsArray = [myUser loadDefaultsWithRemote:NO];
+        }
     });
     if(![[NSUserDefaults standardUserDefaults]objectForKey:@"switchState"])
     {
@@ -146,8 +156,87 @@
      *
     ***/
     
+    // and, push notification registration and setup
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound|UIRemoteNotificationTypeAlert)];
+    
+    
+    //LOCATION BASED TESTING 29/01/2014
+//    self.locationManager = [[CLLocationManager alloc] init];
+//    self.locationManager.delegate = self;
+//    [NSTimer scheduledTimerWithTimeInterval: 600.0 target: self
+//                                                      selector: @selector(startLocationTracking) userInfo: nil repeats: YES];
+//
+//    [self startLocationTracking];
+    
     return YES;
 }
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    //TO-DO: Notify Back-End System for the device token
+    NSLog(@"Device Token=> %@",deviceToken);
+}
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+     NSLog(@"Error in registration. Error: %@", error.description);
+}
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    //TO-DO: Ask Business
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    if ([userInfo valueForKey:@"Rates"] !=nil) {
+        NSDictionary *ratesDic =[userInfo valueForKey:@"Rates"];
+        NSString *rates=[NSString stringWithFormat:@"Dollar:%@ \n Euro:%@",[ratesDic valueForKey:@"Dollar"],[ratesDic valueForKey:@"Euro"]];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Check out the current rates:" message:rates delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    if ([userInfo valueForKey:@"Transfer"] !=nil) {
+        NSDictionary *ratesDic =[userInfo valueForKey:@"Transfer"];
+        self.sentAmount =[[ratesDic valueForKey:@"Amount"] floatValue];
+        NSString *rates=[NSString stringWithFormat:@"Transfered Amount: £%@",[ratesDic valueForKey:@"Amount"]];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Funds Transfer Completed" message:rates delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        alert.tag =1;
+        [alert show];
+    }
+    if ([userInfo valueForKey:@"Promo"] !=nil) {
+        NSDictionary *promoDic =[userInfo valueForKey:@"Promo"];
+        NSString *promo = [promoDic valueForKey:@"Message"];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Caxton Fx" message:promo delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+}
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    
+}
+/*
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (alertView.tag == 1 ){
+        if (buttonIndex == 0)
+        {
+            UINavigationController *navController = (UINavigationController*)[self.tabBarController selectedViewController];
+            NSArray *viewArray = navController.viewControllers;
+            for (int i=0; i<viewArray.count; i++) {
+                if([[viewArray objectAtIndex:i ]isKindOfClass:[MyCardVC class]])
+                {
+                    MyCardVC *myCardInstance =[viewArray objectAtIndex:i];
+                    int index=0;
+                    for (NSDictionary *myCard in myCardInstance.cardsArray){
+                        if ([[myCard valueForKey:@"CurrencyCardID"] isEqualToString:self.transferCardId]) {
+                            NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:myCard];
+                            float newBalance = [[dict valueForKey:@"CardBalance"] floatValue] + self.sentAmount;
+                            [dict setObject:[NSString stringWithFormat:@"%f",newBalance] forKey:@"CardBalance"];
+                            [dict setObject:@"YES" forKey:@"successImageView"];
+                            [myCardInstance.cardsArray replaceObjectAtIndex:index  withObject:dict];
+                            [myCardInstance.tableView reloadData];
+                            [navController popToViewController:[viewArray objectAtIndex:i] animated:YES];
+                            break;
+                        }
+                        index++;
+                    }
+                    break;
+                }
+            }
+
+        }
+    }
+}
+*/
 #pragma mark -
 #pragma mark Creating Database if that not exists
 
@@ -316,6 +405,7 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    /*
     NSString *setPin = [[NSUserDefaults standardUserDefaults] objectForKey:@"setPin"];
     if([setPin isEqualToString:@"YES"])
     {
@@ -346,6 +436,7 @@
         
         [navController pushViewController:passcodeViewController animated:NO];
     }
+     */
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -357,6 +448,7 @@
     {
         [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"switchState"];
     }
+    /*
     NSString *setPin = [[NSUserDefaults standardUserDefaults] objectForKey:@"setPin"];
     if([setPin isEqualToString:@"YES"])
     {
@@ -387,14 +479,14 @@
         
         [navController pushViewController:passcodeViewController animated:NO];
     }
-    
+    */
 
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     if(![[[NSUserDefaults standardUserDefaults] valueForKey:@"firstTime"] isEqualToString:@"Yes"])
     {
         [[NSUserDefaults standardUserDefaults] setValue:@"Yes" forKey:@"firstTime"];
@@ -413,6 +505,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
      NSString *setPin = [[NSUserDefaults standardUserDefaults] objectForKey:@"setPin"];
         if([setPin isEqualToString:@"YES"])
         {
@@ -449,16 +542,35 @@
     UIViewController *VC =nil;
     if ([tabBarController selectedIndex]==0) {
         VC = [[HistoryVC alloc]initWithNibName:@"HistoryVC" bundle:nil];
+        [navController pushViewController:VC animated:YES];
     }else if ([tabBarController selectedIndex]==1) {
-       MyCardVC* myVC = [[MyCardVC alloc]initWithNibName:@"MyCardVC" bundle:nil];
-        if ([CommonFunctions reachabiltyCheck])
-            [myVC hudRefresh:self];
-        
-        [navController pushViewController:myVC animated:YES];
+        UINavigationController *navController = (UINavigationController*)[self.tabBarController selectedViewController];
+        NSArray *viewArray = navController.viewControllers;
+        BOOL found =FALSE;
+        for (int i=0; i<viewArray.count; i++) {
+            if([[viewArray objectAtIndex:i ]isKindOfClass:[MyCardVC class]])
+            {
+                MyCardVC *myCardInstance =[viewArray objectAtIndex:i];
+                myCardInstance.loadingFromPin = TRUE;
+                [navController popToViewController:myCardInstance animated:YES];
+                if ([CommonFunctions reachabiltyCheck])
+                    [myCardInstance hudRefresh:self];
+                found = TRUE;
+                break;
+            }
+        }
+        if(!found){
+            MyCardVC* myVC = [[MyCardVC alloc]initWithNibName:@"MyCardVC" bundle:nil];
+            myVC.loadingFromPin = TRUE;
+            if ([CommonFunctions reachabiltyCheck])
+                [myVC hudRefresh:self];
+            
+            [navController pushViewController:myVC animated:YES];
+        }
     }else if ([tabBarController selectedIndex]==2) {
         VC = [[SettingVC alloc]initWithNibName:@"SettingVC" bundle:nil];
+        [navController pushViewController:VC animated:YES];
     }
-    [navController pushViewController:VC animated:YES];
 }
 
 -(void)PAPasscodeViewControllerDidCancel:(PAPasscodeViewController *)controller
@@ -477,13 +589,11 @@
     NSString *dataPath = patientPhotoFolder;
     BOOL isDir = NO;
     NSFileManager *fileManager = [[NSFileManager alloc] init];
-    if (![fileManager fileExistsAtPath:dataPath
+    if ([fileManager fileExistsAtPath:dataPath
                            isDirectory:&isDir] && isDir == NO) {
-        
-    }else
-    {
         BOOL success = [fileManager removeItemAtPath:dataPath error:nil];
         NSLog(@"%@",success?@"YES":@"NO");
+        
     }
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];                     
@@ -510,6 +620,8 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [self.locationManager stopUpdatingLocation];
+    self.locationManager =nil;
 }
 
 - (IBAction) customTabBarBtnTap:(id)sender
@@ -576,6 +688,12 @@
         btn = (UIButton*)sender;
         if (newIndex == 2) {
             [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+            UIButton *btn;
+            
+            btn = (UIButton*) [self.customeTabBar viewWithTag:1];
+            [btn setImage:[UIImage imageNamed:@"historyTab"] forState:UIControlStateNormal];
+            btn = (UIButton*) [self.customeTabBar viewWithTag:3];
+            [btn setImage:[UIImage imageNamed:@"settingsTab"] forState:UIControlStateNormal];
         }
     }
 }
@@ -792,9 +910,8 @@
                     break;
                 case SLComposeViewControllerResultDone:
                 {
-                    output = @"Post Successfully";
+                    output = @"Post Successful";
                     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:output delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                    
                     [alert show];
                 }
                     break;
@@ -836,10 +953,8 @@
                     break;
                 case SLComposeViewControllerResultDone:
                 {
-                    output = @"Post Successfully";
-                    
+                    output = @"Post Successful";
                     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:output delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                    
                     [alert show];
                 }
                     break;
@@ -883,18 +998,33 @@
     [feedbackBtn setBackgroundImage:[UIImage imageNamed:@"feedbackTab"] forState:UIControlStateNormal];
     [feedbackBtn setBackgroundImage:[UIImage imageNamed:@"feedbackTabHover"] forState:UIControlStateHighlighted];
 }
-
+/*
 -(void)callgetGloableRateApi
 {
     if([CommonFunctions reachabiltyCheck])
     {
-        sharedManager *manger = [[sharedManager alloc]init];
-        manger.delegate = self;
-        NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetGlobalRates/></soapenv:Body></soapenv:Envelope>";
-        [manger callServiceWithRequest:soapMessage methodName:@"GetGlobalRates" andDelegate:self];
+//        sharedManager *manger = [[sharedManager alloc]init];
+//        manger.delegate = self;
+//        NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetGlobalRates/></soapenv:Body></soapenv:Envelope>";
+//        [manger callServiceWithRequest:soapMessage methodName:@"GetGlobalRates" andDelegate:self];
+        User * myUser = [User sharedInstance];
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+        dispatch_async(queue, ^(void) {
+            myUser.globalRates = [myUser loadGlobalRatesWithRemote:YES];
+            myUser.defaultsArray = [myUser loadDefaultsWithRemote:YES];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            });
+        });
+//        myUser.globalRates = [myUser loadGlobalRatesWithRemote:YES];
+//        myUser.defaultsArray = [myUser loadDefaultsWithRemote:YES];
+    }else{
+        User * myUser = [User sharedInstance];
+        myUser.globalRates = [myUser loadGlobalRatesWithRemote:NO];
+        myUser.defaultsArray = [myUser loadDefaultsWithRemote:NO];
     }
 }
-
+*/
 -(void)callServiceForFetchingHistoryData
 {
     NSString *query = [NSString stringWithFormat:@"select CurrencyCardID from myCards"];
@@ -943,9 +1073,10 @@
         [manger callServiceWithRequest:soapMessage methodName:@"GetPromo" andDelegate:self];
     }
 }
-
+/*
 -(void)callDefaultsApi
 {
+ 
     if([CommonFunctions reachabiltyCheck])
     {
         sharedManager *manger = [[sharedManager alloc]init];
@@ -954,12 +1085,26 @@
         [manger callServiceWithRequest:soapMessage methodName:@"GetDefaults" andDelegate:self];
     }
 }
+ */
 
 #pragma mark -----
 #pragma mark shardemangerDelegate Method
 
 -(void)loadingFinishedWithResponse:(NSString *)response withServiceName:(NSString *)service
 {
+    if([service isEqualToString:@"GetPromo"])
+    {
+        TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
+        TBXMLElement *root = tbxml.rootXMLElement;
+        TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
+        TBXMLElement *getPromoResponseEle = [TBXML childElementNamed:@"GetPromoResponse" parentElement:rootItemElem];
+        TBXMLElement *GetPromoResult = [TBXML childElementNamed:@"GetPromoResult" parentElement:getPromoResponseEle];
+        TBXMLElement *GetPromoHtmlResult = [TBXML childElementNamed:@"html" parentElement:GetPromoResult];
+        NSString *str = [TBXML textForElement:GetPromoHtmlResult];
+        [[NSUserDefaults standardUserDefaults] setValue:str forKey:@"moreInfoHtml"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    /*
     if([service isEqualToString:@"GetGlobalRates"])
     {
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"currencyflags_map" ofType:@"csv"];
@@ -1037,18 +1182,6 @@
             }
         }
     }
-    else if([service isEqualToString:@"GetPromo"])
-    {
-        TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
-        TBXMLElement *root = tbxml.rootXMLElement;
-        TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
-        TBXMLElement *getPromoResponseEle = [TBXML childElementNamed:@"GetPromoResponse" parentElement:rootItemElem];
-        TBXMLElement *GetPromoResult = [TBXML childElementNamed:@"GetPromoResult" parentElement:getPromoResponseEle];
-        TBXMLElement *GetPromoHtmlResult = [TBXML childElementNamed:@"html" parentElement:GetPromoResult];
-        NSString *str = [TBXML textForElement:GetPromoHtmlResult];
-        [[NSUserDefaults standardUserDefaults] setValue:str forKey:@"moreInfoHtml"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
     else if([service isEqualToString:@"GetDefaults"])
     {
         NSMutableArray *getDefaultDataArr  = [[NSMutableArray alloc] init];
@@ -1078,7 +1211,7 @@
             [getDefaultDataArr addObject:tempDic];
         }
         NSString *deleteQuerry = [NSString stringWithFormat:@"DELETE FROM getDefaults"];
-        DatabaseHandler *database = [[DatabaseHandler alloc]init];
+        DatabaseHandler *database = [[DatabaseHandler alloc] init];
         [database executeQuery:deleteQuerry];
         for (int i = 0; i < getDefaultDataArr.count ; i++)
         {
@@ -1086,6 +1219,7 @@
             [database executeQuery:query];
         }
     }
+    
     else if([service isEqualToString:@"GetHistory"])
     {
         TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
@@ -1128,6 +1262,7 @@
             }
         }
     }
+      */
 }
 
 -(void)loadingFailedWithError:(NSString *)error  withServiceName:(NSString *)service
@@ -1353,12 +1488,18 @@
     [self customTabBarBtnTap:tapBtn];
     UINavigationController *navController = (UINavigationController*)[self.tabBarController selectedViewController];
     NSArray *viewArray = navController.viewControllers;
+    BOOL found=NO;
     for (int i=0; i<viewArray.count; i++) {
         if([[viewArray objectAtIndex:i ]isKindOfClass:[HomeVC class]])
         {
             [navController popToViewController:[viewArray objectAtIndex:i] animated:YES];
+            found =YES;
             break;
         }
+    }
+    if (!found) {
+        HomeVC *homeViewController = [[HomeVC alloc] init];
+        [navController pushViewController:homeViewController animated:YES];
     }
 }
 -(NSInteger )hourSinceNow
@@ -1368,7 +1509,7 @@
     NSTimeInterval distanceBetweenDates = [date2 timeIntervalSinceDate:date1];
     double secondsInAnHour = 3600;
     NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
-    NSLog(@"%d",hoursBetweenDates);
+    //NSLog(@"%d",hoursBetweenDates);
     return hoursBetweenDates;
 }
 -(NSInteger )minutesSinceNow
@@ -1378,7 +1519,64 @@
     NSTimeInterval distanceBetweenDates = [date2 timeIntervalSinceDate:date1];
     double secondsInAnMinute = 60;
     NSInteger minutesBetweenDates = distanceBetweenDates / secondsInAnMinute;
-    NSLog(@"%d",minutesBetweenDates);
+    //NSLog(@"%d",minutesBetweenDates);
     return minutesBetweenDates;
+}
+-(NSInteger )minutesSinceNowCardsOnly
+{
+    NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"updateDate"];
+    NSDate* date2 = [NSDate date];
+    NSTimeInterval distanceBetweenDates = [date2 timeIntervalSinceDate:date1];
+    double secondsInAnMinute = 60;
+    NSInteger minutesBetweenDates = distanceBetweenDates / secondsInAnMinute;
+    //NSLog(@"%d",minutesBetweenDates);
+    return minutesBetweenDates;
+}
+
+//LOCATION BASED TESTS 20/01/2014
+-(void)startLocationTracking{
+    [self.locationManager stopUpdatingLocation];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
+    self.locationManager.distanceFilter = 100.0;
+    [self.locationManager startUpdatingLocation];
+}
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"didFailWithError: %@", error);
+    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to get your location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [errorAlert show];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    NSLog(@"didUpdateToLocation: %@", [locations lastObject]);
+    CLLocation *currentLocation = [locations lastObject];
+    if (currentLocation != nil) {
+        NSLog(@"cal longitude %f",currentLocation.coordinate.longitude);
+        NSLog(@"cal latitude %f", currentLocation.coordinate.latitude);
+    }
+    [self.locationManager stopUpdatingLocation];
+    
+    NSString *deviceType = [UIDevice currentDevice].model;
+    //http://631f3a62.ngrok.com/
+    NSString *urlString =[NSString stringWithFormat:@"http://631f3a62.ngrok.com/APNSPhp/locationTrack.php?lat=%f&lon=%f&device=%@",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude,deviceType];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    
+    //send it synchronous in a different thread
+    //[self performSelector:@selector(sendLocation:) withObject:request];
+}
+-(void)sendLocation: (NSURLRequest*) request{
+    NSURLResponse *response;
+    NSError *error;
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    // check for an error. If there is a network error, you should handle it here.
+    if(!error)
+    {
+        //log response
+        NSLog(@"Response from server = %@", responseString);
+    }
 }
 @end

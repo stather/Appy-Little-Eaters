@@ -8,16 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import<AddressBook/AddressBook.h>
+#import "MBProgressHUD.h"
 
 typedef int(^CustomBlock)(int number);
 
-@interface HistoryVC : UIViewController <UITableViewDelegate , UITableViewDataSource, UIAlertViewDelegate, sharedDelegate>
+@interface HistoryVC : UIViewController <UITableViewDelegate , UITableViewDataSource, UIAlertViewDelegate>
 {
     NSMutableArray *array;
     NSMutableArray *_tempMA;
     IBOutlet UILabel *navigationTitle;
     BOOL isLoadingViewAdded;
 }
+@property  MBProgressHUD* HUD;
 @property (nonatomic , copy) CustomBlock block;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic , strong) NSMutableArray *_array;
