@@ -18,6 +18,7 @@
 #import "HTMLParser.h"
 #import "HTMLNode.h"
 #import "ContactVC.h"
+#import "ConverterVC.h"
 
 @interface HomeVC ()
 
@@ -67,6 +68,7 @@
                                              selector:@selector(switchToLogin:)
                                                  name:@"showLogin"
                                                object:nil];
+    /*
     if(IS_HEIGHT_GTE_568)
     {
         [self.scrollView setFrame:CGRectMake(0, 77, 320, 326)];
@@ -74,6 +76,7 @@
     {
         [self.scrollView setFrame:CGRectMake(0, 33, 320, 326)];
     }
+     */
     [updateInfo setFont:[UIFont fontWithName:@"OpenSans" size:14]];
     textArray = [[NSMutableArray alloc]initWithObjects:@"Top up your currency card",@"Check your balance",@"Monitor your spending", nil];
     [self setUpPage];
@@ -117,21 +120,39 @@
                                                  selector:@selector(userTextSizeDidChange)
                                                      name:UIContentSizeCategoryDidChangeNotification
                                                    object:nil];
-        [self.scrollView setFrame:CGRectMake(0, 77, 320, 326)];
+        //[self.scrollView setFrame:CGRectMake(0, 0, 320, 326)];
     }
-    
+    [self.scrollView setFrame:CGRectMake(0, 0, 320, 326)];
 }
-
+-(IBAction)ConverterBtnPressed:(id)sender{
+    
+    ConverterVC *converterView = [[ConverterVC alloc]init];
+    [self.navigationController pushViewController:converterView animated:YES];
+}
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     appDelegate.customeTabBar.hidden = NO;
-    appDelegate.topBarView.hidden= NO;
+    appDelegate.topBarView.hidden= YES;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
         self.navigationController.navigationBar.translucent=NO;
     }
+    [[[self navigationController] navigationBar] setBackgroundImage:[UIImage imageNamed:@"topBar"] forBarMetrics:UIBarMetricsDefault];
+     self.navigationItem.hidesBackButton = YES;
+     self.navigationController.navigationBarHidden = NO;
+     [CommonFunctions setNavigationTitle:@"Caxton FX" ForNavigationItem:self.navigationItem];
+    
+    /****** add custom right bar button (Refresh Button) at navigation bar  **********/
+    
+    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:@"calculator-26.png"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(ConverterBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [button setFrame:CGRectMake(0, 0, 26, 26)];
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = barButton;
+
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -225,7 +246,7 @@
                                 });
         });
          */
-        myUser.globalRates = [myUser loadGlobalRatesWithRemote:YES];
+        myUser.globalRates = [myUser loadGlobalRatesWithRemote:NO];
         myUser.defaultsArray = [myUser loadDefaultsWithRemote:YES];
     }else{
         myUser.globalRates = [myUser loadGlobalRatesWithRemote:NO];

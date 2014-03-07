@@ -39,7 +39,7 @@
         self.transactions =[NSMutableArray array];
         self.globalRates  =[NSMutableArray array];
         self.defaultsArray =[NSMutableArray array];
-        self.devMode = FALSE;
+        self.devMode = TRUE ;
     }
     return self;
 }

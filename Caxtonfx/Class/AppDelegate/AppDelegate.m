@@ -66,6 +66,7 @@
     {
         [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"isLogin"];
     }
+    [[NSUserDefaults standardUserDefaults] synchronize];
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDir = [documentPaths objectAtIndex:0];
     DatabasePath = [documentsDir stringByAppendingPathComponent:DatabaseName];
@@ -561,6 +562,8 @@
         }
         if(!found){
             MyCardVC* myVC = [[MyCardVC alloc]initWithNibName:@"MyCardVC" bundle:nil];
+            [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"isLogin"];
+            [[NSUserDefaults standardUserDefaults]synchronize];
             myVC.loadingFromPin = TRUE;
             if ([CommonFunctions reachabiltyCheck])
                 [myVC hudRefresh:self];

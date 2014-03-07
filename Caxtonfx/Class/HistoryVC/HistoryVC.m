@@ -248,6 +248,10 @@
     self.view.userInteractionEnabled = NO;
     if([CommonFunctions reachabiltyCheck])
         [self.HUD showWhileExecuting:@selector(refreshTransactionsinModel) onTarget:self withObject:nil animated:YES];
+    else{
+        UIAlertView *myAlert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Please check you internet connection." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [myAlert show];
+    }
     /*
     if([CommonFunctions reachabiltyCheck])
         [HUD showWhileExecuting:@selector(callServiceForFetchingHistoryData) onTarget:self withObject:nil animated:YES];
@@ -261,7 +265,7 @@
     [self.table reloadData];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     self.view.userInteractionEnabled = YES;
-    if ([myUser.statusCode intValue] != 000) {
+     if (![myUser.statusCode isEqualToString:@"000"] && ![myUser.statusCode isEqualToString:@"003"]) {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Session Expired" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         alert.tag = 1;
         alert.delegate = self;

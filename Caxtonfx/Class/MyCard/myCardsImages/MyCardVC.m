@@ -79,7 +79,6 @@
     [super viewWillAppear:animated];
     [[[AppDelegate getSharedInstance] topBarView] setHidden:YES];
     [[[AppDelegate getSharedInstance] customeTabBar] setHidden:NO];
-    //[[self navigationController] setNavigationBarHidden:YES animated:NO];
     [self customizingNavigationBar];
     dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
         User *myUser = [User sharedInstance];
@@ -120,7 +119,7 @@
     UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithCustomView:conversionBtn];
     [self.navigationItem setLeftBarButtonItem:left];
     
-    /****** add custom left bar button (Refresh Button) at navigation bar  **********/
+    /****** add custom right bar button (Refresh Button) at navigation bar  **********/
     UIBarButtonItem * doneButton =
     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
                                                   target:self
@@ -212,6 +211,8 @@
     {
         [self.refreshControl endRefreshing];
         self.tableView.userInteractionEnabled = YES;
+        UIAlertView *myAlert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Please check you internet connection." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [myAlert show];
     }
     
 }

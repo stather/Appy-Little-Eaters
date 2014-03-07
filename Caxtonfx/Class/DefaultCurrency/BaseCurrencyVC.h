@@ -8,17 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SelectorDelegate
+-(void)ccyCodeSelected:(NSString*)ccyCode;
+@end
+
 @interface BaseCurrencyVC : UIViewController<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 {
     int selectedRow;
     NSString *searchText;
     NSString *selectedCurrency;
     BOOL isSearching;
+    BOOL fromConverter;
    
 }
-
+@property (nonatomic ,strong) NSString *selectedCurrency;
+@property BOOL fromConverter;
 @property (nonatomic ,strong)  UISearchBar *searchBar;
-
+@property(nonatomic,strong)id <SelectorDelegate> delegate;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray *array;

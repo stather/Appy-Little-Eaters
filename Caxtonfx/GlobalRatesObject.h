@@ -18,4 +18,6 @@
 @property (nonatomic,strong) NSNumber *rate;
 @property (nonatomic,strong) NSString *imageName;
 @property (nonatomic,strong) NSString *cardName;
+
+-(id) initWithCcyCode: (NSString *)ccyCode;
 @end

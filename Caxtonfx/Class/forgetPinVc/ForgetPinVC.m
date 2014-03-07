@@ -373,8 +373,7 @@
                 [button btnWithoutActivityIndicator];
                 [self startSendingReq:button];
                 
-                [[NSUserDefaults standardUserDefaults]setObject:[NSDate date] forKey:@"updateDate"];
-                [[NSUserDefaults standardUserDefaults]synchronize];
+                [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"updateDate"];
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLogin"];
                 [[NSUserDefaults standardUserDefaults]synchronize];
                 

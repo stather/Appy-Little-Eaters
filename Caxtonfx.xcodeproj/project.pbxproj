@@ -847,8 +847,13 @@
 		95F34CAA1783F032006122F6 /* PACancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F34CA61783F032006122F6 /* PACancel@2x.png */; };
 		95F34CAB1783F032006122F6 /* PACancelSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F34CA71783F032006122F6 /* PACancelSelected.png */; };
 		95F34CAC1783F032006122F6 /* PACancelSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F34CA81783F032006122F6 /* PACancelSelected@2x.png */; };
+		B210043018BF8C0100CF3FDB /* sms1.png in Resources */ = {isa = PBXBuildFile; fileRef = B210042F18BF8C0100CF3FDB /* sms1.png */; };
+		B210043218C0B73000CF3FDB /* sms-26.png in Resources */ = {isa = PBXBuildFile; fileRef = B210043118C0B73000CF3FDB /* sms-26.png */; };
+		B210043418C0B83F00CF3FDB /* calculator-26.png in Resources */ = {isa = PBXBuildFile; fileRef = B210043318C0B83F00CF3FDB /* calculator-26.png */; };
 		B21F151D18B224280042E543 /* ContactVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B21F151B18B224280042E543 /* ContactVC.m */; };
 		B21F151E18B224280042E543 /* ContactVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21F151C18B224280042E543 /* ContactVC.xib */; };
+		B22AED3B18BDFBC900E89B56 /* ConverterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B22AED3918BDFBC900E89B56 /* ConverterVC.m */; };
+		B22AED3C18BDFBC900E89B56 /* ConverterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B22AED3A18BDFBC900E89B56 /* ConverterVC.xib */; };
 		B22E174B189AB5D300721C0E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B22E174A189AB5D300721C0E /* User.m */; };
 		B22E174E189BCC4900721C0E /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = B22E174D189BCC4900721C0E /* Card.m */; };
 		B22E1751189BEB1500721C0E /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = B22E1750189BEB1500721C0E /* Transaction.m */; };
@@ -1976,9 +1981,15 @@
 		95F34CA61783F032006122F6 /* PACancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PACancel@2x.png"; sourceTree = "<group>"; };
 		95F34CA71783F032006122F6 /* PACancelSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PACancelSelected.png; sourceTree = "<group>"; };
 		95F34CA81783F032006122F6 /* PACancelSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PACancelSelected@2x.png"; sourceTree = "<group>"; };
+		B210042F18BF8C0100CF3FDB /* sms1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sms1.png; sourceTree = "<group>"; };
+		B210043118C0B73000CF3FDB /* sms-26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sms-26.png"; sourceTree = "<group>"; };
+		B210043318C0B83F00CF3FDB /* calculator-26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calculator-26.png"; sourceTree = "<group>"; };
 		B21F151A18B224280042E543 /* ContactVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactVC.h; path = ContactVC/ContactVC.h; sourceTree = "<group>"; };
 		B21F151B18B224280042E543 /* ContactVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactVC.m; path = ContactVC/ContactVC.m; sourceTree = "<group>"; };
 		B21F151C18B224280042E543 /* ContactVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ContactVC.xib; path = ContactVC/ContactVC.xib; sourceTree = "<group>"; };
+		B22AED3818BDFBC900E89B56 /* ConverterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConverterVC.h; path = ConverterVC/ConverterVC.h; sourceTree = "<group>"; };
+		B22AED3918BDFBC900E89B56 /* ConverterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConverterVC.m; path = ConverterVC/ConverterVC.m; sourceTree = "<group>"; };
+		B22AED3A18BDFBC900E89B56 /* ConverterVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConverterVC.xib; path = ConverterVC/ConverterVC.xib; sourceTree = "<group>"; };
 		B22E1749189AB5D300721C0E /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		B22E174A189AB5D300721C0E /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		B22E174C189BCC4900721C0E /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
@@ -3723,6 +3734,9 @@
 		95CB4F911712D0AA00A6490B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B210043318C0B83F00CF3FDB /* calculator-26.png */,
+				B210043118C0B73000CF3FDB /* sms-26.png */,
+				B210042F18BF8C0100CF3FDB /* sms1.png */,
 				19919A4B1765F89800B0C34A /* currencyflags_map.csv */,
 				196E88301767387E00703EF7 /* Country Flags */,
 				1971F548174CAB28007B406B /* country_to_currency_map.csv */,
@@ -3754,6 +3768,7 @@
 				1994CB651721234200396488 /* Conversion */,
 				1994CB4F1721224800396488 /* ImagePicker */,
 				953A01A11712E70D00C42A7E /* HistoryVC */,
+				B22AED3D18BDFBF900E89B56 /* ConverterVC */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -3848,6 +3863,16 @@
 				B21F151C18B224280042E543 /* ContactVC.xib */,
 			);
 			name = ContactVC;
+			sourceTree = "<group>";
+		};
+		B22AED3D18BDFBF900E89B56 /* ConverterVC */ = {
+			isa = PBXGroup;
+			children = (
+				B22AED3818BDFBC900E89B56 /* ConverterVC.h */,
+				B22AED3918BDFBC900E89B56 /* ConverterVC.m */,
+				B22AED3A18BDFBC900E89B56 /* ConverterVC.xib */,
+			);
+			name = ConverterVC;
 			sourceTree = "<group>";
 		};
 		B22E1748189AB59500721C0E /* Model */ = {
@@ -4144,6 +4169,7 @@
 				19E1970617392DEC00DC1AEE /* savedIconHover.png in Resources */,
 				19E1970717392DEC00DC1AEE /* savedIconHover@2x.png in Resources */,
 				19E1970817392DEC00DC1AEE /* shareIcon.png in Resources */,
+				B22AED3C18BDFBC900E89B56 /* ConverterVC.xib in Resources */,
 				19E1970917392DEC00DC1AEE /* shareIcon@2x.png in Resources */,
 				19E1970A17392DEC00DC1AEE /* shareIconHover.png in Resources */,
 				19E1970B17392DEC00DC1AEE /* shareIconHover@2x.png in Resources */,
@@ -4215,6 +4241,7 @@
 				19B6FCF81741103A00B5B29D /* flagFrame.png in Resources */,
 				19B6FCF91741103A00B5B29D /* flagFrame@2x.png in Resources */,
 				19B6FD001741103A00B5B29D /* rightArrow.png in Resources */,
+				B210043218C0B73000CF3FDB /* sms-26.png in Resources */,
 				19B6FD011741103A00B5B29D /* rightArrow@2x.png in Resources */,
 				19B6FD021741103A00B5B29D /* switch.png in Resources */,
 				19B6FD031741103A00B5B29D /* switch@2x.png in Resources */,
@@ -4353,6 +4380,7 @@
 				196E89021767387E00703EF7 /* au - Australian.png in Resources */,
 				196E89031767387E00703EF7 /* aw - Aruba.png in Resources */,
 				196E89041767387E00703EF7 /* az - Azerbaijan.png in Resources */,
+				B210043018BF8C0100CF3FDB /* sms1.png in Resources */,
 				196E89051767387E00703EF7 /* ba - Bosnia and Herzegovina.png in Resources */,
 				196E89061767387E00703EF7 /* bb - Barbados.png in Resources */,
 				196E89071767387E00703EF7 /* bd - Bangladesh.png in Resources */,
@@ -4488,6 +4516,7 @@
 				196E89891767387E00703EF7 /* pl - Poland.png in Resources */,
 				196E898A1767387E00703EF7 /* pt - Portugal.png in Resources */,
 				196E898B1767387E00703EF7 /* pw - Palau.png in Resources */,
+				B210043418C0B83F00CF3FDB /* calculator-26.png in Resources */,
 				196E898C1767387E00703EF7 /* py - Paraguay.png in Resources */,
 				196E898D1767387E00703EF7 /* qa - Qatar.png in Resources */,
 				196E898E1767387E00703EF7 /* ro - Romania.png in Resources */,
@@ -4756,6 +4785,7 @@
 				950EE1C617B515300081EE15 /* MyCardVC.m in Sources */,
 				958520B217C23DD60069D341 /* AppDelegate.m in Sources */,
 				958520B517C23E2C0069D341 /* ConversionVC.mm in Sources */,
+				B22AED3B18BDFBC900E89B56 /* ConverterVC.m in Sources */,
 				958520B817C23E7C0069D341 /* SettingVC.m in Sources */,
 				958520BB17C23EA80069D341 /* BaseCurrencyVC.m in Sources */,
 				958520BE17C23EE20069D341 /* TargetCurrencyVC.m in Sources */,
@@ -4840,8 +4870,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CODE_SIGN_IDENTITY = "iPhone Developer: George Bafaloukas (8LPQBYVRQH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: George Bafaloukas (8LPQBYVRQH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Caxton FX Ltd (F35CTZ6K75)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Caxton FX Ltd (F35CTZ6K75)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Caxtonfx/Caxtonfx-Prefix.pch";
@@ -4856,8 +4886,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "43F3F45A-3B13-4669-8445-C6A545B52DF5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "43F3F45A-3B13-4669-8445-C6A545B52DF5";
+				PROVISIONING_PROFILE = "F361A9CB-3729-4578-B518-320A493FBBF0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F361A9CB-3729-4578-B518-320A493FBBF0";
 				STRIP_INSTALLED_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};
@@ -4870,8 +4900,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CODE_SIGN_IDENTITY = "iPhone Developer: George Bafaloukas (8LPQBYVRQH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: George Bafaloukas (8LPQBYVRQH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Caxton FX Ltd (F35CTZ6K75)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Caxton FX Ltd (F35CTZ6K75)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4887,8 +4917,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "43F3F45A-3B13-4669-8445-C6A545B52DF5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "43F3F45A-3B13-4669-8445-C6A545B52DF5";
+				PROVISIONING_PROFILE = "F361A9CB-3729-4578-B518-320A493FBBF0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F361A9CB-3729-4578-B518-320A493FBBF0";
 				STRIP_INSTALLED_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};

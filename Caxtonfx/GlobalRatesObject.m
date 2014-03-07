@@ -24,4 +24,15 @@
         }
     return self;
 }
+
+-(id) initWithCcyCode: (NSString *)ccyCode{
+    self = [super init];
+    if(self){//always use this pattern in a constructor.
+        self.ccyCode = @"";
+        self.rate = [NSNumber numberWithInt:1];
+        self.imageName = @"";
+        self.cardName = @"";
+    }
+    return self;
+}
 @end

@@ -20,6 +20,7 @@
 #import "User.h"
 #import "Card.h"
 #import "ContactVC.h"
+#import "ConverterVC.h"
 @interface LoginVC ()
 
 @end
@@ -45,6 +46,16 @@
     [super viewDidLoad];
     isRemember = NO;
     [self SetUpDesginPage];
+    
+    /****** add custom right bar button (Refresh Button) at navigation bar  **********/
+    
+    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:@"calculator-26.png"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(ConverterBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [button setFrame:CGRectMake(0, 0, 26, 26)];
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = barButton;
+
     
     //FORCE STAY LOGGED IN
     [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"stayLogin"];
@@ -75,6 +86,11 @@
 -(IBAction)ContactBtnPressed:(id)sender{
     ContactVC *contactView = [[ContactVC alloc]init];
     [self.navigationController pushViewController:contactView animated:YES];
+}
+-(IBAction)ConverterBtnPressed:(id)sender{
+    
+    ConverterVC *converterView = [[ConverterVC alloc]init];
+    [self.navigationController pushViewController:converterView animated:YES];
 }
 #pragma mark -----------
 #pragma mark SetUp - DesginPage Method
@@ -330,6 +346,8 @@
         [self.navigationController pushViewController:passcodeViewController animated:YES];
     }else
     {
+        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"isLogin"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
         MyCardVC *cardVC = [[MyCardVC alloc]initWithNibName:@"MyCardVC" bundle:nil];
         [self.navigationController pushViewController:cardVC animated:YES];
     }
@@ -475,10 +493,9 @@
                     NSString *queryStr = [NSString stringWithFormat:@"INSERT INTO myCards values (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",[dict objectForKey:@"CurrencyCardIDStr"],[dict objectForKey:@"CurrencyCardTypeIDStr"],[dict objectForKey:@"ProductTypeIDStr"],[dict objectForKey:@"CardCurrencyIDStr"],[dict objectForKey:@"cardBalanceStr"],[dict objectForKey:@"CardCurrencyDescriptionStr"],[dict objectForKey:@"CardCurrencySymbolStr"],[dict objectForKey:@"CardNameStr"],[dict objectForKey:@"CardNumberStr"],[dict objectForKey:@"CardTypeStr"],@"NO",@"NO"];
                     [DBHandler executeQuery:queryStr];
                 }
-                [[NSUserDefaults standardUserDefaults]setObject:[NSDate date] forKey:@"updateDate"];
-                [[NSUserDefaults standardUserDefaults]synchronize];
+                [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"updateDate"];
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLogin"];
-                [[NSUserDefaults standardUserDefaults]synchronize];
+                [[NSUserDefaults standardUserDefaults] synchronize];
                 // this work is done for remove histrory when user not set pin or remove pin
                 NSString *query  = @"";
                 query = @"DELETE FROM conversionHistoryTable ";

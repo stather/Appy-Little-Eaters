@@ -61,8 +61,9 @@
 {
     NSString *valueToSave = @"NO";
     [[NSUserDefaults standardUserDefaults]setObject:valueToSave forKey:@"FirstTimeUser"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-        
+    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"isLogin"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    
     MyCardVC *crdsVc = [[MyCardVC alloc]initWithNibName:@"MyCardVC" bundle:nil];
     [self.navigationController pushViewController:crdsVc animated:YES];
 }

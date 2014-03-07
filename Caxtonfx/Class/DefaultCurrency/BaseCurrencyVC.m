@@ -20,6 +20,9 @@
 @implementation BaseCurrencyVC
 
 @synthesize searchBar,tableView,allRatesMA,heightConstraint,array;
+@synthesize fromConverter;
+@synthesize delegate;
+@synthesize selectedCurrency;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,29 +61,35 @@
         }
     }
 
-    
-    if ([fromConversionSection isEqualToString:@"YES"])
-    {
-        if (selectedRow<=self.array.count) {
-            isCurrencySettingsChanged = TRUE;
+    if (fromConverter) {
+         NSMutableDictionary *dict = [self.array objectAtIndex:selectedRow];
+        [delegate ccyCodeSelected:[dict objectForKey:@"CcyCode"]];
+    }else{
+        if ([fromConversionSection isEqualToString:@"YES"])
+        {
+            if (selectedRow<=self.array.count) {
+                isCurrencySettingsChanged = TRUE;
+                
+                NSMutableDictionary *dict = [self.array objectAtIndex:selectedRow];
+                NSLog(@"selected row  : %d",selectedRow);
+                targetCurrency  = [dict objectForKey:@"CcyCode"];
+                NSLog(@"targetCurrency in backbutton event : %@",targetCurrency);
+            }
             
-            NSMutableDictionary *dict = [self.array objectAtIndex:selectedRow];
-            NSLog(@"selected row  : %d",selectedRow);
-            targetCurrency  = [dict objectForKey:@"CcyCode"];
-            NSLog(@"targetCurrency in backbutton event : %@",targetCurrency); 
         }
-        
-    }
-    else
-    {
-        if (selectedRow<=self.array.count) {
-            NSMutableDictionary *dict = [self.array objectAtIndex:selectedRow];
-            [[NSUserDefaults standardUserDefaults] setObject:[dict objectForKey:@"CcyCode"] forKey:@"defaultCurrency"];
-            [[NSUserDefaults standardUserDefaults] setObject:[dict objectForKey:@"imageName"] forKey:@"defaultCurrencyImage"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
+        else
+        {
+            if (selectedRow<=self.array.count) {
+                NSMutableDictionary *dict = [self.array objectAtIndex:selectedRow];
+                [[NSUserDefaults standardUserDefaults] setObject:[dict objectForKey:@"CcyCode"] forKey:@"defaultCurrency"];
+                [[NSUserDefaults standardUserDefaults] setObject:[dict objectForKey:@"imageName"] forKey:@"defaultCurrencyImage"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
+            
         }
-        
     }
+    
+    
     
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -94,9 +103,7 @@
     {
         selectedCurrency = targetCurrency;
         [self setNavigationTitle:@"Convert from:"];
-    }
-    else
-    {
+    }else if (!fromConverter){
         selectedCurrency =   [[NSUserDefaults standardUserDefaults]objectForKey:@"defaultCurrency"];
         
         [self setNavigationTitle:@"Convert to:"];
@@ -107,10 +114,12 @@
     
     UIBarButtonItem *backButton = [self backButton];
     self.navigationItem.leftBarButtonItem = backButton;
-    
-    
-    NSString *query = [NSString stringWithFormat:@"select * from globalRatesTable"];
-  
+    NSString *query;
+    if (self.fromConverter) {
+        query = [NSString stringWithFormat:@"SELECT * FROM globalRatesTable WHERE CcyCode IN ('GBP','EUR','USD','CAD','ZAR','AUD','NZD','HKD','SGD','SEK','THB','JPY','CHF','NOK','DKK','AED','INR','ILS','CZK','HUF','TRY','SAR','PLN');"];
+    }else{
+        query = [NSString stringWithFormat:@"select * from globalRatesTable"];
+    }
     
     self.array = [[NSMutableArray alloc]init];
     self.allRatesMA = [[NSMutableArray alloc] init];
@@ -380,7 +389,6 @@
 
 - (void) tableView:(UITableView *)tableView1 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     selectedRow = indexPath.row;
     NSMutableDictionary *dict = [self.array objectAtIndex:indexPath.row];
     NSString *ccy = [dict objectForKey:@"CcyCode"];

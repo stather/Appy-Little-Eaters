@@ -19,7 +19,7 @@
 #import "UIImage+RoundedCorner.h"
 #import "UIImage+Resize.h"
 
-
+#import "ConverterVC.h"
 #import <QuartzCore/QuartzCore.h>
 #import <CommonCrypto/CommonCryptor.h>
 
@@ -105,16 +105,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 6;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row ==0){
-            return 151;
-        }
-        
-        return  51;
+    if(indexPath.row ==0)
+        return 151;
+    else if(indexPath.row ==1)
+        return  45;
+    else
+        return  40;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView1 cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -260,6 +261,10 @@
         {
             cell.lbl.text = @"About Caxton FX";
         }
+        else if(indexPath.row ==5)
+        {
+            cell.lbl.text = @"Currency Converter";
+        }
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
@@ -287,6 +292,11 @@
     else if(indexPath.row==4)
     {
         AboutVC *aboutVC = [[AboutVC alloc]initWithNibName:@"AboutVC" bundle:nil];
+        [self.navigationController pushViewController:aboutVC animated:YES];
+    }
+    else if(indexPath.row==5)
+    {
+        ConverterVC *aboutVC = [[ConverterVC alloc]initWithNibName:@"ConverterVC" bundle:nil];
         [self.navigationController pushViewController:aboutVC animated:YES];
     }
 }

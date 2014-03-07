@@ -50,6 +50,30 @@
     [[self navigationController] setNavigationBarHidden:NO animated:NO];
     [self setNavigationTitle:[NSString stringWithFormat:@"Top-Up"]];
     
+    /****** add custom right bar button (Refresh Button) at navigation bar  **********/
+    
+    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:@"sms-26.png"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(smsAction) forControlEvents:UIControlEventTouchUpInside];
+    [button setFrame:CGRectMake(0, 0, 26, 26)];
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = barButton;
+    /*
+    UIBarButtonItem * doneButton =
+    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                  target:self
+                                                  action:@selector(smsBalance)];
+    //TO-DO add custom image that is the same for iOS 6/7
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        doneButton.tintColor = [UIColor whiteColor];
+        
+    }else{
+        doneButton.tintColor =[UIColor colorWithRed:255.0/255.0 green:40.0/255.0 blue:25.0/255.0 alpha:1.0];
+    }
+    
+    [self.navigationItem setRightBarButtonItem:doneButton];
+     */
+    
     UILabel *errorLable = (UILabel*)[self.view viewWithTag:15];
     errorLable.textColor = UIColorFromRedGreenBlue(32, 185, 213);
 
@@ -75,7 +99,11 @@
     
 }
 
-
+-(void)smsAction{
+    UIAlertView *myAlert = [[UIAlertView alloc] initWithTitle:@"SMS" message:@"Choose your action" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"SMS Balance",@"SMS Top-Up", nil];
+    myAlert.tag = 10;
+    [myAlert show];
+}
 -(void)viewWillAppear:(BOOL)animated
 {
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
@@ -542,7 +570,7 @@
     {
         if ([messageClass canSendText])
         {
-            [self displaySMSComposerSheet];
+            [self displaySMSComposerSheetWithType:@"LOAD"];
         }else
         {
             [self.alertView removeFromSuperview];
@@ -553,17 +581,27 @@
     }
 }
 
--(void)displaySMSComposerSheet
+-(void)displaySMSComposerSheetWithType:(NSString *)type
 {
-    KeychainItemWrapper *keychain1 = [[KeychainItemWrapper alloc] initWithIdentifier:@"userDOB" accessGroup:nil];
-   [keychain1 setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
-    NSString *DobStr = [keychain1 objectForKey:(__bridge id)kSecAttrAccount];
-   
-	MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
-	picker.messageComposeDelegate = self;
-    picker.recipients = [NSArray arrayWithObjects:@"+44 753 740 2025",nil];
-	picker.body = [NSString stringWithFormat:@" LOAD %@ %@ %@",self.dataDict.CardNumberStr,DobStr,rightTxtField.text];
-	[self presentViewController:picker animated:YES completion:nil];
+    if ([type isEqualToString:@"LOAD"]) {
+        KeychainItemWrapper *keychain1 = [[KeychainItemWrapper alloc] initWithIdentifier:@"userDOB" accessGroup:nil];
+        [keychain1 setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
+        NSString *DobStr = [keychain1 objectForKey:(__bridge id)kSecAttrAccount];
+        MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
+        picker.messageComposeDelegate = self;
+        picker.recipients = [NSArray arrayWithObjects:@"+44 753 740 2025",nil];
+        picker.body = [NSString stringWithFormat:@" LOAD %@ %@ %@",self.dataDict.CardNumberStr,DobStr,rightTxtField.text];
+        [self presentViewController:picker animated:YES completion:nil];
+    }else{
+        KeychainItemWrapper *keychain1 = [[KeychainItemWrapper alloc] initWithIdentifier:@"userDOB" accessGroup:nil];
+        [keychain1 setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
+        NSString *DobStr = [keychain1 objectForKey:(__bridge id)kSecAttrAccount];
+        MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
+        picker.messageComposeDelegate = self;
+        picker.recipients = [NSArray arrayWithObjects:@"+44 753 740 2025",nil];
+        picker.body = [NSString stringWithFormat:@" BALANCE %@ %@",self.dataDict.CardNumberStr,DobStr];
+        [self presentViewController:picker animated:YES completion:nil];
+    }
 }
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
@@ -865,13 +903,40 @@ replacementString: (NSString*) string {
         self.HUD.labelText =@"Get them closer...";
     }
 }
-- (void)alertView:(UIAlertView *)alertView
+- (void)alertView:(UIAlertView *)myAlertView
 clickedButtonAtIndex:(NSInteger)buttonIndex{
-    NSLog(@"buttonIndex %i",buttonIndex);
-    if (buttonIndex == 1) {
-        [self startMoneyTransfer];
+    if (myAlertView.tag == 10) {
+         if (buttonIndex == 1) {
+             NSLog(@"SMS Balance");
+             [self displaySMSComposerSheetWithType:@"BALANCE"];
+         }else if (buttonIndex == 2){
+             NSLog(@"SMS Top-Up");
+             //TO-DO: check for valid amount
+             if(rightTxtField.text.floatValue >= [self.myDefObj.minTopUp floatValue])
+             {
+                 if(rightTxtField.text.floatValue <=[self.myDefObj.maxTopUp floatValue]){
+                     [self displaySMSComposerSheetWithType:@"LOAD"];
+                 }
+                 else
+                 {
+                     NSString *sessionHeighScorestr = self.myDefObj.maxTopUp;
+                     NSNumberFormatter *formatter = [NSNumberFormatter new];
+                     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+                     int highscore  = [sessionHeighScorestr intValue];
+                     NSString *formatted = [formatter stringFromNumber:[NSNumber numberWithInteger:highscore]];
+                     [self errorMsg:[NSString stringWithFormat:@"There is a maximum load value of %@%@. Please re-enter correct amount.",sybolString,formatted]];
+                 }
+             }else
+             {
+                 [self errorMsg:[NSString stringWithFormat:@"There is a minimum load value of %@%d. Please re-enter correct amount.",sybolString,[self.myDefObj.minTopUp intValue]]];
+             }
+         }
     }else{
-        [self cancelTransfer];
+        if (buttonIndex == 1) {
+            [self startMoneyTransfer];
+        }else{
+            [self cancelTransfer];
+        }
     }
 }
 -(void)startMoneyTransfer{

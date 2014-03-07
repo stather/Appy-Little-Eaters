@@ -87,7 +87,7 @@
 		{
 			NSLog(@"query Statement Not Compiled %@ - ERROR CODE: %i",query, SQL);
 		}
-		sqlite3_finalize(statement);
+		//sqlite3_finalize(statement);
 		sqlite3_close(database);
 	}
 	else
