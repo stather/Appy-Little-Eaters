@@ -91,16 +91,34 @@
      errorImageView
      successImageView
      */
+    NSArray *pathsNew = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [pathsNew objectAtIndex:0];
+    NSString *path = [docsPath stringByAppendingPathComponent:@"cfxNew.sqlite"];
+    FMDatabase *database = [FMDatabase databaseWithPath:path];
+    [database open];
     NSString *queryStr = [NSString stringWithFormat:@"INSERT OR REPLACE INTO myCards (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",self.CurrencyCardIDStr,self.CurrencyCardTypeIDStr,self.ProductTypeIDStr,self.CardCurrencyIDStr,self.cardBalanceStr,self.CardCurrencyDescriptionStr,self.CardCurrencySymbolStr,self.CardNameStr,self.CardNumberStr,self.CardTypeStr,@"NO",@"NO"];
-    [[DatabaseHandler getSharedInstance] executeQuery:queryStr];
+    [database executeQuery:queryStr];
+    [database close];
 }
 -(void)deleteCard{
+    NSArray *pathsNew = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [pathsNew objectAtIndex:0];
+    NSString *path = [docsPath stringByAppendingPathComponent:@"cfxNew.sqlite"];
+    FMDatabase *database = [FMDatabase databaseWithPath:path];
+    [database open];
     NSString *queryStr = [NSString stringWithFormat:@"DELETE FROM myCards WHERE CurrencyCardID = \"%@\" ",self.CurrencyCardIDStr];
-    [[DatabaseHandler getSharedInstance] executeQuery:queryStr];
+    [database executeQuery:queryStr];
+    [database close];
 }
 -(void)deleteAllCards{
+    NSArray *pathsNew = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [pathsNew objectAtIndex:0];
+    NSString *path = [docsPath stringByAppendingPathComponent:@"cfxNew.sqlite"];
+    FMDatabase *database = [FMDatabase databaseWithPath:path];
+    [database open];
     NSString *queryStr = [NSString stringWithFormat:@"DELETE FROM myCards"];
-    [[DatabaseHandler getSharedInstance] executeQuery:queryStr];
+    [database executeQuery:queryStr];
+    [database close];
 }
 
 

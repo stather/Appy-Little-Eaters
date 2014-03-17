@@ -68,6 +68,7 @@
     
     User *myUser =[User sharedInstance];
     self.myGlobj = [myUser loadGlobalRateForCcyCode:@"EUR"];
+    targetRate.text = [NSString stringWithFormat:@"%0.2f %@",[self.myGlobj.rate floatValue],self.myGlobj.ccyCode];
 
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -79,15 +80,9 @@
         User *myUser =[User sharedInstance];
         self.myGlobj = [myUser loadGlobalRateForCcyCode:@"EUR"];
         if ([self.myGlobj.ccyCode isEqualToString:@""]) {
-            self.HUD= [[MBProgressHUD alloc] initWithView:self.view];
-            [self.myScrollView addSubview:self.HUD];
-            [self.myScrollView bringSubviewToFront:self.HUD];
-            [self.HUD showWhileExecuting:@selector(refreshRates) onTarget:self withObject:nil animated:YES];
-            if ([self.myGlobj.ccyCode isEqualToString:@""]) {
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Sorry" message:@"Rates not loaded. Check your internet connection." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                
-                [alert show];
-            }
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Sorry" message:@"Rates not loaded. Please check your internet connection and try again later." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            
+            [alert show];
         }else{
             targetRate.text = [NSString stringWithFormat:@"%0.2f %@",[self.myGlobj.rate floatValue],self.myGlobj.ccyCode];
         }
@@ -274,6 +269,11 @@ replacementString: (NSString*) string {
 {
     [aTextField resignFirstResponder];
     return YES;
+}
+
+-(IBAction) applyCardButton:(id)sender
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.caxtonfx.com/apply/"]];
 }
 
 #pragma mark -----

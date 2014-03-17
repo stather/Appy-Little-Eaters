@@ -230,22 +230,6 @@
     User *myUser = [User sharedInstance];
     if([CommonFunctions reachabiltyCheck])
     {
-        /*
-        
-        sharedManager *manger = [[sharedManager alloc]init];
-        manger.delegate = self;
-        NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetGlobalRates/></soapenv:Body></soapenv:Envelope>";
-        [manger callServiceWithRequest:soapMessage methodName:@"GetGlobalRates" andDelegate:self];
-        
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-        dispatch_async(queue, ^(void) {
-            myUser.globalRates = [myUser loadGlobalRatesWithRemote:YES];
-            myUser.defaultsArray = [myUser loadDefaultsWithRemote:YES];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                                });
-        });
-         */
         myUser.globalRates = [myUser loadGlobalRatesWithRemote:NO];
         myUser.defaultsArray = [myUser loadDefaultsWithRemote:YES];
     }else{

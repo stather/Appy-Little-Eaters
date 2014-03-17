@@ -47,13 +47,6 @@
         [Appirater setDebug:YES];
     }
     self.tableView.delegate = self;
-    //self.refreshControl = [[UIRefreshControl alloc] init];
-    //[self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    //NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"updateDate"];
-    //self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:[CommonFunctions statusOfLastUpdate:date1]];
-    // Configure View Controller
-    //[self.tableView addSubview:self.refreshControl];
-    //[self.tableView removeConstraint:heightConstraint];
     if(IS_HEIGHT_GTE_568)
     {
         heightConstraint = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:nil multiplier:1 constant:438];
@@ -68,8 +61,6 @@
     self.HUD.delegate = self;
     [self.tableView addSubview:self.HUD];
     [self.tableView bringSubviewToFront:self.HUD];
-    //[self.HUD show:YES];
-    //self.tableView.delegate = self;
     [Flurry logEvent:@"Visited Cards Screen"];
 }
 
@@ -83,9 +74,12 @@
     dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
         User *myUser = [User sharedInstance];
         if ([CommonFunctions reachabiltyCheck]){
-            if ([[AppDelegate getSharedInstance] minutesSinceNowCardsOnly] > 10)
+            NSLog(@"Time since latest rate: %i",[[AppDelegate getSharedInstance] minutesSinceNowRatesOnly]);
+            if ([[AppDelegate getSharedInstance] minutesSinceNowRatesOnly] > 5)
             {
                 myUser.globalRates = [myUser loadGlobalRatesWithRemote:YES];
+            }else{
+                myUser.globalRates = [myUser loadGlobalRatesWithRemote:NO];
             }
         }else{
             myUser.globalRates = [myUser loadGlobalRatesWithRemote:NO];
@@ -159,24 +153,6 @@
         [self performSelector:@selector(hudRefresh:) withObject:self afterDelay:5.0];
     }
 }
-/*
--(void)getDataFromDataBse
-{
-    if(self.cardsArray.count > 0)
-    {
-        [self.cardsArray removeAllObjects];
-    }else
-    {
-        self.cardsArray = [[NSMutableArray alloc] init];
-    }
-    self.cardsArray = [[DatabaseHandler getSharedInstance] getData:@"select * from myCards;"];
-    dispatch_async(dispatch_get_main_queue(),
-                   ^{
-                       self.tableView.userInteractionEnabled = YES;
-                       [self.tableView reloadData];
-                   });
-}
-*/
 - (void)refresh :(id)sender
 {
     MBProgressHUD* HUD= [[MBProgressHUD alloc] initWithView:self.view];
@@ -186,8 +162,6 @@
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:[CommonFunctions statusOfLastUpdate:date1]];
     if([CommonFunctions reachabiltyCheck])
     {
-        //[self performSelectorInBackground:@selector(fetchTheData) withObject:self];
-        //[HUD showWhileExecuting:@selector(updateCards) onTarget:self withObject:self animated:YES];
         [self performSelectorInBackground:@selector(updateCards) withObject:self];
     }else
     {
@@ -204,7 +178,6 @@
     self.view.userInteractionEnabled = NO;
     if([CommonFunctions reachabiltyCheck])
     {
-        //[HUD showWhileExecuting:@selector(fetchTheData) onTarget:self withObject:self animated:YES];
         [self.HUD showWhileExecuting:@selector(updateCards) onTarget:self withObject:self animated:YES];
         [self performSelector:@selector(refreshTheTable) withObject:nil afterDelay:2.0f];
     }else
@@ -243,18 +216,6 @@
     self.tableView.userInteractionEnabled = YES;
     [self.tableView reloadData];
 }
-/*
--(void) fetchTheData
-{
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
-    NSString *username1 = [keychain objectForKey:(__bridge id)kSecAttrAccount];
-    NSString *password1 = [keychain objectForKey:(__bridge id)kSecValueData];
-    sharedManager *manger = [[sharedManager alloc]init];
-    manger.delegate = self;
-    NSString *soapMessage = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:CheckAuthGetCards><tem:UserName>%@</tem:UserName><tem:Password>%@</tem:Password></tem:CheckAuthGetCards></soapenv:Body></soapenv:Envelope>",username1,password1];
-    [manger callServiceWithRequest:soapMessage methodName:@"CheckAuthGetCards" andDelegate:self];
-}
-*/
 
 -(void)topupBtnPressed:(NSIndexPath*)indexPath;
 {
@@ -270,107 +231,6 @@
     }
 }
 
-#pragma mark ShareMangerDelagte
-/*
--(void)loadingFinishedWithResponse:(NSString *)response withServiceName:(NSString *)service
-{
-    NSLog(@"CheckAuthGetCards - > %@",response);
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
-    TBXMLElement *root = tbxml.rootXMLElement;
-    TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
-    TBXMLElement *checkAuthGetCardsResponseElem = [TBXML childElementNamed:@"CheckAuthGetCardsResponse" parentElement:rootItemElem];
-    TBXMLElement *checkAuthGetCardsResultElem = [TBXML childElementNamed:@"CheckAuthGetCardsResult" parentElement:checkAuthGetCardsResponseElem];
-    TBXMLElement *statusCode = [TBXML childElementNamed:@"a:statusCode" parentElement:checkAuthGetCardsResultElem];
-    NSString *statusCodeStr = [TBXML textForElement:statusCode];
-    if([statusCodeStr intValue]== 000 || [statusCodeStr intValue]== 003 || [statusCodeStr intValue]== 004)
-    {
-        TBXMLElement *DOBElem = [TBXML childElementNamed:@"a:bd" parentElement:checkAuthGetCardsResultElem];
-        userDOBStr = [TBXML textForElement:DOBElem];
-        KeychainItemWrapper *keychain1 = [[KeychainItemWrapper alloc] initWithIdentifier:@"userDOB" accessGroup:nil];
-        [keychain1 setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
-        [keychain1 setObject:userDOBStr forKey:(__bridge id)kSecAttrAccount];
-        [keychain1 setObject:userDOBStr forKey:(__bridge id)kSecValueData];
-        TBXMLElement *contactTypeElem = [TBXML childElementNamed:@"a:contactType" parentElement:checkAuthGetCardsResultElem];
-        userConactTypeStr = [TBXML textForElement:contactTypeElem];
-        KeychainItemWrapper *keychain2 = [[KeychainItemWrapper alloc] initWithIdentifier:@"userMobile" accessGroup:nil];
-        [keychain2 setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
-        [keychain2 setObject:userMobileStr forKey:(__bridge id)kSecAttrAccount];
-        [keychain2 setObject:userMobileStr forKey:(__bridge id)kSecValueData];
-        [[NSUserDefaults standardUserDefaults]setObject:userConactTypeStr forKey:@"userConactType"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        TBXMLElement *mobileElem = [TBXML childElementNamed:@"a:mobile" parentElement:checkAuthGetCardsResultElem];
-        userMobileStr = [TBXML textForElement:mobileElem];
-        if([statusCodeStr intValue]!= 003)
-        {
-            TBXMLElement *cardsElem = [TBXML childElementNamed:@"a:cards" parentElement:checkAuthGetCardsResultElem];
-            if(cardsElem)
-            {
-                TBXMLElement *CardElm    = [TBXML childElementNamed:@"a:card" parentElement:cardsElem];
-                while (CardElm != nil)
-                {
-                    TBXMLElement *cardBalance   = [TBXML childElementNamed:@"a:CardBalance" parentElement:CardElm];
-                    NSString *cardBalanceStr = [TBXML textForElement:cardBalance];
-                    TBXMLElement *CardCurrencyDescription    = [TBXML childElementNamed:@"a:CardCurrencyDescription" parentElement:CardElm];
-                    NSString *CardCurrencyDescriptionStr = [TBXML textForElement:CardCurrencyDescription];
-                    TBXMLElement *CardCurrencyID    = [TBXML childElementNamed:@"a:CardCurrencyID" parentElement:CardElm];
-                    NSString *CardCurrencyIDStr = [TBXML textForElement:CardCurrencyID];
-                    TBXMLElement *CardCurrencySymbol    = [TBXML childElementNamed:@"a:CardCurrencySymbol" parentElement:CardElm];
-                    NSString *CardCurrencySymbolStr = [TBXML textForElement:CardCurrencySymbol];
-                    TBXMLElement *CardName    = [TBXML childElementNamed:@"a:CardName" parentElement:CardElm];
-                    NSString *CardNameStr = [TBXML textForElement:CardName];
-                    TBXMLElement *CardNumber    = [TBXML childElementNamed:@"a:CardNumber" parentElement:CardElm];
-                    NSString *CardNumberStr = [TBXML textForElement:CardNumber];
-                    TBXMLElement *CardType    = [TBXML childElementNamed:@"a:CardType" parentElement:CardElm];
-                    NSString *CardTypeStr = [TBXML textForElement:CardType];
-                    TBXMLElement *CurrencyCardID    = [TBXML childElementNamed:@"a:CurrencyCardID" parentElement:CardElm];
-                    NSString *CurrencyCardIDStr = [TBXML textForElement:CurrencyCardID];
-                    TBXMLElement *ProductTypeID    = [TBXML childElementNamed:@"a:ProductTypeID" parentElement:CardElm];
-                    NSString *ProductTypeIDStr = [TBXML textForElement:ProductTypeID];
-                    TBXMLElement *CurrencyCardTypeID    = [TBXML childElementNamed:@"a:CurrencyCardTypeID" parentElement:CardElm];
-                    NSString *CurrencyCardTypeIDStr = [TBXML textForElement:CurrencyCardTypeID];
-                    NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithObjectsAndKeys:cardBalanceStr,@"cardBalanceStr",CardCurrencyDescriptionStr,@"CardCurrencyDescriptionStr",CardCurrencyIDStr,@"CardCurrencyIDStr",CardCurrencySymbolStr,@"CardCurrencySymbolStr",CardNameStr,@"CardNameStr",CardNumberStr,@"CardNumberStr",CurrencyCardIDStr,@"CurrencyCardIDStr",ProductTypeIDStr,@"ProductTypeIDStr",CurrencyCardTypeIDStr ,@"CurrencyCardTypeIDStr",CardTypeStr,@"CardTypeStr", nil];
-                    [array addObject:dict];
-                    CardElm = [TBXML nextSiblingNamed:@"a:card" searchFromElement:CardElm];
-                }
-            }
-            for(int i=0;i<array.count;i++)
-            {
-                dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void)
-                               {
-                    NSMutableDictionary *dict = [array objectAtIndex:i];
-                    NSString *queryStr = [NSString stringWithFormat:@"INSERT OR REPLACE INTO myCards values (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",[dict objectForKey:@"CurrencyCardIDStr"],[dict objectForKey:@"CurrencyCardTypeIDStr"],[dict objectForKey:@"ProductTypeIDStr"],[dict objectForKey:@"CardCurrencyIDStr"],[dict objectForKey:@"cardBalanceStr"],[dict objectForKey:@"CardCurrencyDescriptionStr"],[dict objectForKey:@"CardCurrencySymbolStr"],[dict objectForKey:@"CardNameStr"],[dict objectForKey:@"CardNumberStr"],[dict objectForKey:@"CardTypeStr"],@"NO",@"NO"];
-                    [[DatabaseHandler getSharedInstance]executeQuery:queryStr];
-                });
-            }
-            NSDate *today = [NSDate date];
-            dateInString = [today description];
-            [[NSUserDefaults standardUserDefaults]setObject:[NSDate date] forKey:@"updateDate"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        }
-    }else{
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Session Expired" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        alert.tag = 1;
-        [alert show];
-    }
-    //[self fetchTheValueFromDataBase];
-}
- -(void)loadingFailedWithError:(NSString *)error withServiceName:(NSString *)service
- {
- UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Communication Error" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
- alert.tag = 1;
- [alert show];
- if ([error isKindOfClass:[NSString class]]) {
- NSLog(@"Service: %@ | Response is  : %@",service,error);
- }else{
- NSLog(@"Service: %@ | Response UKNOWN ERROR",service);
- }
- [self.refreshControl endRefreshing];
- self.tableView.userInteractionEnabled = YES;
- [[NSUserDefaults standardUserDefaults]setObject:[NSDate date] forKey:@"updateDate"];
- [[NSUserDefaults standardUserDefaults]synchronize];
- }
- */
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView.tag == 1 ){
         if (buttonIndex == 0)
@@ -380,17 +240,6 @@
         }
     }
 }
-/*
--(void) fetchTheValueFromDataBase
-{
-    dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void)
-                   {
-                       [self getDataFromDataBse];
-                       [self.refreshControl endRefreshing];
-                   });
-}
-*/
-
 
 #pragma mark -------
 #pragma mark TableViewMethod
@@ -461,7 +310,6 @@
         Card *myCard;
         if (myUser.cards.count >0) {
             myCard = [myUser.cards objectAtIndex:indexPath.row];
-            //dict = [self.cardsArray objectAtIndex:indexPath.row];
         }else{
             return [self emptyCell];
         }

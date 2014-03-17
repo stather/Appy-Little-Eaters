@@ -58,21 +58,6 @@
     [button setFrame:CGRectMake(0, 0, 26, 26)];
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.rightBarButtonItem = barButton;
-    /*
-    UIBarButtonItem * doneButton =
-    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-                                                  target:self
-                                                  action:@selector(smsBalance)];
-    //TO-DO add custom image that is the same for iOS 6/7
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
-        doneButton.tintColor = [UIColor whiteColor];
-        
-    }else{
-        doneButton.tintColor =[UIColor colorWithRed:255.0/255.0 green:40.0/255.0 blue:25.0/255.0 alpha:1.0];
-    }
-    
-    [self.navigationItem setRightBarButtonItem:doneButton];
-     */
     
     UILabel *errorLable = (UILabel*)[self.view viewWithTag:15];
     errorLable.textColor = UIColorFromRedGreenBlue(32, 185, 213);
@@ -89,10 +74,6 @@
     gestureRecognizer.delegate = self;
     [scrollView addGestureRecognizer:gestureRecognizer];
     
-    //counveronCurrencyArray = [[NSMutableArray alloc]init];
-    //defaultsArray = [[NSMutableArray alloc]init];
-    //defaultsArray = [[DatabaseHandler getSharedInstance]getData:[NSString stringWithFormat:@"select * from getDefaults where productID = \"%@\"",self.dataDict.ProductTypeIDStr]];
-
     [self setupPage];
     
     [Flurry logEvent:@"Visited Top-Up"];
@@ -100,7 +81,7 @@
 }
 
 -(void)smsAction{
-    UIAlertView *myAlert = [[UIAlertView alloc] initWithTitle:@"SMS" message:@"Choose your action" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"SMS Balance",@"SMS Top-Up", nil];
+    UIAlertView *myAlert = [[UIAlertView alloc] initWithTitle:@"SMS" message:@"Choose your action" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"SMS Balance", nil];
     myAlert.tag = 10;
     [myAlert show];
 }
@@ -131,21 +112,18 @@
     {
         self.flagImgView.image = [UIImage imageNamed:@"GBPFlag"];
         sybolString = @"£";
-        //counveronCurrencyArray = [[DatabaseHandler getSharedInstance] getData:@"select *from globalRatesTable where CcyCode = \"GBP\" "];
         self.myGlobj = [myUser loadGlobalRateForCcyCode:@"GBP"];
     }
     else if([self.dataDict.CardCurrencyDescriptionStr isEqualToString:@"Euro"])
     {
         self.flagImgView.image = [UIImage imageNamed:@"topRightFlag"];
         sybolString = @"€";
-        //counveronCurrencyArray = [[DatabaseHandler getSharedInstance] getData:@"select *from globalRatesTable where CcyCode = \"EUR\" "];
         self.myGlobj = [myUser loadGlobalRateForCcyCode:@"EUR"];
     }
     else
     {
         self.flagImgView.image = [UIImage imageNamed:@"dolloetrvall"];
         sybolString = @"$";
-        //counveronCurrencyArray = [[DatabaseHandler getSharedInstance] getData:@"select *from globalRatesTable where CcyCode = \"USD\" "];
         self.myGlobj = [myUser loadGlobalRateForCcyCode:@"USD"];
     }
     
@@ -177,8 +155,7 @@
     minLable.textColor = UIColorFromRedGreenBlue(102, 102, 102);
     minLable.font = [UIFont fontWithName:@"OpenSans" size:9];
     minLable.text = [NSString stringWithFormat:@"(Minimum amount accepted is : %@%@)",sybolString,myDefObj.minTopUp];
-    //NSLog(@"minLable.text - > %@",minLable.text);
-    //NSLog(@"min topup %@",[defaultsArray objectAtIndex:0]);
+
     
     UILabel *rateofLable = (UILabel*)[self.scrollView viewWithTag:11];
     rateofLable.textColor = UIColorFromRedGreenBlue(102, 102, 102);
@@ -187,13 +164,7 @@
     UILabel *conversionLable = (UILabel*)[self.scrollView viewWithTag:12];
     conversionLable.font = [UIFont fontWithName:@"OpenSans-Bold" size:12];
     conversionLable.text = [NSString stringWithFormat:@"£1 = %@%f",sybolString,[myGlobj.rate doubleValue]];
-    /*
-    if (counveronCurrencyArray.count > 0)
-    {
-          double conversn = [[[counveronCurrencyArray objectAtIndex:0]objectForKey:@"Rate" ] doubleValue];
-        conversionLable.text = [NSString stringWithFormat:@"£1 = %@%f",sybolString,conversn];
-    }
-    */
+    
     UILabel *messageLable = (UILabel*)[self.scrollView viewWithTag:14];
     messageLable.font = [UIFont fontWithName:@"OpenSans" size:9];
     messageLable.textColor = UIColorFromRedGreenBlue(102, 102, 102);
@@ -224,14 +195,20 @@
     
     firstSymbolLbl.text = @"£";
     
-    NSString *querrystr = [NSString stringWithFormat:@"select * from currencySymbole_table where cardCurrencyId = %@",self.dataDict.CardCurrencyIDStr];
+    NSArray *pathsNew = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [pathsNew objectAtIndex:0];
+    NSString *path = [docsPath stringByAppendingPathComponent:@"cfxNew.sqlite"];
+    FMDatabase *database = [FMDatabase databaseWithPath:path];
+    [database open];
     
-    NSMutableArray *CardSymbolArray =[[DatabaseHandler getSharedInstance]getData:querrystr];
-    NSDictionary *CardSymbolDict = [CardSymbolArray objectAtIndex:0];
+    NSString *symboleStr;
+    FMResultSet *globalRatesTempArray = [database executeQuery:[NSString stringWithFormat:@"select symbol from currencySymbole_table where cardCurrencyId = %@",self.dataDict.CardCurrencyIDStr]];
     
-    NSString *symboleStr = [CardSymbolDict objectForKey:@"symbol"];
-    symboleStr = [symboleStr stringByConvertingHTMLToPlainText];
- 
+    if ([globalRatesTempArray next]) {
+        symboleStr = [globalRatesTempArray stringForColumn:@"symbol"];
+        symboleStr = [symboleStr stringByConvertingHTMLToPlainText];
+    }
+    
     scndSymbolLbl.text = symboleStr;
     
     UILabel *dataConnectionLbl = (UILabel *)[self.redView viewWithTag:20];
@@ -240,6 +217,7 @@
     rightSymbolImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",self.dataDict.CardCurrencySymbolStr]];
     
     redView.frame = CGRectMake(12, 235,294 , 55);
+    [database close];
 }
 
 -(void)errorMsg : (NSString *)errorStr
@@ -261,8 +239,6 @@
 
 -(IBAction)topUpBtnPressed:(id)sender
 {
-    //Bla Bla do the fucking default object change....
-    //defaultsArray = [[DatabaseHandler getSharedInstance]getData:[NSString stringWithFormat:@"select * from getDefaults where productID = \"%@\"",self.dataDict.ProductTypeIDStr]];
     if([CommonFunctions reachabiltyCheck])
     {
         if(rightTxtField.text.floatValue >= [self.myDefObj.minTopUp floatValue])
@@ -318,83 +294,11 @@
             }
         }else
         {
-            
             [self errorMsg:[NSString stringWithFormat:@"There is a minimum load value of %@%d. Please re-enter correct amount.",sybolString,[self.myDefObj.minTopUp intValue]]];
         }
     }
 }
-/*
--(void)callServiceForFetchingHistoryData
-{
-    NSString *query = [NSString stringWithFormat:@"select CurrencyCardID from myCards"];
-    
-    NSMutableArray *currencyIdMA = [kHandler fetchingDataFromTable:query];
-   
-    BOOL state =         [CommonFunctions reachabiltyCheck];
-    if (state)
-    {
-        [self fetchingHistoryData:currencyIdMA];
-    }
-    else
-    {
-        UIButton *btn = (UIButton *)[self.view viewWithTag:17];
-        [btn btnWithoutActivityIndicator];
-        [btn btnSuccess];
-        [self performSelectorOnMainThread:@selector(topupResultget) withObject:nil waitUntilDone:NO];
-    }
-}
 
--(void)fetchingHistoryData:(NSMutableArray *)currencyIdMA
-{
-    for (int i = 0;  i < [currencyIdMA count]; i++)
-    {
-        dispatch_async(dispatch_queue_create("myGCDqueue",NULL), ^{
-            [self fetchingTransactions:[currencyIdMA objectAtIndex:i]];
-            
-        });
-    }
-    
-     [self performSelectorOnMainThread:@selector(topupResultget) withObject:nil waitUntilDone:NO];
-}
-
--(void)fetchingTransactions:(NSString *)cardId
-{
-    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"khistoryData"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
-     [keychain setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
-    
-    sharedManager *manger = [[sharedManager alloc]init];
-    manger.delegate = self;
-    NSString *soapMessage = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">"
-                             "<soapenv:Header/>"
-                             "<soapenv:Body>"
-                             "<tem:GetHistory>"
-                             "<tem:userName>%@</tem:userName>"
-                             "<tem:password>%@</tem:password>"
-                             "<tem:currencyCardID>%@</tem:currencyCardID>"
-                             "</tem:GetHistory>"
-                             "</soapenv:Body>"
-                             "</soapenv:Envelope>",[keychain objectForKey:(__bridge id)kSecAttrAccount],[keychain objectForKey:(__bridge id)kSecValueData],cardId];
-    currentId = cardId;
-    [manger callServiceWithRequest:soapMessage methodName:@"GetHistory" andDelegate:self];
-    
-}
-
--(void)updatingDatabase
-{
-    DatabaseHandler *dbHandler = [[DatabaseHandler alloc]init];
-    [dbHandler executeQuery:[NSString stringWithFormat:@"DELETE FROM getHistoryTable where currencyId = '%@'",currentId]];
-    for(int i=0;i<self._array.count;i++)
-    {
-        NSMutableDictionary *dict = [self._array objectAtIndex:i];
-        NSString *value = [dbHandler getDataValue:[NSString stringWithFormat:@"select CardCurrencyDescription from myCards where CurrencyCardID = %@",currentId]];
-        NSString *queryStr = [NSString stringWithFormat:@"INSERT INTO getHistoryTable('amount','date','vendor','currencyId','cardName') values (%f,\"%@\",\"%@\",\"%@\",\"%@\")",[[dict objectForKey:@"amount"] floatValue],[dict objectForKey:@"date"],[dict objectForKey:@"vendor"],currentId,value];
-        
-        [dbHandler executeQuery:queryStr];
-    }
-}
-*/
 -(void)sendtopuprequest : (UIButton*)btn
 {
     KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
@@ -422,7 +326,6 @@
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
         [dateFormatter setDateFormat:@"dd/MM/YY HH:mm:ss"];
         NSString *dateString = [dateFormatter stringFromDate:currDate];
-        NSLog(@"%@",dateString);
         
         NSLog(@"Top Up Response: %@", response);
         TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
@@ -640,7 +543,6 @@
     [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
     [self.peripheralManager stopAdvertising];
     self.view.userInteractionEnabled = YES;
-    //[delegate topupResult:self.indexPath dict:self.dataDict];
     [delegate topupResult:self.indexPath WithCard:self.dataDict];
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -907,9 +809,10 @@ replacementString: (NSString*) string {
 clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (myAlertView.tag == 10) {
          if (buttonIndex == 1) {
-             NSLog(@"SMS Balance");
              [self displaySMSComposerSheetWithType:@"BALANCE"];
-         }else if (buttonIndex == 2){
+         }
+        /*
+         else if (buttonIndex == 2){
              NSLog(@"SMS Top-Up");
              //TO-DO: check for valid amount
              if(rightTxtField.text.floatValue >= [self.myDefObj.minTopUp floatValue])
@@ -931,6 +834,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
                  [self errorMsg:[NSString stringWithFormat:@"There is a minimum load value of %@%d. Please re-enter correct amount.",sybolString,[self.myDefObj.minTopUp intValue]]];
              }
          }
+         */
     }else{
         if (buttonIndex == 1) {
             [self startMoneyTransfer];

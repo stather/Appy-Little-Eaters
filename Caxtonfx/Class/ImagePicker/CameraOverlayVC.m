@@ -13,6 +13,7 @@
 #import "ImagePickerVC.h"
 #import "MoreInfoVC.h"
 #import "LoginVC.h"
+#import <sys/sysctl.h>
 
 @interface CameraOverlayVC ()
 

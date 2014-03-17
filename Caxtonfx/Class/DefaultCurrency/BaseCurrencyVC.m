@@ -109,14 +109,11 @@
         [self setNavigationTitle:@"Convert to:"];
     }
     
-    NSLog(@"%@",selectedCurrency);
-   
-    
     UIBarButtonItem *backButton = [self backButton];
     self.navigationItem.leftBarButtonItem = backButton;
     NSString *query;
     if (self.fromConverter) {
-        query = [NSString stringWithFormat:@"SELECT * FROM globalRatesTable WHERE CcyCode IN ('GBP','EUR','USD','CAD','ZAR','AUD','NZD','HKD','SGD','SEK','THB','JPY','CHF','NOK','DKK','AED','INR','ILS','CZK','HUF','TRY','SAR','PLN');"];
+        query = [NSString stringWithFormat:@"SELECT * FROM globalRatesTable WHERE CcyCode IN ('EUR','USD','CAD','ZAR','AUD','NZD','HKD','SGD','SEK','THB','JPY','CHF','NOK','DKK','AED','INR','ILS','CZK','HUF','TRY','SAR','PLN');"];
     }else{
         query = [NSString stringWithFormat:@"select * from globalRatesTable"];
     }

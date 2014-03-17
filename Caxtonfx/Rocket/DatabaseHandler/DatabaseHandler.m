@@ -69,6 +69,7 @@
  ==================================================================*/
 -(void)executeQuery:(NSString *)query
 {
+    
     sqlite3_stmt *statement;
     //NSLog(@"query: %@",query);
     NSString *filePath = [[NSString alloc] init];
@@ -94,6 +95,26 @@
 	{
 		NSLog(@"Data not Opened");
 	}
+     /*
+    NSString *databasePath = [self dataFilePath];
+    
+    if(sqlite3_open([databasePath UTF8String],&database) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat: @"%@",query];
+        
+        char *errmsg=nil;
+        int SQL =sqlite3_exec(database, [querySQL UTF8String], NULL, NULL, &errmsg);
+        if(SQL==SQLITE_OK)
+        {
+            //NSLog(@".. Row Added ..");
+        }
+        else
+		{
+			NSLog(@"query Statement Not Compiled %@ - ERROR CODE: %i",query, SQL);
+		}
+    }
+    sqlite3_close(database);
+      */
 }
 
 /*==================================================================

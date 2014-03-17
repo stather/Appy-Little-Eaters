@@ -16,6 +16,7 @@
 #import "Flurry.h"
 #import <CoreLocation/CoreLocation.h>
 #import "User.h"
+#import "FMDatabase.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,sharedDelegate,MFMailComposeViewControllerDelegate,JJGActionSheetDelegate,PAPasscodeViewControllerDelegate,CLLocationManagerDelegate,UIAlertViewDelegate>
 {
@@ -74,6 +75,7 @@
 -(NSInteger )hourSinceNow;
 -(NSInteger )minutesSinceNow;
 -(NSInteger )minutesSinceNowCardsOnly;
+-(NSInteger )minutesSinceNowRatesOnly;
 
 
 //LOCATION BASED TESTS 29/01/2014
