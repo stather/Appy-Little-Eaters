@@ -493,7 +493,7 @@
         MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
         picker.messageComposeDelegate = self;
         picker.recipients = [NSArray arrayWithObjects:@"+44 753 740 2025",nil];
-        picker.body = [NSString stringWithFormat:@" LOAD %@ %@ %@",self.dataDict.CardNumberStr,DobStr,rightTxtField.text];
+        picker.body = [NSString stringWithFormat:@" LOAD %@ %@ %i",self.dataDict.CardNumberStr,DobStr,[rightTxtField.text intValue]];
         [self presentViewController:picker animated:YES completion:nil];
     }else{
         KeychainItemWrapper *keychain1 = [[KeychainItemWrapper alloc] initWithIdentifier:@"userDOB" accessGroup:nil];
