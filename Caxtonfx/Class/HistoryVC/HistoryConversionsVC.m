@@ -53,8 +53,8 @@
     AppDelegate *appDelegate = [AppDelegate getSharedInstance];
     [[appDelegate customeTabBar] setHidden:YES];
     
-    UIButton *recieptsBtn = (UIButton*) [appDelegate.bottomView viewWithTag:1];
-    [appDelegate BottomButtonTouched:recieptsBtn];
+    //UIButton *recieptsBtn = (UIButton*) [appDelegate.bottomView viewWithTag:1];
+    //[appDelegate BottomButtonTouched:recieptsBtn];
     
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.1f];

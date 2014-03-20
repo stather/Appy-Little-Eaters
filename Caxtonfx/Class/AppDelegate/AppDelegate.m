@@ -258,7 +258,7 @@
     [database open];
     @try {
         NSString *query = @"DROP TABLE getHistoryTable;";
-        [database executeQuery:query];
+        [database executeUpdate:query];
     }
     @catch (NSException *exception) {
         NSLog(@"exception: %@",exception);
@@ -266,7 +266,7 @@
     }
     @try {
         NSString *query1 = @"CREATE TABLE getHistoryTable (id INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , amount DOUBLE  , date DATETIME  , vendor VARCHAR  , currencyId VARCHAR, cardName VARCHAR)";
-        [database executeQuery:query1];
+        [database executeUpdate:query1];
     }
     @catch (NSException *exception) {
         NSLog(@"exception: %@",exception);
@@ -481,49 +481,7 @@
 
 -(void)PAPasscodeViewControllerDidCancel:(PAPasscodeViewController *)controller
 {
-    NSArray *pathsNew = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docsPath = [pathsNew objectAtIndex:0];
-    NSString *path = [docsPath stringByAppendingPathComponent:@"cfxNew.sqlite"];
-    FMDatabase *database = [FMDatabase databaseWithPath:path];
-    [database open];
-    [database executeUpdate:@"DELETE FROM conversionHistoryTable "];
-    [database executeUpdate:@"DELETE FROM getHistoryTable"];
-    [database executeUpdate:@"DELETE FROM myCards"];
-    [database close];
-    
-    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString* documentsDirectory = [paths objectAtIndex:0];
-    NSString *patientPhotoFolder = [documentsDirectory stringByAppendingPathComponent:@"patientPhotoFolder"];
-    NSString *dataPath = patientPhotoFolder;
-    BOOL isDir = NO;
-    NSFileManager *fileManager = [[NSFileManager alloc] init];
-    if ([fileManager fileExistsAtPath:dataPath
-                           isDirectory:&isDir] && isDir == NO) {
-        BOOL success = [fileManager removeItemAtPath:dataPath error:nil];
-        NSLog(@"%@",success?@"YES":@"NO");
-        
-    }
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"khistoryData"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"switchState"];                     
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setPin"];                          
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FirstTimeUser"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoginAttamp"];                     
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"attemp"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-    UIButton *tapBtn = (UIButton*)[appDelegate.customeTabBar viewWithTag:2];
-    [appDelegate customTabBarBtnTap:tapBtn];
-    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"stayLogin"];
-    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"isLogin"];
-    UINavigationController *navController = (UINavigationController*)[appDelegate.tabBarController selectedViewController];
-    NSArray *viewArray = navController.viewControllers;
-    for (int i=0; i<viewArray.count; i++) {
-        if([[viewArray objectAtIndex:i ]isKindOfClass:[HomeVC class]])
-        {
-            [navController popToViewController:[viewArray objectAtIndex:i] animated:YES];
-            break;
-        }
-    }
+    [self doLogout];
 }
 - (void)applicationWillTerminate:(UIApplication *)application
 {
@@ -582,6 +540,26 @@
         btn = (UIButton*) [self.customeTabBar viewWithTag:newIndex];
         [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
         
+        if (newIndex == 1) {
+            NSLog(@"%@",self.tabBarController.viewControllers);
+            UINavigationController *myNavC =[self.tabBarController.viewControllers objectAtIndex:newIndex-1];
+            for (UIViewController *tempController in myNavC.viewControllers) {
+                if ([tempController isKindOfClass:[PAPasscodeViewController class]]) {
+                    HistoryVC* VC = [[HistoryVC alloc]initWithNibName:@"HistoryVC" bundle:nil];
+                    [myNavC setViewControllers:[NSArray arrayWithObject:VC] animated:YES];
+                }
+            }
+        }
+        if (newIndex == 3) {
+            NSLog(@"%@",self.tabBarController.viewControllers);
+            UINavigationController *myNavC =[self.tabBarController.viewControllers objectAtIndex:newIndex-1];
+            for (UIViewController *tempController in myNavC.viewControllers) {
+                if ([tempController isKindOfClass:[PAPasscodeViewController class]]) {
+                    SettingVC* VC = [[SettingVC alloc]initWithNibName:@"SettingVC" bundle:nil];
+                    [myNavC setViewControllers:[NSArray arrayWithObject:VC] animated:YES];
+                }
+            }
+        }
         
         [self.tabBarController setSelectedIndex:newIndex-1];
     }
@@ -631,7 +609,7 @@
     [self.bottomView setFrame:CGRectMake(0.0f, self.window.frame.size.height-55.0f, 320.0f, 55.0f)];
     [UIView commitAnimations];
 }
-
+/*
 - (IBAction)BottomButtonTouched:(UIButton *)sender
 {
     if(sender.tag == 1)
@@ -696,7 +674,7 @@
         }
     }
 }
-
+*/
 
 - (IBAction)shareTabBarBtnPressed:(UIButton *)sender
 {
@@ -876,6 +854,8 @@
 #pragma mark MobileADDNotifictionView Method
 -(IBAction)cancleBtnPressed:(id)sender
 {
+    [self.mobileNumNotificationView removeFromSuperview];
+    /*
     if(self.mobileNumNotificationView.tag==1)
         [self.mobileNumNotificationView removeFromSuperview];
     else {
@@ -884,6 +864,7 @@
         UINavigationController *navController = (UINavigationController*)[tabBarController selectedViewController];
         [navController pushViewController:addVc animated:YES];
     }
+     */
 }
 
 -(IBAction)okBtnPressed:(id)sender
@@ -1167,14 +1148,16 @@
 
 -(void)doLogout
 {
-    NSString *query  = @"";
-    query = @"DELETE FROM conversionHistoryTable ";
-    DatabaseHandler *dataBaseHandler = [[DatabaseHandler alloc]init];
-    [dataBaseHandler executeQuery:query];
-    query = @"DELETE FROM getHistoryTable";
-    [dataBaseHandler executeQuery:query];
-    query = @"DELETE FROM myCards";
-    [dataBaseHandler executeQuery:query ];
+    
+    NSArray *pathsNew = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [pathsNew objectAtIndex:0];
+    NSString *path = [docsPath stringByAppendingPathComponent:@"cfxNew.sqlite"];
+    FMDatabase *database = [FMDatabase databaseWithPath:path];
+    [database open];
+    [database executeUpdate:@"DELETE FROM conversionHistoryTable "];
+    [database executeUpdate:@"DELETE FROM getHistoryTable"];
+    [database executeUpdate:@"DELETE FROM myCards"];
+    [database close];
     NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* documentsDirectory = [paths objectAtIndex:0];
     NSString *patientPhotoFolder = [documentsDirectory stringByAppendingPathComponent:@"patientPhotoFolder"];
@@ -1191,11 +1174,16 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FirstTimeUser"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoginAttamp"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"attemp"];
-    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"stayLogin"];
-    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"isLogin"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
     UIButton *tapBtn = (UIButton*)[self.customeTabBar viewWithTag:2];
     [self customTabBarBtnTap:tapBtn];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"stayLogin"];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isLogin"];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     UINavigationController *navController = (UINavigationController*)[self.tabBarController selectedViewController];
     NSArray *viewArray = navController.viewControllers;
     BOOL found=NO;
@@ -1211,6 +1199,7 @@
         HomeVC *homeViewController = [[HomeVC alloc] init];
         [navController pushViewController:homeViewController animated:YES];
     }
+     
 }
 -(NSInteger )hourSinceNow
 {

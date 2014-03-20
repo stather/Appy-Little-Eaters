@@ -119,8 +119,8 @@
     [super viewDidAppear:animated];
     AppDelegate *appDelegate = [AppDelegate getSharedInstance];
     [[appDelegate customeTabBar] setHidden:NO];
-    UIButton *recieptsBtn = (UIButton*) [appDelegate.bottomView viewWithTag:1];
-    [appDelegate BottomButtonTouched:recieptsBtn];
+    //UIButton *recieptsBtn = (UIButton*) [appDelegate.bottomView viewWithTag:1];
+    //[appDelegate BottomButtonTouched:recieptsBtn];
   /*
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isLogin"]) {
         KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
@@ -727,7 +727,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         }
     }
 }
-
+/*
 - (IBAction)BottomButtonTouched:(UIButton *)sender
 {
     if(sender.tag == 3)
@@ -736,7 +736,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         [[self navigationController] pushViewController:tempVC animated:YES];
     }
 }
-
+*/
 - (void)viewDidUnload
 {
     [super viewDidUnload];

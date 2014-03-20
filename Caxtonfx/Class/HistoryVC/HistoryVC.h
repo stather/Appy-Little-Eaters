@@ -39,7 +39,7 @@ typedef int(^CustomBlock)(int number);
 
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint *heightConstraint;
 
-- (IBAction)BottomButtonTouched:(UIButton *)sender;
+//- (IBAction)BottomButtonTouched:(UIButton *)sender;
 
 //- (void) showReceipts;
 //- (void) deleteFromDB:(NSMutableDictionary*) receiptInfo;

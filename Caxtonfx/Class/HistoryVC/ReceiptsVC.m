@@ -47,9 +47,9 @@
 {
     AppDelegate *appDelegate = [AppDelegate getSharedInstance];
     
-    UIButton *recieptsBtn = (UIButton*) [appDelegate.bottomView viewWithTag:1];
+    //UIButton *recieptsBtn = (UIButton*) [appDelegate.bottomView viewWithTag:1];
     
-    [appDelegate BottomButtonTouched:recieptsBtn];
+    //[appDelegate BottomButtonTouched:recieptsBtn];
     
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3f];

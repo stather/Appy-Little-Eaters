@@ -53,7 +53,7 @@
 
 +(AppDelegate*) getSharedInstance;
 - (void) showBottomBar;
-- (IBAction)BottomButtonTouched:(UIButton *)sender;
+//- (IBAction)BottomButtonTouched:(UIButton *)sender;
 
 - (IBAction)shareTabBarBtnPressed:(UIButton *)sender;
 

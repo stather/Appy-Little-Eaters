@@ -10,6 +10,7 @@
 #import "UIColor+Additions.h"
 #import "AppDelegate.h"
 #import "HomeVC.h"
+#import "FMDatabase.h"
 
 @implementation LogoutTableCell
 
@@ -74,18 +75,17 @@
 
 -(IBAction)logoutAlertBtnPressed:(id)sender
 {
-    NSString *query  = @"";
-
-    query = @"DELETE FROM conversionHistoryTable ";
-    DatabaseHandler *dataBaseHandler = [[DatabaseHandler alloc]init];
-    [dataBaseHandler executeQuery:query];
+    /*
+    NSArray *pathsNew = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [pathsNew objectAtIndex:0];
+    NSString *path = [docsPath stringByAppendingPathComponent:@"cfxNew.sqlite"];
+    FMDatabase *database = [FMDatabase databaseWithPath:path];
+    [database open];
+    [database executeUpdate:@"DELETE FROM conversionHistoryTable "];
+    [database executeUpdate:@"DELETE FROM getHistoryTable"];
+    [database executeUpdate:@"DELETE FROM myCards"];
+    [database close];
     
-    query = @"DELETE FROM getHistoryTable";
-    [dataBaseHandler executeQuery:query];
-    
-    query = @"DELETE FROM myCards";
-     [dataBaseHandler executeQuery:query ];
-   
     NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* documentsDirectory = [paths objectAtIndex:0];
     NSString *patientPhotoFolder = [documentsDirectory stringByAppendingPathComponent:@"patientPhotoFolder"];
@@ -112,8 +112,9 @@
     UIButton *tapBtn = (UIButton*)[appDelegate.customeTabBar viewWithTag:2];
     [appDelegate customTabBarBtnTap:tapBtn];
     
-    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"stayLogin"];
-    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"isLogin"];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"stayLogin"];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isLogin"];
+     [[NSUserDefaults standardUserDefaults] synchronize];
     
     UINavigationController *navController = (UINavigationController*)[appDelegate.tabBarController selectedViewController];
     NSArray *viewArray = navController.viewControllers;
@@ -126,6 +127,11 @@
         
         }
     }
+     */
+    [logoutView removeFromSuperview];
+     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    [appDelegate doLogout];
+    
 }
 
 

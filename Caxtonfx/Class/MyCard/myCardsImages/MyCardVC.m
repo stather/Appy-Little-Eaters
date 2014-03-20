@@ -85,6 +85,18 @@
             myUser.globalRates = [myUser loadGlobalRatesWithRemote:NO];
         }
     });
+    /*
+    HistoryVC* ctrl1 = [[HistoryVC alloc] initWithNibName:@"HistoryVC" bundle:nil];
+    MyCardVC* ctrl2 = [[MyCardVC alloc] initWithNibName:@"MyCardVC" bundle: nil];
+    SettingVC* ctrl3 = [[SettingVC alloc] initWithNibName:@"SettingVC" bundle: nil];
+    
+    ctrl1.title = @"First tab";
+    ctrl2.title = @"Second tab";
+    ctrl3.title = @"Third tab";
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    appDelegate.tabBarController.viewControllers = [NSArray arrayWithObjects:ctrl1, ctrl2, ctrl3, nil];
+     */
+    
 }
 // custome navigtion bar
 -(void)customizingNavigationBar

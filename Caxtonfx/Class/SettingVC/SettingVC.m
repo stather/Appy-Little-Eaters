@@ -330,7 +330,7 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         passcodeViewController.backgroundView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     }
-    passcodeViewController.skipStr = @"YES";
+    passcodeViewController.skipStr = @"NO";
     passcodeViewController.delegate = self;
     passcodeViewController.simple = YES;
     [self.navigationController pushViewController:passcodeViewController animated:YES];
