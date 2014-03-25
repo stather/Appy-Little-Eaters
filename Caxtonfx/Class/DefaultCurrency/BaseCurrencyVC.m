@@ -232,9 +232,6 @@
 {
     [[[self navigationController] navigationBar] setBackgroundImage:[UIImage imageNamed:@"topBar"] forBarMetrics:UIBarMetricsDefault];
     
-    //    UIBarButtonItem *saveBtn = [self saveButton];
-    //    self.navigationItem.rightBarButtonItem = saveBtn;
-    
     self.navigationItem.hidesBackButton = YES;
     [self.navigationController.navigationBar setTintColor:[UIColor redColor]];
     UIView *view = [[UIView alloc]  initWithFrame:CGRectMake(0.0f, 0.0f,200, 44.0f)];
@@ -343,7 +340,7 @@
     CurrencyTableCell *cell = [tableView1 dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil)
     {
-        cell = [[CurrencyTableCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        //cell = [[CurrencyTableCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CurrencyTableCell"
                                                      owner:self options:nil];
         cell = [nib objectAtIndex:0];
@@ -438,10 +435,6 @@
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar1
 {
     [searchBar resignFirstResponder];
-    //    self.array = [self.allRatesMA mutableCopy];
-    //    [self.tableView reloadData];
-    //    searchBar.text = @"";
-    
 }
 
 

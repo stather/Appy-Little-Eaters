@@ -156,7 +156,7 @@
     if (cell == nil)
     {
         // Use the default cell style.
-        cell = [[DefaultCurrencyCustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        //cell = [[DefaultCurrencyCustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"DefaultCurrencyCustomCell"
                                                      owner:self options:nil];
         cell = [nib objectAtIndex:0];

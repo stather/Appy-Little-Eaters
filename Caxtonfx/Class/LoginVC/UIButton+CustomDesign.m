@@ -12,13 +12,7 @@
 {
     [self setImage:[UIImage imageNamed:@"emailTextBox"] forState:UIControlStateNormal];
 }
-//- (void)btnWithActivityIndicator
-//{
-//    UIActivityIndicatorView*loadingIndicator=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-//    loadingIndicator.frame=CGRectMake(240,10, 30, 30);
-//    [self addSubview:loadingIndicator];
-//    [loadingIndicator startAnimating];
-//}
+
 -(void)btnWithoutActivityIndicator
 {
     for (int i=0; i<[[self subviews] count]; i++)
@@ -32,20 +26,11 @@
 -(void)btnWithCrossImage
 {
     NSLog(@"Y origin Is %f",self.frame.origin.y);
-//    if (self.tag==1001)
-//    {
-//        UIImageView *crossImg=[[UIImageView alloc] initWithFrame:CGRectMake(self.frame.origin.x+self.frame.size.width-50, self.frame.size.height/2-8, 16, 16)];
-//        [crossImg setImage:[UIImage imageNamed:@"cross"]];
-//        [self addSubview:crossImg];
-//        [crossImg bringSubviewToFront:self];
-//    }
-//    else
-//    {
-        UIImageView *crossImg=[[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width-28, (self.frame.size.height-16)/2, 16, 16)];
-        [crossImg setImage:[UIImage imageNamed:@"cross"]];
-        [self addSubview:crossImg];
-        [crossImg bringSubviewToFront:self];
-//    }
+    UIImageView *crossImg=[[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width-28, (self.frame.size.height-16)/2, 16, 16)];
+    [crossImg setImage:[UIImage imageNamed:@"cross"]];
+    [self addSubview:crossImg];
+    [crossImg bringSubviewToFront:self];
+
 }
 -(void)btnWithOutCrossImage
 {
@@ -86,7 +71,6 @@
 
 - (void)btnWithActivityIndicator
 {
-    //CGRectMake(self.frame.size.width-20, (self.frame.size.height-16)/2, 19, 16)
     UIActivityIndicatorView*loadingIndicator=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     loadingIndicator.frame=CGRectMake(self.frame.size.width-40,(self.frame.size.height-30)/2, 30, 30);
     [self addSubview:loadingIndicator];
@@ -107,9 +91,8 @@
 {
     [[self viewWithTag:-1] removeFromSuperview];
     [[self viewWithTag:-2] removeFromSuperview];
-    UIImageView *wrongImgView = [[UIImageView alloc]init ];//WithFrame:(self.frame.size.width-40,(self.frame.size.height-16)/2, 15, 15)];    //CGRectMake(242, 19, 16, 16)];//CGRectMake(self.frame.size.width-40,(self.frame.size.height-30)/2, 30, 30);
+    UIImageView *wrongImgView = [[UIImageView alloc]init ];
     wrongImgView.frame = CGRectMake(self.frame.size.width-30,(self.frame.size.height-16)/2, 15, 15);
-
     [wrongImgView setImage:[UIImage imageNamed:@"cross"]];
     [self addSubview:wrongImgView];
     wrongImgView.tag = -2;

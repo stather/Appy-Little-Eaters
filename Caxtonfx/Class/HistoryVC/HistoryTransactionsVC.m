@@ -35,7 +35,6 @@
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:[CommonFunctions statusOfLastUpdate:date1]];
     if([CommonFunctions reachabiltyCheck])
     {
-       //[self performSelectorInBackground:@selector(callServiceForFetchingHistoryData) withObject:nil];
         User *myUser = [User sharedInstance];
         myUser.transactions = [myUser loadTransactionsForUSer:myUser.username withRemote:YES];
         [self performSelectorOnMainThread:@selector(reloadTable) withObject:nil waitUntilDone:YES];
@@ -85,8 +84,7 @@
     [super viewWillAppear:animated];
     AppDelegate *appDelegate = [AppDelegate getSharedInstance];
     [[appDelegate customeTabBar] setHidden:YES];
-    //UIButton *recieptsBtn = (UIButton*) [appDelegate.bottomView viewWithTag:1];
-    //[appDelegate BottomButtonTouched:recieptsBtn];
+    
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3f];
     [[appDelegate bottomView] setFrame:CGRectMake(0.0f, appDelegate.window.frame.size.height-55.0f, 320.0f, 55.0f)];
@@ -105,7 +103,7 @@
     [self.navigationController.navigationBar setTintColor:[UIColor redColor]];
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     [titleView setBackgroundColor:[UIColor clearColor]];
-    //set title
+
     UILabel *titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(40.0f, 0.0f, 250.0f, 30.0f)];
     [titleLbl setBackgroundColor:[UIColor clearColor]];
     [titleLbl setFont:[UIFont fontWithName:@"OpenSans-Bold" size:15.0f]];
@@ -125,7 +123,7 @@
     NSString *dateIs = [df stringFromDate:date];
     [df setDateFormat:@"HH:mm"];
     NSString *timeIs = [df stringFromDate:date];
-    //set title
+
     self.titleNameLbl= [[UILabel alloc] initWithFrame:CGRectMake(85, 15.0f, 150.0f, 30.0f)];
     [self.titleNameLbl setBackgroundColor:[UIColor clearColor]];
     [self.titleNameLbl setFont:[UIFont fontWithName:@"OpenSans-Bold" size:9.0f]];
@@ -209,7 +207,6 @@
     // If no cell is available, create a new one using the given identifier.
     if (cell == nil)
     {
-        cell = [[TransactionCustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TransactionCustomCell"
                                                          owner:self options:nil];
         cell = [nib objectAtIndex:0];

@@ -29,9 +29,6 @@
 }
 -(void)saveTransaction{
     //TO-DO: INSERT OR UPDATE THE TRANSACTION OF THIS INSTANCE
-    /*
-     "id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , "amount" DOUBLE  , "date" DATETIME  , "vendor" VARCHAR  , "currencyId" VARCHAR, "cardName" VARCHAR
-     */
     NSString *queryStr = [NSString stringWithFormat:@"INSERT INTO getHistoryTable('amount','date','vendor','currencyId','cardName') values (%f,\"%@\",\"%@\",\"%@\",\"%@\")",[self.txnAmount floatValue],self.txnDate,self.vendor,self.currencyId,self.cardName];
     
     [[DatabaseHandler getSharedInstance] executeQuery:queryStr];

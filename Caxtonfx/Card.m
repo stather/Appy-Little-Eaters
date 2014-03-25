@@ -44,7 +44,6 @@
 -(id) initWithDicticonary:(NSDictionary *)cardValues{
     self = [super init];
     if(self){//always use this pattern in a constructor.
-        //NSLog(@"%@",cardValues);
         if ([cardValues valueForKey:@"CardCurrencyDescription"] == nil) {
             self.CardCurrencyDescriptionStr = [cardValues valueForKey:@"CardCurrencyDescriptionStr"];
             self.CardCurrencyIDStr = [cardValues valueForKey:@"CardCurrencyIDStr"];
@@ -76,21 +75,6 @@
     return self;
 }
 -(void)saveCard{
-    //TO-DO: INSERT OR UPDATE THE CARD OF THIS INSTANCE
-    /*
-     CurrencyCardID
-     CurrencyCardTypeID
-     ProductTypeID
-     CardCurrencyID
-     CardBalance
-     CardCurrencyDescription
-     CardCurrencySymbol
-     CardName
-     CardNumber
-     CardType
-     errorImageView
-     successImageView
-     */
     NSArray *pathsNew = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docsPath = [pathsNew objectAtIndex:0];
     NSString *path = [docsPath stringByAppendingPathComponent:@"cfxNew.sqlite"];

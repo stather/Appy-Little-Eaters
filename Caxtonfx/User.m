@@ -36,9 +36,9 @@
         self.statusCode=@"";
         self.username=@"";
         self.password=@"";
-        self.transactions =[NSMutableArray array];
-        self.globalRates  =[NSMutableArray array];
-        self.defaultsArray =[NSMutableArray array];
+        self.transactions = [NSMutableArray array];
+        self.globalRates  = [NSMutableArray array];
+        self.defaultsArray = [NSMutableArray array];
         self.devMode = TRUE ;
     }
     return self;
@@ -97,19 +97,6 @@
                 myDef.productId = [defaultsArrayNew stringForColumn:@"productID"];
                 [defaultsFinal addObject:myDef];
             }
-            /*
-            NSMutableArray *defaultsTemp = [[DatabaseHandler getSharedInstance]getData:[NSString stringWithFormat:@"select * from getDefaults"]];
-            for (NSDictionary *myDefDic in defaultsTemp) {
-                DefaultsObject *myDef = [[DefaultsObject alloc] init];
-                myDef.ccy = [myDefDic valueForKey:@"ccy"];
-                myDef.description = [myDefDic valueForKey:@"description"];
-                myDef.maxTopUp = [myDefDic valueForKey:@"maxTopUp"];
-                myDef.maxTotalBalance = [myDefDic valueForKey:@"maxTotalBalance"];
-                myDef.minTopUp = [myDefDic valueForKey:@"minTopUp"];
-                myDef.productId = [myDefDic valueForKey:@"productID"];
-                [defaultsFinal addObject:myDef];
-            }
-             */
         }
     }else{
         FMResultSet *defaultsArrayNew = [database executeQuery:@"select * from getDefaults"];
@@ -123,19 +110,6 @@
             myDef.productId = [defaultsArrayNew stringForColumn:@"productID"];
             [defaultsFinal addObject:myDef];
         }
-        /*
-        NSMutableArray *defaultsTemp = [[DatabaseHandler getSharedInstance]getData:[NSString stringWithFormat:@"select * from getDefaults"]];
-        for (NSDictionary *myDefDic in defaultsTemp) {
-            DefaultsObject *myDef = [[DefaultsObject alloc] init];
-            myDef.ccy = [myDefDic valueForKey:@"ccy"];
-            myDef.description = [myDefDic valueForKey:@"description"];
-            myDef.maxTopUp = [myDefDic valueForKey:@"maxTopUp"];
-            myDef.maxTotalBalance = [myDefDic valueForKey:@"maxTotalBalance"];
-            myDef.minTopUp = [myDefDic valueForKey:@"minTopUp"];
-            myDef.productId = [myDefDic valueForKey:@"productID"];
-            [defaultsFinal addObject:myDef];
-        }
-         */
     }
     [database close];
     return defaultsFinal;
@@ -181,17 +155,6 @@
             myGlObj.cardName = [globalRatesTempArray stringForColumn:@"cardName"];
             [globalRatesFinal addObject:myGlObj];
         }
-        /*
-        NSMutableArray *globalRatesTempArray = [[DatabaseHandler getSharedInstance] getData:@"select * from globalRatesTable"];
-        for (NSDictionary* dict in globalRatesTempArray) {
-            GlobalRatesObject *myGlObj = [[GlobalRatesObject alloc] init];
-            myGlObj.ccyCode = [dict valueForKey:@"CcyCode"];
-            myGlObj.rate = [dict valueForKey:@"Rate"];
-            myGlObj.imageName = [dict valueForKey:@"imageName"];
-            myGlObj.cardName = [dict valueForKey:@"cardName"];
-            [globalRatesFinal addObject:myGlObj];
-        }
-         */
     }else{
         FMResultSet *globalRatesTempArray = [database executeQuery:@"select * from globalRatesTable"];
         while ([globalRatesTempArray next]) {
@@ -231,7 +194,6 @@
     }else{
         FMResultSet *transArrayNew = [database executeQuery:@"select * from myCards;"];
         while ([transArrayNew next]) {
-            //value = [s stringForColumnIndex:0];
             Card *myCard = [[Card alloc] init];
             myCard.CardCurrencyDescriptionStr = [transArrayNew stringForColumn:@"CardCurrencyDescription"];
             myCard.CardCurrencyIDStr = [transArrayNew stringForColumn:@"CardCurrencyID"];
@@ -247,13 +209,6 @@
             myCard.failImage =[transArrayNew stringForColumn:@"errorImageView"];
             [userCards addObject:myCard];
         }
-        /*
-        NSMutableArray *cardsArray= [[DatabaseHandler getSharedInstance] getData:@"select * from myCards;"];
-        for (NSDictionary* cardDic in cardsArray) {
-            Card *myCard = [[Card alloc] initWithDicticonary:cardDic];
-            [userCards addObject:myCard];
-        } 
-         */
     }
     [database close];
     return userCards;
@@ -286,22 +241,19 @@
                                      "</soapenv:Envelope>",[keychain objectForKey:(__bridge id)kSecAttrAccount],[keychain objectForKey:(__bridge id)kSecValueData],myCard.CurrencyCardIDStr];
             
             NSArray *transArray= [self callWebServiceWithSoapRequest:soapMessage andMethodName:@"GetHistory"];
-            //[[DatabaseHandler getSharedInstance] executeQuery:[NSString stringWithFormat:@"DELETE FROM getHistoryTable where currencyId = '%@'",myCard.CurrencyCardIDStr]];
             [database executeUpdate:[NSString stringWithFormat:@"DELETE FROM getHistoryTable where currencyId = '%@'",myCard.CurrencyCardIDStr]];
              for (NSDictionary *trans in transArray) {
-                 NSString *value;//[[DatabaseHandler getSharedInstance] getDataValue:[NSString stringWithFormat:@"select CardCurrencyDescription from myCards where CurrencyCardID = %@",myCard.CurrencyCardIDStr]];
+                 NSString *value;
                  FMResultSet *valueSet = [database executeQuery:[NSString stringWithFormat:@"select CardCurrencyDescription from myCards where CurrencyCardID = %@",myCard.CurrencyCardIDStr]];
                  if ([valueSet next]) {
                      value = [valueSet stringForColumnIndex:0];
                  }
                  NSString *queryStr = [NSString stringWithFormat:@"INSERT INTO getHistoryTable('amount','date','vendor','currencyId','cardName') values (%f,\"%@\",\"%@\",\"%@\",\"%@\")",[[trans objectForKey:@"amount"] floatValue],[trans objectForKey:@"date"],[trans objectForKey:@"vendor"],myCard.CurrencyCardIDStr,value];
-                 //[[DatabaseHandler getSharedInstance] executeQuery:queryStr];
                  [database executeUpdate:queryStr];
              }
         }
         FMResultSet *transArrayNew = [database executeQuery:@"SELECT * FROM getHistoryTable order by date DESC"];
         while ([transArrayNew next]) {
-            //value = [s stringForColumnIndex:0];
             Transaction *new = [[Transaction alloc] init];
             new.txnAmount = [transArrayNew stringForColumn:@"amount"];
             new.txnDate = [transArrayNew stringForColumn:@"date"];
@@ -311,23 +263,9 @@
             new.transactionId = [[transArrayNew stringForColumn:@"id"] intValue];
             [transArrayFinal addObject:new];
         }
-        /*
-        NSMutableArray *transArray= [[DatabaseHandler getSharedInstance] getData:@"SELECT * FROM getHistoryTable order by date DESC"];
-        for (NSDictionary *trans in transArray) {
-            Transaction *new = [[Transaction alloc] init];
-            new.txnAmount = [trans valueForKey:@"amount"];
-            new.txnDate = [trans valueForKey:@"date"];
-            new.vendor = [trans valueForKey:@"vendor"];
-            new.currencyId = [trans valueForKey:@"currencyId"];
-            new.cardName = [trans valueForKey:@"cardName"];
-            new.transactionId = [[trans valueForKey:@"id"] intValue];
-            [transArrayFinal addObject:new];
-        }
-         */
     }else{
         FMResultSet *transArrayNew = [database executeQuery:@"SELECT * FROM getHistoryTable order by date DESC"];
         while ([transArrayNew next]) {
-            //value = [s stringForColumnIndex:0];
             Transaction *new = [[Transaction alloc] init];
             new.txnAmount = [transArrayNew stringForColumn:@"amount"];
             new.txnDate = [transArrayNew stringForColumn:@"date"];
@@ -337,19 +275,6 @@
             new.transactionId = [[transArrayNew stringForColumn:@"id"] intValue];
             [transArrayFinal addObject:new];
         }
-        /*
-        NSMutableArray *transArray= [[DatabaseHandler getSharedInstance] getData:@"SELECT * FROM getHistoryTable order by date DESC"];
-        for (NSDictionary *trans in transArray) {
-            Transaction *new = [[Transaction alloc] init];
-            new.txnAmount = [trans valueForKey:@"amount"];
-            new.txnDate = [trans valueForKey:@"date"];
-            new.vendor = [trans valueForKey:@"vendor"];
-            new.currencyId = [trans valueForKey:@"currencyId"];
-            new.cardName = [trans valueForKey:@"cardName"];
-            new.transactionId = [[trans valueForKey:@"id"] intValue];
-            [transArrayFinal addObject:new];
-        }
-         */
     }
     [database close];
     return transArrayFinal;
@@ -606,7 +531,6 @@
                         NSMutableDictionary *dict = [array objectAtIndex:i];
                         NSString *queryStr = [NSString stringWithFormat:@"INSERT OR REPLACE INTO myCards values (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",[dict objectForKey:@"CurrencyCardIDStr"],[dict objectForKey:@"CurrencyCardTypeIDStr"],[dict objectForKey:@"ProductTypeIDStr"],[dict objectForKey:@"CardCurrencyIDStr"],[dict objectForKey:@"cardBalanceStr"],[dict objectForKey:@"CardCurrencyDescriptionStr"],[dict objectForKey:@"CardCurrencySymbolStr"],[dict objectForKey:@"CardNameStr"],[dict objectForKey:@"CardNumberStr"],[dict objectForKey:@"CardTypeStr"],@"NO",@"NO"];
                         [database executeUpdate:queryStr];
-                        //[DBHandler executeQuery:queryStr];
                     }
                     
                 }

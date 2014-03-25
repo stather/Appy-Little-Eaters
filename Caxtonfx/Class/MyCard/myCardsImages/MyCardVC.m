@@ -85,18 +85,6 @@
             myUser.globalRates = [myUser loadGlobalRatesWithRemote:NO];
         }
     });
-    /*
-    HistoryVC* ctrl1 = [[HistoryVC alloc] initWithNibName:@"HistoryVC" bundle:nil];
-    MyCardVC* ctrl2 = [[MyCardVC alloc] initWithNibName:@"MyCardVC" bundle: nil];
-    SettingVC* ctrl3 = [[SettingVC alloc] initWithNibName:@"SettingVC" bundle: nil];
-    
-    ctrl1.title = @"First tab";
-    ctrl2.title = @"Second tab";
-    ctrl3.title = @"Third tab";
-    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-    appDelegate.tabBarController.viewControllers = [NSArray arrayWithObjects:ctrl1, ctrl2, ctrl3, nil];
-     */
-    
 }
 // custome navigtion bar
 -(void)customizingNavigationBar
@@ -236,7 +224,6 @@
         User * myUser = [User sharedInstance];
         TopUpRechargeVC *topupVC = [[TopUpRechargeVC alloc]initWithNibName:@"TopUpRechargeVC" bundle:nil];
         topupVC.delegate = self;
-        //topupVC.dataDict = [[self.cardsArray objectAtIndex:indexPath.row] mutableCopy];
         topupVC.dataDict = [myUser.cards objectAtIndex:indexPath.row];
         topupVC.indexPath = indexPath;
         [self.navigationController pushViewController:topupVC animated:YES];
@@ -274,8 +261,7 @@
 }
 
 -(UITableViewCell *)emptyCell {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     if (!self.loadingFromPin) {
         [cell.textLabel setText:@"No cards currently active for this user. \nPlease Refresh."];
     }else{
@@ -298,9 +284,7 @@
         return [self emptyCell];
     }else
     {
-        static NSString *cellIdentifier = @"currencyCellIdentifier";
-        MyCardsTableCell *cell = [tableView1 dequeueReusableCellWithIdentifier:cellIdentifier];
-        cell = [[MyCardsTableCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        MyCardsTableCell *cell;
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"MyCardsTableCell"
                                                      owner:self options:nil];
         if (nib.count >0) {

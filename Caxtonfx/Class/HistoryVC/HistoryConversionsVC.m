@@ -173,7 +173,7 @@
     ImageConversionsCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil)
     {
-        cell = [[ImageConversionsCustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        //cell = [[ImageConversionsCustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ImageConversionsCustomCell"
                                                      owner:self options:nil];
         cell = [nib objectAtIndex:0];

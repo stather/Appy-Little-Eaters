@@ -250,18 +250,6 @@
     loginCrossImgView.hidden=YES;
     [logInBtn btnWithOutCrossImage];
 }
-/*
--(void)callDefaultsApi
-{
-    if([CommonFunctions reachabiltyCheck])
-    {
-        sharedManager *manger = [[sharedManager alloc]init];
-        manger.delegate = self;
-        NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetDefaults/></soapenv:Body></soapenv:Envelope>";
-        [manger callServiceWithRequest:soapMessage methodName:@"GetDefaults" andDelegate:self];
-    }
-}
-*/
 
 -(void)callgetGloableRateApi
 {

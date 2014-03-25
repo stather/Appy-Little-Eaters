@@ -248,13 +248,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView1 cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    static NSString *cellIdentifier = @"currencyCellIdentifier";
+    //static NSString *cellIdentifier = @"currencyCellIdentifier";
     
     // Try to retrieve from the table view a now-unused cell with the given identifier.
-    CurrencyTableCell *cell = [tableView1 dequeueReusableCellWithIdentifier:cellIdentifier];
+    CurrencyTableCell *cell;// = [tableView1 dequeueReusableCellWithIdentifier:cellIdentifier];
     // If no cell is available, create a new one using the given identifier.
     
-    cell = [[CurrencyTableCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    //cell = [[CurrencyTableCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CurrencyTableCell"
                                                  owner:self options:nil];
     cell = [nib objectAtIndex:0];

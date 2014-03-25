@@ -14,7 +14,6 @@
 #import "SplashVC.h"
 #import "ImagePickerVC.h"
 #import "AddMobileNoVC.h"
-#include <sqlite3.h>
 #import "Appirater.h"
 #import <Twitter/Twitter.h>
 #import "DatabaseHandler.h"
@@ -24,6 +23,7 @@
 #import "SettingVC.h"
 #import "MBProgressHUD.h"
 #import "GlobalRatesObject.h"
+#include <sqlite3.h>
 
 @implementation AppDelegate
 @synthesize window,tabBarController,customeTabBar,mobileNumNotificationView;
@@ -132,7 +132,6 @@
         [application setStatusBarStyle:UIStatusBarStyleDefault];
         self.window.clipsToBounds =YES;
         self.window.frame =  CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height-20);
-        //Added on 19th Sep 2013
         self.window.bounds = CGRectMake(0, 20, self.window.frame.size.width, self.window.frame.size.height);
     }
     if([[[NSUserDefaults standardUserDefaults] valueForKey:@"dbUpdated"] isEqualToString:@"NO"] || ![[NSUserDefaults standardUserDefaults] valueForKey:@"dbUpdated"])
@@ -288,7 +287,6 @@
         [database open];
         FMResultSet *countryResult = [database executeQuery:[NSString stringWithFormat:@"select currency_code FROM country_table where country_code = '%@'",countryCode]];
         while ([countryResult next]) {
-            //value = [s stringForColumnIndex:0];
             usersLocationCurrency = nil;
             usersLocationCurrency = [countryResult stringForColumn:@"currency_code"];
         }
@@ -609,72 +607,6 @@
     [self.bottomView setFrame:CGRectMake(0.0f, self.window.frame.size.height-55.0f, 320.0f, 55.0f)];
     [UIView commitAnimations];
 }
-/*
-- (IBAction)BottomButtonTouched:(UIButton *)sender
-{
-    if(sender.tag == 1)
-    {
-        UIButton *btn = (UIButton*)[self.bottomView viewWithTag:1];
-        [btn setImage:[UIImage imageNamed:@"history_tab_hover"] forState:UIControlStateNormal];
-        
-        btn = (UIButton*)[self.bottomView viewWithTag:3];
-        [btn setImage:[UIImage imageNamed:@"settings_tab"] forState:UIControlStateNormal];
-        
-        for (UIViewController *tempVC in mainNavigation.viewControllers)
-        {
-            if ([tempVC isKindOfClass:[ReceiptsVC class]])
-            {
-                [mainNavigation popToViewController:tempVC animated:YES];
-            }
-        }
-    }
-    else if(sender.tag == 2)
-    {
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.3f];
-        [self.bottomView setFrame:CGRectMake(0.0f, self.window.frame.size.height, 320.0f, 55.0f)];
-        [UIView commitAnimations];
-        
-        //push image picker for capturing image
-        for (UIViewController *tempVC in mainNavigation.viewControllers)
-        {
-            if ([tempVC isKindOfClass:[ImagePickerVC class]])
-            {
-                [mainNavigation popToViewController:tempVC animated:YES];
-            }
-        }
-    }
-    else if(sender.tag == 3)
-    {
-        SettingVC *tempVC = [[SettingVC alloc] initWithNibName:@"SettingVC" bundle:nil];
-        [mainNavigation pushViewController:tempVC animated:YES];
-        
-        UIButton *btn = (UIButton*)[self.bottomView viewWithTag:1];
-        [btn setImage:[UIImage imageNamed:@"history_tab"] forState:UIControlStateNormal];
-        
-        btn = (UIButton*)[self.bottomView viewWithTag:3];
-        [btn setImage:[UIImage imageNamed:@"settings_tab_hover"] forState:UIControlStateNormal];
-        
-        BOOL hasSettingAlready = FALSE;
-        
-        NSArray *arr = mainNavigation.viewControllers;
-        
-        for (int i = 0; i < [arr count]; i++)
-        {
-            if ([[arr objectAtIndex:i] isKindOfClass:[SettingVC class]])
-            {
-                hasSettingAlready = TRUE;
-            }
-        }
-        
-        if (!hasSettingAlready)
-        {
-            SettingVC *tempVC = [[SettingVC alloc] initWithNibName:@"SettingVC" bundle:nil];
-            [mainNavigation pushViewController:tempVC animated:YES];
-        }
-    }
-}
-*/
 
 - (IBAction)shareTabBarBtnPressed:(UIButton *)sender
 {
@@ -789,15 +721,12 @@
                                     animated:YES completion:nil];
         [composeController setCompletionHandler:^(SLComposeViewControllerResult result) {
             [navController dismissViewControllerAnimated:YES completion:nil];
-            NSString *output;
             switch (result) {
                 case SLComposeViewControllerResultCancelled:
-                    output = @"Action Cancelled";
                     break;
                 case SLComposeViewControllerResultDone:
                 {
-                    output = @"Post Successful";
-                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:output delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Post Successful" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
                     [alert show];
                 }
                     break;
@@ -832,15 +761,12 @@
         [composeController setCompletionHandler:^(SLComposeViewControllerResult result) {
             
             [navController dismissViewControllerAnimated:YES completion:nil];
-            NSString *output;
             switch (result) {
                 case SLComposeViewControllerResultCancelled:
-                    output = @"Action Cancelled";
                     break;
                 case SLComposeViewControllerResultDone:
                 {
-                    output = @"Post Successful";
-                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:output delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Post Successful" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
                     [alert show];
                 }
                     break;
@@ -855,16 +781,6 @@
 -(IBAction)cancleBtnPressed:(id)sender
 {
     [self.mobileNumNotificationView removeFromSuperview];
-    /*
-    if(self.mobileNumNotificationView.tag==1)
-        [self.mobileNumNotificationView removeFromSuperview];
-    else {
-        [self.mobileNumNotificationView removeFromSuperview];
-        AddMobileNoVC *addVc = [[AddMobileNoVC alloc]initWithNibName:@"AddMobileNoVC" bundle:nil];
-        UINavigationController *navController = (UINavigationController*)[tabBarController selectedViewController];
-        [navController pushViewController:addVc animated:YES];
-    }
-     */
 }
 
 -(IBAction)okBtnPressed:(id)sender
@@ -1208,7 +1124,6 @@
     NSTimeInterval distanceBetweenDates = [date2 timeIntervalSinceDate:date1];
     double secondsInAnHour = 3600;
     NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
-    //NSLog(@"%d",hoursBetweenDates);
     return hoursBetweenDates;
 }
 -(NSInteger )minutesSinceNow
@@ -1218,7 +1133,6 @@
     NSTimeInterval distanceBetweenDates = [date2 timeIntervalSinceDate:date1];
     double secondsInAnMinute = 60;
     NSInteger minutesBetweenDates = distanceBetweenDates / secondsInAnMinute;
-    //NSLog(@"%d",minutesBetweenDates);
     return minutesBetweenDates;
 }
 -(NSInteger )minutesSinceNowCardsOnly
@@ -1228,7 +1142,6 @@
     NSTimeInterval distanceBetweenDates = [date2 timeIntervalSinceDate:date1];
     double secondsInAnMinute = 60;
     NSInteger minutesBetweenDates = distanceBetweenDates / secondsInAnMinute;
-    //NSLog(@"%d",minutesBetweenDates);
     return minutesBetweenDates;
 }
 -(NSInteger )minutesSinceNowRatesOnly
@@ -1238,7 +1151,6 @@
     NSTimeInterval distanceBetweenDates = [date2 timeIntervalSinceDate:date1];
     double secondsInAnMinute = 60;
     NSInteger minutesBetweenDates = distanceBetweenDates / secondsInAnMinute;
-    //NSLog(@"%d",minutesBetweenDates);
     return minutesBetweenDates;
 }
 
@@ -1265,7 +1177,7 @@
         NSLog(@"cal latitude %f", currentLocation.coordinate.latitude);
     }
     [self.locationManager stopUpdatingLocation];
-    
+    /*
     NSString *deviceType = [UIDevice currentDevice].model;
     //http://631f3a62.ngrok.com/
     NSString *urlString =[NSString stringWithFormat:@"http://631f3a62.ngrok.com/APNSPhp/locationTrack.php?lat=%f&lon=%f&device=%@",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude,deviceType];
@@ -1274,7 +1186,8 @@
     
     
     //send it synchronous in a different thread
-    //[self performSelector:@selector(sendLocation:) withObject:request];
+    [self performSelector:@selector(sendLocation:) withObject:request];
+    */
 }
 -(void)sendLocation: (NSURLRequest*) request{
     NSURLResponse *response;

@@ -88,115 +88,20 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    NSString *query = @"";
-//    query = [NSString stringWithFormat:@"SELECT * FROM getHistoryTable order by date DESC"];
-//    DatabaseHandler *dbHandler = [[DatabaseHandler alloc] init];
-//    if(historyArray)
-//        [historyArray removeAllObjects];
-//    
-//     historyArray = [dbHandler fetchingHistoryDataFromTable:query];
-    
+
     if(conversionArray)
         [conversionArray removeAllObjects];
     
     DatabaseHandler *dbHandler = [[DatabaseHandler alloc] init];
     conversionArray = [dbHandler getData:@"select * from conversionHistoryTable order by date desc"];
 }
-/*
--(void) fetchTheDataFromDB
-{
-    dispatch_async(dispatch_get_main_queue(),
-                   ^{
-                       [self.table reloadData];
-                       [[self table] setHidden:NO];
-                   });
-}
 
-*/
 -(void)viewDidAppear:(BOOL)animated
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [super viewDidAppear:animated];
     AppDelegate *appDelegate = [AppDelegate getSharedInstance];
     [[appDelegate customeTabBar] setHidden:NO];
-    //UIButton *recieptsBtn = (UIButton*) [appDelegate.bottomView viewWithTag:1];
-    //[appDelegate BottomButtonTouched:recieptsBtn];
-  /*
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isLogin"]) {
-        KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"TestAppLoginData" accessGroup:nil];
-        [keychain setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
-        AppDelegate *appDelegate = [AppDelegate getSharedInstance];
-        [[appDelegate customeTabBar] setHidden:NO];
-        UIButton *recieptsBtn = (UIButton*) [appDelegate.bottomView viewWithTag:1];
-        [appDelegate BottomButtonTouched:recieptsBtn];
-        if([CommonFunctions reachabiltyCheck])
-        {
-            if (![[NSUserDefaults standardUserDefaults] objectForKey:@"khistoryData"])
-            {
-                if ([[self.table subviews] containsObject:self.refreshControl])
-                {
-                    [self.refreshControl removeFromSuperview];
-                }
-                [self.view addSubview:self.loadingView];
-                isLoadingViewAdded = TRUE;
-                [self performSelectorInBackground:@selector(callServiceForFetchingHistoryData) withObject:nil];
-            }
-            else
-            {
-                if ([appDelegate minutesSinceNow] > 10)
-                {
-                    if ([[self.table subviews] containsObject:self.refreshControl])
-                    {
-                        [self.refreshControl removeFromSuperview];
-                    }
-                   [self.view addSubview:self.loadingView];
-                    isLoadingViewAdded = TRUE;
-                    [self performSelectorInBackground:@selector(callServiceForFetchingHistoryData) withObject:nil];
-                }
-                else
-                {
-                    if ([[self.table subviews] containsObject:self.refreshControl])
-                        [self.refreshControl removeFromSuperview];
-                    
-                    [self.table addSubview:self.refreshControl];
-                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
-                                  ^{
-                                      NSMutableArray *tempArray = [NSMutableArray new];
-                                      NSString *query = @"";
-                                      query = [NSString stringWithFormat:@"SELECT * FROM getHistoryTable order by date DESC"];
-                                      DatabaseHandler *dbHandler = [[DatabaseHandler alloc]init];
-                                      tempArray = [dbHandler fetchingHistoryDataFromTable:query];
-                                      dbHandler =  nil;
-                                      historyArray = [tempArray mutableCopy];
-                                      [table reloadData];
-                                  });
-                }
-            }
-        }else
-        {
-            if ([[self.table subviews] containsObject:self.refreshControl])
-                [self.refreshControl removeFromSuperview];
-
-            [self.table addSubview:self.refreshControl];
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
-                          ^{
-                              NSMutableArray *tempArray = [NSMutableArray new];
-                              NSString *query = @"";
-                              query = [NSString stringWithFormat:@"SELECT * FROM getHistoryTable order by date DESC"];
-                              DatabaseHandler *dbHandler = [[DatabaseHandler alloc]init];
-                              tempArray = [dbHandler fetchingHistoryDataFromTable:query];
-                              dbHandler = nil;
-                              historyArray = [tempArray mutableCopy];
-                              [table reloadData];
-                          });
-        }
-        DatabaseHandler *dbHandler = [[DatabaseHandler alloc]init];
-        conversionArray = [dbHandler getData:@"select * from conversionHistoryTable order by date desc"];
-        dbHandler = nil;
-        [[self table] setHidden:NO];
-        [self.table reloadData];
-    }
-    */
     User *myUser = [User sharedInstance];
     if([CommonFunctions reachabiltyCheck])
     {
@@ -236,12 +141,7 @@
         [self.HUD showWhileExecuting:@selector(refreshTransactionsinModel) onTarget:self withObject:nil animated:YES];
     
     [self.refreshControl endRefreshing];
-    /*
-    if([CommonFunctions reachabiltyCheck])
-        [self performSelectorInBackground:@selector(callServiceForFetchingHistoryData) withObject:nil];
-    else
-        [self.refreshControl endRefreshing];
-     */
+    
 }
 - (void)hudRefresh
 {
@@ -252,12 +152,7 @@
         UIAlertView *myAlert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Please check you internet connection." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [myAlert show];
     }
-    /*
-    if([CommonFunctions reachabiltyCheck])
-        [HUD showWhileExecuting:@selector(callServiceForFetchingHistoryData) onTarget:self withObject:nil animated:YES];
-    else
-        [self.refreshControl endRefreshing];
-     */
+   
 }
 -(void)refreshTransactionsinModel{
     User *myUser = [User sharedInstance];
@@ -506,8 +401,7 @@
     static NSString * cellIdentifier1 = @"ImageConversionsCustomCellIdentifier";
     User *myUser = [User sharedInstance];
     if((myUser.transactions.count == 0) && (conversionArray.count == 0)){
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        UITableViewCell * cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         [cell.textLabel setText:@"No transactions have been made in the past 2 months."];
         cell.textLabel.font = [UIFont fontWithName:@"OpenSans" size:15];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
@@ -523,13 +417,11 @@
                 // If no cell is available, create a new one using the given identifier.
                 if (cell == nil)
                 {
-                    cell = [[TransactionCustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
                     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TransactionCustomCell"
                                                                  owner:self options:nil];
                     cell = [nib objectAtIndex:0];
                     cell.selectionStyle=UITableViewCellSelectionStyleNone;
                 }
-                //NSMutableDictionary *dict = [historyArray objectAtIndex:indexPath.row];
                 if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
                     cell.merchantNameLabel.font = [self fontForBodyTextStyle];
                     cell.currencyValueLabel.font = [self fontForBodyTextStyle];
@@ -567,7 +459,6 @@
                 ImageConversionsCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier1];
                 if (cell == nil)
                 {
-                    cell = [[ImageConversionsCustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
                     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ImageConversionsCustomCell"
                                                                  owner:self options:nil];
                     cell = [nib objectAtIndex:0];
@@ -596,7 +487,6 @@
             ImageConversionsCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier1];
             if (cell == nil)
             {
-                cell = [[ImageConversionsCustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
                 NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ImageConversionsCustomCell"
                                                              owner:self options:nil];
                 cell = [nib objectAtIndex:0];
@@ -727,16 +617,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         }
     }
 }
-/*
-- (IBAction)BottomButtonTouched:(UIButton *)sender
-{
-    if(sender.tag == 3)
-    {
-        SettingVC *tempVC = [[SettingVC alloc] initWithNibName:@"SettingVC" bundle:nil];
-        [[self navigationController] pushViewController:tempVC animated:YES];
-    }
-}
-*/
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];

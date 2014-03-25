@@ -26,7 +26,6 @@
 @synthesize myDefObj;
 @synthesize sendMoney;
 @synthesize recieveMoney;
-//@synthesize counveronCurrencyArray,defaultsArray;
 
 @synthesize firstSymbolLbl,scndSymbolLbl,twoTimeLable;
 
@@ -549,7 +548,6 @@
 
 -(void) hideKeyBoard:(id) sender
 {
-    // Do whatever such as hiding the keyboard
     [self.view endEditing:YES];
     [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
@@ -875,7 +873,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
     [self.peripheralManager stopAdvertising];
     self.view.userInteractionEnabled = YES;
-    //[delegate noRefreshTopupResult:self.indexPath dict:self.dataDict];
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)cancelTransfer{

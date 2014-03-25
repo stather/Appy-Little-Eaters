@@ -283,8 +283,8 @@
 		_initialOffset = _backgroundView.frame.origin.x;
 	}
 	
-	float x = translation.x;
-	x = translation.x + _initialOffset;
+	//float x = translation.x;
+    float x = translation.x + _initialOffset;
     
     CGRect frame = _backgroundView.frame;
     frame.origin.x = x;

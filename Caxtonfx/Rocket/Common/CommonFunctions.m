@@ -449,8 +449,8 @@
     NSCalendar *sysCalendar = [NSCalendar currentCalendar];
     
     // Create the NSDates
-    NSDate *date1 = [[NSDate alloc] init];
-    date1 = [NSDate date];
+    //NSDate *date1 = [[NSDate alloc] init];
+    NSDate *date1 = [NSDate date];
     
     theTimeInterval = [date1 timeIntervalSinceDate:dateHis];
     //NSLog(@"timeinterval : %f",theTimeInterval);

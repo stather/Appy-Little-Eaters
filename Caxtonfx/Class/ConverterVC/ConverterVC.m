@@ -94,11 +94,11 @@
 -(void)refreshRates{
     sleep(1);
     User *myUser =[User sharedInstance];
-    if ([CommonFunctions reachabiltyCheck]){
+    if ([CommonFunctions reachabiltyCheck])
          myUser.globalRates = [myUser loadGlobalRatesWithRemote:YES];
-    }else{
+    else
          myUser.globalRates = [myUser loadGlobalRatesWithRemote:NO];
-    }
+    
     self.myGlobj = [myUser loadGlobalRateForCcyCode:@"EUR"];
     targetRate.text = [NSString stringWithFormat:@"%0.2f %@",[self.myGlobj.rate floatValue],self.myGlobj.ccyCode];
 }
@@ -184,15 +184,11 @@
 - (BOOL)textField:(UITextField*)textField shouldChangeCharactersInRange:(NSRange)range
 replacementString: (NSString*) string {
     User *myUser = [User sharedInstance];
-    NSLog(@"textField.text %@",textField.text);
-    NSLog(@"string %@",string);
     NSUInteger newLength = [textField.text length] + [string length] - range.length;
-    if(newLength>5)
+    if(newLength>10)
     {
-        
         return NO;
     }
-    
     if(textField==baseField)
     {
         NSString * text = [baseField.text stringByReplacingCharactersInRange:range
@@ -230,13 +226,8 @@ replacementString: (NSString*) string {
             if (myUser.globalRates.count > 0)
             {
                 newprice = text.floatValue / [self.myGlobj.rate floatValue];
-                
-                
             }
-            
             baseField.text = [NSString stringWithFormat:@"%.02f",newprice];
-            
-            NSLog(@"leftTxtField.text = %@", baseField.text );
             
         }else
         {

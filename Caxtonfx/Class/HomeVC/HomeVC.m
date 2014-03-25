@@ -68,15 +68,7 @@
                                              selector:@selector(switchToLogin:)
                                                  name:@"showLogin"
                                                object:nil];
-    /*
-    if(IS_HEIGHT_GTE_568)
-    {
-        [self.scrollView setFrame:CGRectMake(0, 77, 320, 326)];
-    }else
-    {
-        [self.scrollView setFrame:CGRectMake(0, 33, 320, 326)];
-    }
-     */
+    
     [updateInfo setFont:[UIFont fontWithName:@"OpenSans" size:14]];
     textArray = [[NSMutableArray alloc]initWithObjects:@"Top up your currency card",@"Check your balance",@"Monitor your spending", nil];
     [self setUpPage];
@@ -120,7 +112,6 @@
                                                  selector:@selector(userTextSizeDidChange)
                                                      name:UIContentSizeCategoryDidChangeNotification
                                                    object:nil];
-        //[self.scrollView setFrame:CGRectMake(0, 0, 320, 326)];
     }
     [self.scrollView setFrame:CGRectMake(0, 0, 320, 326)];
 }
@@ -213,18 +204,6 @@
     NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetPromo/></soapenv:Body></soapenv:Envelope>";
     [manger callServiceWithRequest:soapMessage methodName:@"GetPromo" andDelegate:self];
 }
-/*
--(void)callDefaultsApi
-{
-    if([CommonFunctions reachabiltyCheck])
-    {
-        sharedManager *manger = [[sharedManager alloc]init];
-        manger.delegate = self;
-        NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetDefaults/></soapenv:Body></soapenv:Envelope>";
-        [manger callServiceWithRequest:soapMessage methodName:@"GetDefaults" andDelegate:self];
-    }
-}
-*/
 -(void)callgetGloableRateApi
 {
     User *myUser = [User sharedInstance];
@@ -289,49 +268,6 @@
     }else{
         [self goMyCardPage];
     }
-    /*
-    if([CommonFunctions reachabiltyCheck])
-    {
-        if([[NSUserDefaults standardUserDefaults]doubleForKey:@"LoginnewTimeIntrval"])
-        {
-            double time = [[NSUserDefaults standardUserDefaults]doubleForKey:@"LoginnewTimeIntrval"];
-            NSDate *currentdate = [NSDate date];
-            double currentTimeIntrval = [currentdate timeIntervalSince1970];
-            if(currentTimeIntrval>time){
-                sharedManager *manger = [[sharedManager alloc]init];
-                manger.delegate = self;
-                delegate.window.userInteractionEnabled = NO;
-                NSString *soapMessage = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:CheckAuthGetCards><tem:UserName>%@</tem:UserName><tem:Password>%@</tem:Password></tem:CheckAuthGetCards></soapenv:Body></soapenv:Envelope>",username1,password1];
-                
-                [manger callServiceWithRequest:soapMessage methodName:@"CheckAuthGetCards" andDelegate:self];
-            }else
-            {
-                LoginAttamp = [[NSUserDefaults standardUserDefaults] integerForKey:@"LoginAttamp"];
-                if(LoginAttamp<3)
-                {
-                    delegate.window.userInteractionEnabled = NO;
-                    sharedManager *manger = [[sharedManager alloc]init];
-                    manger.delegate = self;
-                    
-                    NSString *soapMessage = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:CheckAuthGetCards><tem:UserName>%@</tem:UserName><tem:Password>%@</tem:Password></tem:CheckAuthGetCards></soapenv:Body></soapenv:Envelope>",username1,password1];
-                    
-                    [manger callServiceWithRequest:soapMessage methodName:@"CheckAuthGetCards" andDelegate:self];
-                }
-            }
-        }else
-        {
-            delegate.window.userInteractionEnabled = NO;
-            sharedManager *manger = [[sharedManager alloc]init];
-            manger.delegate = self;
-            NSString *soapMessage = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:CheckAuthGetCards><tem:UserName>%@</tem:UserName><tem:Password>%@</tem:Password></tem:CheckAuthGetCards></soapenv:Body></soapenv:Envelope>",username1,password1];
-            [manger callServiceWithRequest:soapMessage methodName:@"CheckAuthGetCards" andDelegate:self];
-        }
-    }else
-    {
-        [self performSelectorOnMainThread:@selector(goMyCardPage) withObject:nil waitUntilDone:nil];
-    }
-     */
-     
 }
 
 -(void)goMyCardPage
@@ -490,221 +426,6 @@
         [self performSelectorOnMainThread:@selector(goMoreInfoPage) withObject:nil waitUntilDone:NO];
         
     }
-    /*
-    else if([service isEqualToString:@"CheckAuthGetCards"])
-    {
-        NSLog(@"CheckAuthGetCards - > %@",response);
-        NSMutableArray *array = [[NSMutableArray alloc]init];
-        TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
-        TBXMLElement *root = tbxml.rootXMLElement;
-        TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
-        TBXMLElement *checkAuthGetCardsResponseElem = [TBXML childElementNamed:@"CheckAuthGetCardsResponse" parentElement:rootItemElem];
-        TBXMLElement *checkAuthGetCardsResultElem = [TBXML childElementNamed:@"CheckAuthGetCardsResult" parentElement:checkAuthGetCardsResponseElem];
-        TBXMLElement *statusCode = [TBXML childElementNamed:@"a:statusCode" parentElement:checkAuthGetCardsResultElem];
-        NSString *statusCodeStr = [TBXML textForElement:statusCode];
-        if([statusCodeStr intValue]== 000 || [statusCodeStr intValue]== 003)
-        {
-            TBXMLElement *DOBElem = [TBXML childElementNamed:@"a:bd" parentElement:checkAuthGetCardsResultElem];
-            userDOBStr = [TBXML textForElement:DOBElem];
-            
-            KeychainItemWrapper *keychain1 = [[KeychainItemWrapper alloc] initWithIdentifier:@"userDOB" accessGroup:nil];
-            [keychain1 setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
-            [keychain1 setObject:userDOBStr forKey:(__bridge id)kSecAttrAccount];
-            [keychain1 setObject:userDOBStr forKey:(__bridge id)kSecValueData];
-            
-            TBXMLElement *contactTypeElem = [TBXML childElementNamed:@"a:contactType" parentElement:checkAuthGetCardsResultElem];
-            userConactTypeStr = [TBXML textForElement:contactTypeElem];
-            
-                      
-            KeychainItemWrapper *keychain2 = [[KeychainItemWrapper alloc] initWithIdentifier:@"userMobile" accessGroup:nil];
-             [keychain2 setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
-            [keychain2 setObject:userMobileStr forKey:(__bridge id)kSecAttrAccount];
-            [keychain2 setObject:userMobileStr forKey:(__bridge id)kSecValueData];
-            
-            [[NSUserDefaults standardUserDefaults]setObject:userConactTypeStr forKey:@"userConactType"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            
-            TBXMLElement *mobileElem = [TBXML childElementNamed:@"a:mobile" parentElement:checkAuthGetCardsResultElem];
-            userMobileStr = [TBXML textForElement:mobileElem];
-            
-            if([statusCodeStr intValue]!= 003)
-            {
-                TBXMLElement *cardsElem = [TBXML childElementNamed:@"a:cards" parentElement:checkAuthGetCardsResultElem];
-                if(cardsElem)
-                {
-                    TBXMLElement *CardElm    = [TBXML childElementNamed:@"a:card" parentElement:cardsElem];
-                    while (CardElm != nil)
-                    {
-                        TBXMLElement *cardBalance   = [TBXML childElementNamed:@"a:CardBalance" parentElement:CardElm];
-                        NSString *cardBalanceStr = [TBXML textForElement:cardBalance];
-                        TBXMLElement *CardCurrencyDescription    = [TBXML childElementNamed:@"a:CardCurrencyDescription" parentElement:CardElm];
-                        NSString *CardCurrencyDescriptionStr = [TBXML textForElement:CardCurrencyDescription];
-                        TBXMLElement *CardCurrencyID    = [TBXML childElementNamed:@"a:CardCurrencyID" parentElement:CardElm];
-                        NSString *CardCurrencyIDStr = [TBXML textForElement:CardCurrencyID];
-                        TBXMLElement *CardCurrencySymbol    = [TBXML childElementNamed:@"a:CardCurrencySymbol" parentElement:CardElm];
-                        NSString *CardCurrencySymbolStr = [TBXML textForElement:CardCurrencySymbol];
-                        TBXMLElement *CardName    = [TBXML childElementNamed:@"a:CardName" parentElement:CardElm];
-                        NSString *CardNameStr = [TBXML textForElement:CardName];
-                        TBXMLElement *CardNumber    = [TBXML childElementNamed:@"a:CardNumber" parentElement:CardElm];
-                        NSString *CardNumberStr = [TBXML textForElement:CardNumber];
-                        TBXMLElement *CardType    = [TBXML childElementNamed:@"a:CardType" parentElement:CardElm];
-                        NSString *CardTypeStr = [TBXML textForElement:CardType];
-                        TBXMLElement *CurrencyCardID    = [TBXML childElementNamed:@"a:CurrencyCardID" parentElement:CardElm];
-                        NSString *CurrencyCardIDStr = [TBXML textForElement:CurrencyCardID];
-                        TBXMLElement *ProductTypeID    = [TBXML childElementNamed:@"a:ProductTypeID" parentElement:CardElm];
-                        NSString *ProductTypeIDStr = [TBXML textForElement:ProductTypeID];
-                        TBXMLElement *CurrencyCardTypeID    = [TBXML childElementNamed:@"a:CurrencyCardTypeID" parentElement:CardElm];
-                        NSString *CurrencyCardTypeIDStr = [TBXML textForElement:CurrencyCardTypeID];
-                        NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithObjectsAndKeys:cardBalanceStr,@"cardBalanceStr",CardCurrencyDescriptionStr,@"CardCurrencyDescriptionStr",CardCurrencyIDStr,@"CardCurrencyIDStr",CardCurrencySymbolStr,@"CardCurrencySymbolStr",CardNameStr,@"CardNameStr",CardNumberStr,@"CardNumberStr",CurrencyCardIDStr,@"CurrencyCardIDStr",ProductTypeIDStr,@"ProductTypeIDStr",CurrencyCardTypeIDStr ,@"CurrencyCardTypeIDStr",CardTypeStr,@"CardTypeStr", nil];
-                        [array addObject:dict];
-                        
-                        CardElm = [TBXML nextSiblingNamed:@"a:card" searchFromElement:CardElm];
-                    }
-                }
-                DatabaseHandler *DBHandler = [[DatabaseHandler alloc]init];
-                [DBHandler executeQuery:@"DELETE FROM myCards" ];
-                for(int i=0;i<array.count;i++)
-                {
-                    NSMutableDictionary *dict = [array objectAtIndex:i];
-                    NSString *queryStr = [NSString stringWithFormat:@"INSERT INTO myCards values (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",[dict objectForKey:@"CurrencyCardIDStr"],[dict objectForKey:@"CurrencyCardTypeIDStr"],[dict objectForKey:@"ProductTypeIDStr"],[dict objectForKey:@"CardCurrencyIDStr"],[dict objectForKey:@"cardBalanceStr"],[dict objectForKey:@"CardCurrencyDescriptionStr"],[dict objectForKey:@"CardCurrencySymbolStr"],[dict objectForKey:@"CardNameStr"],[dict objectForKey:@"CardNumberStr"],[dict objectForKey:@"CardTypeStr"],@"NO",@"NO"];
-                        [DBHandler executeQuery:queryStr];
-                }
-                
-            }
-            NSDate *today = [NSDate date];
-            dateInString = [today description];
-            [[NSUserDefaults standardUserDefaults]setObject:[NSDate date] forKey:@"updateDate"];
-            [[NSUserDefaults standardUserDefaults]synchronize];
-                    
-            [self performSelectorInBackground:@selector(callgetGloableRateApi) withObject:nil];
-        }else{
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Session Expired" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            alert.tag = 2;
-            [alert show];
-        }
-    }
-     
-    else if([service isEqualToString:@"GetGlobalRates"])
-    {
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"currencyflags_map" ofType:@"csv"];
-        NSString *myText = nil;
-        if (filePath) {
-            myText = [NSString stringWithContentsOfFile:filePath encoding:NSISOLatin1StringEncoding error:nil];
-            if (myText) {
-               
-            }
-        }
-        NSArray *contentArray = [myText componentsSeparatedByString:@"\r"]; // CSV ends with ACSI 13 CR 
-        NSMutableArray *codesMA = [NSMutableArray new];
-        for (NSString *item in contentArray)
-        {
-            NSArray *itemArray = [item componentsSeparatedByString:@","];
-            if ([itemArray count] > 3)
-            {
-                [codesMA addObject:[itemArray objectAtIndex:3]];
-            }
-        }
-        NSMutableArray *glabalRatesMA  = [[NSMutableArray alloc] init];
-        TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
-        TBXMLElement *root = tbxml.rootXMLElement;
-        TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
-        if(rootItemElem)
-        {
-            TBXMLElement *subcategoryEle = [TBXML childElementNamed:@"GetGlobalRatesResponse" parentElement:rootItemElem];
-            TBXMLElement * GetGlobalRatesResult = [TBXML childElementNamed:@"GetGlobalRatesResult" parentElement:subcategoryEle];
-            TBXMLElement *expiryTime = [TBXML childElementNamed:@"a:expiryTime" parentElement:GetGlobalRatesResult];
-            NSString *expiryTimeStr = [TBXML textForElement:expiryTime];
-            [[NSUserDefaults standardUserDefaults]setObject:expiryTimeStr forKey:@"expiryTime"];
-            [[NSUserDefaults standardUserDefaults]synchronize];
-            TBXMLElement *rates = [TBXML childElementNamed:@"a:rates" parentElement:GetGlobalRatesResult];
-            if (rates)
-            {
-                TBXMLElement *CFXExchangeRate = [TBXML childElementNamed:@"a:CFXExchangeRate" parentElement:rates];
-                while (CFXExchangeRate != nil) {
-                    TBXMLElement *currencyCode = [TBXML childElementNamed:@"a:CcyCode" parentElement:CFXExchangeRate];
-                    TBXMLElement *rate = [TBXML childElementNamed:@"a:Rate" parentElement:CFXExchangeRate];
-                    NSMutableDictionary *dict = [NSMutableDictionary new];
-                    [dict setObject:[TBXML textForElement:currencyCode] forKey:@"currencyCode"];
-                    [dict setObject:[TBXML textForElement:rate] forKey:@"rate"];
-                    int index = -1;
-                    NSString *imageName = @"";
-                    if ([codesMA containsObject:[dict objectForKey:@"currencyCode"]])
-                    {
-                        index=  [codesMA indexOfObject:[dict objectForKey:@"currencyCode"]];
-                    }
-                    if(index >=0)
-                    {
-                        NSString *item = [contentArray objectAtIndex:index];
-                        NSArray *itemArray = [item componentsSeparatedByString:@","];
-                        if (itemArray.count != 0) {
-                            imageName =[[[itemArray objectAtIndex:1] lowercaseString] stringByAppendingFormat:@" - %@",[[itemArray objectAtIndex:0] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]]];
-                        }
-                    }
-                    [dict setObject:imageName forKey:@"imageName"];
-                    if (dict)
-                    {
-                        [glabalRatesMA addObject:dict];
-                    }
-                    CFXExchangeRate = [TBXML nextSiblingNamed:@"a:CFXExchangeRate" searchFromElement:CFXExchangeRate];
-                    }
-            }
-            NSString *deleteQuerry = [NSString stringWithFormat:@"DELETE FROM globalRatesTable"];
-            DatabaseHandler *database = [[DatabaseHandler alloc]init];
-            [database executeQuery:deleteQuerry];
-            for (NSMutableDictionary *dict in glabalRatesMA) {
-                NSString *query = [NSString stringWithFormat:@"insert into globalRatesTable ('CcyCode','Rate','imageName') values ('%@',%f,'%@')",[dict objectForKey:@"currencyCode"] ,[[dict objectForKey:@"rate"] doubleValue],[dict objectForKey:@"imageName"]];
-                [database executeQuery:query];
-            }
-        }
-        [self callDefaultsApi];
-    }
-    
-    else if ([service isEqualToString:@"GetDefaults"])
-    {
-        NSMutableArray *getDefaultDataArr  = [[NSMutableArray alloc] init];
-        TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
-        TBXMLElement *root = tbxml.rootXMLElement;
-        TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
-        TBXMLElement *getPromoResponseEle = [TBXML childElementNamed:@"GetDefaultsResponse" parentElement:rootItemElem];
-        TBXMLElement *GetPromoResult = [TBXML childElementNamed:@"GetDefaultsResult" parentElement:getPromoResponseEle];
-        TBXMLElement *GetPromoHtmlResult = [TBXML childElementNamed:@"a:products" parentElement:GetPromoResult];
-        TBXMLElement *phoenproduct = [TBXML childElementNamed:@"a:PhoenixProduct" parentElement:GetPromoHtmlResult];
-        while (phoenproduct != nil)
-        {
-            TBXMLElement *ccy = [TBXML childElementNamed:@"a:Ccy" parentElement:phoenproduct];
-            TBXMLElement *description = [TBXML childElementNamed:@"a:Description" parentElement:phoenproduct];
-            TBXMLElement *maxTopUp = [TBXML childElementNamed:@"a:MaxTopUp" parentElement:phoenproduct];
-            TBXMLElement *maxTotalBalance = [TBXML childElementNamed:@"a:MaxTotalBalance" parentElement:phoenproduct];
-            TBXMLElement *minTopUp = [TBXML childElementNamed:@"a:MinTopUp" parentElement:phoenproduct];
-            TBXMLElement *productID = [TBXML childElementNamed:@"a:ProductID" parentElement:phoenproduct];
-            NSMutableDictionary *tempDic = [[NSMutableDictionary alloc]init];
-            [tempDic setValue:[TBXML textForElement:ccy] forKey:@"ccy"];
-            [tempDic setValue:[TBXML textForElement:description] forKey:@"description"];
-            [tempDic setValue:[TBXML textForElement:maxTopUp] forKey:@"maxTopUp"];
-            [tempDic setValue:[TBXML textForElement:maxTotalBalance] forKey:@"maxTotalBalance"];
-            [tempDic setValue:[TBXML textForElement:minTopUp] forKey:@"minTopUp"];
-            [tempDic setValue:[TBXML textForElement:productID] forKey:@"productID"];
-            phoenproduct = [TBXML nextSiblingNamed:@"a:PhoenixProduct" searchFromElement:phoenproduct];
-            [getDefaultDataArr addObject:tempDic];
-        }
-        NSString *deleteQuerry = [NSString stringWithFormat:@"DELETE FROM getDefaults"];
-        DatabaseHandler *database = [[DatabaseHandler alloc]init];
-        [database executeQuery:deleteQuerry];
-                
-        for (int i = 0; i < getDefaultDataArr.count ; i++)
-        {
-            NSString *query = [NSString stringWithFormat:@"insert into getDefaults values (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",[[getDefaultDataArr objectAtIndex:i] valueForKey:@"ccy"],[[getDefaultDataArr objectAtIndex:i]valueForKey:@"description"],[[getDefaultDataArr objectAtIndex:i]valueForKey:@"maxTopUp"],[[getDefaultDataArr objectAtIndex:i] valueForKey:@"maxTotalBalance"],[[getDefaultDataArr objectAtIndex:i]valueForKey:@"minTopUp"],[[getDefaultDataArr objectAtIndex:i]valueForKey:@"productID"]];
-                [database executeQuery:query];
-        }
-        UIButton *button = (UIButton*)[self.view viewWithTag:6];
-        [button btnWithoutActivityIndicator];
-        self.view.userInteractionEnabled = YES;
-        AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-        delegate.window.userInteractionEnabled = YES;
-       [self performSelectorOnMainThread:@selector(goMyCardPage) withObject:nil waitUntilDone:nil];
-    }
-      */
-    
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView.tag == 2 ){

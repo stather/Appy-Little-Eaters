@@ -28,7 +28,7 @@
     return self;
 }
 -(void) addImageFrom:(NSString*) URL isRound:(BOOL)value isActivityIndicator:(BOOL)activ{
-    value = NO;
+    //value = NO;
     
     if ([URL length] == 0)
     {

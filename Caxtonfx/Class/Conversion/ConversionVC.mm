@@ -2714,15 +2714,15 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
         
         [composeController setCompletionHandler:^(SLComposeViewControllerResult result) {
             [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-            NSString *output;
+            //NSString *output;
             switch (result) {
                 case SLComposeViewControllerResultCancelled:
-                    output = @"Action Cancelled";
+                    //output = @"Action Cancelled";
                     break;
                 case SLComposeViewControllerResultDone:
                 {
-                    output = @"Post Successful";
-                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:output delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                    //output = @"Post Successful";
+                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Post Successful" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
                      alert.tag = 505;
                     [alert show];
                 }
