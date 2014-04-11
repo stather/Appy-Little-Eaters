@@ -15,6 +15,8 @@
 #import "User.h"
 #import "Card.h"
 #import "ImagePickerVC.h"
+#import "ConverterVC.h"
+
 @interface MyCardVC ()
 
 @end
@@ -104,12 +106,12 @@
     [view addSubview:titleLbl];
     [self.navigationItem setTitleView:view];
     
-    /****** add custom left bar button (Camera Button) at navigation bar  **********/
+    
+    /****** add custom left bar button (Converter Button) at navigation bar  **********/
     UIButton *conversionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    conversionBtn.frame = CGRectMake(0,0,32,32);
-    [conversionBtn setBackgroundImage:[UIImage imageNamed:@"captureTopBtn"] forState:UIControlStateNormal];
-    [conversionBtn setBackgroundImage:[UIImage imageNamed:@"captureTopBtn"] forState:UIControlStateHighlighted];
-    [conversionBtn addTarget:self action:@selector(imageCaptureButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
+    conversionBtn.frame = CGRectMake(0,0,26,26);
+    [conversionBtn setImage:[UIImage imageNamed:@"calculator-26.png"] forState:UIControlStateNormal];
+    [conversionBtn addTarget:self action:@selector(ConverterBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithCustomView:conversionBtn];
     [self.navigationItem setLeftBarButtonItem:left];
     
@@ -128,6 +130,10 @@
     [self.navigationItem setRightBarButtonItem:doneButton];
 }
 
+-(IBAction)ConverterBtnPressed:(id)sender{
+    ConverterVC *converterView = [[ConverterVC alloc]init];
+    [self.navigationController pushViewController:converterView animated:YES];
+}
 - (IBAction)imageCaptureButtonTouched:(id)sender
 {
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
@@ -219,7 +225,7 @@
 
 -(void)topupBtnPressed:(NSIndexPath*)indexPath;
 {
-    if([[[NSUserDefaults standardUserDefaults]objectForKey:@"userConactType"]isEqualToString:@"1"])
+    if([[[NSUserDefaults standardUserDefaults]objectForKey:@"userConactType"] isEqualToString:@"1"])
     {
         User * myUser = [User sharedInstance];
         TopUpRechargeVC *topupVC = [[TopUpRechargeVC alloc]initWithNibName:@"TopUpRechargeVC" bundle:nil];
@@ -334,9 +340,8 @@
         else
             cell.succesImgView.hidden = YES;
         
-        if([myUser.contactType isEqualToString:@"0"]){
+        if([myUser.contactType isEqualToString:@"0"])
             cell.topupBtn.hidden =TRUE;
-        }
         
         return cell;
     }
@@ -396,6 +401,7 @@
 }
 - (void)topupResult:(NSIndexPath*)path WithCard :(Card*)myCard{
     @try {
+        [myCard saveCard];
         [self refreshTheTable];
         }
     @catch (NSException *exception) {

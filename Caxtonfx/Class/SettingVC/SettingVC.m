@@ -63,8 +63,24 @@
     self.navigationItem.hidesBackButton = YES;
     [self.navigationController.navigationBar setTintColor:[UIColor redColor]];
     
-    self.title = @"Settings";
-    [CommonFunctions setNavigationTitle:@"Settings" ForNavigationItem:self.navigationItem];
+    UIView *view = [[UIView alloc]  initWithFrame:CGRectMake(0.0f, 0.0f,320, 44.0f)];
+    UILabel *titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 5.0f,210.0f,30.0f)];
+    [titleLbl setFont:[UIFont fontWithName:@"OpenSans-Bold" size:20]];
+    [titleLbl setBackgroundColor:[UIColor clearColor]];
+    [titleLbl setTextAlignment:NSTextAlignmentCenter];
+    [titleLbl setTextColor:[UIColor whiteColor]];
+    [titleLbl setText:@"Settings"];
+    [view addSubview:titleLbl];
+    [self.navigationItem setTitleView:view];
+    
+    /****** add custom left bar button (Converter Button) at navigation bar  **********/
+    UIButton *conversionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    conversionBtn.frame = CGRectMake(0,0,26,26);
+    [conversionBtn setImage:[UIImage imageNamed:@"calculator-26.png"] forState:UIControlStateNormal];
+    [conversionBtn addTarget:self action:@selector(ConverterBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithCustomView:conversionBtn];
+    [self.navigationItem setLeftBarButtonItem:left];
+
     isOn = YES;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
         [self applyFonts];
@@ -77,7 +93,10 @@
     
     [Flurry logEvent:@"Visited Settings"];
 }
-
+-(IBAction)ConverterBtnPressed:(id)sender{
+    ConverterVC *converterView = [[ConverterVC alloc]init];
+    [self.navigationController pushViewController:converterView animated:YES];
+}
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -296,8 +315,7 @@
     }
     else if(indexPath.row==5)
     {
-        ConverterVC *aboutVC = [[ConverterVC alloc]initWithNibName:@"ConverterVC" bundle:nil];
-        [self.navigationController pushViewController:aboutVC animated:YES];
+        [self performSelector:@selector(ConverterBtnPressed:) withObject:nil];
     }
 }
 

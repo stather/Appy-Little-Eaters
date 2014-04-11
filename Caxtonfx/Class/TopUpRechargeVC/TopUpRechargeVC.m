@@ -334,6 +334,8 @@
         TBXMLElement *TopUpResult = [TBXML childElementNamed:@"TopUpResult" parentElement:TopUpResponse];
         TBXMLElement *success = [TBXML childElementNamed:@"a:success" parentElement:TopUpResult];
         TBXMLElement *cardBalance = [TBXML childElementNamed:@"a:cardBalance" parentElement:TopUpResult];
+        TBXMLElement *statusCode = [TBXML childElementNamed:@"a:statusCode" parentElement:TopUpResult];
+        NSString *statusCodeStr = [TBXML textForElement:statusCode];
         NSString *cardBalanceStr = [TBXML textForElement:cardBalance];
         NSString *successStr = [TBXML textForElement:success];
         if([successStr isEqualToString:@"False"])
@@ -357,7 +359,9 @@
             [btn btnWithoutActivityIndicator];
             [btn btnWithCrossImage];
             [self performSelectorOnMainThread:@selector(topupResultget) withObject:nil waitUntilDone:NO];
-        }else
+            [self performSelectorOnMainThread:@selector(displayErrorMessage:) withObject:statusCodeStr waitUntilDone:NO];
+        }
+        else
         {
             /*
              * Remote Logging of Top-Up attempts Coversion/Failure
@@ -374,73 +378,66 @@
             
             self.dataDict.failImage = @"NO";
             self.dataDict.successImage = @"YES";
-            self.dataDict.cardBalanceStr = cardBalanceStr;
+            NSString *trimmedBalance = [cardBalanceStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            if (![trimmedBalance isEqualToString:@""]) {
+                self.dataDict.cardBalanceStr = trimmedBalance;
+            }
             User *myUser = [User sharedInstance];
             myUser.transactions =  [myUser loadTransactionsForUSer:myUser.username withRemote:YES];
             [self performSelectorOnMainThread:@selector(topupResultget) withObject:nil waitUntilDone:NO];
-            //[self callServiceForFetchingHistoryData];
-        }
-    }else if([service isEqualToString:@"GetBalance"])
-    {
-        TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
-        TBXMLElement *root = tbxml.rootXMLElement;
-        TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
-        TBXMLElement *TopUpResponse = [TBXML childElementNamed:@"GetBalanceResponse" parentElement:rootItemElem];
-        TBXMLElement *TopUpResult = [TBXML childElementNamed:@"GetBalanceResult" parentElement:TopUpResponse];
-        NSString *blanceStr = [TBXML textForElement:TopUpResult];
-        self.dataDict.cardBalanceStr = blanceStr;
-    }else
-    {
-        TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
-        TBXMLElement *root = tbxml.rootXMLElement;
-        TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
-        TBXMLElement *checkAuthGetCardsResponseElem = [TBXML childElementNamed:@"GetHistoryResponse" parentElement:rootItemElem];
-        TBXMLElement *checkAuthGetCardsResultElem = [TBXML childElementNamed:@"GetHistoryResult" parentElement:checkAuthGetCardsResponseElem];
-        TBXMLElement *statusCode = [TBXML childElementNamed:@"a:statusCode" parentElement:checkAuthGetCardsResultElem];
-        
-        NSString *statusIs = [TBXML textForElement:statusCode];
-        self._array = [[NSMutableArray alloc]init];
-        if ([statusIs isEqualToString:@"000"])
-        {
-            TBXMLElement *cardsElem = [TBXML childElementNamed:@"a:cardHistory" parentElement:checkAuthGetCardsResultElem];
-            if(cardsElem)
-            {
-                TBXMLElement *CardElm    = [TBXML childElementNamed:@"a:CardHistory" parentElement:cardsElem];
-                while (CardElm != nil)
-                {
-                    TBXMLElement *_amount   = [TBXML childElementNamed:@"a:TxnAmount" parentElement:CardElm];
-                    NSString *amount = [TBXML textForElement:_amount];
-                    
-                    TBXMLElement *_date    = [TBXML childElementNamed:@"a:TxnDate" parentElement:CardElm];
-                    NSString *date = [TBXML textForElement:_date];
-                    
-                    TBXMLElement *_vendor    = [TBXML childElementNamed:@"a:Vendor" parentElement:CardElm];
-                    NSString *vendor = [TBXML textForElement:_vendor];
-                    
-                    NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithObjectsAndKeys:amount,@"amount",date,@"date",vendor,@"vendor", nil];
-                    
-                    [self._array addObject:dict];
-                    
-                    CardElm = [TBXML nextSiblingNamed:@"a:CardHistory" searchFromElement:CardElm];
-                }
-            }
-            [self performSelectorInBackground:@selector(updatingDatabase) withObject:nil ];
-            UIButton *btn = (UIButton *)[self.view viewWithTag:17];
-            [btn btnWithoutActivityIndicator];
-            [btn btnSuccess];
-        }
-        else if ([statusIs isEqualToString:@"001"])
-        {
-            //    001 – card expired
-        }
-        else if ([statusIs isEqualToString:@"002"])
-        {
-            //    002 – account blocked
             
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"TOP-UP successful" message:[NSString stringWithFormat:@"Your TOP-UP was successful. Your new balance is : %@",self.dataDict.cardBalanceStr] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            alert.tag = 21;
+            [alert show];
         }
     }
 }
 
+-(void)displayErrorMessage:(NSString *)errorCode{
+    NSString *message;
+    if ([errorCode isEqualToString:@"601"]) {
+        message =@"No matching active or default debit card";
+    }
+    else if ([errorCode isEqualToString:@"602"]){
+        message =@"Chase payments unhandled exception failed payments";
+    }
+    else if ([errorCode isEqualToString:@"603"]){
+        message =@"Chase payment failure - not authorised with invalid address call helpdesk";
+    }
+    else if ([errorCode isEqualToString:@"604"]){
+        message =@"Chase payment failure - not authorised check debit card details with bank - call help desk";
+        
+    }
+    else if ([errorCode isEqualToString:@"605"]){
+        message= @"Debit card not validated with Caxton";
+        }
+    else if ([errorCode isEqualToString:@"606"]){
+        message =@"Too many loads in 24 hours";
+    }
+    else if ([errorCode isEqualToString:@"607"]){
+        message = @"Card has Expired";
+        
+    }
+    else if ([errorCode isEqualToString:@"608"]){
+        message = @"Load amount invalid";
+        
+    }
+    else if ([errorCode isEqualToString:@"609"]){
+        message = @"Currency does not match type of card";
+        
+    }
+    else if ([errorCode isEqualToString:@"610"]){
+        message = @"Card does not belong to user";
+    }
+    else
+    {
+        message = @"Please call helpdesk";
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"TOP-UP Failed" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    alert.tag = 20;
+    [alert show];
+}
 -(void)loadingFailedWithError:(NSString *)error withServiceName:(NSString *)service
 {
     if ([error isKindOfClass:[NSString class]]) {
@@ -543,7 +540,7 @@
     [self.peripheralManager stopAdvertising];
     self.view.userInteractionEnabled = YES;
     [delegate topupResult:self.indexPath WithCard:self.dataDict];
-    [self.navigationController popViewControllerAnimated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void) hideKeyBoard:(id) sender
@@ -833,7 +830,10 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
              }
          }
          */
-    }else{
+    }else if (myAlertView.tag==21){
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else{
         if (buttonIndex == 1) {
             [self startMoneyTransfer];
         }else{

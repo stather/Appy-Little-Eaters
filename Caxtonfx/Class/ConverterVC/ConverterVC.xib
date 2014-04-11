@@ -113,7 +113,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal">
                                 <attributedString key="attributedTitle">
-                                    <fragment content="Let's begin by verifying your details and sending you tour free currency card">
+                                    <fragment content="Let's begin by verifying your details and sending you your free currency card">
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>

@@ -37,9 +37,11 @@
     NSString *urlString;
     if (myUser.devMode) {
         urlString = [NSString stringWithFormat:@"https://mobiledev.caxtonfx.com/Service.svc"];
-    }else{
+    }
+    else{
         urlString = [NSString stringWithFormat:@"https://mobileapi.caxtonfx.com/service.svc"];
     }
+
     NSURL *url = [NSURL URLWithString:urlString];
     self.serviceName = methodName;
     NSMutableURLRequest *theRequest;

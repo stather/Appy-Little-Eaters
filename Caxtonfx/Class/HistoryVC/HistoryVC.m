@@ -19,6 +19,7 @@
 #import "User.h"
 #import "Card.h"
 #import "Transaction.h"
+#import "ConverterVC.h"
 
 @interface HistoryVC ()
 
@@ -194,14 +195,14 @@
     [view addSubview:titleLbl];
     [self.navigationItem setTitleView:view];
     
-    /****** add custom left bar button (Camera Button) at navigation bar  **********/
+    /****** add custom left bar button (Converter Button) at navigation bar  **********/
     UIButton *conversionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    conversionBtn.frame = CGRectMake(0,0,32,32);
-    [conversionBtn setBackgroundImage:[UIImage imageNamed:@"captureTopBtn"] forState:UIControlStateNormal];
-    [conversionBtn setBackgroundImage:[UIImage imageNamed:@"captureTopBtn"] forState:UIControlStateHighlighted];
-    [conversionBtn addTarget:self action:@selector(imageCaptureButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
+    conversionBtn.frame = CGRectMake(0,0,26,26);
+    [conversionBtn setImage:[UIImage imageNamed:@"calculator-26.png"] forState:UIControlStateNormal];
+    [conversionBtn addTarget:self action:@selector(ConverterBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithCustomView:conversionBtn];
     [self.navigationItem setLeftBarButtonItem:left];
+    
     
     /****** add custom left bar button (Refresh Button) at navigation bar  **********/
     UIBarButtonItem * doneButton =
@@ -228,7 +229,10 @@
     ImagePickerVC *ivc = (ImagePickerVC*) [[[appDelegate mainNavigation] viewControllers] objectAtIndex:0];
     [ivc showCamera];
 }
-
+-(IBAction)ConverterBtnPressed:(id)sender{
+    ConverterVC *converterView = [[ConverterVC alloc]init];
+    [self.navigationController pushViewController:converterView animated:YES];
+}
 //================================== *********  FetchImage  ************ =================================
 -(UIImage *)FetchImage:(NSString *)name
 {

@@ -284,10 +284,11 @@
     NSString *urlString;
     if (self.devMode) {
         urlString = [NSString stringWithFormat:@"https://mobiledev.caxtonfx.com/Service.svc"];
-    }else{
+    }
+    else{
         urlString = [NSString stringWithFormat:@"https://mobileapi.caxtonfx.com/service.svc"];
     }
-
+    
     NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *theRequest;
             theRequest = [NSMutableURLRequest
@@ -529,7 +530,7 @@
                     for(int i=0;i<array.count;i++)
                     {
                         NSMutableDictionary *dict = [array objectAtIndex:i];
-                        NSString *queryStr = [NSString stringWithFormat:@"INSERT OR REPLACE INTO myCards values (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",[dict objectForKey:@"CurrencyCardIDStr"],[dict objectForKey:@"CurrencyCardTypeIDStr"],[dict objectForKey:@"ProductTypeIDStr"],[dict objectForKey:@"CardCurrencyIDStr"],[dict objectForKey:@"cardBalanceStr"],[dict objectForKey:@"CardCurrencyDescriptionStr"],[dict objectForKey:@"CardCurrencySymbolStr"],[dict objectForKey:@"CardNameStr"],[dict objectForKey:@"CardNumberStr"],[dict objectForKey:@"CardTypeStr"],@"NO",@"NO"];
+                        NSString *queryStr = [NSString stringWithFormat:@"INSERT OR REPLACE INTO myCards VALUES (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",[dict objectForKey:@"CurrencyCardIDStr"],[dict objectForKey:@"CurrencyCardTypeIDStr"],[dict objectForKey:@"ProductTypeIDStr"],[dict objectForKey:@"CardCurrencyIDStr"],[dict objectForKey:@"cardBalanceStr"],[dict objectForKey:@"CardCurrencyDescriptionStr"],[dict objectForKey:@"CardCurrencySymbolStr"],[dict objectForKey:@"CardNameStr"],[dict objectForKey:@"CardNumberStr"],[dict objectForKey:@"CardTypeStr"],@"NO",@"NO"];
                         [database executeUpdate:queryStr];
                     }
                     

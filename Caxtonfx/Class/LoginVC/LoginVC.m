@@ -181,6 +181,7 @@
         }
         else
         {
+            self.view.userInteractionEnabled = NO;
             [self loginWithAppAccount:4];
             [logInBtn btnWithActivityIndicator];
             [self.view endEditing:YES];
@@ -238,6 +239,7 @@
     {
         [self showErrorMsg:@"Unfortunately there is no connection available at the moment. Please try again later."];
     }
+    self.view.userInteractionEnabled = YES;
 }
 
 

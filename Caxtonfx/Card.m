@@ -80,7 +80,7 @@
     NSString *path = [docsPath stringByAppendingPathComponent:@"cfxNew.sqlite"];
     FMDatabase *database = [FMDatabase databaseWithPath:path];
     [database open];
-    NSString *queryStr = [NSString stringWithFormat:@"INSERT OR REPLACE INTO myCards (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",self.CurrencyCardIDStr,self.CurrencyCardTypeIDStr,self.ProductTypeIDStr,self.CardCurrencyIDStr,self.cardBalanceStr,self.CardCurrencyDescriptionStr,self.CardCurrencySymbolStr,self.CardNameStr,self.CardNumberStr,self.CardTypeStr,@"NO",@"NO"];
+    NSString *queryStr = [NSString stringWithFormat:@"INSERT OR REPLACE INTO myCards VALUES (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",self.CurrencyCardIDStr,self.CurrencyCardTypeIDStr,self.ProductTypeIDStr,self.CardCurrencyIDStr,self.cardBalanceStr,self.CardCurrencyDescriptionStr,self.CardCurrencySymbolStr,self.CardNameStr,self.CardNumberStr,self.CardTypeStr,@"NO",@"NO"];
     [database executeQuery:queryStr];
     [database close];
 }
