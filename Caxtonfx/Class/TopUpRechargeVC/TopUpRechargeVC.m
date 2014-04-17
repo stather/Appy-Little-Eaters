@@ -161,7 +161,7 @@
     rateofLable.font = [UIFont fontWithName:@"OpenSans" size:12];
     
     UILabel *conversionLable = (UILabel*)[self.scrollView viewWithTag:12];
-    conversionLable.font = [UIFont fontWithName:@"OpenSans-Bold" size:12];
+    conversionLable.font = [UIFont fontWithName:@"OpenSans-Bold" size:16];
     conversionLable.text = [NSString stringWithFormat:@"£1 = %@%f",sybolString,[myGlobj.rate doubleValue]];
     
     UILabel *messageLable = (UILabel*)[self.scrollView viewWithTag:14];
@@ -396,42 +396,38 @@
 -(void)displayErrorMessage:(NSString *)errorCode{
     NSString *message;
     if ([errorCode isEqualToString:@"601"]) {
-        message =@"No matching active or default debit card";
+        message =@"Your payment has failed. Please update your details online to select a registered debit card as a ‘default card’.";
     }
     else if ([errorCode isEqualToString:@"602"]){
-        message =@"Chase payments unhandled exception failed payments";
+        message =@"Your payment has failed. Please contact us on 0845 222 2639 or email info@caxtonfxcard.com";
     }
     else if ([errorCode isEqualToString:@"603"]){
-        message =@"Chase payment failure - not authorised with invalid address call helpdesk";
+        message =@"Your payment has failed. Please double-check your registered billing address with your bank and, if necessary, please amend your address details on the Caxton FX website to match these exactly.";
     }
     else if ([errorCode isEqualToString:@"604"]){
-        message =@"Chase payment failure - not authorised check debit card details with bank - call help desk";
-        
+        message =@"Your payment has failed. Please contact us on 0845 222 2639 or email info@caxtonfxcard.com";
     }
     else if ([errorCode isEqualToString:@"605"]){
-        message= @"Debit card not validated with Caxton";
+        message= @"You need to put through a payment via the Caxton FX website, before your registered debit card can be used to load from a mobile device.";
         }
     else if ([errorCode isEqualToString:@"606"]){
-        message =@"Too many loads in 24 hours";
+        message =@"You have reached your maximum number of loads per day. Please try again later.";
     }
     else if ([errorCode isEqualToString:@"607"]){
-        message = @"Card has Expired";
-        
+        message = @"Your debit card has expired. Please contact us on 0845 222 2639 or email info@caxtonfxcard.com";
     }
     else if ([errorCode isEqualToString:@"608"]){
-        message = @"Load amount invalid";
-        
+        message = @"Minimum and maximum loads apply. Please re-enter correct amount.";
     }
     else if ([errorCode isEqualToString:@"609"]){
-        message = @"Currency does not match type of card";
-        
+        message = @"Your payment has failed. Please contact us on 0845 222 2639 or email info@caxtonfxcard.com";
     }
     else if ([errorCode isEqualToString:@"610"]){
-        message = @"Card does not belong to user";
+        message = @"Your currency card has not been recognised. Please contact us on 0845 222 2639 or email info@caxtonfxcard.com";
     }
     else
     {
-        message = @"Please call helpdesk";
+        message = @"Your payment has failed. Please contact us on 0845 222 2639 or email info@caxtonfxcard.com";
     }
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"TOP-UP Failed" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];

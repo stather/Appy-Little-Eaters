@@ -39,7 +39,7 @@
         self.transactions = [NSMutableArray array];
         self.globalRates  = [NSMutableArray array];
         self.defaultsArray = [NSMutableArray array];
-        self.devMode = TRUE ;
+        self.devMode = TRUE;
     }
     return self;
 }
@@ -312,7 +312,7 @@
     [theRequest addValue:@"Keep-Alive" forHTTPHeaderField:@"Connection"];
     [theRequest setHTTPBody: [soapRequest dataUsingEncoding:NSUTF8StringEncoding]];
     
-    NSMutableArray *transArray = [[NSMutableArray alloc]init];
+    NSMutableArray *transArray = [[NSMutableArray alloc] init];
     
     if ([methodName isEqualToString:@"GetHistory"]) {
         transArray = [self requestHistoryServicewithRequest:theRequest];

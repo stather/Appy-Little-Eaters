@@ -124,17 +124,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 5;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.row ==0)
         return 151;
-    else if(indexPath.row ==1)
-        return  45;
     else
-        return  40;
+        return  51;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView1 cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -219,7 +217,9 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
         
-    }else if(indexPath.row==3)
+    }
+    /*
+    else if(indexPath.row==3)
     {
         BaseCurrencyTableCell *cell = (BaseCurrencyTableCell *)[tableView1 dequeueReusableCellWithIdentifier:[PinTableCell reuseIdentifier]];
         
@@ -255,6 +255,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
+     */
     else{
         
         SetPinTableCell *cell = (SetPinTableCell *)[tableView1 dequeueReusableCellWithIdentifier:[SetPinTableCell reuseIdentifier]];
@@ -276,11 +277,11 @@
             cell.lbl.text = @"Set PIN";
             
         }
-        else if(indexPath.row ==4)
+        else if(indexPath.row ==3)
         {
             cell.lbl.text = @"About Caxton FX";
         }
-        else if(indexPath.row ==5)
+        else if(indexPath.row ==4)
         {
             cell.lbl.text = @"Currency Converter";
         }
@@ -302,18 +303,12 @@
             NSLog(@"this is not set to add pin security");
         }
     }
-    else if(indexPath.row ==3)
-    {
-        fromConversionSection = @"NO";
-        BaseCurrencyVC *currencyVC = [[BaseCurrencyVC alloc]initWithNibName:@"BaseCurrencyVC" bundle:nil];
-        [self.navigationController pushViewController:currencyVC animated:YES];
-    }
-    else if(indexPath.row==4)
+    else if(indexPath.row==3)
     {
         AboutVC *aboutVC = [[AboutVC alloc]initWithNibName:@"AboutVC" bundle:nil];
         [self.navigationController pushViewController:aboutVC animated:YES];
     }
-    else if(indexPath.row==5)
+    else if(indexPath.row==4)
     {
         [self performSelector:@selector(ConverterBtnPressed:) withObject:nil];
     }

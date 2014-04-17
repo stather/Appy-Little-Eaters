@@ -83,7 +83,7 @@
     
     UILabel *versionLable = [[UILabel alloc]initWithFrame:CGRectMake(128,54, 109, 21)];
     versionLable.backgroundColor = [UIColor clearColor ];
-    versionLable.text = @"Version: 1.0";
+    versionLable.text = @"Version: 1.4.1";
     versionLable.tag =3;
     versionLable.textColor = UIColorFromRedGreenBlue(86, 83, 78);
     versionLable.font = [UIFont fontWithName:@"OpenSans" size:12];
