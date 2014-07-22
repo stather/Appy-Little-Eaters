@@ -23,6 +23,7 @@
 #import "SettingVC.h"
 #import "MBProgressHUD.h"
 #import "GlobalRatesObject.h"
+#import <Crashlytics/Crashlytics.h>
 #include <sqlite3.h>
 
 @implementation AppDelegate
@@ -45,6 +46,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Crashlytics startWithAPIKey:@"5df1cb41881109b7a9ac7f31d77583109958e239"];
+    [[Crashlytics sharedInstance] setDebugMode:YES];
     dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
         User *myUser = [User sharedInstance];
         if ([CommonFunctions reachabiltyCheck]){
@@ -83,7 +86,7 @@
             NSTimeInterval distanceBetweenDates = [date1 timeIntervalSinceDate:date2];
             double secondsInAnHour = 3600;
             NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
-            if (hoursBetweenDates >=12) {
+            if (hoursBetweenDates >= 12) {
                 [self performSelectorInBackground:@selector(callServiceForFetchingHistoryData) withObject:nil];
             }
         }
@@ -97,13 +100,13 @@
     {
         [customeTabBar setFrame:CGRectMake(0, 507, 320, 61)];
         [self.ratePopUpView setFrame:CGRectMake(0.0f, 0.0f, 320, 568.0f)];
-        [topBarView setFrame:CGRectMake(0, -548, 320, CGRectGetHeight(topBarView.frame))];
+//        [topBarView setFrame:CGRectMake(0, -548, 320, CGRectGetHeight(topBarView.frame))];
         [cameraLayoutImgView setFrame:CGRectMake(0.0f, 0.0f, 320.0f, 568.0f)];
         [cameraLayoutImgView setImage:[UIImage imageNamed:@"camera5.png"]];
     }
     else{
         [customeTabBar setFrame:CGRectMake(0, 419, 320, 61)];
-        [topBarView setFrame:CGRectMake(0, -460, 320, 530)];
+//        [topBarView setFrame:CGRectMake(0, -460, 320, 530)];
         [cameraLayoutImgView setFrame:CGRectMake(0.0f, 0.0f, 320.0f, 480.0f)];
         [cameraLayoutImgView setImage:[UIImage imageNamed:@"camera4.png"]];
     }
@@ -130,9 +133,7 @@
     });
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
         [application setStatusBarStyle:UIStatusBarStyleDefault];
-        self.window.clipsToBounds =YES;
-        self.window.frame =  CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height-20);
-        self.window.bounds = CGRectMake(0, 20, self.window.frame.size.width, self.window.frame.size.height);
+        self.window.clipsToBounds = YES;
     }
     if([[[NSUserDefaults standardUserDefaults] valueForKey:@"dbUpdated"] isEqualToString:@"NO"] || ![[NSUserDefaults standardUserDefaults] valueForKey:@"dbUpdated"])
     {
@@ -815,7 +816,7 @@
 
 -(void)fetchingHistoryData:(NSMutableArray *)currencyIdMA
 {
-    for (int i = 0;  i < [currencyIdMA count]; i++)
+    for (int i = 0; i < [currencyIdMA count]; i++)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self fetchingTransactions:[currencyIdMA objectAtIndex:i]];

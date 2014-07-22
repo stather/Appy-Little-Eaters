@@ -197,8 +197,9 @@
         [switchView setKnobImage:[UIImage imageNamed:@"switch"]];
         [switchView setOverlayImage:[UIImage imageNamed:@"Overlay"]];
         [switchView setHighlightedKnobImage:nil];
+        [switchView setTitle:@"" forLabel:RESwitchLabelOff];
+        [switchView setTitle:@"" forLabel:RESwitchLabelOn];
         [switchView setCornerRadius:0];
-        [switchView setKnobOffset:CGSizeMake(0, 0)];
         [switchView setTag:100];
         switchView.layer.masksToBounds = YES;
         NSString *switchStateStr =[[NSUserDefaults standardUserDefaults]objectForKey:@"switchState"];

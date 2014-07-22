@@ -11,9 +11,17 @@
 #import "NSString+HTML.h"
 
 @implementation sharedManager
-@synthesize mutableData;
 @synthesize serviceName;
 @synthesize delegate=_delegate;
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.dataDictionary = [[NSMutableDictionary alloc] init];
+    }
+    return self;
+}
 
 #pragma mark Singleton Method
 
@@ -51,10 +59,9 @@
                       requestWithURL:url
                       cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60];
     }else{
-        
         theRequest = [NSMutableURLRequest
                       requestWithURL:url
-                      cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:120];
+                      cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30];
     }
     NSString *msgLength = [NSString stringWithFormat:@"%d", [requestString length]];
     [theRequest addValue:@"gzip,deflate" forHTTPHeaderField:@"Accept-Encoding"];
@@ -77,10 +84,6 @@
     
     NSURLConnection *con = [[NSURLConnection alloc]initWithRequest:theRequest delegate:self startImmediately:YES];
     
-    if(con)
-    {
-        mutableData = [[NSMutableData alloc] init];
-    }
     while(!finished) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
     }
@@ -89,14 +92,17 @@
 #pragma mark -
 #pragma mark NSURLConnection delegates
 
--(void) connection:(NSURLConnection *) connection didReceiveResponse:(NSURLResponse *)response
+-(void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-    [mutableData setLength:0];
+    NSMutableData *data = [[NSMutableData alloc] init];
+    [self.dataDictionary setObject:data forKey:[NSString stringWithFormat:@"%@", connection]];
 }
 
 -(void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    [mutableData appendData:data];
+    NSString *key = [NSString stringWithFormat:@"%@", connection];
+    NSMutableData *connectionData = [self.dataDictionary valueForKey:key];
+    [connectionData appendData:data];
 }
 
 -(void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
@@ -104,24 +110,31 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
     [self.delegate loadingFailedWithError:[error description] withServiceName:serviceName];
-    
-    mutableData = nil;
+
+    NSString *key = [NSString stringWithFormat:@"%@", connection];
+    [self.dataDictionary removeObjectForKey:key];
     
     finished = YES;
-    
     return;
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    NSString *xmlResponseString = [[NSString alloc] initWithBytes: [mutableData mutableBytes] length:[mutableData length] encoding:NSUTF8StringEncoding];
+    NSString *key = [NSString stringWithFormat:@"%@", connection];
+    NSMutableData *data = [self.dataDictionary valueForKey:key];
+    NSString *xmlResponseString = [[NSString alloc] initWithBytes:[data mutableBytes]
+                                                           length:[data length]
+                                                         encoding:NSUTF8StringEncoding];
+    
     if ([xmlResponseString rangeOfString:@"<s:Envelope"].location == NSNotFound) {
-        [self.delegate loadingFailedWithError:[xmlResponseString stringByDecodingHTMLEntities] withServiceName:serviceName];
+        [self.delegate loadingFailedWithError:[xmlResponseString stringByDecodingHTMLEntities]
+                              withServiceName:serviceName];
     } else {
-        [self.delegate loadingFinishedWithResponse:[xmlResponseString stringByDecodingHTMLEntities] withServiceName:serviceName];
+        [self.delegate loadingFinishedWithResponse:[xmlResponseString stringByDecodingHTMLEntities]
+                                   withServiceName:serviceName];
     }
-    mutableData = nil;
+    [self.dataDictionary removeObjectForKey:key];
     finished = YES;
 }
 @end

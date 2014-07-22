@@ -57,37 +57,35 @@
         if ([selectedCurrency isEqualToString:[dict objectForKey:@"CcyCode"]])
         {
             selectedRow = i;
-            
         }
     }
 
     if (fromConverter) {
-         NSMutableDictionary *dict = [self.array objectAtIndex:selectedRow];
-        [delegate ccyCodeSelected:[dict objectForKey:@"CcyCode"]];
-    }else{
-        if ([fromConversionSection isEqualToString:@"YES"])
-        {
-            if (selectedRow<=self.array.count) {
-                isCurrencySettingsChanged = TRUE;
-                
-                NSMutableDictionary *dict = [self.array objectAtIndex:selectedRow];
-                NSLog(@"selected row  : %d",selectedRow);
-                targetCurrency  = [dict objectForKey:@"CcyCode"];
-                NSLog(@"targetCurrency in backbutton event : %@",targetCurrency);
-            }
-            
+        if (selectedCurrency) {
+//            NSMutableDictionary *dict = [self.array objectAtIndex:selectedRow];
+            [delegate ccyCodeSelected:selectedCurrency];
         }
-        else
-        {
-            if (selectedRow<=self.array.count) {
-                NSMutableDictionary *dict = [self.array objectAtIndex:selectedRow];
-                [[NSUserDefaults standardUserDefaults] setObject:[dict objectForKey:@"CcyCode"] forKey:@"defaultCurrency"];
-                [[NSUserDefaults standardUserDefaults] setObject:[dict objectForKey:@"imageName"] forKey:@"defaultCurrencyImage"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
-            }
+    }else if ([fromConversionSection isEqualToString:@"YES"]) {
+        if (selectedRow<=self.array.count) {
+            isCurrencySettingsChanged = TRUE;
             
+            NSMutableDictionary *dict = [self.array objectAtIndex:selectedRow];
+            NSLog(@"selected row  : %d",selectedRow);
+            targetCurrency  = [dict objectForKey:@"CcyCode"];
+            NSLog(@"targetCurrency in backbutton event : %@",targetCurrency);
         }
     }
+    else
+    {
+        if (selectedRow<=self.array.count) {
+            NSMutableDictionary *dict = [self.array objectAtIndex:selectedRow];
+            [[NSUserDefaults standardUserDefaults] setObject:[dict objectForKey:@"CcyCode"] forKey:@"defaultCurrency"];
+            [[NSUserDefaults standardUserDefaults] setObject:[dict objectForKey:@"imageName"] forKey:@"defaultCurrencyImage"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        
+    }
+    
     
     
     
@@ -157,6 +155,14 @@
     }
     [super viewWillAppear:YES];
 }
+
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.tableView.contentInset = UIEdgeInsetsZero;
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsZero;
+}
+
 
 -(void)viewWillDisappear:(BOOL)animated
 {

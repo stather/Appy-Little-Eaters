@@ -35,6 +35,9 @@
 @property (nonatomic,strong) NSMutableArray *defaultsArray;
 @property BOOL devMode;
 @property (nonatomic , strong) NSMutableData *mutableData;
+
+@property (nonatomic, assign) BOOL *ignoreCardsRequest;
+@property (nonatomic, assign) BOOL *ignoreTransactionsRequest;
 //@property (nonatomic , strong) NSString *serviceName;
 
 
@@ -46,6 +49,7 @@
 - (NSMutableArray *)loadGlobalRatesWithRemote:(BOOL)remote;
 -(GlobalRatesObject *)loadGlobalRateForCcyCode:(NSString *)ccyCode;
 - (NSMutableArray *)loadDefaultsWithRemote:(BOOL)remote;
+- (void)performLogout;
 
 //Not yet implemented
 -(void)saveUser;

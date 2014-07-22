@@ -29,7 +29,6 @@
 
 @synthesize bottomView;
 @synthesize table;
-@synthesize historyArray;
 @synthesize receiptsButton;
 @synthesize captureButton;
 @synthesize settingsButton;
@@ -58,19 +57,8 @@
         NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"khistoryData"];
         self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:[CommonFunctions statusOfLastUpdate:date1]];
     }
-     [self.table removeConstraint:heightConstraint];
-    if(IS_HEIGHT_GTE_568)
-    {
-        heightConstraint = [NSLayoutConstraint constraintWithItem:self.table attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:nil multiplier:1 constant:453];
-        [self.table addConstraint:heightConstraint];
-    }else
-    {
-        heightConstraint = [NSLayoutConstraint constraintWithItem:self.table attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:nil multiplier:1 constant:356];
-        [self.table addConstraint:heightConstraint];
-    }
    self.table.sectionHeaderHeight = 40.0f;
     _tempMA = [[NSMutableArray alloc] init];
-    historyArray = [[NSMutableArray alloc] init];
     conversionArray =[[NSMutableArray alloc] init];
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
 
@@ -150,12 +138,12 @@
     if([CommonFunctions reachabiltyCheck])
         [self.HUD showWhileExecuting:@selector(refreshTransactionsinModel) onTarget:self withObject:nil animated:YES];
     else{
+        self.view.userInteractionEnabled = YES;
         UIAlertView *myAlert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Please check you internet connection." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [myAlert show];
     }
-   
 }
--(void)refreshTransactionsinModel{
+- (void)refreshTransactionsinModel {
     User *myUser = [User sharedInstance];
     myUser.transactions = [myUser loadTransactionsForUSer:@"" withRemote:YES];
     [self.table reloadData];
@@ -274,11 +262,11 @@
     if (myUser.transactions.count !=0 && conversionArray.count !=0)
     {
         if (section == 0) {
-            return ([myUser.transactions count]>3)?3:[myUser.transactions count];
+            return ([myUser.transactions count]>10)?10:[myUser.transactions count];
         }
         else
         {
-            return ([conversionArray count]>3)?3:[conversionArray count];
+            return ([conversionArray count]>10)?10:[conversionArray count];
         }
     }
     else
@@ -287,14 +275,14 @@
         {
             if (section == 0)
             {
-                return ([myUser.transactions count]>3)?3:[historyArray count];
+                return ([myUser.transactions count]>10)?10:[myUser.transactions count];
             }
         }
         else if((myUser.transactions.count == 0) && (conversionArray.count != 0))
         {
             if (section == 0)
             {
-                return ([conversionArray count]>3)?3:[conversionArray count];
+                return ([conversionArray count]>10)?10:[conversionArray count];
             }
         }
     }
@@ -346,20 +334,21 @@
     User *myUser = [User sharedInstance];
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
     [headerView setBackgroundColor:[UIColor colorWithRed:232.0f/255.0f green:232.0f/255.0f blue:232.0f/255.0f alpha:1.0f]];
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 9, 200,22)];
-    [titleLabel setFont:[UIFont fontWithName:@"OpenSans-Semibold" size:16.0f]];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 9, 260, 22)];
+    [titleLabel setFont:[UIFont fontWithName:@"OpenSans-Semibold" size:15.0f]];
     [titleLabel setBackgroundColor:[UIColor clearColor]];
     [titleLabel setTextColor:[UIColor colorWithRed:101.0f/255.0f green:101.0f/255.0f blue:101.0f/255.0f alpha:1.0f]];
     [titleLabel setTextAlignment:NSTextAlignmentLeft];
-    UIImageView *rightArrow = [[UIImageView alloc] initWithFrame:CGRectMake(301, 11, 10, 14)];
+    UIImageView *rightArrow = [[UIImageView alloc] initWithFrame:CGRectMake(301, 15, 10, 14)];
+    rightArrow.center = CGPointMake(rightArrow.center.x, headerView.center.y);
     [rightArrow setImage:[UIImage imageNamed:@"rightArrow"]];
     [headerView addSubview:rightArrow];
-    NSString *sectionName= @"Full transaction history";
+    NSString *sectionName= @"All transactions in the last 2 months";
     UIButton *headerBtn = [[UIButton alloc] initWithFrame:headerView.frame];
     if (myUser.transactions.count !=0 && conversionArray.count !=0)
     {
         if (section == 0) {
-            sectionName = @"Full transaction history";
+            sectionName = @"All transactions in the last 2 months";
             [headerBtn addTarget:self action:@selector(switchToTransactionVC) forControlEvents:UIControlEventTouchUpInside];
         }
         else
@@ -374,7 +363,7 @@
         {
             if (section == 0)
             {
-                sectionName = @"Full transaction history";
+                sectionName = @"All transactions in the last 2 months";
                 [headerBtn addTarget:self action:@selector(switchToTransactionVC) forControlEvents:UIControlEventTouchUpInside];
             }
         }

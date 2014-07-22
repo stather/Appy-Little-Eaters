@@ -59,16 +59,6 @@
     [self.table addSubview:self.refreshControl];
     [self customizingNavigationBar];
     _tempMA = [[NSMutableArray alloc] init];
-    [self.table removeConstraint:heightConstraint];
-    if(IS_HEIGHT_GTE_568)
-    {
-        heightConstraint = [NSLayoutConstraint constraintWithItem:self.table attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:nil multiplier:1 constant:504];
-        [self.table addConstraint:heightConstraint];
-    }else
-    {
-        heightConstraint = [NSLayoutConstraint constraintWithItem:self.table attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:nil multiplier:1 constant:416];
-        [self.table addConstraint:heightConstraint];
-    }
     self.table.sectionHeaderHeight = 0.0f;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -77,7 +67,6 @@
                                                    object:nil];
     }
 }
-
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -92,6 +81,18 @@
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
         self.navigationController.navigationBar.translucent=NO;
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.table.contentInset = UIEdgeInsetsZero;
+    self.table.scrollIndicatorInsets = UIEdgeInsetsZero;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    AppDelegate *appDelegate = [AppDelegate getSharedInstance];
+    [[appDelegate customeTabBar] setHidden:NO];
 }
 
 -(void)customizingNavigationBar
@@ -133,7 +134,6 @@
     [self.titleNameLbl.layer setShadowColor:[[UIColor colorWithRed:176.0f/255.0f green:19.0f/255.0f blue:25.0f/255.0f alpha:1.0f] CGColor]];
     [self.titleNameLbl.layer setShadowOffset:CGSizeMake(0.0, 0.0)];
     [self.titleNameLbl.layer setShadowOpacity:1.0f];
-    [self.titleNameLbl setTextAlignment:NSTextAlignmentLeft];
     [self.titleNameLbl setTextAlignment:NSTextAlignmentLeft];
     [titleView addSubview:self.titleNameLbl];
     [self.navigationItem setTitleView:titleView];

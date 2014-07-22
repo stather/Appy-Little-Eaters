@@ -131,7 +131,7 @@
     [logoutView removeFromSuperview];
      AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     [appDelegate doLogout];
-    
+    [[User sharedInstance] performLogout];
 }
 
 

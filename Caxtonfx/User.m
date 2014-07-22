@@ -39,10 +39,15 @@
         self.transactions = [NSMutableArray array];
         self.globalRates  = [NSMutableArray array];
         self.defaultsArray = [NSMutableArray array];
-        self.devMode = TRUE;
+        self.devMode = NO;
     }
     return self;
 }
+
+- (void)setCards:(NSMutableArray *)cardArray {
+    cards = cardArray;
+}
+
 +(id)sharedInstance {
     static dispatch_once_t p = 0;
     __strong static id _sharedObject = nil;
@@ -136,16 +141,23 @@
     if (remote) {
         NSString *soapMessage = @"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:GetGlobalRates/></soapenv:Body></soapenv:Envelope>";
         NSArray *tempRates= [self callWebServiceWithSoapRequest:soapMessage andMethodName:@"GetGlobalRates"];
-        if (tempRates.count>0) {
-            [database executeUpdate:@"DELETE FROM globalRatesTable"];
-            [database executeUpdate:@"DELETE FROM converion_rate_table"];
+        
+        if (tempRates.count) {
+            NSString *currencies = [[tempRates valueForKey:@"currencyCode"] componentsJoinedByString:@"', '"];
+            NSString *deleteStatement = [NSString stringWithFormat:@"DELETE from converion_rate_table where currency_code in ('%@')", currencies];
+            [database executeUpdate:deleteStatement];
+            
+            deleteStatement = [NSString stringWithFormat:@"DELETE from globalRatesTable where CcyCode in ('%@')", currencies];
+            [database executeUpdate:deleteStatement];
+            
             for (NSDictionary* dict in tempRates) {
-                NSString *sqlStatement = [NSString stringWithFormat:@"insert into converion_rate_table (currency_code,multiplier) values ('%@','%@') ",[dict objectForKey:@"currencyCode"],[dict objectForKey:@"rate"]];
+                NSString *sqlStatement = [NSString stringWithFormat:@"insert or replace into converion_rate_table (currency_code,multiplier) values ('%@','%@') ",[dict objectForKey:@"currencyCode"],[dict objectForKey:@"rate"]];
                 [database executeUpdate:sqlStatement];
-                NSString *query = [NSString stringWithFormat:@"insert into globalRatesTable ('CcyCode','Rate','imageName') values ('%@',%f,'%@')",[dict objectForKey:@"currencyCode"] ,[[dict objectForKey:@"rate"] doubleValue],[dict objectForKey:@"imageName"]];
+                NSString *query = [NSString stringWithFormat:@"insert or replace into globalRatesTable ('CcyCode','Rate','imageName') values ('%@',%f,'%@')",[dict objectForKey:@"currencyCode"] ,[[dict objectForKey:@"rate"] doubleValue],[dict objectForKey:@"imageName"]];
                 [database executeUpdate:query];
             }
         }
+        
         FMResultSet *globalRatesTempArray = [database executeQuery:@"select * from globalRatesTable"];
         while ([globalRatesTempArray next]) {
             GlobalRatesObject *myGlObj = [[GlobalRatesObject alloc] init];
@@ -176,8 +188,6 @@
     NSArray *pathsNew = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docsPath = [pathsNew objectAtIndex:0];
     NSString *path = [docsPath stringByAppendingPathComponent:@"cfxNew.sqlite"];
-    FMDatabase *database = [FMDatabase databaseWithPath:path];
-    [database open];
     
     NSMutableArray *userCards = [[NSMutableArray alloc] init];
     mutableData = [[NSMutableData alloc] init];
@@ -191,8 +201,15 @@
             Card *myCard = [[Card alloc] initWithDicticonary:cardDic];
             [userCards addObject:myCard];
         }
+        
+        NSArray *sortedCards = [userCards sortedArrayUsingComparator:^NSComparisonResult(Card *obj1, Card *obj2) {
+            return [obj1.CardNumberStr compare:obj2.CardNumberStr];
+        }];
+        userCards = [[NSMutableArray alloc] initWithArray:sortedCards];
     }else{
-        FMResultSet *transArrayNew = [database executeQuery:@"select * from myCards;"];
+        FMDatabase *database = [FMDatabase databaseWithPath:path];
+        [database open];
+        FMResultSet *transArrayNew = [database executeQuery:@"select * from myCards order by CardNumber ASC"];
         while ([transArrayNew next]) {
             Card *myCard = [[Card alloc] init];
             myCard.CardCurrencyDescriptionStr = [transArrayNew stringForColumn:@"CardCurrencyDescription"];
@@ -209,8 +226,8 @@
             myCard.failImage =[transArrayNew stringForColumn:@"errorImageView"];
             [userCards addObject:myCard];
         }
+        [database close];
     }
-    [database close];
     return userCards;
 }
 -(NSMutableArray* ) loadTransactionsForUSer:(NSString *)userId withRemote:(BOOL)remote{
@@ -293,7 +310,7 @@
     NSMutableURLRequest *theRequest;
             theRequest = [NSMutableURLRequest
                       requestWithURL:url
-                      cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60];
+                      cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30];
     NSString *msgLength = [NSString stringWithFormat:@"%d", [soapRequest length]];
     [theRequest addValue:@"gzip,deflate" forHTTPHeaderField:@"Accept-Encoding"];
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
@@ -316,18 +333,16 @@
     
     if ([methodName isEqualToString:@"GetHistory"]) {
         transArray = [self requestHistoryServicewithRequest:theRequest];
-    }
-    if ([methodName isEqualToString:@"CheckAuthGetCards"]) {
+    } else if ([methodName isEqualToString:@"CheckAuthGetCards"]) {
         transArray = [self requestCardsServicewithRequest:theRequest];
-    }
-    if ([methodName isEqualToString:@"GetGlobalRates"]) {
+    } else if ([methodName isEqualToString:@"GetGlobalRates"]) {
         transArray = [self requestGlobalRatesServicewithRequest:theRequest];
-    }
-    if ([methodName isEqualToString:@"GetDefaults"]) {
+    } else if ([methodName isEqualToString:@"GetDefaults"]) {
         transArray = [self requestDefaultsServicewithRequest:theRequest];
     }
     return transArray;
 }
+
 -(NSMutableArray *) requestDefaultsServicewithRequest:(NSMutableURLRequest*) theRequest{
     NSURLResponse *response;
     NSError *error;
@@ -454,6 +469,7 @@
     NSMutableArray *cardsArray = [[NSMutableArray alloc] init];
     NSURLResponse *response;
     NSError *error;
+    self.ignoreCardsRequest = NO;
     NSData *responseData = [NSURLConnection sendSynchronousRequest:theRequest returningResponse:&response error:&error];
     NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     if (!error) {
@@ -549,6 +565,7 @@
     NSMutableArray *transArray = [[NSMutableArray alloc]init];
     NSURLResponse *response;
     NSError *error;
+    self.ignoreTransactionsRequest = NO;
     NSData *responseData = [NSURLConnection sendSynchronousRequest:theRequest returningResponse:&response error:&error];
     NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     if ([responseString rangeOfString:@"<s:Envelope"].location != NSNotFound ) {
@@ -584,6 +601,8 @@
                         CardElm = [TBXML nextSiblingNamed:@"a:CardHistory" searchFromElement:CardElm];
                     }
                 }
+            } else {
+                #warning treat request history error case
             }
         }
     }
@@ -596,5 +615,10 @@
 }
 -(void)deletUser{
     
+}
+
+- (void)performLogout {
+    self.ignoreCardsRequest = YES;
+    self.ignoreTransactionsRequest = YES;
 }
 @end

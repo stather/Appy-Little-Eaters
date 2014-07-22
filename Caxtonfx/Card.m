@@ -81,7 +81,7 @@
     FMDatabase *database = [FMDatabase databaseWithPath:path];
     [database open];
     NSString *queryStr = [NSString stringWithFormat:@"INSERT OR REPLACE INTO myCards VALUES (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",self.CurrencyCardIDStr,self.CurrencyCardTypeIDStr,self.ProductTypeIDStr,self.CardCurrencyIDStr,self.cardBalanceStr,self.CardCurrencyDescriptionStr,self.CardCurrencySymbolStr,self.CardNameStr,self.CardNumberStr,self.CardTypeStr,@"NO",@"NO"];
-    [database executeQuery:queryStr];
+    [database executeUpdate:queryStr];
     [database close];
 }
 -(void)deleteCard{
@@ -91,7 +91,7 @@
     FMDatabase *database = [FMDatabase databaseWithPath:path];
     [database open];
     NSString *queryStr = [NSString stringWithFormat:@"DELETE FROM myCards WHERE CurrencyCardID = \"%@\" ",self.CurrencyCardIDStr];
-    [database executeQuery:queryStr];
+    [database executeUpdate:queryStr];
     [database close];
 }
 -(void)deleteAllCards{
@@ -101,7 +101,7 @@
     FMDatabase *database = [FMDatabase databaseWithPath:path];
     [database open];
     NSString *queryStr = [NSString stringWithFormat:@"DELETE FROM myCards"];
-    [database executeQuery:queryStr];
+    [database executeUpdate:queryStr];
     [database close];
 }
 

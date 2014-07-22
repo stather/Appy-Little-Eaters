@@ -17,7 +17,7 @@
 #import "DatabaseHandler.h"
 #import <QuartzCore/QuartzCore.h>
 #import "NSString+HTML.h"
-#import "Rocket/TBXML/TBXML.h"
+#import <TBXML/TBXML.h>
 #import "KeychainItemWrapper.h"
 #import "FBEncryptorAES.h"
 #import "Rocket/Color/UIColor+Additions.h"

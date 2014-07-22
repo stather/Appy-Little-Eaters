@@ -77,14 +77,10 @@
     if([isfirstUser isEqualToString:@"NO"])
     {
         NSString *setPin = [[NSUserDefaults standardUserDefaults] objectForKey:@"setPin"];
-        if([[NSUserDefaults standardUserDefaults]boolForKey:@"stayLogin"] && [setPin isEqualToString:@"NO"])
-        {
+        if([[NSUserDefaults standardUserDefaults]boolForKey:@"stayLogin"] && [setPin isEqualToString:@"NO"]) {
             [self loginWebServices];
-        }else
-        {
-            
-            if([setPin isEqualToString:@"YES"])
-            {
+        } else {
+            if([setPin isEqualToString:@"YES"]) {
                 KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"pss" accessGroup:nil];
                 [wrapper setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
                 NSString *str =   [wrapper objectForKey :(__bridge id)kSecValueData];
@@ -98,8 +94,7 @@
                 passcodeViewController.simple = YES;
                 passcodeViewController.passcode = str;
                 [self.navigationController pushViewController:passcodeViewController animated:YES];
-            }else
-            {
+            } else {
                 self.scrollView.alpha = 1.0;
                 self.lodingView.alpha = 0.0;
                 self.updateInfo.alpha = 0.0;
@@ -258,12 +253,14 @@
     {
         myUser.cards = [myUser loadCardsFromDatabasewithRemote:YES];
         myUser.transactions = [myUser loadTransactionsForUSer:@"" withRemote:YES];
-        if ([myUser.statusCode isEqualToString:@"000"] || [myUser.statusCode isEqualToString:@"003"]) {
-            [self performSelectorInBackground:@selector(callgetGloableRateApi) withObject:nil];
-        }else{
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Session Expired" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            alert.tag = 2;
-            [alert show];
+        if (!myUser.ignoreCardsRequest) {
+            if (([myUser.statusCode isEqualToString:@"000"] || [myUser.statusCode isEqualToString:@"003"]) ) {
+                [self performSelectorInBackground:@selector(callgetGloableRateApi) withObject:nil];
+            }else{
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Session Expired" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                alert.tag = 2;
+                [alert show];
+            }
         }
     }else{
         [self goMyCardPage];

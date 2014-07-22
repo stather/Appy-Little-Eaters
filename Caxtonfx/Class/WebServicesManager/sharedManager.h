@@ -30,9 +30,9 @@
 }
 
 // Properties
-@property (nonatomic , assign)  id<sharedDelegate> delegate;
-@property (nonatomic , strong) NSMutableData *mutableData;
-@property (nonatomic , strong) NSString *serviceName;
+@property (nonatomic, assign)  id<sharedDelegate> delegate;
+@property (nonatomic, strong) NSMutableDictionary *dataDictionary;
+@property (nonatomic, strong) NSString *serviceName;
 
 // Methods
 + (sharedManager *)getSharedInstance;

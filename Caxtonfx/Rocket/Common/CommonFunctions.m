@@ -64,14 +64,11 @@
 		else
 		{
             view.hidden = FALSE;
-            
             [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, 2000)];
         }
-		
     }
 	
     [UIView commitAnimations];
-	
 }
 
 + (void) showTabBar:(UITabBarController *) tabbarcontroller {
@@ -92,7 +89,6 @@
     }
 	
     [UIView commitAnimations];
-	
 }
 
 
@@ -117,8 +113,6 @@
 	
 	// Copy the database from the package to the users filesystem
 	[fileManager copyItemAtPath:DatabasePathFromApp toPath:DatabaseName error:nil];
-	
-    
 }
 
 
@@ -307,6 +301,7 @@
     [reach startNotifier];
     return status;
 }
+
 +(BOOL)reachabilityChanged:(NSNotification*)note
 {
     BOOL status =YES;
@@ -331,9 +326,7 @@
     return status;
 }
 
-
-+ (BOOL) connectedToNetwork
-{
++ (BOOL) connectedToNetwork {
     // Create zero addy
     struct sockaddr_in zeroAddress;
     bzero(&zeroAddress, sizeof(zeroAddress));

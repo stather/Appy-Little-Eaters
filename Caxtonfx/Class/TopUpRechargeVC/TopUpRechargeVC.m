@@ -1,4 +1,4 @@
-//
+ //
 //  TopUpRechargeVC.m
 //  Caxtonfx
 //
@@ -162,7 +162,11 @@
     
     UILabel *conversionLable = (UILabel*)[self.scrollView viewWithTag:12];
     conversionLable.font = [UIFont fontWithName:@"OpenSans-Bold" size:16];
-    conversionLable.text = [NSString stringWithFormat:@"£1 = %@%f",sybolString,[myGlobj.rate doubleValue]];
+    if (myGlobj.ccyCode.length) {
+        conversionLable.text = [NSString stringWithFormat:@"£1 = %@%f",sybolString,[myGlobj.rate doubleValue]];
+    } else {
+        conversionLable.text = @"Conversion rate not available";
+    }
     
     UILabel *messageLable = (UILabel*)[self.scrollView viewWithTag:14];
     messageLable.font = [UIFont fontWithName:@"OpenSans" size:9];
@@ -193,30 +197,34 @@
     rightTxtField.placeholder = [NSString stringWithFormat:@"     %@",self.dataDict.CardCurrencySymbolStr];
     
     firstSymbolLbl.text = @"£";
-    
-    NSArray *pathsNew = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docsPath = [pathsNew objectAtIndex:0];
-    NSString *path = [docsPath stringByAppendingPathComponent:@"cfxNew.sqlite"];
-    FMDatabase *database = [FMDatabase databaseWithPath:path];
-    [database open];
-    
-    NSString *symboleStr;
-    FMResultSet *globalRatesTempArray = [database executeQuery:[NSString stringWithFormat:@"select symbol from currencySymbole_table where cardCurrencyId = %@",self.dataDict.CardCurrencyIDStr]];
-    
-    if ([globalRatesTempArray next]) {
-        symboleStr = [globalRatesTempArray stringForColumn:@"symbol"];
-        symboleStr = [symboleStr stringByConvertingHTMLToPlainText];
-    }
-    
-    scndSymbolLbl.text = symboleStr;
-    
-    UILabel *dataConnectionLbl = (UILabel *)[self.redView viewWithTag:20];
-    dataConnectionLbl.font = [UIFont fontWithName:@"OpenSans-Bold" size:10];
-    
-    rightSymbolImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",self.dataDict.CardCurrencySymbolStr]];
-    
-    redView.frame = CGRectMake(12, 235,294 , 55);
-    [database close];
+    dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
+        NSArray *pathsNew = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *docsPath = [pathsNew objectAtIndex:0];
+        NSString *path = [docsPath stringByAppendingPathComponent:@"cfxNew.sqlite"];
+        FMDatabase *database = [FMDatabase databaseWithPath:path];
+        [database open];
+        
+        NSString *symboleStr;
+        FMResultSet *globalRatesTempArray = [database executeQuery:[NSString stringWithFormat:@"select symbol from currencySymbole_table where cardCurrencyId = %@",self.dataDict.CardCurrencyIDStr]];
+        
+        if ([globalRatesTempArray next]) {
+            symboleStr = [globalRatesTempArray stringForColumn:@"symbol"];
+            symboleStr = [symboleStr stringByConvertingHTMLToPlainText];
+        }
+        
+        [database close];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            scndSymbolLbl.text = symboleStr;
+            
+            UILabel *dataConnectionLbl = (UILabel *)[self.redView viewWithTag:20];
+            dataConnectionLbl.font = [UIFont fontWithName:@"OpenSans-Bold" size:10];
+            
+            rightSymbolImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",self.dataDict.CardCurrencySymbolStr]];
+            
+            redView.frame = CGRectMake(12, 235,294 , 55);
+        });
+    });
 }
 
 -(void)errorMsg : (NSString *)errorStr
@@ -238,36 +246,36 @@
 
 -(IBAction)topUpBtnPressed:(id)sender
 {
+    if (!myGlobj.ccyCode.length) {
+        [self errorMsg:@"The conversion rate for this card is unavailable. Please reload cards and try again."];
+        return;
+    }
+    
     if([CommonFunctions reachabiltyCheck])
     {
         if(rightTxtField.text.floatValue >= [self.myDefObj.minTopUp floatValue])
         {
-            if(rightTxtField.text.floatValue <=[self.myDefObj.maxTopUp floatValue]){
+            if(rightTxtField.text.floatValue <=[self.myDefObj.maxTopUp floatValue]) {
                 UIButton *topupBtn = (UIButton*)sender;
                 [topupBtn btnWithActivityIndicator];
                 [self.view setUserInteractionEnabled:NO];
                 [self sendtopuprequest:topupBtn];
-            }
-            else
-            {
+            } else {
                 NSString *sessionHeighScorestr = self.myDefObj.maxTopUp;
                 NSNumberFormatter *formatter = [NSNumberFormatter new];
                 [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
                 int highscore  = [sessionHeighScorestr intValue];
                  NSString *formatted = [formatter stringFromNumber:[NSNumber numberWithInteger:highscore]];
-                [self errorMsg:[NSString stringWithFormat:@"There is a maximum load value of %@%@. Please re-enter correct amount.",sybolString,formatted]];
+                [self errorMsg:[NSString stringWithFormat:@"There is a maximum load value of %@%@. \nPlease re-enter correct amount.",sybolString,formatted]];
             }
-        }else
-        {
-            [self errorMsg:[NSString stringWithFormat:@"There is a minimum load value of %@%d. Please re-enter correct amount.",sybolString,[self.myDefObj.minTopUp intValue]]];
+        } else {
+            [self errorMsg:[NSString stringWithFormat:@"There is a minimum load value of %@%d. \nPlease re-enter correct amount.",sybolString,[self.myDefObj.minTopUp intValue]]];
         }
     }
-    else
-    {
+    else {
         
-    if(rightTxtField.text.floatValue >= [self.myDefObj.minTopUp floatValue])
-        {
-            if(rightTxtField.text.floatValue <=[self.myDefObj.maxTopUp floatValue]){
+    if(rightTxtField.text.floatValue >= [self.myDefObj.minTopUp floatValue]) {
+            if(rightTxtField.text.floatValue <=[self.myDefObj.maxTopUp floatValue]) {
                 titleLable.font = [UIFont fontWithName:@"OpenSans-Bold" size:18];
                 
                 textLbl.font = [UIFont fontWithName:@"OpenSans" size:14];
@@ -282,8 +290,7 @@
                     [alertView setFrame:CGRectMake(11, 61, 298, 282)];
                 }
 
-            }else
-            {
+            }else {
                 NSString *sessionHeighScorestr = self.myDefObj.maxTopUp;
                 NSNumberFormatter *formatter = [NSNumberFormatter new];
                 [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -291,8 +298,7 @@
                 NSString *formatted = [formatter stringFromNumber:[NSNumber numberWithInteger:highscore]];
                 [self errorMsg:[NSString stringWithFormat:@"There is a maximum load value of %@%@. Please re-enter correct amount.",sybolString,formatted]];
             }
-        }else
-        {
+        }else {
             [self errorMsg:[NSString stringWithFormat:@"There is a minimum load value of %@%d. Please re-enter correct amount.",sybolString,[self.myDefObj.minTopUp intValue]]];
         }
     }
@@ -386,51 +392,58 @@
             myUser.transactions =  [myUser loadTransactionsForUSer:myUser.username withRemote:YES];
             [self performSelectorOnMainThread:@selector(topupResultget) withObject:nil waitUntilDone:NO];
             
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"TOP-UP successful" message:[NSString stringWithFormat:@"Your TOP-UP was successful. Your new balance is : %@",self.dataDict.cardBalanceStr] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            alert.tag = 21;
-            [alert show];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSString *message = [NSString stringWithFormat:@"Your Top-up was successful. Your new balance is : %@",self.dataDict.cardBalanceStr];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Top-up successful"
+                                                                message:message
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                alert.tag = 21;
+                [alert show];
+            });
         }
     }
 }
 
 -(void)displayErrorMessage:(NSString *)errorCode{
-    NSString *message;
+    NSString *message = @"Your payment has failed. Please contact us on 0845 222 2639 or email info@caxtonfxcard.com";
     if ([errorCode isEqualToString:@"601"]) {
+        //No active/default debit card
+        message =@"Your payment card has not been recognised. Please contact us on 0845 222 2639 or email info@caxtonfxcard.com";
+    } else if ([errorCode isEqualToString:@"602"]){
+        //Unhandled exception
         message =@"Your payment has failed. Please update your details online to select a registered debit card as a ‘default card’.";
-    }
-    else if ([errorCode isEqualToString:@"602"]){
-        message =@"Your payment has failed. Please contact us on 0845 222 2639 or email info@caxtonfxcard.com";
-    }
-    else if ([errorCode isEqualToString:@"603"]){
+    } else if ([errorCode isEqualToString:@"603"]){
+        //Address error
         message =@"Your payment has failed. Please double-check your registered billing address with your bank and, if necessary, please amend your address details on the Caxton FX website to match these exactly.";
-    }
-    else if ([errorCode isEqualToString:@"604"]){
+    } else if ([errorCode isEqualToString:@"604"]){
+        //Bank error
         message =@"Your payment has failed. Please contact us on 0845 222 2639 or email info@caxtonfxcard.com";
-    }
-    else if ([errorCode isEqualToString:@"605"]){
+    } else if ([errorCode isEqualToString:@"605"]){
+        //Debit card not validated
         message= @"You need to put through a payment via the Caxton FX website, before your registered debit card can be used to load from a mobile device.";
-        }
-    else if ([errorCode isEqualToString:@"606"]){
+    } else if ([errorCode isEqualToString:@"606"]){
+        //Too many loads today
         message =@"You have reached your maximum number of loads per day. Please try again later.";
-    }
-    else if ([errorCode isEqualToString:@"607"]){
-        message = @"Your debit card has expired. Please contact us on 0845 222 2639 or email info@caxtonfxcard.com";
-    }
-    else if ([errorCode isEqualToString:@"608"]){
+    } else if ([errorCode isEqualToString:@"607"]){
+        //Card expired
+        message = @"Your currency card has expired. Please contact us on 0845 222 2639 or email info@caxtonfxcard.com";
+    } else if ([errorCode isEqualToString:@"608"]){
+        //Invalid load amount
         message = @"Minimum and maximum loads apply. Please re-enter correct amount.";
-    }
-    else if ([errorCode isEqualToString:@"609"]){
+    } else if ([errorCode isEqualToString:@"609"]){
+        //Currency does not match card type
         message = @"Your payment has failed. Please contact us on 0845 222 2639 or email info@caxtonfxcard.com";
-    }
-    else if ([errorCode isEqualToString:@"610"]){
+    } else if ([errorCode isEqualToString:@"610"]){
+        //Card does not belong to user
         message = @"Your currency card has not been recognised. Please contact us on 0845 222 2639 or email info@caxtonfxcard.com";
-    }
-    else
-    {
+    } else if ([errorCode isEqualToString:@"611"]){
+        //Failed to get rate for card currency
         message = @"Your payment has failed. Please contact us on 0845 222 2639 or email info@caxtonfxcard.com";
     }
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"TOP-UP Failed" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Top-up Failed" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     alert.tag = 20;
     [alert show];
 }
@@ -479,23 +492,21 @@
 -(void)displaySMSComposerSheetWithType:(NSString *)type
 {
     if ([type isEqualToString:@"LOAD"]) {
-        KeychainItemWrapper *keychain1 = [[KeychainItemWrapper alloc] initWithIdentifier:@"userDOB" accessGroup:nil];
-        [keychain1 setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
-        NSString *DobStr = [keychain1 objectForKey:(__bridge id)kSecAttrAccount];
-        MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
-        picker.messageComposeDelegate = self;
-        picker.recipients = [NSArray arrayWithObjects:@"+44 753 740 2025",nil];
-        picker.body = [NSString stringWithFormat:@" LOAD %@ %@ %i",self.dataDict.CardNumberStr,DobStr,[rightTxtField.text intValue]];
-        [self presentViewController:picker animated:YES completion:nil];
+        if ([MFMessageComposeViewController canSendText]) {
+            MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
+            picker.messageComposeDelegate = self;
+            picker.recipients = [NSArray arrayWithObjects:@"+44 753 740 2025",nil];
+            picker.body = [NSString stringWithFormat:@" LOAD %@ %i",self.dataDict.CardNumberStr,[rightTxtField.text intValue]];
+            [self presentViewController:picker animated:YES completion:nil];
+        }
     }else{
-        KeychainItemWrapper *keychain1 = [[KeychainItemWrapper alloc] initWithIdentifier:@"userDOB" accessGroup:nil];
-        [keychain1 setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id)(kSecAttrAccessible)];
-        NSString *DobStr = [keychain1 objectForKey:(__bridge id)kSecAttrAccount];
-        MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
-        picker.messageComposeDelegate = self;
-        picker.recipients = [NSArray arrayWithObjects:@"+44 753 740 2025",nil];
-        picker.body = [NSString stringWithFormat:@" BALANCE %@ %@",self.dataDict.CardNumberStr,DobStr];
-        [self presentViewController:picker animated:YES completion:nil];
+        if ([MFMessageComposeViewController canSendText]) {
+            MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
+            picker.messageComposeDelegate = self;
+            picker.recipients = [NSArray arrayWithObjects:@"+44 753 740 2025",nil];
+            picker.body = [NSString stringWithFormat:@" BALANCE %@",self.dataDict.CardNumberStr];
+            [self presentViewController:picker animated:YES completion:nil];
+        }
     }
 }
 

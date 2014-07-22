@@ -135,6 +135,9 @@
 
 -(IBAction) loginBtnPressed:(id)sender
 {
+    [self.emailTxtFld resignFirstResponder];
+    [self.passwordTxtFld resignFirstResponder];
+    
     UIButton *logInBtn = (UIButton*)[self.view viewWithTag:6];
     [logInBtn btnWithOutCrossImage];
     if ([CommonFunctions reachabiltyCheck])
@@ -194,7 +197,6 @@
         [self showErrorMsg:@"Unfortunately there is no connection available at the moment. Please try again later."];
         [self loginWithAppAccount:4];
     }
-    
 }
 
 
@@ -207,39 +209,38 @@
             double time = [[NSUserDefaults standardUserDefaults]doubleForKey:@"LoginnewTimeIntrval"];
             NSDate *currentdate = [NSDate date];
             double currentTimeIntrval = [currentdate timeIntervalSince1970];
-            if(currentTimeIntrval>time){
+            
+            if(currentTimeIntrval>time) {
                 sharedManager *manger = [[sharedManager alloc]init];
                 manger.delegate = self;
                 
                 NSString *soapMessage = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:CheckAuthGetCards><tem:UserName>%@</tem:UserName><tem:Password>%@</tem:Password></tem:CheckAuthGetCards></soapenv:Body></soapenv:Envelope>",emailTxtFld.text,passwordTxtFld.text];
                 [manger callServiceWithRequest:soapMessage methodName:@"CheckAuthGetCards" andDelegate:self];
-            }else
-            {
+            } else {
                 LoginAttamp = [[NSUserDefaults standardUserDefaults] integerForKey:@"LoginAttamp"];
-                if(LoginAttamp<3)
-                {
+                if(LoginAttamp<3) {
                     sharedManager *manger = [[sharedManager alloc]init];
                     manger.delegate = self;
                     NSString *soapMessage = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:CheckAuthGetCards><tem:UserName>%@</tem:UserName><tem:Password>%@</tem:Password></tem:CheckAuthGetCards></soapenv:Body></soapenv:Envelope>",emailTxtFld.text,passwordTxtFld.text];
                     [manger callServiceWithRequest:soapMessage methodName:@"CheckAuthGetCards" andDelegate:self];
-                }else
-                {
+                } else {
                     [self showErrorMsg:@"Your Caxton FX account has been locked. To unlock your account please email info@caxtonfxcard.com"];
                 }
             }
-        }else
-        {
+        } else {
             sharedManager *manger = [[sharedManager alloc]init];
             manger.delegate = self;
             
             NSString *soapMessage = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\"><soapenv:Header/><soapenv:Body><tem:CheckAuthGetCards><tem:UserName>%@</tem:UserName><tem:Password>%@</tem:Password></tem:CheckAuthGetCards></soapenv:Body></soapenv:Envelope>",emailTxtFld.text,passwordTxtFld.text];
             [manger callServiceWithRequest:soapMessage methodName:@"CheckAuthGetCards" andDelegate:self];
         }
-    }else
-    {
+    }else {
         [self showErrorMsg:@"Unfortunately there is no connection available at the moment. Please try again later."];
     }
-    self.view.userInteractionEnabled = YES;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.view.userInteractionEnabled = YES;
+    });
+
 }
 
 
@@ -264,8 +265,11 @@
         myUser.globalRates = [myUser loadGlobalRatesWithRemote:NO];
         myUser.defaultsArray = [myUser loadDefaultsWithRemote:NO];
     }
+    
     UIButton *button = (UIButton*)[self.view viewWithTag:6];
-    [button btnWithoutActivityIndicator];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [button btnWithoutActivityIndicator];
+    });
     [self startSendingReq:button];
 }
 
@@ -297,9 +301,12 @@
             
         }
     }
-    [btn btnWithActivityIndicator];
-    [btn btnWithOutCrossImage];
-    [btn btnSuccess];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [btn btnWithActivityIndicator];
+        [btn btnWithOutCrossImage];
+        [btn btnSuccess];
+    });
     [[NSUserDefaults standardUserDefaults] setInteger:([[NSUserDefaults standardUserDefaults] integerForKey:@"ApplaunchCount"] + 1) forKey:@"ApplaunchCount"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self performSelectorOnMainThread:@selector(goTopupScreen) withObject:nil waitUntilDone:nil];
@@ -340,54 +347,60 @@
 
 -(void)showErrorMsg:(NSString *)errorString
 {
-    UILabel *errorLable = (UILabel*)[self.view viewWithTag:10];
-    errorLable.text = errorString;
-    errorLable.hidden = NO;
-    UIButton *btn = (UIButton*)[self.view viewWithTag:6];
-    [btn btnWithoutActivityIndicator];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UILabel *errorLable = (UILabel*)[self.view viewWithTag:10];
+        errorLable.text = errorString;
+        errorLable.hidden = NO;
+        UIButton *btn = (UIButton*)[self.view viewWithTag:6];
+        [btn btnWithoutActivityIndicator];
+    });
 }
 
 -(void)showMsg:(NSString *)errorString
 {
-    UILabel *errorLable = (UILabel*)[self.view viewWithTag:10];
-    errorLable.text = errorString;
-    errorLable.hidden = NO;
-    UIButton *btn = (UIButton*)[self.view viewWithTag:6];
-    [btn btnWithoutActivityIndicator];
-    [btn btnWithCrossImage];
-    [emailTxtFld incorrectDataTxtFld];
-    [passwordTxtFld incorrectDataTxtFld];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UILabel *errorLable = (UILabel*)[self.view viewWithTag:10];
+        errorLable.text = errorString;
+        errorLable.hidden = NO;
+        UIButton *btn = (UIButton*)[self.view viewWithTag:6];
+        [btn btnWithoutActivityIndicator];
+        [btn btnWithCrossImage];
+        [emailTxtFld incorrectDataTxtFld];
+        [passwordTxtFld incorrectDataTxtFld];
+    });
 }
 
 -(void)loginWithAppAccount:(NSInteger)BtnTag
 {
-    UIImageView *emailErrorimgView = (UIImageView *)[self.view viewWithTag:13];
-    UIImageView *passwordErrorimgView = (UIImageView *)[self.view viewWithTag:12];
-    
-    if (BtnTag==0)
-    {
-        loginCrossImgView.hidden=NO;
-        emailErrorimgView .hidden=NO;
-        passwordErrorimgView.hidden=YES;
-    }
-    else if(BtnTag==1)
-    {
-        loginCrossImgView.hidden=NO;
-        emailErrorimgView.hidden=YES;
-        passwordErrorimgView.hidden=NO;
-    }
-    else if(BtnTag==3)
-    {
-        loginCrossImgView.hidden=NO;
-        emailErrorimgView.hidden=NO;
-        passwordErrorimgView.hidden=NO;
-    }
-    else if(BtnTag==4)
-    {
-        passwordErrorimgView.hidden=YES;
-        loginCrossImgView.hidden=YES;
-        emailErrorimgView.hidden=YES;
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIImageView *emailErrorimgView = (UIImageView *)[self.view viewWithTag:13];
+        UIImageView *passwordErrorimgView = (UIImageView *)[self.view viewWithTag:12];
+        
+        if (BtnTag==0)
+        {
+            loginCrossImgView.hidden=NO;
+            emailErrorimgView .hidden=NO;
+            passwordErrorimgView.hidden=YES;
+        }
+        else if(BtnTag==1)
+        {
+            loginCrossImgView.hidden=NO;
+            emailErrorimgView.hidden=YES;
+            passwordErrorimgView.hidden=NO;
+        }
+        else if(BtnTag==3)
+        {
+            loginCrossImgView.hidden=NO;
+            emailErrorimgView.hidden=NO;
+            passwordErrorimgView.hidden=NO;
+        }
+        else if(BtnTag==4)
+        {
+            passwordErrorimgView.hidden=YES;
+            loginCrossImgView.hidden=YES;
+            emailErrorimgView.hidden=YES;
+        }
+    });
 }
 
 
@@ -406,7 +419,7 @@
         TBXMLElement *checkAuthGetCardsResultElem = [TBXML childElementNamed:@"CheckAuthGetCardsResult" parentElement:checkAuthGetCardsResponseElem];
         TBXMLElement *statusCode = [TBXML childElementNamed:@"a:statusCode" parentElement:checkAuthGetCardsResultElem];
         NSString *statusCodeStr = [TBXML textForElement:statusCode];
-        if([statusCodeStr intValue]== 000 || [statusCodeStr intValue]== 003 || [statusCodeStr intValue]== 004)
+        if([statusCodeStr intValue] == 000 || [statusCodeStr intValue] == 003 || [statusCodeStr intValue] == 004)
         {
             TBXMLElement *DOBElem = [TBXML childElementNamed:@"a:bd" parentElement:checkAuthGetCardsResultElem];
             userDOBStr = [TBXML textForElement:DOBElem];
@@ -502,10 +515,10 @@
                 }
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 [self  callgetGloableRateApi];
-            }else{
+            } else {
                 // this work is done for remove histrory when user not set pin or remove pin
                 NSString *query  = @"";
-                query = @"DELETE FROM conversionHistoryTable ";
+                query = @"DELETE FROM conversionHistoryTable";
                 DatabaseHandler *dataBaseHandler = [[DatabaseHandler alloc]init];
                 [dataBaseHandler executeQuery:query];
                 query = [NSString stringWithFormat:@"DELETE FROM getHistoryTable"];
@@ -579,6 +592,7 @@
                         [userDefaults setInteger:1 forKey:@"LoginAttamp"];
                         LoginAttamp = 1;
                         [userDefaults synchronize];
+                        
                     }
                 }
                 else
@@ -597,29 +611,48 @@
                 [userDefaults setObject:@"GBP" forKey:@"defaultCurrency"];
                 [userDefaults setObject:@"flag" forKey:@"defaultCurrencyImage"];
                 [userDefaults synchronize];
+                
+                if(LoginAttamp == 1 || LoginAttamp == 0) {
+                    [self showErrorMsg:@"Your password is incorrect, please try again."];
+                } else if (LoginAttamp == 2) {
+                    [self showErrorMsg:@"Your password is incorrect, please try again. If you are unsure of your password please use the link above to reset it."];
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIButton *button = (UIButton*)[self.view viewWithTag:6];
+                    [button btnWithoutActivityIndicator];
+                    [button btnWithCrossImage];
+                    [passwordTxtFld incorrectDataTxtFld];
+                });
             }
             if([statusCodeStr intValue]==005)
             {
                 [self showErrorMsg:@"Your Caxton FX account has been locked. To unlock your account please email info@caxtonfxcard.com"];
                 [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"Lock"];
-                UIButton *button = (UIButton*)[self.view viewWithTag:6];
-                [button btnWithoutActivityIndicator];
-                [button btnWithCrossImage];
-                [emailTxtFld incorrectDataTxtFld];
-                [passwordTxtFld incorrectDataTxtFld];
-            }else
-            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIButton *button = (UIButton*)[self.view viewWithTag:6];
+                    [button btnWithoutActivityIndicator];
+                    [button btnWithCrossImage];
+                    [emailTxtFld incorrectDataTxtFld];
+                    [passwordTxtFld incorrectDataTxtFld];
+                });
+            }else if ([statusCodeStr intValue] == 001) {
                 NSLog(@"LoginAttamp - > %d",LoginAttamp);
-                if(LoginAttamp == 1 || LoginAttamp == 0)
-                    [self showErrorMsg:@"Your username or password cannot be verifield please try again."];
-                else if (LoginAttamp == 2)
+                if(LoginAttamp == 1 || LoginAttamp == 0) {
+                    [self showErrorMsg:@"Your username or password cannot be verified please try again."];
+                } else if (LoginAttamp == 2) {
                     [self showErrorMsg:@"Your username or password cannot be verified please try again. If you are unsure of your password please use the link above to reset it."];
+                }
                 
-                UIButton *button = (UIButton*)[self.view viewWithTag:6];
-                [button btnWithoutActivityIndicator];
-                [button btnWithCrossImage];
-                [emailTxtFld incorrectDataTxtFld];
-                [passwordTxtFld incorrectDataTxtFld];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIButton *button = (UIButton*)[self.view viewWithTag:6];
+                    [button btnWithoutActivityIndicator];
+                    [button btnWithCrossImage];
+                    [emailTxtFld incorrectDataTxtFld];
+                    [passwordTxtFld incorrectDataTxtFld];
+                });
+            } else if ([statusCodeStr intValue] == 801) {
+                [self showErrorMsg:@"An error has occured while trying to log you in. Please try again in a few moments."];
             }
         }
     }
@@ -634,9 +667,11 @@
         NSLog(@"Service: %@ | Response UKNOWN ERROR",service);
     
     [self showErrorMsg:@"Unfortunately our service is not available at the moment. But please do try again later."];
-    UIButton *button = (UIButton*)[self.view viewWithTag:6];
-    [button btnWithoutActivityIndicator];
-    [button btnWithCrossImage];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIButton *button = (UIButton*)[self.view viewWithTag:6];
+        [button btnWithoutActivityIndicator];
+        [button btnWithCrossImage];
+    });
 }
 
 #pragma mark --------
@@ -723,29 +758,28 @@
         [self showErrorMsg:@""];
         [passwordTxtFld becomeFirstResponder];
     }
-    else if ((textField == passwordTxtFld) && (!passwordTxtFld.text.length>0))
-    {
-        [self showErrorMsg:@"Please enter the password."];
-        passwordErrorimgView.hidden = NO;
-        [passwordTxtFld incorrectDataTxtFld];
-        [self loginWithAppAccount:1];
-        return  NO;
-    }
-    else if((textField == passwordTxtFld) &&  ([passwordTxtFld.text length] > 200))
-    {
-        emailErrorimgView.hidden = YES;
-        passwordErrorimgView.hidden = NO;
-        [self showErrorMsg:@"Unfortunately the entered password must be less than 200 characters. Please try again."];
-        [passwordTxtFld incorrectDataTxtFld];
-        return NO;
-    }else if((textField == passwordTxtFld) &&  [Validate isValidPassword:passwordTxtFld.text]){
-        passwordErrorimgView.hidden = YES;
-        [textField resignFirstResponder];
-        UIButton *logInBtn = (UIButton*)[self.view viewWithTag:6];
-        [self loginBtnPressed:logInBtn];
-        return YES;
-    }
-    return YES;
+    if (textField == passwordTxtFld) {
+        if([passwordTxtFld.text length] > 200) {
+            emailErrorimgView.hidden = YES;
+            passwordErrorimgView.hidden = NO;
+            [self showErrorMsg:@"Unfortunately the entered password must be less than 200 characters. Please try again."];
+            [passwordTxtFld incorrectDataTxtFld];
+            return NO;
+        }
+        if (passwordTxtFld.text.length == 0) {
+            [self showErrorMsg:@"Please enter the password."];
+            passwordErrorimgView.hidden = NO;
+            [passwordTxtFld incorrectDataTxtFld];
+            [self loginWithAppAccount:1];
+            return  NO;
+        } else {
+            passwordErrorimgView.hidden = YES;
+            [textField resignFirstResponder];
+            UIButton *logInBtn = (UIButton*)[self.view viewWithTag:6];
+            [self loginBtnPressed:logInBtn];
+            return YES;
+        }
+    }    return YES;
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
@@ -757,16 +791,13 @@
         [self loginWithAppAccount:0];
         [self showErrorMsg:@"Unfortunately the entered username is not valid. Please try again."];
         [emailTxtFld incorrectDataTxtFld];
-    }
-    else if ([emailTxtFld.text length]== 0)
-    {
-        [self loginWithAppAccount:0];
-        [self showErrorMsg:@"Unfortunately the entered username is not valid. Please try again."];
-        [emailTxtFld incorrectDataTxtFld];
+        [passwordTxtFld removeData];
+        emailErrorimgView.hidden = NO;
     }
     else if ((textField == emailTxtFld) && [Validate isValidUserName:emailTxtFld.text] && (![emailTxtFld.text length]== 0))
     {
         emailErrorimgView.hidden = YES;
+        
         
         [self showErrorMsg:@""];
     }
@@ -783,7 +814,8 @@
         emailErrorimgView.hidden = YES;
         [self showErrorMsg:@"Unfortunately the entered password must be less than 200 characters. Please try again."];
         [passwordTxtFld incorrectDataTxtFld];
-    }else if((textField == passwordTxtFld) &&  [Validate isValidPassword:passwordTxtFld.text]){
+    }
+    else if(textField == passwordTxtFld) {
         passwordErrorimgView.hidden = YES;
     }
 }
@@ -792,16 +824,12 @@
 {
     UIImageView *emailErrorimgView = (UIImageView *)[self.view viewWithTag:13];
     UIImageView *passwordErrorimgView = (UIImageView *)[self.view viewWithTag:12];
-    [emailTxtFld removeData];
-    emailErrorimgView.hidden = YES;
-    [passwordTxtFld removeData];
-    passwordErrorimgView.hidden = YES;
-    [textField removeData];
-    if (textField==emailTxtFld)
-    {
-        [self showErrorMsg:@""];
-        [self resetFields];
+    if (textField == emailTxtFld) {
+        emailErrorimgView.hidden = YES;
+    } else {
+        passwordErrorimgView.hidden = YES;
     }
+    [textField removeData];
 }
 
 // ------------ check text field's length if it is greater than 0. then login btn enabled -------------------

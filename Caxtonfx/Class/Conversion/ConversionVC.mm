@@ -18,13 +18,10 @@
 #import "UIImage+AutoLevels.h"
 #import "UIImage+Brightness.h"
 #import "CMocrCharacter.h"
-#import "baseapi.h"
 #include <math.h>
 #import "CardsVC.h"
 #import "SBJson.h"
 #import "CMocrCharacter.h"
-#import "environ.h"
-#import "pix.h"
 #import "TBXML.h"
 #import "TOcr_Word.h"
 #import "UIImageAverageColorAddition.h"
@@ -109,7 +106,7 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
     
     [self.targetBtn setTitle:[NSString stringWithFormat:@"%@ %@",targetCurrency,[self getCurrencyNameForCurrencyCode:targetCurrency]] forState:UIControlStateNormal];
     
-    [self startTesseract];
+//    [self startTesseract];
     
     
     [self.preferredBtn setTitle:[NSString stringWithFormat:@"%@ %@",(preferredCurrency.length !=0)?preferredCurrency:@"",[self getCurrencyNameForCurrencyCode:preferredCurrency]] forState:UIControlStateNormal];
@@ -658,11 +655,11 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
 
 -(void)extractingDataFromImage:(UIImage *)newImage
 {
-    [self setImage:newImage];
+//    [self setImage:newImage];
     //    [self recognize];
     //char* utf8Text = _tesseract->GetUTF8Text();
-    NSString *htmlText = [self recognizedText];
-    [self currencyPatternRecognitionForData:[self extractDataFromHtml:htmlText forImage:newImage]];
+//    NSString *htmlText = [self recognizedText];
+//    [self currencyPatternRecognitionForData:[self extractDataFromHtml:htmlText forImage:newImage]];
 }
 
 - (NSMutableArray *) extractDataFromHtml:(NSString*) htmlText forImage:(UIImage*) image
@@ -3829,68 +3826,68 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
 #pragma mark -
 #pragma mark Image Processsing
 
-- (void) startTesseract
-{
-    _dataPath = @"tessdata";
-    _language = @"eng";
-    _variables = [[NSMutableDictionary alloc] init];
-    
-    [self copyDataToDocumentsDirectory];
-    _tesseract = new tesseract::TessBaseAPI();
-    
-    BOOL success = [self initEngine];
-    if (!success) {
-        NSLog(@"Engine failed to start");
-    }
-}
-
-- (BOOL)initEngine {
-    int returnCode = _tesseract->Init([_dataPath UTF8String], [_language UTF8String]);
-    return (returnCode == 0) ? YES : NO;
-}
-
-- (void)setImage:(UIImage *)image
-{
-    free(_pixels);
-    
-    CGSize size = [image size];
-    int width = size.width;
-    int height = size.height;
-	
-	if (width <= 0 || height <= 0) {
-		return;
-    }
-	
-    _pixels = (uint32_t *) malloc(width * height * sizeof(uint32_t));
-    
-    // Clear the pixels so any transparency is preserved
-    memset(_pixels, 0, width * height * sizeof(uint32_t));
-	
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-	
-    // Create a context with RGBA _pixels
-    CGContextRef context = CGBitmapContextCreate(_pixels, width, height, 8, width * sizeof(uint32_t), colorSpace,
-                                                 kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedLast);
-	
-    // Paint the bitmap to our context which will fill in the _pixels array
-    CGContextDrawImage(context, CGRectMake(0, 0, width, height), [image CGImage]);
-	
-	// We're done with the context and color space
-    CGContextRelease(context);
-    CGColorSpaceRelease(colorSpace);
-    
-    _tesseract->SetImage((const unsigned char *) _pixels, width, height, sizeof(uint32_t), width * sizeof(uint32_t));
-}
-
-- (BOOL)recognize {
-    int returnCode = _tesseract->Recognize(NULL);
-    return (returnCode == 0) ? YES : NO;
-}
-
-- (NSString *)recognizedText {
-    char* utf8Text = _tesseract->GetHOCRText(0);
-    return [NSString stringWithUTF8String:utf8Text];
-}
+//- (void) startTesseract
+//{
+//    _dataPath = @"tessdata";
+//    _language = @"eng";
+//    _variables = [[NSMutableDictionary alloc] init];
+//    
+//    [self copyDataToDocumentsDirectory];
+//    _tesseract = new tesseract::TessBaseAPI();
+//    
+//    BOOL success = [self initEngine];
+//    if (!success) {
+//        NSLog(@"Engine failed to start");
+//    }
+//}
+//
+//- (BOOL)initEngine {
+//    int returnCode = _tesseract->Init([_dataPath UTF8String], [_language UTF8String]);
+//    return (returnCode == 0) ? YES : NO;
+//}
+//
+//- (void)setImage:(UIImage *)image
+//{
+//    free(_pixels);
+//    
+//    CGSize size = [image size];
+//    int width = size.width;
+//    int height = size.height;
+//	
+//	if (width <= 0 || height <= 0) {
+//		return;
+//    }
+//	
+//    _pixels = (uint32_t *) malloc(width * height * sizeof(uint32_t));
+//    
+//    // Clear the pixels so any transparency is preserved
+//    memset(_pixels, 0, width * height * sizeof(uint32_t));
+//	
+//    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+//	
+//    // Create a context with RGBA _pixels
+//    CGContextRef context = CGBitmapContextCreate(_pixels, width, height, 8, width * sizeof(uint32_t), colorSpace,
+//                                                 kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedLast);
+//	
+//    // Paint the bitmap to our context which will fill in the _pixels array
+//    CGContextDrawImage(context, CGRectMake(0, 0, width, height), [image CGImage]);
+//	
+//	// We're done with the context and color space
+//    CGContextRelease(context);
+//    CGColorSpaceRelease(colorSpace);
+//    
+//    _tesseract->SetImage((const unsigned char *) _pixels, width, height, sizeof(uint32_t), width * sizeof(uint32_t));
+//}
+//
+//- (BOOL)recognize {
+//    int returnCode = _tesseract->Recognize(NULL);
+//    return (returnCode == 0) ? YES : NO;
+//}
+//
+//- (NSString *)recognizedText {
+//    char* utf8Text = _tesseract->GetHOCRText(0);
+//    return [NSString stringWithUTF8String:utf8Text];
+//}
 
 - (void)copyDataToDocumentsDirectory {
     

@@ -33,7 +33,6 @@ typedef int(^CustomBlock)(int number);
 @property (nonatomic , strong) IBOutlet UITableView *table;
 @property (nonatomic , strong) IBOutlet UIView *loadingView;
 
-@property (nonatomic , strong) NSMutableArray *historyArray;
 @property (nonatomic , strong) NSMutableArray *conversionArray;
 @property (nonatomic , strong) NSString *currentId;
 

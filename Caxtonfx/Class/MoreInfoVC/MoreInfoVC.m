@@ -136,39 +136,29 @@
 {
     if([CommonFunctions reachabiltyCheck])
     {
-        if([firstTxtFld.text length]==0)
-        {
+        if([firstTxtFld.text length]==0) {
             [firstTxtFld becomeFirstResponder];
-            waringLbl.text =@"Please enter first name.";
-        }
-        else if([lastTxtFld.text length]==0)
-        {
-            waringLbl.text =@"Please enter last name.";
+            waringLbl.text = @"Please enter first name.";
+        } else if(lastTxtFld.text.length == 0) {
+            waringLbl.text = @"Please enter last name.";
             [lastTxtFld becomeFirstResponder];
-        }
-        else if([emailTxtFld.text length]==0 || ![Validate isValidEmailId:emailTxtFld.text])
-        {
-            waringLbl.text =@"Please enter valid email ID.";
+        } else if(emailTxtFld.text.length == 0 || ![Validate isValidEmailId:emailTxtFld.text]) {
+            waringLbl.text = @"Please enter valid email ID.";
             [emailTxtFld becomeFirstResponder];
-        }else if([emailTxtFld.text length]>0 && ![Validate isValidEmailId:emailTxtFld.text]){
-            waringLbl.text =@"Please enter valid email ID.";
-            [emailTxtFld becomeFirstResponder];
-        }
-        else
-        {   waringLbl.text = @"";
+        } else {
+            waringLbl.text = @"";
             UIImageView *firstImgView = (UIImageView *)[self.demoView viewWithTag:13];
             UIImageView *secondImgView = (UIImageView *)[self.demoView viewWithTag:14];
             UIImageView *thrdImgView = (UIImageView *)[self.demoView viewWithTag:15];
             firstImgView.hidden = YES;
-            secondImgView.hidden= YES;
+            secondImgView.hidden = YES;
             thrdImgView.hidden = YES;
             [(UIButton*)sender btnWithOutCrossImage];
             [(UIButton*)sender btnWithActivityIndicator];
             [Flurry logEvent:@"User sent Join Request"];
             [self sendRequest];
         }
-    }else
-    {
+    } else {
         self.waringLbl.text = @"Unfortunately there is no network connection at the moment so we cannot send your request, Please try again later.";
         [(UIButton*)sender btnWithCrossImage];
     }

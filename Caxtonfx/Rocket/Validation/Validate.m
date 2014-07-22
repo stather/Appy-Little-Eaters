@@ -39,7 +39,7 @@
 + (BOOL)isValidEmailId:(NSString*)email
 {
     
-	 NSString *emailRegex = @"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
+	 NSString *emailRegex = @"[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\\.)+[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex]; 
     
 	return [emailTest evaluateWithObject:email];
@@ -77,7 +77,7 @@
     NSString *regex=@"^[a-zA-Z0-9@,.-]{1,200}$";
     NSPredicate *userNameTest=[NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     
-    return [userNameTest evaluateWithObject:userName];
+    return [userNameTest evaluateWithObject:userName] && userName.length > 0;
 }
 
 

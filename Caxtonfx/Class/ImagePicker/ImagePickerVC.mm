@@ -144,13 +144,13 @@
 
 - (void) goForConversionWithImage:(UIImage *) image withFocusBounds:(CGRect) rect
 {
-    ConversionVC *cvc = [[ConversionVC alloc] init];
-    [cvc setImageToConvert:image];
-    [cvc setFocusBounds:rect];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-    [self.navigationController pushViewController:cvc animated:TRUE];
+//    ConversionVC *cvc = [[ConversionVC alloc] init];
+//    [cvc setImageToConvert:image];
+//    [cvc setFocusBounds:rect];
+//    
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//    
+//    [self.navigationController pushViewController:cvc animated:TRUE];
 }
 
 - (void) showCamera
