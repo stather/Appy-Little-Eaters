@@ -23,7 +23,7 @@
 }
 
 @property (strong, nonatomic) IBOutlet UIView *bottomView;
-@property (strong, nonatomic) IBOutlet UITableView *table;
+@property (weak, nonatomic) IBOutlet UITableView *table;
 @property (strong, nonatomic) IBOutlet UIButton *receiptsButton;
 @property (strong, nonatomic) IBOutlet UIButton *captureButton;
 @property (strong, nonatomic) IBOutlet UIButton *settingsButton;

@@ -19,10 +19,10 @@
 }
 
 @property (nonatomic, strong) BJImageCropper *imageCropper;
-@property (strong, nonatomic) IBOutlet UILabel *hintLabel;
+@property (weak, nonatomic) IBOutlet UILabel *hintLabel;
 
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
-@property (nonatomic, strong) IBOutlet UIView *bottomBarView;
+@property (nonatomic, weak) IBOutlet UIView *bottomBarView;
 @property (nonatomic, strong) IBOutlet UIButton *doneBtn;
 
 - (IBAction) libraryBtnTap:(id)sender;

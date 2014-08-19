@@ -50,7 +50,7 @@ typedef enum {
     UIScrollView *scrollView;
     BOOL isiPhone5;
     BOOL isCreate;
-    int attemp;
+    NSInteger attemp;
     
 }
 

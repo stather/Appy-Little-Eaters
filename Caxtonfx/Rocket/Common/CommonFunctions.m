@@ -64,7 +64,7 @@
 		else
 		{
             view.hidden = FALSE;
-            [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, 2000)];
+//            [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, 2000)];
         }
     }
 	

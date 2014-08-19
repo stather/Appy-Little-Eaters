@@ -14,12 +14,12 @@
     UIImagePickerController *parentController;
 }
 @property (nonatomic, strong) ImagePickerVC *imageVC;
-@property (nonatomic, strong) IBOutlet UIButton *flashBtn;
-@property (nonatomic, strong) IBOutlet UIButton *libraryBtn;
-@property (nonatomic, strong) IBOutlet UIButton *cameraBtn;
-@property (nonatomic, strong) IBOutlet UIButton *receiptsBtn;
-@property (nonatomic, strong) IBOutlet UIView *controlsView;
-@property (strong, nonatomic) IBOutlet UIView *popUpView;
+@property (nonatomic, weak) IBOutlet UIButton *flashBtn;
+@property (nonatomic, weak) IBOutlet UIButton *libraryBtn;
+@property (nonatomic, weak) IBOutlet UIButton *cameraBtn;
+@property (nonatomic, weak) IBOutlet UIButton *receiptsBtn;
+@property (nonatomic, weak) IBOutlet UIView *controlsView;
+@property (weak, nonatomic) IBOutlet UIView *popUpView;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *infoLbl;
 - (id) initWithParent:(UIViewController*) parent;

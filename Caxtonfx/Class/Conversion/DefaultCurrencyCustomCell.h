@@ -10,8 +10,8 @@
 
 @interface DefaultCurrencyCustomCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UIImageView *flagIcon;
-@property (strong, nonatomic) IBOutlet UILabel *currencyTypeLabel;
-@property (strong, nonatomic) IBOutlet UILabel *rateLabel;
-@property (strong, nonatomic) IBOutlet UIButton *selectedStateBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *flagIcon;
+@property (weak, nonatomic) IBOutlet UILabel *currencyTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rateLabel;
+@property (weak, nonatomic) IBOutlet UIButton *selectedStateBtn;
 @end

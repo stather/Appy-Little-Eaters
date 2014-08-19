@@ -20,8 +20,8 @@
 	
 }
 
-@property (nonatomic, strong) IBOutlet UITextField *emailTxtFld;
-@property (nonatomic, strong) IBOutlet UITextField *passwordTxtFld;
+@property (nonatomic, weak) IBOutlet UITextField *emailTxtFld;
+@property (nonatomic, weak) IBOutlet UITextField *passwordTxtFld;
 
 -(IBAction) rememberBtnPressed:(id)sender;
 -(IBAction) loginBtnPressed:(id)sender;

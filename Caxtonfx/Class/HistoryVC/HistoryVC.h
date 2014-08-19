@@ -30,8 +30,8 @@ typedef int(^CustomBlock)(int number);
 @property (nonatomic , strong) IBOutlet UIButton *captureButton;
 @property (nonatomic , strong) IBOutlet UIButton *settingsButton;
 @property (nonatomic , strong) IBOutlet UIView *bottomView;
-@property (nonatomic , strong) IBOutlet UITableView *table;
-@property (nonatomic , strong) IBOutlet UIView *loadingView;
+@property (nonatomic, strong) IBOutlet UITableView *table;
+@property (nonatomic, strong) IBOutlet UIView *loadingView;
 
 @property (nonatomic , strong) NSMutableArray *conversionArray;
 @property (nonatomic , strong) NSString *currentId;

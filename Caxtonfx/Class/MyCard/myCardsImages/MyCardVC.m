@@ -1,4 +1,4 @@
-  //
+//
 //  MyCardVC.m
 //  Caxtonfx
 //
@@ -16,8 +16,11 @@
 #import "Card.h"
 #import "ImagePickerVC.h"
 #import "ConverterVC.h"
+#import "ForgottenPinView.h"
 
 @interface MyCardVC ()
+
+@property(nonatomic, assign) BOOL isRefreshing;
 
 @end
 
@@ -51,18 +54,22 @@
     self.tableView.delegate = self;
     if(IS_HEIGHT_GTE_568)
     {
-//        heightConstraint = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:nil multiplier:1 constant:438];
-//        [self.tableView addConstraint:heightConstraint];
+        //        heightConstraint = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:nil multiplier:1 constant:438];
+        //        [self.tableView addConstraint:heightConstraint];
     }else
     {
-//        heightConstraint = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:nil multiplier:1 constant:350];
-//        [self.tableView addConstraint:heightConstraint];
+        //        heightConstraint = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:nil multiplier:1 constant:350];
+        //        [self.tableView addConstraint:heightConstraint];
     }
     
     self.HUD= [[MBProgressHUD alloc] initWithView:self.view];
     self.HUD.delegate = self;
     [self.tableView addSubview:self.HUD];
     [self.tableView bringSubviewToFront:self.HUD];
+    
+//    ForgottenPinView *footerView = [[ForgottenPinView alloc] init];
+//    [self.tableView setTableFooterView:footerView];
+    
     [Flurry logEvent:@"Visited Cards Screen"];
 }
 
@@ -76,7 +83,7 @@
     dispatch_async([[[AppDelegate getSharedInstance] class] sharedQueue], ^(void) {
         User *myUser = [User sharedInstance];
         if ([CommonFunctions reachabiltyCheck]){
-            NSLog(@"Time since latest rate: %i",[[AppDelegate getSharedInstance] minutesSinceNowRatesOnly]);
+            NSLog(@"Time since latest rate: %li",(long)[[AppDelegate getSharedInstance] minutesSinceNowRatesOnly]);
             if ([[AppDelegate getSharedInstance] minutesSinceNowRatesOnly] > 5)
             {
                 myUser.globalRates = [myUser loadGlobalRatesWithRemote:YES];
@@ -86,7 +93,7 @@
         }else{
             myUser.globalRates = [myUser loadGlobalRatesWithRemote:NO];
         }
-
+        
         myUser.cards = [myUser loadCardsFromDatabasewithRemote:NO];
     });
 }
@@ -128,7 +135,7 @@
     }else{
         doneButton.tintColor =[UIColor colorWithRed:255.0/255.0 green:40.0/255.0 blue:25.0/255.0 alpha:1.0];
     }
-
+    
     [self.navigationItem setRightBarButtonItem:doneButton];
 }
 
@@ -178,23 +185,29 @@
 //}
 - (void)hudRefresh:(id)sender
 {
-    self.tableView.userInteractionEnabled = NO;
-    NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"updateDate"];
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:[CommonFunctions statusOfLastUpdate:date1]];
-    self.view.userInteractionEnabled = NO;
-    if([CommonFunctions reachabiltyCheck])
-    {
-        [self.HUD showAnimated:YES whileExecutingBlock:^{
-            [self updateCards];
-        } completionBlock:^{
-            [self refreshTheTable];
-        }];
-    }else
-    {
-        [self.refreshControl endRefreshing];
-        self.tableView.userInteractionEnabled = YES;
-        UIAlertView *myAlert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Please check you internet connection." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        [myAlert show];
+    if (!self.isRefreshing) {
+        self.tableView.userInteractionEnabled = NO;
+        NSDate* date1 = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:@"updateDate"];
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:[CommonFunctions statusOfLastUpdate:date1]];
+        self.view.userInteractionEnabled = NO;
+        if([CommonFunctions reachabiltyCheck])
+        {
+            self.isRefreshing = YES;
+            [self.HUD showAnimated:YES
+               whileExecutingBlock:^{
+                   [self updateCards];
+               }
+                           onQueue:[AppDelegate sharedQueue]
+                   completionBlock:^{
+                       self.isRefreshing = NO;
+                       [self refreshTheTable];
+                   }];
+        }else {
+            [self.refreshControl endRefreshing];
+            self.tableView.userInteractionEnabled = YES;
+            UIAlertView *myAlert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Please check you internet connection." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [myAlert show];
+        }
     }
     
 }
@@ -250,6 +263,7 @@
     if (alertView.tag == 1 ){
         if (buttonIndex == 0)
         {
+            alertView.delegate = nil;
             AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
             [appDelegate doLogout];
         }
@@ -290,8 +304,25 @@
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     cell.textLabel.textColor = UIColorFromRedGreenBlue(204, 204, 204);
     return cell;
-
+    
 }
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+//    return 50;
+//}
+//
+//
+//- (UIView *)tableView:(UITableView *)tv viewForFooterInSection:(NSInteger)section {
+//    NSString *FooterId = @"ForgottenPinFooter";
+//    
+//    ForgottenPinView *footerView = [tv dequeueReusableHeaderFooterViewWithIdentifier:FooterId];
+//    if (!footerView) {
+//        footerView = [[ForgottenPinView alloc] init];
+//    }
+//    
+//    return footerView;
+//}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView1 cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     User *myUser = [User sharedInstance];
@@ -409,6 +440,7 @@
     }
     
 }
+
 - (void)topupResult:(NSIndexPath*)path WithCard :(Card*)myCard{
     @try {
         [myCard saveCard];
@@ -418,6 +450,7 @@
         NSLog(@"%@",exception);
     }
 }
+
 - (void)noRefreshTopupResult:(NSIndexPath*)path dict:(NSMutableDictionary *)dict1
 {
     @try {

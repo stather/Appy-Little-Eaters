@@ -47,6 +47,6 @@ NSString *appID = @"687286642";
 NSString *flurryID = @"DWMZTSXNKNPF3BT55KKP";
 NSString* dateInString;
 
-int LoginAttamp;
+NSInteger LoginAttamp;
 
 @end

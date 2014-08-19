@@ -411,8 +411,9 @@
 {
     if([service isEqualToString:@"CheckAuthGetCards"])
     {
+        NSError *parseError = nil;
         NSMutableArray *array = [[NSMutableArray alloc]init];
-        TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
+        TBXML *tbxml =[TBXML tbxmlWithXMLString:response error:&parseError];
         TBXMLElement *root = tbxml.rootXMLElement;
         TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
         TBXMLElement *checkAuthGetCardsResponseElem = [TBXML childElementNamed:@"CheckAuthGetCardsResponse" parentElement:rootItemElem];
@@ -637,7 +638,7 @@
                     [passwordTxtFld incorrectDataTxtFld];
                 });
             }else if ([statusCodeStr intValue] == 001) {
-                NSLog(@"LoginAttamp - > %d",LoginAttamp);
+                NSLog(@"LoginAttamp - > %ld",(long)LoginAttamp);
                 if(LoginAttamp == 1 || LoginAttamp == 0) {
                     [self showErrorMsg:@"Your username or password cannot be verified please try again."];
                 } else if (LoginAttamp == 2) {

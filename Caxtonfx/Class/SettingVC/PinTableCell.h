@@ -11,13 +11,13 @@
 
 @interface PinTableCell : UITableViewCell
 
-@property (nonatomic, strong) IBOutlet UILabel *textLbl;
+@property (nonatomic, weak) IBOutlet UILabel *textLbl;
 
-@property (nonatomic, strong) IBOutlet UILabel *detailLbl;
+@property (nonatomic, weak) IBOutlet UILabel *detailLbl;
 
 //@property (nonatomic, strong) IBOutlet UISwitch *pinSwitch;
 
-@property (nonatomic, strong) IBOutlet RESwitch *customeSwitch;
+@property (nonatomic, weak) IBOutlet RESwitch *customeSwitch;
 
 
 -(IBAction)stateChanged:(id)sender;

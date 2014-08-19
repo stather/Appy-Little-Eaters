@@ -23,7 +23,7 @@
 @property (nonatomic, strong) LogoutTableCell *logoutTableCell;
 @property (nonatomic, strong) IBOutlet UILabel *pinLable;
 @property (nonatomic, strong) IBOutlet UILabel *pinSecLable;
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSDictionary *defaultconDic;
 
 @end

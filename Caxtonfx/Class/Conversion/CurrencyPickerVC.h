@@ -19,8 +19,8 @@
 
 //properties (IBOutlet)
 @property (nonatomic, strong) IBOutlet UILabel *headingLbl;
-@property (nonatomic, strong) IBOutlet UILabel *subHeadingLbl;
-@property (nonatomic, strong) IBOutlet UIPickerView *pickerView;
+@property (nonatomic, weak) IBOutlet UILabel *subHeadingLbl;
+@property (nonatomic, weak) IBOutlet UIPickerView *pickerView;
 
 //properties
 @property (nonatomic) int pickerType;

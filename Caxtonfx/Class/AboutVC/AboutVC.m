@@ -37,6 +37,7 @@
     UIBarButtonItem *backBtn = [CommonFunctions backButton];
     
     self.navigationItem.leftBarButtonItem = backBtn;
+    self.navigationController.navigationBar.translucent = NO;
     
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     shareBtn.frame = CGRectMake(0,0,32,32);
@@ -56,11 +57,7 @@
          [appDelegate.shareTabBar setFrame:CGRectMake(0, 421, 320, 59)];
     [appDelegate.shareTabBar setHidden:NO];
     [appDelegate.tabBarController.view addSubview:appDelegate.shareTabBar];
-        
-    if(IS_HEIGHT_GTE_568)
-        scrollview = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, 320,443 )];
-    else
-        scrollview = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, 320,355 )];
+    
     scrollview.backgroundColor = [UIColor clearColor];
     scrollview.delegate =self;
     scrollview.translatesAutoresizingMaskIntoConstraints = YES;

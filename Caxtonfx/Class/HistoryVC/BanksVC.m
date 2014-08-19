@@ -228,7 +228,7 @@
 }
 - (IBAction)stateChanged:(UISwitch *)sender
 {
-    NSLog(@"Tag : %d",sender.tag);
+    NSLog(@"Tag : %ld", (long)sender.tag);
     NSMutableDictionary *temp = [banksArray objectAtIndex:sender.tag];
     
     if (sender.on)

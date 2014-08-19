@@ -10,23 +10,15 @@
 
 @interface MyCardsTableCell : UITableViewCell
 
-@property (nonatomic, strong) IBOutlet UIImageView *errorImgView;
-
-@property (nonatomic, strong) IBOutlet UIImageView *succesImgView;
-
-@property (nonatomic, strong) IBOutlet UIImageView *bgImgView;
-
-@property (nonatomic, strong) IBOutlet UIImageView *flagImgView;
-
-@property (nonatomic, strong) IBOutlet UILabel *accountTypeLable;
-
-@property (nonatomic, strong) IBOutlet UILabel *accountNameLable;
-
-@property (nonatomic, strong) IBOutlet UILabel *currentBlnceLable;
-
-@property (nonatomic, strong) IBOutlet UILabel *blnceLable;
-
-@property (nonatomic, strong) IBOutlet UIButton *topupBtn;
+@property (nonatomic, weak) IBOutlet UIImageView *errorImgView;
+@property (nonatomic, weak) IBOutlet UIImageView *succesImgView;
+@property (nonatomic, weak) IBOutlet UIImageView *bgImgView;
+@property (nonatomic, weak) IBOutlet UIImageView *flagImgView;
+@property (nonatomic, weak) IBOutlet UILabel *accountTypeLable;
+@property (nonatomic, weak) IBOutlet UILabel *accountNameLable;
+@property (nonatomic, weak) IBOutlet UILabel *currentBlnceLable;
+@property (nonatomic, weak) IBOutlet UILabel *blnceLable;
+@property (nonatomic, weak) IBOutlet UIButton *topupBtn;
 
 -(IBAction)topupBtnPressed:(id)sender;
 

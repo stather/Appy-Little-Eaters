@@ -12,8 +12,8 @@
 {
     
 }
-@property (strong, nonatomic) IBOutlet UILabel *merchantNameLabel;
-@property (strong, nonatomic) IBOutlet UILabel *timeCountryDateLabel;
-@property (strong, nonatomic) IBOutlet UILabel *cardUsedLabel;
-@property (strong, nonatomic) IBOutlet UILabel *currencyValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *merchantNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeCountryDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cardUsedLabel;
+@property (weak, nonatomic) IBOutlet UILabel *currencyValueLabel;
 @end

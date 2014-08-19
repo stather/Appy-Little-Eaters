@@ -14,9 +14,9 @@
 
 // decalre properties
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicator;
-@property (nonatomic, strong) IBOutlet UILabel *currentStatusLbl;
-@property (nonatomic, strong) IBOutlet UILabel *updateStatusLabel;
-@property (nonatomic, strong) IBOutlet UIImageView *customIndicatorView;
+@property (nonatomic, weak) IBOutlet UILabel *currentStatusLbl;
+@property (nonatomic, weak) IBOutlet UILabel *updateStatusLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *customIndicatorView;
 @property (nonatomic, strong) IBOutlet UIImageView *bgImg;
 
 // decalre methods

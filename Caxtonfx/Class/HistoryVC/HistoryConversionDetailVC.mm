@@ -11,7 +11,7 @@
 @interface HistoryConversionDetailVC ()
 
 @end
-int const maxImagePixelsAmount = 8000000; // 8 MP
+//int const maxImagePixelsAmount = 8000000; // 8 MP
 @implementation HistoryConversionDetailVC
 @synthesize detailsDict;
 @synthesize sourceCurrencyLbl;
@@ -122,7 +122,7 @@ int const maxImagePixelsAmount = 8000000; // 8 MP
                 NSString *symbolStr = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 3)];
                 if (symbolStr)
                 {
-                    int symbol = [symbolStr integerValue];
+                    int symbol = [symbolStr intValue];
                     
                     if (symbol != 0)
                         currencyName = [NSString stringWithFormat:@"%C",(unichar)symbol];

@@ -387,7 +387,7 @@
     return cell;
 }
 
-- (void) tableView:(UITableView *)tableView1 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView1 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     selectedRow = indexPath.row;
     NSMutableDictionary *dict = [self.array objectAtIndex:indexPath.row];

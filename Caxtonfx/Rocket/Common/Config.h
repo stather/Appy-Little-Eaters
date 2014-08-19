@@ -55,7 +55,7 @@ extern NSString *userConactTypeStr;
 
 extern NSString *flurryID;
 
-extern int LoginAttamp;
+extern NSInteger LoginAttamp;
 
 
 

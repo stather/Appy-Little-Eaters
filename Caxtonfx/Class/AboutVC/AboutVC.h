@@ -11,6 +11,6 @@
 
 @interface AboutVC : UIViewController<UIScrollViewDelegate,JJGActionSheetDelegate>
 
-@property (nonatomic,strong) UIScrollView *scrollview;
+@property (nonatomic,weak) IBOutlet UIScrollView *scrollview;
 
 @end

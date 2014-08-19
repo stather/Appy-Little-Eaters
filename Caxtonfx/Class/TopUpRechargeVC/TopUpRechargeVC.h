@@ -28,28 +28,17 @@
 
 @interface TopUpRechargeVC : UIViewController<UIGestureRecognizerDelegate,sharedDelegate,MFMessageComposeViewControllerDelegate,UINavigationControllerDelegate,CBPeripheralManagerDelegate,CLLocationManagerDelegate,UIAlertViewDelegate,MBProgressHUDDelegate>
 
-@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
-
-@property (nonatomic, strong) IBOutlet UIImageView *flagImgView;
-
-@property (nonatomic, strong) IBOutlet UIImageView *leftSymbolImgView;
-
-@property (nonatomic, strong) IBOutlet UIImageView *rightSymbolImgView;
-
-@property (nonatomic, strong) IBOutlet UITextField *leftTxtField;
-
-@property (nonatomic, strong) IBOutlet UITextField *rightTxtField;
-
-@property (nonatomic, strong) IBOutlet UIView *redView;
-
-@property (nonatomic, strong) IBOutlet UILabel *twoTimeLable;
-
+@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, weak) IBOutlet UIImageView *flagImgView;
+@property (nonatomic, weak) IBOutlet UIImageView *leftSymbolImgView;
+@property (nonatomic, weak) IBOutlet UIImageView *rightSymbolImgView;
+@property (nonatomic, weak) IBOutlet UITextField *leftTxtField;
+@property (nonatomic, weak) IBOutlet UITextField *rightTxtField;
+@property (nonatomic, weak) IBOutlet UIView *redView;
+@property (nonatomic, weak) IBOutlet UILabel *twoTimeLable;
 @property (nonatomic, strong) Card *dataDict;
-
 @property (nonatomic, strong) NSIndexPath *indexPath;
-
 @property (nonatomic, strong) NSString *sybolString;
-
 @property (nonatomic, strong) NSString *counveronCurrencyString;
 
 //@property (nonatomic, strong) NSMutableArray *defaultsArray;
@@ -64,15 +53,15 @@
 
 @property (nonatomic, strong) IBOutlet UIView *alertView;
 
-@property (nonatomic, strong) IBOutlet UILabel *titleLable;
+@property (nonatomic, weak) IBOutlet UILabel *titleLable;
 
-@property (nonatomic, strong) IBOutlet UILabel *textLbl;
+@property (nonatomic, weak) IBOutlet UILabel *textLbl;
 
-@property (nonatomic, strong)  IBOutlet UILabel *firstSymbolLbl;
+@property (nonatomic, weak)  IBOutlet UILabel *firstSymbolLbl;
 
 @property (nonatomic, strong)  IBOutlet UILabel *warningLbl;
 
-@property (nonatomic, strong)  IBOutlet UILabel *scndSymbolLbl;
+@property (nonatomic, weak)  IBOutlet UILabel *scndSymbolLbl;
 
 @property (nonatomic , strong) NSString *currentId;
 

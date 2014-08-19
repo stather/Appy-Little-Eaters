@@ -14,12 +14,12 @@
     NSMutableArray *_tempMA;
     IBOutlet UILabel *navigationTitle;
 }
-@property (strong, nonatomic) IBOutlet UIView *bottomView;
-@property (strong , nonatomic) IBOutlet UITableView *table;
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
+@property (weak , nonatomic) IBOutlet UITableView *table;
 @property (nonatomic , strong) NSMutableArray *historyArray;
-@property (strong, nonatomic) IBOutlet UIButton *receiptsButton;
-@property (strong, nonatomic) IBOutlet UIButton *captureButton;
-@property (strong, nonatomic) IBOutlet UIButton *settingsButton;
+@property (weak, nonatomic) IBOutlet UIButton *receiptsButton;
+@property (weak, nonatomic) IBOutlet UIButton *captureButton;
+@property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 
 - (IBAction)BottomButtonTouched:(UIButton *)sender;
 

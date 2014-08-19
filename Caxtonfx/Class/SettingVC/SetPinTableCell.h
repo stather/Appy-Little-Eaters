@@ -10,11 +10,11 @@
 
 @interface SetPinTableCell : UITableViewCell
 
-@property (nonatomic, strong) IBOutlet UILabel *lbl;
+@property (nonatomic, weak) IBOutlet UILabel *lbl;
 
-@property (nonatomic, strong) IBOutlet UIImageView *imgView;
+@property (nonatomic, weak) IBOutlet UIImageView *imgView;
 
-@property (nonatomic ,strong) IBOutlet UIView *view;
+@property (nonatomic, weak) IBOutlet UIView *view;
 
 + (NSString *)reuseIdentifier;
 

@@ -184,21 +184,21 @@
     if ([userInfo valueForKey:@"Rates"] !=nil) {
         NSDictionary *ratesDic =[userInfo valueForKey:@"Rates"];
         NSString *rates=[NSString stringWithFormat:@"Dollar:%@ \n Euro:%@",[ratesDic valueForKey:@"Dollar"],[ratesDic valueForKey:@"Euro"]];
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Check out the current rates:" message:rates delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Check out the current rates:" message:rates delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [alert show];
     }
     if ([userInfo valueForKey:@"Transfer"] !=nil) {
         NSDictionary *ratesDic =[userInfo valueForKey:@"Transfer"];
         self.sentAmount =[[ratesDic valueForKey:@"Amount"] floatValue];
         NSString *rates=[NSString stringWithFormat:@"Transfered Amount: £%@",[ratesDic valueForKey:@"Amount"]];
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Funds Transfer Completed" message:rates delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Funds Transfer Completed" message:rates delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         alert.tag =1;
         [alert show];
     }
     if ([userInfo valueForKey:@"Promo"] !=nil) {
         NSDictionary *promoDic =[userInfo valueForKey:@"Promo"];
         NSString *promo = [promoDic valueForKey:@"Message"];
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Caxton Fx" message:promo delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Caxton Fx" message:promo delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [alert show];
     }
 }
@@ -652,7 +652,7 @@
             [controller setSubject:@"Caxton FX Easy to Spend app feedback"];
             [navController presentViewController:controller animated:YES completion:nil];
         }else{
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Setup mail account in email in setting" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Setup mail account in email in setting" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
             [alert show];
         }
     }
@@ -675,7 +675,7 @@
             [controller setMessageBody:@"I’ve just used the Caxton FX travel app that makes holiday spending simple. Convert currency in a snap of a photo and manage a Caxton FX account on the move. Download yours here. https://itunes.apple.com/us/app/caxtonfx-app/id687286642?ls=1&mt=8" isHTML:NO];
             [navController presentViewController:controller animated:YES completion:nil];
         }else{
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Setup mail account in email in setting" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Setup mail account in email in setting" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
             [alert show];
         }
     }
@@ -687,7 +687,7 @@
     if (result == MFMailComposeResultSent) {
         [[[UIAlertView alloc] initWithTitle:@"Success!"
                                     message:@"Your message has been sent. Thanks for sharing the Caxton FX app."
-                                   delegate:self
+                                   delegate:nil
                           cancelButtonTitle:@"OK"
                           otherButtonTitles:nil, nil] show];
     }
@@ -727,7 +727,7 @@
                     break;
                 case SLComposeViewControllerResultDone:
                 {
-                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Post Successful" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Post Successful" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
                     [alert show];
                 }
                     break;
@@ -767,7 +767,7 @@
                     break;
                 case SLComposeViewControllerResultDone:
                 {
-                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Post Successful" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Post Successful" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
                     [alert show];
                 }
                     break;
@@ -861,7 +861,8 @@
 {
     if([service isEqualToString:@"GetPromo"])
     {
-        TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
+        NSError *parseError = nil;
+        TBXML *tbxml =[TBXML tbxmlWithXMLString:response error:&parseError];
         TBXMLElement *root = tbxml.rootXMLElement;
         TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
         TBXMLElement *getPromoResponseEle = [TBXML childElementNamed:@"GetPromoResponse" parentElement:rootItemElem];
@@ -1061,6 +1062,18 @@
         default:
             break;
     }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    
 }
 
 -(void)doLogout

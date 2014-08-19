@@ -11,10 +11,10 @@
 @interface CurrencyTableCell : UITableViewCell
 
 
-@property (nonatomic, strong) IBOutlet UIImageView *flagImageView;
-@property (nonatomic, strong) IBOutlet UILabel *textLbl;
-@property (nonatomic, strong) IBOutlet UIImageView *radio;
-@property (nonatomic, strong) IBOutlet UIView *lineView;
-@property (nonatomic ,strong) IBOutlet UIImageView *flagBGImageView;
+@property (nonatomic, weak) IBOutlet UIImageView *flagImageView;
+@property (nonatomic, weak) IBOutlet UILabel *textLbl;
+@property (nonatomic, weak) IBOutlet UIImageView *radio;
+@property (nonatomic, weak) IBOutlet UIView *lineView;
+@property (nonatomic, weak) IBOutlet UIImageView *flagBGImageView;
 
 @end

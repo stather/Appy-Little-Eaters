@@ -18,8 +18,8 @@
     NSMutableArray *bankArr;
 }
 
-@property (nonatomic, strong) IBOutlet UIImageView *imageView;
-@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, weak) IBOutlet UIImageView *imageView;
+@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
 
 
 - (id) initWithImageToConvert:(UIImage*) img andCurrencyArr:(NSMutableArray*) arr andBankArr:(NSMutableArray*) arr2 andFocusBounds:(CGRect) bounds andPageNumber:(int) page;

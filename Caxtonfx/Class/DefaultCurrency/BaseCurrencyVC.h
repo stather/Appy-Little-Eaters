@@ -25,7 +25,7 @@
 @property BOOL fromConverter;
 @property (nonatomic ,strong)  UISearchBar *searchBar;
 @property(nonatomic,strong)id <SelectorDelegate> delegate;
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray *array;
 @property (nonatomic, strong) NSMutableArray *allRatesMA;

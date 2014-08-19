@@ -47,24 +47,24 @@
     UIActivityIndicatorView *indicatorView;
     UILabel *ProcessingLbl;
 }
-@property (strong, nonatomic) IBOutlet UIImageView *toolTipImgView;
-@property (strong, nonatomic) IBOutlet UILabel *toolTipLbl;
+@property (weak, nonatomic) IBOutlet UIImageView *toolTipImgView;
+@property (weak, nonatomic) IBOutlet UILabel *toolTipLbl;
 @property (nonatomic, strong) IBOutlet UIImageView *imgView;
-@property (nonatomic, strong) IBOutlet UIButton *targetBtn;
-@property (nonatomic, strong) IBOutlet UIButton *preferredBtn;
-@property (nonatomic, strong) IBOutlet UIButton *pullViewDownBtn;
-@property (nonatomic, strong) IBOutlet UIScrollView *menuScroller;
-@property (nonatomic, strong) IBOutlet UIScrollView *bankScroller;
-@property (nonatomic, strong) IBOutlet UIView *pullView;
-@property (nonatomic, strong) IBOutlet UIView *headerView;
-@property (nonatomic, strong) IBOutlet UILabel *rateLbl;
-@property (nonatomic, strong) IBOutlet UILabel *institutionNameLbl;
-@property (nonatomic, strong) IBOutlet UILabel *comissionLbl;
-@property (strong, nonatomic) IBOutlet UIButton *saveBtn;
-@property (strong, nonatomic) IBOutlet UIButton *shareBtn;
-@property (strong, nonatomic) IBOutlet UIButton *moreInfoBtn;
+@property (nonatomic, weak) IBOutlet UIButton *targetBtn;
+@property (nonatomic, weak) IBOutlet UIButton *preferredBtn;
+@property (nonatomic, weak) IBOutlet UIButton *pullViewDownBtn;
+@property (nonatomic, weak) IBOutlet UIScrollView *menuScroller;
+@property (nonatomic, weak) IBOutlet UIScrollView *bankScroller;
+@property (nonatomic, weak) IBOutlet UIView *pullView;
+@property (nonatomic, weak) IBOutlet UIView *headerView;
+@property (nonatomic, weak) IBOutlet UILabel *rateLbl;
+@property (nonatomic, weak) IBOutlet UILabel *institutionNameLbl;
+@property (nonatomic, weak) IBOutlet UILabel *comissionLbl;
+@property (weak, nonatomic) IBOutlet UIButton *saveBtn;
+@property (weak, nonatomic) IBOutlet UIButton *shareBtn;
+@property (weak, nonatomic) IBOutlet UIButton *moreInfoBtn;
 
-@property (nonatomic, strong) UIImage *imageToConvert;
+@property (nonatomic, weak) UIImage *imageToConvert;
 @property (nonatomic) CGRect focusBounds;
 
 - (IBAction) currencyPickerBtnTap:(id)sender;

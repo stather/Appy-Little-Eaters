@@ -22,7 +22,7 @@
     MBProgressHUD *HUD;
 }
 @property (strong, nonatomic) IBOutlet UIView *bottomView;
-@property (strong , nonatomic) IBOutlet UITableView *table;
+@property (weak , nonatomic) IBOutlet UITableView *table;
 @property (nonatomic , strong) NSMutableArray *banksArray;
 @property (strong, nonatomic) IBOutlet UIButton *receiptsButton;
 

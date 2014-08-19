@@ -28,7 +28,7 @@
 - (void) goForConversionWithImage:(UIImage *) image withFocusBounds:(CGRect) rect;
 - (void) showCamera;
 - (void) showLibrary;
-- (void) changeCameraMode:(int) mode;
+- (void) changeCameraMode:(NSInteger) mode;
 - (void) showReceipts;
 - (void) initImagePickerController;
 - (void) goForImageCroppingWithImage:(UIImage*) image;

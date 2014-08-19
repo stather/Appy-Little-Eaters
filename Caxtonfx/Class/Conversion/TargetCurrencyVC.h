@@ -10,7 +10,6 @@
 
 @interface TargetCurrencyVC : UIViewController<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 {
-    
     int selectedRow;
     NSString *searchText;
     NSString *selectedCurrency;
@@ -19,7 +18,7 @@
 
 @property (nonatomic ,strong)  UISearchBar *searchBar;
 
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray *array;
 @property (nonatomic, strong) NSMutableArray *allRatesMA;

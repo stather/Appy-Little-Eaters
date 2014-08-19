@@ -1,5 +1,4 @@
 platform :ios, '7.0'
-pod 'AFNetworking'
 pod 'FlurrySDK', '~> 5.1'
 ##pod 'PAPasscode', '~> 0.3'
 pod 'KeychainItemWrapper', '~> 1.2'

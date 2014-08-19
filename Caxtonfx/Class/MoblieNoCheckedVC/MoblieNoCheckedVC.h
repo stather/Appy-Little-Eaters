@@ -10,7 +10,7 @@
 
 @interface MoblieNoCheckedVC : UIViewController<UIScrollViewDelegate>
 
-@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
 
 -(IBAction)editBtnPressed:(id)sender;
 

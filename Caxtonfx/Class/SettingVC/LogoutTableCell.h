@@ -12,9 +12,9 @@
 
 @interface LogoutTableCell : UITableViewCell <UIAlertViewDelegate>
 
-@property (nonatomic, strong) IBOutlet UILabel *lbl;
+@property (nonatomic, weak) IBOutlet UILabel *lbl;
 
-@property (nonatomic, strong) IBOutlet UIButton *btn;
+@property (nonatomic, weak) IBOutlet UIButton *btn;
 
 @property (nonatomic, strong) IBOutlet UIView *view;
 

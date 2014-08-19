@@ -12,16 +12,16 @@
 {
     
 }
-@property (nonatomic, strong) IBOutlet UILabel *rateLbl;
-@property (nonatomic, strong) IBOutlet UILabel *institutionNameLbl;
-@property (nonatomic, strong) IBOutlet UIView *headerView;
+@property (nonatomic, weak) IBOutlet UILabel *rateLbl;
+@property (nonatomic, weak) IBOutlet UILabel *institutionNameLbl;
+@property (nonatomic, weak) IBOutlet UIView *headerView;
 @property (nonatomic , strong) NSMutableData *mutableData;
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UILabel *sourceCurrencyLbl;
 @property (strong, nonatomic) IBOutlet UILabel *targetCurrencyLbl;
 @property (strong, nonatomic) IBOutlet UILabel *bankNameLbl;
-@property (strong, nonatomic) IBOutlet UIButton *targetBtn;
-@property (strong, nonatomic) IBOutlet UIButton *preferredBtn;
+@property (weak, nonatomic) IBOutlet UIButton *targetBtn;
+@property (weak, nonatomic) IBOutlet UIButton *preferredBtn;
 @property (nonatomic , strong) NSMutableDictionary *detailsDict;
 @end

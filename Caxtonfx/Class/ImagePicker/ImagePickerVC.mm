@@ -216,7 +216,7 @@
    
 }
 
-- (void) changeCameraMode:(int) mode
+- (void) changeCameraMode:(NSInteger) mode
 {
     if (mode == 1)
     {

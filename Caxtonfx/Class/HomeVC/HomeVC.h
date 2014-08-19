@@ -11,10 +11,10 @@
 
 @interface HomeVC : UIViewController <UIScrollViewDelegate,sharedDelegate,NSXMLParserDelegate,PAPasscodeViewControllerDelegate>
 
-@property (nonatomic,strong) IBOutlet UIScrollView *scrollView;
-@property (nonatomic,strong) IBOutlet UIActivityIndicatorView *lodingView;
-@property (nonatomic,strong) IBOutlet UILabel *updateInfo;
-@property (nonatomic,strong) IBOutlet UILabel *mainLabel;
+@property (nonatomic,weak) IBOutlet UIScrollView *scrollView;
+@property (nonatomic,weak) IBOutlet UIActivityIndicatorView *lodingView;
+@property (nonatomic,weak) IBOutlet UILabel *updateInfo;
+@property (nonatomic,weak) IBOutlet UILabel *mainLabel;
 @property (nonatomic, strong) NSMutableArray *textArray;
 @property (nonatomic, strong) NSString *currentElement;
 

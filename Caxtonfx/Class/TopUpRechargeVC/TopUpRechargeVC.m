@@ -333,18 +333,41 @@
         NSString *dateString = [dateFormatter stringFromDate:currDate];
         
         NSLog(@"Top Up Response: %@", response);
-        TBXML *tbxml =[TBXML tbxmlWithXMLString:response];
+        
+        NSString *statusCodeStr = nil;
+        NSString *cardBalanceStr = nil;
+        NSString *successStr = nil;
+
+        NSError *parseError = nil;
+        TBXML *tbxml =[TBXML tbxmlWithXMLString:response error:&parseError];
         TBXMLElement *root = tbxml.rootXMLElement;
-        TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root];
-        TBXMLElement *TopUpResponse = [TBXML childElementNamed:@"TopUpResponse" parentElement:rootItemElem];
-        TBXMLElement *TopUpResult = [TBXML childElementNamed:@"TopUpResult" parentElement:TopUpResponse];
-        TBXMLElement *success = [TBXML childElementNamed:@"a:success" parentElement:TopUpResult];
-        TBXMLElement *cardBalance = [TBXML childElementNamed:@"a:cardBalance" parentElement:TopUpResult];
-        TBXMLElement *statusCode = [TBXML childElementNamed:@"a:statusCode" parentElement:TopUpResult];
-        NSString *statusCodeStr = [TBXML textForElement:statusCode];
-        NSString *cardBalanceStr = [TBXML textForElement:cardBalance];
-        NSString *successStr = [TBXML textForElement:success];
-        if([successStr isEqualToString:@"False"])
+        TBXMLElement *rootItemElem = [TBXML childElementNamed:@"s:Body" parentElement:root error:&parseError];
+        if (!parseError) {
+            TBXMLElement *TopUpResponse = [TBXML childElementNamed:@"TopUpResponse" parentElement:rootItemElem error:&parseError];
+            if (!parseError) {
+                TBXMLElement *TopUpResult = [TBXML childElementNamed:@"TopUpResult" parentElement:TopUpResponse error:&parseError];
+                if (!parseError) {
+                    TBXMLElement *success = [TBXML childElementNamed:@"a:success"
+                                                       parentElement:TopUpResult
+                                                               error:&parseError];
+                    TBXMLElement *cardBalance = [TBXML childElementNamed:@"a:cardBalance"
+                                                           parentElement:TopUpResult
+                                                                   error:&parseError];
+                    TBXMLElement *statusCode = [TBXML childElementNamed:@"a:statusCode"
+                                                          parentElement:TopUpResult
+                                                                  error:&parseError];
+                    
+                    statusCodeStr = [TBXML textForElement:statusCode];
+                    cardBalanceStr = [TBXML textForElement:cardBalance];
+                    successStr = [TBXML textForElement:success];
+                }
+            }
+        }
+        if (parseError) {
+            NSLog(@"%@", parseError);
+        }
+        
+        if([successStr isEqualToString:@"False"] || !successStr)
         {
             /*
              * Remote Logging of Top-Up attempts Coversion/Failure
@@ -770,9 +793,6 @@ replacementString: (NSString*) string {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Money Transfer" message:[NSString stringWithFormat:@"There is a minimum load value of %@%d. Please re-enter correct amount.",sybolString,[self.myDefObj.minTopUp intValue]] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
             [alert show];
         }
-
-    
-
 }
 -(void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral {
     if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
@@ -807,6 +827,15 @@ replacementString: (NSString*) string {
         self.HUD.labelText =@"Get them closer...";
     }
 }
+
+- (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    
+}
+
+- (void) alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
+    
+}
+
 - (void)alertView:(UIAlertView *)myAlertView
 clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (myAlertView.tag == 10) {
@@ -838,6 +867,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
          }
          */
     }else if (myAlertView.tag==21){
+        myAlertView.delegate = nil;
         [self.navigationController popViewControllerAnimated:YES];
     }
     else{

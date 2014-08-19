@@ -228,6 +228,7 @@
     }
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    alertView.delegate = nil;
     [self GoBackView];
 }
 -(void)loadingFailedWithError:(NSString *)error withServiceName:(NSString *)service

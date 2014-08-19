@@ -89,6 +89,7 @@
     }
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    alertView.delegate = nil;
     [self backBtnPressed:nil];
 }
 -(void)refreshRates{

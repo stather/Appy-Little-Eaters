@@ -10,25 +10,16 @@
 
 @interface MoreInfoVC : UIViewController<UIScrollViewDelegate,UIWebViewDelegate,UITextFieldDelegate,UIGestureRecognizerDelegate,sharedDelegate>
 
-@property (nonatomic ,strong) IBOutlet UIScrollView *scrollView;
-
-@property (nonatomic, strong) IBOutlet UIWebView *webView;
-
-@property (nonatomic, strong) IBOutlet UIView *demoView;
-
-@property (nonatomic ,strong) IBOutlet UITextField *firstTxtFld;
-
-@property (nonatomic ,strong) IBOutlet UITextField *lastTxtFld;
-
-@property (nonatomic ,strong) IBOutlet UITextField *emailTxtFld;
-
+@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, weak) IBOutlet UIWebView *webView;
+@property (nonatomic, weak) IBOutlet UIView *demoView;
+@property (nonatomic, weak) IBOutlet UITextField *firstTxtFld;
+@property (nonatomic, weak) IBOutlet UITextField *lastTxtFld;
+@property (nonatomic, weak) IBOutlet UITextField *emailTxtFld;
 @property (nonatomic, strong) IBOutlet UILabel *wantJoinLbl;
-
 @property (nonatomic, strong) IBOutlet UILabel * textLbl;
-
-@property (nonatomic, strong) IBOutlet UILabel *waringLbl;
-
-@property (nonatomic, strong) IBOutlet UILabel *staticLable;
+@property (nonatomic, weak) IBOutlet UILabel *waringLbl;
+@property (nonatomic, weak) IBOutlet UILabel *staticLable;
 
 -(IBAction)sendBtnPressed:(id)sender;
 

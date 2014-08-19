@@ -10,10 +10,10 @@
 
 @interface ImageConversionsCustomCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UIImageView *thumbnailImageView;
-@property (strong, nonatomic) IBOutlet UILabel *currencyCodeLabel;
-@property (strong, nonatomic) IBOutlet UILabel *globalRateLabel;
-@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
-@property (strong, nonatomic) IBOutlet UILabel *convertedCurrencyLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *thumbnailImageView;
+@property (weak, nonatomic) IBOutlet UILabel *currencyCodeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *globalRateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *convertedCurrencyLabel;
 
 @end

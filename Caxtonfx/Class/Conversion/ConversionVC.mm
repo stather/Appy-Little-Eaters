@@ -3795,6 +3795,7 @@ static NSString* commonHtmlTitle = @"<font size=\"10\">";
     NSArray *array = [self.navigationController viewControllers];
     ImagePickerVC *ivc = (ImagePickerVC*) [array objectAtIndex:0];
     [ivc showCamera];
+    alertView.delegate = nil;
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

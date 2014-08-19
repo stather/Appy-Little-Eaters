@@ -850,7 +850,12 @@
 		C017396F1976A6540009C1C2 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C017396A1976A6540009C1C2 /* back@2x.png */; };
 		C01739701976A6540009C1C2 /* RESwitch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C017396B1976A6540009C1C2 /* RESwitch.bundle */; };
 		C01739711976A6540009C1C2 /* RESwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = C017396D1976A6540009C1C2 /* RESwitch.m */; };
+		C01FBAA71993B6CF00297B6F /* CustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C01FBAA61993B6CF00297B6F /* CustomAlertView.m */; };
+		C01FBAA91993B8C000297B6F /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C01FBAA81993B8BF00297B6F /* CustomAlertView.xib */; };
 		C07CC0CE1963F377007A07EB /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C07CC0CD1963F377007A07EB /* Crashlytics.framework */; };
+		C09B33B1198F6E49003E186B /* UILabel+Thread.m in Sources */ = {isa = PBXBuildFile; fileRef = C09B33B0198F6E49003E186B /* UILabel+Thread.m */; };
+		C09B33B81993659D003E186B /* ForgottenPinView.m in Sources */ = {isa = PBXBuildFile; fileRef = C09B33B71993659D003E186B /* ForgottenPinView.m */; };
+		C09B33BA199365AC003E186B /* ForgottenPinView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C09B33B9199365AC003E186B /* ForgottenPinView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1821,7 +1826,15 @@
 		C017396B1976A6540009C1C2 /* RESwitch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = RESwitch.bundle; sourceTree = "<group>"; };
 		C017396C1976A6540009C1C2 /* RESwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESwitch.h; sourceTree = "<group>"; };
 		C017396D1976A6540009C1C2 /* RESwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESwitch.m; sourceTree = "<group>"; };
+		C01FBAA51993B6CF00297B6F /* CustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAlertView.h; sourceTree = "<group>"; };
+		C01FBAA61993B6CF00297B6F /* CustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAlertView.m; sourceTree = "<group>"; };
+		C01FBAA81993B8BF00297B6F /* CustomAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAlertView.xib; sourceTree = "<group>"; };
 		C07CC0CD1963F377007A07EB /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		C09B33AF198F6E49003E186B /* UILabel+Thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Thread.h"; sourceTree = "<group>"; };
+		C09B33B0198F6E49003E186B /* UILabel+Thread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Thread.m"; sourceTree = "<group>"; };
+		C09B33B61993659D003E186B /* ForgottenPinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgottenPinView.h; sourceTree = "<group>"; };
+		C09B33B71993659D003E186B /* ForgottenPinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgottenPinView.m; sourceTree = "<group>"; };
+		C09B33B9199365AC003E186B /* ForgottenPinView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgottenPinView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2940,6 +2953,8 @@
 		9511B1691746383E00864062 /* MyCard */ = {
 			isa = PBXGroup;
 			children = (
+				C01FBAA41993B64400297B6F /* Custom Alert View */,
+				C09B33B519936569003E186B /* Forgotten Pin Footer */,
 				9511B17617463C5E00864062 /* myCardsImages */,
 				9511B16A1746385500864062 /* MyCardVC.h */,
 				950EE1C517B515300081EE15 /* MyCardVC.m */,
@@ -3237,6 +3252,8 @@
 		95CB4F901712D0AA00A6490B /* Caxtonfx */ = {
 			isa = PBXGroup;
 			children = (
+				C09B33AF198F6E49003E186B /* UILabel+Thread.h */,
+				C09B33B0198F6E49003E186B /* UILabel+Thread.m */,
 				B22E1748189AB59500721C0E /* Model */,
 				1994CABC17211FDE00396488 /* Rocket */,
 				386A2281172029B1003AF502 /* Resource1 */,
@@ -3416,6 +3433,16 @@
 			name = FMDB;
 			sourceTree = "<group>";
 		};
+		C01FBAA41993B64400297B6F /* Custom Alert View */ = {
+			isa = PBXGroup;
+			children = (
+				C01FBAA51993B6CF00297B6F /* CustomAlertView.h */,
+				C01FBAA61993B6CF00297B6F /* CustomAlertView.m */,
+				C01FBAA81993B8BF00297B6F /* CustomAlertView.xib */,
+			);
+			name = "Custom Alert View";
+			sourceTree = "<group>";
+		};
 		C05241B4196D6EDB006B7872 /* RESwitch */ = {
 			isa = PBXGroup;
 			children = (
@@ -3426,6 +3453,16 @@
 				C017396D1976A6540009C1C2 /* RESwitch.m */,
 			);
 			path = RESwitch;
+			sourceTree = "<group>";
+		};
+		C09B33B519936569003E186B /* Forgotten Pin Footer */ = {
+			isa = PBXGroup;
+			children = (
+				C09B33B61993659D003E186B /* ForgottenPinView.h */,
+				C09B33B71993659D003E186B /* ForgottenPinView.m */,
+				C09B33B9199365AC003E186B /* ForgottenPinView.xib */,
+			);
+			name = "Forgotten Pin Footer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3531,6 +3568,7 @@
 				197084AD1726C57800F72200 /* CameraOverlayVC.xib in Resources */,
 				197084B21726C81E00F72200 /* albumTab.png in Resources */,
 				197084B31726C81E00F72200 /* albumTabHover.png in Resources */,
+				C09B33BA199365AC003E186B /* ForgottenPinView.xib in Resources */,
 				197084B41726C81E00F72200 /* albumTab@2x.png in Resources */,
 				197084B51726C81E00F72200 /* albumTabHover@2x.png in Resources */,
 				197084BA1726C84000F72200 /* cameraTab@2x.png in Resources */,
@@ -4016,6 +4054,7 @@
 				196E89661767387E00703EF7 /* lv - Latvia.png in Resources */,
 				196E89671767387E00703EF7 /* ly - Libyan Arab Jamahiriya.png in Resources */,
 				196E89681767387E00703EF7 /* ma - Morocco.png in Resources */,
+				C01FBAA91993B8C000297B6F /* CustomAlertView.xib in Resources */,
 				196E89691767387E00703EF7 /* mc - Monaco.png in Resources */,
 				196E896A1767387E00703EF7 /* md - Moldova Republic of.png in Resources */,
 				196E896B1767387E00703EF7 /* me - Montenegro.png in Resources */,
@@ -4274,6 +4313,7 @@
 				1994CAF41721203300396488 /* Validate.m in Sources */,
 				1994CAFC1721204400396488 /* GTMNSString+HTML.m in Sources */,
 				1994CAFD1721204400396488 /* NSDate+InternetDateTime.m in Sources */,
+				C09B33B81993659D003E186B /* ForgottenPinView.m in Sources */,
 				1994CAFE1721204400396488 /* NSString+HTML.m in Sources */,
 				B23D2A8318D1CCC2007D2A63 /* FMResultSet.m in Sources */,
 				1994CB201721207700396488 /* NSObject+SBJson.m in Sources */,
@@ -4304,6 +4344,7 @@
 				1994CB601721224800396488 /* ImageFilter.m in Sources */,
 				1994CB611721224800396488 /* ImagePickerVC.mm in Sources */,
 				1994CB621721224800396488 /* ImageUtils.mm in Sources */,
+				C09B33B1198F6E49003E186B /* UILabel+Thread.m in Sources */,
 				1994CB631721224800396488 /* UIImage+fixOrientation.m in Sources */,
 				1994CB641721224800396488 /* UIImageAverageColorAddition.m in Sources */,
 				1994CB7C172123AE00396488 /* UIColor+Additions.m in Sources */,
@@ -4350,6 +4391,7 @@
 				1994F6A31774199D009DF5E6 /* DefaultCurrencyCustomCell.m in Sources */,
 				9543AE1F17AF8282005D9C82 /* HTMLNode.m in Sources */,
 				9543AE2017AF8282005D9C82 /* HTMLParser.m in Sources */,
+				C01FBAA71993B6CF00297B6F /* CustomAlertView.m in Sources */,
 				B22E1751189BEB1500721C0E /* Transaction.m in Sources */,
 				950EE1C417B514FB0081EE15 /* HistoryVC.m in Sources */,
 				950EE1C617B515300081EE15 /* MyCardVC.m in Sources */,
@@ -4387,8 +4429,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Caxton FX Ltd (F35CTZ6K75)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Caxton FX Ltd (F35CTZ6K75)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -4403,8 +4445,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "E695DFB1-E947-43B0-A66D-36284CBC1BC4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E695DFB1-E947-43B0-A66D-36284CBC1BC4";
+				PROVISIONING_PROFILE = "614D6281-F361-4B5A-A12E-BE783DA32F75";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "614D6281-F361-4B5A-A12E-BE783DA32F75";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -4418,8 +4460,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Caxton FX Ltd (F35CTZ6K75)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Caxton FX Ltd (F35CTZ6K75)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -4427,8 +4469,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "E695DFB1-E947-43B0-A66D-36284CBC1BC4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E695DFB1-E947-43B0-A66D-36284CBC1BC4";
+				PROVISIONING_PROFILE = "614D6281-F361-4B5A-A12E-BE783DA32F75";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "614D6281-F361-4B5A-A12E-BE783DA32F75";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -4456,10 +4498,10 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C60DA4BC-11AD-4B35-8053-97582B468C5A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C60DA4BC-11AD-4B35-8053-97582B468C5A";
+				PROVISIONING_PROFILE = "614D6281-F361-4B5A-A12E-BE783DA32F75";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "614D6281-F361-4B5A-A12E-BE783DA32F75";
 				STRIP_INSTALLED_PRODUCT = NO;
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4487,10 +4529,10 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C60DA4BC-11AD-4B35-8053-97582B468C5A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C60DA4BC-11AD-4B35-8053-97582B468C5A";
+				PROVISIONING_PROFILE = "614D6281-F361-4B5A-A12E-BE783DA32F75";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "614D6281-F361-4B5A-A12E-BE783DA32F75";
 				STRIP_INSTALLED_PRODUCT = NO;
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -23,6 +23,8 @@
 
 @interface HistoryVC ()
 
+@property(nonatomic, assign) BOOL isRefreshing;
+
 @end
 
 @implementation HistoryVC
@@ -78,11 +80,15 @@
 {
     [super viewWillAppear:animated];
 
-    if(conversionArray)
-        [conversionArray removeAllObjects];
     
-    DatabaseHandler *dbHandler = [[DatabaseHandler alloc] init];
-    conversionArray = [dbHandler getData:@"select * from conversionHistoryTable order by date desc"];
+    
+    dispatch_async([AppDelegate sharedQueue], ^{
+        DatabaseHandler *dbHandler = [[DatabaseHandler alloc] init];
+        NSMutableArray *newConversionArray = [dbHandler getData:@"select * from conversionHistoryTable order by date desc"];
+        if(conversionArray)
+            [conversionArray removeAllObjects];
+        conversionArray = newConversionArray;
+    });
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -92,7 +98,8 @@
     AppDelegate *appDelegate = [AppDelegate getSharedInstance];
     [[appDelegate customeTabBar] setHidden:NO];
     User *myUser = [User sharedInstance];
-    if([CommonFunctions reachabiltyCheck])
+    
+    if([CommonFunctions reachabiltyCheck] && !self.isRefreshing)
     {
         if ([[self.table subviews] containsObject:self.refreshControl])
             [self.refreshControl removeFromSuperview];
@@ -102,17 +109,19 @@
         if (![[NSUserDefaults standardUserDefaults] objectForKey:@"khistoryData"])
         {
             [self hudRefresh];
-        }else{
+        }else {
             if ([appDelegate minutesSinceNow] > 10){
                 [self hudRefresh];
             }else{
                 if (myUser.transactions.count == 0) {
                     [self hudRefresh];
                 }else{
+                    self.isRefreshing = YES;
                     User *myUSer = [User sharedInstance];
                     myUSer.transactions = [myUSer loadTransactionsForUSer:myUSer.username withRemote:NO];
                     [self.table reloadData];
                     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                    self.isRefreshing = NO;
                 }
             }
         }
@@ -121,45 +130,69 @@
     [Flurry logEvent:@"Visited History Screen"];
 }
 
-- (void)refresh :(id)sender
+- (void)refresh:(id)sender
 {
-   
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Checking for transactions"];
     [self.refreshControl beginRefreshing];
-    if([CommonFunctions reachabiltyCheck])
-        [self.HUD showWhileExecuting:@selector(refreshTransactionsinModel) onTarget:self withObject:nil animated:YES];
+    if([CommonFunctions reachabiltyCheck] && !self.isRefreshing) {
+        self.isRefreshing = YES;
+        self.view.userInteractionEnabled = NO;
+        [self.HUD showAnimated:YES
+           whileExecutingBlock:^{
+               [self refreshTransactionsinModel];
+           }
+                       onQueue:[AppDelegate sharedQueue]
+               completionBlock:^{
+                   self.isRefreshing = NO;
+               }];
+    }
     
     [self.refreshControl endRefreshing];
     
 }
 - (void)hudRefresh
 {
-    self.view.userInteractionEnabled = NO;
-    if([CommonFunctions reachabiltyCheck])
-        [self.HUD showWhileExecuting:@selector(refreshTransactionsinModel) onTarget:self withObject:nil animated:YES];
-    else{
-        self.view.userInteractionEnabled = YES;
-        UIAlertView *myAlert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Please check you internet connection." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        [myAlert show];
+    if(!self.isRefreshing) {
+        if([CommonFunctions reachabiltyCheck]) {
+            self.isRefreshing = YES;
+            self.view.userInteractionEnabled = NO;
+            
+            [self.HUD showAnimated:YES
+               whileExecutingBlock:^{
+                   [self refreshTransactionsinModel];
+               }
+                           onQueue:[AppDelegate sharedQueue]
+                   completionBlock:^{
+                       self.isRefreshing = NO;
+                   }];
+        }
+        else{
+            self.view.userInteractionEnabled = YES;
+            UIAlertView *myAlert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Please check you internet connection." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [myAlert show];
+        }
     }
 }
 - (void)refreshTransactionsinModel {
     User *myUser = [User sharedInstance];
     myUser.transactions = [myUser loadTransactionsForUSer:@"" withRemote:YES];
-    [self.table reloadData];
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    self.view.userInteractionEnabled = YES;
-     if (![myUser.statusCode isEqualToString:@"000"] && ![myUser.statusCode isEqualToString:@"003"]) {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Session Expired" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        alert.tag = 1;
-        alert.delegate = self;
-        [alert show];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.table reloadData];
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        self.view.userInteractionEnabled = YES;
+        if (![myUser.statusCode isEqualToString:@"000"] && ![myUser.statusCode isEqualToString:@"003"]) {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Session Expired" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            alert.tag = 1;
+            alert.delegate = self;
+            [alert show];
+        }
+    });
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView.tag == 1 ){
         if (buttonIndex == 0)
         {
+            alertView.delegate = nil;
             AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
             [appDelegate doLogout];
         }
