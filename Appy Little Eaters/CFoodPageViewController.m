@@ -49,33 +49,21 @@
 	switch (self.index){
 		case 0:
 			filepath = [[NSBundle mainBundle] pathForResource:@"red-background" ofType:@"jpg"];
-			//c = [UIColor colorWithRed:1 green:0.195 blue:0.232 alpha:1];
-			//self.foodColourText.text = @"RED";
 			break;
 		case 1:
 			filepath = [[NSBundle mainBundle] pathForResource:@"orange-background" ofType:@"jpg"];
-			//c = [UIColor colorWithRed:1 green:0.604 blue:0.219 alpha:1];
-			//self.foodColourText.text = @"ORANGE";
 			break;
 		case 2:
 			filepath = [[NSBundle mainBundle] pathForResource:@"yellow-background" ofType:@"jpg"];
-			//c = [UIColor colorWithRed:1 green:0.955 blue:0.144 alpha:1];
-			//self.foodColourText.text = @"YELLOW";
 			break;
 		case 3:
 			filepath = [[NSBundle mainBundle] pathForResource:@"green-background" ofType:@"jpg"];
-			// = [UIColor colorWithRed:0.317 green:1 blue:0.281 alpha:1];
-			//self.foodColourText.text = @"GREEN";
 			break;
 		case 4:
 			filepath = [[NSBundle mainBundle] pathForResource:@"purple-background" ofType:@"jpg"];
-			//c = [UIColor colorWithRed:0.339 green:0.362 blue:1 alpha:1];
-			//self.foodColourText.text = @"BLUE AND PURPLE";
 			break;
 		case 5:
 			filepath = [[NSBundle mainBundle] pathForResource:@"white-background" ofType:@"jpg"];
-			//c = [UIColor colorWithRed:0.518 green:0.208 blue:0.042 alpha:1];
-			//self.foodColourText.text = @"BROWN AND WHITE";
 			break;
 	}
 	self.backgroundImage.image = [[UIImage alloc] initWithContentsOfFile:filepath];
