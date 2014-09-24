@@ -36,13 +36,6 @@
 		464205C618EB4EF3005EC168 /* squirrel5.png in Resources */ = {isa = PBXBuildFile; fileRef = 464205BF18EB4EF3005EC168 /* squirrel5.png */; };
 		464205C718EB4EF3005EC168 /* squirrel6.png in Resources */ = {isa = PBXBuildFile; fileRef = 464205C018EB4EF3005EC168 /* squirrel6.png */; };
 		464205C818EB4EF3005EC168 /* squirrel7.png in Resources */ = {isa = PBXBuildFile; fileRef = 464205C118EB4EF3005EC168 /* squirrel7.png */; };
-		4645C1C019CF58AF00BCE79E /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645C1B919CF58AF00BCE79E /* apple.png */; };
-		4645C1C119CF58AF00BCE79E /* cherry.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645C1BA19CF58AF00BCE79E /* cherry.png */; };
-		4645C1C219CF58AF00BCE79E /* raspberry.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645C1BB19CF58AF00BCE79E /* raspberry.png */; };
-		4645C1C319CF58AF00BCE79E /* redpepper.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645C1BC19CF58AF00BCE79E /* redpepper.png */; };
-		4645C1C419CF58AF00BCE79E /* strawberry.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645C1BD19CF58AF00BCE79E /* strawberry.png */; };
-		4645C1C519CF58AF00BCE79E /* tomato.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645C1BE19CF58AF00BCE79E /* tomato.png */; };
-		4645C1C619CF58AF00BCE79E /* watermelon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645C1BF19CF58AF00BCE79E /* watermelon.png */; };
 		464F703118A019F000DDA449 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464F703018A019F000DDA449 /* Foundation.framework */; };
 		464F703318A019F000DDA449 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464F703218A019F000DDA449 /* CoreGraphics.framework */; };
 		464F703518A019F000DDA449 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464F703418A019F000DDA449 /* UIKit.framework */; };
@@ -179,13 +172,6 @@
 		464205BF18EB4EF3005EC168 /* squirrel5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = squirrel5.png; sourceTree = "<group>"; };
 		464205C018EB4EF3005EC168 /* squirrel6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = squirrel6.png; sourceTree = "<group>"; };
 		464205C118EB4EF3005EC168 /* squirrel7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = squirrel7.png; sourceTree = "<group>"; };
-		4645C1B919CF58AF00BCE79E /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = apple.png; path = "../../../Dropbox/Happy Little Eaters/Exports/food/apple.png"; sourceTree = "<group>"; };
-		4645C1BA19CF58AF00BCE79E /* cherry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cherry.png; path = "../../../Dropbox/Happy Little Eaters/Exports/food/cherry.png"; sourceTree = "<group>"; };
-		4645C1BB19CF58AF00BCE79E /* raspberry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = raspberry.png; path = "../../../Dropbox/Happy Little Eaters/Exports/food/raspberry.png"; sourceTree = "<group>"; };
-		4645C1BC19CF58AF00BCE79E /* redpepper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redpepper.png; path = "../../../Dropbox/Happy Little Eaters/Exports/food/redpepper.png"; sourceTree = "<group>"; };
-		4645C1BD19CF58AF00BCE79E /* strawberry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = strawberry.png; path = "../../../Dropbox/Happy Little Eaters/Exports/food/strawberry.png"; sourceTree = "<group>"; };
-		4645C1BE19CF58AF00BCE79E /* tomato.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tomato.png; path = "../../../Dropbox/Happy Little Eaters/Exports/food/tomato.png"; sourceTree = "<group>"; };
-		4645C1BF19CF58AF00BCE79E /* watermelon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = watermelon.png; path = "../../../Dropbox/Happy Little Eaters/Exports/food/watermelon.png"; sourceTree = "<group>"; };
 		464F702D18A019F000DDA449 /* Appy Little Eaters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Appy Little Eaters.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		464F703018A019F000DDA449 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		464F703218A019F000DDA449 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -327,13 +313,6 @@
 		4645C1C719CF592F00BCE79E /* redfood */ = {
 			isa = PBXGroup;
 			children = (
-				4645C1B919CF58AF00BCE79E /* apple.png */,
-				4645C1BA19CF58AF00BCE79E /* cherry.png */,
-				4645C1BB19CF58AF00BCE79E /* raspberry.png */,
-				4645C1BC19CF58AF00BCE79E /* redpepper.png */,
-				4645C1BD19CF58AF00BCE79E /* strawberry.png */,
-				4645C1BE19CF58AF00BCE79E /* tomato.png */,
-				4645C1BF19CF58AF00BCE79E /* watermelon.png */,
 			);
 			name = redfood;
 			sourceTree = "<group>";
@@ -653,7 +632,6 @@
 				4615CCF219D1F5C5007994EC /* white-background.jpg in Resources */,
 				4615CCEF19D1F5C5007994EC /* orange-background.jpg in Resources */,
 				46E7C7BB19850C0B00CE7AB3 /* start-button_06.png in Resources */,
-				4645C1C019CF58AF00BCE79E /* apple.png in Resources */,
 				46E7C7D91985487A00CE7AB3 /* home-clouds.png in Resources */,
 				46E48BCF18A900E6006DCA91 /* next.png in Resources */,
 				46672BD118B5580900C68BF3 /* redcross.png in Resources */,
@@ -684,13 +662,11 @@
 				46E48BBC18A80485006DCA91 /* yummy-foods-icon.png in Resources */,
 				464F704718A019F000DDA449 /* Main_iPad.storyboard in Resources */,
 				46672BD318B55C1700C68BF3 /* rainbow-colouring.png in Resources */,
-				4645C1C619CF58AF00BCE79E /* watermelon.png in Resources */,
 				46E7C7D2198545F500CE7AB3 /* home-forest.png in Resources */,
 				46E48BBE18A80522006DCA91 /* parents-page-icon.png in Resources */,
 				4615CCF019D1F5C5007994EC /* purple-background.jpg in Resources */,
 				464205C318EB4EF3005EC168 /* squirrel2.png in Resources */,
 				4615CCF119D1F5C5007994EC /* red-background.jpg in Resources */,
-				4645C1C219CF58AF00BCE79E /* raspberry.png in Resources */,
 				464F704C18A019F000DDA449 /* Images.xcassets in Resources */,
 				464205C418EB4EF3005EC168 /* squirrel3.png in Resources */,
 				46E48BCE18A900E6006DCA91 /* back.png in Resources */,
@@ -705,17 +681,13 @@
 				4675C25618D2E94100973C24 /* forestbackground-640.png in Resources */,
 				464205AE18EB357A005EC168 /* bird5_03.png in Resources */,
 				4675C25A18D300BF00973C24 /* birdFlyingRight_03.png in Resources */,
-				4645C1C319CF58AF00BCE79E /* redpepper.png in Resources */,
 				46E48BBA18A8042B006DCA91 /* food-rainbow-icon.png in Resources */,
 				46E7C7F01986E4CD00CE7AB3 /* social-next.png in Resources */,
 				46E48BC618A8EE9F006DCA91 /* home-icon.png in Resources */,
-				4645C1C519CF58AF00BCE79E /* tomato.png in Resources */,
-				4645C1C419CF58AF00BCE79E /* strawberry.png in Resources */,
 				46E7C7D3198545F500CE7AB3 /* home-parents.png in Resources */,
 				4615CCF319D1F5C5007994EC /* yellow-background.jpg in Resources */,
 				46C4226718EDF1840071EEFF /* deer5.png in Resources */,
 				46C4226818EDF1840071EEFF /* deer6.png in Resources */,
-				4645C1C119CF58AF00BCE79E /* cherry.png in Resources */,
 				46E7C7EF1986E4CD00CE7AB3 /* social-home.png in Resources */,
 				464205B718EB4A74005EC168 /* dragon3.png in Resources */,
 				46E7C7F3198830A600CE7AB3 /* social-story2.png in Resources */,
