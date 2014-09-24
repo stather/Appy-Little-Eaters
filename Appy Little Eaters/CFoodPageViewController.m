@@ -28,7 +28,6 @@
 {
 	self = [super initWithCoder:aDecoder];
 	if (self){
-		foods = [[NSArray alloc] initWithObjects:@"apple", @"cherry", @"raspberry", @"redpepper", @"strawberry", @"tomato", @"watermelon",  nil];
 	}
 	return self;
 }
@@ -49,21 +48,27 @@
 	switch (self.index){
 		case 0:
 			filepath = [[NSBundle mainBundle] pathForResource:@"red-background" ofType:@"jpg"];
+			foods = [[NSArray alloc] initWithObjects:@"apple", @"cherry", @"raspberry", @"redpepper", @"strawberry", @"tomato", @"watermelon",  nil];
 			break;
 		case 1:
 			filepath = [[NSBundle mainBundle] pathForResource:@"orange-background" ofType:@"jpg"];
+			foods = [[NSArray alloc] initWithObjects:@"apple", @"cherry", @"raspberry", @"redpepper", @"strawberry", @"tomato", @"watermelon",  nil];
 			break;
 		case 2:
 			filepath = [[NSBundle mainBundle] pathForResource:@"yellow-background" ofType:@"jpg"];
+			foods = [[NSArray alloc] initWithObjects:@"apple", @"cherry", @"raspberry", @"redpepper", @"strawberry", @"tomato", @"watermelon",  nil];
 			break;
 		case 3:
 			filepath = [[NSBundle mainBundle] pathForResource:@"green-background" ofType:@"jpg"];
+			foods = [[NSArray alloc] initWithObjects:@"apple", @"cherry", @"raspberry", @"redpepper", @"strawberry", @"tomato", @"watermelon",  nil];
 			break;
 		case 4:
 			filepath = [[NSBundle mainBundle] pathForResource:@"purple-background" ofType:@"jpg"];
+			foods = [[NSArray alloc] initWithObjects:@"apple", @"cherry", @"raspberry", @"redpepper", @"strawberry", @"tomato", @"watermelon",  nil];
 			break;
 		case 5:
 			filepath = [[NSBundle mainBundle] pathForResource:@"white-background" ofType:@"jpg"];
+			foods = [[NSArray alloc] initWithObjects:@"cauliflower", @"chicken", @"dates", @"lentils", @"nuts", @"potato", @"whitecabbage",  nil];
 			break;
 	}
 	self.backgroundImage.image = [[UIImage alloc] initWithContentsOfFile:filepath];
