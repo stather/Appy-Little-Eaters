@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="FiX-dY-Vvo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -243,7 +244,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K6T-6E-cPE">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K6T-6E-cPE" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             </imageView>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1IA-ms-Rmz">
@@ -284,7 +285,7 @@
                                     <outlet property="delegate" destination="ZaA-WM-7OZ" id="GjQ-MU-ywz"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uST-OR-A8n">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uST-OR-A8n" userLabel="Home">
                                 <rect key="frame" x="16" y="20" width="88" height="84"/>
                                 <state key="normal" image="social-home.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -293,21 +294,63 @@
                                     <segue destination="igd-wV-5Ey" kind="unwind" unwindAction="unwindFromConfirmationForm:" id="FWN-UR-0Yw"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="apricots.png" translatesAutoresizingMaskIntoConstraints="NO" id="dxj-jr-QDc" userLabel="EatenFood">
+                                <rect key="frame" x="362" y="234" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="MCM-0C-la8"/>
+                                    <constraint firstAttribute="width" secondItem="dxj-jr-QDc" secondAttribute="height" multiplier="1:1" id="wm9-Gd-cyq"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rm-x9-POd" userLabel="Yes">
+                                <rect key="frame" x="682" y="294" width="300" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="VB2-9B-1oa"/>
+                                    <constraint firstAttribute="width" constant="300" id="kjW-aa-Z7u"/>
+                                </constraints>
+                                <state key="normal" image="yes.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tickClicked:" destination="ZaA-WM-7OZ" eventType="touchUpInside" id="cZs-EQ-7U8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CDS-qw-2YQ" userLabel="No">
+                                <rect key="frame" x="42" y="294" width="300" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="QqW-cl-RBO"/>
+                                    <constraint firstAttribute="width" constant="300" id="nfF-RM-Tg2"/>
+                                </constraints>
+                                <state key="normal" image="no.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="crossClicked:" destination="ZaA-WM-7OZ" eventType="touchUpInside" id="Yo6-p5-frM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="dxj-jr-QDc" firstAttribute="leading" secondItem="CDS-qw-2YQ" secondAttribute="trailing" constant="20" id="4z3-vn-gQe"/>
+                            <constraint firstAttribute="centerY" secondItem="CDS-qw-2YQ" secondAttribute="centerY" constant="0.5" id="9J8-Pc-1am"/>
                             <constraint firstAttribute="trailing" secondItem="1IA-ms-Rmz" secondAttribute="trailing" constant="20" symbolic="YES" id="KW6-5t-3hG"/>
+                            <constraint firstAttribute="centerX" secondItem="dxj-jr-QDc" secondAttribute="centerX" id="LKz-rx-tlq"/>
                             <constraint firstItem="1IA-ms-Rmz" firstAttribute="leading" secondItem="kgF-hO-DzS" secondAttribute="leading" constant="20" symbolic="YES" id="LrW-Pn-PeQ"/>
+                            <constraint firstItem="1rm-x9-POd" firstAttribute="leading" secondItem="dxj-jr-QDc" secondAttribute="trailing" constant="20" id="SBr-xd-Rwp"/>
                             <constraint firstItem="K6T-6E-cPE" firstAttribute="height" secondItem="kgF-hO-DzS" secondAttribute="height" id="SZy-j4-3vX"/>
                             <constraint firstItem="v89-L1-k6d" firstAttribute="top" secondItem="1IA-ms-Rmz" secondAttribute="bottom" constant="8" symbolic="YES" id="dow-XI-t0W"/>
+                            <constraint firstAttribute="centerY" secondItem="1rm-x9-POd" secondAttribute="centerY" constant="0.5" id="gpZ-0Y-DEa"/>
+                            <constraint firstAttribute="centerY" secondItem="dxj-jr-QDc" secondAttribute="centerY" id="it1-sk-5Bj"/>
                             <constraint firstItem="K6T-6E-cPE" firstAttribute="width" secondItem="kgF-hO-DzS" secondAttribute="width" id="vBT-ku-NXz"/>
                         </constraints>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="backgroundImage" destination="K6T-6E-cPE" id="ZRk-eZ-vjK"/>
+                        <outlet property="cross" destination="CDS-qw-2YQ" id="xCe-6R-b9Y"/>
                         <outlet property="mainView" destination="kgF-hO-DzS" id="kOa-T3-FeT"/>
+                        <outlet property="selectedFoodImage" destination="dxj-jr-QDc" id="Zia-nJ-P8B"/>
                         <outlet property="theCollection" destination="1IA-ms-Rmz" id="GDG-az-6nF"/>
+                        <outlet property="tick" destination="1rm-x9-POd" id="FXY-Qa-NBc"/>
                         <outlet property="view" destination="kgF-hO-DzS" id="OYi-7R-E7k"/>
                     </connections>
                 </viewController>
@@ -326,6 +369,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="apricots.png" width="200" height="200"/>
         <image name="home-background.jpg" width="2048" height="1153"/>
         <image name="home-clouds.png" width="2000" height="693"/>
         <image name="home-forest.png" width="302" height="346"/>
@@ -334,6 +378,7 @@
         <image name="home-rainbow.png" width="341" height="285"/>
         <image name="home-story.png" width="303" height="321"/>
         <image name="home-yummyfoods.png" width="287" height="335"/>
+        <image name="no.png" width="823" height="585"/>
         <image name="social-background.jpg" width="2048" height="1536"/>
         <image name="social-home.png" width="182" height="208"/>
         <image name="social-next.png" width="260" height="117"/>
@@ -341,6 +386,7 @@
         <image name="start-background.jpg" width="2048" height="1536"/>
         <image name="start-button_06.png" width="1056" height="283"/>
         <image name="start-face_03.png" width="407" height="455"/>
+        <image name="yes.png" width="872" height="576"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>

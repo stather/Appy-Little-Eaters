@@ -35,6 +35,8 @@
 - (void)viewDidLoad
 {
 	self.selectedFoodImage.hidden = true;
+	self.tick.hidden = true;
+	self.cross.hidden = true;
 
     [super viewDidLoad];
 	self.theCollection.backgroundColor = [UIColor clearColor];
@@ -124,8 +126,8 @@
 	UIImage *image = [[UIImage alloc] initWithContentsOfFile:filepath];
 	self.selectedFoodImage.image = image;
 	self.selectedFoodImage.hidden = false;
-	self.didYouEatText.hidden = false;
 	self.theCollection.hidden = true;
+	//self.didYouEatText.hidden = false;
 	self.tick.hidden = NO;
 	self.cross.hidden = NO;
 }
@@ -153,10 +155,18 @@
 }
 - (IBAction)crossClicked:(id)sender {
 	self.selectedFoodImage.hidden = YES;
-	self.didYouEatText.hidden = YES;
+	//self.didYouEatText.hidden = YES;
 	self.theCollection.hidden = NO;
 	self.tick.hidden = YES;
 	self.cross.hidden = YES;
 	
+}
+
+- (IBAction)tickClicked:(id)sender {
+	self.selectedFoodImage.hidden = YES;
+	//self.didYouEatText.hidden = YES;
+	self.theCollection.hidden = NO;
+	self.tick.hidden = YES;
+	self.cross.hidden = YES;
 }
 @end

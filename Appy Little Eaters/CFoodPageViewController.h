@@ -25,5 +25,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *tick;
 @property (weak, nonatomic) IBOutlet UIButton *cross;
 - (IBAction)crossClicked:(id)sender;
+- (IBAction)tickClicked:(id)sender;
 
 @end
