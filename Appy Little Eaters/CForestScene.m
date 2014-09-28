@@ -20,11 +20,20 @@
 #define backgroundWidth	1855
 #define backgroundHeight	320
 
-#define CGForestPoint(x,y)  CGPointMake((x-(backgroundWidth/2)), ((backgroundHeight/2)-y))
+//#define CGForestPoint(x,y)  CGPointMake((x-(backgroundWidth/2)), ((backgroundHeight/2)-y))
 
 
 
 @implementation CForestScene
+
+- (CGPoint) forestPoint:(CGPoint) p
+{
+	CGSize r = self.frame.size;
+	float fact = r.height/backgroundHeight;
+	int width = backgroundWidth*fact;
+	int height = backgroundHeight*fact;
+	return CGPointMake(p.x-(width/2), (height/2)-p.y);
+}
 
 - (void)didMoveToView:(SKView *)view
 {
@@ -132,7 +141,9 @@
 
 	SKAction * flapping = [self flappingBird];
 	
-	SKAction * flyPath = [SKAction moveTo:CGForestPoint(383, 108) duration:5];
+	CGPoint p = [self forestPoint:CGPointMake(383, 108)];
+	
+	SKAction * flyPath = [SKAction moveTo:p duration:5];
 	
 	SKAction * sitting = [SKAction setTexture:[SKTexture textureWithImageNamed:@"bird-sitting_03"]];
 	SKAction * flight = [SKAction sequence:@[flyPath, sitting]];
@@ -159,7 +170,9 @@
 	bird.xScale = -1;
 
 	SKAction * flapping = [self flappingBird];
-	SKAction * flyPath = [SKAction moveTo:CGForestPoint(904, 65) duration:5];
+	CGPoint p = [self forestPoint:CGPointMake(904, 65)];
+
+	SKAction * flyPath = [SKAction moveTo:p duration:5];
 	SKAction * sitting = [SKAction setTexture:[SKTexture textureWithImageNamed:@"bird-sitting_03"]];
 	SKAction * flight = [SKAction sequence:@[flyPath, sitting]];
 	self.birdOnLeftTree = NO;
@@ -178,16 +191,21 @@
 	SKSpriteNode *sn = [SKSpriteNode spriteNodeWithImageNamed:@"rewards-forrestv2"];
 	sn.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
 	sn.name = @"BACKGROUND";
-	sn.size = CGSizeMake(backgroundWidth, backgroundHeight);
+	CGSize r = self.frame.size;
+	float fact = r.height/backgroundHeight;
+	
+	sn.size = CGSizeMake(backgroundWidth*fact, backgroundHeight*fact);
 
-	self.scale = self.frame.size.height / 320;
+//	self.scale = self.frame.size.height / 320;
+	self.scale = self.frame.size.height / 640;
 	return sn;
 }
 
 - (SKSpriteNode*) newDeerNode
 {
 	SKSpriteNode *sn = [SKSpriteNode spriteNodeWithImageNamed:@"deer1"];
-	sn.position = CGForestPoint(645, 200);
+	CGPoint p = [self forestPoint:CGPointMake(645, 200)];
+	sn.position = p;
 	float scale = 0.15;
 	sn.size = CGSizeMake(sn.size.width*scale, sn.size.height*scale);
 	sn.name = @"DEER";
@@ -197,7 +215,8 @@
 - (SKSpriteNode*) newSquirrelNode
 {
 	SKSpriteNode *sn = [SKSpriteNode spriteNodeWithImageNamed:@"squirrel1"];
-	sn.position = CGForestPoint(224, 103);
+	CGPoint p = [self forestPoint:CGPointMake(224, 103)];
+	sn.position = p;
 	float scale = 0.7;
 	sn.size = CGSizeMake(sn.size.width*scale, sn.size.height*scale);
 	sn.name = @"SQUIRREL";
@@ -207,7 +226,8 @@
 - (SKSpriteNode*) newDragonNode
 {
 	SKSpriteNode *sn = [SKSpriteNode spriteNodeWithImageNamed:@"dragon1"];
-	sn.position = CGForestPoint(1550, 140);
+	CGPoint p = [self forestPoint:CGPointMake(1550, 140)];
+	sn.position = p;
 	sn.name = @"DRAGON";
 	return sn;
 }
@@ -215,7 +235,8 @@
 - (SKSpriteNode* ) newBirdSittingNode
 {
 	SKSpriteNode *sn = [SKSpriteNode spriteNodeWithImageNamed:@"bird-sitting_03"];
-	sn.position = CGForestPoint(904, 69);
+	CGPoint p = [self forestPoint:CGPointMake(904, 69)];
+	sn.position = p;
 	sn.name = @"BIRD";
 	return sn;
 }

@@ -232,6 +232,52 @@
             </objects>
             <point key="canvasLocation" x="-334" y="1489"/>
         </scene>
+        <!--Reward Page View Controller-->
+        <scene sceneID="Opt-21-uoh">
+            <objects>
+                <viewController title="Reward Page View Controller" id="5f9-ea-XB8" customClass="RewardsPageViewController" customModule="Appy_Little_Eaters" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rpF-OF-2Ax"/>
+                        <viewControllerLayoutGuide type="bottom" id="KIs-UY-Wfn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xiX-L7-Fhz">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reward-background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="qTS-3D-Pb3">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2n-We-nF3" userLabel="Done">
+                                <rect key="frame" x="784" y="20" width="224" height="113"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="224" id="KQl-2k-dv2"/>
+                                    <constraint firstAttribute="height" constant="113" id="gVG-Ap-6cy"/>
+                                </constraints>
+                                <state key="normal" image="reward-done.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Evs-l7-TtO" kind="push" id="7tj-Rp-twU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="h2n-We-nF3" firstAttribute="top" secondItem="rpF-OF-2Ax" secondAttribute="bottom" id="ZaW-3d-UlU"/>
+                            <constraint firstAttribute="centerY" secondItem="qTS-3D-Pb3" secondAttribute="centerY" id="aHn-Ww-sBE"/>
+                            <constraint firstItem="h2n-We-nF3" firstAttribute="trailing" secondItem="xiX-L7-Fhz" secondAttribute="trailing" constant="-16" id="acR-po-4yV"/>
+                            <constraint firstItem="qTS-3D-Pb3" firstAttribute="width" secondItem="xiX-L7-Fhz" secondAttribute="width" id="di9-dF-F3C"/>
+                            <constraint firstAttribute="centerX" secondItem="qTS-3D-Pb3" secondAttribute="centerX" id="eng-mq-G9C"/>
+                            <constraint firstItem="qTS-3D-Pb3" firstAttribute="height" secondItem="xiX-L7-Fhz" secondAttribute="height" id="kOz-i5-ID9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bJc-RD-pJY"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h9g-E3-c8r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1616" y="-813"/>
+        </scene>
         <!--Food Page View Controller-->
         <scene sceneID="Bpf-u6-TL0">
             <objects>
@@ -312,6 +358,7 @@
                                 </state>
                                 <connections>
                                     <action selector="tickClicked:" destination="ZaA-WM-7OZ" eventType="touchUpInside" id="cZs-EQ-7U8"/>
+                                    <segue destination="5f9-ea-XB8" kind="push" id="d7k-WC-Mb9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CDS-qw-2YQ" userLabel="No">
@@ -367,6 +414,51 @@
             </objects>
             <point key="canvasLocation" x="753" y="1263"/>
         </scene>
+        <!--Forest View Controller-->
+        <scene sceneID="ymS-uC-QsJ">
+            <objects>
+                <viewController title="Forest View Controller" id="Evs-l7-TtO" customClass="CForestViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UNz-JH-RYT"/>
+                        <viewControllerLayoutGuide type="bottom" id="mW5-vv-W7D"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sUQ-Qz-m8g">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36t-mz-bjD">
+                                <rect key="frame" x="16" y="20" width="152" height="127"/>
+                                <state key="normal" image="social-home.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="3rn-rV-BR7" kind="unwind" unwindAction="unwindToHomeView:" id="fLa-gX-1e1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="jeC-4P-A5x" appends="YES" id="Q3B-dw-45u"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="Acg-OO-Dsp"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="homeButton" destination="36t-mz-bjD" id="d0j-9G-k72"/>
+                        <outlet property="mainView" destination="sUQ-Qz-m8g" id="rZa-Fw-f4X"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ct-tX-EOV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="3rn-rV-BR7" userLabel="Exit" sceneMemberID="exit"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="jeC-4P-A5x">
+                    <connections>
+                        <action selector="myAction:" destination="Evs-l7-TtO" id="3au-1C-uYb"/>
+                        <outlet property="delegate" destination="Evs-l7-TtO" id="6gw-A6-G4s"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2488" y="1240"/>
+        </scene>
     </scenes>
     <resources>
         <image name="apricots.png" width="200" height="200"/>
@@ -379,6 +471,8 @@
         <image name="home-story.png" width="303" height="321"/>
         <image name="home-yummyfoods.png" width="287" height="335"/>
         <image name="no.png" width="823" height="585"/>
+        <image name="reward-background.jpg" width="2048" height="1536"/>
+        <image name="reward-done.png" width="377" height="169"/>
         <image name="social-background.jpg" width="2048" height="1536"/>
         <image name="social-home.png" width="182" height="208"/>
         <image name="social-next.png" width="260" height="117"/>

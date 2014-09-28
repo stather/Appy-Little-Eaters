@@ -37,7 +37,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	self.spriteView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.mainView.frame.size.width, self.mainView.frame.size.height)];
-	[self.mainView addSubview:self.spriteView];
+	//[self.mainView addSubview:self.spriteView];
+	[self.mainView insertSubview:self.spriteView belowSubview:self.homeButton];
 
 	CForestScene * forest = [[CForestScene alloc] initWithSize:self.spriteView.frame.size];
 	[self.spriteView presentScene:forest];

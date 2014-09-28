@@ -45,7 +45,6 @@
 	NSLayoutConstraint *lc = [NSLayoutConstraint constraintWithItem:self.theCollection attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:0.333 constant:0];
 	[self.view addConstraint:lc];
 	
-	UIColor * c;
 	NSString *filepath;
 	switch (self.index){
 		case 0:
@@ -74,7 +73,6 @@
 			break;
 	}
 	self.backgroundImage.image = [[UIImage alloc] initWithContentsOfFile:filepath];
-	//self.mainView.backgroundColor = c;
 }
 
 - (void)didReceiveMemoryWarning
@@ -98,7 +96,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 	CFoodCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"FoodCell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
-	int index = [indexPath item];
+	NSInteger index = [indexPath item];
 	NSString * name = [foods objectAtIndex:index];
 	NSString *filepath = [[NSBundle mainBundle] pathForResource:name ofType:@"png"];
 	UIImage *image = [[UIImage alloc] initWithContentsOfFile:filepath];

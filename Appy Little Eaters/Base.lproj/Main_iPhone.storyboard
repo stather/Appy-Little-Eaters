@@ -499,7 +499,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="fyK-0N-6dv" firstAttribute="top" secondItem="6BQ-zt-QTk" secondAttribute="bottom" constant="20" symbolic="YES" id="1Wf-hL-7Io"/>
+                            <constraint firstItem="fyK-0N-6dv" firstAttribute="top" secondItem="6BQ-zt-QTk" secondAttribute="bottom" constant="8" symbolic="YES" id="1Wf-hL-7Io"/>
                             <constraint firstItem="fyK-0N-6dv" firstAttribute="leading" secondItem="2wS-f5-uLE" secondAttribute="leading" constant="20" symbolic="YES" id="OIT-9r-7aL"/>
                         </constraints>
                         <connections>

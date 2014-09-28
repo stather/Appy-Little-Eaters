@@ -81,13 +81,7 @@
 		464F705518A019F000DDA449 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464F703418A019F000DDA449 /* UIKit.framework */; };
 		464F705D18A019F000DDA449 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 464F705B18A019F000DDA449 /* InfoPlist.strings */; };
 		464F705F18A019F000DDA449 /* Appy_Little_EatersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 464F705E18A019F000DDA449 /* Appy_Little_EatersTests.m */; };
-		464F706B18A2F0D200DDA449 /* rainbow.png in Resources */ = {isa = PBXBuildFile; fileRef = 464F706918A2F0D200DDA449 /* rainbow.png */; };
-		464F706C18A2F0D200DDA449 /* skybackground in Resources */ = {isa = PBXBuildFile; fileRef = 464F706A18A2F0D200DDA449 /* skybackground */; };
-		46672BC818B52B0000C68BF3 /* Forest_Landscape-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 46672BC718B52B0000C68BF3 /* Forest_Landscape-icon.png */; };
 		46672BCB18B52E7800C68BF3 /* CForestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46672BCA18B52E7800C68BF3 /* CForestViewController.m */; };
-		46672BD018B5580900C68BF3 /* greentick.png in Resources */ = {isa = PBXBuildFile; fileRef = 46672BCE18B5580900C68BF3 /* greentick.png */; };
-		46672BD118B5580900C68BF3 /* redcross.png in Resources */ = {isa = PBXBuildFile; fileRef = 46672BCF18B5580900C68BF3 /* redcross.png */; };
-		46672BD318B55C1700C68BF3 /* rainbow-colouring.png in Resources */ = {isa = PBXBuildFile; fileRef = 46672BD218B55C1700C68BF3 /* rainbow-colouring.png */; };
 		4675C24C18CFA95000973C24 /* background-320h.png in Resources */ = {isa = PBXBuildFile; fileRef = 4675C24B18CFA95000973C24 /* background-320h.png */; };
 		4675C24F18D0D0CF00973C24 /* CForestScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4675C24E18D0D0CF00973C24 /* CForestScrollView.m */; };
 		4675C25218D0D4EA00973C24 /* CForestScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4675C25118D0D4EA00973C24 /* CForestScene.m */; };
@@ -95,6 +89,9 @@
 		4675C25618D2E94100973C24 /* forestbackground-640.png in Resources */ = {isa = PBXBuildFile; fileRef = 4675C25518D2E94000973C24 /* forestbackground-640.png */; };
 		4675C25818D2F79F00973C24 /* birdFlying_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 4675C25718D2F79F00973C24 /* birdFlying_03.png */; };
 		4675C25A18D300BF00973C24 /* birdFlyingRight_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 4675C25918D300BF00973C24 /* birdFlyingRight_03.png */; };
+		469846E819D8481400617FCE /* reward-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 469846E719D8481400617FCE /* reward-background.jpg */; };
+		469846EB19D84BEF00617FCE /* RewardsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469846EA19D84BEF00617FCE /* RewardsPageViewController.swift */; };
+		469846ED19D85A6100617FCE /* reward-done.png in Resources */ = {isa = PBXBuildFile; fileRef = 469846EC19D85A6100617FCE /* reward-done.png */; };
 		46A5C1BA18EDD8FA00B29BC5 /* rewards-forrestv2.png in Resources */ = {isa = PBXBuildFile; fileRef = 46A5C1B918EDD8FA00B29BC5 /* rewards-forrestv2.png */; };
 		46AB56A019D3553600D47CEF /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AB569919D3553600D47CEF /* apple.png */; };
 		46AB56A119D3553600D47CEF /* cherry.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AB569A19D3553600D47CEF /* cherry.png */; };
@@ -117,17 +114,10 @@
 		46C4226718EDF1840071EEFF /* deer5.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C4226018EDF1840071EEFF /* deer5.png */; };
 		46C4226818EDF1840071EEFF /* deer6.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C4226118EDF1840071EEFF /* deer6.png */; };
 		46C4226918EDF1840071EEFF /* deer7.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C4226218EDF1840071EEFF /* deer7.png */; };
-		46E48BB818A8033B006DCA91 /* social-story-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E48BB718A8033B006DCA91 /* social-story-icon.png */; };
-		46E48BBA18A8042B006DCA91 /* food-rainbow-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E48BB918A8042B006DCA91 /* food-rainbow-icon.png */; };
-		46E48BBC18A80485006DCA91 /* yummy-foods-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E48BBB18A80485006DCA91 /* yummy-foods-icon.png */; };
-		46E48BBE18A80522006DCA91 /* parents-page-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E48BBD18A80522006DCA91 /* parents-page-icon.png */; };
 		46E48BC118A80E66006DCA91 /* CHomeIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E48BC018A80E66006DCA91 /* CHomeIconView.m */; };
 		46E48BC418A8149A006DCA91 /* CHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E48BC318A8149A006DCA91 /* CHomeViewController.m */; };
-		46E48BC618A8EE9F006DCA91 /* home-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E48BC518A8EE9F006DCA91 /* home-icon.png */; };
 		46E48BC918A8F7E8006DCA91 /* CSocialStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E48BC818A8F7E8006DCA91 /* CSocialStoryViewController.m */; };
 		46E48BCB18A8FDC4006DCA91 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46E48BCA18A8FDC4006DCA91 /* Localizable.strings */; };
-		46E48BCE18A900E6006DCA91 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E48BCC18A900E6006DCA91 /* back.png */; };
-		46E48BCF18A900E6006DCA91 /* next.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E48BCD18A900E6006DCA91 /* next.png */; };
 		46E48BD118A9059B006DCA91 /* parentspage.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 46E48BD018A9059B006DCA91 /* parentspage.rtf */; };
 		46E48BD418A90806006DCA91 /* CParentsPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E48BD318A90806006DCA91 /* CParentsPageView.m */; };
 		46E48BD718A90A80006DCA91 /* CParentsPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E48BD618A90A80006DCA91 /* CParentsPageViewController.m */; };
@@ -266,14 +256,8 @@
 		464F705A18A019F000DDA449 /* Appy Little EatersTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Appy Little EatersTests-Info.plist"; sourceTree = "<group>"; };
 		464F705C18A019F000DDA449 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		464F705E18A019F000DDA449 /* Appy_Little_EatersTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Appy_Little_EatersTests.m; sourceTree = "<group>"; };
-		464F706918A2F0D200DDA449 /* rainbow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rainbow.png; sourceTree = "<group>"; };
-		464F706A18A2F0D200DDA449 /* skybackground */ = {isa = PBXFileReference; lastKnownFileType = file; path = skybackground; sourceTree = "<group>"; };
-		46672BC718B52B0000C68BF3 /* Forest_Landscape-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Forest_Landscape-icon.png"; path = "../../../Dropbox/Happy Little Eaters/Exports/Forest_Landscape-icon.png"; sourceTree = "<group>"; };
 		46672BC918B52E7800C68BF3 /* CForestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CForestViewController.h; sourceTree = "<group>"; };
 		46672BCA18B52E7800C68BF3 /* CForestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CForestViewController.m; sourceTree = "<group>"; };
-		46672BCE18B5580900C68BF3 /* greentick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = greentick.png; path = "../../../Dropbox/Happy Little Eaters/Exports/greentick.png"; sourceTree = "<group>"; };
-		46672BCF18B5580900C68BF3 /* redcross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redcross.png; path = "../../../Dropbox/Happy Little Eaters/Exports/redcross.png"; sourceTree = "<group>"; };
-		46672BD218B55C1700C68BF3 /* rainbow-colouring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "rainbow-colouring.png"; path = "../../../Dropbox/Happy Little Eaters/Exports/rainbow-colouring.png"; sourceTree = "<group>"; };
 		4675C24B18CFA95000973C24 /* background-320h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-320h.png"; sourceTree = "<group>"; };
 		4675C24D18D0D0CF00973C24 /* CForestScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CForestScrollView.h; sourceTree = "<group>"; };
 		4675C24E18D0D0CF00973C24 /* CForestScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CForestScrollView.m; sourceTree = "<group>"; };
@@ -283,6 +267,10 @@
 		4675C25518D2E94000973C24 /* forestbackground-640.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forestbackground-640.png"; sourceTree = "<group>"; };
 		4675C25718D2F79F00973C24 /* birdFlying_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = birdFlying_03.png; sourceTree = "<group>"; };
 		4675C25918D300BF00973C24 /* birdFlyingRight_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = birdFlyingRight_03.png; sourceTree = "<group>"; };
+		469846E719D8481400617FCE /* reward-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "reward-background.jpg"; sourceTree = "<group>"; };
+		469846E919D84BEF00617FCE /* Appy Little Eaters-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Appy Little Eaters-Bridging-Header.h"; sourceTree = "<group>"; };
+		469846EA19D84BEF00617FCE /* RewardsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardsPageViewController.swift; sourceTree = "<group>"; };
+		469846EC19D85A6100617FCE /* reward-done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reward-done.png"; sourceTree = "<group>"; };
 		46A5C1B918EDD8FA00B29BC5 /* rewards-forrestv2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rewards-forrestv2.png"; sourceTree = "<group>"; };
 		46AB569919D3553600D47CEF /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
 		46AB569A19D3553600D47CEF /* cherry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cherry.png; sourceTree = "<group>"; };
@@ -305,20 +293,13 @@
 		46C4226018EDF1840071EEFF /* deer5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deer5.png; sourceTree = "<group>"; };
 		46C4226118EDF1840071EEFF /* deer6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deer6.png; sourceTree = "<group>"; };
 		46C4226218EDF1840071EEFF /* deer7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deer7.png; sourceTree = "<group>"; };
-		46E48BB718A8033B006DCA91 /* social-story-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "social-story-icon.png"; sourceTree = "<group>"; };
-		46E48BB918A8042B006DCA91 /* food-rainbow-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "food-rainbow-icon.png"; sourceTree = "<group>"; };
-		46E48BBB18A80485006DCA91 /* yummy-foods-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yummy-foods-icon.png"; sourceTree = "<group>"; };
-		46E48BBD18A80522006DCA91 /* parents-page-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "parents-page-icon.png"; sourceTree = "<group>"; };
 		46E48BBF18A80E66006DCA91 /* CHomeIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHomeIconView.h; sourceTree = "<group>"; };
 		46E48BC018A80E66006DCA91 /* CHomeIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHomeIconView.m; sourceTree = "<group>"; };
 		46E48BC218A8149A006DCA91 /* CHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHomeViewController.h; sourceTree = "<group>"; };
 		46E48BC318A8149A006DCA91 /* CHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHomeViewController.m; sourceTree = "<group>"; };
-		46E48BC518A8EE9F006DCA91 /* home-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-icon.png"; sourceTree = "<group>"; };
 		46E48BC718A8F7E8006DCA91 /* CSocialStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSocialStoryViewController.h; sourceTree = "<group>"; };
 		46E48BC818A8F7E8006DCA91 /* CSocialStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSocialStoryViewController.m; sourceTree = "<group>"; };
 		46E48BCA18A8FDC4006DCA91 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		46E48BCC18A900E6006DCA91 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
-		46E48BCD18A900E6006DCA91 /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = next.png; sourceTree = "<group>"; };
 		46E48BD018A9059B006DCA91 /* parentspage.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = parentspage.rtf; sourceTree = "<group>"; };
 		46E48BD218A90806006DCA91 /* CParentsPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CParentsPageView.h; sourceTree = "<group>"; };
 		46E48BD318A90806006DCA91 /* CParentsPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CParentsPageView.m; sourceTree = "<group>"; };
@@ -567,6 +548,8 @@
 				4675C24E18D0D0CF00973C24 /* CForestScrollView.m */,
 				4675C25018D0D4EA00973C24 /* CForestScene.h */,
 				4675C25118D0D4EA00973C24 /* CForestScene.m */,
+				469846EA19D84BEF00617FCE /* RewardsPageViewController.swift */,
+				469846E919D84BEF00617FCE /* Appy Little Eaters-Bridging-Header.h */,
 			);
 			path = "Appy Little Eaters";
 			sourceTree = "<group>";
@@ -603,8 +586,89 @@
 		464F706818A2F0C200DDA449 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				469846E619D8480800617FCE /* rewardspage */,
+				469846E519D847A100617FCE /* startpage */,
+				469846E419D8474400617FCE /* homepage */,
+				469846DF19D846E600617FCE /* Characters */,
 				461441A219D707F300CB5A3E /* foodpage */,
 				46E7C7E81986E4CD00CE7AB3 /* social slices */,
+				46A5C1B918EDD8FA00B29BC5 /* rewards-forrestv2.png */,
+				4675C25518D2E94000973C24 /* forestbackground-640.png */,
+				4675C24B18CFA95000973C24 /* background-320h.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		469846DF19D846E600617FCE /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				469846E319D8472C00617FCE /* bird */,
+				469846E219D8470D00617FCE /* dragon */,
+				469846E119D8470000617FCE /* squirrel */,
+				469846E019D846F200617FCE /* deer */,
+			);
+			name = Characters;
+			sourceTree = "<group>";
+		};
+		469846E019D846F200617FCE /* deer */ = {
+			isa = PBXGroup;
+			children = (
+				46C4225C18EDF1840071EEFF /* deer1.png */,
+				46C4225D18EDF1840071EEFF /* deer2.png */,
+				46C4225E18EDF1840071EEFF /* deer3.png */,
+				46C4225F18EDF1840071EEFF /* deer4.png */,
+				46C4226018EDF1840071EEFF /* deer5.png */,
+				46C4226118EDF1840071EEFF /* deer6.png */,
+				46C4226218EDF1840071EEFF /* deer7.png */,
+			);
+			name = deer;
+			sourceTree = "<group>";
+		};
+		469846E119D8470000617FCE /* squirrel */ = {
+			isa = PBXGroup;
+			children = (
+				464205BB18EB4EF3005EC168 /* squirrel1.png */,
+				464205BC18EB4EF3005EC168 /* squirrel2.png */,
+				464205BD18EB4EF3005EC168 /* squirrel3.png */,
+				464205BE18EB4EF3005EC168 /* squirrel4.png */,
+				464205BF18EB4EF3005EC168 /* squirrel5.png */,
+				464205C018EB4EF3005EC168 /* squirrel6.png */,
+				464205C118EB4EF3005EC168 /* squirrel7.png */,
+			);
+			name = squirrel;
+			sourceTree = "<group>";
+		};
+		469846E219D8470D00617FCE /* dragon */ = {
+			isa = PBXGroup;
+			children = (
+				464205AF18EB4A74005EC168 /* dragon1.png */,
+				464205B018EB4A74005EC168 /* dragon2.png */,
+				464205B118EB4A74005EC168 /* dragon3.png */,
+				464205B218EB4A74005EC168 /* dragon4.png */,
+				464205B318EB4A74005EC168 /* dragon5.png */,
+				464205B418EB4A74005EC168 /* dragon6.png */,
+			);
+			name = dragon;
+			sourceTree = "<group>";
+		};
+		469846E319D8472C00617FCE /* bird */ = {
+			isa = PBXGroup;
+			children = (
+				464205A518EB357A005EC168 /* bird1_03.png */,
+				464205A618EB357A005EC168 /* bird2_03.png */,
+				464205A718EB357A005EC168 /* bird3_03.png */,
+				464205A818EB357A005EC168 /* bird4_03.png */,
+				464205A918EB357A005EC168 /* bird5_03.png */,
+				4675C25918D300BF00973C24 /* birdFlyingRight_03.png */,
+				4675C25718D2F79F00973C24 /* birdFlying_03.png */,
+				4675C25318D0FAAE00973C24 /* bird-sitting_03.png */,
+			);
+			name = bird;
+			sourceTree = "<group>";
+		};
+		469846E419D8474400617FCE /* homepage */ = {
+			isa = PBXGroup;
+			children = (
 				46E7C7D71985487A00CE7AB3 /* home-clouds.png */,
 				46E7C7D81985487A00CE7AB3 /* home-logo.png */,
 				46E7C7CB198545F500CE7AB3 /* home-background.jpg */,
@@ -613,55 +677,27 @@
 				46E7C7CE198545F500CE7AB3 /* home-rainbow.png */,
 				46E7C7CF198545F500CE7AB3 /* home-story.png */,
 				46E7C7D0198545F500CE7AB3 /* home-yummyfoods.png */,
+			);
+			name = homepage;
+			sourceTree = "<group>";
+		};
+		469846E519D847A100617FCE /* startpage */ = {
+			isa = PBXGroup;
+			children = (
 				46E7C7B819850C0B00CE7AB3 /* start-button_06.png */,
 				46E7C7B919850C0B00CE7AB3 /* start-face_03.png */,
 				46E7C7BA19850C0B00CE7AB3 /* start-background.jpg */,
-				46C4225C18EDF1840071EEFF /* deer1.png */,
-				46C4225D18EDF1840071EEFF /* deer2.png */,
-				46C4225E18EDF1840071EEFF /* deer3.png */,
-				46C4225F18EDF1840071EEFF /* deer4.png */,
-				46C4226018EDF1840071EEFF /* deer5.png */,
-				46C4226118EDF1840071EEFF /* deer6.png */,
-				46C4226218EDF1840071EEFF /* deer7.png */,
-				46A5C1B918EDD8FA00B29BC5 /* rewards-forrestv2.png */,
-				464205BB18EB4EF3005EC168 /* squirrel1.png */,
-				464205BC18EB4EF3005EC168 /* squirrel2.png */,
-				464205BD18EB4EF3005EC168 /* squirrel3.png */,
-				464205BE18EB4EF3005EC168 /* squirrel4.png */,
-				464205BF18EB4EF3005EC168 /* squirrel5.png */,
-				464205C018EB4EF3005EC168 /* squirrel6.png */,
-				464205C118EB4EF3005EC168 /* squirrel7.png */,
-				464205AF18EB4A74005EC168 /* dragon1.png */,
-				464205B018EB4A74005EC168 /* dragon2.png */,
-				464205B118EB4A74005EC168 /* dragon3.png */,
-				464205B218EB4A74005EC168 /* dragon4.png */,
-				464205B318EB4A74005EC168 /* dragon5.png */,
-				464205B418EB4A74005EC168 /* dragon6.png */,
-				464205A518EB357A005EC168 /* bird1_03.png */,
-				464205A618EB357A005EC168 /* bird2_03.png */,
-				464205A718EB357A005EC168 /* bird3_03.png */,
-				464205A818EB357A005EC168 /* bird4_03.png */,
-				464205A918EB357A005EC168 /* bird5_03.png */,
-				4675C25918D300BF00973C24 /* birdFlyingRight_03.png */,
-				4675C25718D2F79F00973C24 /* birdFlying_03.png */,
-				4675C25518D2E94000973C24 /* forestbackground-640.png */,
-				4675C25318D0FAAE00973C24 /* bird-sitting_03.png */,
-				4675C24B18CFA95000973C24 /* background-320h.png */,
-				46672BD218B55C1700C68BF3 /* rainbow-colouring.png */,
-				46672BCE18B5580900C68BF3 /* greentick.png */,
-				46672BCF18B5580900C68BF3 /* redcross.png */,
-				46672BC718B52B0000C68BF3 /* Forest_Landscape-icon.png */,
-				46E48BCC18A900E6006DCA91 /* back.png */,
-				46E48BCD18A900E6006DCA91 /* next.png */,
-				46E48BC518A8EE9F006DCA91 /* home-icon.png */,
-				46E48BBD18A80522006DCA91 /* parents-page-icon.png */,
-				46E48BBB18A80485006DCA91 /* yummy-foods-icon.png */,
-				46E48BB918A8042B006DCA91 /* food-rainbow-icon.png */,
-				46E48BB718A8033B006DCA91 /* social-story-icon.png */,
-				464F706918A2F0D200DDA449 /* rainbow.png */,
-				464F706A18A2F0D200DDA449 /* skybackground */,
 			);
-			name = images;
+			name = startpage;
+			sourceTree = "<group>";
+		};
+		469846E619D8480800617FCE /* rewardspage */ = {
+			isa = PBXGroup;
+			children = (
+				469846EC19D85A6100617FCE /* reward-done.png */,
+				469846E719D8481400617FCE /* reward-background.jpg */,
+			);
+			name = rewardspage;
 			sourceTree = "<group>";
 		};
 		46AB56A719D356BE00D47CEF /* whitefood */ = {
@@ -823,9 +859,7 @@
 				46E7C7BB19850C0B00CE7AB3 /* start-button_06.png in Resources */,
 				46AB56B019D356CC00D47CEF /* chicken.png in Resources */,
 				46E7C7D91985487A00CE7AB3 /* home-clouds.png in Resources */,
-				46E48BCF18A900E6006DCA91 /* next.png in Resources */,
 				46AB56AF19D356CC00D47CEF /* cauliflower.png in Resources */,
-				46672BD118B5580900C68BF3 /* redcross.png in Resources */,
 				4614416E19D7031900CB5A3E /* broccoli.png in Resources */,
 				4675C25418D0FAAE00973C24 /* bird-sitting_03.png in Resources */,
 				46A5C1BA18EDD8FA00B29BC5 /* rewards-forrestv2.png in Resources */,
@@ -836,8 +870,6 @@
 				464205AA18EB357A005EC168 /* bird1_03.png in Resources */,
 				4614418219D703DC00CB5A3E /* yellowapple.png in Resources */,
 				46E7C7EE1986E4CD00CE7AB3 /* social-background.jpg in Resources */,
-				46672BD018B5580900C68BF3 /* greentick.png in Resources */,
-				464F706C18A2F0D200DDA449 /* skybackground in Resources */,
 				464205C818EB4EF3005EC168 /* squirrel7.png in Resources */,
 				464205C718EB4EF3005EC168 /* squirrel6.png in Resources */,
 				46E7C7DA1985487A00CE7AB3 /* home-logo.png in Resources */,
@@ -847,6 +879,7 @@
 				46AB56B419D356CC00D47CEF /* potato.png in Resources */,
 				4614417419D7031900CB5A3E /* sprouts.png in Resources */,
 				4614418E19D7047C00CB5A3E /* mango.png in Resources */,
+				469846ED19D85A6100617FCE /* reward-done.png in Resources */,
 				46E7C7FD19883C7600CE7AB3 /* healthykids2.m4a in Resources */,
 				4614417319D7031900CB5A3E /* peas.png in Resources */,
 				464205B518EB4A74005EC168 /* dragon1.png in Resources */,
@@ -862,16 +895,14 @@
 				4614418319D703DC00CB5A3E /* yellowpepper.png in Resources */,
 				46E7C7F11986E4CD00CE7AB3 /* social-story1.png in Resources */,
 				46AB56B119D356CC00D47CEF /* dates.png in Resources */,
-				46E48BBC18A80485006DCA91 /* yummy-foods-icon.png in Resources */,
 				464F704718A019F000DDA449 /* Main_iPad.storyboard in Resources */,
-				46672BD318B55C1700C68BF3 /* rainbow-colouring.png in Resources */,
 				46AB56B519D356CC00D47CEF /* whitecabbage.png in Resources */,
 				46E7C7D2198545F500CE7AB3 /* home-forest.png in Resources */,
 				46AB56A419D3553600D47CEF /* strawberry.png in Resources */,
-				46E48BBE18A80522006DCA91 /* parents-page-icon.png in Resources */,
 				46AB56A619D3553600D47CEF /* watermelon.png in Resources */,
 				4614417019D7031900CB5A3E /* greenapple.png in Resources */,
 				4615CCF019D1F5C5007994EC /* purple-background.jpg in Resources */,
+				469846E819D8481400617FCE /* reward-background.jpg in Resources */,
 				464205C318EB4EF3005EC168 /* squirrel2.png in Resources */,
 				4614417E19D703DC00CB5A3E /* corn.png in Resources */,
 				4615CCF119D1F5C5007994EC /* red-background.jpg in Resources */,
@@ -880,21 +911,18 @@
 				464205C418EB4EF3005EC168 /* squirrel3.png in Resources */,
 				4614419219D7047C00CB5A3E /* pumpkin.png in Resources */,
 				46AB56A219D3553600D47CEF /* raspberry.png in Resources */,
-				46E48BCE18A900E6006DCA91 /* back.png in Resources */,
 				46C4226418EDF1840071EEFF /* deer2.png in Resources */,
 				4614419D19D7052A00CB5A3E /* grapes.png in Resources */,
 				46AB56B319D356CC00D47CEF /* nuts.png in Resources */,
 				46E7C7BD19850C0B00CE7AB3 /* start-background.jpg in Resources */,
 				4614419119D7047C00CB5A3E /* peach.png in Resources */,
 				46E7C7D5198545F500CE7AB3 /* home-story.png in Resources */,
-				464F706B18A2F0D200DDA449 /* rainbow.png in Resources */,
 				4614419B19D7052A00CB5A3E /* blackberry.png in Resources */,
 				4614417F19D703DC00CB5A3E /* lemon.png in Resources */,
 				4614417219D7031900CB5A3E /* lime.png in Resources */,
 				464205C618EB4EF3005EC168 /* squirrel5.png in Resources */,
 				464205BA18EB4A74005EC168 /* dragon6.png in Resources */,
 				46E7C7BC19850C0B00CE7AB3 /* start-face_03.png in Resources */,
-				46E48BB818A8033B006DCA91 /* social-story-icon.png in Resources */,
 				4614418019D703DC00CB5A3E /* pear.png in Resources */,
 				4675C25618D2E94100973C24 /* forestbackground-640.png in Resources */,
 				4614418C19D7047C00CB5A3E /* apricots.png in Resources */,
@@ -902,10 +930,8 @@
 				464205AE18EB357A005EC168 /* bird5_03.png in Resources */,
 				46AB56A019D3553600D47CEF /* apple.png in Resources */,
 				4675C25A18D300BF00973C24 /* birdFlyingRight_03.png in Resources */,
-				46E48BBA18A8042B006DCA91 /* food-rainbow-icon.png in Resources */,
 				46E7C7F01986E4CD00CE7AB3 /* social-next.png in Resources */,
 				461441A619D7081C00CB5A3E /* no.png in Resources */,
-				46E48BC618A8EE9F006DCA91 /* home-icon.png in Resources */,
 				46E7C7D3198545F500CE7AB3 /* home-parents.png in Resources */,
 				4614419F19D7052A00CB5A3E /* plum.png in Resources */,
 				4615CCF319D1F5C5007994EC /* yellow-background.jpg in Resources */,
@@ -930,7 +956,6 @@
 				464205B618EB4A74005EC168 /* dragon2.png in Resources */,
 				464F703B18A019F000DDA449 /* InfoPlist.strings in Resources */,
 				4614416F19D7031900CB5A3E /* cucumber.png in Resources */,
-				46672BC818B52B0000C68BF3 /* Forest_Landscape-icon.png in Resources */,
 				4614417D19D703DC00CB5A3E /* banana.png in Resources */,
 				4614418F19D7047C00CB5A3E /* orange.png in Resources */,
 			);
@@ -967,6 +992,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				469846EB19D84BEF00617FCE /* RewardsPageViewController.swift in Sources */,
 				460E4A9718AC0DF300BDC881 /* CFoodPagePageViewController.m in Sources */,
 				46E7C7C71985114D00CE7AB3 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				46E48BD418A90806006DCA91 /* CParentsPageView.m in Sources */,
@@ -1131,6 +1157,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1140,8 +1167,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Appy Little Eaters/Appy Little Eaters-Prefix.pch";
 				INFOPLIST_FILE = "Appy Little Eaters/Appy Little Eaters-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "F536965C-EF6E-4E7B-A374-926FC48DFF39";
+				SWIFT_OBJC_BRIDGING_HEADER = "Appy Little Eaters/Appy Little Eaters-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1151,6 +1181,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1160,8 +1191,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Appy Little Eaters/Appy Little Eaters-Prefix.pch";
 				INFOPLIST_FILE = "Appy Little Eaters/Appy Little Eaters-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "F536965C-EF6E-4E7B-A374-926FC48DFF39";
+				SWIFT_OBJC_BRIDGING_HEADER = "Appy Little Eaters/Appy Little Eaters-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
