@@ -41,7 +41,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 	//[self setup];
-	NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"goodfoodmakes2" ofType:@"m4a"];
+	NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"eatinghealthyfoods2" ofType:@"m4a"];
 	NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
 	player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
 	[player play];
@@ -57,14 +57,14 @@
 - (IBAction)previousPage:(id)sender {
 	currentPage--;
 	if (currentPage == 0){
-		currentPage = 5;
+		currentPage = 8;
 	}
 	[self setup];
 }
 
 - (IBAction)nextPage:(id)sender {
 	currentPage++;
-	if (currentPage == 6){
+	if (currentPage == 9){
 		currentPage = 1;
 	}
 	[self setup];
@@ -80,21 +80,76 @@ player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
 {
 	switch (currentPage) {
 		case 1:
+		{
+			self.storyImage.image = [UIImage imageNamed:@"social-story1.png"];
+			NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"eatinghealthyfoods2" ofType:@"m4a"];
+			NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+			player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+			[player play];
+		}
 			break;
 		case 2:
 		{
 			self.storyImage.image = [UIImage imageNamed:@"social-story2.png"];
-			NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"healthykids2" ofType:@"m4a"];
+			NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"goodfoodmakes2" ofType:@"m4a"];
 			NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
 			player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
 			[player play];
 		}
 			break;
 		case 3:
+		{
+			self.storyImage.image = [UIImage imageNamed:@"social-story3.png"];
+			NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"healthykids2" ofType:@"m4a"];
+			NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+			player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+			[player play];
+		}
 			break;
 		case 4:
+		{
+			self.storyImage.image = [UIImage imageNamed:@"social-story4.png"];
+			NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"healthykids2" ofType:@"m4a"];
+			NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+			player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+			[player play];
+		}
 			break;
 		case 5:
+		{
+			self.storyImage.image = [UIImage imageNamed:@"social-story5.png"];
+			NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"healthykids2" ofType:@"m4a"];
+			NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+			player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+			[player play];
+		}
+			break;
+		case 6:
+		{
+			self.storyImage.image = [UIImage imageNamed:@"social-story6.png"];
+			NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"healthykids2" ofType:@"m4a"];
+			NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+			player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+			[player play];
+		}
+			break;
+		case 7:
+		{
+			self.storyImage.image = [UIImage imageNamed:@"social-story7.png"];
+			NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"healthykids2" ofType:@"m4a"];
+			NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+			player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+			[player play];
+		}
+			break;
+		case 8:
+		{
+			self.storyImage.image = [UIImage imageNamed:@"social-story8.png"];
+			NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"healthykids2" ofType:@"m4a"];
+			NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+			player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+			[player play];
+		}
 			break;
 			
 		default:

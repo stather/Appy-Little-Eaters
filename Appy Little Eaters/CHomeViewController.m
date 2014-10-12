@@ -31,6 +31,18 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+	NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"intro" ofType:@"m4a"];
+	NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+	_player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+	[_player play];
+	
+	soundFilePath = [[NSBundle mainBundle] pathForResource:@"uke1_01" ofType:@"m4a"];
+	fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+	_ukeplayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+	_ukeplayer.volume = 0.2f;
+	_ukeplayer.numberOfLoops = -1;
+	[_ukeplayer play];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated

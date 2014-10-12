@@ -126,6 +126,9 @@
                                 <state key="normal" image="home-rainbow.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Yl5-iR-X8X" kind="push" id="PU9-ck-5gQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Idw-kE-E5J">
                                 <rect key="frame" x="438" y="573" width="148" height="175"/>
@@ -141,6 +144,9 @@
                                 <state key="normal" image="home-forest.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Evs-l7-TtO" kind="push" id="UDV-Xy-o9A"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BaU-Si-K4B">
                                 <rect key="frame" x="790" y="586" width="214" height="162"/>
@@ -358,7 +364,6 @@
                                 </state>
                                 <connections>
                                     <action selector="tickClicked:" destination="ZaA-WM-7OZ" eventType="touchUpInside" id="cZs-EQ-7U8"/>
-                                    <segue destination="5f9-ea-XB8" kind="push" id="d7k-WC-Mb9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CDS-qw-2YQ" userLabel="No">
@@ -399,6 +404,7 @@
                         <outlet property="theCollection" destination="1IA-ms-Rmz" id="GDG-az-6nF"/>
                         <outlet property="tick" destination="1rm-x9-POd" id="FXY-Qa-NBc"/>
                         <outlet property="view" destination="kgF-hO-DzS" id="OYi-7R-E7k"/>
+                        <segue destination="Yl5-iR-X8X" kind="push" identifier="ToRainbowFromFood" id="Htw-xd-Exa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fPF-YU-eLs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -413,6 +419,85 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wtq-kr-2MR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="753" y="1263"/>
+        </scene>
+        <!--Rainbow-->
+        <scene sceneID="rTo-bp-Uz9">
+            <objects>
+                <viewController title="Rainbow" id="Yl5-iR-X8X" customClass="RainbowPageViewController" customModule="Appy_Little_Eaters" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fbu-7H-acC"/>
+                        <viewControllerLayoutGuide type="bottom" id="XU0-aM-10W"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="X8X-sa-g2J">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rainbow-background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Lk4-he-w6N">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </imageView>
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mountainstrees.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="rAv-4K-i0k">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rainbow.png" translatesAutoresizingMaskIntoConstraints="NO" id="GVs-oS-bu5">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="redband.png" translatesAutoresizingMaskIntoConstraints="NO" id="DGn-L9-S25">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="orangeband.png" translatesAutoresizingMaskIntoConstraints="NO" id="7w7-ah-Mb6">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yellowband.png" translatesAutoresizingMaskIntoConstraints="NO" id="IfM-ce-QkM">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="greenband.png" translatesAutoresizingMaskIntoConstraints="NO" id="oYI-19-FVq">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="brownband.png" translatesAutoresizingMaskIntoConstraints="NO" id="OkH-QK-n7p">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="purpleband.png" translatesAutoresizingMaskIntoConstraints="NO" id="fhO-Us-1Cq">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rainbow-foreground.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ges-SK-Ls3">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rix-w4-K46">
+                                <rect key="frame" x="16" y="20" width="99" height="88"/>
+                                <state key="normal" image="social-home.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Xno-cK-C1u" kind="unwind" unwindAction="unwindToHomeView:" id="A95-qO-lrn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="gdr-tT-Yej" appends="YES" id="pNj-8I-UCM"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="EDK-2X-J7C"/>
+                    <connections>
+                        <outlet property="BrownBand" destination="OkH-QK-n7p" id="aQc-hh-h2M"/>
+                        <outlet property="GreenBand" destination="oYI-19-FVq" id="dCs-jc-bqI"/>
+                        <outlet property="OrangeBand" destination="7w7-ah-Mb6" id="3nz-Gy-Zpr"/>
+                        <outlet property="PurpleBand" destination="fhO-Us-1Cq" id="9Yr-i9-2gi"/>
+                        <outlet property="RedBand" destination="DGn-L9-S25" id="GVx-vI-0IZ"/>
+                        <outlet property="YellowBand" destination="IfM-ce-QkM" id="cDT-FI-8g3"/>
+                        <segue destination="5f9-ea-XB8" kind="push" identifier="RainbowToReward" id="Xxf-cL-8cu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v4L-qy-0WP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Xno-cK-C1u" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="gdr-tT-Yej">
+                    <connections>
+                        <action selector="tapped:" destination="Yl5-iR-X8X" id="p4p-Tc-LjR"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3243" y="-40"/>
         </scene>
         <!--Forest View Controller-->
         <scene sceneID="ymS-uC-QsJ">
@@ -462,6 +547,8 @@
     </scenes>
     <resources>
         <image name="apricots.png" width="200" height="200"/>
+        <image name="brownband.png" width="2048" height="1536"/>
+        <image name="greenband.png" width="2048" height="1536"/>
         <image name="home-background.jpg" width="2048" height="1153"/>
         <image name="home-clouds.png" width="2000" height="693"/>
         <image name="home-forest.png" width="302" height="346"/>
@@ -470,7 +557,14 @@
         <image name="home-rainbow.png" width="341" height="285"/>
         <image name="home-story.png" width="303" height="321"/>
         <image name="home-yummyfoods.png" width="287" height="335"/>
+        <image name="mountainstrees.jpg" width="2048" height="1536"/>
         <image name="no.png" width="823" height="585"/>
+        <image name="orangeband.png" width="2048" height="1536"/>
+        <image name="purpleband.png" width="2048" height="1536"/>
+        <image name="rainbow-background.jpg" width="2048" height="1536"/>
+        <image name="rainbow-foreground.png" width="2048" height="1536"/>
+        <image name="rainbow.png" width="2048" height="1536"/>
+        <image name="redband.png" width="2048" height="1536"/>
         <image name="reward-background.jpg" width="2048" height="1536"/>
         <image name="reward-done.png" width="377" height="169"/>
         <image name="social-background.jpg" width="2048" height="1536"/>
@@ -480,6 +574,7 @@
         <image name="start-background.jpg" width="2048" height="1536"/>
         <image name="start-button_06.png" width="1056" height="283"/>
         <image name="start-face_03.png" width="407" height="455"/>
+        <image name="yellowband.png" width="2048" height="1536"/>
         <image name="yes.png" width="872" height="576"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -487,4 +582,8 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="Htw-xd-Exa"/>
+        <segue reference="7tj-Rp-twU"/>
+    </inferredMetricsTieBreakers>
 </document>

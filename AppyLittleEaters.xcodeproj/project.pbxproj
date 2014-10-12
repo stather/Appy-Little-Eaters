@@ -66,6 +66,12 @@
 		464205C618EB4EF3005EC168 /* squirrel5.png in Resources */ = {isa = PBXBuildFile; fileRef = 464205BF18EB4EF3005EC168 /* squirrel5.png */; };
 		464205C718EB4EF3005EC168 /* squirrel6.png in Resources */ = {isa = PBXBuildFile; fileRef = 464205C018EB4EF3005EC168 /* squirrel6.png */; };
 		464205C818EB4EF3005EC168 /* squirrel7.png in Resources */ = {isa = PBXBuildFile; fileRef = 464205C118EB4EF3005EC168 /* squirrel7.png */; };
+		4645B12019D9E2A400974B39 /* social-story1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645B11F19D9E2A400974B39 /* social-story1.png */; };
+		4645B12619D9E66700974B39 /* social-story4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645B12119D9E66700974B39 /* social-story4.png */; };
+		4645B12719D9E66700974B39 /* social-story5.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645B12219D9E66700974B39 /* social-story5.png */; };
+		4645B12819D9E66700974B39 /* social-story6.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645B12319D9E66700974B39 /* social-story6.png */; };
+		4645B12919D9E66700974B39 /* social-story7.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645B12419D9E66700974B39 /* social-story7.png */; };
+		4645B12A19D9E66700974B39 /* social-story8.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645B12519D9E66700974B39 /* social-story8.png */; };
 		464F703118A019F000DDA449 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464F703018A019F000DDA449 /* Foundation.framework */; };
 		464F703318A019F000DDA449 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464F703218A019F000DDA449 /* CoreGraphics.framework */; };
 		464F703518A019F000DDA449 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464F703418A019F000DDA449 /* UIKit.framework */; };
@@ -107,6 +113,36 @@
 		46AB56B319D356CC00D47CEF /* nuts.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AB56AC19D356CC00D47CEF /* nuts.png */; };
 		46AB56B419D356CC00D47CEF /* potato.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AB56AD19D356CC00D47CEF /* potato.png */; };
 		46AB56B519D356CC00D47CEF /* whitecabbage.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AB56AE19D356CC00D47CEF /* whitecabbage.png */; };
+		46AE6C0519E970F0000238F4 /* rainbow-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C0319E970F0000238F4 /* rainbow-background.jpg */; };
+		46AE6C0719E97183000238F4 /* mountainstrees.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C0619E97183000238F4 /* mountainstrees.jpg */; };
+		46AE6C0919E97263000238F4 /* rainbow.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C0819E97263000238F4 /* rainbow.png */; };
+		46AE6C0B19E972B6000238F4 /* rainbow-foreground.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C0A19E972B6000238F4 /* rainbow-foreground.png */; };
+		46AE6C1219E9777A000238F4 /* brownband.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C0C19E9777A000238F4 /* brownband.png */; };
+		46AE6C1319E9777A000238F4 /* greenband.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C0D19E9777A000238F4 /* greenband.png */; };
+		46AE6C1419E9777A000238F4 /* orangeband.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C0E19E9777A000238F4 /* orangeband.png */; };
+		46AE6C1519E9777A000238F4 /* purpleband.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C0F19E9777A000238F4 /* purpleband.png */; };
+		46AE6C1619E9777A000238F4 /* redband.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C1019E9777A000238F4 /* redband.png */; };
+		46AE6C1719E9777A000238F4 /* yellowband.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C1119E9777A000238F4 /* yellowband.png */; };
+		46AE6C1919E979BC000238F4 /* RainbowPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AE6C1819E979BC000238F4 /* RainbowPageViewController.swift */; };
+		46AE6C1B19EAA26F000238F4 /* intro.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C1A19EAA149000238F4 /* intro.m4a */; };
+		46AE6C1D19EAA2F5000238F4 /* myfoodrainbow.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C1C19EAA2F5000238F4 /* myfoodrainbow.m4a */; };
+		46AE6C1F19EAA7C3000238F4 /* yummyfoods.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C1E19EAA7C3000238F4 /* yummyfoods.m4a */; };
+		46AE6C2119EAAEA5000238F4 /* uke1_01.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C2019EAAEA5000238F4 /* uke1_01.m4a */; };
+		46AE6C2A19EAB24F000238F4 /* BROWN.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C2219EAB24F000238F4 /* BROWN.m4a */; };
+		46AE6C2B19EAB24F000238F4 /* GREEN.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C2319EAB24F000238F4 /* GREEN.m4a */; };
+		46AE6C2C19EAB24F000238F4 /* NOIHAVENOTEATEN.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C2419EAB24F000238F4 /* NOIHAVENOTEATEN.m4a */; };
+		46AE6C2D19EAB24F000238F4 /* ORANGE.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C2519EAB24F000238F4 /* ORANGE.m4a */; };
+		46AE6C2E19EAB24F000238F4 /* PURPLE.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C2619EAB24F000238F4 /* PURPLE.m4a */; };
+		46AE6C2F19EAB24F000238F4 /* RED.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C2719EAB24F000238F4 /* RED.m4a */; };
+		46AE6C3019EAB24F000238F4 /* YELLOW.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C2819EAB24F000238F4 /* YELLOW.m4a */; };
+		46AE6C3119EAB24F000238F4 /* YESIHAVEEATEN.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C2919EAB24F000238F4 /* YESIHAVEEATEN.m4a */; };
+		46AE6C3419EAB5CE000238F4 /* apple.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C3319EAB5CE000238F4 /* apple.m4a */; };
+		46AE6C3B19EAB754000238F4 /* cherry.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C3519EAB754000238F4 /* cherry.m4a */; };
+		46AE6C3C19EAB754000238F4 /* raspberry.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C3619EAB754000238F4 /* raspberry.m4a */; };
+		46AE6C3D19EAB754000238F4 /* redpepper.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C3719EAB754000238F4 /* redpepper.m4a */; };
+		46AE6C3E19EAB754000238F4 /* strawberry.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C3819EAB754000238F4 /* strawberry.m4a */; };
+		46AE6C3F19EAB754000238F4 /* tomato.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C3919EAB754000238F4 /* tomato.m4a */; };
+		46AE6C4019EAB754000238F4 /* watermelon.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C3A19EAB754000238F4 /* watermelon.m4a */; };
 		46C4226318EDF1840071EEFF /* deer1.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C4225C18EDF1840071EEFF /* deer1.png */; };
 		46C4226418EDF1840071EEFF /* deer2.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C4225D18EDF1840071EEFF /* deer2.png */; };
 		46C4226518EDF1840071EEFF /* deer3.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C4225E18EDF1840071EEFF /* deer3.png */; };
@@ -141,8 +177,8 @@
 		46E7C7EE1986E4CD00CE7AB3 /* social-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7EA1986E4CD00CE7AB3 /* social-background.jpg */; };
 		46E7C7EF1986E4CD00CE7AB3 /* social-home.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7EB1986E4CD00CE7AB3 /* social-home.png */; };
 		46E7C7F01986E4CD00CE7AB3 /* social-next.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7EC1986E4CD00CE7AB3 /* social-next.png */; };
-		46E7C7F11986E4CD00CE7AB3 /* social-story1.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7ED1986E4CD00CE7AB3 /* social-story1.png */; };
-		46E7C7F3198830A600CE7AB3 /* social-story2.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7F2198830A600CE7AB3 /* social-story2.png */; };
+		46E7C7F11986E4CD00CE7AB3 /* social-story2.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7ED1986E4CD00CE7AB3 /* social-story2.png */; };
+		46E7C7F3198830A600CE7AB3 /* social-story3.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7F2198830A600CE7AB3 /* social-story3.png */; };
 		46E7C7F81988382C00CE7AB3 /* eatinghealthyfoods2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7F61988382C00CE7AB3 /* eatinghealthyfoods2.m4a */; };
 		46E7C7F91988382C00CE7AB3 /* goodfoodmakes2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7F71988382C00CE7AB3 /* goodfoodmakes2.m4a */; };
 		46E7C7FB1988387700CE7AB3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E7C7FA1988387700CE7AB3 /* AVFoundation.framework */; };
@@ -236,6 +272,12 @@
 		464205BF18EB4EF3005EC168 /* squirrel5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = squirrel5.png; sourceTree = "<group>"; };
 		464205C018EB4EF3005EC168 /* squirrel6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = squirrel6.png; sourceTree = "<group>"; };
 		464205C118EB4EF3005EC168 /* squirrel7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = squirrel7.png; sourceTree = "<group>"; };
+		4645B11F19D9E2A400974B39 /* social-story1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "social-story1.png"; sourceTree = "<group>"; };
+		4645B12119D9E66700974B39 /* social-story4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "social-story4.png"; sourceTree = "<group>"; };
+		4645B12219D9E66700974B39 /* social-story5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "social-story5.png"; sourceTree = "<group>"; };
+		4645B12319D9E66700974B39 /* social-story6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "social-story6.png"; sourceTree = "<group>"; };
+		4645B12419D9E66700974B39 /* social-story7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "social-story7.png"; sourceTree = "<group>"; };
+		4645B12519D9E66700974B39 /* social-story8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "social-story8.png"; sourceTree = "<group>"; };
 		464F702D18A019F000DDA449 /* Appy Little Eaters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Appy Little Eaters.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		464F703018A019F000DDA449 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		464F703218A019F000DDA449 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -286,6 +328,36 @@
 		46AB56AC19D356CC00D47CEF /* nuts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nuts.png; sourceTree = "<group>"; };
 		46AB56AD19D356CC00D47CEF /* potato.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = potato.png; sourceTree = "<group>"; };
 		46AB56AE19D356CC00D47CEF /* whitecabbage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitecabbage.png; sourceTree = "<group>"; };
+		46AE6C0319E970F0000238F4 /* rainbow-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "rainbow-background.jpg"; sourceTree = "<group>"; };
+		46AE6C0619E97183000238F4 /* mountainstrees.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mountainstrees.jpg; sourceTree = "<group>"; };
+		46AE6C0819E97263000238F4 /* rainbow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rainbow.png; sourceTree = "<group>"; };
+		46AE6C0A19E972B6000238F4 /* rainbow-foreground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rainbow-foreground.png"; sourceTree = "<group>"; };
+		46AE6C0C19E9777A000238F4 /* brownband.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brownband.png; sourceTree = "<group>"; };
+		46AE6C0D19E9777A000238F4 /* greenband.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenband.png; sourceTree = "<group>"; };
+		46AE6C0E19E9777A000238F4 /* orangeband.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeband.png; sourceTree = "<group>"; };
+		46AE6C0F19E9777A000238F4 /* purpleband.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purpleband.png; sourceTree = "<group>"; };
+		46AE6C1019E9777A000238F4 /* redband.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redband.png; sourceTree = "<group>"; };
+		46AE6C1119E9777A000238F4 /* yellowband.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowband.png; sourceTree = "<group>"; };
+		46AE6C1819E979BC000238F4 /* RainbowPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RainbowPageViewController.swift; sourceTree = "<group>"; };
+		46AE6C1A19EAA149000238F4 /* intro.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro.m4a; sourceTree = "<group>"; };
+		46AE6C1C19EAA2F5000238F4 /* myfoodrainbow.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = myfoodrainbow.m4a; sourceTree = "<group>"; };
+		46AE6C1E19EAA7C3000238F4 /* yummyfoods.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = yummyfoods.m4a; sourceTree = "<group>"; };
+		46AE6C2019EAAEA5000238F4 /* uke1_01.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = uke1_01.m4a; sourceTree = "<group>"; };
+		46AE6C2219EAB24F000238F4 /* BROWN.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = BROWN.m4a; sourceTree = "<group>"; };
+		46AE6C2319EAB24F000238F4 /* GREEN.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = GREEN.m4a; sourceTree = "<group>"; };
+		46AE6C2419EAB24F000238F4 /* NOIHAVENOTEATEN.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = NOIHAVENOTEATEN.m4a; sourceTree = "<group>"; };
+		46AE6C2519EAB24F000238F4 /* ORANGE.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ORANGE.m4a; sourceTree = "<group>"; };
+		46AE6C2619EAB24F000238F4 /* PURPLE.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = PURPLE.m4a; sourceTree = "<group>"; };
+		46AE6C2719EAB24F000238F4 /* RED.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = RED.m4a; sourceTree = "<group>"; };
+		46AE6C2819EAB24F000238F4 /* YELLOW.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = YELLOW.m4a; sourceTree = "<group>"; };
+		46AE6C2919EAB24F000238F4 /* YESIHAVEEATEN.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = YESIHAVEEATEN.m4a; sourceTree = "<group>"; };
+		46AE6C3319EAB5CE000238F4 /* apple.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = apple.m4a; sourceTree = "<group>"; };
+		46AE6C3519EAB754000238F4 /* cherry.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = cherry.m4a; sourceTree = "<group>"; };
+		46AE6C3619EAB754000238F4 /* raspberry.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = raspberry.m4a; sourceTree = "<group>"; };
+		46AE6C3719EAB754000238F4 /* redpepper.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = redpepper.m4a; sourceTree = "<group>"; };
+		46AE6C3819EAB754000238F4 /* strawberry.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = strawberry.m4a; sourceTree = "<group>"; };
+		46AE6C3919EAB754000238F4 /* tomato.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = tomato.m4a; sourceTree = "<group>"; };
+		46AE6C3A19EAB754000238F4 /* watermelon.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = watermelon.m4a; sourceTree = "<group>"; };
 		46C4225C18EDF1840071EEFF /* deer1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deer1.png; sourceTree = "<group>"; };
 		46C4225D18EDF1840071EEFF /* deer2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deer2.png; sourceTree = "<group>"; };
 		46C4225E18EDF1840071EEFF /* deer3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deer3.png; sourceTree = "<group>"; };
@@ -331,8 +403,8 @@
 		46E7C7EA1986E4CD00CE7AB3 /* social-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "social-background.jpg"; sourceTree = "<group>"; };
 		46E7C7EB1986E4CD00CE7AB3 /* social-home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "social-home.png"; sourceTree = "<group>"; };
 		46E7C7EC1986E4CD00CE7AB3 /* social-next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "social-next.png"; sourceTree = "<group>"; };
-		46E7C7ED1986E4CD00CE7AB3 /* social-story1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "social-story1.png"; sourceTree = "<group>"; };
-		46E7C7F2198830A600CE7AB3 /* social-story2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "social-story2.png"; path = "../../social-story2.png"; sourceTree = "<group>"; };
+		46E7C7ED1986E4CD00CE7AB3 /* social-story2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "social-story2.png"; sourceTree = "<group>"; };
+		46E7C7F2198830A600CE7AB3 /* social-story3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "social-story3.png"; path = "../../social-story3.png"; sourceTree = "<group>"; };
 		46E7C7F61988382C00CE7AB3 /* eatinghealthyfoods2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = eatinghealthyfoods2.m4a; sourceTree = "<group>"; };
 		46E7C7F71988382C00CE7AB3 /* goodfoodmakes2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = goodfoodmakes2.m4a; sourceTree = "<group>"; };
 		46E7C7FA1988387700CE7AB3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -550,6 +622,7 @@
 				4675C25118D0D4EA00973C24 /* CForestScene.m */,
 				469846EA19D84BEF00617FCE /* RewardsPageViewController.swift */,
 				469846E919D84BEF00617FCE /* Appy Little Eaters-Bridging-Header.h */,
+				46AE6C1819E979BC000238F4 /* RainbowPageViewController.swift */,
 			);
 			path = "Appy Little Eaters";
 			sourceTree = "<group>";
@@ -586,6 +659,7 @@
 		464F706818A2F0C200DDA449 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				46AE6BFF19E96F5F000238F4 /* Rainbow */,
 				469846E619D8480800617FCE /* rewardspage */,
 				469846E519D847A100617FCE /* startpage */,
 				469846E419D8474400617FCE /* homepage */,
@@ -714,6 +788,37 @@
 			name = whitefood;
 			sourceTree = "<group>";
 		};
+		46AE6BFF19E96F5F000238F4 /* Rainbow */ = {
+			isa = PBXGroup;
+			children = (
+				46AE6C0C19E9777A000238F4 /* brownband.png */,
+				46AE6C0D19E9777A000238F4 /* greenband.png */,
+				46AE6C0E19E9777A000238F4 /* orangeband.png */,
+				46AE6C0F19E9777A000238F4 /* purpleband.png */,
+				46AE6C1019E9777A000238F4 /* redband.png */,
+				46AE6C1119E9777A000238F4 /* yellowband.png */,
+				46AE6C0A19E972B6000238F4 /* rainbow-foreground.png */,
+				46AE6C0819E97263000238F4 /* rainbow.png */,
+				46AE6C0619E97183000238F4 /* mountainstrees.jpg */,
+				46AE6C0319E970F0000238F4 /* rainbow-background.jpg */,
+			);
+			name = Rainbow;
+			sourceTree = "<group>";
+		};
+		46AE6C3219EAB5C1000238F4 /* red */ = {
+			isa = PBXGroup;
+			children = (
+				46AE6C3519EAB754000238F4 /* cherry.m4a */,
+				46AE6C3619EAB754000238F4 /* raspberry.m4a */,
+				46AE6C3719EAB754000238F4 /* redpepper.m4a */,
+				46AE6C3819EAB754000238F4 /* strawberry.m4a */,
+				46AE6C3919EAB754000238F4 /* tomato.m4a */,
+				46AE6C3A19EAB754000238F4 /* watermelon.m4a */,
+				46AE6C3319EAB5CE000238F4 /* apple.m4a */,
+			);
+			name = red;
+			sourceTree = "<group>";
+		};
 		46E7C7BE1985114D00CE7AB3 /* TPKeyboardAvoiding */ = {
 			isa = PBXGroup;
 			children = (
@@ -740,11 +845,17 @@
 		46E7C7E91986E4CD00CE7AB3 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				46E7C7F2198830A600CE7AB3 /* social-story2.png */,
+				4645B12119D9E66700974B39 /* social-story4.png */,
+				4645B12219D9E66700974B39 /* social-story5.png */,
+				4645B12319D9E66700974B39 /* social-story6.png */,
+				4645B12419D9E66700974B39 /* social-story7.png */,
+				4645B12519D9E66700974B39 /* social-story8.png */,
+				4645B11F19D9E2A400974B39 /* social-story1.png */,
+				46E7C7F2198830A600CE7AB3 /* social-story3.png */,
 				46E7C7EA1986E4CD00CE7AB3 /* social-background.jpg */,
 				46E7C7EB1986E4CD00CE7AB3 /* social-home.png */,
 				46E7C7EC1986E4CD00CE7AB3 /* social-next.png */,
-				46E7C7ED1986E4CD00CE7AB3 /* social-story1.png */,
+				46E7C7ED1986E4CD00CE7AB3 /* social-story2.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -752,6 +863,19 @@
 		46E7C7F41988380E00CE7AB3 /* audio */ = {
 			isa = PBXGroup;
 			children = (
+				46AE6C3219EAB5C1000238F4 /* red */,
+				46AE6C2219EAB24F000238F4 /* BROWN.m4a */,
+				46AE6C2319EAB24F000238F4 /* GREEN.m4a */,
+				46AE6C2419EAB24F000238F4 /* NOIHAVENOTEATEN.m4a */,
+				46AE6C2519EAB24F000238F4 /* ORANGE.m4a */,
+				46AE6C2619EAB24F000238F4 /* PURPLE.m4a */,
+				46AE6C2719EAB24F000238F4 /* RED.m4a */,
+				46AE6C2819EAB24F000238F4 /* YELLOW.m4a */,
+				46AE6C2919EAB24F000238F4 /* YESIHAVEEATEN.m4a */,
+				46AE6C2019EAAEA5000238F4 /* uke1_01.m4a */,
+				46AE6C1E19EAA7C3000238F4 /* yummyfoods.m4a */,
+				46AE6C1C19EAA2F5000238F4 /* myfoodrainbow.m4a */,
+				46AE6C1A19EAA149000238F4 /* intro.m4a */,
 				46E7C7F51988381500CE7AB3 /* social */,
 			);
 			name = audio;
@@ -826,7 +950,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 464F702818A019EF00DDA449 /* Build configuration list for PBXProject "Appy Little Eaters" */;
+			buildConfigurationList = 464F702818A019EF00DDA449 /* Build configuration list for PBXProject "AppyLittleEaters" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -853,24 +977,32 @@
 				464205B918EB4A74005EC168 /* dragon5.png in Resources */,
 				464205AB18EB357A005EC168 /* bird2_03.png in Resources */,
 				4615CCEE19D1F5C5007994EC /* green-background.jpg in Resources */,
+				4645B12819D9E66700974B39 /* social-story6.png in Resources */,
 				46AB56A119D3553600D47CEF /* cherry.png in Resources */,
 				4615CCF219D1F5C5007994EC /* white-background.jpg in Resources */,
 				4615CCEF19D1F5C5007994EC /* orange-background.jpg in Resources */,
+				46AE6C1D19EAA2F5000238F4 /* myfoodrainbow.m4a in Resources */,
 				46E7C7BB19850C0B00CE7AB3 /* start-button_06.png in Resources */,
 				46AB56B019D356CC00D47CEF /* chicken.png in Resources */,
+				46AE6C0B19E972B6000238F4 /* rainbow-foreground.png in Resources */,
+				46AE6C1719E9777A000238F4 /* yellowband.png in Resources */,
 				46E7C7D91985487A00CE7AB3 /* home-clouds.png in Resources */,
 				46AB56AF19D356CC00D47CEF /* cauliflower.png in Resources */,
 				4614416E19D7031900CB5A3E /* broccoli.png in Resources */,
 				4675C25418D0FAAE00973C24 /* bird-sitting_03.png in Resources */,
 				46A5C1BA18EDD8FA00B29BC5 /* rewards-forrestv2.png in Resources */,
 				46C4226918EDF1840071EEFF /* deer7.png in Resources */,
+				46AE6C1B19EAA26F000238F4 /* intro.m4a in Resources */,
 				464205AC18EB357A005EC168 /* bird3_03.png in Resources */,
+				4645B12619D9E66700974B39 /* social-story4.png in Resources */,
 				464205B818EB4A74005EC168 /* dragon4.png in Resources */,
+				46AE6C3F19EAB754000238F4 /* tomato.m4a in Resources */,
 				46E7C7D4198545F500CE7AB3 /* home-rainbow.png in Resources */,
 				464205AA18EB357A005EC168 /* bird1_03.png in Resources */,
 				4614418219D703DC00CB5A3E /* yellowapple.png in Resources */,
 				46E7C7EE1986E4CD00CE7AB3 /* social-background.jpg in Resources */,
 				464205C818EB4EF3005EC168 /* squirrel7.png in Resources */,
+				46AE6C3C19EAB754000238F4 /* raspberry.m4a in Resources */,
 				464205C718EB4EF3005EC168 /* squirrel6.png in Resources */,
 				46E7C7DA1985487A00CE7AB3 /* home-logo.png in Resources */,
 				464205AD18EB357A005EC168 /* bird4_03.png in Resources */,
@@ -878,9 +1010,12 @@
 				4675C25818D2F79F00973C24 /* birdFlying_03.png in Resources */,
 				46AB56B419D356CC00D47CEF /* potato.png in Resources */,
 				4614417419D7031900CB5A3E /* sprouts.png in Resources */,
+				4645B12019D9E2A400974B39 /* social-story1.png in Resources */,
 				4614418E19D7047C00CB5A3E /* mango.png in Resources */,
+				46AE6C3119EAB24F000238F4 /* YESIHAVEEATEN.m4a in Resources */,
 				469846ED19D85A6100617FCE /* reward-done.png in Resources */,
 				46E7C7FD19883C7600CE7AB3 /* healthykids2.m4a in Resources */,
+				4645B12719D9E66700974B39 /* social-story5.png in Resources */,
 				4614417319D7031900CB5A3E /* peas.png in Resources */,
 				464205B518EB4A74005EC168 /* dragon1.png in Resources */,
 				464205C518EB4EF3005EC168 /* squirrel4.png in Resources */,
@@ -888,17 +1023,22 @@
 				46E7C7D1198545F500CE7AB3 /* home-background.jpg in Resources */,
 				461441A019D7052A00CB5A3E /* raisins.png in Resources */,
 				4614419E19D7052A00CB5A3E /* olives.png in Resources */,
+				46AE6C2A19EAB24F000238F4 /* BROWN.m4a in Resources */,
 				46AB56A519D3553600D47CEF /* tomato.png in Resources */,
+				46AE6C0919E97263000238F4 /* rainbow.png in Resources */,
 				46E48BCB18A8FDC4006DCA91 /* Localizable.strings in Resources */,
+				46AE6C1319E9777A000238F4 /* greenband.png in Resources */,
 				464205C218EB4EF3005EC168 /* squirrel1.png in Resources */,
 				46E7C7F81988382C00CE7AB3 /* eatinghealthyfoods2.m4a in Resources */,
 				4614418319D703DC00CB5A3E /* yellowpepper.png in Resources */,
-				46E7C7F11986E4CD00CE7AB3 /* social-story1.png in Resources */,
+				46E7C7F11986E4CD00CE7AB3 /* social-story2.png in Resources */,
+				46AE6C1419E9777A000238F4 /* orangeband.png in Resources */,
 				46AB56B119D356CC00D47CEF /* dates.png in Resources */,
 				464F704718A019F000DDA449 /* Main_iPad.storyboard in Resources */,
 				46AB56B519D356CC00D47CEF /* whitecabbage.png in Resources */,
 				46E7C7D2198545F500CE7AB3 /* home-forest.png in Resources */,
 				46AB56A419D3553600D47CEF /* strawberry.png in Resources */,
+				46AE6C3019EAB24F000238F4 /* YELLOW.m4a in Resources */,
 				46AB56A619D3553600D47CEF /* watermelon.png in Resources */,
 				4614417019D7031900CB5A3E /* greenapple.png in Resources */,
 				4615CCF019D1F5C5007994EC /* purple-background.jpg in Resources */,
@@ -907,12 +1047,15 @@
 				4614417E19D703DC00CB5A3E /* corn.png in Resources */,
 				4615CCF119D1F5C5007994EC /* red-background.jpg in Resources */,
 				4614417119D7031900CB5A3E /* greengrapes.png in Resources */,
+				46AE6C3B19EAB754000238F4 /* cherry.m4a in Resources */,
 				464F704C18A019F000DDA449 /* Images.xcassets in Resources */,
 				464205C418EB4EF3005EC168 /* squirrel3.png in Resources */,
 				4614419219D7047C00CB5A3E /* pumpkin.png in Resources */,
+				46AE6C2F19EAB24F000238F4 /* RED.m4a in Resources */,
 				46AB56A219D3553600D47CEF /* raspberry.png in Resources */,
 				46C4226418EDF1840071EEFF /* deer2.png in Resources */,
 				4614419D19D7052A00CB5A3E /* grapes.png in Resources */,
+				46AE6C2E19EAB24F000238F4 /* PURPLE.m4a in Resources */,
 				46AB56B319D356CC00D47CEF /* nuts.png in Resources */,
 				46E7C7BD19850C0B00CE7AB3 /* start-background.jpg in Resources */,
 				4614419119D7047C00CB5A3E /* peach.png in Resources */,
@@ -920,35 +1063,51 @@
 				4614419B19D7052A00CB5A3E /* blackberry.png in Resources */,
 				4614417F19D703DC00CB5A3E /* lemon.png in Resources */,
 				4614417219D7031900CB5A3E /* lime.png in Resources */,
+				46AE6C2C19EAB24F000238F4 /* NOIHAVENOTEATEN.m4a in Resources */,
+				46AE6C0719E97183000238F4 /* mountainstrees.jpg in Resources */,
+				46AE6C3419EAB5CE000238F4 /* apple.m4a in Resources */,
 				464205C618EB4EF3005EC168 /* squirrel5.png in Resources */,
+				4645B12A19D9E66700974B39 /* social-story8.png in Resources */,
 				464205BA18EB4A74005EC168 /* dragon6.png in Resources */,
 				46E7C7BC19850C0B00CE7AB3 /* start-face_03.png in Resources */,
 				4614418019D703DC00CB5A3E /* pear.png in Resources */,
+				46AE6C1519E9777A000238F4 /* purpleband.png in Resources */,
 				4675C25618D2E94100973C24 /* forestbackground-640.png in Resources */,
 				4614418C19D7047C00CB5A3E /* apricots.png in Resources */,
+				4645B12919D9E66700974B39 /* social-story7.png in Resources */,
+				46AE6C2B19EAB24F000238F4 /* GREEN.m4a in Resources */,
 				4614419C19D7052A00CB5A3E /* eggplant.png in Resources */,
 				464205AE18EB357A005EC168 /* bird5_03.png in Resources */,
 				46AB56A019D3553600D47CEF /* apple.png in Resources */,
 				4675C25A18D300BF00973C24 /* birdFlyingRight_03.png in Resources */,
+				46AE6C2D19EAB24F000238F4 /* ORANGE.m4a in Resources */,
+				46AE6C4019EAB754000238F4 /* watermelon.m4a in Resources */,
 				46E7C7F01986E4CD00CE7AB3 /* social-next.png in Resources */,
+				46AE6C0519E970F0000238F4 /* rainbow-background.jpg in Resources */,
 				461441A619D7081C00CB5A3E /* no.png in Resources */,
+				46AE6C3E19EAB754000238F4 /* strawberry.m4a in Resources */,
 				46E7C7D3198545F500CE7AB3 /* home-parents.png in Resources */,
 				4614419F19D7052A00CB5A3E /* plum.png in Resources */,
 				4615CCF319D1F5C5007994EC /* yellow-background.jpg in Resources */,
 				46C4226718EDF1840071EEFF /* deer5.png in Resources */,
+				46AE6C1F19EAA7C3000238F4 /* yummyfoods.m4a in Resources */,
 				46C4226818EDF1840071EEFF /* deer6.png in Resources */,
 				461441A119D7052A00CB5A3E /* redcabbage.png in Resources */,
 				46E7C7EF1986E4CD00CE7AB3 /* social-home.png in Resources */,
 				464205B718EB4A74005EC168 /* dragon3.png in Resources */,
-				46E7C7F3198830A600CE7AB3 /* social-story2.png in Resources */,
+				46E7C7F3198830A600CE7AB3 /* social-story3.png in Resources */,
 				461441A719D7081C00CB5A3E /* yes.png in Resources */,
 				4675C24C18CFA95000973C24 /* background-320h.png in Resources */,
 				46AB56B219D356CC00D47CEF /* lentils.png in Resources */,
+				46AE6C1219E9777A000238F4 /* brownband.png in Resources */,
 				4614419019D7047C00CB5A3E /* pawpaw.png in Resources */,
+				46AE6C2119EAAEA5000238F4 /* uke1_01.m4a in Resources */,
 				46E48BD118A9059B006DCA91 /* parentspage.rtf in Resources */,
 				46C4226318EDF1840071EEFF /* deer1.png in Resources */,
 				46AB56A319D3553600D47CEF /* redpepper.png in Resources */,
+				46AE6C3D19EAB754000238F4 /* redpepper.m4a in Resources */,
 				46C4226518EDF1840071EEFF /* deer3.png in Resources */,
+				46AE6C1619E9777A000238F4 /* redband.png in Resources */,
 				464F704418A019F000DDA449 /* Main_iPhone.storyboard in Resources */,
 				46E7C7F91988382C00CE7AB3 /* goodfoodmakes2.m4a in Resources */,
 				4614418D19D7047C00CB5A3E /* carrot.png in Resources */,
@@ -1004,6 +1163,7 @@
 				46E48BC418A8149A006DCA91 /* CHomeViewController.m in Sources */,
 				46E7C7CA1985114D00CE7AB3 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				46E48BC118A80E66006DCA91 /* CHomeIconView.m in Sources */,
+				46AE6C1919E979BC000238F4 /* RainbowPageViewController.swift in Sources */,
 				4675C24F18D0D0CF00973C24 /* CForestScrollView.m in Sources */,
 				46672BCB18B52E7800C68BF3 /* CForestViewController.m in Sources */,
 				46E7C7C91985114D00CE7AB3 /* TPKeyboardAvoidingTableView.m in Sources */,
@@ -1242,7 +1402,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		464F702818A019EF00DDA449 /* Build configuration list for PBXProject "Appy Little Eaters" */ = {
+		464F702818A019EF00DDA449 /* Build configuration list for PBXProject "AppyLittleEaters" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				464F706018A019F000DDA449 /* Debug */,

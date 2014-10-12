@@ -17,7 +17,7 @@
                BlueprintIdentifier = "464F702C18A019EF00DDA449"
                BuildableName = "Appy Little Eaters.app"
                BlueprintName = "Appy Little Eaters"
-               ReferencedContainer = "container:Appy Little Eaters.xcodeproj">
+               ReferencedContainer = "container:AppyLittleEaters.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "464F705018A019F000DDA449"
                BuildableName = "Appy Little EatersTests.xctest"
                BlueprintName = "Appy Little EatersTests"
-               ReferencedContainer = "container:Appy Little Eaters.xcodeproj">
+               ReferencedContainer = "container:AppyLittleEaters.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -45,7 +45,7 @@
             BlueprintIdentifier = "464F702C18A019EF00DDA449"
             BuildableName = "Appy Little Eaters.app"
             BlueprintName = "Appy Little Eaters"
-            ReferencedContainer = "container:Appy Little Eaters.xcodeproj">
+            ReferencedContainer = "container:AppyLittleEaters.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "464F702C18A019EF00DDA449"
             BuildableName = "Appy Little Eaters.app"
             BlueprintName = "Appy Little Eaters"
-            ReferencedContainer = "container:Appy Little Eaters.xcodeproj">
+            ReferencedContainer = "container:AppyLittleEaters.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -82,7 +82,7 @@
             BlueprintIdentifier = "464F702C18A019EF00DDA449"
             BuildableName = "Appy Little Eaters.app"
             BlueprintName = "Appy Little Eaters"
-            ReferencedContainer = "container:Appy Little Eaters.xcodeproj">
+            ReferencedContainer = "container:AppyLittleEaters.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

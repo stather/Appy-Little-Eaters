@@ -8,12 +8,15 @@
 
 #import "CFoodPageViewController.h"
 #import "CFoodCell.h"
+#import "Appy_Little_Eaters-Swift.h"
 
 @interface CFoodPageViewController ()
-
+@property int endOfPlayAction;
 @end
 
 @implementation CFoodPageViewController
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -64,15 +67,20 @@
 			foods = [[NSArray alloc] initWithObjects:@"broccoli", @"cucumber", @"greenapple", @"greengrapes", @"lime", @"peas", @"sprouts",  nil];
 			break;
 		case 4:
-			filepath = [[NSBundle mainBundle] pathForResource:@"purple-background" ofType:@"jpg"];
-			foods = [[NSArray alloc] initWithObjects:@"blackberry", @"eggplant", @"grapes", @"olives", @"plum", @"raisins", @"rebcabbage",  nil];
-			break;
-		case 5:
 			filepath = [[NSBundle mainBundle] pathForResource:@"white-background" ofType:@"jpg"];
 			foods = [[NSArray alloc] initWithObjects:@"cauliflower", @"chicken", @"dates", @"lentils", @"nuts", @"potato", @"whitecabbage",  nil];
 			break;
+		case 5:
+			filepath = [[NSBundle mainBundle] pathForResource:@"purple-background" ofType:@"jpg"];
+			foods = [[NSArray alloc] initWithObjects:@"blackberry", @"eggplant", @"grapes", @"olives", @"plum", @"raisins", @"rebcabbage",  nil];
+			break;
 	}
 	self.backgroundImage.image = [[UIImage alloc] initWithContentsOfFile:filepath];
+	NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"yummyfoods" ofType:@"m4a"];
+	NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+	_player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+	[_player play];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -128,6 +136,15 @@
 	//self.didYouEatText.hidden = false;
 	self.tick.hidden = NO;
 	self.cross.hidden = NO;
+	
+	NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:name ofType:@"m4a"];
+	if (soundFilePath != nil)
+	{
+		NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+		_player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+		[_player play];
+	}
+
 }
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     // TODO: Deselect item
@@ -152,19 +169,60 @@
     return UIEdgeInsetsMake(0, 0, 0, 0);
 }
 - (IBAction)crossClicked:(id)sender {
-	self.selectedFoodImage.hidden = YES;
-	//self.didYouEatText.hidden = YES;
-	self.theCollection.hidden = NO;
-	self.tick.hidden = YES;
-	self.cross.hidden = YES;
+	
+	self.endOfPlayAction = 0;
+	NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"NOIHAVENOTEATEN" ofType:@"m4a"];
+	NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+	_player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+	_player.delegate = self;
+	[_player play];
+	
+}
+
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+	if (self.endOfPlayAction == 0)
+	{
+		self.selectedFoodImage.hidden = YES;
+		self.theCollection.hidden = NO;
+		self.tick.hidden = YES;
+		self.cross.hidden = YES;
+		
+	}
+	else if (self.endOfPlayAction == 1)
+	{
+		self.selectedFoodImage.hidden = YES;
+		self.theCollection.hidden = NO;
+		self.tick.hidden = YES;
+		self.cross.hidden = YES;
+		[self performSegueWithIdentifier:@"ToRainbowFromFood" sender:self];
+	}
 	
 }
 
 - (IBAction)tickClicked:(id)sender {
-	self.selectedFoodImage.hidden = YES;
-	//self.didYouEatText.hidden = YES;
-	self.theCollection.hidden = NO;
-	self.tick.hidden = YES;
-	self.cross.hidden = YES;
+	self.endOfPlayAction = 1;
+	NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"YESIHAVEEATEN" ofType:@"m4a"];
+	NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+	_player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+	_player.delegate = self;
+	[_player play];
+	
+	
+	
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if ([[segue destinationViewController] isKindOfClass:[RainbowPageViewController class]])
+		 {
+			 RainbowPageViewController *vc = [segue destinationViewController];
+			 vc.colour = self.index;
+			 vc.foodEaten = true;
+		 }
+
+}
+
+
+
 @end

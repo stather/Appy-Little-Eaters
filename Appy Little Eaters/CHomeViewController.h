@@ -16,4 +16,7 @@
 - (IBAction)unwindToHomeView:(UIStoryboardSegue *)segue;
 @property (weak, nonatomic) IBOutlet SKView *spriteView;
 
+@property (nonatomic,retain) AVAudioPlayer *player;
+@property (nonatomic,retain) AVAudioPlayer *ukeplayer;
+
 @end

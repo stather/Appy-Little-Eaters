@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CFoodPageViewController : UIViewController <UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>{
+@interface CFoodPageViewController : UIViewController <UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, AVAudioPlayerDelegate>{
 	NSArray * foods;
 }
 
@@ -26,5 +26,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *cross;
 - (IBAction)crossClicked:(id)sender;
 - (IBAction)tickClicked:(id)sender;
+
+@property (nonatomic,retain) AVAudioPlayer *player;
+
 
 @end
