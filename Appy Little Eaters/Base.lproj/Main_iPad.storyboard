@@ -254,18 +254,35 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2n-We-nF3" userLabel="Done">
-                                <rect key="frame" x="784" y="20" width="224" height="113"/>
+                                <rect key="frame" x="808" y="20" width="200" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="224" id="KQl-2k-dv2"/>
-                                    <constraint firstAttribute="height" constant="113" id="gVG-Ap-6cy"/>
+                                    <constraint firstAttribute="width" constant="200" id="KQl-2k-dv2"/>
+                                    <constraint firstAttribute="height" constant="100" id="gVG-Ap-6cy"/>
                                 </constraints>
                                 <state key="normal" image="reward-done.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Evs-l7-TtO" kind="push" id="7tj-Rp-twU"/>
+                                    <action selector="DonePressed:" destination="5f9-ea-XB8" eventType="touchUpInside" id="PDc-rm-GzG"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="REWARDS-BOX.png" translatesAutoresizingMaskIntoConstraints="NO" id="vAP-0b-lNa">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a8s-Yc-4MA" userLabel="Left Reward">
+                                <rect key="frame" x="244" y="147" width="240" height="240"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="tkK-c0-XMd" appends="YES" id="gTv-Hb-xUb"/>
+                                </connections>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kuA-LB-3Yr" userLabel="Right Reward">
+                                <rect key="frame" x="536" y="147" width="240" height="240"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="IHa-SL-JeY" appends="YES" id="qVP-NR-oUC"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -279,8 +296,24 @@
                     </view>
                     <navigationItem key="navigationItem" id="bJc-RD-pJY"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="DoneButton" destination="h2n-We-nF3" id="xEv-xw-W2l"/>
+                        <outlet property="LeftReward" destination="a8s-Yc-4MA" id="64V-7R-2oJ"/>
+                        <outlet property="RightReward" destination="kuA-LB-3Yr" id="MKR-4U-IgW"/>
+                        <segue destination="Evs-l7-TtO" kind="push" identifier="RewardToForest" id="f2G-Sa-c7h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9g-E3-c8r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="tkK-c0-XMd" userLabel="Left Image Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="LeftImageTapped:" destination="5f9-ea-XB8" id="3lK-o2-h0V"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="IHa-SL-JeY" userLabel="Right Image Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="RightImageTapped:" destination="5f9-ea-XB8" id="712-l2-ImZ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1616" y="-813"/>
         </scene>
@@ -546,6 +579,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="REWARDS-BOX.png" width="2945" height="2209"/>
         <image name="apricots.png" width="200" height="200"/>
         <image name="brownband.png" width="2048" height="1536"/>
         <image name="greenband.png" width="2048" height="1536"/>
@@ -584,6 +618,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="Htw-xd-Exa"/>
-        <segue reference="7tj-Rp-twU"/>
+        <segue reference="f2G-Sa-c7h"/>
     </inferredMetricsTieBreakers>
 </document>
