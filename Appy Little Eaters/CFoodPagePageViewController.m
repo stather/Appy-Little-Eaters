@@ -7,7 +7,7 @@
 //
 
 #import "CFoodPagePageViewController.h"
-#import "CFoodPageViewController.h"
+#import "Appy_Little_Eaters-Swift.h"
 
 
 @interface CFoodPagePageViewController ()
@@ -34,7 +34,7 @@
     self.pageViewController.dataSource = self;
 	self.pageViewController.delegate = self;
 
-	CFoodPageViewController *startingViewController = [self viewControllerAtIndex:0];
+	FoodPageViewController *startingViewController = [self viewControllerAtIndex:0];
     NSArray *viewControllers = @[startingViewController];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
@@ -55,31 +55,29 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    CFoodPageViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
-    int index = (((CFoodPageViewController*)viewController).index - 1 + 6)%6;
+    FoodPageViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
+    int index = (((FoodPageViewController*)viewController).index - 1 + 6)%6;
 	pageContentViewController.index = index;
 	pageContentViewController.selectedFoodImage.hidden = true;
-	pageContentViewController.didYouEatText.hidden = true;
 	pageContentViewController.theCollection.hidden = false;
     return pageContentViewController;
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-    CFoodPageViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
-    int index = (((CFoodPageViewController*)viewController).index + 1)%6;
+    FoodPageViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
+    int index = (((FoodPageViewController*)viewController).index + 1)%6;
 	pageContentViewController.index = index;
 	pageContentViewController.selectedFoodImage.hidden = true;
-	pageContentViewController.didYouEatText.hidden = true;
 	pageContentViewController.theCollection.hidden = false;
     return pageContentViewController;
 }
 
-- (CFoodPageViewController *)viewControllerAtIndex:(NSUInteger)index
+- (FoodPageViewController *)viewControllerAtIndex:(NSUInteger)index
 {
     
     // Create a new view controller and pass suitable data.
-    CFoodPageViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
+    FoodPageViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
     pageContentViewController.index = index % 6;
     return pageContentViewController;
 }
@@ -91,9 +89,8 @@
 		return;
 	}
 	[previousViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-		CFoodPageViewController * vc = obj;
+		FoodPageViewController * vc = obj;
 		vc.selectedFoodImage.hidden = YES;
-		vc.didYouEatText.hidden = YES;
 		vc.theCollection.hidden = NO;
 		vc.tick.hidden = YES;
 		vc.cross.hidden = YES;

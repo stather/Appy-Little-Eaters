@@ -100,7 +100,7 @@
         <!--Home Page-->
         <scene sceneID="1WD-mr-c1G">
             <objects>
-                <viewController id="Gqw-aq-bB9" userLabel="Home Page" customClass="CHomeViewController" sceneMemberID="viewController">
+                <viewController id="Gqw-aq-bB9" userLabel="Home Page" customClass="HomeViewController" customModule="Appy_Little_Eaters" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RBV-d7-HI9"/>
                         <viewControllerLayoutGuide type="bottom" id="jnF-uO-NKN"/>
@@ -253,7 +253,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reward-background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="qTS-3D-Pb3">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2n-We-nF3" userLabel="Done">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2n-We-nF3" userLabel="Done">
                                 <rect key="frame" x="808" y="20" width="200" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="KQl-2k-dv2"/>
@@ -320,7 +320,7 @@
         <!--Food Page View Controller-->
         <scene sceneID="Bpf-u6-TL0">
             <objects>
-                <viewController storyboardIdentifier="PageContentViewController" id="ZaA-WM-7OZ" customClass="CFoodPageViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PageContentViewController" id="ZaA-WM-7OZ" customClass="FoodPageViewController" customModule="Appy_Little_Eaters" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aQa-Gy-Bjt"/>
                         <viewControllerLayoutGuide type="bottom" id="v89-L1-k6d"/>
@@ -430,7 +430,7 @@
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="backgroundImage" destination="K6T-6E-cPE" id="ZRk-eZ-vjK"/>
+                        <outlet property="backgroundImage" destination="K6T-6E-cPE" id="6bc-YL-QPO"/>
                         <outlet property="cross" destination="CDS-qw-2YQ" id="xCe-6R-b9Y"/>
                         <outlet property="mainView" destination="kgF-hO-DzS" id="kOa-T3-FeT"/>
                         <outlet property="selectedFoodImage" destination="dxj-jr-QDc" id="Zia-nJ-P8B"/>
@@ -617,7 +617,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="UDV-Xy-o9A"/>
         <segue reference="Htw-xd-Exa"/>
-        <segue reference="f2G-Sa-c7h"/>
     </inferredMetricsTieBreakers>
 </document>
