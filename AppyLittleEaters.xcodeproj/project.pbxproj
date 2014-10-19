@@ -164,9 +164,6 @@
 		46C4226918EDF1840071EEFF /* deer7.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C4226218EDF1840071EEFF /* deer7.png */; };
 		46E48BC118A80E66006DCA91 /* CHomeIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E48BC018A80E66006DCA91 /* CHomeIconView.m */; };
 		46E48BCB18A8FDC4006DCA91 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46E48BCA18A8FDC4006DCA91 /* Localizable.strings */; };
-		46E48BD118A9059B006DCA91 /* parentspage.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 46E48BD018A9059B006DCA91 /* parentspage.rtf */; };
-		46E48BD418A90806006DCA91 /* CParentsPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E48BD318A90806006DCA91 /* CParentsPageView.m */; };
-		46E48BD718A90A80006DCA91 /* CParentsPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E48BD618A90A80006DCA91 /* CParentsPageViewController.m */; };
 		46E7C7BB19850C0B00CE7AB3 /* start-button_06.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7B819850C0B00CE7AB3 /* start-button_06.png */; };
 		46E7C7BC19850C0B00CE7AB3 /* start-face_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7B919850C0B00CE7AB3 /* start-face_03.png */; };
 		46E7C7BD19850C0B00CE7AB3 /* start-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7BA19850C0B00CE7AB3 /* start-background.jpg */; };
@@ -395,11 +392,6 @@
 		46E48BBF18A80E66006DCA91 /* CHomeIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHomeIconView.h; sourceTree = "<group>"; };
 		46E48BC018A80E66006DCA91 /* CHomeIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHomeIconView.m; sourceTree = "<group>"; };
 		46E48BCA18A8FDC4006DCA91 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		46E48BD018A9059B006DCA91 /* parentspage.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = parentspage.rtf; sourceTree = "<group>"; };
-		46E48BD218A90806006DCA91 /* CParentsPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CParentsPageView.h; sourceTree = "<group>"; };
-		46E48BD318A90806006DCA91 /* CParentsPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CParentsPageView.m; sourceTree = "<group>"; };
-		46E48BD518A90A80006DCA91 /* CParentsPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CParentsPageViewController.h; sourceTree = "<group>"; };
-		46E48BD618A90A80006DCA91 /* CParentsPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CParentsPageViewController.m; sourceTree = "<group>"; };
 		46E7C7B819850C0B00CE7AB3 /* start-button_06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start-button_06.png"; sourceTree = "<group>"; };
 		46E7C7B919850C0B00CE7AB3 /* start-face_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start-face_03.png"; sourceTree = "<group>"; };
 		46E7C7BA19850C0B00CE7AB3 /* start-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "start-background.jpg"; sourceTree = "<group>"; };
@@ -622,11 +614,6 @@
 				46E48BBF18A80E66006DCA91 /* CHomeIconView.h */,
 				46E48BC018A80E66006DCA91 /* CHomeIconView.m */,
 				46E48BCA18A8FDC4006DCA91 /* Localizable.strings */,
-				46E48BD018A9059B006DCA91 /* parentspage.rtf */,
-				46E48BD218A90806006DCA91 /* CParentsPageView.h */,
-				46E48BD318A90806006DCA91 /* CParentsPageView.m */,
-				46E48BD518A90A80006DCA91 /* CParentsPageViewController.h */,
-				46E48BD618A90A80006DCA91 /* CParentsPageViewController.m */,
 				460E4A9A18AECB1200BDC881 /* CHelloScene.h */,
 				460E4A9B18AECB1200BDC881 /* CHelloScene.m */,
 				460E4A9D18AF61B700BDC881 /* CSpaceshipScene.h */,
@@ -1170,7 +1157,6 @@
 				46AE6C1219E9777A000238F4 /* brownband.png in Resources */,
 				4614419019D7047C00CB5A3E /* pawpaw.png in Resources */,
 				46AE6C2119EAAEA5000238F4 /* uke1_01.m4a in Resources */,
-				46E48BD118A9059B006DCA91 /* parentspage.rtf in Resources */,
 				46C4226318EDF1840071EEFF /* deer1.png in Resources */,
 				46AB56A319D3553600D47CEF /* redpepper.png in Resources */,
 				46AE6C3D19EAB754000238F4 /* redpepper.m4a in Resources */,
@@ -1221,14 +1207,12 @@
 			files = (
 				469846EB19D84BEF00617FCE /* RewardsPageViewController.swift in Sources */,
 				46E7C7C71985114D00CE7AB3 /* TPKeyboardAvoidingCollectionView.m in Sources */,
-				46E48BD418A90806006DCA91 /* CParentsPageView.m in Sources */,
 				464F704118A019F000DDA449 /* CAppDelegate.m in Sources */,
 				46AE6C4919EAF773000238F4 /* HomeViewController.swift in Sources */,
 				46E8D17619F2C6F500AEF750 /* SocialStoryViewController.swift in Sources */,
 				464F703D18A019F000DDA449 /* main.m in Sources */,
 				46E8D17219F2B48000AEF750 /* FoodCell.swift in Sources */,
 				460E4A9C18AECB1200BDC881 /* CHelloScene.m in Sources */,
-				46E48BD718A90A80006DCA91 /* CParentsPageViewController.m in Sources */,
 				46E7C7CA1985114D00CE7AB3 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				46E48BC118A80E66006DCA91 /* CHomeIconView.m in Sources */,
 				46AE6C1919E979BC000238F4 /* RainbowPageViewController.swift in Sources */,
