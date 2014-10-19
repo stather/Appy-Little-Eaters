@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		460E4A9718AC0DF300BDC881 /* CFoodPagePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 460E4A9618AC0DF300BDC881 /* CFoodPagePageViewController.m */; };
 		460E4A9918AEC7CF00BDC881 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460E4A9818AEC7CF00BDC881 /* SpriteKit.framework */; };
 		460E4A9C18AECB1200BDC881 /* CHelloScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 460E4A9B18AECB1200BDC881 /* CHelloScene.m */; };
 		460E4A9F18AF61B700BDC881 /* CSpaceshipScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 460E4A9E18AF61B700BDC881 /* CSpaceshipScene.m */; };
@@ -156,12 +155,10 @@
 		46C4226818EDF1840071EEFF /* deer6.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C4226118EDF1840071EEFF /* deer6.png */; };
 		46C4226918EDF1840071EEFF /* deer7.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C4226218EDF1840071EEFF /* deer7.png */; };
 		46E48BC118A80E66006DCA91 /* CHomeIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E48BC018A80E66006DCA91 /* CHomeIconView.m */; };
-		46E48BC918A8F7E8006DCA91 /* CSocialStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E48BC818A8F7E8006DCA91 /* CSocialStoryViewController.m */; };
 		46E48BCB18A8FDC4006DCA91 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46E48BCA18A8FDC4006DCA91 /* Localizable.strings */; };
 		46E48BD118A9059B006DCA91 /* parentspage.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 46E48BD018A9059B006DCA91 /* parentspage.rtf */; };
 		46E48BD418A90806006DCA91 /* CParentsPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E48BD318A90806006DCA91 /* CParentsPageView.m */; };
 		46E48BD718A90A80006DCA91 /* CParentsPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E48BD618A90A80006DCA91 /* CParentsPageViewController.m */; };
-		46E48BDF18A938B7006DCA91 /* CFoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E48BDE18A938B7006DCA91 /* CFoodCell.m */; };
 		46E7C7BB19850C0B00CE7AB3 /* start-button_06.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7B819850C0B00CE7AB3 /* start-button_06.png */; };
 		46E7C7BC19850C0B00CE7AB3 /* start-face_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7B919850C0B00CE7AB3 /* start-face_03.png */; };
 		46E7C7BD19850C0B00CE7AB3 /* start-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7BA19850C0B00CE7AB3 /* start-background.jpg */; };
@@ -186,6 +183,10 @@
 		46E7C7F91988382C00CE7AB3 /* goodfoodmakes2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7F71988382C00CE7AB3 /* goodfoodmakes2.m4a */; };
 		46E7C7FB1988387700CE7AB3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E7C7FA1988387700CE7AB3 /* AVFoundation.framework */; };
 		46E7C7FD19883C7600CE7AB3 /* healthykids2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7FC19883C7600CE7AB3 /* healthykids2.m4a */; };
+		46E8D17219F2B48000AEF750 /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E8D17119F2B48000AEF750 /* FoodCell.swift */; };
+		46E8D17419F2B81600AEF750 /* FoodPagePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E8D17319F2B81600AEF750 /* FoodPagePageViewController.swift */; };
+		46E8D17619F2C6F500AEF750 /* SocialStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E8D17519F2C6F500AEF750 /* SocialStoryViewController.swift */; };
+		46E8D17819F2C86300AEF750 /* ResourceAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E8D17719F2C86300AEF750 /* ResourceAudioPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,8 +214,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		460E4A9518AC0DF300BDC881 /* CFoodPagePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFoodPagePageViewController.h; sourceTree = "<group>"; };
-		460E4A9618AC0DF300BDC881 /* CFoodPagePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFoodPagePageViewController.m; sourceTree = "<group>"; };
 		460E4A9818AEC7CF00BDC881 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		460E4A9A18AECB1200BDC881 /* CHelloScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHelloScene.h; sourceTree = "<group>"; };
 		460E4A9B18AECB1200BDC881 /* CHelloScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHelloScene.m; sourceTree = "<group>"; };
@@ -375,16 +374,12 @@
 		46C4226218EDF1840071EEFF /* deer7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deer7.png; sourceTree = "<group>"; };
 		46E48BBF18A80E66006DCA91 /* CHomeIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHomeIconView.h; sourceTree = "<group>"; };
 		46E48BC018A80E66006DCA91 /* CHomeIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHomeIconView.m; sourceTree = "<group>"; };
-		46E48BC718A8F7E8006DCA91 /* CSocialStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSocialStoryViewController.h; sourceTree = "<group>"; };
-		46E48BC818A8F7E8006DCA91 /* CSocialStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSocialStoryViewController.m; sourceTree = "<group>"; };
 		46E48BCA18A8FDC4006DCA91 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		46E48BD018A9059B006DCA91 /* parentspage.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = parentspage.rtf; sourceTree = "<group>"; };
 		46E48BD218A90806006DCA91 /* CParentsPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CParentsPageView.h; sourceTree = "<group>"; };
 		46E48BD318A90806006DCA91 /* CParentsPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CParentsPageView.m; sourceTree = "<group>"; };
 		46E48BD518A90A80006DCA91 /* CParentsPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CParentsPageViewController.h; sourceTree = "<group>"; };
 		46E48BD618A90A80006DCA91 /* CParentsPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CParentsPageViewController.m; sourceTree = "<group>"; };
-		46E48BDD18A938B7006DCA91 /* CFoodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFoodCell.h; sourceTree = "<group>"; };
-		46E48BDE18A938B7006DCA91 /* CFoodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFoodCell.m; sourceTree = "<group>"; };
 		46E7C7B819850C0B00CE7AB3 /* start-button_06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start-button_06.png"; sourceTree = "<group>"; };
 		46E7C7B919850C0B00CE7AB3 /* start-face_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start-face_03.png"; sourceTree = "<group>"; };
 		46E7C7BA19850C0B00CE7AB3 /* start-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "start-background.jpg"; sourceTree = "<group>"; };
@@ -413,6 +408,10 @@
 		46E7C7F71988382C00CE7AB3 /* goodfoodmakes2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = goodfoodmakes2.m4a; sourceTree = "<group>"; };
 		46E7C7FA1988387700CE7AB3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		46E7C7FC19883C7600CE7AB3 /* healthykids2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = healthykids2.m4a; path = "../../../Dropbox/Happy Little Eaters/Exports/audio/social/healthykids2.m4a"; sourceTree = "<group>"; };
+		46E8D17119F2B48000AEF750 /* FoodCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
+		46E8D17319F2B81600AEF750 /* FoodPagePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPagePageViewController.swift; sourceTree = "<group>"; };
+		46E8D17519F2C6F500AEF750 /* SocialStoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialStoryViewController.swift; sourceTree = "<group>"; };
+		46E8D17719F2C86300AEF750 /* ResourceAudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceAudioPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -598,18 +597,12 @@
 				464F703718A019F000DDA449 /* Supporting Files */,
 				46E48BBF18A80E66006DCA91 /* CHomeIconView.h */,
 				46E48BC018A80E66006DCA91 /* CHomeIconView.m */,
-				46E48BC718A8F7E8006DCA91 /* CSocialStoryViewController.h */,
-				46E48BC818A8F7E8006DCA91 /* CSocialStoryViewController.m */,
 				46E48BCA18A8FDC4006DCA91 /* Localizable.strings */,
 				46E48BD018A9059B006DCA91 /* parentspage.rtf */,
 				46E48BD218A90806006DCA91 /* CParentsPageView.h */,
 				46E48BD318A90806006DCA91 /* CParentsPageView.m */,
 				46E48BD518A90A80006DCA91 /* CParentsPageViewController.h */,
 				46E48BD618A90A80006DCA91 /* CParentsPageViewController.m */,
-				46E48BDD18A938B7006DCA91 /* CFoodCell.h */,
-				46E48BDE18A938B7006DCA91 /* CFoodCell.m */,
-				460E4A9518AC0DF300BDC881 /* CFoodPagePageViewController.h */,
-				460E4A9618AC0DF300BDC881 /* CFoodPagePageViewController.m */,
 				460E4A9A18AECB1200BDC881 /* CHelloScene.h */,
 				460E4A9B18AECB1200BDC881 /* CHelloScene.m */,
 				460E4A9D18AF61B700BDC881 /* CSpaceshipScene.h */,
@@ -625,6 +618,10 @@
 				46AE6C1819E979BC000238F4 /* RainbowPageViewController.swift */,
 				46AE6C4819EAF773000238F4 /* HomeViewController.swift */,
 				46AE6C4A19EB234C000238F4 /* FoodPageViewController.swift */,
+				46E8D17119F2B48000AEF750 /* FoodCell.swift */,
+				46E8D17319F2B81600AEF750 /* FoodPagePageViewController.swift */,
+				46E8D17519F2C6F500AEF750 /* SocialStoryViewController.swift */,
+				46E8D17719F2C86300AEF750 /* ResourceAudioPlayer.swift */,
 			);
 			path = "Appy Little Eaters";
 			sourceTree = "<group>";
@@ -1168,12 +1165,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				469846EB19D84BEF00617FCE /* RewardsPageViewController.swift in Sources */,
-				460E4A9718AC0DF300BDC881 /* CFoodPagePageViewController.m in Sources */,
 				46E7C7C71985114D00CE7AB3 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				46E48BD418A90806006DCA91 /* CParentsPageView.m in Sources */,
 				464F704118A019F000DDA449 /* CAppDelegate.m in Sources */,
 				46AE6C4919EAF773000238F4 /* HomeViewController.swift in Sources */,
+				46E8D17619F2C6F500AEF750 /* SocialStoryViewController.swift in Sources */,
 				464F703D18A019F000DDA449 /* main.m in Sources */,
+				46E8D17219F2B48000AEF750 /* FoodCell.swift in Sources */,
 				460E4A9C18AECB1200BDC881 /* CHelloScene.m in Sources */,
 				46E48BD718A90A80006DCA91 /* CParentsPageViewController.m in Sources */,
 				46E7C7CA1985114D00CE7AB3 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
@@ -1183,11 +1181,11 @@
 				46672BCB18B52E7800C68BF3 /* CForestViewController.m in Sources */,
 				46AE6C4B19EB234C000238F4 /* FoodPageViewController.swift in Sources */,
 				46E7C7C91985114D00CE7AB3 /* TPKeyboardAvoidingTableView.m in Sources */,
-				46E48BDF18A938B7006DCA91 /* CFoodCell.m in Sources */,
 				464F704A18A019F000DDA449 /* CViewController.m in Sources */,
+				46E8D17419F2B81600AEF750 /* FoodPagePageViewController.swift in Sources */,
+				46E8D17819F2C86300AEF750 /* ResourceAudioPlayer.swift in Sources */,
 				4675C25218D0D4EA00973C24 /* CForestScene.m in Sources */,
 				46E7C7C81985114D00CE7AB3 /* TPKeyboardAvoidingScrollView.m in Sources */,
-				46E48BC918A8F7E8006DCA91 /* CSocialStoryViewController.m in Sources */,
 				460E4A9F18AF61B700BDC881 /* CSpaceshipScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

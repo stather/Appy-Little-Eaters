@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="FiX-dY-Vvo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="FiX-dY-Vvo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -173,7 +173,7 @@
         <!--Social Story-->
         <scene sceneID="fEb-EE-RKf">
             <objects>
-                <viewController id="MCr-Bk-tKB" userLabel="Social Story" customClass="CSocialStoryViewController" sceneMemberID="viewController">
+                <viewController id="MCr-Bk-tKB" userLabel="Social Story" customClass="SocialStoryViewController" customModule="Appy_Little_Eaters" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AEB-j1-AHy"/>
                         <viewControllerLayoutGuide type="bottom" id="4Is-L7-RKR"/>
@@ -222,7 +222,7 @@
         <!--Food Page Page View Controller-->
         <scene sceneID="Hdq-g4-6nN">
             <objects>
-                <viewController id="Ch4-p2-pan" customClass="CFoodPagePageViewController" sceneMemberID="viewController">
+                <viewController id="Ch4-p2-pan" customClass="FoodPagePageViewController" customModule="Appy_Little_Eaters" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Mqy-5V-YrC"/>
                         <viewControllerLayoutGuide type="bottom" id="ENY-8x-oIG"/>
@@ -253,7 +253,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reward-background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="qTS-3D-Pb3">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2n-We-nF3" userLabel="Done">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2n-We-nF3" userLabel="Done">
                                 <rect key="frame" x="808" y="20" width="200" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="KQl-2k-dv2"/>
@@ -341,7 +341,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FoodCell" id="3Fw-bo-RE2" customClass="CFoodCell">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FoodCell" id="3Fw-bo-RE2" customClass="FoodCell" customModule="Appy_Little_Eaters" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">

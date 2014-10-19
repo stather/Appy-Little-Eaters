@@ -25,7 +25,7 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 	@IBOutlet weak public var selectedFoodImage: UIImageView!
 	@IBOutlet weak public var tick: UIButton!
 	@IBOutlet weak public var cross: UIButton!
-	var player:AVAudioPlayer!
+	var player:ResourceAudioPlayer!
 	var endOfPlayAction:Int!
 	
 	
@@ -41,7 +41,7 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 		var lc:NSLayoutConstraint = NSLayoutConstraint(item: self.theCollection, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: self.mainView, attribute: NSLayoutAttribute.Height, multiplier: 0.333, constant: 0)
 		self.mainView.addConstraint(lc)
 		
-		var filepath:NSString!
+		var filepath:String!
 		
 		switch (self.index){
 		case 0:
@@ -72,9 +72,7 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 			return;
 		}
 		self.backgroundImage.image = UIImage(contentsOfFile: filepath)
-		var soundFilePath = NSBundle.mainBundle().pathForResource("yummyfoods", ofType: "m4a")
-		var fileURL = NSURL(fileURLWithPath: soundFilePath!)
-		player = AVAudioPlayer(contentsOfURL: fileURL, error: nil)
+		player = ResourceAudioPlayer(fromName: "yummyfoods")
 		player.play()
 	
 	}
@@ -89,7 +87,7 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 	}
 	
 	public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		var cell:CFoodCell = collectionView.dequeueReusableCellWithReuseIdentifier("FoodCell", forIndexPath: indexPath) as CFoodCell
+		var cell:FoodCell = collectionView.dequeueReusableCellWithReuseIdentifier("FoodCell", forIndexPath: indexPath) as FoodCell
 		cell.backgroundColor = UIColor.whiteColor()
 		var index:NSInteger = indexPath.item
 		var name:NSString = foods.objectAtIndex(index) as NSString
@@ -102,9 +100,9 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 		return cell;
 	}
 	
-	public func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+	public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		var index:Int = indexPath.item
-		var name:NSString = foods.objectAtIndex(index) as NSString
+		var name:String = foods.objectAtIndex(index) as String
 		var filepath = NSBundle.mainBundle().pathForResource(name, ofType: "png")
 		var image:UIImage = UIImage(contentsOfFile: filepath!)
 		self.selectedFoodImage.image = image
@@ -113,14 +111,8 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 		self.tick.hidden = false;
 		self.cross.hidden = false;
 		
-		var soundFilePath = NSBundle.mainBundle().pathForResource(name, ofType: "m4a")!
-		
-		if (!soundFilePath.isEmpty)
-		{
-			var fileURL = NSURL(fileURLWithPath: soundFilePath)
-			player = AVAudioPlayer(contentsOfURL: fileURL, error: nil)
-			player.play()
-		}
+		player = ResourceAudioPlayer(fromName: name)
+		player.play()
 		
 	}
 	
@@ -136,10 +128,8 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 	
 	@IBAction func crossClicked(sender: AnyObject){
 		self.endOfPlayAction = 0;
-		var soundFilePath = NSBundle.mainBundle().pathForResource("NOIHAVENOTEATEN", ofType: "m4a")
-		var fileURL = NSURL(fileURLWithPath: soundFilePath!)
-		player = AVAudioPlayer(contentsOfURL: fileURL, error: nil)
-		player.delegate = self;
+		player = ResourceAudioPlayer(fromName: "NOIHAVENOTEATEN")
+		player.delegate = self
 		player.play()
 	}
 	
@@ -165,9 +155,7 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 	
 	@IBAction func tickClicked(sender: AnyObject){
 		self.endOfPlayAction = 1;
-		var soundFilePath = NSBundle.mainBundle().pathForResource("YESIHAVEEATEN", ofType: "m4a")
-		var fileURL = NSURL(fileURLWithPath: soundFilePath!)
-		player = AVAudioPlayer(contentsOfURL: fileURL, error: nil)
+		player = ResourceAudioPlayer(fromName: "YESIHAVEEATEN")
 		player.delegate = self
 		player.play()
 	}

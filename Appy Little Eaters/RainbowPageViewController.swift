@@ -24,7 +24,7 @@ public class RainbowPageViewController: UIViewController{
 	public var foodEaten: Bool = false
 	var theBand:UIView!
 	var theColour:NSString!
-	var player:AVAudioPlayer!
+	var player:ResourceAudioPlayer!
 	
 	@IBAction func tapped(sender: UITapGestureRecognizer) {
 		theBand.hidden = false;
@@ -104,10 +104,7 @@ public class RainbowPageViewController: UIViewController{
 
 		}else{
 			var soundFilePath:NSString
-			soundFilePath = NSBundle.mainBundle().pathForResource("myfoodrainbow", ofType: "m4a")!
-			var fileUrl:NSURL
-			fileUrl = NSURL.fileURLWithPath(soundFilePath)!
-			player = AVAudioPlayer(contentsOfURL: fileUrl, error: nil)
+			player = ResourceAudioPlayer(fromName: "myfoodrainbow")
 			player.play()
 			
 		}
