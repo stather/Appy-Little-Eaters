@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 public class ParentsPageViewController : UIViewController{
 	
@@ -73,7 +73,7 @@ public class ParentsPageViewController : UIViewController{
 	}
 	
 	@IBAction func webLinkPressed(sender: AnyObject) {
-		UIApplication.sharedApplication().openURL(NSURL(string: "http://www.readysteadyrainbow.com"))
+		UIApplication.sharedApplication().openURL(NSURL(string: "http://www.readysteadyrainbow.com")!)
 	}
 	
 	@IBAction func pinitPressed(sender: AnyObject) {

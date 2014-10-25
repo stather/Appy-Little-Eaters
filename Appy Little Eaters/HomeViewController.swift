@@ -7,7 +7,9 @@
 //
 
 import Foundation
+import UIKit
 import AVFoundation
+
 
 public class HomeViewController : UIViewController{
 	var player:ResourceAudioPlayer!

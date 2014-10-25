@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import AVFoundation
 
 
@@ -92,7 +93,7 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 		var index:NSInteger = indexPath.item
 		var name:NSString = foods.objectAtIndex(index) as NSString
 		var filepath:NSString = NSBundle.mainBundle().pathForResource(name, ofType: "png")!
-		var image:UIImage = UIImage(contentsOfFile: filepath)
+		var image:UIImage = UIImage(contentsOfFile: filepath)!
 		cell.foodImage.image = image;
 		cell.foodImage.backgroundColor = UIColor.clearColor()
 		cell.backgroundColor = UIColor.clearColor()
@@ -104,7 +105,7 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 		var index:Int = indexPath.item
 		var name:String = foods.objectAtIndex(index) as String
 		var filepath = NSBundle.mainBundle().pathForResource(name, ofType: "png")
-		var image:UIImage = UIImage(contentsOfFile: filepath!)
+		var image:UIImage = UIImage(contentsOfFile: filepath!)!
 		self.selectedFoodImage.image = image
 		self.selectedFoodImage.hidden = false;
 		self.theCollection.hidden = true;

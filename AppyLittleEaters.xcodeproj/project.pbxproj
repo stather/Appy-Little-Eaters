@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		460E4A9918AEC7CF00BDC881 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460E4A9818AEC7CF00BDC881 /* SpriteKit.framework */; };
-		460E4A9C18AECB1200BDC881 /* CHelloScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 460E4A9B18AECB1200BDC881 /* CHelloScene.m */; };
-		460E4A9F18AF61B700BDC881 /* CSpaceshipScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 460E4A9E18AF61B700BDC881 /* CSpaceshipScene.m */; };
 		4614416E19D7031900CB5A3E /* broccoli.png in Resources */ = {isa = PBXBuildFile; fileRef = 4614416719D7031900CB5A3E /* broccoli.png */; };
 		4614416F19D7031900CB5A3E /* cucumber.png in Resources */ = {isa = PBXBuildFile; fileRef = 4614416819D7031900CB5A3E /* cucumber.png */; };
 		4614417019D7031900CB5A3E /* greenapple.png in Resources */ = {isa = PBXBuildFile; fileRef = 4614416919D7031900CB5A3E /* greenapple.png */; };
@@ -73,6 +71,10 @@
 		4642607619F4626D0028C878 /* PARENTS-PAGE-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4642607219F4626D0028C878 /* PARENTS-PAGE-3.png */; };
 		4642607719F4626D0028C878 /* PARENTS-PAGE4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4642607319F4626D0028C878 /* PARENTS-PAGE4.png */; };
 		4642607819F4626D0028C878 /* PARENTS-PAGE5.png in Resources */ = {isa = PBXBuildFile; fileRef = 4642607419F4626D0028C878 /* PARENTS-PAGE5.png */; };
+		4642607A19F589210028C878 /* ForestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4642607919F589210028C878 /* ForestViewController.swift */; };
+		4642607C19F58D530028C878 /* ForestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4642607B19F58D530028C878 /* ForestScene.swift */; };
+		4642607F19F58EAE0028C878 /* Squirrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4642607E19F58EAE0028C878 /* Squirrel.swift */; };
+		4642608119F598B80028C878 /* Forest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4642608019F598B80028C878 /* Forest.swift */; };
 		4645B12019D9E2A400974B39 /* social-story1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645B11F19D9E2A400974B39 /* social-story1.png */; };
 		4645B12619D9E66700974B39 /* social-story4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645B12119D9E66700974B39 /* social-story4.png */; };
 		4645B12719D9E66700974B39 /* social-story5.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645B12219D9E66700974B39 /* social-story5.png */; };
@@ -94,7 +96,6 @@
 		464F705518A019F000DDA449 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464F703418A019F000DDA449 /* UIKit.framework */; };
 		464F705D18A019F000DDA449 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 464F705B18A019F000DDA449 /* InfoPlist.strings */; };
 		464F705F18A019F000DDA449 /* Appy_Little_EatersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 464F705E18A019F000DDA449 /* Appy_Little_EatersTests.m */; };
-		46672BCB18B52E7800C68BF3 /* CForestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46672BCA18B52E7800C68BF3 /* CForestViewController.m */; };
 		4675C24C18CFA95000973C24 /* background-320h.png in Resources */ = {isa = PBXBuildFile; fileRef = 4675C24B18CFA95000973C24 /* background-320h.png */; };
 		4675C24F18D0D0CF00973C24 /* CForestScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4675C24E18D0D0CF00973C24 /* CForestScrollView.m */; };
 		4675C25218D0D4EA00973C24 /* CForestScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4675C25118D0D4EA00973C24 /* CForestScene.m */; };
@@ -224,10 +225,6 @@
 
 /* Begin PBXFileReference section */
 		460E4A9818AEC7CF00BDC881 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
-		460E4A9A18AECB1200BDC881 /* CHelloScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHelloScene.h; sourceTree = "<group>"; };
-		460E4A9B18AECB1200BDC881 /* CHelloScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHelloScene.m; sourceTree = "<group>"; };
-		460E4A9D18AF61B700BDC881 /* CSpaceshipScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSpaceshipScene.h; sourceTree = "<group>"; };
-		460E4A9E18AF61B700BDC881 /* CSpaceshipScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSpaceshipScene.m; sourceTree = "<group>"; };
 		4614416719D7031900CB5A3E /* broccoli.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = broccoli.png; sourceTree = "<group>"; };
 		4614416819D7031900CB5A3E /* cucumber.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cucumber.png; sourceTree = "<group>"; };
 		4614416919D7031900CB5A3E /* greenapple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenapple.png; sourceTree = "<group>"; };
@@ -291,6 +288,10 @@
 		4642607219F4626D0028C878 /* PARENTS-PAGE-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PARENTS-PAGE-3.png"; sourceTree = "<group>"; };
 		4642607319F4626D0028C878 /* PARENTS-PAGE4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PARENTS-PAGE4.png"; sourceTree = "<group>"; };
 		4642607419F4626D0028C878 /* PARENTS-PAGE5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PARENTS-PAGE5.png"; sourceTree = "<group>"; };
+		4642607919F589210028C878 /* ForestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForestViewController.swift; sourceTree = "<group>"; };
+		4642607B19F58D530028C878 /* ForestScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForestScene.swift; sourceTree = "<group>"; };
+		4642607E19F58EAE0028C878 /* Squirrel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Squirrel.swift; sourceTree = "<group>"; };
+		4642608019F598B80028C878 /* Forest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forest.swift; sourceTree = "<group>"; };
 		4645B11F19D9E2A400974B39 /* social-story1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "social-story1.png"; sourceTree = "<group>"; };
 		4645B12119D9E66700974B39 /* social-story4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "social-story4.png"; sourceTree = "<group>"; };
 		4645B12219D9E66700974B39 /* social-story5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "social-story5.png"; sourceTree = "<group>"; };
@@ -317,8 +318,6 @@
 		464F705A18A019F000DDA449 /* Appy Little EatersTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Appy Little EatersTests-Info.plist"; sourceTree = "<group>"; };
 		464F705C18A019F000DDA449 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		464F705E18A019F000DDA449 /* Appy_Little_EatersTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Appy_Little_EatersTests.m; sourceTree = "<group>"; };
-		46672BC918B52E7800C68BF3 /* CForestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CForestViewController.h; sourceTree = "<group>"; };
-		46672BCA18B52E7800C68BF3 /* CForestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CForestViewController.m; sourceTree = "<group>"; };
 		4675C24B18CFA95000973C24 /* background-320h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-320h.png"; sourceTree = "<group>"; };
 		4675C24D18D0D0CF00973C24 /* CForestScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CForestScrollView.h; sourceTree = "<group>"; };
 		4675C24E18D0D0CF00973C24 /* CForestScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CForestScrollView.m; sourceTree = "<group>"; };
@@ -550,6 +549,15 @@
 			name = "food backgrounds";
 			sourceTree = "<group>";
 		};
+		4642607D19F58E820028C878 /* animations */ = {
+			isa = PBXGroup;
+			children = (
+				4642607E19F58EAE0028C878 /* Squirrel.swift */,
+				4642608019F598B80028C878 /* Forest.swift */,
+			);
+			name = animations;
+			sourceTree = "<group>";
+		};
 		4645C1C719CF592F00BCE79E /* redfood */ = {
 			isa = PBXGroup;
 			children = (
@@ -600,6 +608,7 @@
 		464F703618A019F000DDA449 /* Appy Little Eaters */ = {
 			isa = PBXGroup;
 			children = (
+				4642607D19F58E820028C878 /* animations */,
 				46E7C7F41988380E00CE7AB3 /* audio */,
 				46E7C7BE1985114D00CE7AB3 /* TPKeyboardAvoiding */,
 				464F706818A2F0C200DDA449 /* images */,
@@ -614,12 +623,6 @@
 				46E48BBF18A80E66006DCA91 /* CHomeIconView.h */,
 				46E48BC018A80E66006DCA91 /* CHomeIconView.m */,
 				46E48BCA18A8FDC4006DCA91 /* Localizable.strings */,
-				460E4A9A18AECB1200BDC881 /* CHelloScene.h */,
-				460E4A9B18AECB1200BDC881 /* CHelloScene.m */,
-				460E4A9D18AF61B700BDC881 /* CSpaceshipScene.h */,
-				460E4A9E18AF61B700BDC881 /* CSpaceshipScene.m */,
-				46672BC918B52E7800C68BF3 /* CForestViewController.h */,
-				46672BCA18B52E7800C68BF3 /* CForestViewController.m */,
 				4675C24D18D0D0CF00973C24 /* CForestScrollView.h */,
 				4675C24E18D0D0CF00973C24 /* CForestScrollView.m */,
 				4675C25018D0D4EA00973C24 /* CForestScene.h */,
@@ -634,6 +637,8 @@
 				46E8D17519F2C6F500AEF750 /* SocialStoryViewController.swift */,
 				46E8D17719F2C86300AEF750 /* ResourceAudioPlayer.swift */,
 				4642606919F45F600028C878 /* ParentsPageViewController.swift */,
+				4642607919F589210028C878 /* ForestViewController.swift */,
+				4642607B19F58D530028C878 /* ForestScene.swift */,
 			);
 			path = "Appy Little Eaters";
 			sourceTree = "<group>";
@@ -1212,21 +1217,22 @@
 				46E8D17619F2C6F500AEF750 /* SocialStoryViewController.swift in Sources */,
 				464F703D18A019F000DDA449 /* main.m in Sources */,
 				46E8D17219F2B48000AEF750 /* FoodCell.swift in Sources */,
-				460E4A9C18AECB1200BDC881 /* CHelloScene.m in Sources */,
 				46E7C7CA1985114D00CE7AB3 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+				4642608119F598B80028C878 /* Forest.swift in Sources */,
 				46E48BC118A80E66006DCA91 /* CHomeIconView.m in Sources */,
+				4642607C19F58D530028C878 /* ForestScene.swift in Sources */,
 				46AE6C1919E979BC000238F4 /* RainbowPageViewController.swift in Sources */,
 				4675C24F18D0D0CF00973C24 /* CForestScrollView.m in Sources */,
-				46672BCB18B52E7800C68BF3 /* CForestViewController.m in Sources */,
 				46AE6C4B19EB234C000238F4 /* FoodPageViewController.swift in Sources */,
 				46E7C7C91985114D00CE7AB3 /* TPKeyboardAvoidingTableView.m in Sources */,
 				464F704A18A019F000DDA449 /* CViewController.m in Sources */,
+				4642607A19F589210028C878 /* ForestViewController.swift in Sources */,
 				46E8D17419F2B81600AEF750 /* FoodPagePageViewController.swift in Sources */,
 				4642606A19F45F600028C878 /* ParentsPageViewController.swift in Sources */,
+				4642607F19F58EAE0028C878 /* Squirrel.swift in Sources */,
 				46E8D17819F2C86300AEF750 /* ResourceAudioPlayer.swift in Sources */,
 				4675C25218D0D4EA00973C24 /* CForestScene.m in Sources */,
 				46E7C7C81985114D00CE7AB3 /* TPKeyboardAvoidingScrollView.m in Sources */,
-				460E4A9F18AF61B700BDC881 /* CSpaceshipScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1381,6 +1387,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Appy Little Eaters/Appy Little Eaters-Prefix.pch";
 				INFOPLIST_FILE = "Appy Little Eaters/Appy Little Eaters-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "F536965C-EF6E-4E7B-A374-926FC48DFF39";
@@ -1405,6 +1412,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Appy Little Eaters/Appy Little Eaters-Prefix.pch";
 				INFOPLIST_FILE = "Appy Little Eaters/Appy Little Eaters-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "F536965C-EF6E-4E7B-A374-926FC48DFF39";
