@@ -15,6 +15,8 @@ public class ForestScene : SKScene{
 	public let backgroundHeight:Float = 640
 	public var scaledWidth:Float!
 	var fact:Float!
+
+	var characters: [ForestCreature] = []
 	
 	override public func didMoveToView(view: SKView) {
 		var r:CGSize = frame.size
@@ -43,24 +45,63 @@ public class ForestScene : SKScene{
 		addChild(forest)
 		
 		var squirrel = Squirrel(parentScene: self)
+		forest.addChild(squirrel)
+		characters.append(squirrel)
+		
+		var deer:Deer = Deer(parentScene: self)
+		forest.addChild(deer)
+		characters.append(deer)
+		
+		var bird:Bird = Bird(parentScene: self)
+		forest.addChild(bird)
+		characters.append(bird)
+		
+		var dragon:Dragon = Dragon(parentScene: self)
+		forest.addChild(dragon)
+		characters.append(dragon)
+
+	}
+	
+	public override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+		
+		var touch:UITouch = touches.anyObject() as UITouch
+		var location = touch.locationInNode(self)
+		var nodes = nodesAtPoint(location)
+		for item in nodes{
+			if item is ForestCreature{
+				var creature:ForestCreature = item as ForestCreature
+				creature.perform()
+			}
+		}
 /*
-		SKSpriteNode * forest = [self newForestNode];
-		[self addChild: forest];
-		
-		SKSpriteNode * bird = [self newBirdSittingNode];
-		[forest addChild: bird];
-		
-		self.birdOnLeftTree = NO;
-		self.birdOnRightTree = YES;
-		
-		SKSpriteNode * dragon = [self newDragonNode];
-		[forest addChild:dragon];
-		
-		SKSpriteNode * squirrel = [self newSquirrelNode];
-		[forest addChild:squirrel];
-		
-		SKSpriteNode* deer = [self newDeerNode];
-		[forest addChild:deer];
+		[nodes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+			SKNode * node = obj;
+			if ([node.name isEqualToString:@"BIRD"] && self.birdOnRightTree){
+			[self flyToLeftTree];
+			return;
+			}
+			if ([node.name isEqualToString:@"BIRD"] && self.birdOnLeftTree){
+			[self flyToRightTree];
+			return;
+			}
+			if ([node.name isEqualToString:@"BIRD"] && self.birdFlyingRight){
+			[self flyToLeftTree];
+			return;
+			}
+			if ([node.name isEqualToString:@"BIRD"] && self.birdFlyingLeft){
+			[self flyToRightTree];
+			return;
+			}
+			if ([node.name isEqualToString:@"DRAGON"]){
+			[self dragonSmoke];
+			}
+			if ([node.name isEqualToString:@"SQUIRREL"]){
+			[self squirrelEatNut];
+			}
+			if ([node.name isEqualToString:@"DEER"]){
+			[self deerEatGrass];
+			}
+			}];
 */
 	}
 }

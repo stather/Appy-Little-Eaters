@@ -98,7 +98,6 @@
 		464F705F18A019F000DDA449 /* Appy_Little_EatersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 464F705E18A019F000DDA449 /* Appy_Little_EatersTests.m */; };
 		4675C24C18CFA95000973C24 /* background-320h.png in Resources */ = {isa = PBXBuildFile; fileRef = 4675C24B18CFA95000973C24 /* background-320h.png */; };
 		4675C24F18D0D0CF00973C24 /* CForestScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4675C24E18D0D0CF00973C24 /* CForestScrollView.m */; };
-		4675C25218D0D4EA00973C24 /* CForestScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4675C25118D0D4EA00973C24 /* CForestScene.m */; };
 		4675C25418D0FAAE00973C24 /* bird-sitting_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 4675C25318D0FAAE00973C24 /* bird-sitting_03.png */; };
 		4675C25618D2E94100973C24 /* forestbackground-640.png in Resources */ = {isa = PBXBuildFile; fileRef = 4675C25518D2E94000973C24 /* forestbackground-640.png */; };
 		4675C25818D2F79F00973C24 /* birdFlying_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 4675C25718D2F79F00973C24 /* birdFlying_03.png */; };
@@ -156,6 +155,7 @@
 		46AE6C4719EACC5B000238F4 /* pink-butterfly.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C4519EACC5B000238F4 /* pink-butterfly.png */; };
 		46AE6C4919EAF773000238F4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AE6C4819EAF773000238F4 /* HomeViewController.swift */; };
 		46AE6C4B19EB234C000238F4 /* FoodPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AE6C4A19EB234C000238F4 /* FoodPageViewController.swift */; };
+		46C3102A19FBB917003D71B2 /* ForestCreature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3102919FBB917003D71B2 /* ForestCreature.swift */; };
 		46C4226318EDF1840071EEFF /* deer1.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C4225C18EDF1840071EEFF /* deer1.png */; };
 		46C4226418EDF1840071EEFF /* deer2.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C4225D18EDF1840071EEFF /* deer2.png */; };
 		46C4226518EDF1840071EEFF /* deer3.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C4225E18EDF1840071EEFF /* deer3.png */; };
@@ -197,6 +197,9 @@
 		46E8D17E19F3B97000AEF750 /* PARENTS-PAGE-back_06.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E8D17C19F3B97000AEF750 /* PARENTS-PAGE-back_06.png */; };
 		46E8D17F19F3B97000AEF750 /* PARENTS-PAGE-next_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E8D17D19F3B97000AEF750 /* PARENTS-PAGE-next_03.png */; };
 		46E8D18319F3BAEA00AEF750 /* PARENTS-PAGE-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E8D18219F3BAEA00AEF750 /* PARENTS-PAGE-1.png */; };
+		46F6B40319FD231200205F6B /* Deer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F6B40219FD231200205F6B /* Deer.swift */; };
+		46F6B40519FD348300205F6B /* Bird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F6B40419FD348300205F6B /* Bird.swift */; };
+		46F6B40719FD35FC00205F6B /* Dragon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F6B40619FD35FC00205F6B /* Dragon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -321,8 +324,6 @@
 		4675C24B18CFA95000973C24 /* background-320h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-320h.png"; sourceTree = "<group>"; };
 		4675C24D18D0D0CF00973C24 /* CForestScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CForestScrollView.h; sourceTree = "<group>"; };
 		4675C24E18D0D0CF00973C24 /* CForestScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CForestScrollView.m; sourceTree = "<group>"; };
-		4675C25018D0D4EA00973C24 /* CForestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CForestScene.h; sourceTree = "<group>"; };
-		4675C25118D0D4EA00973C24 /* CForestScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CForestScene.m; sourceTree = "<group>"; };
 		4675C25318D0FAAE00973C24 /* bird-sitting_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bird-sitting_03.png"; sourceTree = "<group>"; };
 		4675C25518D2E94000973C24 /* forestbackground-640.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forestbackground-640.png"; sourceTree = "<group>"; };
 		4675C25718D2F79F00973C24 /* birdFlying_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = birdFlying_03.png; sourceTree = "<group>"; };
@@ -381,6 +382,7 @@
 		46AE6C4519EACC5B000238F4 /* pink-butterfly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink-butterfly.png"; sourceTree = "<group>"; };
 		46AE6C4819EAF773000238F4 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		46AE6C4A19EB234C000238F4 /* FoodPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPageViewController.swift; sourceTree = "<group>"; };
+		46C3102919FBB917003D71B2 /* ForestCreature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForestCreature.swift; sourceTree = "<group>"; };
 		46C4225C18EDF1840071EEFF /* deer1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deer1.png; sourceTree = "<group>"; };
 		46C4225D18EDF1840071EEFF /* deer2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deer2.png; sourceTree = "<group>"; };
 		46C4225E18EDF1840071EEFF /* deer3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deer3.png; sourceTree = "<group>"; };
@@ -427,6 +429,9 @@
 		46E8D17C19F3B97000AEF750 /* PARENTS-PAGE-back_06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PARENTS-PAGE-back_06.png"; sourceTree = "<group>"; };
 		46E8D17D19F3B97000AEF750 /* PARENTS-PAGE-next_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PARENTS-PAGE-next_03.png"; sourceTree = "<group>"; };
 		46E8D18219F3BAEA00AEF750 /* PARENTS-PAGE-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PARENTS-PAGE-1.png"; sourceTree = "<group>"; };
+		46F6B40219FD231200205F6B /* Deer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deer.swift; sourceTree = "<group>"; };
+		46F6B40419FD348300205F6B /* Bird.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bird.swift; sourceTree = "<group>"; };
+		46F6B40619FD35FC00205F6B /* Dragon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dragon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -554,6 +559,10 @@
 			children = (
 				4642607E19F58EAE0028C878 /* Squirrel.swift */,
 				4642608019F598B80028C878 /* Forest.swift */,
+				46C3102919FBB917003D71B2 /* ForestCreature.swift */,
+				46F6B40219FD231200205F6B /* Deer.swift */,
+				46F6B40419FD348300205F6B /* Bird.swift */,
+				46F6B40619FD35FC00205F6B /* Dragon.swift */,
 			);
 			name = animations;
 			sourceTree = "<group>";
@@ -625,8 +634,6 @@
 				46E48BCA18A8FDC4006DCA91 /* Localizable.strings */,
 				4675C24D18D0D0CF00973C24 /* CForestScrollView.h */,
 				4675C24E18D0D0CF00973C24 /* CForestScrollView.m */,
-				4675C25018D0D4EA00973C24 /* CForestScene.h */,
-				4675C25118D0D4EA00973C24 /* CForestScene.m */,
 				469846EA19D84BEF00617FCE /* RewardsPageViewController.swift */,
 				469846E919D84BEF00617FCE /* Appy Little Eaters-Bridging-Header.h */,
 				46AE6C1819E979BC000238F4 /* RainbowPageViewController.swift */,
@@ -1215,12 +1222,16 @@
 				464F704118A019F000DDA449 /* CAppDelegate.m in Sources */,
 				46AE6C4919EAF773000238F4 /* HomeViewController.swift in Sources */,
 				46E8D17619F2C6F500AEF750 /* SocialStoryViewController.swift in Sources */,
+				46C3102A19FBB917003D71B2 /* ForestCreature.swift in Sources */,
 				464F703D18A019F000DDA449 /* main.m in Sources */,
+				46F6B40319FD231200205F6B /* Deer.swift in Sources */,
 				46E8D17219F2B48000AEF750 /* FoodCell.swift in Sources */,
 				46E7C7CA1985114D00CE7AB3 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				4642608119F598B80028C878 /* Forest.swift in Sources */,
 				46E48BC118A80E66006DCA91 /* CHomeIconView.m in Sources */,
+				46F6B40519FD348300205F6B /* Bird.swift in Sources */,
 				4642607C19F58D530028C878 /* ForestScene.swift in Sources */,
+				46F6B40719FD35FC00205F6B /* Dragon.swift in Sources */,
 				46AE6C1919E979BC000238F4 /* RainbowPageViewController.swift in Sources */,
 				4675C24F18D0D0CF00973C24 /* CForestScrollView.m in Sources */,
 				46AE6C4B19EB234C000238F4 /* FoodPageViewController.swift in Sources */,
@@ -1231,7 +1242,6 @@
 				4642606A19F45F600028C878 /* ParentsPageViewController.swift in Sources */,
 				4642607F19F58EAE0028C878 /* Squirrel.swift in Sources */,
 				46E8D17819F2C86300AEF750 /* ResourceAudioPlayer.swift in Sources */,
-				4675C25218D0D4EA00973C24 /* CForestScene.m in Sources */,
 				46E7C7C81985114D00CE7AB3 /* TPKeyboardAvoidingScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
