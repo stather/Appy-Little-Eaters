@@ -86,7 +86,6 @@
 		464F703518A019F000DDA449 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464F703418A019F000DDA449 /* UIKit.framework */; };
 		464F703B18A019F000DDA449 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 464F703918A019F000DDA449 /* InfoPlist.strings */; };
 		464F703D18A019F000DDA449 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 464F703C18A019F000DDA449 /* main.m */; };
-		464F704118A019F000DDA449 /* CAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 464F704018A019F000DDA449 /* CAppDelegate.m */; };
 		464F704418A019F000DDA449 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 464F704218A019F000DDA449 /* Main_iPhone.storyboard */; };
 		464F704718A019F000DDA449 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 464F704518A019F000DDA449 /* Main_iPad.storyboard */; };
 		464F704A18A019F000DDA449 /* CViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 464F704918A019F000DDA449 /* CViewController.m */; };
@@ -171,6 +170,9 @@
 		46C440CC1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_010.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C440C21A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_010.png */; };
 		46C440CE1A02C55B00C1A6BE /* ScrollableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C440CD1A02C55B00C1A6BE /* ScrollableProtocol.swift */; };
 		46C440D01A02D1AF00C1A6BE /* REWARDS-FOREST-UPDATED_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C440CF1A02D1AF00C1A6BE /* REWARDS-FOREST-UPDATED_00.png */; };
+		46C440D31A02F12700C1A6BE /* AleModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46C440D11A02F12700C1A6BE /* AleModel.xcdatamodeld */; };
+		46C440D81A02F24900C1A6BE /* DReward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C440D71A02F24900C1A6BE /* DReward.swift */; };
+		46C4410C1A02F57200C1A6BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C4410B1A02F57200C1A6BE /* AppDelegate.swift */; };
 		46E48BC118A80E66006DCA91 /* CHomeIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E48BC018A80E66006DCA91 /* CHomeIconView.m */; };
 		46E48BCB18A8FDC4006DCA91 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46E48BCA18A8FDC4006DCA91 /* Localizable.strings */; };
 		46E7C7BB19850C0B00CE7AB3 /* start-button_06.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7B819850C0B00CE7AB3 /* start-button_06.png */; };
@@ -318,8 +320,6 @@
 		464F703A18A019F000DDA449 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		464F703C18A019F000DDA449 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		464F703E18A019F000DDA449 /* Appy Little Eaters-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Appy Little Eaters-Prefix.pch"; sourceTree = "<group>"; };
-		464F703F18A019F000DDA449 /* CAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAppDelegate.h; sourceTree = "<group>"; };
-		464F704018A019F000DDA449 /* CAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAppDelegate.m; sourceTree = "<group>"; };
 		464F704318A019F000DDA449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		464F704618A019F000DDA449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		464F704818A019F000DDA449 /* CViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CViewController.h; sourceTree = "<group>"; };
@@ -406,6 +406,9 @@
 		46C440C21A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "REWARDS-FOREST-UPDATED_010.png"; sourceTree = "<group>"; };
 		46C440CD1A02C55B00C1A6BE /* ScrollableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableProtocol.swift; sourceTree = "<group>"; };
 		46C440CF1A02D1AF00C1A6BE /* REWARDS-FOREST-UPDATED_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "REWARDS-FOREST-UPDATED_00.png"; sourceTree = "<group>"; };
+		46C440D21A02F12700C1A6BE /* AleModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AleModel.xcdatamodel; sourceTree = "<group>"; };
+		46C440D71A02F24900C1A6BE /* DReward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DReward.swift; path = ../DReward.swift; sourceTree = "<group>"; };
+		46C4410B1A02F57200C1A6BE /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46E48BBF18A80E66006DCA91 /* CHomeIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHomeIconView.h; sourceTree = "<group>"; };
 		46E48BC018A80E66006DCA91 /* CHomeIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHomeIconView.m; sourceTree = "<group>"; };
 		46E48BCA18A8FDC4006DCA91 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -634,12 +637,11 @@
 		464F703618A019F000DDA449 /* Appy Little Eaters */ = {
 			isa = PBXGroup;
 			children = (
+				46C440D91A02F27500C1A6BE /* ManagedObjects */,
 				4642607D19F58E820028C878 /* animations */,
 				46E7C7F41988380E00CE7AB3 /* audio */,
 				46E7C7BE1985114D00CE7AB3 /* TPKeyboardAvoiding */,
 				464F706818A2F0C200DDA449 /* images */,
-				464F703F18A019F000DDA449 /* CAppDelegate.h */,
-				464F704018A019F000DDA449 /* CAppDelegate.m */,
 				464F704218A019F000DDA449 /* Main_iPhone.storyboard */,
 				464F704518A019F000DDA449 /* Main_iPad.storyboard */,
 				464F704818A019F000DDA449 /* CViewController.h */,
@@ -663,6 +665,8 @@
 				4642607B19F58D530028C878 /* ForestScene.swift */,
 				46F6B40819FD428000205F6B /* RewardDefinition.swift */,
 				46C440CD1A02C55B00C1A6BE /* ScrollableProtocol.swift */,
+				46C440D11A02F12700C1A6BE /* AleModel.xcdatamodeld */,
+				46C4410B1A02F57200C1A6BE /* AppDelegate.swift */,
 			);
 			path = "Appy Little Eaters";
 			sourceTree = "<group>";
@@ -885,6 +889,14 @@
 				46C440C21A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_010.png */,
 			);
 			name = forest;
+			sourceTree = "<group>";
+		};
+		46C440D91A02F27500C1A6BE /* ManagedObjects */ = {
+			isa = PBXGroup;
+			children = (
+				46C440D71A02F24900C1A6BE /* DReward.swift */,
+			);
+			name = ManagedObjects;
 			sourceTree = "<group>";
 		};
 		46E7C7BE1985114D00CE7AB3 /* TPKeyboardAvoiding */ = {
@@ -1259,8 +1271,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				469846EB19D84BEF00617FCE /* RewardsPageViewController.swift in Sources */,
+				46C440D81A02F24900C1A6BE /* DReward.swift in Sources */,
 				46E7C7C71985114D00CE7AB3 /* TPKeyboardAvoidingCollectionView.m in Sources */,
-				464F704118A019F000DDA449 /* CAppDelegate.m in Sources */,
 				46AE6C4919EAF773000238F4 /* HomeViewController.swift in Sources */,
 				46E8D17619F2C6F500AEF750 /* SocialStoryViewController.swift in Sources */,
 				46C3102A19FBB917003D71B2 /* ForestCreature.swift in Sources */,
@@ -1274,6 +1286,8 @@
 				4642607C19F58D530028C878 /* ForestScene.swift in Sources */,
 				46C440CE1A02C55B00C1A6BE /* ScrollableProtocol.swift in Sources */,
 				46F6B40719FD35FC00205F6B /* Dragon.swift in Sources */,
+				46C440D31A02F12700C1A6BE /* AleModel.xcdatamodeld in Sources */,
+				46C4410C1A02F57200C1A6BE /* AppDelegate.swift in Sources */,
 				46AE6C1919E979BC000238F4 /* RainbowPageViewController.swift in Sources */,
 				46AE6C4B19EB234C000238F4 /* FoodPageViewController.swift in Sources */,
 				46E7C7C91985114D00CE7AB3 /* TPKeyboardAvoidingTableView.m in Sources */,
@@ -1544,6 +1558,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		46C440D11A02F12700C1A6BE /* AleModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				46C440D21A02F12700C1A6BE /* AleModel.xcdatamodel */,
+			);
+			currentVersion = 46C440D21A02F12700C1A6BE /* AleModel.xcdatamodel */;
+			path = AleModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 464F702518A019EF00DDA449 /* Project object */;
 }

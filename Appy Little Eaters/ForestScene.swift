@@ -28,20 +28,14 @@ public class ForestScene : SKScene{
 	
 	override public func didMoveToView(view: SKView) {
 		_speed = cStartSpeed
-		//var name = NSBundle.mainBundle().pathForResource("REWARDS-FOREST-UPDATED", ofType: "jpg")
-		//var image:UIImage = UIImage(named: name!)!
-		//backgroundHeight = Float(image.size.height)
-		//backgroundWidth = Float(image.size.width)
 		backgroundWidth = Float(frame.width)
 		backgroundHeight = Float(frame.height)
 		
 		var r:CGSize = frame.size
 		fact = Float(r.height) / backgroundHeight
 		anchorPoint = CGPoint(x: 0.5, y: 0.5)
-		//scaledWidth = backgroundWidth * fact
 		userInteractionEnabled = true
 		alpha = 1
-		//backgroundColor = SKColor.clearColor()
 		backgroundColor = SKColor.blueColor()
 		scaleMode = SKSceneScaleMode.Fill
 		if (!self.contentCreated)
@@ -85,8 +79,12 @@ public class ForestScene : SKScene{
 			addChild(forest)
 		}
 		
-		var dict = NSUserDefaults.standardUserDefaults().arrayForKey("rewards")
-		if dict == nil{
+		var obj = NSUserDefaults.standardUserDefaults().arrayForKey("rewards")
+		if obj == nil{
+			return
+		}
+		var rewarddefs:[RewardDefinition] = obj as [RewardDefinition]
+		if rewarddefs.isEmpty{
 			var creature = Bird(parentScene: self)
 			creature.position = CGPoint(x: 50, y: 50)
 			creature.alpha = 1
@@ -94,9 +92,7 @@ public class ForestScene : SKScene{
 			characters.append(creature)
 			return
 		}
-		var rewards:[NSDictionary] = dict as [NSDictionary]
-		for item in rewards{
-			var rewarddef:RewardDefinition = RewardDefinition(fromDictionary: item)
+		for rewarddef in rewarddefs{
 			var reward:ForestCreature.CreatureName = rewarddef.rewardType
 			var creature:ForestCreature
 			switch reward{

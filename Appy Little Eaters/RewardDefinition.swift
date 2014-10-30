@@ -13,6 +13,11 @@ public class RewardDefinition{
 	var rewardType:ForestCreature.CreatureName!
 	var position:CGPoint!
 	
+	init(rewardType:ForestCreature.CreatureName){
+		self.rewardType = rewardType
+		position = CGPoint.zeroPoint
+	}
+	
 	init(fromDictionary: NSDictionary){
 		rewardType = ForestCreature.CreatureName( rawValue: fromDictionary.valueForKey("rewardType") as Int )
 		var x:CGFloat = CGFloat(fromDictionary.valueForKey("x") as Int)

@@ -17,6 +17,15 @@ class RewardsPageViewController: UIViewController{
 	@IBOutlet weak var DoneButton: UIButton!
 	
 	@IBAction func DonePressed(sender: UIButton) {
+		var obj = NSUserDefaults.standardUserDefaults().arrayForKey("rewards")
+		if obj == nil{
+			obj = [RewardDefinition]()
+		}
+
+		var rewarddefs:[RewardDefinition] = obj as [RewardDefinition]
+		var rewardDef = RewardDefinition(rewardType: ForestCreature.CreatureName.Bird)
+		rewarddefs.append(rewardDef)
+		NSUserDefaults.standardUserDefaults().setObject(rewarddefs, forKey: "rewards")
 		performSegueWithIdentifier("RewardToForest", sender: self)
 	}
 	
