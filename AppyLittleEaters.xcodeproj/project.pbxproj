@@ -96,16 +96,12 @@
 		464F705518A019F000DDA449 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464F703418A019F000DDA449 /* UIKit.framework */; };
 		464F705D18A019F000DDA449 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 464F705B18A019F000DDA449 /* InfoPlist.strings */; };
 		464F705F18A019F000DDA449 /* Appy_Little_EatersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 464F705E18A019F000DDA449 /* Appy_Little_EatersTests.m */; };
-		4675C24C18CFA95000973C24 /* background-320h.png in Resources */ = {isa = PBXBuildFile; fileRef = 4675C24B18CFA95000973C24 /* background-320h.png */; };
-		4675C24F18D0D0CF00973C24 /* CForestScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4675C24E18D0D0CF00973C24 /* CForestScrollView.m */; };
 		4675C25418D0FAAE00973C24 /* bird-sitting_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 4675C25318D0FAAE00973C24 /* bird-sitting_03.png */; };
-		4675C25618D2E94100973C24 /* forestbackground-640.png in Resources */ = {isa = PBXBuildFile; fileRef = 4675C25518D2E94000973C24 /* forestbackground-640.png */; };
 		4675C25818D2F79F00973C24 /* birdFlying_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 4675C25718D2F79F00973C24 /* birdFlying_03.png */; };
 		4675C25A18D300BF00973C24 /* birdFlyingRight_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 4675C25918D300BF00973C24 /* birdFlyingRight_03.png */; };
 		469846E819D8481400617FCE /* reward-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 469846E719D8481400617FCE /* reward-background.jpg */; };
 		469846EB19D84BEF00617FCE /* RewardsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469846EA19D84BEF00617FCE /* RewardsPageViewController.swift */; };
 		469846ED19D85A6100617FCE /* reward-done.png in Resources */ = {isa = PBXBuildFile; fileRef = 469846EC19D85A6100617FCE /* reward-done.png */; };
-		46A5C1BA18EDD8FA00B29BC5 /* rewards-forrestv2.png in Resources */ = {isa = PBXBuildFile; fileRef = 46A5C1B918EDD8FA00B29BC5 /* rewards-forrestv2.png */; };
 		46AB56A019D3553600D47CEF /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AB569919D3553600D47CEF /* apple.png */; };
 		46AB56A119D3553600D47CEF /* cherry.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AB569A19D3553600D47CEF /* cherry.png */; };
 		46AB56A219D3553600D47CEF /* raspberry.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AB569B19D3553600D47CEF /* raspberry.png */; };
@@ -163,6 +159,18 @@
 		46C4226718EDF1840071EEFF /* deer5.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C4226018EDF1840071EEFF /* deer5.png */; };
 		46C4226818EDF1840071EEFF /* deer6.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C4226118EDF1840071EEFF /* deer6.png */; };
 		46C4226918EDF1840071EEFF /* deer7.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C4226218EDF1840071EEFF /* deer7.png */; };
+		46C440C31A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C440B91A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_01.png */; };
+		46C440C41A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C440BA1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_02.png */; };
+		46C440C51A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C440BB1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_03.png */; };
+		46C440C61A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_04.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C440BC1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_04.png */; };
+		46C440C71A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_05.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C440BD1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_05.png */; };
+		46C440C81A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_06.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C440BE1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_06.png */; };
+		46C440C91A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_07.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C440BF1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_07.png */; };
+		46C440CA1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_08.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C440C01A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_08.png */; };
+		46C440CB1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_09.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C440C11A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_09.png */; };
+		46C440CC1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_010.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C440C21A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_010.png */; };
+		46C440CE1A02C55B00C1A6BE /* ScrollableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C440CD1A02C55B00C1A6BE /* ScrollableProtocol.swift */; };
+		46C440D01A02D1AF00C1A6BE /* REWARDS-FOREST-UPDATED_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C440CF1A02D1AF00C1A6BE /* REWARDS-FOREST-UPDATED_00.png */; };
 		46E48BC118A80E66006DCA91 /* CHomeIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E48BC018A80E66006DCA91 /* CHomeIconView.m */; };
 		46E48BCB18A8FDC4006DCA91 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46E48BCA18A8FDC4006DCA91 /* Localizable.strings */; };
 		46E7C7BB19850C0B00CE7AB3 /* start-button_06.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7B819850C0B00CE7AB3 /* start-button_06.png */; };
@@ -200,6 +208,7 @@
 		46F6B40319FD231200205F6B /* Deer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F6B40219FD231200205F6B /* Deer.swift */; };
 		46F6B40519FD348300205F6B /* Bird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F6B40419FD348300205F6B /* Bird.swift */; };
 		46F6B40719FD35FC00205F6B /* Dragon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F6B40619FD35FC00205F6B /* Dragon.swift */; };
+		46F6B40919FD428000205F6B /* RewardDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F6B40819FD428000205F6B /* RewardDefinition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -321,18 +330,13 @@
 		464F705A18A019F000DDA449 /* Appy Little EatersTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Appy Little EatersTests-Info.plist"; sourceTree = "<group>"; };
 		464F705C18A019F000DDA449 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		464F705E18A019F000DDA449 /* Appy_Little_EatersTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Appy_Little_EatersTests.m; sourceTree = "<group>"; };
-		4675C24B18CFA95000973C24 /* background-320h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-320h.png"; sourceTree = "<group>"; };
-		4675C24D18D0D0CF00973C24 /* CForestScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CForestScrollView.h; sourceTree = "<group>"; };
-		4675C24E18D0D0CF00973C24 /* CForestScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CForestScrollView.m; sourceTree = "<group>"; };
 		4675C25318D0FAAE00973C24 /* bird-sitting_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bird-sitting_03.png"; sourceTree = "<group>"; };
-		4675C25518D2E94000973C24 /* forestbackground-640.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forestbackground-640.png"; sourceTree = "<group>"; };
 		4675C25718D2F79F00973C24 /* birdFlying_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = birdFlying_03.png; sourceTree = "<group>"; };
 		4675C25918D300BF00973C24 /* birdFlyingRight_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = birdFlyingRight_03.png; sourceTree = "<group>"; };
 		469846E719D8481400617FCE /* reward-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "reward-background.jpg"; sourceTree = "<group>"; };
 		469846E919D84BEF00617FCE /* Appy Little Eaters-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Appy Little Eaters-Bridging-Header.h"; sourceTree = "<group>"; };
 		469846EA19D84BEF00617FCE /* RewardsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardsPageViewController.swift; sourceTree = "<group>"; };
 		469846EC19D85A6100617FCE /* reward-done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reward-done.png"; sourceTree = "<group>"; };
-		46A5C1B918EDD8FA00B29BC5 /* rewards-forrestv2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rewards-forrestv2.png"; sourceTree = "<group>"; };
 		46AB569919D3553600D47CEF /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
 		46AB569A19D3553600D47CEF /* cherry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cherry.png; sourceTree = "<group>"; };
 		46AB569B19D3553600D47CEF /* raspberry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = raspberry.png; sourceTree = "<group>"; };
@@ -390,6 +394,18 @@
 		46C4226018EDF1840071EEFF /* deer5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deer5.png; sourceTree = "<group>"; };
 		46C4226118EDF1840071EEFF /* deer6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deer6.png; sourceTree = "<group>"; };
 		46C4226218EDF1840071EEFF /* deer7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deer7.png; sourceTree = "<group>"; };
+		46C440B91A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "REWARDS-FOREST-UPDATED_01.png"; sourceTree = "<group>"; };
+		46C440BA1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "REWARDS-FOREST-UPDATED_02.png"; sourceTree = "<group>"; };
+		46C440BB1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "REWARDS-FOREST-UPDATED_03.png"; sourceTree = "<group>"; };
+		46C440BC1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "REWARDS-FOREST-UPDATED_04.png"; sourceTree = "<group>"; };
+		46C440BD1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "REWARDS-FOREST-UPDATED_05.png"; sourceTree = "<group>"; };
+		46C440BE1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "REWARDS-FOREST-UPDATED_06.png"; sourceTree = "<group>"; };
+		46C440BF1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "REWARDS-FOREST-UPDATED_07.png"; sourceTree = "<group>"; };
+		46C440C01A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "REWARDS-FOREST-UPDATED_08.png"; sourceTree = "<group>"; };
+		46C440C11A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "REWARDS-FOREST-UPDATED_09.png"; sourceTree = "<group>"; };
+		46C440C21A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "REWARDS-FOREST-UPDATED_010.png"; sourceTree = "<group>"; };
+		46C440CD1A02C55B00C1A6BE /* ScrollableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableProtocol.swift; sourceTree = "<group>"; };
+		46C440CF1A02D1AF00C1A6BE /* REWARDS-FOREST-UPDATED_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "REWARDS-FOREST-UPDATED_00.png"; sourceTree = "<group>"; };
 		46E48BBF18A80E66006DCA91 /* CHomeIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHomeIconView.h; sourceTree = "<group>"; };
 		46E48BC018A80E66006DCA91 /* CHomeIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHomeIconView.m; sourceTree = "<group>"; };
 		46E48BCA18A8FDC4006DCA91 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -432,6 +448,7 @@
 		46F6B40219FD231200205F6B /* Deer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deer.swift; sourceTree = "<group>"; };
 		46F6B40419FD348300205F6B /* Bird.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bird.swift; sourceTree = "<group>"; };
 		46F6B40619FD35FC00205F6B /* Dragon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dragon.swift; sourceTree = "<group>"; };
+		46F6B40819FD428000205F6B /* RewardDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardDefinition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -632,8 +649,6 @@
 				46E48BBF18A80E66006DCA91 /* CHomeIconView.h */,
 				46E48BC018A80E66006DCA91 /* CHomeIconView.m */,
 				46E48BCA18A8FDC4006DCA91 /* Localizable.strings */,
-				4675C24D18D0D0CF00973C24 /* CForestScrollView.h */,
-				4675C24E18D0D0CF00973C24 /* CForestScrollView.m */,
 				469846EA19D84BEF00617FCE /* RewardsPageViewController.swift */,
 				469846E919D84BEF00617FCE /* Appy Little Eaters-Bridging-Header.h */,
 				46AE6C1819E979BC000238F4 /* RainbowPageViewController.swift */,
@@ -646,6 +661,8 @@
 				4642606919F45F600028C878 /* ParentsPageViewController.swift */,
 				4642607919F589210028C878 /* ForestViewController.swift */,
 				4642607B19F58D530028C878 /* ForestScene.swift */,
+				46F6B40819FD428000205F6B /* RewardDefinition.swift */,
+				46C440CD1A02C55B00C1A6BE /* ScrollableProtocol.swift */,
 			);
 			path = "Appy Little Eaters";
 			sourceTree = "<group>";
@@ -682,6 +699,7 @@
 		464F706818A2F0C200DDA449 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				46C440A41A0034EC00C1A6BE /* forest */,
 				46E8D17919F3B95500AEF750 /* parents */,
 				46AE6BFF19E96F5F000238F4 /* Rainbow */,
 				469846E619D8480800617FCE /* rewardspage */,
@@ -690,9 +708,6 @@
 				469846DF19D846E600617FCE /* Characters */,
 				461441A219D707F300CB5A3E /* foodpage */,
 				46E7C7E81986E4CD00CE7AB3 /* social slices */,
-				46A5C1B918EDD8FA00B29BC5 /* rewards-forrestv2.png */,
-				4675C25518D2E94000973C24 /* forestbackground-640.png */,
-				4675C24B18CFA95000973C24 /* background-320h.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -852,6 +867,24 @@
 				46AE6C4519EACC5B000238F4 /* pink-butterfly.png */,
 			);
 			name = rewards;
+			sourceTree = "<group>";
+		};
+		46C440A41A0034EC00C1A6BE /* forest */ = {
+			isa = PBXGroup;
+			children = (
+				46C440CF1A02D1AF00C1A6BE /* REWARDS-FOREST-UPDATED_00.png */,
+				46C440B91A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_01.png */,
+				46C440BA1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_02.png */,
+				46C440BB1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_03.png */,
+				46C440BC1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_04.png */,
+				46C440BD1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_05.png */,
+				46C440BE1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_06.png */,
+				46C440BF1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_07.png */,
+				46C440C01A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_08.png */,
+				46C440C11A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_09.png */,
+				46C440C21A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_010.png */,
+			);
+			name = forest;
 			sourceTree = "<group>";
 		};
 		46E7C7BE1985114D00CE7AB3 /* TPKeyboardAvoiding */ = {
@@ -1036,6 +1069,7 @@
 				4642607019F462610028C878 /* weblink_03.png in Resources */,
 				4615CCEF19D1F5C5007994EC /* orange-background.jpg in Resources */,
 				46AE6C1D19EAA2F5000238F4 /* myfoodrainbow.m4a in Resources */,
+				46C440C81A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_06.png in Resources */,
 				46E7C7BB19850C0B00CE7AB3 /* start-button_06.png in Resources */,
 				46AB56B019D356CC00D47CEF /* chicken.png in Resources */,
 				46AE6C0B19E972B6000238F4 /* rainbow-foreground.png in Resources */,
@@ -1044,17 +1078,20 @@
 				46AB56AF19D356CC00D47CEF /* cauliflower.png in Resources */,
 				4614416E19D7031900CB5A3E /* broccoli.png in Resources */,
 				4675C25418D0FAAE00973C24 /* bird-sitting_03.png in Resources */,
-				46A5C1BA18EDD8FA00B29BC5 /* rewards-forrestv2.png in Resources */,
 				46C4226918EDF1840071EEFF /* deer7.png in Resources */,
 				46AE6C1B19EAA26F000238F4 /* intro.m4a in Resources */,
+				46C440CC1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_010.png in Resources */,
 				464205AC18EB357A005EC168 /* bird3_03.png in Resources */,
 				4645B12619D9E66700974B39 /* social-story4.png in Resources */,
 				464205B818EB4A74005EC168 /* dragon4.png in Resources */,
 				46AE6C3F19EAB754000238F4 /* tomato.m4a in Resources */,
+				46C440C61A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_04.png in Resources */,
 				46AE6C4719EACC5B000238F4 /* pink-butterfly.png in Resources */,
 				46E7C7D4198545F500CE7AB3 /* home-rainbow.png in Resources */,
 				464205AA18EB357A005EC168 /* bird1_03.png in Resources */,
 				4614418219D703DC00CB5A3E /* yellowapple.png in Resources */,
+				46C440C41A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_02.png in Resources */,
+				46C440CB1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_09.png in Resources */,
 				46E7C7EE1986E4CD00CE7AB3 /* social-background.jpg in Resources */,
 				464205C818EB4EF3005EC168 /* squirrel7.png in Resources */,
 				46AE6C3C19EAB754000238F4 /* raspberry.m4a in Resources */,
@@ -1071,6 +1108,7 @@
 				4645B12019D9E2A400974B39 /* social-story1.png in Resources */,
 				4614418E19D7047C00CB5A3E /* mango.png in Resources */,
 				46AE6C3119EAB24F000238F4 /* YESIHAVEEATEN.m4a in Resources */,
+				46C440C91A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_07.png in Resources */,
 				469846ED19D85A6100617FCE /* reward-done.png in Resources */,
 				46E7C7FD19883C7600CE7AB3 /* healthykids2.m4a in Resources */,
 				4645B12719D9E66700974B39 /* social-story5.png in Resources */,
@@ -1079,6 +1117,7 @@
 				464205C518EB4EF3005EC168 /* squirrel4.png in Resources */,
 				4614418119D703DC00CB5A3E /* pineapple.png in Resources */,
 				46E7C7D1198545F500CE7AB3 /* home-background.jpg in Resources */,
+				46C440C71A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_05.png in Resources */,
 				461441A019D7052A00CB5A3E /* raisins.png in Resources */,
 				46AE6C4219EAC804000238F4 /* REWARDS-BOX.png in Resources */,
 				4614419E19D7052A00CB5A3E /* olives.png in Resources */,
@@ -1087,6 +1126,7 @@
 				46AE6C0919E97263000238F4 /* rainbow.png in Resources */,
 				46E48BCB18A8FDC4006DCA91 /* Localizable.strings in Resources */,
 				46AE6C1319E9777A000238F4 /* greenband.png in Resources */,
+				46C440C31A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_01.png in Resources */,
 				464205C218EB4EF3005EC168 /* squirrel1.png in Resources */,
 				46E7C7F81988382C00CE7AB3 /* eatinghealthyfoods2.m4a in Resources */,
 				4614418319D703DC00CB5A3E /* yellowpepper.png in Resources */,
@@ -1099,6 +1139,7 @@
 				46E7C7D2198545F500CE7AB3 /* home-forest.png in Resources */,
 				46AB56A419D3553600D47CEF /* strawberry.png in Resources */,
 				46AE6C3019EAB24F000238F4 /* YELLOW.m4a in Resources */,
+				46C440D01A02D1AF00C1A6BE /* REWARDS-FOREST-UPDATED_00.png in Resources */,
 				46AB56A619D3553600D47CEF /* watermelon.png in Resources */,
 				4614417019D7031900CB5A3E /* greenapple.png in Resources */,
 				4615CCF019D1F5C5007994EC /* purple-background.jpg in Resources */,
@@ -1123,6 +1164,7 @@
 				4614419119D7047C00CB5A3E /* peach.png in Resources */,
 				46E7C7D5198545F500CE7AB3 /* home-story.png in Resources */,
 				4614419B19D7052A00CB5A3E /* blackberry.png in Resources */,
+				46C440C51A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_03.png in Resources */,
 				4614417F19D703DC00CB5A3E /* lemon.png in Resources */,
 				4614417219D7031900CB5A3E /* lime.png in Resources */,
 				46AE6C2C19EAB24F000238F4 /* NOIHAVENOTEATEN.m4a in Resources */,
@@ -1135,10 +1177,10 @@
 				46E7C7BC19850C0B00CE7AB3 /* start-face_03.png in Resources */,
 				4614418019D703DC00CB5A3E /* pear.png in Resources */,
 				46AE6C1519E9777A000238F4 /* purpleband.png in Resources */,
-				4675C25618D2E94100973C24 /* forestbackground-640.png in Resources */,
 				4614418C19D7047C00CB5A3E /* apricots.png in Resources */,
 				4642607519F4626D0028C878 /* PARENTS-PAGE-2.png in Resources */,
 				4645B12919D9E66700974B39 /* social-story7.png in Resources */,
+				46C440CA1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_08.png in Resources */,
 				46AE6C2B19EAB24F000238F4 /* GREEN.m4a in Resources */,
 				4614419C19D7052A00CB5A3E /* eggplant.png in Resources */,
 				464205AE18EB357A005EC168 /* bird5_03.png in Resources */,
@@ -1162,7 +1204,6 @@
 				464205B718EB4A74005EC168 /* dragon3.png in Resources */,
 				46E7C7F3198830A600CE7AB3 /* social-story3.png in Resources */,
 				461441A719D7081C00CB5A3E /* yes.png in Resources */,
-				4675C24C18CFA95000973C24 /* background-320h.png in Resources */,
 				46E8D17B19F3B96600AEF750 /* PARENTS-PAGE-background.jpg in Resources */,
 				46AB56B219D356CC00D47CEF /* lentils.png in Resources */,
 				4642606F19F462610028C878 /* pinit_03.png in Resources */,
@@ -1231,14 +1272,15 @@
 				46E48BC118A80E66006DCA91 /* CHomeIconView.m in Sources */,
 				46F6B40519FD348300205F6B /* Bird.swift in Sources */,
 				4642607C19F58D530028C878 /* ForestScene.swift in Sources */,
+				46C440CE1A02C55B00C1A6BE /* ScrollableProtocol.swift in Sources */,
 				46F6B40719FD35FC00205F6B /* Dragon.swift in Sources */,
 				46AE6C1919E979BC000238F4 /* RainbowPageViewController.swift in Sources */,
-				4675C24F18D0D0CF00973C24 /* CForestScrollView.m in Sources */,
 				46AE6C4B19EB234C000238F4 /* FoodPageViewController.swift in Sources */,
 				46E7C7C91985114D00CE7AB3 /* TPKeyboardAvoidingTableView.m in Sources */,
 				464F704A18A019F000DDA449 /* CViewController.m in Sources */,
 				4642607A19F589210028C878 /* ForestViewController.swift in Sources */,
 				46E8D17419F2B81600AEF750 /* FoodPagePageViewController.swift in Sources */,
+				46F6B40919FD428000205F6B /* RewardDefinition.swift in Sources */,
 				4642606A19F45F600028C878 /* ParentsPageViewController.swift in Sources */,
 				4642607F19F58EAE0028C878 /* Squirrel.swift in Sources */,
 				46E8D17819F2C86300AEF750 /* ResourceAudioPlayer.swift in Sources */,

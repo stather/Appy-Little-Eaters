@@ -17,18 +17,27 @@ public class ForestViewController : UIViewController{
 	@IBOutlet weak var homeButton:UIButton!
 	var anchorLimit:CGFloat!
 	
+//	@IBOutlet weak var myScroller: UIScrollView!
+	
+//	@IBOutlet weak var backgroundImage: UIImageView!
+	
 	override public func viewWillAppear(animated: Bool) {
-		spriteView = SKView(frame: CGRectMake(0, 0, mainView.frame.size.width, mainView.frame.size.height))
+		var f = mainView.frame
+		spriteView = SKView(frame: CGRect(x: 0, y: 0, width: 1024, height: 768))
+		spriteView.opaque = false
+		spriteView.allowsTransparency = true
+		spriteView.showsDrawCount = true
+		spriteView.showsNodeCount = true
+		spriteView.showsFPS = true
 		mainView.insertSubview(spriteView, belowSubview: homeButton)
-		var forest:ForestScene = ForestScene(size: spriteView.frame.size)
-		var w:Float = Float(mainView.frame.size.width)
-		
+		var forest = ForestScene(size: CGSize(width: 1024, height: 768))
 		spriteView.presentScene(forest)
-		anchorLimit = CGFloat((forest.scaledWidth - w)/2/w)
 		
+//		anchorLimit = CGFloat((forest.scaledWidth - w)/2/w)
 	}
 	
 	@IBAction func panGesture(sender: AnyObject) {
+		/*
 		var g = sender as UIPanGestureRecognizer
 		
 		if g.state == UIGestureRecognizerState.Began{
@@ -47,7 +56,7 @@ public class ForestViewController : UIViewController{
 			anchor.x = anchorLimit;
 		}
 		spriteView.scene?.anchorPoint = anchor;
-
+*/
 	}
 }
 

@@ -30,6 +30,8 @@ public class Bird : ForestCreature{
 		var a,b:Float
 		a = Float(size.width) * scale
 		b = Float(size.height) * scale
+		alpha = 1
+		//blendMode = SKBlendMode.Replace
 		
 		size = CGSizeMake(CGFloat(a), CGFloat(b))
 		name = "BIRD"

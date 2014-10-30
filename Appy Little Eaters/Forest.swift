@@ -9,21 +9,26 @@
 import Foundation
 import SpriteKit
 
-public class Forest : SKSpriteNode{
+public class Forest : SKSpriteNode, ScrollableProtocol{
 	var parentScene:ForestScene!
+	var tileWidth:Float!
 	
-	convenience init(parentScene:ForestScene){
-		var t:SKTexture = SKTexture(imageNamed: "rewards-forrestv2")
+	convenience init(parentScene:ForestScene, slice:Int){
+		var imageName:String = "REWARDS-FOREST-UPDATED_0" + slice.description + ".png"
+		var t:SKTexture = SKTexture(imageNamed: imageName)
 		var r:CGSize = parentScene.frame.size
 		var h:Float = Float(r.height)
-		var bh:Float = Float(640)
+		var bh:Float = Float(t.size().height)
 		var fact:Float = h / bh
+		var newHeight:Float = Float(t.size().height) * fact
+		var newWidth:Float = Float(t.size().width) * fact
 		
-		var s:CGSize = CGSizeMake(CGFloat(parentScene.backgroundWidth*fact), CGFloat(parentScene.backgroundHeight*fact))
-		self.init(texture: t, color: UIColor.blackColor(), size: s)
+		var s:CGSize = CGSizeMake(CGFloat(newWidth), CGFloat(newHeight))
+		self.init(texture: t, color: UIColor.clearColor(), size: s)
 		
+		tileWidth = newWidth
 		self.parentScene = parentScene
-		position = CGPointMake(1024/2, 768/2)
+		position = CGPointMake(CGFloat(Float((slice-2))*newWidth), 0)
 		name = "BACKGROUND"
 		
 	}
@@ -36,7 +41,20 @@ public class Forest : SKSpriteNode{
 	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 	}
+	
+	func scrollBy(amount: Float) {
+		var x:Float = Float(position.x)
+		var y:Float = Float(position.y)
+		x += amount
+		if x < -tileWidth*2{
+			x += tileWidth * 10
+		}
+		if x > tileWidth*8{
+			x -= tileWidth * 10
+		}
+		position = CGPoint(x: CGFloat(x), y: CGFloat(y))
 
+	}
 	
 }
 

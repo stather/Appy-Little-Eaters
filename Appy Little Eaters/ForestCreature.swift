@@ -10,6 +10,13 @@ import Foundation
 import SpriteKit
 
 public class ForestCreature : SKSpriteNode{
+	enum CreatureName : Int{
+		case Squirrel
+		case Deer
+		case Dragon
+		case Bird
+	}
+	
 	public func perform(){
 		
 	}
