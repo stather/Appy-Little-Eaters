@@ -8,24 +8,33 @@
 
 import Foundation
 import UIKit
-
+import CoreData
 
 class RewardsPageViewController: UIViewController{
 	
 	var chosen:Int = 0
 	
+	lazy var managedObjectContext : NSManagedObjectContext? = {
+		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+		if let managedObjectContext = appDelegate.managedObjectContext {
+			return managedObjectContext
+		}
+		else {
+			return nil
+		}
+	}()
+	
 	@IBOutlet weak var DoneButton: UIButton!
 	
 	@IBAction func DonePressed(sender: UIButton) {
-		var obj = NSUserDefaults.standardUserDefaults().arrayForKey("rewards")
-		if obj == nil{
-			obj = [RewardDefinition]()
-		}
-
-		var rewarddefs:[RewardDefinition] = obj as [RewardDefinition]
 		var rewardDef = RewardDefinition(rewardType: ForestCreature.CreatureName.Bird)
-		rewarddefs.append(rewardDef)
-		NSUserDefaults.standardUserDefaults().setObject(rewarddefs, forKey: "rewards")
+		let reward = NSEntityDescription.insertNewObjectForEntityForName("DReward", inManagedObjectContext: managedObjectContext!) as DReward
+		
+		reward.creatureName = NSNumber(integer: ForestCreature.CreatureName.Toadstool.rawValue)
+		reward.positionX = 400
+		reward.positionY = 10
+		var error:NSErrorPointer = NSErrorPointer()
+		managedObjectContext?.save(error)
 		performSegueWithIdentifier("RewardToForest", sender: self)
 	}
 	

@@ -9,13 +9,12 @@
 import Foundation
 import SpriteKit
 
-public class Squirrel : ForestCreature{
-	var parentScene:ForestScene?
+public class Squirrel : ForestCreature, Performer{
 	
-	convenience init(parentScene:ForestScene){
+	convenience init(){
 		var t:SKTexture = SKTexture(imageNamed: "squirrel1")
 		self.init(texture: t, color:UIColor.blackColor(), size:t.size())
-		self.parentScene = parentScene
+		/*
 		var p:CGPoint = parentScene.forestPoint(CGPointMake(224, 103))
 		position = p
 		var scale:Float = 0.7
@@ -24,11 +23,12 @@ public class Squirrel : ForestCreature{
 		b = Float(size.height) * scale
 		
 		size = CGSizeMake(CGFloat(a), CGFloat(b))
+*/
 		name = "SQUIRREL"
 	}
 
 
-	public override func perform() {
+	public func perform() {
 
 		var wait:SKAction = SKAction.waitForDuration(0.1)
 		

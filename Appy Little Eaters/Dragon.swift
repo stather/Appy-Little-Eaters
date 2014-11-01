@@ -9,13 +9,12 @@
 import Foundation
 import SpriteKit
 
-public class Dragon : ForestCreature{
-	var parentScene:ForestScene?
+public class Dragon : ForestCreature, Performer{
 	
-	convenience init(parentScene:ForestScene){
+	convenience init(){
 		var t:SKTexture = SKTexture(imageNamed: "dragon1")
 		self.init(texture: t, color:UIColor.blackColor(), size:t.size())
-		self.parentScene = parentScene
+/*
 		var p:CGPoint = parentScene.forestPoint(CGPointMake(1550, 140))
 		position = p
 		var scale:Float = 0.7
@@ -24,10 +23,11 @@ public class Dragon : ForestCreature{
 		b = Float(size.height) * scale
 		
 		size = CGSizeMake(CGFloat(a), CGFloat(b))
+*/
 		name = "DRAGON"
 	}
 	
-	public override func perform() {
+	public func perform() {
 		var wait:SKAction = SKAction.waitForDuration(0.25)
 		var smoke2 = textureFrom("dragon2")
 		var smoke3 = textureFrom("dragon3")

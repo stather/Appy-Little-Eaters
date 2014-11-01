@@ -171,8 +171,13 @@
 		46C440CE1A02C55B00C1A6BE /* ScrollableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C440CD1A02C55B00C1A6BE /* ScrollableProtocol.swift */; };
 		46C440D01A02D1AF00C1A6BE /* REWARDS-FOREST-UPDATED_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C440CF1A02D1AF00C1A6BE /* REWARDS-FOREST-UPDATED_00.png */; };
 		46C440D31A02F12700C1A6BE /* AleModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46C440D11A02F12700C1A6BE /* AleModel.xcdatamodeld */; };
-		46C440D81A02F24900C1A6BE /* DReward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C440D71A02F24900C1A6BE /* DReward.swift */; };
 		46C4410C1A02F57200C1A6BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C4410B1A02F57200C1A6BE /* AppDelegate.swift */; };
+		46C441101A04E91900C1A6BE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46C4410F1A04E91900C1A6BE /* CoreData.framework */; };
+		46E15D701A04FDA200B5BAE1 /* Appy_Little_Eaters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E15D6F1A04FDA200B5BAE1 /* Appy_Little_Eaters.swift */; };
+		46E15D731A05158900B5BAE1 /* toadstool_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E15D721A05158900B5BAE1 /* toadstool_03.png */; };
+		46E15D751A051FC800B5BAE1 /* Performer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E15D741A051FC800B5BAE1 /* Performer.swift */; };
+		46E15D771A05206C00B5BAE1 /* Toadstool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E15D761A05206C00B5BAE1 /* Toadstool.swift */; };
+		46E15D791A0528BA00B5BAE1 /* StandardScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E15D781A0528BA00B5BAE1 /* StandardScroller.swift */; };
 		46E48BC118A80E66006DCA91 /* CHomeIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E48BC018A80E66006DCA91 /* CHomeIconView.m */; };
 		46E48BCB18A8FDC4006DCA91 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46E48BCA18A8FDC4006DCA91 /* Localizable.strings */; };
 		46E7C7BB19850C0B00CE7AB3 /* start-button_06.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7B819850C0B00CE7AB3 /* start-button_06.png */; };
@@ -407,8 +412,13 @@
 		46C440CD1A02C55B00C1A6BE /* ScrollableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableProtocol.swift; sourceTree = "<group>"; };
 		46C440CF1A02D1AF00C1A6BE /* REWARDS-FOREST-UPDATED_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "REWARDS-FOREST-UPDATED_00.png"; sourceTree = "<group>"; };
 		46C440D21A02F12700C1A6BE /* AleModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AleModel.xcdatamodel; sourceTree = "<group>"; };
-		46C440D71A02F24900C1A6BE /* DReward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DReward.swift; path = ../DReward.swift; sourceTree = "<group>"; };
 		46C4410B1A02F57200C1A6BE /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		46C4410F1A04E91900C1A6BE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		46E15D6F1A04FDA200B5BAE1 /* Appy_Little_Eaters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appy_Little_Eaters.swift; sourceTree = "<group>"; };
+		46E15D721A05158900B5BAE1 /* toadstool_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toadstool_03.png; sourceTree = "<group>"; };
+		46E15D741A051FC800B5BAE1 /* Performer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Performer.swift; sourceTree = "<group>"; };
+		46E15D761A05206C00B5BAE1 /* Toadstool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toadstool.swift; sourceTree = "<group>"; };
+		46E15D781A0528BA00B5BAE1 /* StandardScroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardScroller.swift; sourceTree = "<group>"; };
 		46E48BBF18A80E66006DCA91 /* CHomeIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHomeIconView.h; sourceTree = "<group>"; };
 		46E48BC018A80E66006DCA91 /* CHomeIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHomeIconView.m; sourceTree = "<group>"; };
 		46E48BCA18A8FDC4006DCA91 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -459,6 +469,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46C441101A04E91900C1A6BE /* CoreData.framework in Frameworks */,
 				46E7C7FB1988387700CE7AB3 /* AVFoundation.framework in Frameworks */,
 				460E4A9918AEC7CF00BDC881 /* SpriteKit.framework in Frameworks */,
 				4620FB8E1983EDCD0063AB9E /* Crashlytics.framework in Frameworks */,
@@ -583,6 +594,8 @@
 				46F6B40219FD231200205F6B /* Deer.swift */,
 				46F6B40419FD348300205F6B /* Bird.swift */,
 				46F6B40619FD35FC00205F6B /* Dragon.swift */,
+				46E15D761A05206C00B5BAE1 /* Toadstool.swift */,
+				46E15D781A0528BA00B5BAE1 /* StandardScroller.swift */,
 			);
 			name = animations;
 			sourceTree = "<group>";
@@ -623,6 +636,7 @@
 		464F702F18A019F000DDA449 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				46C4410F1A04E91900C1A6BE /* CoreData.framework */,
 				46E7C7FA1988387700CE7AB3 /* AVFoundation.framework */,
 				4620FB8D1983EDCD0063AB9E /* Crashlytics.framework */,
 				460E4A9818AEC7CF00BDC881 /* SpriteKit.framework */,
@@ -667,6 +681,7 @@
 				46C440CD1A02C55B00C1A6BE /* ScrollableProtocol.swift */,
 				46C440D11A02F12700C1A6BE /* AleModel.xcdatamodeld */,
 				46C4410B1A02F57200C1A6BE /* AppDelegate.swift */,
+				46E15D741A051FC800B5BAE1 /* Performer.swift */,
 			);
 			path = "Appy Little Eaters";
 			sourceTree = "<group>";
@@ -719,6 +734,7 @@
 		469846DF19D846E600617FCE /* Characters */ = {
 			isa = PBXGroup;
 			children = (
+				46E15D711A05157400B5BAE1 /* static */,
 				469846E319D8472C00617FCE /* bird */,
 				469846E219D8470D00617FCE /* dragon */,
 				469846E119D8470000617FCE /* squirrel */,
@@ -894,9 +910,17 @@
 		46C440D91A02F27500C1A6BE /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
-				46C440D71A02F24900C1A6BE /* DReward.swift */,
+				46E15D6F1A04FDA200B5BAE1 /* Appy_Little_Eaters.swift */,
 			);
 			name = ManagedObjects;
+			sourceTree = "<group>";
+		};
+		46E15D711A05157400B5BAE1 /* static */ = {
+			isa = PBXGroup;
+			children = (
+				46E15D721A05158900B5BAE1 /* toadstool_03.png */,
+			);
+			name = static;
 			sourceTree = "<group>";
 		};
 		46E7C7BE1985114D00CE7AB3 /* TPKeyboardAvoiding */ = {
@@ -1072,6 +1096,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46E15D731A05158900B5BAE1 /* toadstool_03.png in Resources */,
 				464205B918EB4A74005EC168 /* dragon5.png in Resources */,
 				464205AB18EB357A005EC168 /* bird2_03.png in Resources */,
 				4615CCEE19D1F5C5007994EC /* green-background.jpg in Resources */,
@@ -1271,21 +1296,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				469846EB19D84BEF00617FCE /* RewardsPageViewController.swift in Sources */,
-				46C440D81A02F24900C1A6BE /* DReward.swift in Sources */,
 				46E7C7C71985114D00CE7AB3 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				46AE6C4919EAF773000238F4 /* HomeViewController.swift in Sources */,
 				46E8D17619F2C6F500AEF750 /* SocialStoryViewController.swift in Sources */,
 				46C3102A19FBB917003D71B2 /* ForestCreature.swift in Sources */,
+				46E15D771A05206C00B5BAE1 /* Toadstool.swift in Sources */,
 				464F703D18A019F000DDA449 /* main.m in Sources */,
 				46F6B40319FD231200205F6B /* Deer.swift in Sources */,
+				46E15D791A0528BA00B5BAE1 /* StandardScroller.swift in Sources */,
 				46E8D17219F2B48000AEF750 /* FoodCell.swift in Sources */,
 				46E7C7CA1985114D00CE7AB3 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				4642608119F598B80028C878 /* Forest.swift in Sources */,
 				46E48BC118A80E66006DCA91 /* CHomeIconView.m in Sources */,
 				46F6B40519FD348300205F6B /* Bird.swift in Sources */,
 				4642607C19F58D530028C878 /* ForestScene.swift in Sources */,
+				46E15D701A04FDA200B5BAE1 /* Appy_Little_Eaters.swift in Sources */,
 				46C440CE1A02C55B00C1A6BE /* ScrollableProtocol.swift in Sources */,
 				46F6B40719FD35FC00205F6B /* Dragon.swift in Sources */,
+				46E15D751A051FC800B5BAE1 /* Performer.swift in Sources */,
 				46C440D31A02F12700C1A6BE /* AleModel.xcdatamodeld in Sources */,
 				46C4410C1A02F57200C1A6BE /* AppDelegate.swift in Sources */,
 				46AE6C1919E979BC000238F4 /* RainbowPageViewController.swift in Sources */,

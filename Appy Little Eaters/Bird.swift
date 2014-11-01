@@ -9,8 +9,8 @@
 import Foundation
 import SpriteKit
 
-public class Bird : ForestCreature{
-	var parentScene:ForestScene?
+public class Bird : ForestCreature, Performer{
+
 	public enum BirdLocation {
 		case SittingOnRight
 		case SittingOnLeft
@@ -20,10 +20,10 @@ public class Bird : ForestCreature{
 	
 	var location:BirdLocation = BirdLocation.SittingOnRight
 	
-	convenience init(parentScene:ForestScene){
+	convenience init(){
 		var t:SKTexture = SKTexture(imageNamed: "bird-sitting_03")
 		self.init(texture: t, color:UIColor.blackColor(), size:t.size())
-		self.parentScene = parentScene
+		/*
 		var p:CGPoint = parentScene.forestPoint(CGPointMake(904, 69))
 		position = p
 		var scale:Float = 0.7
@@ -31,9 +31,9 @@ public class Bird : ForestCreature{
 		a = Float(size.width) * scale
 		b = Float(size.height) * scale
 		alpha = 1
-		//blendMode = SKBlendMode.Replace
 		
 		size = CGSizeMake(CGFloat(a), CGFloat(b))
+*/
 		name = "BIRD"
 	}
 	
@@ -56,7 +56,7 @@ public class Bird : ForestCreature{
 	func flyToLeftTree(){
 		xScale = 1
 		removeAllActions()
-		var p:CGPoint = parentScene!.forestPoint(CGPointMake(383, 108))
+		var p:CGPoint = forestScene.forestPoint(CGPointMake(383, 108))
 		var flyPath = SKAction.moveTo(p, duration: 5)
 		var sitting = textureFrom("bird-sitting_03")
 		var flight = SKAction.sequence([flyPath,sitting])
@@ -72,7 +72,7 @@ public class Bird : ForestCreature{
 	func flyToRightTree(){
 		xScale = -1
 		removeAllActions()
-		var p:CGPoint = parentScene!.forestPoint(CGPointMake(904, 65))
+		var p:CGPoint = forestScene.forestPoint(CGPointMake(904, 65))
 		var flyPath = SKAction.moveTo(p, duration: 5)
 		var sitting = textureFrom("bird-sitting_03")
 		var flight = SKAction.sequence([flyPath,sitting])
@@ -85,7 +85,7 @@ public class Bird : ForestCreature{
 		
 	}
 
-	public override func perform() {
+	public func perform() {
 		switch location{
 		case .SittingOnRight:
 			flyToLeftTree()

@@ -7,7 +7,9 @@
 //
 
 import Foundation
+import UIKit
 import SpriteKit
+import CoreData
 
 public class ForestScene : SKScene{
 	var contentCreated:Bool = false
@@ -25,6 +27,21 @@ public class ForestScene : SKScene{
 
 	
 	var characters: [ForestCreature] = []
+	
+	lazy var managedObjectContext : NSManagedObjectContext? = {
+		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+		if let managedObjectContext = appDelegate.managedObjectContext {
+			return managedObjectContext
+		}
+		else {
+			return nil
+		}
+		}()
+
+	lazy var managedObjectModel : NSManagedObjectModel? = {
+		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+		return appDelegate.managedObjectModel
+	}()
 	
 	override public func didMoveToView(view: SKView) {
 		_speed = cStartSpeed
@@ -78,41 +95,17 @@ public class ForestScene : SKScene{
 			var forest = Forest(parentScene: self, slice: index)
 			addChild(forest)
 		}
-		
-		var obj = NSUserDefaults.standardUserDefaults().arrayForKey("rewards")
-		if obj == nil{
-			return
-		}
-		var rewarddefs:[RewardDefinition] = obj as [RewardDefinition]
-		if rewarddefs.isEmpty{
-			var creature = Bird(parentScene: self)
-			creature.position = CGPoint(x: 50, y: 50)
-			creature.alpha = 1
-			addChild(creature)
-			characters.append(creature)
-			return
-		}
-		for rewarddef in rewarddefs{
-			var reward:ForestCreature.CreatureName = rewarddef.rewardType
-			var creature:ForestCreature
-			switch reward{
-			case .Bird:
-				creature = Bird(parentScene: self)
-				break
-			case .Deer:
-				creature = Deer(parentScene: self)
-				break
-			case .Dragon:
-				creature = Dragon(parentScene: self)
-				break
-			case .Squirrel:
-				creature = Squirrel(parentScene: self)
-				break
-			}
+
+		var fetchAllRewards = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewards")
+		var error:NSErrorPointer! = NSErrorPointer()
+		for item in managedObjectContext?.executeFetchRequest(fetchAllRewards!, error: error) as [DReward]{
+			let reward:ForestCreature.CreatureName = ForestCreature.CreatureName(rawValue: Int(item.creatureName))!
+			var creature:ForestCreature = ForestCreature.from(reward)
+//			creature.position = CGPoint(x: CGFloat(item.positionX), y: CGFloat(item.positionY))
+			creature.position = CGPoint(x: CGFloat(0), y: CGFloat(0))
 			addChild(creature)
 			characters.append(creature)
 		}
-		
 	}
 	
 	public override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -122,8 +115,8 @@ public class ForestScene : SKScene{
 		var nodes = nodesAtPoint(location)
 		var creatureTouched:Bool = false
 		for item in nodes{
-			if item is ForestCreature{
-				var creature:ForestCreature = item as ForestCreature
+			if item is Performer{
+				var creature:Performer = item as Performer
 				creature.perform()
 				creatureTouched = true
 			}

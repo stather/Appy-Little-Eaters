@@ -9,14 +9,13 @@
 import Foundation
 import SpriteKit
 
-public class Deer : ForestCreature{
+public class Deer : ForestCreature, Performer{
 
-	var parentScene:ForestScene?
 	
-	convenience init(parentScene:ForestScene){
+	convenience init(){
 		var t:SKTexture = SKTexture(imageNamed: "deer1")
 		self.init(texture: t, color:UIColor.blackColor(), size:t.size())
-		self.parentScene = parentScene
+/*
 		var p:CGPoint = parentScene.forestPoint(CGPointMake(645, 200))
 		position = p
 		var scale:Float = 0.15
@@ -25,10 +24,11 @@ public class Deer : ForestCreature{
 		b = Float(size.height) * scale
 		
 		size = CGSizeMake(CGFloat(a), CGFloat(b))
+*/
 		name = "DEER"
 	}
 	
-	public override func perform() {
+	public func perform() {
 		var wait = SKAction.waitForDuration(0.1)
 		
 		var eat2 = textureFrom("deer2")

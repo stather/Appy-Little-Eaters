@@ -10,8 +10,9 @@ import Foundation
 import SpriteKit
 
 public class Forest : SKSpriteNode, ScrollableProtocol{
-	var parentScene:ForestScene!
 	var tileWidth:Float!
+	
+	var delegate:ScrollableProtocol?
 	
 	convenience init(parentScene:ForestScene, slice:Int){
 		var imageName:String = "REWARDS-FOREST-UPDATED_0" + slice.description + ".png"
@@ -27,7 +28,7 @@ public class Forest : SKSpriteNode, ScrollableProtocol{
 		self.init(texture: t, color: UIColor.clearColor(), size: s)
 		
 		tileWidth = newWidth
-		self.parentScene = parentScene
+		delegate = StandardScroller(node:self)
 		position = CGPointMake(CGFloat(Float((slice-2))*newWidth), 0)
 		name = "BACKGROUND"
 		
@@ -43,17 +44,7 @@ public class Forest : SKSpriteNode, ScrollableProtocol{
 	}
 	
 	func scrollBy(amount: Float) {
-		var x:Float = Float(position.x)
-		var y:Float = Float(position.y)
-		x += amount
-		if x < -tileWidth*2{
-			x += tileWidth * 10
-		}
-		if x > tileWidth*8{
-			x -= tileWidth * 10
-		}
-		position = CGPoint(x: CGFloat(x), y: CGFloat(y))
-
+		delegate?.scrollBy(amount)
 	}
 	
 }
