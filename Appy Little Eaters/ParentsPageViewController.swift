@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 public class ParentsPageViewController : UIViewController{
 	
@@ -26,6 +27,22 @@ public class ParentsPageViewController : UIViewController{
 		pinit.hidden = true
 		webLink.hidden = true
 	}
+
+	lazy var managedObjectContext : NSManagedObjectContext? = {
+		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+		if let managedObjectContext = appDelegate.managedObjectContext {
+			return managedObjectContext
+		}
+		else {
+			return nil
+		}
+		}()
+	
+	lazy var managedObjectModel : NSManagedObjectModel? = {
+		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+		return appDelegate.managedObjectModel
+		}()
+
 	
 	@IBAction func backPressed(sender: AnyObject) {
 		currentPage--
@@ -67,6 +84,15 @@ public class ParentsPageViewController : UIViewController{
 		default:
 			break
 		}
+	}
+	
+	@IBAction func clearTheForest(sender: AnyObject) {
+		var fetchAllRewards = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewards")
+		var error:NSErrorPointer! = NSErrorPointer()
+		for item in managedObjectContext?.executeFetchRequest(fetchAllRewards!, error: error) as [DReward]{
+			managedObjectContext?.deleteObject(item)
+		}
+		managedObjectContext?.save(error)
 	}
 	
 	@IBAction func facebookPressed(sender: AnyObject) {

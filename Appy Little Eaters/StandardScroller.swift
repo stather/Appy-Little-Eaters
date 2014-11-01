@@ -12,8 +12,8 @@ import SpriteKit
 class StandardScroller : ScrollableProtocol{
 	var howMuch:Float!
 	var node:SKSpriteNode!
-	init(node:SKSpriteNode){
-		self.howMuch = Float(node.size.width)
+	init(howMuch:Float, node:SKSpriteNode){
+		self.howMuch = howMuch
 		self.node = node
 	}
 	

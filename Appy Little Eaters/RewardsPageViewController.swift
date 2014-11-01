@@ -31,8 +31,8 @@ class RewardsPageViewController: UIViewController{
 		let reward = NSEntityDescription.insertNewObjectForEntityForName("DReward", inManagedObjectContext: managedObjectContext!) as DReward
 		
 		reward.creatureName = NSNumber(integer: ForestCreature.CreatureName.Toadstool.rawValue)
-		reward.positionX = 400
-		reward.positionY = 10
+		reward.positionX = 2769
+		reward.positionY = 1035-865
 		var error:NSErrorPointer = NSErrorPointer()
 		managedObjectContext?.save(error)
 		performSegueWithIdentifier("RewardToForest", sender: self)

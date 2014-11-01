@@ -30,7 +30,6 @@ public class ForestCreature : SKSpriteNode, ScrollableProtocol{
 
 	override init(texture: SKTexture!, color: UIColor!, size: CGSize) {
 		super.init(texture: texture, color: color, size: size)
-		delegate = StandardScroller(node: self)
 	}
 
 	required public init?(coder aDecoder: NSCoder) {
@@ -61,5 +60,9 @@ public class ForestCreature : SKSpriteNode, ScrollableProtocol{
 	
 	func scrollBy(amount: Float) {
 		delegate?.scrollBy(amount)
+	}
+	
+	func didAddToScene(){
+		delegate = StandardScroller(howMuch:forestScene.fact * ForestScene.backgroundWidth() / 10,  node: self)
 	}
 }

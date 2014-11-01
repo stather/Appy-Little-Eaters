@@ -13,15 +13,22 @@ import CoreData
 
 public class ForestScene : SKScene{
 	var contentCreated:Bool = false
-	public var backgroundWidth:Float!
-	public var backgroundHeight:Float!
+	
+	class func backgroundWidth() -> Float{
+		return 9000
+	}
+	
+	
+	public let backgroundHeight:Float = 1035
 	public var scaledWidth:Float!
-	var fact:Float!
+	public var fact:Float!
 
 	var _lastUpdateTime:NSTimeInterval!
 	var _dt:NSTimeInterval!
 	let cStartSpeed:Float = 5
 	let cMaxSpeed:Float = 80
+	
+	public var leftHandEdge:Float!
 
 	var _speed:Float!
 
@@ -45,8 +52,6 @@ public class ForestScene : SKScene{
 	
 	override public func didMoveToView(view: SKView) {
 		_speed = cStartSpeed
-		backgroundWidth = Float(frame.width)
-		backgroundHeight = Float(frame.height)
 		
 		var r:CGSize = frame.size
 		fact = Float(r.height) / backgroundHeight
@@ -64,10 +69,15 @@ public class ForestScene : SKScene{
 	
 	public func forestPoint(p:CGPoint) -> CGPoint{
 
-		var width:Float = backgroundWidth*fact;
+		var width:Float = ForestScene.backgroundWidth()*fact;
 		var height:Float = backgroundHeight*fact;
+		
+		var scaledx:Float = (Float(p.x)) * fact
+		var scaledy:Float = Float(p.y) * fact
+		
+		var tileWidth:Float = ForestScene.backgroundWidth()/10 * fact
 				
-		return CGPointMake(CGFloat(Float(p.x) - (width/2)), CGFloat((height/2)-Float(p.y)))
+		return CGPointMake(CGFloat(scaledx + leftHandEdge - tileWidth/2), CGFloat(scaledy - (height/2)))
 	}
 	
 	public override func update(currentTime: NSTimeInterval) {
@@ -82,7 +92,15 @@ public class ForestScene : SKScene{
 
 		for item in children {
 			var node:SKNode = item as SKNode
-			if node is ScrollableProtocol{
+			if node is ScrollableProtocol && node is Forest{
+				var sp = node as ScrollableProtocol
+				var amount:Float  = _speed * Float(_dt)
+				sp.scrollBy(amount)
+			}
+		}
+		for item in children {
+			var node:SKNode = item as SKNode
+			if node is ScrollableProtocol && !(node is Forest){
 				var sp = node as ScrollableProtocol
 				var amount:Float  = _speed * Float(_dt)
 				sp.scrollBy(amount)
@@ -101,10 +119,20 @@ public class ForestScene : SKScene{
 		for item in managedObjectContext?.executeFetchRequest(fetchAllRewards!, error: error) as [DReward]{
 			let reward:ForestCreature.CreatureName = ForestCreature.CreatureName(rawValue: Int(item.creatureName))!
 			var creature:ForestCreature = ForestCreature.from(reward)
-//			creature.position = CGPoint(x: CGFloat(item.positionX), y: CGFloat(item.positionY))
-			creature.position = CGPoint(x: CGFloat(0), y: CGFloat(0))
+			creature.position = forestPoint(CGPoint(x: CGFloat(item.positionX), y: CGFloat(item.positionY)))
+			creature.xScale = CGFloat(fact)
+			creature.yScale = CGFloat(fact)
+			
 			addChild(creature)
 			characters.append(creature)
+		}
+	}
+	
+	public override func addChild(node: SKNode) {
+		super.addChild(node)
+		if node is ForestCreature {
+			let fc = node as ForestCreature
+			fc.didAddToScene()
 		}
 	}
 	
