@@ -97,7 +97,7 @@ public class SocialStoryViewController : UIViewController{
 			break;
 		}
 		var transition:CATransition = CATransition()
-		transition.duration = 1
+//		transition.duration = 1
 		transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
 		transition.type = kCATransitionFade
 		storyImage.layer.addAnimation(transition, forKey: nil)

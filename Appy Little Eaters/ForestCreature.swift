@@ -11,11 +11,31 @@ import SpriteKit
 
 public class ForestCreature : SKSpriteNode, ScrollableProtocol{
 	enum CreatureName : Int{
-		case Squirrel
+		case Blackberries
+		case Bluebells
+		case BlueBird
+		case BlueDragon
+		case BlueFlowers
+		case BrownBird
+		case BrownRabbit
+		case BrownSquirrel
+		case BrownToadstool
+		case WhiteRabbit
+		case YellowButterfly
 		case Deer
-		case Dragon
-		case Bird
-		case Toadstool
+		case GreenDragon
+		case Firefly
+		case BlueFish
+		case GreenFish
+		case Foxglove
+		case Frog
+		case GreenFern
+		case PinkButterfly
+		case PinkFlowers
+		case PurpleFern
+		case RedToadstool
+		case Squirrel
+		case Strawberry
 	}
 
 	var delegate:ScrollableProtocol?
@@ -39,20 +59,81 @@ public class ForestCreature : SKSpriteNode, ScrollableProtocol{
 	class func from(creatureName:CreatureName) -> ForestCreature{
 		var creature:ForestCreature
 		switch creatureName{
-		case .Bird:
-			creature = Bird()
+		case .Blackberries:
+			creature = Blackberries()
+			break
+		case .Bluebells:
+			creature = Bluebells()
+			break
+		case .BlueBird:
+			creature = BlueBird()
+			break
+		case .BlueDragon:
+			creature = BlueDragon()
+			break
+		case .BlueFlowers:
+			creature = BlueFlowers()
+			break
+		case .BrownBird:
+			creature = BrownBird()
+			break
+		case .BrownRabbit:
+			creature = BrownRabbit()
+			break
+		case .BrownSquirrel:
+			creature = BrownSquirrel()
+			break
+		case .BrownToadstool:
+			creature = BrownToadstool()
+			break
+		case .WhiteRabbit:
+			creature = WhiteRabbit()
+			break
+		case .YellowButterfly:
+			creature = YellowButterfly()
 			break
 		case .Deer:
 			creature = Deer()
 			break
-		case .Dragon:
-			creature = Dragon()
+		case .GreenDragon:
+			creature = GreenDragon()
+			break
+		case .Firefly:
+			creature = Firefly()
+			break
+		case .BlueFish:
+			creature = Bluefish()
+			break
+		case .GreenFish:
+			creature = GreenFish()
+			break
+		case .Foxglove:
+			creature = Foxglove()
+			break
+		case .Frog:
+			creature = Frog()
+			break
+		case .GreenFern:
+			creature = GreenFern()
+			break
+		case .PinkButterfly:
+			creature = PinkButterfly()
+			break
+		case .PinkFlowers:
+			creature = PinkFlowers()
+			break
+		case .PurpleFern:
+			creature = PurpleFern()
 			break
 		case .Squirrel:
 			creature = Squirrel()
 			break
-		case .Toadstool:
-			creature = Toadstool()
+		case .RedToadstool:
+			creature = RedToadstool()
+			break
+		case .Strawberry:
+			creature = Strawberry()
+			break
 		}
 		return creature
 	}

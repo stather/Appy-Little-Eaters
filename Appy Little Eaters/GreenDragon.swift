@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-public class Dragon : ForestCreature, Performer{
+public class GreenDragon : ForestCreature, Performer{
 	
 	convenience init(){
 		var t:SKTexture = SKTexture(imageNamed: "dragon1")
@@ -24,7 +24,7 @@ public class Dragon : ForestCreature, Performer{
 		
 		size = CGSizeMake(CGFloat(a), CGFloat(b))
 */
-		name = "DRAGON"
+		name = "GREENDRAGON"
 	}
 	
 	public func perform() {

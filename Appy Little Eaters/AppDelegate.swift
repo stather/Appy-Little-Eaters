@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,8 +19,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Override point for customization after application launch.
-//		[Crashlytics startWithAPIKey:@"9151a746d6d01e3cf7ec2a3254ebb0c672760333"];
+		Crashlytics.startWithAPIKey("9151a746d6d01e3cf7ec2a3254ebb0c672760333")
+		seedDatabase()
 		return true
+	}
+	
+	func seedDatabase(){
+		var fetchAllRewards = managedObjectModel.fetchRequestTemplateForName("FetchAllRewardsInPool")
+		var error:NSErrorPointer = NSErrorPointer()
+		let c = managedObjectContext?.countForFetchRequest(fetchAllRewards!, error: error)
+		if c > 0{
+			return
+		}
+		var fname = NSBundle.mainBundle().pathForResource("rewards", ofType: "csv")
+		var data = NSString(contentsOfFile: fname!, encoding: NSUTF8StringEncoding, error: error)
+		var lines:[String] = data?.componentsSeparatedByString("\n") as [String]
+		for item in lines{
+			var fields:[String] = item.componentsSeparatedByString(",")
+			let reward = NSEntityDescription.insertNewObjectForEntityForName("DRewardPool", inManagedObjectContext: managedObjectContext!) as DRewardPool
+			
+			reward.creatureName = fields[0].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).toInt()!
+			reward.positionX = fields[2].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).toInt()!
+			reward.positionY = fields[3].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).toInt()!
+			reward.imageName = fields[1].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+		}
+		managedObjectContext?.save(error)
 	}
 	
 	func applicationWillResignActive(application: UIApplication) {
@@ -67,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("AleModel.sqlite")
 		var error: NSError? = nil
 		var failureReason = "There was an error creating or loading the application's saved data."
-		if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
+		if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: [NSMigratePersistentStoresAutomaticallyOption:true, NSInferMappingModelAutomaticallyOption:true], error: &error) == nil {
 			coordinator = nil
 			// Report any error we got.
 			let dict = NSMutableDictionary()

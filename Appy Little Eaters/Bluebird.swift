@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-public class Bird : ForestCreature, Performer{
+public class BlueBird : ForestCreature, Performer{
 
 	public enum BirdLocation {
 		case SittingOnRight
@@ -34,7 +34,7 @@ public class Bird : ForestCreature, Performer{
 		
 		size = CGSizeMake(CGFloat(a), CGFloat(b))
 */
-		name = "BIRD"
+		name = "BLUEBIRD"
 	}
 	
 	func flappingBird() -> SKAction{

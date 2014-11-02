@@ -6,13 +6,15 @@
         <attribute name="positionY" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <entity name="DRewardPool" representedClassName="Appy_Little_Eaters.DRewardPool" syncable="YES">
-        <attribute name="available" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="available" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="creatureName" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="positionX" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="positionY" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <fetchRequest name="FetchAllRewards" entity="DReward"/>
+    <fetchRequest name="FetchAllRewardsInPool" entity="DRewardPool"/>
+    <fetchRequest name="FetchAvailableRewards" entity="DRewardPool" predicateString="available == YES"/>
     <elements>
         <element name="DReward" positionX="-63" positionY="-684" width="128" height="88"/>
         <element name="DRewardPool" positionX="-443" positionY="-871" width="128" height="118"/>

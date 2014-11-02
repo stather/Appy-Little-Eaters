@@ -12,7 +12,9 @@ import CoreData
 
 class RewardsPageViewController: UIViewController{
 	
-	var chosen:Int = 0
+	var chosen:DRewardPool!
+	var lhs:DRewardPool!
+	var rhs:DRewardPool!
 	
 	lazy var managedObjectContext : NSManagedObjectContext? = {
 		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -24,15 +26,24 @@ class RewardsPageViewController: UIViewController{
 		}
 	}()
 	
+	lazy var managedObjectModel : NSManagedObjectModel? = {
+		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+		return appDelegate.managedObjectModel
+		}()
+	
 	@IBOutlet weak var DoneButton: UIButton!
 	
 	@IBAction func DonePressed(sender: UIButton) {
-		var rewardDef = RewardDefinition(rewardType: ForestCreature.CreatureName.Bird)
+		
+		var rewardDef = RewardDefinition(rewardType: ForestCreature.CreatureName(rawValue: Int(chosen.creatureName))! )
 		let reward = NSEntityDescription.insertNewObjectForEntityForName("DReward", inManagedObjectContext: managedObjectContext!) as DReward
 		
-		reward.creatureName = NSNumber(integer: ForestCreature.CreatureName.Toadstool.rawValue)
-		reward.positionX = 2769
-		reward.positionY = 1035-865
+		reward.creatureName = NSNumber(integer: Int(chosen.creatureName))
+		reward.positionX = chosen.positionX
+		reward.positionY = chosen.positionY
+		
+		chosen.available = false		
+		
 		var error:NSErrorPointer = NSErrorPointer()
 		managedObjectContext?.save(error)
 		performSegueWithIdentifier("RewardToForest", sender: self)
@@ -49,14 +60,14 @@ class RewardsPageViewController: UIViewController{
 	@IBAction func LeftImageTapped(sender: UITapGestureRecognizer) {
 		LeftReward.backgroundColor = UIColor.redColor()
 		RightReward.backgroundColor = UIColor.clearColor()
-		chosen = 1
+		chosen = lhs
 		DoneButton.enabled = true
 	}
 	
 	@IBAction func RightImageTapped(sender: UITapGestureRecognizer) {
 		RightReward.backgroundColor = UIColor.redColor()
 		LeftReward.backgroundColor = UIColor.clearColor()
-		chosen = 2
+		chosen = rhs
 		DoneButton.enabled = true
 	}
 
@@ -69,10 +80,17 @@ class RewardsPageViewController: UIViewController{
 	}
 	
 	override func viewDidLoad() {
-		var filepath:NSString =  NSBundle.mainBundle().pathForResource("green-fern", ofType: "png")!
+		let fetchRequest = managedObjectModel?.fetchRequestTemplateForName("FetchAvailableRewards")
+		var error:NSErrorPointer = NSErrorPointer()
+		let count = managedObjectContext?.countForFetchRequest(fetchRequest!, error: error)
+		let rewards:[DRewardPool] = managedObjectContext?.executeFetchRequest(fetchRequest!, error: error) as [DRewardPool]
+		var filepath:NSString =  NSBundle.mainBundle().pathForResource(rewards[0].imageName, ofType: "png")!
 		LeftReward.image = UIImage(contentsOfFile: filepath)
-		filepath = NSBundle.mainBundle().pathForResource("pink-butterfly", ofType: "png")!
+		lhs = rewards[0]
+
+		filepath =  NSBundle.mainBundle().pathForResource(rewards[1].imageName, ofType: "png")!
 		RightReward.image = UIImage(contentsOfFile: filepath)
+		rhs = rewards[1]
 		DoneButton.enabled = false;
 	}
 }

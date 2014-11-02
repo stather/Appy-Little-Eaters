@@ -87,11 +87,16 @@ public class ParentsPageViewController : UIViewController{
 	}
 	
 	@IBAction func clearTheForest(sender: AnyObject) {
-		var fetchAllRewards = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewards")
+		let fetchAllRewards = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewards")
 		var error:NSErrorPointer! = NSErrorPointer()
 		for item in managedObjectContext?.executeFetchRequest(fetchAllRewards!, error: error) as [DReward]{
 			managedObjectContext?.deleteObject(item)
 		}
+		let fetchAllRewardsInPool = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewardsInPool")
+		for item in managedObjectContext?.executeFetchRequest(fetchAllRewardsInPool!, error: error) as [DRewardPool]{
+			managedObjectContext?.deleteObject(item)
+		}
+		
 		managedObjectContext?.save(error)
 	}
 	
