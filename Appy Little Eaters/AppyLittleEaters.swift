@@ -25,5 +25,5 @@ class DRewardPool: NSManagedObject {
 	@NSManaged var positionX: NSNumber
 	@NSManaged var positionY: NSNumber
 	@NSManaged var imageName: String
-	
+	@NSManaged var level: NSNumber
 }

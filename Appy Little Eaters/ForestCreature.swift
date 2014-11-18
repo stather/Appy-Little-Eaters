@@ -11,7 +11,7 @@ import SpriteKit
 
 public class ForestCreature : SKSpriteNode, ScrollableProtocol{
 	enum CreatureName : Int{
-		case Blackberries
+		case Blackberries = 1
 		case Bluebells
 		case BlueBird
 		case BlueDragon

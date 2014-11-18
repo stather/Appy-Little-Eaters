@@ -14,9 +14,9 @@
     </entity>
     <fetchRequest name="FetchAllRewards" entity="DReward"/>
     <fetchRequest name="FetchAllRewardsInPool" entity="DRewardPool"/>
-    <fetchRequest name="FetchAvailableRewards" entity="DRewardPool" predicateString="available == YES"/>
+    <fetchRequest name="FetchAvailableRewards" entity="DRewardPool" predicateString="available == 1 AND level == $LEVEL"/>
     <elements>
         <element name="DReward" positionX="-63" positionY="-684" width="128" height="88"/>
-        <element name="DRewardPool" positionX="-443" positionY="-871" width="128" height="118"/>
+        <element name="DRewardPool" positionX="-443" positionY="-871" width="128" height="120"/>
     </elements>
 </model>

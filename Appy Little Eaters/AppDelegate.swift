@@ -36,12 +36,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		var lines:[String] = data?.componentsSeparatedByString("\n") as [String]
 		for item in lines{
 			var fields:[String] = item.componentsSeparatedByString(",")
-			let reward = NSEntityDescription.insertNewObjectForEntityForName("DRewardPool", inManagedObjectContext: managedObjectContext!) as DRewardPool
+			if fields.count == 5 {
+				let reward = NSEntityDescription.insertNewObjectForEntityForName("DRewardPool", inManagedObjectContext: managedObjectContext!) as DRewardPool
 			
-			reward.creatureName = fields[0].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).toInt()!
-			reward.positionX = fields[2].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).toInt()!
-			reward.positionY = fields[3].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).toInt()!
-			reward.imageName = fields[1].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+				reward.creatureName = fields[0].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).toInt()!
+				reward.positionX = fields[2].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).toInt()!
+				reward.positionY = fields[3].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).toInt()!
+				reward.imageName = fields[1].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+				reward.level = fields[4].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).toInt()!
+				println("Loaded " + reward.creatureName.stringValue)
+			}
 		}
 		managedObjectContext?.save(error)
 	}

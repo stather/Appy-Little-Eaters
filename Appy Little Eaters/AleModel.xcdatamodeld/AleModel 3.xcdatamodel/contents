@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14A389" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="DReward" representedClassName="Appy_Little_Eaters.DReward" syncable="YES">
+        <attribute name="creatureName" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="positionX" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="positionY" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <entity name="DRewardPool" representedClassName="Appy_Little_Eaters.DRewardPool" syncable="YES">
+        <attribute name="available" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="creatureName" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="positionX" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="positionY" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <fetchRequest name="FetchAllRewards" entity="DReward"/>
+    <fetchRequest name="FetchAllRewardsInPool" entity="DRewardPool"/>
+    <fetchRequest name="FetchAvailableRewards" entity="DRewardPool" predicateString="available == 1 AND level == $LEVEL"/>
+    <elements>
+        <element name="DReward" positionX="-63" positionY="-684" width="128" height="88"/>
+        <element name="DRewardPool" positionX="-443" positionY="-871" width="128" height="135"/>
+    </elements>
+</model>

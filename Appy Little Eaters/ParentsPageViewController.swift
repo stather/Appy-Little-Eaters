@@ -86,6 +86,28 @@ public class ParentsPageViewController : UIViewController{
 		}
 	}
 	
+	@IBAction func fillTheForest(sender: AnyObject) {
+		let fetchAllRewards = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewards")
+		var error:NSErrorPointer! = NSErrorPointer()
+		for item in managedObjectContext?.executeFetchRequest(fetchAllRewards!, error: error) as [DReward]{
+			managedObjectContext?.deleteObject(item)
+		}
+		managedObjectContext?.save(error)
+		
+		let fetchAllRewardsInPool = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewardsInPool")
+		for item in managedObjectContext?.executeFetchRequest(fetchAllRewardsInPool!, error: error) as [DRewardPool]{
+			let reward = NSEntityDescription.insertNewObjectForEntityForName("DReward", inManagedObjectContext: managedObjectContext!) as DReward
+			
+			reward.creatureName = NSNumber(integer: Int(item.creatureName))
+			reward.positionX = item.positionX
+			reward.positionY = 1035 - Int(item.positionY)
+			
+			item.available = false
+			
+		}
+		managedObjectContext?.save(error)
+	}
+	
 	@IBAction func clearTheForest(sender: AnyObject) {
 		let fetchAllRewards = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewards")
 		var error:NSErrorPointer! = NSErrorPointer()
@@ -101,6 +123,7 @@ public class ParentsPageViewController : UIViewController{
 	}
 	
 	@IBAction func facebookPressed(sender: AnyObject) {
+		
 	}
 	
 	@IBAction func webLinkPressed(sender: AnyObject) {

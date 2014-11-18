@@ -40,7 +40,7 @@ class RewardsPageViewController: UIViewController{
 		
 		reward.creatureName = NSNumber(integer: Int(chosen.creatureName))
 		reward.positionX = chosen.positionX
-		reward.positionY = chosen.positionY
+		reward.positionY = 1035 - Int(chosen.positionY)
 		
 		chosen.available = false		
 		
@@ -80,7 +80,7 @@ class RewardsPageViewController: UIViewController{
 	}
 	
 	override func viewDidLoad() {
-		let fetchRequest = managedObjectModel?.fetchRequestTemplateForName("FetchAvailableRewards")
+		let fetchRequest = managedObjectModel?.fetchRequestFromTemplateWithName("FetchAvailableRewards", substitutionVariables: ["LEVEL":1])
 		var error:NSErrorPointer = NSErrorPointer()
 		let count = managedObjectContext?.countForFetchRequest(fetchRequest!, error: error)
 		let rewards:[DRewardPool] = managedObjectContext?.executeFetchRequest(fetchRequest!, error: error) as [DRewardPool]

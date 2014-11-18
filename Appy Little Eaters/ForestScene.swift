@@ -22,16 +22,17 @@ public class ForestScene : SKScene{
 	public let backgroundHeight:Float = 1035
 	public var scaledWidth:Float!
 	public var fact:Float!
-
+	var count:Int = 0
+	
 	var _lastUpdateTime:NSTimeInterval!
 	var _dt:NSTimeInterval!
 	let cStartSpeed:Float = 5
 	let cMaxSpeed:Float = 80
 	
 	public var leftHandEdge:Float!
-
+	
 	var _speed:Float!
-
+	
 	
 	var characters: [ForestCreature] = []
 	
@@ -44,11 +45,11 @@ public class ForestScene : SKScene{
 			return nil
 		}
 		}()
-
+	
 	lazy var managedObjectModel : NSManagedObjectModel? = {
 		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
 		return appDelegate.managedObjectModel
-	}()
+		}()
 	
 	override public func didMoveToView(view: SKView) {
 		_speed = cStartSpeed
@@ -68,7 +69,7 @@ public class ForestScene : SKScene{
 	}
 	
 	public func forestPoint(p:CGPoint) -> CGPoint{
-
+		
 		var width:Float = ForestScene.backgroundWidth()*fact;
 		var height:Float = backgroundHeight*fact;
 		
@@ -76,7 +77,7 @@ public class ForestScene : SKScene{
 		var scaledy:Float = Float(p.y) * fact
 		
 		var tileWidth:Float = ForestScene.backgroundWidth()/10 * fact
-				
+		
 		return CGPointMake(CGFloat(scaledx + leftHandEdge - tileWidth/2), CGFloat(scaledy - (height/2)))
 	}
 	
@@ -89,31 +90,52 @@ public class ForestScene : SKScene{
 		_lastUpdateTime = currentTime;
 		
 		// Scroll
-
-		for item in children {
-			var node:SKNode = item as SKNode
-			if node is ScrollableProtocol && node is Forest{
-				var sp = node as ScrollableProtocol
-				var amount:Float  = _speed * Float(_dt)
-				sp.scrollBy(amount)
+		
+		if (Scrolling){
+			for item in children {
+				var node:SKNode = item as SKNode
+				if node is ScrollableProtocol && node is Forest{
+					var sp = node as ScrollableProtocol
+					var amount:Float  = _speed * Float(_dt)
+					sp.scrollBy(amount)
+				}
+			}
+			for item in children {
+				var node:SKNode = item as SKNode
+				if node is ScrollableProtocol && !(node is Forest){
+					var sp = node as ScrollableProtocol
+					var amount:Float  = _speed * Float(_dt)
+					sp.scrollBy(amount)
+				}
 			}
 		}
-		for item in children {
-			var node:SKNode = item as SKNode
-			if node is ScrollableProtocol && !(node is Forest){
-				var sp = node as ScrollableProtocol
-				var amount:Float  = _speed * Float(_dt)
-				sp.scrollBy(amount)
-			}
+		//frog.splash(_dt)
+		if count > 0{
+			var frog = SplashDrop()
+			frog.position = self.forestPoint(CGPoint(x: CGFloat(1400), y: CGFloat(500)))
+			self.addChild(frog)
+			count--
 		}
 	}
 	
+	public override func didSimulatePhysics() {
+		self.enumerateChildNodesWithName("SPLASH", usingBlock: {
+			(node:SKNode!, stop:UnsafeMutablePointer <ObjCBool> ) -> Void in
+			var bottom = -(self.backgroundHeight*self.fact)/2
+			if node.position.y < CGFloat(bottom) {
+				node.removeFromParent()
+			}
+		})
+	}
+	
+	
 	func createSceneContents(){
+		
 		for index in 1...10{
 			var forest = Forest(parentScene: self, slice: index)
 			addChild(forest)
 		}
-
+		
 		var fetchAllRewards = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewards")
 		var error:NSErrorPointer! = NSErrorPointer()
 		for item in managedObjectContext?.executeFetchRequest(fetchAllRewards!, error: error) as [DReward]{
@@ -128,12 +150,79 @@ public class ForestScene : SKScene{
 		}
 	}
 	
+	public func restart(mass:Float, velocity:Float){
+		count = 20
+		//var frog = SplashDrop()
+		//frog.position = forestPoint(CGPoint(x: CGFloat(1400), y: CGFloat(500)))
+		//addChild(frog)
+		//frog.physicsBody?.velocity = CGVector(dx: CGFloat(mass), dy: CGFloat(velocity))
+		//frog.physicsBody?.mass = CGFloat(mass)
+	}
+	
 	public override func addChild(node: SKNode) {
 		super.addChild(node)
 		if node is ForestCreature {
 			let fc = node as ForestCreature
 			fc.didAddToScene()
 		}
+	}
+	
+	var CurrentCreature:ForestCreature!
+	
+	var Scrolling:Bool = true
+	
+	public func StopScrolling(){
+		Scrolling = false
+	}
+	
+	public func StartScrolling(){
+		Scrolling = true
+	}
+	
+	public func MoveDown(){
+		var p = CurrentCreature.position
+		var y = p.y
+		y -= 10
+		p.y = y
+		CurrentCreature.position = p
+	}
+	
+	public func MoveUp(){
+		var p = CurrentCreature.position
+		var y = p.y
+		y += 10
+		p.y = y
+		CurrentCreature.position = p
+	}
+	
+	public func MoveRight(){
+		var p = CurrentCreature.position
+		var x = p.x
+		x += 10
+		p.x = x
+		CurrentCreature.position = p
+	}
+	
+	public func MoveLeft(){
+		var p = CurrentCreature.position
+		var x = p.x
+		x -= 10
+		p.x = x
+		CurrentCreature.position = p
+	}
+	
+	public func Bigger(){
+		var scale = CurrentCreature.xScale
+		scale *= 1.1
+		CurrentCreature.xScale = scale
+		CurrentCreature.yScale = scale
+	}
+	
+	public func Smaller(){
+		var scale = CurrentCreature.xScale
+		scale /= 1.1
+		CurrentCreature.xScale = scale
+		CurrentCreature.yScale = scale
 	}
 	
 	public override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -143,10 +232,17 @@ public class ForestScene : SKScene{
 		var nodes = nodesAtPoint(location)
 		var creatureTouched:Bool = false
 		for item in nodes{
-			if item is Performer{
-				var creature:Performer = item as Performer
-				creature.perform()
-				creatureTouched = true
+			if Scrolling{
+				if item is Performer{
+					var creature:Performer = item as Performer
+					creature.perform()
+					creatureTouched = true
+				}
+			}else{
+				if item is ForestCreature{
+					let fc = item as ForestCreature
+					CurrentCreature = fc
+				}
 			}
 		}
 		if creatureTouched{
@@ -161,6 +257,6 @@ public class ForestScene : SKScene{
 				_speed = -cStartSpeed;
 			}
 		}
-	
+		
 	}
 }

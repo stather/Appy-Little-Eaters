@@ -12,7 +12,7 @@ import SpriteKit
 public class RedToadstool : ForestCreature{
 	
 	convenience init(){
-		var t:SKTexture = SKTexture(imageNamed: "toadstool_03")
+		var t:SKTexture = SKTexture(imageNamed: "redtoadstool1")
 		self.init(texture: t, color:UIColor.blackColor(), size:t.size())
 		name = "REDTOADSTOOL"
 	}
