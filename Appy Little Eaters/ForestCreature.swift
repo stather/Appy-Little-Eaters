@@ -56,6 +56,23 @@ public class ForestCreature : SKSpriteNode, ScrollableProtocol{
 	    super.init(coder: aDecoder)
 	}
 	
+	public func printGeometry(){
+		var p = forestScene.originalPoint(position)
+		print("x ")
+		if p.x < 0{
+			print(p.x + 9000)
+		}
+		else{
+			print(p.x)
+		}
+		print(" y ")
+		print(1035 - p.y)
+		print(" scale ")
+		var s = forestScene.fact / Float(xScale)
+		print(s)
+		println()
+	}
+	
 	class func from(creatureName:CreatureName) -> ForestCreature{
 		var creature:ForestCreature
 		switch creatureName{

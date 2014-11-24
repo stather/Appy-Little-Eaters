@@ -739,6 +739,15 @@
                                     <action selector="Smaller:" destination="Evs-l7-TtO" eventType="touchUpInside" id="y40-uK-nQ0"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6s-VR-8y0">
+                                <rect key="frame" x="865" y="150" width="46" height="30"/>
+                                <state key="normal" title="Mirror">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="Mirror:" destination="Evs-l7-TtO" eventType="touchUpInside" id="CCy-yd-FV9"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohn-nn-rhx">
                                 <rect key="frame" x="744" y="78" width="46" height="30"/>
                                 <state key="normal" title="Left">

@@ -101,9 +101,8 @@ public class ParentsPageViewController : UIViewController{
 			reward.creatureName = NSNumber(integer: Int(item.creatureName))
 			reward.positionX = item.positionX
 			reward.positionY = 1035 - Int(item.positionY)
-			
+			reward.scale = item.scale
 			item.available = false
-			
 		}
 		managedObjectContext?.save(error)
 	}

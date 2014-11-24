@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		var lines:[String] = data?.componentsSeparatedByString("\n") as [String]
 		for item in lines{
 			var fields:[String] = item.componentsSeparatedByString(",")
-			if fields.count == 5 {
+			if fields.count >= 6 {
 				let reward = NSEntityDescription.insertNewObjectForEntityForName("DRewardPool", inManagedObjectContext: managedObjectContext!) as DRewardPool
 			
 				reward.creatureName = fields[0].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).toInt()!
@@ -44,6 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				reward.positionY = fields[3].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).toInt()!
 				reward.imageName = fields[1].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 				reward.level = fields[4].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).toInt()!
+				var scale = fields[5].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+				var fscale = (scale as NSString).floatValue
+				reward.scale = fscale
 				println("Loaded " + reward.creatureName.stringValue)
 			}
 		}

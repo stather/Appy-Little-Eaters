@@ -11,7 +11,7 @@ import SpriteKit
 
 public class BrownBird : ForestCreature{
 	convenience init(){
-		var t:SKTexture = SKTexture(imageNamed: "frog1")
+		var t:SKTexture = SKTexture(imageNamed: "brown-bird1")
 		self.init(texture: t, color:UIColor.blackColor(), size:t.size())
 		name = "BROWNBIRD"
 	}

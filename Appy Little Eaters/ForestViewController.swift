@@ -42,6 +42,10 @@ public class ForestViewController : UIViewController{
 		StartStop = !StartStop
 	}
 	
+	@IBAction func Mirror(sender: AnyObject) {
+		forest.Mirror()
+	}
+	
 	@IBAction func Up(sender: AnyObject) {
 		forest.MoveUp()
 	}

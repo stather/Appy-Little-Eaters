@@ -81,6 +81,25 @@ public class ForestScene : SKScene{
 		return CGPointMake(CGFloat(scaledx + leftHandEdge - tileWidth/2), CGFloat(scaledy - (height/2)))
 	}
 	
+	public func originalPoint(p:CGPoint) -> CGPoint{
+		var width:Float = ForestScene.backgroundWidth()*fact;
+		var height:Float = backgroundHeight*fact;
+		
+		var tileWidth:Float = ForestScene.backgroundWidth()/10 * fact
+		
+		var x = Float(p.x)
+		var y = Float(p.y)
+		
+		var scaledx = x + tileWidth/2 - leftHandEdge
+		var scaledy = y + height/2
+		
+		var origx = scaledx / fact
+		var origy = scaledy / fact
+		
+		return CGPoint(x: CGFloat(origx), y: CGFloat(origy))
+		
+	}
+	
 	public override func update(currentTime: NSTimeInterval) {
 		if ((_lastUpdateTime) != nil) {
 			_dt = currentTime - _lastUpdateTime;
@@ -142,8 +161,8 @@ public class ForestScene : SKScene{
 			let reward:ForestCreature.CreatureName = ForestCreature.CreatureName(rawValue: Int(item.creatureName))!
 			var creature:ForestCreature = ForestCreature.from(reward)
 			creature.position = forestPoint(CGPoint(x: CGFloat(item.positionX), y: CGFloat(item.positionY)))
-			creature.xScale = CGFloat(fact)
-			creature.yScale = CGFloat(fact)
+			creature.xScale = CGFloat(fact / Float(item.scale))
+			creature.yScale = CGFloat(abs(fact / Float(item.scale)))
 			
 			addChild(creature)
 			characters.append(creature)
@@ -179,12 +198,20 @@ public class ForestScene : SKScene{
 		Scrolling = true
 	}
 	
+	public func Mirror(){
+		var scale = CurrentCreature.xScale
+		scale *= -1
+		CurrentCreature.xScale = scale
+		CurrentCreature.printGeometry()
+	}
+	
 	public func MoveDown(){
 		var p = CurrentCreature.position
 		var y = p.y
 		y -= 10
 		p.y = y
 		CurrentCreature.position = p
+		CurrentCreature.printGeometry()
 	}
 	
 	public func MoveUp(){
@@ -193,6 +220,7 @@ public class ForestScene : SKScene{
 		y += 10
 		p.y = y
 		CurrentCreature.position = p
+		CurrentCreature.printGeometry()
 	}
 	
 	public func MoveRight(){
@@ -201,6 +229,7 @@ public class ForestScene : SKScene{
 		x += 10
 		p.x = x
 		CurrentCreature.position = p
+		CurrentCreature.printGeometry()
 	}
 	
 	public func MoveLeft(){
@@ -209,21 +238,25 @@ public class ForestScene : SKScene{
 		x -= 10
 		p.x = x
 		CurrentCreature.position = p
+		CurrentCreature.printGeometry()
 	}
 	
 	public func Bigger(){
 		var scale = CurrentCreature.xScale
 		scale *= 1.1
 		CurrentCreature.xScale = scale
-		CurrentCreature.yScale = scale
+		CurrentCreature.yScale = abs(scale)
+		CurrentCreature.printGeometry()
 	}
 	
 	public func Smaller(){
 		var scale = CurrentCreature.xScale
 		scale /= 1.1
 		CurrentCreature.xScale = scale
-		CurrentCreature.yScale = scale
+		CurrentCreature.yScale = abs(scale)
+		CurrentCreature.printGeometry()
 	}
+	
 	
 	public override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
 		

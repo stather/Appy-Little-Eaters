@@ -14,7 +14,7 @@ class DReward: NSManagedObject {
 	@NSManaged var creatureName: NSNumber
 	@NSManaged var positionX: NSNumber
 	@NSManaged var positionY: NSNumber
-	
+	@NSManaged var scale: NSNumber
 }
 
 
@@ -26,4 +26,5 @@ class DRewardPool: NSManagedObject {
 	@NSManaged var positionY: NSNumber
 	@NSManaged var imageName: String
 	@NSManaged var level: NSNumber
+	@NSManaged var scale: NSNumber
 }
