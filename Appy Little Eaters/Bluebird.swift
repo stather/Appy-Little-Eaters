@@ -23,17 +23,6 @@ public class BlueBird : ForestCreature, Performer{
 	convenience init(){
 		var t:SKTexture = SKTexture(imageNamed: "bird-sitting_03")
 		self.init(texture: t, color:UIColor.blackColor(), size:t.size())
-		/*
-		var p:CGPoint = parentScene.forestPoint(CGPointMake(904, 69))
-		position = p
-		var scale:Float = 0.7
-		var a,b:Float
-		a = Float(size.width) * scale
-		b = Float(size.height) * scale
-		alpha = 1
-		
-		size = CGSizeMake(CGFloat(a), CGFloat(b))
-*/
 		name = "BLUEBIRD"
 	}
 	

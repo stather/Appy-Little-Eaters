@@ -9,11 +9,11 @@
 import Foundation
 import SpriteKit
 
-public class YellowButterfly : ForestCreature{
+public class YellowButterfly1 : ForestCreature{
 	convenience init(){
-		var t:SKTexture = SKTexture(imageNamed: "frog1")
+		var t:SKTexture = SKTexture(imageNamed: "butterfly1-1")
 		self.init(texture: t, color:UIColor.blackColor(), size:t.size())
-		name = "YELLOWBUTTERFLY"
+		name = "YELLOWBUTTERFLY1"
 	}
 	
 }

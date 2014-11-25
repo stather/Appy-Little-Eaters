@@ -107,7 +107,7 @@ public class ForestCreature : SKSpriteNode, ScrollableProtocol{
 			creature = WhiteRabbit()
 			break
 		case .YellowButterfly:
-			creature = YellowButterfly()
+			creature = YellowButterfly1()
 			break
 		case .Deer:
 			creature = Deer()

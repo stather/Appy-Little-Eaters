@@ -14,16 +14,6 @@ public class GreenDragon : ForestCreature, Performer{
 	convenience init(){
 		var t:SKTexture = SKTexture(imageNamed: "dragon1")
 		self.init(texture: t, color:UIColor.blackColor(), size:t.size())
-/*
-		var p:CGPoint = parentScene.forestPoint(CGPointMake(1550, 140))
-		position = p
-		var scale:Float = 0.7
-		var a,b:Float
-		a = Float(size.width) * scale
-		b = Float(size.height) * scale
-		
-		size = CGSizeMake(CGFloat(a), CGFloat(b))
-*/
 		name = "GREENDRAGON"
 	}
 	
