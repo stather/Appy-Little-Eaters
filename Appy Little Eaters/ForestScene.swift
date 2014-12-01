@@ -36,6 +36,10 @@ public class ForestScene : SKScene{
 	
 	var characters: [ForestCreature] = []
 	
+	lazy public var tileWidth : Float? = {
+		return ForestScene.backgroundWidth()/10 * self.fact
+	}()
+	
 	lazy var managedObjectContext : NSManagedObjectContext? = {
 		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
 		if let managedObjectContext = appDelegate.managedObjectContext {
@@ -75,10 +79,8 @@ public class ForestScene : SKScene{
 		
 		var scaledx:Float = (Float(p.x)) * fact
 		var scaledy:Float = Float(p.y) * fact
-		
-		var tileWidth:Float = ForestScene.backgroundWidth()/10 * fact
-		
-		return CGPointMake(CGFloat(scaledx + leftHandEdge - tileWidth/2), CGFloat(scaledy - (height/2)))
+				
+		return CGPointMake(CGFloat(scaledx + leftHandEdge - tileWidth!/2), CGFloat(scaledy - (height/2)))
 	}
 	
 	public func originalPoint(p:CGPoint) -> CGPoint{
@@ -125,6 +127,10 @@ public class ForestScene : SKScene{
 					var sp = node as ScrollableProtocol
 					var amount:Float  = _speed * Float(_dt)
 					sp.scrollBy(amount)
+				}
+				if node is MoveableProtocol && !(node is Forest){
+					var mp = node as MoveableProtocol
+					mp.moveBy(Float(_dt))
 				}
 			}
 		}

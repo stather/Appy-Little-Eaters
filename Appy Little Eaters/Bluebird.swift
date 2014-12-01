@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-public class BlueBird : ForestCreature, Performer{
+public class BlueBird : ForestCreature, Performer, MoveableProtocol{
 
 	public enum BirdLocation {
 		case SittingOnRight
@@ -45,16 +45,19 @@ public class BlueBird : ForestCreature, Performer{
 	func flyToLeftTree(){
 		xScale = 1
 		removeAllActions()
-		var p:CGPoint = forestScene.forestPoint(CGPointMake(383, 108))
-		var flyPath = SKAction.moveTo(p, duration: 5)
+		var offset = 1721 * forestScene.fact
+		var tox = Float(position.x) - offset - forestScene.tileWidth!
+		var p:CGPoint = forestScene.forestPoint(CGPointMake(2727, 1035 - 389))
+		//p.x = CGFloat(tox)
+		var flyPath = SKAction.moveTo(p, duration: 15)
 		var sitting = textureFrom("bird-sitting_03")
 		var flight = SKAction.sequence([flyPath,sitting])
 		location = BirdLocation.FlyingLeft
 		runAction(flappingBird(), withKey: "flapping")
-		runAction(flight, completion: {
-			self.removeActionForKey("flapping")
-			self.location = BirdLocation.SittingOnLeft
-		})
+//		runAction(flight, completion: {
+//			self.removeActionForKey("flapping")
+//			self.location = BirdLocation.SittingOnLeft
+//		})
 		
 	}
 	
@@ -85,6 +88,34 @@ public class BlueBird : ForestCreature, Performer{
 		case .FlyingRight:
 			break
 		case .FlyingLeft:
+			break
+		}
+	}
+	
+	func flyLeft(amount: Float){
+		var x:Float = Float(position.x)
+		var y:Float = Float(position.y)
+		x -= amount * 25
+		var howMuch = forestScene.fact * ForestScene.backgroundWidth() / 10
+		if x < -howMuch*2{
+			x += howMuch * 10
+		}
+		if x > howMuch*8{
+			x -= howMuch * 10
+		}
+		position = CGPoint(x: CGFloat(x), y: CGFloat(y))
+		
+	}
+	
+	func moveBy(amount: Float) {
+		switch location{
+		case .FlyingLeft:
+			flyLeft(amount)
+			printGeometry()
+			break
+		case .FlyingRight:
+			break
+		default:
 			break
 		}
 	}

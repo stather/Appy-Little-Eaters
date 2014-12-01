@@ -310,6 +310,7 @@
 		46E1FCC51A251AB800651193 /* blue-dragon-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E1FCC01A251AB800651193 /* blue-dragon-3.png */; };
 		46E1FCC61A251AB800651193 /* blue-dragon-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E1FCC11A251AB800651193 /* blue-dragon-4.png */; };
 		46E1FCC71A251AB800651193 /* blue-dragon5.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E1FCC21A251AB800651193 /* blue-dragon5.png */; };
+		46E1FCC91A2D107B00651193 /* MoveableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E1FCC81A2D107B00651193 /* MoveableProtocol.swift */; };
 		46E48BC118A80E66006DCA91 /* CHomeIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E48BC018A80E66006DCA91 /* CHomeIconView.m */; };
 		46E48BCB18A8FDC4006DCA91 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46E48BCA18A8FDC4006DCA91 /* Localizable.strings */; };
 		46E7C7BB19850C0B00CE7AB3 /* start-button_06.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7B819850C0B00CE7AB3 /* start-button_06.png */; };
@@ -686,6 +687,7 @@
 		46E1FCC01A251AB800651193 /* blue-dragon-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue-dragon-3.png"; sourceTree = "<group>"; };
 		46E1FCC11A251AB800651193 /* blue-dragon-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue-dragon-4.png"; sourceTree = "<group>"; };
 		46E1FCC21A251AB800651193 /* blue-dragon5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue-dragon5.png"; sourceTree = "<group>"; };
+		46E1FCC81A2D107B00651193 /* MoveableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoveableProtocol.swift; sourceTree = "<group>"; };
 		46E48BBF18A80E66006DCA91 /* CHomeIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHomeIconView.h; sourceTree = "<group>"; };
 		46E48BC018A80E66006DCA91 /* CHomeIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHomeIconView.m; sourceTree = "<group>"; };
 		46E48BCA18A8FDC4006DCA91 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -989,6 +991,7 @@
 				4626D5E11A0E9C6A00D0FB24 /* spark.png */,
 				4626D5E71A0FCB8700D0FB24 /* smoke.png */,
 				4626D5ED1A0FD27A00D0FB24 /* bokeh.png */,
+				46E1FCC81A2D107B00651193 /* MoveableProtocol.swift */,
 			);
 			path = "Appy Little Eaters";
 			sourceTree = "<group>";
@@ -1921,6 +1924,7 @@
 				46E7C7C91985114D00CE7AB3 /* TPKeyboardAvoidingTableView.m in Sources */,
 				46E15DB61A06851D00B5BAE1 /* BlueFlowers.swift in Sources */,
 				46E15DCA1A06872700B5BAE1 /* Foxglove.swift in Sources */,
+				46E1FCC91A2D107B00651193 /* MoveableProtocol.swift in Sources */,
 				464F704A18A019F000DDA449 /* CViewController.m in Sources */,
 				4642607A19F589210028C878 /* ForestViewController.swift in Sources */,
 				46E8D17419F2B81600AEF750 /* FoodPagePageViewController.swift in Sources */,
