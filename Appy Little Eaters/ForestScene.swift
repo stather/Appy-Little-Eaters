@@ -98,6 +98,10 @@ public class ForestScene : SKScene{
 		var origx = scaledx / fact
 		var origy = scaledy / fact
 		
+		if origx < 0 {
+			origx += 9000
+		}
+		
 		return CGPoint(x: CGFloat(origx), y: CGFloat(origy))
 		
 	}

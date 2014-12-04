@@ -42,22 +42,14 @@ public class BlueBird : ForestCreature, Performer, MoveableProtocol{
 		return flapping
 	}
 	
+	var destination:CGPoint!
+	
 	func flyToLeftTree(){
 		xScale = 1
 		removeAllActions()
-		var offset = 1721 * forestScene.fact
-		var tox = Float(position.x) - offset - forestScene.tileWidth!
-		var p:CGPoint = forestScene.forestPoint(CGPointMake(2727, 1035 - 389))
-		//p.x = CGFloat(tox)
-		var flyPath = SKAction.moveTo(p, duration: 15)
-		var sitting = textureFrom("bird-sitting_03")
-		var flight = SKAction.sequence([flyPath,sitting])
+		destination = CGPointMake(2727, 1035 - 389)
 		location = BirdLocation.FlyingLeft
 		runAction(flappingBird(), withKey: "flapping")
-//		runAction(flight, completion: {
-//			self.removeActionForKey("flapping")
-//			self.location = BirdLocation.SittingOnLeft
-//		})
 		
 	}
 	
@@ -104,7 +96,13 @@ public class BlueBird : ForestCreature, Performer, MoveableProtocol{
 			x -= howMuch * 10
 		}
 		position = CGPoint(x: CGFloat(x), y: CGFloat(y))
-		
+		var original = forestScene.originalPoint(position)
+		println(abs(original.x - destination.x))
+		if abs(original.x - destination.x) < 25{
+			removeAllActions()
+			texture = SKTexture(imageNamed: "bird-sitting_03")
+			location = BirdLocation.SittingOnLeft
+		}
 	}
 	
 	func moveBy(amount: Float) {
