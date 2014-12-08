@@ -87,18 +87,34 @@ public class BlueBird : ForestCreature, Performer, MoveableProtocol{
 	func flyLeft(amount: Float){
 		var x:Float = Float(position.x)
 		var y:Float = Float(position.y)
-		x -= amount * 25
-		var howMuch = forestScene.fact * ForestScene.backgroundWidth() / 10
-		if x < -howMuch*2{
-			x += howMuch * 10
-		}
-		if x > howMuch*8{
-			x -= howMuch * 10
-		}
-		position = CGPoint(x: CGFloat(x), y: CGFloat(y))
 		var original = forestScene.originalPoint(position)
+		var howMuch = forestScene.fact * ForestScene.backgroundWidth() / 10
+		if original.x > destination.x{
+			x -= amount * 25
+			if x < -howMuch*2{
+				x += howMuch * 10
+			}
+			if x > howMuch*8{
+				x -= howMuch * 10
+			}
+		}
+		if original.y > destination.y{
+			y -= amount * 25
+		}
+		
+		position = CGPoint(x: CGFloat(x), y: CGFloat(y))
+		original = forestScene.originalPoint(position)
 		println(abs(original.x - destination.x))
-		if abs(original.x - destination.x) < 25{
+		if original.x < destination.x{
+			println("Got to x dest")
+		}
+		if original.y < destination.y{
+			println("Got to y dest")
+			original.y = destination.y
+		}
+		//position = forestScene.forestPoint(original)
+		if (original.x <= destination.x && original.y <= destination.y){
+			println("Got to destination")
 			removeAllActions()
 			texture = SKTexture(imageNamed: "bird-sitting_03")
 			location = BirdLocation.SittingOnLeft
