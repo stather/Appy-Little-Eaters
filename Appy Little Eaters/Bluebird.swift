@@ -56,16 +56,9 @@ public class BlueBird : ForestCreature, Performer, MoveableProtocol{
 	func flyToRightTree(){
 		xScale = -1
 		removeAllActions()
-		var p:CGPoint = forestScene.forestPoint(CGPointMake(904, 65))
-		var flyPath = SKAction.moveTo(p, duration: 5)
-		var sitting = textureFrom("bird-sitting_03")
-		var flight = SKAction.sequence([flyPath,sitting])
-		location = BirdLocation.FlyingLeft
+		destination = CGPointMake(4448, 1035 - 217)
+		location = BirdLocation.FlyingRight
 		runAction(flappingBird(), withKey: "flapping")
-		runAction(flight, completion: {
-			self.removeActionForKey("flapping")
-			self.location = BirdLocation.SittingOnRight
-		})
 		
 	}
 
@@ -112,12 +105,46 @@ public class BlueBird : ForestCreature, Performer, MoveableProtocol{
 			println("Got to y dest")
 			original.y = destination.y
 		}
-		//position = forestScene.forestPoint(original)
 		if (original.x <= destination.x && original.y <= destination.y){
 			println("Got to destination")
 			removeAllActions()
 			texture = SKTexture(imageNamed: "bird-sitting_03")
 			location = BirdLocation.SittingOnLeft
+		}
+	}
+	func flyRight(amount: Float){
+		var x:Float = Float(position.x)
+		var y:Float = Float(position.y)
+		var original = forestScene.originalPoint(position)
+		var howMuch = forestScene.fact * ForestScene.backgroundWidth() / 10
+		if original.x < destination.x{
+			x += amount * 25
+			if x < -howMuch*2{
+				x += howMuch * 10
+			}
+			if x > howMuch*8{
+				x -= howMuch * 10
+			}
+		}
+		if original.y < destination.y{
+			y += amount * 25
+		}
+		
+		position = CGPoint(x: CGFloat(x), y: CGFloat(y))
+		original = forestScene.originalPoint(position)
+		println(abs(original.x - destination.x))
+		if original.x > destination.x{
+			println("Got to x dest")
+		}
+		if original.y > destination.y{
+			println("Got to y dest")
+			original.y = destination.y
+		}
+		if (original.x >= destination.x && original.y >= destination.y){
+			println("Got to destination")
+			removeAllActions()
+			texture = SKTexture(imageNamed: "bird-sitting_03")
+			location = BirdLocation.SittingOnRight
 		}
 	}
 	
@@ -128,6 +155,7 @@ public class BlueBird : ForestCreature, Performer, MoveableProtocol{
 			printGeometry()
 			break
 		case .FlyingRight:
+			flyRight(amount)
 			break
 		default:
 			break
