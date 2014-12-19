@@ -138,6 +138,59 @@
 		469846E819D8481400617FCE /* reward-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 469846E719D8481400617FCE /* reward-background.jpg */; };
 		469846EB19D84BEF00617FCE /* RewardsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469846EA19D84BEF00617FCE /* RewardsPageViewController.swift */; };
 		469846ED19D85A6100617FCE /* reward-done.png in Resources */ = {isa = PBXBuildFile; fileRef = 469846EC19D85A6100617FCE /* reward-done.png */; };
+		469AC75E1A40D27800CDA070 /* .cproject in Resources */ = {isa = PBXBuildFile; fileRef = 469AC6F81A40D27800CDA070 /* .cproject */; };
+		469AC75F1A40D27800CDA070 /* .project in Resources */ = {isa = PBXBuildFile; fileRef = 469AC6F91A40D27800CDA070 /* .project */; };
+		469AC7601A40D27800CDA070 /* org.eclipse.cdt.codan.core.prefs in Resources */ = {isa = PBXBuildFile; fileRef = 469AC6FB1A40D27800CDA070 /* org.eclipse.cdt.codan.core.prefs */; };
+		469AC7611A40D27800CDA070 /* org.eclipse.cdt.managedbuilder.core.prefs in Resources */ = {isa = PBXBuildFile; fileRef = 469AC6FC1A40D27800CDA070 /* org.eclipse.cdt.managedbuilder.core.prefs */; };
+		469AC7621A40D27800CDA070 /* goblins.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 469AC6FE1A40D27800CDA070 /* goblins.atlas */; };
+		469AC7631A40D27800CDA070 /* goblins.json in Resources */ = {isa = PBXBuildFile; fileRef = 469AC6FF1A40D27800CDA070 /* goblins.json */; };
+		469AC7641A40D27800CDA070 /* goblins.png in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7001A40D27800CDA070 /* goblins.png */; };
+		469AC7651A40D27800CDA070 /* spineboy.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7011A40D27800CDA070 /* spineboy.atlas */; };
+		469AC7661A40D27800CDA070 /* spineboy.json in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7021A40D27800CDA070 /* spineboy.json */; };
+		469AC7671A40D27800CDA070 /* spineboy.png in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7031A40D27800CDA070 /* spineboy.png */; };
+		469AC7681A40D27800CDA070 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7051A40D27800CDA070 /* main.c */; };
+		469AC7691A40D27800CDA070 /* spine-c.sln in Resources */ = {isa = PBXBuildFile; fileRef = 469AC71E1A40D27800CDA070 /* spine-c.sln */; };
+		469AC76A1A40D27800CDA070 /* spine-c.vcxproj in Resources */ = {isa = PBXBuildFile; fileRef = 469AC71F1A40D27800CDA070 /* spine-c.vcxproj */; };
+		469AC76B1A40D27800CDA070 /* spine-c.vcxproj.filters in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7201A40D27800CDA070 /* spine-c.vcxproj.filters */; };
+		469AC76C1A40D27800CDA070 /* Animation.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7231A40D27800CDA070 /* Animation.c */; };
+		469AC76D1A40D27800CDA070 /* AnimationState.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7241A40D27800CDA070 /* AnimationState.c */; };
+		469AC76E1A40D27800CDA070 /* AnimationStateData.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7251A40D27800CDA070 /* AnimationStateData.c */; };
+		469AC76F1A40D27800CDA070 /* Atlas.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7261A40D27800CDA070 /* Atlas.c */; };
+		469AC7701A40D27800CDA070 /* AtlasAttachmentLoader.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7271A40D27800CDA070 /* AtlasAttachmentLoader.c */; };
+		469AC7711A40D27800CDA070 /* Attachment.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7281A40D27800CDA070 /* Attachment.c */; };
+		469AC7721A40D27800CDA070 /* AttachmentLoader.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7291A40D27800CDA070 /* AttachmentLoader.c */; };
+		469AC7731A40D27800CDA070 /* Bone.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC72A1A40D27800CDA070 /* Bone.c */; };
+		469AC7741A40D27800CDA070 /* BoneData.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC72B1A40D27800CDA070 /* BoneData.c */; };
+		469AC7751A40D27800CDA070 /* BoundingBoxAttachment.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC72C1A40D27800CDA070 /* BoundingBoxAttachment.c */; };
+		469AC7761A40D27800CDA070 /* Event.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC72D1A40D27800CDA070 /* Event.c */; };
+		469AC7771A40D27800CDA070 /* EventData.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC72E1A40D27800CDA070 /* EventData.c */; };
+		469AC7781A40D27800CDA070 /* extension.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC72F1A40D27800CDA070 /* extension.c */; };
+		469AC7791A40D27800CDA070 /* Json.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7301A40D27800CDA070 /* Json.c */; };
+		469AC77A1A40D27800CDA070 /* RegionAttachment.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7321A40D27800CDA070 /* RegionAttachment.c */; };
+		469AC77B1A40D27800CDA070 /* Skeleton.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7331A40D27800CDA070 /* Skeleton.c */; };
+		469AC77C1A40D27800CDA070 /* SkeletonBounds.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7341A40D27800CDA070 /* SkeletonBounds.c */; };
+		469AC77D1A40D27800CDA070 /* SkeletonData.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7351A40D27800CDA070 /* SkeletonData.c */; };
+		469AC77E1A40D27800CDA070 /* SkeletonJson.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7361A40D27800CDA070 /* SkeletonJson.c */; };
+		469AC77F1A40D27800CDA070 /* Skin.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7371A40D27800CDA070 /* Skin.c */; };
+		469AC7801A40D27800CDA070 /* Slot.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7381A40D27800CDA070 /* Slot.c */; };
+		469AC7811A40D27800CDA070 /* SlotData.c in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7391A40D27800CDA070 /* SlotData.c */; };
+		469AC7821A40D27800CDA070 /* DZSpineLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC73C1A40D27800CDA070 /* DZSpineLoader.m */; };
+		469AC7831A40D27800CDA070 /* spine_adapt.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC73E1A40D27800CDA070 /* spine_adapt.m */; };
+		469AC7841A40D27800CDA070 /* SpineAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7401A40D27800CDA070 /* SpineAnimation.m */; };
+		469AC7851A40D27800CDA070 /* SpineAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7421A40D27800CDA070 /* SpineAttachment.m */; };
+		469AC7861A40D27800CDA070 /* SpineBone.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7441A40D27800CDA070 /* SpineBone.m */; };
+		469AC7871A40D27800CDA070 /* SpineGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7461A40D27800CDA070 /* SpineGeometry.m */; };
+		469AC7881A40D27800CDA070 /* SpineSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7481A40D27800CDA070 /* SpineSequence.m */; };
+		469AC7891A40D27800CDA070 /* SpineSkeleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC74A1A40D27800CDA070 /* SpineSkeleton.m */; };
+		469AC78A1A40D27800CDA070 /* SpineSlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC74C1A40D27800CDA070 /* SpineSlot.m */; };
+		469AC78B1A40D27800CDA070 /* SpineTimeline.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC74E1A40D27800CDA070 /* SpineTimeline.m */; };
+		469AC78C1A40D27800CDA070 /* DZSpineScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7511A40D27800CDA070 /* DZSpineScene.m */; };
+		469AC78D1A40D27800CDA070 /* DZSpineSceneBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7531A40D27800CDA070 /* DZSpineSceneBuilder.m */; };
+		469AC78E1A40D27800CDA070 /* DZSpineSceneDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7551A40D27800CDA070 /* DZSpineSceneDescription.m */; };
+		469AC78F1A40D27800CDA070 /* DZSpineSceneTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7571A40D27800CDA070 /* DZSpineSceneTrack.m */; };
+		469AC7901A40D27800CDA070 /* DZSpineSpriteKitAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7591A40D27800CDA070 /* DZSpineSpriteKitAnimation.m */; };
+		469AC7911A40D27800CDA070 /* DZSpineSpriteKitMaps.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC75B1A40D27800CDA070 /* DZSpineSpriteKitMaps.m */; };
+		469AC7921A40D27800CDA070 /* DZSpineTexturePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC75D1A40D27800CDA070 /* DZSpineTexturePool.m */; };
 		469C9AF91A23C60600E49BA5 /* pink-butterfly1.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9AF61A23C60600E49BA5 /* pink-butterfly1.png */; };
 		469C9AFA1A23C60600E49BA5 /* pink-butterfly2.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9AF71A23C60600E49BA5 /* pink-butterfly2.png */; };
 		469C9AFB1A23C60600E49BA5 /* pink-butterfly3.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9AF81A23C60600E49BA5 /* pink-butterfly3.png */; };
@@ -514,6 +567,99 @@
 		469846E919D84BEF00617FCE /* Appy Little Eaters-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Appy Little Eaters-Bridging-Header.h"; sourceTree = "<group>"; };
 		469846EA19D84BEF00617FCE /* RewardsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardsPageViewController.swift; sourceTree = "<group>"; };
 		469846EC19D85A6100617FCE /* reward-done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reward-done.png"; sourceTree = "<group>"; };
+		469AC6F81A40D27800CDA070 /* .cproject */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = .cproject; sourceTree = "<group>"; };
+		469AC6F91A40D27800CDA070 /* .project */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = .project; sourceTree = "<group>"; };
+		469AC6FB1A40D27800CDA070 /* org.eclipse.cdt.codan.core.prefs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = org.eclipse.cdt.codan.core.prefs; sourceTree = "<group>"; };
+		469AC6FC1A40D27800CDA070 /* org.eclipse.cdt.managedbuilder.core.prefs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = org.eclipse.cdt.managedbuilder.core.prefs; sourceTree = "<group>"; };
+		469AC6FE1A40D27800CDA070 /* goblins.atlas */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = goblins.atlas; sourceTree = "<group>"; };
+		469AC6FF1A40D27800CDA070 /* goblins.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = goblins.json; sourceTree = "<group>"; };
+		469AC7001A40D27800CDA070 /* goblins.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goblins.png; sourceTree = "<group>"; };
+		469AC7011A40D27800CDA070 /* spineboy.atlas */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spineboy.atlas; sourceTree = "<group>"; };
+		469AC7021A40D27800CDA070 /* spineboy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = spineboy.json; sourceTree = "<group>"; };
+		469AC7031A40D27800CDA070 /* spineboy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spineboy.png; sourceTree = "<group>"; };
+		469AC7051A40D27800CDA070 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		469AC7081A40D27800CDA070 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
+		469AC7091A40D27800CDA070 /* AnimationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationState.h; sourceTree = "<group>"; };
+		469AC70A1A40D27800CDA070 /* AnimationStateData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationStateData.h; sourceTree = "<group>"; };
+		469AC70B1A40D27800CDA070 /* Atlas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Atlas.h; sourceTree = "<group>"; };
+		469AC70C1A40D27800CDA070 /* AtlasAttachmentLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtlasAttachmentLoader.h; sourceTree = "<group>"; };
+		469AC70D1A40D27800CDA070 /* Attachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attachment.h; sourceTree = "<group>"; };
+		469AC70E1A40D27800CDA070 /* AttachmentLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachmentLoader.h; sourceTree = "<group>"; };
+		469AC70F1A40D27800CDA070 /* Bone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bone.h; sourceTree = "<group>"; };
+		469AC7101A40D27800CDA070 /* BoneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoneData.h; sourceTree = "<group>"; };
+		469AC7111A40D27800CDA070 /* BoundingBoxAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundingBoxAttachment.h; sourceTree = "<group>"; };
+		469AC7121A40D27800CDA070 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		469AC7131A40D27800CDA070 /* EventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventData.h; sourceTree = "<group>"; };
+		469AC7141A40D27800CDA070 /* extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = extension.h; sourceTree = "<group>"; };
+		469AC7151A40D27800CDA070 /* RegionAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionAttachment.h; sourceTree = "<group>"; };
+		469AC7161A40D27800CDA070 /* Skeleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skeleton.h; sourceTree = "<group>"; };
+		469AC7171A40D27800CDA070 /* SkeletonBounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkeletonBounds.h; sourceTree = "<group>"; };
+		469AC7181A40D27800CDA070 /* SkeletonData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkeletonData.h; sourceTree = "<group>"; };
+		469AC7191A40D27800CDA070 /* SkeletonJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkeletonJson.h; sourceTree = "<group>"; };
+		469AC71A1A40D27800CDA070 /* Skin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skin.h; sourceTree = "<group>"; };
+		469AC71B1A40D27800CDA070 /* Slot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Slot.h; sourceTree = "<group>"; };
+		469AC71C1A40D27800CDA070 /* SlotData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlotData.h; sourceTree = "<group>"; };
+		469AC71D1A40D27800CDA070 /* spine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spine.h; sourceTree = "<group>"; };
+		469AC71E1A40D27800CDA070 /* spine-c.sln */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "spine-c.sln"; sourceTree = "<group>"; };
+		469AC71F1A40D27800CDA070 /* spine-c.vcxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "spine-c.vcxproj"; sourceTree = "<group>"; };
+		469AC7201A40D27800CDA070 /* spine-c.vcxproj.filters */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "spine-c.vcxproj.filters"; sourceTree = "<group>"; };
+		469AC7231A40D27800CDA070 /* Animation.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Animation.c; sourceTree = "<group>"; };
+		469AC7241A40D27800CDA070 /* AnimationState.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = AnimationState.c; sourceTree = "<group>"; };
+		469AC7251A40D27800CDA070 /* AnimationStateData.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = AnimationStateData.c; sourceTree = "<group>"; };
+		469AC7261A40D27800CDA070 /* Atlas.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Atlas.c; sourceTree = "<group>"; };
+		469AC7271A40D27800CDA070 /* AtlasAttachmentLoader.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = AtlasAttachmentLoader.c; sourceTree = "<group>"; };
+		469AC7281A40D27800CDA070 /* Attachment.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Attachment.c; sourceTree = "<group>"; };
+		469AC7291A40D27800CDA070 /* AttachmentLoader.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = AttachmentLoader.c; sourceTree = "<group>"; };
+		469AC72A1A40D27800CDA070 /* Bone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Bone.c; sourceTree = "<group>"; };
+		469AC72B1A40D27800CDA070 /* BoneData.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = BoneData.c; sourceTree = "<group>"; };
+		469AC72C1A40D27800CDA070 /* BoundingBoxAttachment.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = BoundingBoxAttachment.c; sourceTree = "<group>"; };
+		469AC72D1A40D27800CDA070 /* Event.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Event.c; sourceTree = "<group>"; };
+		469AC72E1A40D27800CDA070 /* EventData.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = EventData.c; sourceTree = "<group>"; };
+		469AC72F1A40D27800CDA070 /* extension.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = extension.c; sourceTree = "<group>"; };
+		469AC7301A40D27800CDA070 /* Json.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Json.c; sourceTree = "<group>"; };
+		469AC7311A40D27800CDA070 /* Json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Json.h; sourceTree = "<group>"; };
+		469AC7321A40D27800CDA070 /* RegionAttachment.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = RegionAttachment.c; sourceTree = "<group>"; };
+		469AC7331A40D27800CDA070 /* Skeleton.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Skeleton.c; sourceTree = "<group>"; };
+		469AC7341A40D27800CDA070 /* SkeletonBounds.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SkeletonBounds.c; sourceTree = "<group>"; };
+		469AC7351A40D27800CDA070 /* SkeletonData.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SkeletonData.c; sourceTree = "<group>"; };
+		469AC7361A40D27800CDA070 /* SkeletonJson.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SkeletonJson.c; sourceTree = "<group>"; };
+		469AC7371A40D27800CDA070 /* Skin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Skin.c; sourceTree = "<group>"; };
+		469AC7381A40D27800CDA070 /* Slot.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Slot.c; sourceTree = "<group>"; };
+		469AC7391A40D27800CDA070 /* SlotData.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SlotData.c; sourceTree = "<group>"; };
+		469AC73B1A40D27800CDA070 /* DZSpineLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZSpineLoader.h; sourceTree = "<group>"; };
+		469AC73C1A40D27800CDA070 /* DZSpineLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZSpineLoader.m; sourceTree = "<group>"; };
+		469AC73D1A40D27800CDA070 /* spine_adapt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spine_adapt.h; sourceTree = "<group>"; };
+		469AC73E1A40D27800CDA070 /* spine_adapt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = spine_adapt.m; sourceTree = "<group>"; };
+		469AC73F1A40D27800CDA070 /* SpineAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpineAnimation.h; sourceTree = "<group>"; };
+		469AC7401A40D27800CDA070 /* SpineAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpineAnimation.m; sourceTree = "<group>"; };
+		469AC7411A40D27800CDA070 /* SpineAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpineAttachment.h; sourceTree = "<group>"; };
+		469AC7421A40D27800CDA070 /* SpineAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpineAttachment.m; sourceTree = "<group>"; };
+		469AC7431A40D27800CDA070 /* SpineBone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpineBone.h; sourceTree = "<group>"; };
+		469AC7441A40D27800CDA070 /* SpineBone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpineBone.m; sourceTree = "<group>"; };
+		469AC7451A40D27800CDA070 /* SpineGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpineGeometry.h; sourceTree = "<group>"; };
+		469AC7461A40D27800CDA070 /* SpineGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpineGeometry.m; sourceTree = "<group>"; };
+		469AC7471A40D27800CDA070 /* SpineSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpineSequence.h; sourceTree = "<group>"; };
+		469AC7481A40D27800CDA070 /* SpineSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpineSequence.m; sourceTree = "<group>"; };
+		469AC7491A40D27800CDA070 /* SpineSkeleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpineSkeleton.h; sourceTree = "<group>"; };
+		469AC74A1A40D27800CDA070 /* SpineSkeleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpineSkeleton.m; sourceTree = "<group>"; };
+		469AC74B1A40D27800CDA070 /* SpineSlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpineSlot.h; sourceTree = "<group>"; };
+		469AC74C1A40D27800CDA070 /* SpineSlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpineSlot.m; sourceTree = "<group>"; };
+		469AC74D1A40D27800CDA070 /* SpineTimeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpineTimeline.h; sourceTree = "<group>"; };
+		469AC74E1A40D27800CDA070 /* SpineTimeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpineTimeline.m; sourceTree = "<group>"; };
+		469AC7501A40D27800CDA070 /* DZSpineScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZSpineScene.h; sourceTree = "<group>"; };
+		469AC7511A40D27800CDA070 /* DZSpineScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZSpineScene.m; sourceTree = "<group>"; };
+		469AC7521A40D27800CDA070 /* DZSpineSceneBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZSpineSceneBuilder.h; sourceTree = "<group>"; };
+		469AC7531A40D27800CDA070 /* DZSpineSceneBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZSpineSceneBuilder.m; sourceTree = "<group>"; };
+		469AC7541A40D27800CDA070 /* DZSpineSceneDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZSpineSceneDescription.h; sourceTree = "<group>"; };
+		469AC7551A40D27800CDA070 /* DZSpineSceneDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZSpineSceneDescription.m; sourceTree = "<group>"; };
+		469AC7561A40D27800CDA070 /* DZSpineSceneTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZSpineSceneTrack.h; sourceTree = "<group>"; };
+		469AC7571A40D27800CDA070 /* DZSpineSceneTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZSpineSceneTrack.m; sourceTree = "<group>"; };
+		469AC7581A40D27800CDA070 /* DZSpineSpriteKitAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZSpineSpriteKitAnimation.h; sourceTree = "<group>"; };
+		469AC7591A40D27800CDA070 /* DZSpineSpriteKitAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZSpineSpriteKitAnimation.m; sourceTree = "<group>"; };
+		469AC75A1A40D27800CDA070 /* DZSpineSpriteKitMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZSpineSpriteKitMaps.h; sourceTree = "<group>"; };
+		469AC75B1A40D27800CDA070 /* DZSpineSpriteKitMaps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZSpineSpriteKitMaps.m; sourceTree = "<group>"; };
+		469AC75C1A40D27800CDA070 /* DZSpineTexturePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZSpineTexturePool.h; sourceTree = "<group>"; };
+		469AC75D1A40D27800CDA070 /* DZSpineTexturePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZSpineTexturePool.m; sourceTree = "<group>"; };
 		469C9AF61A23C60600E49BA5 /* pink-butterfly1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink-butterfly1.png"; sourceTree = "<group>"; };
 		469C9AF71A23C60600E49BA5 /* pink-butterfly2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink-butterfly2.png"; sourceTree = "<group>"; };
 		469C9AF81A23C60600E49BA5 /* pink-butterfly3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink-butterfly3.png"; sourceTree = "<group>"; };
@@ -921,6 +1067,8 @@
 		464F702418A019EF00DDA449 = {
 			isa = PBXGroup;
 			children = (
+				469AC6F71A40D27800CDA070 /* spine-c */,
+				469AC73A1A40D27800CDA070 /* spine-spritekit */,
 				464F703618A019F000DDA449 /* Appy Little Eaters */,
 				464F705818A019F000DDA449 /* Appy Little EatersTests */,
 				464F702F18A019F000DDA449 /* Frameworks */,
@@ -1152,6 +1300,177 @@
 				469846E719D8481400617FCE /* reward-background.jpg */,
 			);
 			name = rewardspage;
+			sourceTree = "<group>";
+		};
+		469AC6F71A40D27800CDA070 /* spine-c */ = {
+			isa = PBXGroup;
+			children = (
+				469AC6F81A40D27800CDA070 /* .cproject */,
+				469AC6F91A40D27800CDA070 /* .project */,
+				469AC6FA1A40D27800CDA070 /* .settings */,
+				469AC6FD1A40D27800CDA070 /* data */,
+				469AC7041A40D27800CDA070 /* example */,
+				469AC7061A40D27800CDA070 /* include */,
+				469AC71E1A40D27800CDA070 /* spine-c.sln */,
+				469AC71F1A40D27800CDA070 /* spine-c.vcxproj */,
+				469AC7201A40D27800CDA070 /* spine-c.vcxproj.filters */,
+				469AC7211A40D27800CDA070 /* src */,
+			);
+			path = "spine-c";
+			sourceTree = "<group>";
+		};
+		469AC6FA1A40D27800CDA070 /* .settings */ = {
+			isa = PBXGroup;
+			children = (
+				469AC6FB1A40D27800CDA070 /* org.eclipse.cdt.codan.core.prefs */,
+				469AC6FC1A40D27800CDA070 /* org.eclipse.cdt.managedbuilder.core.prefs */,
+			);
+			path = .settings;
+			sourceTree = "<group>";
+		};
+		469AC6FD1A40D27800CDA070 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				469AC6FE1A40D27800CDA070 /* goblins.atlas */,
+				469AC6FF1A40D27800CDA070 /* goblins.json */,
+				469AC7001A40D27800CDA070 /* goblins.png */,
+				469AC7011A40D27800CDA070 /* spineboy.atlas */,
+				469AC7021A40D27800CDA070 /* spineboy.json */,
+				469AC7031A40D27800CDA070 /* spineboy.png */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		469AC7041A40D27800CDA070 /* example */ = {
+			isa = PBXGroup;
+			children = (
+				469AC7051A40D27800CDA070 /* main.c */,
+			);
+			path = example;
+			sourceTree = "<group>";
+		};
+		469AC7061A40D27800CDA070 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				469AC7071A40D27800CDA070 /* spine */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		469AC7071A40D27800CDA070 /* spine */ = {
+			isa = PBXGroup;
+			children = (
+				469AC7081A40D27800CDA070 /* Animation.h */,
+				469AC7091A40D27800CDA070 /* AnimationState.h */,
+				469AC70A1A40D27800CDA070 /* AnimationStateData.h */,
+				469AC70B1A40D27800CDA070 /* Atlas.h */,
+				469AC70C1A40D27800CDA070 /* AtlasAttachmentLoader.h */,
+				469AC70D1A40D27800CDA070 /* Attachment.h */,
+				469AC70E1A40D27800CDA070 /* AttachmentLoader.h */,
+				469AC70F1A40D27800CDA070 /* Bone.h */,
+				469AC7101A40D27800CDA070 /* BoneData.h */,
+				469AC7111A40D27800CDA070 /* BoundingBoxAttachment.h */,
+				469AC7121A40D27800CDA070 /* Event.h */,
+				469AC7131A40D27800CDA070 /* EventData.h */,
+				469AC7141A40D27800CDA070 /* extension.h */,
+				469AC7151A40D27800CDA070 /* RegionAttachment.h */,
+				469AC7161A40D27800CDA070 /* Skeleton.h */,
+				469AC7171A40D27800CDA070 /* SkeletonBounds.h */,
+				469AC7181A40D27800CDA070 /* SkeletonData.h */,
+				469AC7191A40D27800CDA070 /* SkeletonJson.h */,
+				469AC71A1A40D27800CDA070 /* Skin.h */,
+				469AC71B1A40D27800CDA070 /* Slot.h */,
+				469AC71C1A40D27800CDA070 /* SlotData.h */,
+				469AC71D1A40D27800CDA070 /* spine.h */,
+			);
+			path = spine;
+			sourceTree = "<group>";
+		};
+		469AC7211A40D27800CDA070 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				469AC7221A40D27800CDA070 /* spine */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		469AC7221A40D27800CDA070 /* spine */ = {
+			isa = PBXGroup;
+			children = (
+				469AC7231A40D27800CDA070 /* Animation.c */,
+				469AC7241A40D27800CDA070 /* AnimationState.c */,
+				469AC7251A40D27800CDA070 /* AnimationStateData.c */,
+				469AC7261A40D27800CDA070 /* Atlas.c */,
+				469AC7271A40D27800CDA070 /* AtlasAttachmentLoader.c */,
+				469AC7281A40D27800CDA070 /* Attachment.c */,
+				469AC7291A40D27800CDA070 /* AttachmentLoader.c */,
+				469AC72A1A40D27800CDA070 /* Bone.c */,
+				469AC72B1A40D27800CDA070 /* BoneData.c */,
+				469AC72C1A40D27800CDA070 /* BoundingBoxAttachment.c */,
+				469AC72D1A40D27800CDA070 /* Event.c */,
+				469AC72E1A40D27800CDA070 /* EventData.c */,
+				469AC72F1A40D27800CDA070 /* extension.c */,
+				469AC7301A40D27800CDA070 /* Json.c */,
+				469AC7311A40D27800CDA070 /* Json.h */,
+				469AC7321A40D27800CDA070 /* RegionAttachment.c */,
+				469AC7331A40D27800CDA070 /* Skeleton.c */,
+				469AC7341A40D27800CDA070 /* SkeletonBounds.c */,
+				469AC7351A40D27800CDA070 /* SkeletonData.c */,
+				469AC7361A40D27800CDA070 /* SkeletonJson.c */,
+				469AC7371A40D27800CDA070 /* Skin.c */,
+				469AC7381A40D27800CDA070 /* Slot.c */,
+				469AC7391A40D27800CDA070 /* SlotData.c */,
+			);
+			path = spine;
+			sourceTree = "<group>";
+		};
+		469AC73A1A40D27800CDA070 /* spine-spritekit */ = {
+			isa = PBXGroup;
+			children = (
+				469AC73B1A40D27800CDA070 /* DZSpineLoader.h */,
+				469AC73C1A40D27800CDA070 /* DZSpineLoader.m */,
+				469AC73D1A40D27800CDA070 /* spine_adapt.h */,
+				469AC73E1A40D27800CDA070 /* spine_adapt.m */,
+				469AC73F1A40D27800CDA070 /* SpineAnimation.h */,
+				469AC7401A40D27800CDA070 /* SpineAnimation.m */,
+				469AC7411A40D27800CDA070 /* SpineAttachment.h */,
+				469AC7421A40D27800CDA070 /* SpineAttachment.m */,
+				469AC7431A40D27800CDA070 /* SpineBone.h */,
+				469AC7441A40D27800CDA070 /* SpineBone.m */,
+				469AC7451A40D27800CDA070 /* SpineGeometry.h */,
+				469AC7461A40D27800CDA070 /* SpineGeometry.m */,
+				469AC7471A40D27800CDA070 /* SpineSequence.h */,
+				469AC7481A40D27800CDA070 /* SpineSequence.m */,
+				469AC7491A40D27800CDA070 /* SpineSkeleton.h */,
+				469AC74A1A40D27800CDA070 /* SpineSkeleton.m */,
+				469AC74B1A40D27800CDA070 /* SpineSlot.h */,
+				469AC74C1A40D27800CDA070 /* SpineSlot.m */,
+				469AC74D1A40D27800CDA070 /* SpineTimeline.h */,
+				469AC74E1A40D27800CDA070 /* SpineTimeline.m */,
+				469AC74F1A40D27800CDA070 /* SpriteKit */,
+			);
+			path = "spine-spritekit";
+			sourceTree = "<group>";
+		};
+		469AC74F1A40D27800CDA070 /* SpriteKit */ = {
+			isa = PBXGroup;
+			children = (
+				469AC7501A40D27800CDA070 /* DZSpineScene.h */,
+				469AC7511A40D27800CDA070 /* DZSpineScene.m */,
+				469AC7521A40D27800CDA070 /* DZSpineSceneBuilder.h */,
+				469AC7531A40D27800CDA070 /* DZSpineSceneBuilder.m */,
+				469AC7541A40D27800CDA070 /* DZSpineSceneDescription.h */,
+				469AC7551A40D27800CDA070 /* DZSpineSceneDescription.m */,
+				469AC7561A40D27800CDA070 /* DZSpineSceneTrack.h */,
+				469AC7571A40D27800CDA070 /* DZSpineSceneTrack.m */,
+				469AC7581A40D27800CDA070 /* DZSpineSpriteKitAnimation.h */,
+				469AC7591A40D27800CDA070 /* DZSpineSpriteKitAnimation.m */,
+				469AC75A1A40D27800CDA070 /* DZSpineSpriteKitMaps.h */,
+				469AC75B1A40D27800CDA070 /* DZSpineSpriteKitMaps.m */,
+				469AC75C1A40D27800CDA070 /* DZSpineTexturePool.h */,
+				469AC75D1A40D27800CDA070 /* DZSpineTexturePool.m */,
+			);
+			path = SpriteKit;
 			sourceTree = "<group>";
 		};
 		469C9AF51A23C5EE00E49BA5 /* pinkbutterfly */ = {
@@ -1584,6 +1903,7 @@
 				4642607019F462610028C878 /* weblink_03.png in Resources */,
 				4615CCEF19D1F5C5007994EC /* orange-background.jpg in Resources */,
 				46AE6C1D19EAA2F5000238F4 /* myfoodrainbow.m4a in Resources */,
+				469AC7651A40D27800CDA070 /* spineboy.atlas in Resources */,
 				469C9B211A23CD5500E49BA5 /* brown-squirrel12.png in Resources */,
 				46C440C81A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_06.png in Resources */,
 				46E7C7BB19850C0B00CE7AB3 /* start-button_06.png in Resources */,
@@ -1592,6 +1912,7 @@
 				4626D5E51A0FAE8200D0FB24 /* drop1.png in Resources */,
 				46AE6C0B19E972B6000238F4 /* rainbow-foreground.png in Resources */,
 				46AE6C1719E9777A000238F4 /* yellowband.png in Resources */,
+				469AC7601A40D27800CDA070 /* org.eclipse.cdt.codan.core.prefs in Resources */,
 				46E15DA81A06430A00B5BAE1 /* purple-fern_RB.png in Resources */,
 				469C9B071A23CAD700E49BA5 /* brown-bird5.png in Resources */,
 				46E1FCB51A25190000651193 /* fish2-1.png in Resources */,
@@ -1600,11 +1921,13 @@
 				468169D01A08385C000D19E9 /* strawberry2.png in Resources */,
 				46E1FCB91A25190000651193 /* fish2-5.png in Resources */,
 				4614416E19D7031900CB5A3E /* broccoli.png in Resources */,
+				469AC7691A40D27800CDA070 /* spine-c.sln in Resources */,
 				469C9AFB1A23C60600E49BA5 /* pink-butterfly3.png in Resources */,
 				4675C25418D0FAAE00973C24 /* bird-sitting_03.png in Resources */,
 				46C4226918EDF1840071EEFF /* deer7.png in Resources */,
 				46E1FCBC1A25190000651193 /* fish2-8.png in Resources */,
 				46AE6C1B19EAA26F000238F4 /* intro.m4a in Resources */,
+				469AC7621A40D27800CDA070 /* goblins.atlas in Resources */,
 				468169C91A08385C000D19E9 /* pinkflowers1.png in Resources */,
 				46C440CC1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_010.png in Resources */,
 				4626D5DF1A0E96F500D0FB24 /* fish6.png in Resources */,
@@ -1622,15 +1945,18 @@
 				468169BB1A08385C000D19E9 /* blackberries3.png in Resources */,
 				464205AA18EB357A005EC168 /* bird1_03.png in Resources */,
 				46E15DA61A06430A00B5BAE1 /* pink-butterfly_RB.png in Resources */,
+				469AC76A1A40D27800CDA070 /* spine-c.vcxproj in Resources */,
 				4626D5DC1A0E96F500D0FB24 /* fish3.png in Resources */,
 				4614418219D703DC00CB5A3E /* yellowapple.png in Resources */,
 				46E15D941A06430A00B5BAE1 /* blue_bells_RB.png in Resources */,
 				46C440C41A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_02.png in Resources */,
 				46E1FCBA1A25190000651193 /* fish2-6.png in Resources */,
 				468169D11A08385C000D19E9 /* strawberry3.png in Resources */,
+				469AC7641A40D27800CDA070 /* goblins.png in Resources */,
 				46C440CB1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_09.png in Resources */,
 				4626D5EF1A0FD27A00D0FB24 /* bokeh.png in Resources */,
 				46E7C7EE1986E4CD00CE7AB3 /* social-background.jpg in Resources */,
+				469AC75F1A40D27800CDA070 /* .project in Resources */,
 				469C9B3A1A2511B900E49BA5 /* brown-bunny3.png in Resources */,
 				469C9B081A23CAD700E49BA5 /* brown-bird6.png in Resources */,
 				468169C11A08385C000D19E9 /* blueflowers3.png in Resources */,
@@ -1657,6 +1983,7 @@
 				4642607619F4626D0028C878 /* PARENTS-PAGE-3.png in Resources */,
 				469C9B031A23CAD700E49BA5 /* brown-bird1.png in Resources */,
 				468169CF1A08385C000D19E9 /* strawberry1.png in Resources */,
+				469AC7671A40D27800CDA070 /* spineboy.png in Resources */,
 				4645B12019D9E2A400974B39 /* social-story1.png in Resources */,
 				4614418E19D7047C00CB5A3E /* mango.png in Resources */,
 				469C9B3B1A2511B900E49BA5 /* brown-bunny4.png in Resources */,
@@ -1668,6 +1995,7 @@
 				4645B12719D9E66700974B39 /* social-story5.png in Resources */,
 				469C9B391A2511B900E49BA5 /* brown-bunny2.png in Resources */,
 				4614417319D7031900CB5A3E /* peas.png in Resources */,
+				469AC7611A40D27800CDA070 /* org.eclipse.cdt.managedbuilder.core.prefs in Resources */,
 				464205B518EB4A74005EC168 /* dragon1.png in Resources */,
 				464205C518EB4EF3005EC168 /* squirrel4.png in Resources */,
 				4614418119D703DC00CB5A3E /* pineapple.png in Resources */,
@@ -1676,9 +2004,11 @@
 				46C440C71A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_05.png in Resources */,
 				469C9B2B1A23CEE600E49BA5 /* bunny2.png in Resources */,
 				461441A019D7052A00CB5A3E /* raisins.png in Resources */,
+				469AC7631A40D27800CDA070 /* goblins.json in Resources */,
 				46AE6C4219EAC804000238F4 /* REWARDS-BOX.png in Resources */,
 				4614419E19D7052A00CB5A3E /* olives.png in Resources */,
 				46E15DA51A06430A00B5BAE1 /* green-fern_RB.png in Resources */,
+				469AC7661A40D27800CDA070 /* spineboy.json in Resources */,
 				46E1FCB71A25190000651193 /* fish2-3.png in Resources */,
 				468169CE1A08385C000D19E9 /* redtoadstool2.png in Resources */,
 				46AE6C2A19EAB24F000238F4 /* BROWN.m4a in Resources */,
@@ -1752,6 +2082,7 @@
 				4614419D19D7052A00CB5A3E /* grapes.png in Resources */,
 				46AE6C2E19EAB24F000238F4 /* PURPLE.m4a in Resources */,
 				46AB56B319D356CC00D47CEF /* nuts.png in Resources */,
+				469AC76B1A40D27800CDA070 /* spine-c.vcxproj.filters in Resources */,
 				46E7C7BD19850C0B00CE7AB3 /* start-background.jpg in Resources */,
 				4614419119D7047C00CB5A3E /* peach.png in Resources */,
 				469C9B461A25134200E49BA5 /* butterfly1-4.png in Resources */,
@@ -1843,6 +2174,7 @@
 				46E1FCBB1A25190000651193 /* fish2-7.png in Resources */,
 				464F703B18A019F000DDA449 /* InfoPlist.strings in Resources */,
 				4614416F19D7031900CB5A3E /* cucumber.png in Resources */,
+				469AC75E1A40D27800CDA070 /* .cproject in Resources */,
 				4614417D19D703DC00CB5A3E /* banana.png in Resources */,
 				4614418F19D7047C00CB5A3E /* orange.png in Resources */,
 				469C9B431A25134200E49BA5 /* butterfly1-1.png in Resources */,
@@ -1880,59 +2212,99 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				469AC7871A40D27800CDA070 /* SpineGeometry.m in Sources */,
+				469AC77D1A40D27800CDA070 /* SkeletonData.c in Sources */,
 				469846EB19D84BEF00617FCE /* RewardsPageViewController.swift in Sources */,
 				46E15DD01A06878700B5BAE1 /* PinkButterfly.swift in Sources */,
 				46E15DC81A06870B00B5BAE1 /* GreenFish.swift in Sources */,
+				469AC7821A40D27800CDA070 /* DZSpineLoader.m in Sources */,
 				46E7C7C71985114D00CE7AB3 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				46E15DD81A06880A00B5BAE1 /* Strawberry.swift in Sources */,
 				46AE6C4919EAF773000238F4 /* HomeViewController.swift in Sources */,
 				46E15DC41A0686D500B5BAE1 /* Firefly.swift in Sources */,
 				46E8D17619F2C6F500AEF750 /* SocialStoryViewController.swift in Sources */,
+				469AC7841A40D27800CDA070 /* SpineAnimation.m in Sources */,
+				469AC7711A40D27800CDA070 /* Attachment.c in Sources */,
+				469AC76F1A40D27800CDA070 /* Atlas.c in Sources */,
 				46C3102A19FBB917003D71B2 /* ForestCreature.swift in Sources */,
 				46E15D771A05206C00B5BAE1 /* RedToadstool.swift in Sources */,
 				464F703D18A019F000DDA449 /* main.m in Sources */,
 				46E15DB81A06854700B5BAE1 /* BrownBird.swift in Sources */,
+				469AC7891A40D27800CDA070 /* SpineSkeleton.m in Sources */,
+				469AC7751A40D27800CDA070 /* BoundingBoxAttachment.c in Sources */,
 				46F6B40319FD231200205F6B /* Deer.swift in Sources */,
 				46E15DC01A0685FD00B5BAE1 /* WhiteRabbit.swift in Sources */,
+				469AC7731A40D27800CDA070 /* Bone.c in Sources */,
 				46E15DB41A06849400B5BAE1 /* Bluebells.swift in Sources */,
+				469AC76D1A40D27800CDA070 /* AnimationState.c in Sources */,
+				469AC7801A40D27800CDA070 /* Slot.c in Sources */,
 				46E15DD61A0687EC00B5BAE1 /* BlueDragon.swift in Sources */,
 				46E15D791A0528BA00B5BAE1 /* StandardScroller.swift in Sources */,
 				46E8D17219F2B48000AEF750 /* FoodCell.swift in Sources */,
+				469AC77E1A40D27800CDA070 /* SkeletonJson.c in Sources */,
 				46E7C7CA1985114D00CE7AB3 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+				469AC7861A40D27800CDA070 /* SpineBone.m in Sources */,
+				469AC7791A40D27800CDA070 /* Json.c in Sources */,
+				469AC78F1A40D27800CDA070 /* DZSpineSceneTrack.m in Sources */,
 				46E15DC21A0686A400B5BAE1 /* YellowButterfly1.swift in Sources */,
 				46E15DB21A0682E900B5BAE1 /* Blackberries.swift in Sources */,
+				469AC7851A40D27800CDA070 /* SpineAttachment.m in Sources */,
+				469AC7741A40D27800CDA070 /* BoneData.c in Sources */,
 				4642608119F598B80028C878 /* Forest.swift in Sources */,
 				46E48BC118A80E66006DCA91 /* CHomeIconView.m in Sources */,
 				46F6B40519FD348300205F6B /* Bluebird.swift in Sources */,
+				469AC7761A40D27800CDA070 /* Event.c in Sources */,
 				4642607C19F58D530028C878 /* ForestScene.swift in Sources */,
+				469AC77F1A40D27800CDA070 /* Skin.c in Sources */,
+				469AC7881A40D27800CDA070 /* SpineSequence.m in Sources */,
+				469AC76E1A40D27800CDA070 /* AnimationStateData.c in Sources */,
 				46E15DAD1A06486700B5BAE1 /* AppyLittleEaters.swift in Sources */,
 				46C440CE1A02C55B00C1A6BE /* ScrollableProtocol.swift in Sources */,
 				46E15DD21A0687A400B5BAE1 /* PinkFlowers.swift in Sources */,
 				46E15DC61A0686EF00B5BAE1 /* BlueFish.swift in Sources */,
 				46E15DCE1A06876B00B5BAE1 /* GreenFern.swift in Sources */,
+				469AC7701A40D27800CDA070 /* AtlasAttachmentLoader.c in Sources */,
+				469AC77A1A40D27800CDA070 /* RegionAttachment.c in Sources */,
+				469AC7681A40D27800CDA070 /* main.c in Sources */,
+				469AC7901A40D27800CDA070 /* DZSpineSpriteKitAnimation.m in Sources */,
 				46E15DCC1A06874C00B5BAE1 /* Frog.swift in Sources */,
+				469AC7771A40D27800CDA070 /* EventData.c in Sources */,
 				46E15DBE1A0685E200B5BAE1 /* BrownToadstool.swift in Sources */,
 				46F6B40719FD35FC00205F6B /* GreenDragon.swift in Sources */,
+				469AC7831A40D27800CDA070 /* spine_adapt.m in Sources */,
+				469AC77B1A40D27800CDA070 /* Skeleton.c in Sources */,
 				46E15D751A051FC800B5BAE1 /* Performer.swift in Sources */,
+				469AC78D1A40D27800CDA070 /* DZSpineSceneBuilder.m in Sources */,
+				469AC78C1A40D27800CDA070 /* DZSpineScene.m in Sources */,
 				46C440D31A02F12700C1A6BE /* AleModel.xcdatamodeld in Sources */,
+				469AC77C1A40D27800CDA070 /* SkeletonBounds.c in Sources */,
+				469AC76C1A40D27800CDA070 /* Animation.c in Sources */,
 				46C4410C1A02F57200C1A6BE /* AppDelegate.swift in Sources */,
+				469AC7721A40D27800CDA070 /* AttachmentLoader.c in Sources */,
+				469AC7921A40D27800CDA070 /* DZSpineTexturePool.m in Sources */,
 				46E15DD41A0687BD00B5BAE1 /* PurpleFern.swift in Sources */,
 				46AE6C1919E979BC000238F4 /* RainbowPageViewController.swift in Sources */,
 				46AE6C4B19EB234C000238F4 /* FoodPageViewController.swift in Sources */,
 				46E15DBA1A06856900B5BAE1 /* BrownRabbit.swift in Sources */,
+				469AC78B1A40D27800CDA070 /* SpineTimeline.m in Sources */,
 				4626D5F41A0FEBBA00D0FB24 /* SplashDrop.swift in Sources */,
 				46E7C7C91985114D00CE7AB3 /* TPKeyboardAvoidingTableView.m in Sources */,
 				46E15DB61A06851D00B5BAE1 /* BlueFlowers.swift in Sources */,
 				46E15DCA1A06872700B5BAE1 /* Foxglove.swift in Sources */,
 				46E1FCC91A2D107B00651193 /* MoveableProtocol.swift in Sources */,
+				469AC78E1A40D27800CDA070 /* DZSpineSceneDescription.m in Sources */,
 				464F704A18A019F000DDA449 /* CViewController.m in Sources */,
+				469AC7811A40D27800CDA070 /* SlotData.c in Sources */,
 				4642607A19F589210028C878 /* ForestViewController.swift in Sources */,
 				46E8D17419F2B81600AEF750 /* FoodPagePageViewController.swift in Sources */,
 				46F6B40919FD428000205F6B /* RewardDefinition.swift in Sources */,
+				469AC78A1A40D27800CDA070 /* SpineSlot.m in Sources */,
 				46E15DBC1A0685A600B5BAE1 /* BrownSquirrel.swift in Sources */,
 				4642606A19F45F600028C878 /* ParentsPageViewController.swift in Sources */,
 				4642607F19F58EAE0028C878 /* Squirrel.swift in Sources */,
+				469AC7781A40D27800CDA070 /* extension.c in Sources */,
 				46E8D17819F2C86300AEF750 /* ResourceAudioPlayer.swift in Sources */,
+				469AC7911A40D27800CDA070 /* DZSpineSpriteKitMaps.m in Sources */,
 				46E7C7C81985114D00CE7AB3 /* TPKeyboardAvoidingScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2033,6 +2405,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/spine-c/include",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2066,6 +2443,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/spine-c/include",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2087,6 +2469,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Appy Little Eaters/Appy Little Eaters-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INFOPLIST_FILE = "Appy Little Eaters/Appy Little Eaters-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2112,6 +2498,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Appy Little Eaters/Appy Little Eaters-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INFOPLIST_FILE = "Appy Little Eaters/Appy Little Eaters-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
