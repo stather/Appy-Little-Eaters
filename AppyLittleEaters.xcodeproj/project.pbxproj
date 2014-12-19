@@ -138,6 +138,13 @@
 		469846E819D8481400617FCE /* reward-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 469846E719D8481400617FCE /* reward-background.jpg */; };
 		469846EB19D84BEF00617FCE /* RewardsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469846EA19D84BEF00617FCE /* RewardsPageViewController.swift */; };
 		469846ED19D85A6100617FCE /* reward-done.png in Resources */ = {isa = PBXBuildFile; fileRef = 469846EC19D85A6100617FCE /* reward-done.png */; };
+		469AC7A31A44C3B000CDA070 /* SGG_SkinSlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7951A44C3B000CDA070 /* SGG_SkinSlot.m */; };
+		469AC7A41A44C3B000CDA070 /* SGG_SkinSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7971A44C3B000CDA070 /* SGG_SkinSprite.m */; };
+		469AC7A51A44C3B000CDA070 /* SGG_Spine.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7991A44C3B000CDA070 /* SGG_Spine.m */; };
+		469AC7A61A44C3B000CDA070 /* SGG_SpineBone.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC79B1A44C3B000CDA070 /* SGG_SpineBone.m */; };
+		469AC7A71A44C3B000CDA070 /* SGG_SpineBoneAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC79D1A44C3B000CDA070 /* SGG_SpineBoneAction.m */; };
+		469AC7A81A44C3B000CDA070 /* SGG_SpineJSONTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC79F1A44C3B000CDA070 /* SGG_SpineJSONTools.m */; };
+		469AC7A91A44C3B000CDA070 /* SGG_SpineSkin.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7A11A44C3B000CDA070 /* SGG_SpineSkin.m */; };
 		469C9AF91A23C60600E49BA5 /* pink-butterfly1.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9AF61A23C60600E49BA5 /* pink-butterfly1.png */; };
 		469C9AFA1A23C60600E49BA5 /* pink-butterfly2.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9AF71A23C60600E49BA5 /* pink-butterfly2.png */; };
 		469C9AFB1A23C60600E49BA5 /* pink-butterfly3.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9AF81A23C60600E49BA5 /* pink-butterfly3.png */; };
@@ -514,6 +521,21 @@
 		469846E919D84BEF00617FCE /* Appy Little Eaters-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Appy Little Eaters-Bridging-Header.h"; sourceTree = "<group>"; };
 		469846EA19D84BEF00617FCE /* RewardsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardsPageViewController.swift; sourceTree = "<group>"; };
 		469846EC19D85A6100617FCE /* reward-done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reward-done.png"; sourceTree = "<group>"; };
+		469AC7941A44C3B000CDA070 /* SGG_SkinSlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGG_SkinSlot.h; sourceTree = "<group>"; };
+		469AC7951A44C3B000CDA070 /* SGG_SkinSlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGG_SkinSlot.m; sourceTree = "<group>"; };
+		469AC7961A44C3B000CDA070 /* SGG_SkinSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGG_SkinSprite.h; sourceTree = "<group>"; };
+		469AC7971A44C3B000CDA070 /* SGG_SkinSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGG_SkinSprite.m; sourceTree = "<group>"; };
+		469AC7981A44C3B000CDA070 /* SGG_Spine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGG_Spine.h; sourceTree = "<group>"; };
+		469AC7991A44C3B000CDA070 /* SGG_Spine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGG_Spine.m; sourceTree = "<group>"; };
+		469AC79A1A44C3B000CDA070 /* SGG_SpineBone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGG_SpineBone.h; sourceTree = "<group>"; };
+		469AC79B1A44C3B000CDA070 /* SGG_SpineBone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGG_SpineBone.m; sourceTree = "<group>"; };
+		469AC79C1A44C3B000CDA070 /* SGG_SpineBoneAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGG_SpineBoneAction.h; sourceTree = "<group>"; };
+		469AC79D1A44C3B000CDA070 /* SGG_SpineBoneAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGG_SpineBoneAction.m; sourceTree = "<group>"; };
+		469AC79E1A44C3B000CDA070 /* SGG_SpineJSONTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGG_SpineJSONTools.h; sourceTree = "<group>"; };
+		469AC79F1A44C3B000CDA070 /* SGG_SpineJSONTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGG_SpineJSONTools.m; sourceTree = "<group>"; };
+		469AC7A01A44C3B000CDA070 /* SGG_SpineSkin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGG_SpineSkin.h; sourceTree = "<group>"; };
+		469AC7A11A44C3B000CDA070 /* SGG_SpineSkin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGG_SpineSkin.m; sourceTree = "<group>"; };
+		469AC7A21A44C3B000CDA070 /* SpineImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpineImport.h; sourceTree = "<group>"; };
 		469C9AF61A23C60600E49BA5 /* pink-butterfly1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink-butterfly1.png"; sourceTree = "<group>"; };
 		469C9AF71A23C60600E49BA5 /* pink-butterfly2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink-butterfly2.png"; sourceTree = "<group>"; };
 		469C9AF81A23C60600E49BA5 /* pink-butterfly3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink-butterfly3.png"; sourceTree = "<group>"; };
@@ -921,6 +943,7 @@
 		464F702418A019EF00DDA449 = {
 			isa = PBXGroup;
 			children = (
+				469AC7931A44C3B000CDA070 /* SpineImporter */,
 				464F703618A019F000DDA449 /* Appy Little Eaters */,
 				464F705818A019F000DDA449 /* Appy Little EatersTests */,
 				464F702F18A019F000DDA449 /* Frameworks */,
@@ -1152,6 +1175,28 @@
 				469846E719D8481400617FCE /* reward-background.jpg */,
 			);
 			name = rewardspage;
+			sourceTree = "<group>";
+		};
+		469AC7931A44C3B000CDA070 /* SpineImporter */ = {
+			isa = PBXGroup;
+			children = (
+				469AC7941A44C3B000CDA070 /* SGG_SkinSlot.h */,
+				469AC7951A44C3B000CDA070 /* SGG_SkinSlot.m */,
+				469AC7961A44C3B000CDA070 /* SGG_SkinSprite.h */,
+				469AC7971A44C3B000CDA070 /* SGG_SkinSprite.m */,
+				469AC7981A44C3B000CDA070 /* SGG_Spine.h */,
+				469AC7991A44C3B000CDA070 /* SGG_Spine.m */,
+				469AC79A1A44C3B000CDA070 /* SGG_SpineBone.h */,
+				469AC79B1A44C3B000CDA070 /* SGG_SpineBone.m */,
+				469AC79C1A44C3B000CDA070 /* SGG_SpineBoneAction.h */,
+				469AC79D1A44C3B000CDA070 /* SGG_SpineBoneAction.m */,
+				469AC79E1A44C3B000CDA070 /* SGG_SpineJSONTools.h */,
+				469AC79F1A44C3B000CDA070 /* SGG_SpineJSONTools.m */,
+				469AC7A01A44C3B000CDA070 /* SGG_SpineSkin.h */,
+				469AC7A11A44C3B000CDA070 /* SGG_SpineSkin.m */,
+				469AC7A21A44C3B000CDA070 /* SpineImport.h */,
+			);
+			path = SpineImporter;
 			sourceTree = "<group>";
 		};
 		469C9AF51A23C5EE00E49BA5 /* pinkbutterfly */ = {
@@ -1892,10 +1937,13 @@
 				46E15D771A05206C00B5BAE1 /* RedToadstool.swift in Sources */,
 				464F703D18A019F000DDA449 /* main.m in Sources */,
 				46E15DB81A06854700B5BAE1 /* BrownBird.swift in Sources */,
+				469AC7A71A44C3B000CDA070 /* SGG_SpineBoneAction.m in Sources */,
 				46F6B40319FD231200205F6B /* Deer.swift in Sources */,
 				46E15DC01A0685FD00B5BAE1 /* WhiteRabbit.swift in Sources */,
 				46E15DB41A06849400B5BAE1 /* Bluebells.swift in Sources */,
+				469AC7A91A44C3B000CDA070 /* SGG_SpineSkin.m in Sources */,
 				46E15DD61A0687EC00B5BAE1 /* BlueDragon.swift in Sources */,
+				469AC7A81A44C3B000CDA070 /* SGG_SpineJSONTools.m in Sources */,
 				46E15D791A0528BA00B5BAE1 /* StandardScroller.swift in Sources */,
 				46E8D17219F2B48000AEF750 /* FoodCell.swift in Sources */,
 				46E7C7CA1985114D00CE7AB3 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
@@ -1909,6 +1957,7 @@
 				46C440CE1A02C55B00C1A6BE /* ScrollableProtocol.swift in Sources */,
 				46E15DD21A0687A400B5BAE1 /* PinkFlowers.swift in Sources */,
 				46E15DC61A0686EF00B5BAE1 /* BlueFish.swift in Sources */,
+				469AC7A61A44C3B000CDA070 /* SGG_SpineBone.m in Sources */,
 				46E15DCE1A06876B00B5BAE1 /* GreenFern.swift in Sources */,
 				46E15DCC1A06874C00B5BAE1 /* Frog.swift in Sources */,
 				46E15DBE1A0685E200B5BAE1 /* BrownToadstool.swift in Sources */,
@@ -1927,13 +1976,16 @@
 				46E1FCC91A2D107B00651193 /* MoveableProtocol.swift in Sources */,
 				464F704A18A019F000DDA449 /* CViewController.m in Sources */,
 				4642607A19F589210028C878 /* ForestViewController.swift in Sources */,
+				469AC7A41A44C3B000CDA070 /* SGG_SkinSprite.m in Sources */,
 				46E8D17419F2B81600AEF750 /* FoodPagePageViewController.swift in Sources */,
 				46F6B40919FD428000205F6B /* RewardDefinition.swift in Sources */,
 				46E15DBC1A0685A600B5BAE1 /* BrownSquirrel.swift in Sources */,
 				4642606A19F45F600028C878 /* ParentsPageViewController.swift in Sources */,
+				469AC7A31A44C3B000CDA070 /* SGG_SkinSlot.m in Sources */,
 				4642607F19F58EAE0028C878 /* Squirrel.swift in Sources */,
 				46E8D17819F2C86300AEF750 /* ResourceAudioPlayer.swift in Sources */,
 				46E7C7C81985114D00CE7AB3 /* TPKeyboardAvoidingScrollView.m in Sources */,
+				469AC7A51A44C3B000CDA070 /* SGG_Spine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
