@@ -136,6 +136,10 @@ public class ForestScene : SKScene{
 					var mp = node as MoveableProtocol
 					mp.moveBy(Float(_dt))
 				}
+				if node is SGG_Spine{
+					let n = node as SGG_Spine
+					n.activateAnimations()
+				}
 			}
 		}
 		//frog.splash(_dt)
@@ -159,6 +163,12 @@ public class ForestScene : SKScene{
 	
 	
 	func createSceneContents(){
+		var n = SGG_Spine()
+		n.skeletonFromFileNamed("deer", andAtlasNamed: "deer", andUseSkinNamed: nil)
+		n.queuedAnimation = "animation"
+		n.queueIntro = 0.1
+		n.runAnimation("animation", andCount: 0, withIntroPeriodOf: 0.1, andUseQueue: true)
+		addChild(n)
 		
 		for index in 1...10{
 			var forest = Forest(parentScene: self, slice: index)

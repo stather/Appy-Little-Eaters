@@ -145,6 +145,9 @@
 		469AC7A71A44C3B000CDA070 /* SGG_SpineBoneAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC79D1A44C3B000CDA070 /* SGG_SpineBoneAction.m */; };
 		469AC7A81A44C3B000CDA070 /* SGG_SpineJSONTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC79F1A44C3B000CDA070 /* SGG_SpineJSONTools.m */; };
 		469AC7A91A44C3B000CDA070 /* SGG_SpineSkin.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7A11A44C3B000CDA070 /* SGG_SpineSkin.m */; };
+		469AC7AB1A4759C400CDA070 /* deer.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7AA1A4759C400CDA070 /* deer.atlas */; };
+		469AC7AD1A475C0200CDA070 /* deer.spine in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7AC1A475C0200CDA070 /* deer.spine */; };
+		469AC7B11A4A081600CDA070 /* deer.json in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7B01A4A081600CDA070 /* deer.json */; };
 		469C9AF91A23C60600E49BA5 /* pink-butterfly1.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9AF61A23C60600E49BA5 /* pink-butterfly1.png */; };
 		469C9AFA1A23C60600E49BA5 /* pink-butterfly2.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9AF71A23C60600E49BA5 /* pink-butterfly2.png */; };
 		469C9AFB1A23C60600E49BA5 /* pink-butterfly3.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9AF81A23C60600E49BA5 /* pink-butterfly3.png */; };
@@ -536,6 +539,9 @@
 		469AC7A01A44C3B000CDA070 /* SGG_SpineSkin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGG_SpineSkin.h; sourceTree = "<group>"; };
 		469AC7A11A44C3B000CDA070 /* SGG_SpineSkin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGG_SpineSkin.m; sourceTree = "<group>"; };
 		469AC7A21A44C3B000CDA070 /* SpineImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpineImport.h; sourceTree = "<group>"; };
+		469AC7AA1A4759C400CDA070 /* deer.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = deer.atlas; sourceTree = "<group>"; };
+		469AC7AC1A475C0200CDA070 /* deer.spine */ = {isa = PBXFileReference; lastKnownFileType = file; path = deer.spine; sourceTree = "<group>"; };
+		469AC7B01A4A081600CDA070 /* deer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = deer.json; sourceTree = "<group>"; };
 		469C9AF61A23C60600E49BA5 /* pink-butterfly1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink-butterfly1.png"; sourceTree = "<group>"; };
 		469C9AF71A23C60600E49BA5 /* pink-butterfly2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink-butterfly2.png"; sourceTree = "<group>"; };
 		469C9AF81A23C60600E49BA5 /* pink-butterfly3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink-butterfly3.png"; sourceTree = "<group>"; };
@@ -978,6 +984,9 @@
 		464F703618A019F000DDA449 /* Appy Little Eaters */ = {
 			isa = PBXGroup;
 			children = (
+				469AC7B01A4A081600CDA070 /* deer.json */,
+				469AC7AC1A475C0200CDA070 /* deer.spine */,
+				469AC7AA1A4759C400CDA070 /* deer.atlas */,
 				4626D5E41A0FAE8200D0FB24 /* drop1.png */,
 				46C440D91A02F27500C1A6BE /* ManagedObjects */,
 				4642607D19F58E820028C878 /* animations */,
@@ -1648,6 +1657,7 @@
 				469C9AFB1A23C60600E49BA5 /* pink-butterfly3.png in Resources */,
 				4675C25418D0FAAE00973C24 /* bird-sitting_03.png in Resources */,
 				46C4226918EDF1840071EEFF /* deer7.png in Resources */,
+				469AC7AD1A475C0200CDA070 /* deer.spine in Resources */,
 				46E1FCBC1A25190000651193 /* fish2-8.png in Resources */,
 				46AE6C1B19EAA26F000238F4 /* intro.m4a in Resources */,
 				468169C91A08385C000D19E9 /* pinkflowers1.png in Resources */,
@@ -1788,6 +1798,7 @@
 				46E15DAA1A06430A00B5BAE1 /* squirrel_RB.png in Resources */,
 				469C9B3D1A2511B900E49BA5 /* brown-bunny6.png in Resources */,
 				4642607719F4626D0028C878 /* PARENTS-PAGE4.png in Resources */,
+				469AC7AB1A4759C400CDA070 /* deer.atlas in Resources */,
 				4614419219D7047C00CB5A3E /* pumpkin.png in Resources */,
 				469C9B451A25134200E49BA5 /* butterfly1-3.png in Resources */,
 				46AE6C2F19EAB24F000238F4 /* RED.m4a in Resources */,
@@ -1809,6 +1820,7 @@
 				469C9B051A23CAD700E49BA5 /* brown-bird3.png in Resources */,
 				469C9B061A23CAD700E49BA5 /* brown-bird4.png in Resources */,
 				46AE6C2C19EAB24F000238F4 /* NOIHAVENOTEATEN.m4a in Resources */,
+				469AC7B11A4A081600CDA070 /* deer.json in Resources */,
 				46AE6C0719E97183000238F4 /* mountainstrees.jpg in Resources */,
 				46AE6C3419EAB5CE000238F4 /* apple.m4a in Resources */,
 				464205C618EB4EF3005EC168 /* squirrel5.png in Resources */,
