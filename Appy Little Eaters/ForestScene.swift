@@ -168,6 +168,8 @@ public class ForestScene : SKScene{
 		n.queuedAnimation = "animation"
 		n.queueIntro = 0.1
 		n.runAnimation("animation", andCount: 0, withIntroPeriodOf: 0.1, andUseQueue: true)
+		n.xScale = 0.5
+		n.yScale = 0.5
 		addChild(n)
 		
 		for index in 1...10{
