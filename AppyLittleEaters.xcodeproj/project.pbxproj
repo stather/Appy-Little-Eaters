@@ -149,6 +149,12 @@
 		469AC7AD1A475C0200CDA070 /* deer.spine in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7AC1A475C0200CDA070 /* deer.spine */; };
 		469AC7B11A4A081600CDA070 /* deer.json in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7B01A4A081600CDA070 /* deer.json */; };
 		469AC7B31A4EF76200CDA070 /* greenfern.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7B21A4EF76200CDA070 /* greenfern.atlas */; };
+		469AC7B51A4F0E5600CDA070 /* purplefern.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7B41A4F0E5600CDA070 /* purplefern.atlas */; };
+		469AC7B71A4F10F400CDA070 /* blackberry.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7B61A4F10F400CDA070 /* blackberry.atlas */; };
+		469AC7B91A4F128600CDA070 /* bluebell.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7B81A4F128600CDA070 /* bluebell.atlas */; };
+		469AC7BB1A4F171E00CDA070 /* foxglove.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7BA1A4F171E00CDA070 /* foxglove.atlas */; };
+		469AC7BD1A4F1B0B00CDA070 /* strawberry.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7BC1A4F1B0B00CDA070 /* strawberry.atlas */; };
+		469AC7BF1A4F1CA300CDA070 /* frog.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7BE1A4F1CA300CDA070 /* frog.atlas */; };
 		469C9AF91A23C60600E49BA5 /* pink-butterfly1.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9AF61A23C60600E49BA5 /* pink-butterfly1.png */; };
 		469C9AFA1A23C60600E49BA5 /* pink-butterfly2.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9AF71A23C60600E49BA5 /* pink-butterfly2.png */; };
 		469C9AFB1A23C60600E49BA5 /* pink-butterfly3.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9AF81A23C60600E49BA5 /* pink-butterfly3.png */; };
@@ -544,6 +550,12 @@
 		469AC7AC1A475C0200CDA070 /* deer.spine */ = {isa = PBXFileReference; lastKnownFileType = file; path = deer.spine; sourceTree = "<group>"; };
 		469AC7B01A4A081600CDA070 /* deer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = deer.json; sourceTree = "<group>"; };
 		469AC7B21A4EF76200CDA070 /* greenfern.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = greenfern.atlas; sourceTree = "<group>"; };
+		469AC7B41A4F0E5600CDA070 /* purplefern.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = purplefern.atlas; sourceTree = "<group>"; };
+		469AC7B61A4F10F400CDA070 /* blackberry.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = blackberry.atlas; sourceTree = "<group>"; };
+		469AC7B81A4F128600CDA070 /* bluebell.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bluebell.atlas; sourceTree = "<group>"; };
+		469AC7BA1A4F171E00CDA070 /* foxglove.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = foxglove.atlas; sourceTree = "<group>"; };
+		469AC7BC1A4F1B0B00CDA070 /* strawberry.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = strawberry.atlas; sourceTree = "<group>"; };
+		469AC7BE1A4F1CA300CDA070 /* frog.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = frog.atlas; sourceTree = "<group>"; };
 		469C9AF61A23C60600E49BA5 /* pink-butterfly1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink-butterfly1.png"; sourceTree = "<group>"; };
 		469C9AF71A23C60600E49BA5 /* pink-butterfly2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink-butterfly2.png"; sourceTree = "<group>"; };
 		469C9AF81A23C60600E49BA5 /* pink-butterfly3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink-butterfly3.png"; sourceTree = "<group>"; };
@@ -1078,6 +1090,12 @@
 		469846DF19D846E600617FCE /* Characters */ = {
 			isa = PBXGroup;
 			children = (
+				469AC7BE1A4F1CA300CDA070 /* frog.atlas */,
+				469AC7BC1A4F1B0B00CDA070 /* strawberry.atlas */,
+				469AC7BA1A4F171E00CDA070 /* foxglove.atlas */,
+				469AC7B81A4F128600CDA070 /* bluebell.atlas */,
+				469AC7B61A4F10F400CDA070 /* blackberry.atlas */,
+				469AC7B41A4F0E5600CDA070 /* purplefern.atlas */,
 				469AC7B21A4EF76200CDA070 /* greenfern.atlas */,
 				46E1FCBD1A251AAA00651193 /* bluedragon */,
 				46E1FCAC1A2518F300651193 /* greenfish */,
@@ -1634,6 +1652,7 @@
 				4615CCEE19D1F5C5007994EC /* green-background.jpg in Resources */,
 				46E15DA41A06430A00B5BAE1 /* frog_RB.png in Resources */,
 				4645B12819D9E66700974B39 /* social-story6.png in Resources */,
+				469AC7BB1A4F171E00CDA070 /* foxglove.atlas in Resources */,
 				4626D5DE1A0E96F500D0FB24 /* fish5.png in Resources */,
 				46E15DA01A06430A00B5BAE1 /* firefly_RB.png in Resources */,
 				46AB56A119D3553600D47CEF /* cherry.png in Resources */,
@@ -1703,6 +1722,7 @@
 				46C4226618EDF1840071EEFF /* deer4.png in Resources */,
 				469C9B041A23CAD700E49BA5 /* brown-bird2.png in Resources */,
 				469C9B3C1A2511B900E49BA5 /* brown-bunny5.png in Resources */,
+				469AC7BF1A4F1CA300CDA070 /* frog.atlas in Resources */,
 				46E8D18319F3BAEA00AEF750 /* PARENTS-PAGE-1.png in Resources */,
 				4675C25818D2F79F00973C24 /* birdFlying_03.png in Resources */,
 				46AB56B419D356CC00D47CEF /* potato.png in Resources */,
@@ -1719,8 +1739,10 @@
 				4614418E19D7047C00CB5A3E /* mango.png in Resources */,
 				469C9B3B1A2511B900E49BA5 /* brown-bunny4.png in Resources */,
 				46AE6C3119EAB24F000238F4 /* YESIHAVEEATEN.m4a in Resources */,
+				469AC7B71A4F10F400CDA070 /* blackberry.atlas in Resources */,
 				46C440C91A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_07.png in Resources */,
 				469846ED19D85A6100617FCE /* reward-done.png in Resources */,
+				469AC7BD1A4F1B0B00CDA070 /* strawberry.atlas in Resources */,
 				46E7C7FD19883C7600CE7AB3 /* healthykids2.m4a in Resources */,
 				4626D5F61A1BDC3600D0FB24 /* fishinwater.png in Resources */,
 				4645B12719D9E66700974B39 /* social-story5.png in Resources */,
@@ -1852,6 +1874,7 @@
 				46AE6C4019EAB754000238F4 /* watermelon.m4a in Resources */,
 				46E7C7F01986E4CD00CE7AB3 /* social-next.png in Resources */,
 				468169CB1A08385C000D19E9 /* purplefern1.png in Resources */,
+				469AC7B91A4F128600CDA070 /* bluebell.atlas in Resources */,
 				46AE6C0519E970F0000238F4 /* rainbow-background.jpg in Resources */,
 				4642606E19F462610028C878 /* facebook_03.png in Resources */,
 				461441A619D7081C00CB5A3E /* no.png in Resources */,
@@ -1901,6 +1924,7 @@
 				46E7C7D6198545F500CE7AB3 /* home-yummyfoods.png in Resources */,
 				464205B618EB4A74005EC168 /* dragon2.png in Resources */,
 				469C9B2F1A23CEE600E49BA5 /* bunny6.png in Resources */,
+				469AC7B51A4F0E5600CDA070 /* purplefern.atlas in Resources */,
 				46E1FCBB1A25190000651193 /* fish2-7.png in Resources */,
 				464F703B18A019F000DDA449 /* InfoPlist.strings in Resources */,
 				4614416F19D7031900CB5A3E /* cucumber.png in Resources */,
