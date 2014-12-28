@@ -802,10 +802,18 @@
                     <navigationItem key="navigationItem" id="Acg-OO-Dsp"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="StartStopButton" destination="L91-S4-E0N" id="sVF-IM-3p5"/>
+                        <outlet property="StartStopButton" destination="rk5-XB-wCc" id="BrK-Y2-Wfh"/>
+                        <outlet property="biggerButton" destination="kkX-tM-2m9" id="fQT-Ff-Y5q"/>
+                        <outlet property="downButton" destination="lHW-jL-Hsi" id="21Y-YL-mYa"/>
                         <outlet property="homeButton" destination="36t-mz-bjD" id="d0j-9G-k72"/>
+                        <outlet property="leftButton" destination="ohn-nn-rhx" id="N02-VE-CKS"/>
                         <outlet property="mainView" destination="sUQ-Qz-m8g" id="rZa-Fw-f4X"/>
                         <outlet property="mass" destination="v2s-FO-vOA" id="ceW-Si-1Rg"/>
+                        <outlet property="mirrorButton" destination="d6s-VR-8y0" id="xxd-3R-Z45"/>
+                        <outlet property="rightButton" destination="FIi-CP-dGM" id="Jd6-iD-K3c"/>
+                        <outlet property="smallerButton" destination="QIq-4v-y6z" id="vpw-L3-fhA"/>
+                        <outlet property="stopButton" destination="L91-S4-E0N" id="Wpd-VT-DkP"/>
+                        <outlet property="upButton" destination="Ije-ny-193" id="aIh-R1-hTZ"/>
                         <outlet property="velocity" destination="Z89-Lq-22C" id="3Nh-XI-eX6"/>
                     </connections>
                 </viewController>

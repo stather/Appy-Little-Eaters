@@ -67,7 +67,7 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 			break;
 		case 5:
 			filepath = NSBundle.mainBundle().pathForResource("purple-background", ofType: "jpg")
-			foods = NSArray(objects: "blackberry", "eggplant", "grapes", "olives", "plum", "raisins", "rebcabbage")
+			foods = NSArray(objects: "blackberry", "eggplant", "grapes", "olives", "plum", "raisins", "redcabbage")
 			break;
 		default:
 			return;

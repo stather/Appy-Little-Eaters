@@ -9,7 +9,23 @@
 import Foundation
 import SpriteKit
 
+
 public class ForestViewController : UIViewController{
+
+	@IBOutlet weak var stopButton: UIButton!
+	@IBOutlet weak var upButton: UIButton!
+	@IBOutlet weak var downButton: UIButton!
+	@IBOutlet weak var leftButton: UIButton!
+	@IBOutlet weak var rightButton: UIButton!
+	@IBOutlet weak var biggerButton: UIButton!
+	@IBOutlet weak var smallerButton: UIButton!
+	@IBOutlet weak var mirrorButton: UIButton!
+	@IBOutlet weak var StartStopButton: UIButton!
+	
+	@IBOutlet weak var mass: UITextField!
+	
+	@IBOutlet weak var velocity: UITextField!
+	
 	
 	var spriteView:SKView!
 	@IBOutlet weak var mainView:UIView!
@@ -17,11 +33,6 @@ public class ForestViewController : UIViewController{
 	@IBOutlet weak var homeButton:UIButton!
 	var anchorLimit:CGFloat!
 	var forest:ForestScene!
-	@IBOutlet weak var StartStopButton: UIButton!
-	
-	@IBOutlet weak var mass: UITextField!
-	
-	@IBOutlet weak var velocity: UITextField!
 	
 	@IBAction func start(sender: AnyObject) {
 		var fmass:Float = (mass.text as NSString).floatValue
@@ -83,6 +94,20 @@ public class ForestViewController : UIViewController{
 		mainView.insertSubview(spriteView, belowSubview: homeButton)
 		forest = ForestScene(size: CGSize(width: 1024, height: 768))
 		spriteView.presentScene(forest)
+		let currentDevice = UIDevice.currentDevice()
+		if currentDevice.model.rangeOfString("Simulator") == nil{
+			stopButton.hidden = true
+			upButton.hidden = true
+			downButton.hidden = true
+			leftButton.hidden = true
+			rightButton.hidden = true
+			biggerButton.hidden = true
+			smallerButton.hidden = true
+			mirrorButton.hidden = true
+			StartStopButton.hidden = true
+			mass.hidden = true
+			velocity.hidden = true
+		}
 	}
 	
 	public override func viewDidLoad() {
