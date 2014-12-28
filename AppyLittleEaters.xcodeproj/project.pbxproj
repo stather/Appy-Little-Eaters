@@ -156,6 +156,8 @@
 		469AC7BD1A4F1B0B00CDA070 /* strawberry.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7BC1A4F1B0B00CDA070 /* strawberry.atlas */; };
 		469AC7BF1A4F1CA300CDA070 /* frog.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7BE1A4F1CA300CDA070 /* frog.atlas */; };
 		469AC7C11A50241300CDA070 /* yellowbutterfly.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7C01A50241300CDA070 /* yellowbutterfly.atlas */; };
+		469AC7C31A503DDF00CDA070 /* pinkbutterfly.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7C21A503DDF00CDA070 /* pinkbutterfly.atlas */; };
+		469AC7C51A503E1A00CDA070 /* Butterfly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7C41A503E1A00CDA070 /* Butterfly.swift */; };
 		469C9AF91A23C60600E49BA5 /* pink-butterfly1.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9AF61A23C60600E49BA5 /* pink-butterfly1.png */; };
 		469C9AFA1A23C60600E49BA5 /* pink-butterfly2.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9AF71A23C60600E49BA5 /* pink-butterfly2.png */; };
 		469C9AFB1A23C60600E49BA5 /* pink-butterfly3.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9AF81A23C60600E49BA5 /* pink-butterfly3.png */; };
@@ -555,6 +557,8 @@
 		469AC7BC1A4F1B0B00CDA070 /* strawberry.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = strawberry.atlas; sourceTree = "<group>"; };
 		469AC7BE1A4F1CA300CDA070 /* frog.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = frog.atlas; sourceTree = "<group>"; };
 		469AC7C01A50241300CDA070 /* yellowbutterfly.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = yellowbutterfly.atlas; sourceTree = "<group>"; };
+		469AC7C21A503DDF00CDA070 /* pinkbutterfly.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = pinkbutterfly.atlas; sourceTree = "<group>"; };
+		469AC7C41A503E1A00CDA070 /* Butterfly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Butterfly.swift; sourceTree = "<group>"; };
 		469C9AF61A23C60600E49BA5 /* pink-butterfly1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink-butterfly1.png"; sourceTree = "<group>"; };
 		469C9AF71A23C60600E49BA5 /* pink-butterfly2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink-butterfly2.png"; sourceTree = "<group>"; };
 		469C9AF81A23C60600E49BA5 /* pink-butterfly3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink-butterfly3.png"; sourceTree = "<group>"; };
@@ -938,6 +942,7 @@
 				46E15DD71A06880A00B5BAE1 /* Strawberry.swift */,
 				46E15DBF1A0685FD00B5BAE1 /* WhiteRabbit.swift */,
 				46E15DC11A0686A400B5BAE1 /* YellowButterfly1.swift */,
+				469AC7C41A503E1A00CDA070 /* Butterfly.swift */,
 			);
 			name = animations;
 			sourceTree = "<group>";
@@ -1086,6 +1091,7 @@
 		469846DF19D846E600617FCE /* Characters */ = {
 			isa = PBXGroup;
 			children = (
+				469AC7C21A503DDF00CDA070 /* pinkbutterfly.atlas */,
 				469AC7C01A50241300CDA070 /* yellowbutterfly.atlas */,
 				469AC7BE1A4F1CA300CDA070 /* frog.atlas */,
 				469AC7BC1A4F1B0B00CDA070 /* strawberry.atlas */,
@@ -1647,6 +1653,7 @@
 				4615CCEF19D1F5C5007994EC /* orange-background.jpg in Resources */,
 				46AE6C1D19EAA2F5000238F4 /* myfoodrainbow.m4a in Resources */,
 				469C9B211A23CD5500E49BA5 /* brown-squirrel12.png in Resources */,
+				469AC7C31A503DDF00CDA070 /* pinkbutterfly.atlas in Resources */,
 				46C440C81A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_06.png in Resources */,
 				46E7C7BB19850C0B00CE7AB3 /* start-button_06.png in Resources */,
 				469C9B1F1A23CD5500E49BA5 /* brown-squirrel10.png in Resources */,
@@ -2006,6 +2013,7 @@
 				46E15DBC1A0685A600B5BAE1 /* BrownSquirrel.swift in Sources */,
 				4642606A19F45F600028C878 /* ParentsPageViewController.swift in Sources */,
 				469AC7A31A44C3B000CDA070 /* SGG_SkinSlot.m in Sources */,
+				469AC7C51A503E1A00CDA070 /* Butterfly.swift in Sources */,
 				4642607F19F58EAE0028C878 /* Squirrel.swift in Sources */,
 				46E8D17819F2C86300AEF750 /* ResourceAudioPlayer.swift in Sources */,
 				46E7C7C81985114D00CE7AB3 /* TPKeyboardAvoidingScrollView.m in Sources */,
