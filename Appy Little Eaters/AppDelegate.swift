@@ -15,7 +15,30 @@ import Crashlytics
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	var window: UIWindow?
+	var ukeplayer:ResourceAudioPlayer!
+	var forestSoundsPlayer:ResourceAudioPlayer!
+
+	func playTheUke(){
+		ukeplayer = ResourceAudioPlayer(fromName: "uke1_01")
+		ukeplayer.volume = 0.2
+		ukeplayer.numberOfLoops = -1
+		ukeplayer.play()
+	}
 	
+	func stopTheUke(){
+		ukeplayer.stop()
+	}
+	
+	func playTheForestSounds(){
+		forestSoundsPlayer = ResourceAudioPlayer(fromName: "forestsounds")
+		forestSoundsPlayer.volume = 0.3
+		forestSoundsPlayer.numberOfLoops = -1
+		forestSoundsPlayer.play()
+	}
+	
+	func stopTheForestSounds(){
+		forestSoundsPlayer.stop()
+	}
 	
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Override point for customization after application launch.

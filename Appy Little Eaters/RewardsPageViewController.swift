@@ -41,7 +41,7 @@ class RewardsPageViewController: UIViewController{
 		reward.creatureName = NSNumber(integer: Int(chosen.creatureName))
 		reward.positionX = chosen.positionX
 		reward.positionY = 1035 - Int(chosen.positionY)
-		
+		reward.scale = chosen.scale
 		chosen.available = false		
 		
 		var error:NSErrorPointer = NSErrorPointer()

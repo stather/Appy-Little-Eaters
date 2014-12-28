@@ -85,5 +85,18 @@ public class ForestViewController : UIViewController{
 		spriteView.presentScene(forest)
 	}
 	
+	public override func viewDidLoad() {
+		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+		appDelegate.stopTheUke()
+		appDelegate.playTheForestSounds()
+	}
+	
+	public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+		appDelegate.stopTheForestSounds()
+		appDelegate.playTheUke()
+	}
+	
+	
 }
 

@@ -119,6 +119,9 @@ public class ParentsPageViewController : UIViewController{
 		}
 		
 		managedObjectContext?.save(error)
+		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+		appDelegate.seedDatabase()
+		
 	}
 	
 	@IBAction func facebookPressed(sender: AnyObject) {

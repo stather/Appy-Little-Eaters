@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="FiX-dY-Vvo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="FiX-dY-Vvo">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -69,6 +69,9 @@
                                         <state key="normal" title="Click to view">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="Jsi-RE-h6k" kind="push" id="kIH-LD-erH"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWT-st-Ah7">
                                         <rect key="frame" x="205" y="592" width="508" height="139"/>
@@ -97,6 +100,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DMH-GU-1Tm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1628" y="25"/>
+        </scene>
+        <!--Terms-->
+        <scene sceneID="Da8-8n-Lp9">
+            <objects>
+                <viewController title="Terms" id="Jsi-RE-h6k" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0BJ-in-yc5"/>
+                        <viewControllerLayoutGuide type="bottom" id="h12-Vn-Qk8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bGP-By-Nfq">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TERMS-AND-CONDITIONS.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="3yC-bn-Gno">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tco-1e-Vqk">
+                                <rect key="frame" x="849" y="8" width="159" height="87"/>
+                                <state key="normal" image="reward-done.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="a1R-Jq-Mba" kind="unwind" unwindAction="unwindFromConfirmationForm:" id="X0b-d6-mrh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="S7Z-AY-mnH"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6xi-O3-oBR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="a1R-Jq-Mba" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-2593" y="1366"/>
         </scene>
         <!--Home Page-->
         <scene sceneID="1WD-mr-c1G">
@@ -324,6 +362,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="uOo-RS-Sc2"/>
                     <connections>
+                        <outlet property="nextButton" destination="7ct-76-cJO" id="lCr-pk-Mra"/>
                         <outlet property="storyImage" destination="Vlj-LO-FBt" id="eAH-Od-PEr"/>
                     </connections>
                 </viewController>
@@ -782,6 +821,7 @@
         <image name="PARENTS-PAGE-background.jpg" width="2048" height="1536"/>
         <image name="PARENTS-PAGE-next_03.png" width="264" height="119"/>
         <image name="REWARDS-BOX.png" width="2945" height="2209"/>
+        <image name="TERMS-AND-CONDITIONS.jpg" width="2945" height="2209"/>
         <image name="apricots.png" width="200" height="200"/>
         <image name="brownband.png" width="2048" height="1536"/>
         <image name="facebook_03.png" width="325" height="133"/>
@@ -823,6 +863,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="PU9-ck-5gQ"/>
-        <segue reference="UDV-Xy-o9A"/>
+        <segue reference="f2G-Sa-c7h"/>
     </inferredMetricsTieBreakers>
 </document>

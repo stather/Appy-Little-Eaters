@@ -13,18 +13,14 @@ import AVFoundation
 
 public class HomeViewController : UIViewController{
 	var player:ResourceAudioPlayer!
-	var ukeplayer:ResourceAudioPlayer!
 
 	
 	override public func viewDidLoad() {
 		player = ResourceAudioPlayer(fromName: "intro")
 		player.play()
 		
-		ukeplayer = ResourceAudioPlayer(fromName: "uke1_01")
-		ukeplayer.volume = 0.2
-		ukeplayer.numberOfLoops = -1
-		ukeplayer.play()
-		
+		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+		appDelegate.playTheUke()
 	}
 	
 	@IBAction func unwindFromConfirmationForm(segue: UIStoryboardSegue ){

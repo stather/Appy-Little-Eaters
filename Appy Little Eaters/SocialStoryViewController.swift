@@ -23,6 +23,7 @@ public class SocialStoryViewController : UIViewController{
 	@IBOutlet weak var theStory:UITextView!
 	@IBOutlet weak var storyImage:UIImageView!
 
+	@IBOutlet weak var nextButton: UIButton!
 
 	@IBAction func previousPage(sender: AnyObject){
 		currentPage = currentPage - 1
@@ -56,6 +57,7 @@ public class SocialStoryViewController : UIViewController{
 			self.storyImage.image = UIImage(named: "social-story1.png")
 			player = ResourceAudioPlayer(fromName: "eatinghealthyfoods2")
 			player.play()
+			nextButton.hidden = false
 			break;
 		case 2:
 			self.storyImage.image = UIImage(named: "social-story2.png")
@@ -69,28 +71,29 @@ public class SocialStoryViewController : UIViewController{
 			break;
 		case 4:
 			self.storyImage.image = UIImage(named: "social-story4.png")
-			player = ResourceAudioPlayer(fromName: "healthykids2")
+			player = ResourceAudioPlayer(fromName: "whenyouenjoy")
 			player.play()
 			break;
 		case 5:
 			self.storyImage.image = UIImage(named: "social-story5.png")
-			player = ResourceAudioPlayer(fromName: "healthykids2")
+			player = ResourceAudioPlayer(fromName: "aleisagame")
 			player.play()
 			break;
 		case 6:
 			self.storyImage.image = UIImage(named: "social-story6.png")
-			player = ResourceAudioPlayer(fromName: "healthykids2")
+			player = ResourceAudioPlayer(fromName: "eachcolour")
 			player.play()
 			break;
 		case 7:
 			self.storyImage.image = UIImage(named: "social-story7.png")
-			player = ResourceAudioPlayer(fromName: "healthykids2")
+			player = ResourceAudioPlayer(fromName: "pickanycolour")
 			player.play()
 			break;
 		case 8:
 			self.storyImage.image = UIImage(named: "social-story8.png")
-			player = ResourceAudioPlayer(fromName: "healthykids2")
+			player = ResourceAudioPlayer(fromName: "finishthesix")
 			player.play()
+			nextButton.hidden = true
 			break;
 			
 		default:
