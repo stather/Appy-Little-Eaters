@@ -10,6 +10,17 @@ import Foundation
 import SpriteKit
 
 public class ForestCreature : SKSpriteNode, ScrollableProtocol{
+	
+	public enum HorizontalDirection{
+		case Left
+		case Right
+	}
+	
+	public enum VerticalDirection{
+		case Up
+		case Down
+	}
+
 	enum CreatureName : Int{
 		case Blackberries = 1
 		case Bluebells
@@ -39,6 +50,11 @@ public class ForestCreature : SKSpriteNode, ScrollableProtocol{
 	}
 
 	var delegate:ScrollableProtocol?
+	
+	var horizontalDirection:HorizontalDirection!
+	var verticalDirection:VerticalDirection!
+	var destination:CGPoint!
+
 
 	lazy var forestScene:ForestScene = {
 		return self.scene as ForestScene
@@ -163,4 +179,77 @@ public class ForestCreature : SKSpriteNode, ScrollableProtocol{
 	func didAddToScene(){
 		delegate = StandardScroller(howMuch:forestScene.fact * ForestScene.backgroundWidth() / 10,  node: self)
 	}
+	
+	func fly(amount: Float){
+		var x:Float = Float(position.x)
+		var y:Float = Float(position.y)
+		var original = forestScene.originalPoint(position)
+		var howMuch = forestScene.fact * ForestScene.backgroundWidth() / 10
+		if horizontalDirection == HorizontalDirection.Left{
+			if original.x > destination.x{
+				x -= amount * 25
+				if x < -howMuch*2{
+					x += howMuch * 10
+				}
+				if x > howMuch*8{
+					x -= howMuch * 10
+				}
+			}
+		}else{
+			if original.x < destination.x{
+				x += amount * 25
+				if x < -howMuch*2{
+					x += howMuch * 10
+				}
+				if x > howMuch*8{
+					x -= howMuch * 10
+				}
+			}
+		}
+		if verticalDirection == VerticalDirection.Down{
+			if original.y > destination.y{
+				y -= amount * 25
+			}
+		}else{
+			if original.y < destination.y{
+				y += amount * 25
+			}
+		}
+		
+		position = CGPoint(x: CGFloat(x), y: CGFloat(y))
+		original = forestScene.originalPoint(position)
+		println(abs(original.x - destination.x))
+		var arrivedX = false
+		var arrivedY = false
+		if horizontalDirection == HorizontalDirection.Left{
+			if original.x <= destination.x{
+				println("Got to x dest")
+				arrivedX = true
+			}
+		}else{
+			if original.x >= destination.x{
+				println("Got to x dest")
+				arrivedX = true
+			}
+		}
+		if verticalDirection == VerticalDirection.Down{
+			if original.y <= destination.y{
+				println("Got to y dest")
+				arrivedY = true
+			}
+		}else{
+			if original.y >= destination.y{
+				println("Got to y dest")
+				arrivedY = true
+			}
+		}
+		if arrivedX && arrivedY{
+			atDestination()
+		}
+	}
+	
+	func atDestination(){
+		println("Got to destination")
+	}
+
 }

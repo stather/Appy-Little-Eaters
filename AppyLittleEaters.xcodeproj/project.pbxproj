@@ -155,6 +155,7 @@
 		469AC7BB1A4F171E00CDA070 /* foxglove.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7BA1A4F171E00CDA070 /* foxglove.atlas */; };
 		469AC7BD1A4F1B0B00CDA070 /* strawberry.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7BC1A4F1B0B00CDA070 /* strawberry.atlas */; };
 		469AC7BF1A4F1CA300CDA070 /* frog.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7BE1A4F1CA300CDA070 /* frog.atlas */; };
+		469AC7C11A50241300CDA070 /* yellowbutterfly.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7C01A50241300CDA070 /* yellowbutterfly.atlas */; };
 		469C9AF91A23C60600E49BA5 /* pink-butterfly1.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9AF61A23C60600E49BA5 /* pink-butterfly1.png */; };
 		469C9AFA1A23C60600E49BA5 /* pink-butterfly2.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9AF71A23C60600E49BA5 /* pink-butterfly2.png */; };
 		469C9AFB1A23C60600E49BA5 /* pink-butterfly3.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9AF81A23C60600E49BA5 /* pink-butterfly3.png */; };
@@ -190,9 +191,6 @@
 		469C9B3C1A2511B900E49BA5 /* brown-bunny5.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9B361A2511B900E49BA5 /* brown-bunny5.png */; };
 		469C9B3D1A2511B900E49BA5 /* brown-bunny6.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9B371A2511B900E49BA5 /* brown-bunny6.png */; };
 		469C9B431A25134200E49BA5 /* butterfly1-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9B3F1A25134200E49BA5 /* butterfly1-1.png */; };
-		469C9B441A25134200E49BA5 /* butterfly1-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9B401A25134200E49BA5 /* butterfly1-2.png */; };
-		469C9B451A25134200E49BA5 /* butterfly1-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9B411A25134200E49BA5 /* butterfly1-3.png */; };
-		469C9B461A25134200E49BA5 /* butterfly1-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 469C9B421A25134200E49BA5 /* butterfly1-4.png */; };
 		46AB56A019D3553600D47CEF /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AB569919D3553600D47CEF /* apple.png */; };
 		46AB56A119D3553600D47CEF /* cherry.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AB569A19D3553600D47CEF /* cherry.png */; };
 		46AB56A219D3553600D47CEF /* raspberry.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AB569B19D3553600D47CEF /* raspberry.png */; };
@@ -556,6 +554,7 @@
 		469AC7BA1A4F171E00CDA070 /* foxglove.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = foxglove.atlas; sourceTree = "<group>"; };
 		469AC7BC1A4F1B0B00CDA070 /* strawberry.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = strawberry.atlas; sourceTree = "<group>"; };
 		469AC7BE1A4F1CA300CDA070 /* frog.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = frog.atlas; sourceTree = "<group>"; };
+		469AC7C01A50241300CDA070 /* yellowbutterfly.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = yellowbutterfly.atlas; sourceTree = "<group>"; };
 		469C9AF61A23C60600E49BA5 /* pink-butterfly1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink-butterfly1.png"; sourceTree = "<group>"; };
 		469C9AF71A23C60600E49BA5 /* pink-butterfly2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink-butterfly2.png"; sourceTree = "<group>"; };
 		469C9AF81A23C60600E49BA5 /* pink-butterfly3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink-butterfly3.png"; sourceTree = "<group>"; };
@@ -591,9 +590,6 @@
 		469C9B361A2511B900E49BA5 /* brown-bunny5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brown-bunny5.png"; sourceTree = "<group>"; };
 		469C9B371A2511B900E49BA5 /* brown-bunny6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brown-bunny6.png"; sourceTree = "<group>"; };
 		469C9B3F1A25134200E49BA5 /* butterfly1-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "butterfly1-1.png"; sourceTree = "<group>"; };
-		469C9B401A25134200E49BA5 /* butterfly1-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "butterfly1-2.png"; sourceTree = "<group>"; };
-		469C9B411A25134200E49BA5 /* butterfly1-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "butterfly1-3.png"; sourceTree = "<group>"; };
-		469C9B421A25134200E49BA5 /* butterfly1-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "butterfly1-4.png"; sourceTree = "<group>"; };
 		46AB569919D3553600D47CEF /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
 		46AB569A19D3553600D47CEF /* cherry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cherry.png; sourceTree = "<group>"; };
 		46AB569B19D3553600D47CEF /* raspberry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = raspberry.png; sourceTree = "<group>"; };
@@ -1090,6 +1086,7 @@
 		469846DF19D846E600617FCE /* Characters */ = {
 			isa = PBXGroup;
 			children = (
+				469AC7C01A50241300CDA070 /* yellowbutterfly.atlas */,
 				469AC7BE1A4F1CA300CDA070 /* frog.atlas */,
 				469AC7BC1A4F1B0B00CDA070 /* strawberry.atlas */,
 				469AC7BA1A4F171E00CDA070 /* foxglove.atlas */,
@@ -1099,7 +1096,6 @@
 				469AC7B21A4EF76200CDA070 /* greenfern.atlas */,
 				46E1FCBD1A251AAA00651193 /* bluedragon */,
 				46E1FCAC1A2518F300651193 /* greenfish */,
-				469C9B3E1A25133100E49BA5 /* yellowbutterfly1 */,
 				469C9B311A2511AB00E49BA5 /* brownbunny */,
 				469C9B221A23CED700E49BA5 /* whiterabbit */,
 				469C9B091A23CD4800E49BA5 /* brownsquirrel */,
@@ -1298,17 +1294,6 @@
 			name = brownbunny;
 			sourceTree = "<group>";
 		};
-		469C9B3E1A25133100E49BA5 /* yellowbutterfly1 */ = {
-			isa = PBXGroup;
-			children = (
-				469C9B3F1A25134200E49BA5 /* butterfly1-1.png */,
-				469C9B401A25134200E49BA5 /* butterfly1-2.png */,
-				469C9B411A25134200E49BA5 /* butterfly1-3.png */,
-				469C9B421A25134200E49BA5 /* butterfly1-4.png */,
-			);
-			name = yellowbutterfly1;
-			sourceTree = "<group>";
-		};
 		46AB56A719D356BE00D47CEF /* whitefood */ = {
 			isa = PBXGroup;
 			children = (
@@ -1415,6 +1400,7 @@
 		46E15D711A05157400B5BAE1 /* static */ = {
 			isa = PBXGroup;
 			children = (
+				469C9B3F1A25134200E49BA5 /* butterfly1-1.png */,
 				468169A01A08385C000D19E9 /* blackberries1.png */,
 				468169A11A08385C000D19E9 /* blackberries2.png */,
 				468169A21A08385C000D19E9 /* blackberries3.png */,
@@ -1781,7 +1767,6 @@
 				46AE6C1419E9777A000238F4 /* orangeband.png in Resources */,
 				468169C81A08385C000D19E9 /* greenfern3.png in Resources */,
 				46E15D9A1A06430A00B5BAE1 /* brown-squirrel_RB.png in Resources */,
-				469C9B441A25134200E49BA5 /* butterfly1-2.png in Resources */,
 				469C9B191A23CD5500E49BA5 /* brown-squirrel4.png in Resources */,
 				468169CA1A08385C000D19E9 /* pinkflowers2.png in Resources */,
 				46E8D17E19F3B97000AEF750 /* PARENTS-PAGE-back_06.png in Resources */,
@@ -1826,7 +1811,6 @@
 				4642607719F4626D0028C878 /* PARENTS-PAGE4.png in Resources */,
 				469AC7AB1A4759C400CDA070 /* deer.atlas in Resources */,
 				4614419219D7047C00CB5A3E /* pumpkin.png in Resources */,
-				469C9B451A25134200E49BA5 /* butterfly1-3.png in Resources */,
 				46AE6C2F19EAB24F000238F4 /* RED.m4a in Resources */,
 				46AB56A219D3553600D47CEF /* raspberry.png in Resources */,
 				46E15D981A06430A00B5BAE1 /* brown-bird_RB.png in Resources */,
@@ -1836,7 +1820,6 @@
 				46AB56B319D356CC00D47CEF /* nuts.png in Resources */,
 				46E7C7BD19850C0B00CE7AB3 /* start-background.jpg in Resources */,
 				4614419119D7047C00CB5A3E /* peach.png in Resources */,
-				469C9B461A25134200E49BA5 /* butterfly1-4.png in Resources */,
 				46E7C7D5198545F500CE7AB3 /* home-story.png in Resources */,
 				4614419B19D7052A00CB5A3E /* blackberry.png in Resources */,
 				46C440C51A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_03.png in Resources */,
@@ -1925,6 +1908,7 @@
 				464205B618EB4A74005EC168 /* dragon2.png in Resources */,
 				469C9B2F1A23CEE600E49BA5 /* bunny6.png in Resources */,
 				469AC7B51A4F0E5600CDA070 /* purplefern.atlas in Resources */,
+				469AC7C11A50241300CDA070 /* yellowbutterfly.atlas in Resources */,
 				46E1FCBB1A25190000651193 /* fish2-7.png in Resources */,
 				464F703B18A019F000DDA449 /* InfoPlist.strings in Resources */,
 				4614416F19D7031900CB5A3E /* cucumber.png in Resources */,

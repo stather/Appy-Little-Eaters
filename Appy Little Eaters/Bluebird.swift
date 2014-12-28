@@ -18,15 +18,6 @@ public class BlueBird : ForestCreature, Performer, MoveableProtocol{
 		case FlyingLeft
 	}
 	
-	public enum HorizontalDirection{
-		case Left
-		case Right
-	}
-	
-	public enum VerticalDirection{
-		case Up
-		case Down
-	}
 	
 	var location:BirdLocation = BirdLocation.SittingOnRight
 	
@@ -52,9 +43,6 @@ public class BlueBird : ForestCreature, Performer, MoveableProtocol{
 		return flapping
 	}
 	
-	var destination:CGPoint!
-	var horizontalDirection:HorizontalDirection!
-	var verticalDirection:VerticalDirection!
 	
 	func flyToLeftTree(){
 		xScale = 1
@@ -93,84 +81,18 @@ public class BlueBird : ForestCreature, Performer, MoveableProtocol{
 		}
 	}
 
-	func fly(amount: Float){
-		var x:Float = Float(position.x)
-		var y:Float = Float(position.y)
-		var original = forestScene.originalPoint(position)
-		var howMuch = forestScene.fact * ForestScene.backgroundWidth() / 10
-		if horizontalDirection == HorizontalDirection.Left{
-			if original.x > destination.x{
-				x -= amount * 25
-				if x < -howMuch*2{
-					x += howMuch * 10
-				}
-				if x > howMuch*8{
-					x -= howMuch * 10
-				}
-			}
-		}else{
-			if original.x < destination.x{
-				x += amount * 25
-				if x < -howMuch*2{
-					x += howMuch * 10
-				}
-				if x > howMuch*8{
-					x -= howMuch * 10
-				}
-			}
-		}
-		if verticalDirection == VerticalDirection.Down{
-			if original.y > destination.y{
-				y -= amount * 25
-			}
-		}else{
-			if original.y < destination.y{
-				y += amount * 25
-			}
-		}
-		
-		position = CGPoint(x: CGFloat(x), y: CGFloat(y))
-		original = forestScene.originalPoint(position)
-		println(abs(original.x - destination.x))
-		var arrivedX = false
-		var arrivedY = false
-		if horizontalDirection == HorizontalDirection.Left{
-			if original.x <= destination.x{
-				println("Got to x dest")
-				arrivedX = true
-			}
-		}else{
-			if original.x >= destination.x{
-				println("Got to x dest")
-				arrivedX = true
-			}
-		}
-		if verticalDirection == VerticalDirection.Down{
-			if original.y <= destination.y{
-				println("Got to y dest")
-				arrivedY = true
-			}
-		}else{
-			if original.y >= destination.y{
-				println("Got to y dest")
-				arrivedY = true
-			}
-		}
-		if arrivedX && arrivedY{
-			println("Got to destination")
-			removeAllActions()
-			texture = SKTexture(imageNamed: "bird-sitting_03")
-			location = BirdLocation.SittingOnLeft
-		}
+	override func atDestination() {
+		super.atDestination()
+		removeAllActions()
+		texture = SKTexture(imageNamed: "bird-sitting_03")
+		location = BirdLocation.SittingOnLeft
 	}
-	
 	
 	
 	func moveBy(amount: Float) {
 		switch location{
 		case .FlyingLeft:
 			fly(amount)
-			printGeometry()
 			break
 		case .FlyingRight:
 			fly(amount)
