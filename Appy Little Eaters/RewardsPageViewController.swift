@@ -80,10 +80,11 @@ class RewardsPageViewController: UIViewController{
 	}
 	
 	override func viewDidLoad() {
-		let fetchRequest = managedObjectModel?.fetchRequestFromTemplateWithName("FetchAvailableRewards", substitutionVariables: ["LEVEL":1])
+		var fetchRequest: NSFetchRequest = managedObjectModel?.fetchRequestTemplateForName("FetchAvailableRewards")?.copy() as NSFetchRequest
+		fetchRequest.sortDescriptors = [NSSortDescriptor(key: "level", ascending: true)]
 		var error:NSErrorPointer = NSErrorPointer()
-		let count = managedObjectContext?.countForFetchRequest(fetchRequest!, error: error)
-		let rewards:[DRewardPool] = managedObjectContext?.executeFetchRequest(fetchRequest!, error: error) as [DRewardPool]
+		let count = managedObjectContext?.countForFetchRequest(fetchRequest, error: error)
+		let rewards:[DRewardPool] = managedObjectContext?.executeFetchRequest(fetchRequest, error: error) as [DRewardPool]
 		var filepath:NSString =  NSBundle.mainBundle().pathForResource(rewards[0].imageName, ofType: "png")!
 		LeftReward.image = UIImage(contentsOfFile: filepath)
 		lhs = rewards[0]

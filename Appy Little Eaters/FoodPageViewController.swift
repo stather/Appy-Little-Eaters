@@ -13,6 +13,10 @@ import AVFoundation
 
 public class FoodPageViewController : UIViewController, UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, AVAudioPlayerDelegate{
 
+	public enum FoodColour:Int{
+		case red = 0, orange, yellow, green, white, purple
+	}
+	
 	required public init(coder aDecoder: NSCoder) {
 	    super.init(coder: aDecoder)
 	}
@@ -45,29 +49,29 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 		var filepath:String!
 		
 		switch (self.index){
-		case 0:
+		case FoodColour.red.rawValue:
 			filepath = NSBundle.mainBundle().pathForResource("red-background", ofType: "jpg")
-			foods = NSArray(objects: "apple", "cherry", "raspberry", "redpepper", "strawberry", "tomato", "watermelon")
+			foods = NSArray(objects: "apple", "cherry", "raspberry", "redpepper", "strawberry", "tomato", "watermelon", "beetroot", "cranberries", "mystery_box", "persimmon", "pomegranate", "raddish", "red_onion", "red_potato", "rhubarb", "ruby_grapefruit")
 			break;
-		case 1:
+		case FoodColour.orange.rawValue:
 			filepath = NSBundle.mainBundle().pathForResource("orange-background", ofType: "jpg")
-			foods = NSArray(objects: "apricots", "carrot", "mango", "orange", "pumpkin", "pawpaw", "peach")
+			foods = NSArray(objects: "apricots", "carrot", "mango", "orange", "pumpkin", "pawpaw", "peach", "butternut", "mystery_box", "cantaloupe", "gem_squash", "gooseberries", "nectarine", "tangerine")
 			break;
-		case 2:
+		case FoodColour.yellow.rawValue:
 			filepath = NSBundle.mainBundle().pathForResource("yellow-background", ofType: "jpg")
-			foods = NSArray(objects: "banana", "corn", "lemon", "pear", "pineapple", "yellowapple", "yellowpepper")
+			foods = NSArray(objects: "banana", "corn", "lemon", "pear", "pineapple", "mystery_box", "yellowapple", "yellowpepper", "egg", "yellow_grapefruit", "yellow_watermelon")
 			break;
-		case 3:
+		case FoodColour.green.rawValue:
 			filepath = NSBundle.mainBundle().pathForResource("green-background", ofType: "jpg")
-			foods = NSArray(objects: "broccoli", "cucumber", "greenapple", "greengrapes", "lime", "peas", "sprouts")
+			foods = NSArray(objects: "broccoli", "cucumber", "greenapple", "greengrapes", "lime", "peas", "sprouts", "asparagus", "celery", "honeydew", "mystery_box", "kale", "kiwifruit", "leek", "lettuce", "green_beans", "mustard_greens", "ocra", "peas", "spinach", "spring_onions", "swiss_chard")
 			break;
-		case 4:
+		case FoodColour.white.rawValue:
 			filepath = NSBundle.mainBundle().pathForResource("white-background", ofType: "jpg")
-			foods = NSArray(objects: "cauliflower", "chicken", "dates", "lentils", "nuts", "potato", "whitecabbage")
+			foods = NSArray(objects: "cauliflower", "chicken", "dates", "lentils", "nuts", "mystery_box", "potato", "whitecabbage", "egg")
 			break;
-		case 5:
+		case FoodColour.purple.rawValue:
 			filepath = NSBundle.mainBundle().pathForResource("purple-background", ofType: "jpg")
-			foods = NSArray(objects: "blackberry", "eggplant", "grapes", "olives", "plum", "raisins", "redcabbage")
+			foods = NSArray(objects: "blackberry", "eggplant", "grapes", "mystery_box", "olives", "plum", "raisins", "redcabbage", "radiccio", "sweet_potato")
 			break;
 		default:
 			return;
