@@ -71,7 +71,7 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 			break;
 		case FoodColour.purple.rawValue:
 			filepath = NSBundle.mainBundle().pathForResource("purple-background", ofType: "jpg")
-			foods = NSArray(objects: "blackberry", "eggplant", "grapes", "mystery_box", "olives", "plum", "raisins", "redcabbage", "radiccio", "sweet_potato")
+			foods = NSArray(objects: "blackberry", "egg_plant", "grapes", "mystery_box", "olives", "plum", "raisins", "redcabbage", "radiccio", "sweet_potato")
 			break;
 		default:
 			return;

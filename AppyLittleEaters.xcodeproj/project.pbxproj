@@ -222,7 +222,7 @@
 		469AC8801A53448900CDA070 /* raddish.png in Resources */ = {isa = PBXBuildFile; fileRef = 469AC87F1A53448900CDA070 /* raddish.png */; };
 		469AC8821A5344A000CDA070 /* radiccio.png in Resources */ = {isa = PBXBuildFile; fileRef = 469AC8811A5344A000CDA070 /* radiccio.png */; };
 		469AC8841A5344BB00CDA070 /* raisins.png in Resources */ = {isa = PBXBuildFile; fileRef = 469AC8831A5344BB00CDA070 /* raisins.png */; };
-		469AC8861A5344CA00CDA070 /* rasberry.png in Resources */ = {isa = PBXBuildFile; fileRef = 469AC8851A5344CA00CDA070 /* rasberry.png */; };
+		469AC8861A5344CA00CDA070 /* raspberry.png in Resources */ = {isa = PBXBuildFile; fileRef = 469AC8851A5344CA00CDA070 /* raspberry.png */; };
 		469AC8881A5344EA00CDA070 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 469AC8871A5344EA00CDA070 /* apple.png */; };
 		469AC88A1A53450300CDA070 /* red_onion.png in Resources */ = {isa = PBXBuildFile; fileRef = 469AC8891A53450300CDA070 /* red_onion.png */; };
 		469AC88C1A53451900CDA070 /* redpepper.png in Resources */ = {isa = PBXBuildFile; fileRef = 469AC88B1A53451900CDA070 /* redpepper.png */; };
@@ -698,7 +698,7 @@
 		469AC87F1A53448900CDA070 /* raddish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = raddish.png; sourceTree = "<group>"; };
 		469AC8811A5344A000CDA070 /* radiccio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radiccio.png; sourceTree = "<group>"; };
 		469AC8831A5344BB00CDA070 /* raisins.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = raisins.png; sourceTree = "<group>"; };
-		469AC8851A5344CA00CDA070 /* rasberry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rasberry.png; sourceTree = "<group>"; };
+		469AC8851A5344CA00CDA070 /* raspberry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = raspberry.png; sourceTree = "<group>"; };
 		469AC8871A5344EA00CDA070 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
 		469AC8891A53450300CDA070 /* red_onion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_onion.png; sourceTree = "<group>"; };
 		469AC88B1A53451900CDA070 /* redpepper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redpepper.png; sourceTree = "<group>"; };
@@ -1129,7 +1129,7 @@
 				469AC8251A533F9900CDA070 /* beetroot.png */,
 				469AC87F1A53448900CDA070 /* raddish.png */,
 				469AC8871A5344EA00CDA070 /* apple.png */,
-				469AC8851A5344CA00CDA070 /* rasberry.png */,
+				469AC8851A5344CA00CDA070 /* raspberry.png */,
 				469AC8931A53457600CDA070 /* ruby_grapefruit.png */,
 				469AC89B1A5345C100CDA070 /* strawberry.png */,
 				469AC8A31A53460D00CDA070 /* tomato.png */,
@@ -1954,7 +1954,7 @@
 				46AE6C1B19EAA26F000238F4 /* intro.m4a in Resources */,
 				469AC8841A5344BB00CDA070 /* raisins.png in Resources */,
 				468169C91A08385C000D19E9 /* pinkflowers1.png in Resources */,
-				469AC8861A5344CA00CDA070 /* rasberry.png in Resources */,
+				469AC8861A5344CA00CDA070 /* raspberry.png in Resources */,
 				46C440CC1A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_010.png in Resources */,
 				4626D5DF1A0E96F500D0FB24 /* fish6.png in Resources */,
 				464205AC18EB357A005EC168 /* bird3_03.png in Resources */,
