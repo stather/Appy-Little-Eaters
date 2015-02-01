@@ -73,6 +73,7 @@ public class ForestCreature : SKSpriteNode, ScrollableProtocol{
 	}
 	
 	public func printGeometry(){
+		return
 		var p = forestScene.originalPoint(position)
 		print("x ")
 		if p.x < 0{
@@ -218,28 +219,28 @@ public class ForestCreature : SKSpriteNode, ScrollableProtocol{
 		
 		position = CGPoint(x: CGFloat(x), y: CGFloat(y))
 		original = forestScene.originalPoint(position)
-		println(abs(original.x - destination.x))
+		//println(abs(original.x - destination.x))
 		var arrivedX = false
 		var arrivedY = false
 		if horizontalDirection == HorizontalDirection.Left{
 			if original.x <= destination.x{
-				println("Got to x dest")
+				//println("Got to x dest")
 				arrivedX = true
 			}
 		}else{
 			if original.x >= destination.x{
-				println("Got to x dest")
+				//println("Got to x dest")
 				arrivedX = true
 			}
 		}
 		if verticalDirection == VerticalDirection.Down{
 			if original.y <= destination.y{
-				println("Got to y dest")
+				//println("Got to y dest")
 				arrivedY = true
 			}
 		}else{
 			if original.y >= destination.y{
-				println("Got to y dest")
+				//println("Got to y dest")
 				arrivedY = true
 			}
 		}
@@ -249,7 +250,7 @@ public class ForestCreature : SKSpriteNode, ScrollableProtocol{
 	}
 	
 	func atDestination(){
-		println("Got to destination")
+		//println("Got to destination")
 	}
 
 }

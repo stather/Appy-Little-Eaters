@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AVFoundation
 import UIKit
 import CoreData
 import Crashlytics
@@ -17,6 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 	var ukeplayer:ResourceAudioPlayer!
 	var forestSoundsPlayer:ResourceAudioPlayer!
+	var synth:AVSpeechSynthesizer?
+	var preferredVoice:AVSpeechSynthesisVoice?
+	
+	func speak(text: String){
+		var utter:AVSpeechUtterance = AVSpeechUtterance(string: text)
+		utter.rate = AVSpeechUtteranceMinimumSpeechRate
+		utter.voice = preferredVoice
+		synth?.speakUtterance(utter)
+		
+	}
 
 	func playTheUke(){
 		ukeplayer = ResourceAudioPlayer(fromName: "uke1_01")
@@ -43,6 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Override point for customization after application launch.
 		Crashlytics.startWithAPIKey("9151a746d6d01e3cf7ec2a3254ebb0c672760333")
+		synth = AVSpeechSynthesizer()
+		var v2 = filter(AVSpeechSynthesisVoice.speechVoices()) { $0.language == "en-US" }
+		preferredVoice = (v2[0] as AVSpeechSynthesisVoice)
 		seedDatabase()
 		return true
 	}

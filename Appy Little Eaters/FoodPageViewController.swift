@@ -104,7 +104,7 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 		cell.backgroundView = UIView(frame: CGRectZero)
 		return cell;
 	}
-	
+
 	public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		var index:Int = indexPath.item
 		var name:String = foods.objectAtIndex(index) as String
@@ -116,8 +116,11 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 		self.tick.hidden = false;
 		self.cross.hidden = false;
 		
-		player = ResourceAudioPlayer(fromName: name)
-		player.play()
+		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+		appDelegate.speak("Have you eaten a " + name)
+		
+		//player = ResourceAudioPlayer(fromName: name)
+		//player.play()
 		
 	}
 	

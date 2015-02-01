@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AVFoundation
 import SpriteKit
 
 
@@ -110,10 +111,13 @@ public class ForestViewController : UIViewController{
 		}
 	}
 	
+	
 	public override func viewDidLoad() {
 		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
 		appDelegate.stopTheUke()
 		appDelegate.playTheForestSounds()
+		appDelegate.speak("Welcome to the forest")
+		
 	}
 	
 	public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

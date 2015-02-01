@@ -26,8 +26,25 @@ public class RainbowPageViewController: UIViewController{
 	var theBand:UIView!
 	var theColour:NSString!
 	var player:ResourceAudioPlayer!
+	var allowColouring:Bool = false
+	var alphaLevel:CGFloat = 0
+
+	@IBAction func RedBandPanned(sender: UIPanGestureRecognizer) {
+		if !allowColouring{
+			return
+		}
+		if alphaLevel < 1{
+			alphaLevel += 0.02
+			theBand.alpha = alphaLevel
+		}else{
+			self.performSegueWithIdentifier("RainbowToReward", sender: self);
+		}
+	}
+	
+	
 	
 	@IBAction func tapped(sender: UITapGestureRecognizer) {
+		/*
 		theBand.hidden = false;
 		theBand.alpha = 1.0;
 		UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.Autoreverse, animations: {
@@ -38,6 +55,7 @@ public class RainbowPageViewController: UIViewController{
 				self.performSegueWithIdentifier("RainbowToReward", sender: self);
 		});
 		NSUserDefaults.standardUserDefaults().setBool(true, forKey: theColour);
+*/
 	}
 	
 	
@@ -101,7 +119,12 @@ public class RainbowPageViewController: UIViewController{
 			}
 			theBand.hidden = false;
 			theBand.alpha = 1.0;
-			UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.Autoreverse, animations: {UIView.setAnimationRepeatCount(5);self.theBand.alpha = 0;}, completion:{(Bool finished)-> Void in });
+			UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.Autoreverse, animations: {UIView.setAnimationRepeatCount(5);self.theBand.alpha = 0;}, completion:{
+				(Bool finished)-> Void in
+				self.allowColouring = true
+				self.theBand.alpha = 0
+				self.theBand.hidden = false
+			});
 
 		}else{
 			var soundFilePath:NSString
