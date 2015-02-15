@@ -28,17 +28,89 @@ public class RainbowPageViewController: UIViewController{
 	var player:ResourceAudioPlayer!
 	var allowColouring:Bool = false
 	var alphaLevel:CGFloat = 0
+	var lastPoint:CGPoint!
+	let circleSize:CGFloat = 100
+	var timer:NSTimer = NSTimer()
+	
+	func drawAt(point: CGPoint){
+		var r = RedBand.bounds
+		var image:UIImage = RedBand.image!
+		var imageWidth = image.size.width
+		var imageHeight = image.size.height
+		var xfact = imageWidth / r.width
+		var yfact = imageHeight / r.height
+		var x = point.x * xfact
+		var y = point.y * yfact
+		var newPoint = CGPoint(x: x, y: y)
+		UIGraphicsBeginImageContext(image.size)
+		image.drawAtPoint(CGPoint.zeroPoint)
+		var context = UIGraphicsGetCurrentContext()
+		CGContextSetBlendMode(context, kCGBlendModeSourceIn)
+		var colour = UIColor.redColor()
+		CGContextSetStrokeColorWithColor(context, colour.CGColor)
+		CGContextSetLineCap(context, kCGLineCapRound)
+		var rect = CGRect(x: (newPoint.x - (circleSize/2)), y: (newPoint.y - (circleSize/2)), width: circleSize, height: circleSize)
+		CGContextSetFillColorWithColor(context, colour.CGColor)
+		CGContextFillEllipseInRect(context, rect)
+		//CGContextSetLineWidth(context, 15)
+		//CGContextMoveToPoint(context, 0, 0)
+		//CGContextAddLineToPoint(context, point.x, point.y)
+		//CGContextStrokePath(context)
+		var im2 = UIGraphicsGetImageFromCurrentImageContext()
+		RedBand.image = im2
+		RedBand.setNeedsDisplay()
+	}
 
+	func countRed(){
+		var cgImage = RedBand.image?.CGImage
+		var provider = CGImageGetDataProvider(cgImage)
+		var bitmapData = CGDataProviderCopyData(provider)
+		var data = CFDataGetBytePtr(bitmapData)
+		var width = CGImageGetWidth(cgImage)
+		var height = CGImageGetHeight(cgImage)
+		var total = width * height
+		var white = 0
+		var nonwhite = 0
+		while total > 0{
+			total--
+			var vr = Float(data[0])/255.0
+			var r = CGFloat(vr)
+			var vg = Float(data[1])/255.0
+			var g = CGFloat(vg)
+			var vb = Float(data[2])/255.0
+			var b = CGFloat(vb)
+			if r == 1 && g == 1 && b == 1 {
+				white += 1
+			}else if r > 0 || g > 0 || b > 0 {
+				nonwhite += 1
+			}
+			data += 4
+			var returnColor = UIColor(red: r, green: g, blue: b, alpha: 1.0)
+		}
+		if nonwhite / white > 9{
+			performSegueWithIdentifier("RainbowToReward", sender: self);
+			timer.invalidate()
+		}
+		println("white: " + white.description + " nonwhite: " + nonwhite.description)
+	}
+	
 	@IBAction func RedBandPanned(sender: UIPanGestureRecognizer) {
 		if !allowColouring{
 			return
 		}
-		if alphaLevel < 1{
-			alphaLevel += 0.02
-			theBand.alpha = alphaLevel
-		}else{
-			self.performSegueWithIdentifier("RainbowToReward", sender: self);
+//		if alphaLevel < 1{
+//			alphaLevel += 0.02
+//			theBand.alpha = alphaLevel
+//		}else{
+			//self.performSegueWithIdentifier("RainbowToReward", sender: self);
+//		}
+		if sender.numberOfTouches() > 0 {
+			var p = sender.locationOfTouch(0, inView: RedBand)
+			drawAt(p)
+			//countRed()
 		}
+		
+		
 	}
 	
 	
@@ -122,9 +194,10 @@ public class RainbowPageViewController: UIViewController{
 			UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.Autoreverse, animations: {UIView.setAnimationRepeatCount(5);self.theBand.alpha = 0;}, completion:{
 				(Bool finished)-> Void in
 				self.allowColouring = true
-				self.theBand.alpha = 0
+				self.theBand.alpha = 1
 				self.theBand.hidden = false
 			});
+			timer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: Selector("countRed"), userInfo: nil, repeats: true)
 
 		}else{
 			var soundFilePath:NSString
