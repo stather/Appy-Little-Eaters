@@ -30,7 +30,8 @@ public class RainbowPageViewController: UIViewController{
 	var alphaLevel:CGFloat = 0
 	var lastPoint:CGPoint!
 	let circleSize:CGFloat = 100
-	var timer:NSTimer = NSTimer()
+	var bandComplete:Bool = false
+	
 	
 	func drawAt(point: CGPoint){
 		var r = RedBand.bounds
@@ -62,12 +63,26 @@ public class RainbowPageViewController: UIViewController{
 	}
 
 	func countRed(){
+		
 		var cgImage = RedBand.image?.CGImage
-		var provider = CGImageGetDataProvider(cgImage)
+		
+		var sizew = RedBand.image!.size.width
+		var sizeh = RedBand.image!.size.height
+		sizew /= 10
+		sizeh /= 10
+		var s = CGSize(width: sizew, height: sizeh)
+		UIGraphicsBeginImageContext(s)
+		RedBand.image!.drawInRect(CGRect(origin: CGPoint(x: 0, y: 0), size: s))
+		var newImage = UIGraphicsGetImageFromCurrentImageContext().CGImage
+		UIGraphicsEndImageContext()
+		
+	
+		
+		var provider = CGImageGetDataProvider(newImage)
 		var bitmapData = CGDataProviderCopyData(provider)
 		var data = CFDataGetBytePtr(bitmapData)
-		var width = CGImageGetWidth(cgImage)
-		var height = CGImageGetHeight(cgImage)
+		var width = CGImageGetWidth(newImage)
+		var height = CGImageGetHeight(newImage)
 		var total = width * height
 		var white = 0
 		var nonwhite = 0
@@ -87,14 +102,18 @@ public class RainbowPageViewController: UIViewController{
 			data += 4
 			var returnColor = UIColor(red: r, green: g, blue: b, alpha: 1.0)
 		}
-		if nonwhite / white > 9{
-			performSegueWithIdentifier("RainbowToReward", sender: self);
-			timer.invalidate()
+		if nonwhite / white > 18{
+			println("Done so lets segue")
+			bandComplete = true
 		}
 		println("white: " + white.description + " nonwhite: " + nonwhite.description)
 	}
 	
 	@IBAction func RedBandPanned(sender: UIPanGestureRecognizer) {
+		if bandComplete {
+			performSegueWithIdentifier("RainbowToReward", sender: self);
+			return
+		}
 		if !allowColouring{
 			return
 		}
@@ -107,6 +126,9 @@ public class RainbowPageViewController: UIViewController{
 		if sender.numberOfTouches() > 0 {
 			var p = sender.locationOfTouch(0, inView: RedBand)
 			drawAt(p)
+			dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)){
+				self.countRed()
+			}
 			//countRed()
 		}
 		
@@ -197,7 +219,6 @@ public class RainbowPageViewController: UIViewController{
 				self.theBand.alpha = 1
 				self.theBand.hidden = false
 			});
-			timer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: Selector("countRed"), userInfo: nil, repeats: true)
 
 		}else{
 			var soundFilePath:NSString
