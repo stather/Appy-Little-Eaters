@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		Crashlytics.startWithAPIKey("9151a746d6d01e3cf7ec2a3254ebb0c672760333")
 		synth = AVSpeechSynthesizer()
 		var v2 = filter(AVSpeechSynthesisVoice.speechVoices()) { $0.language == "en-US" }
-		preferredVoice = (v2[0] as AVSpeechSynthesisVoice)
+		preferredVoice = (v2[0] as! AVSpeechSynthesisVoice)
 		seedDatabase()
 		return true
 	}
@@ -70,11 +70,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
 		var fname = NSBundle.mainBundle().pathForResource("rewards", ofType: "csv")
 		var data = NSString(contentsOfFile: fname!, encoding: NSUTF8StringEncoding, error: error)
-		var lines:[String] = data?.componentsSeparatedByString("\n") as [String]
+		var lines:[String] = data?.componentsSeparatedByString("\n") as! [String]
 		for item in lines{
 			var fields:[String] = item.componentsSeparatedByString(",")
 			if fields.count >= 6 {
-				let reward = NSEntityDescription.insertNewObjectForEntityForName("DRewardPool", inManagedObjectContext: managedObjectContext!) as DRewardPool
+				let reward = NSEntityDescription.insertNewObjectForEntityForName("DRewardPool", inManagedObjectContext: managedObjectContext!) as! DRewardPool
 			
 				reward.creatureName = fields[0].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).toInt()!
 				reward.positionX = fields[2].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).toInt()!
@@ -119,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	lazy var applicationDocumentsDirectory: NSURL = {
 		// The directory the application uses to store the Core Data store file. This code uses a directory named "com.readysteadyrainbow.test2" in the application's documents Application Support directory.
 		let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-		return urls[urls.count-1] as NSURL
+		return urls[urls.count-1] as! NSURL
 		}()
 	
 	lazy var managedObjectModel: NSManagedObjectModel = {
@@ -142,7 +142,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
 			dict[NSLocalizedFailureReasonErrorKey] = failureReason
 			dict[NSUnderlyingErrorKey] = error
-			error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
+			error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict as [NSObject : AnyObject])
 			// Replace this with code to handle the error appropriately.
 			// abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
 			NSLog("Unresolved error \(error), \(error!.userInfo)")

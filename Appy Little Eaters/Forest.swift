@@ -16,7 +16,7 @@ public class Forest : SKSpriteNode, ScrollableProtocol{
 	var delegate:ScrollableProtocol?
 	
 	lazy var forestScene:ForestScene = {
-		return self.scene as ForestScene
+		return self.scene as! ForestScene
 		}()
 	
 	convenience init(parentScene:ForestScene, slice:Int){

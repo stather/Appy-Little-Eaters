@@ -31,6 +31,8 @@ public class RainbowPageViewController: UIViewController{
 	var lastPoint:CGPoint!
 	let circleSize:CGFloat = 100
 	var bandComplete:Bool = false
+    var counting:Bool = false
+    var segued:Bool = false
 	
 	
 	func drawAt(point: CGPoint){
@@ -63,7 +65,6 @@ public class RainbowPageViewController: UIViewController{
 	}
 
 	func countRed(){
-		
 		var cgImage = RedBand.image?.CGImage
 		
 		var sizew = RedBand.image!.size.width
@@ -110,26 +111,26 @@ public class RainbowPageViewController: UIViewController{
 	}
 	
 	@IBAction func RedBandPanned(sender: UIPanGestureRecognizer) {
-		if bandComplete {
+		if bandComplete && !segued{
+            segued = true
 			performSegueWithIdentifier("RainbowToReward", sender: self);
 			return
 		}
 		if !allowColouring{
 			return
 		}
-//		if alphaLevel < 1{
-//			alphaLevel += 0.02
-//			theBand.alpha = alphaLevel
-//		}else{
-			//self.performSegueWithIdentifier("RainbowToReward", sender: self);
-//		}
 		if sender.numberOfTouches() > 0 {
 			var p = sender.locationOfTouch(0, inView: RedBand)
 			drawAt(p)
-			dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)){
+            if (counting){
+                println("Already counting")
+                return
+            }
+            counting = true
+			dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.value), 0)){
 				self.countRed()
+                self.counting = false
 			}
-			//countRed()
 		}
 		
 		

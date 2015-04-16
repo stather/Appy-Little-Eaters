@@ -19,7 +19,7 @@ public class HomeViewController : UIViewController{
 		player = ResourceAudioPlayer(fromName: "intro")
 		player.play()
 		
-		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 		appDelegate.playTheUke()
 	}
 	

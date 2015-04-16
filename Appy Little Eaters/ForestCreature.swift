@@ -57,7 +57,7 @@ public class ForestCreature : SKSpriteNode, ScrollableProtocol{
 
 
 	lazy var forestScene:ForestScene = {
-		return self.scene as ForestScene
+		return self.scene as! ForestScene
 	}()
 
 	func textureFrom(imageNamed:String) -> SKAction{

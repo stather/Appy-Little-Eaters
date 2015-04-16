@@ -429,7 +429,6 @@
 		46E7C7F81988382C00CE7AB3 /* eatinghealthyfoods2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7F61988382C00CE7AB3 /* eatinghealthyfoods2.m4a */; };
 		46E7C7F91988382C00CE7AB3 /* goodfoodmakes2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7F71988382C00CE7AB3 /* goodfoodmakes2.m4a */; };
 		46E7C7FB1988387700CE7AB3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E7C7FA1988387700CE7AB3 /* AVFoundation.framework */; };
-		46E7C7FD19883C7600CE7AB3 /* healthykids2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46E7C7FC19883C7600CE7AB3 /* healthykids2.m4a */; };
 		46E8D17219F2B48000AEF750 /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E8D17119F2B48000AEF750 /* FoodCell.swift */; };
 		46E8D17419F2B81600AEF750 /* FoodPagePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E8D17319F2B81600AEF750 /* FoodPagePageViewController.swift */; };
 		46E8D17619F2C6F500AEF750 /* SocialStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E8D17519F2C6F500AEF750 /* SocialStoryViewController.swift */; };
@@ -442,6 +441,7 @@
 		46F6B40519FD348300205F6B /* Bluebird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F6B40419FD348300205F6B /* Bluebird.swift */; };
 		46F6B40719FD35FC00205F6B /* GreenDragon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F6B40619FD35FC00205F6B /* GreenDragon.swift */; };
 		46F6B40919FD428000205F6B /* RewardDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F6B40819FD428000205F6B /* RewardDefinition.swift */; };
+		68774A121ABD90B70001CA32 /* healthykids.wav in Resources */ = {isa = PBXBuildFile; fileRef = 68774A111ABD90B70001CA32 /* healthykids.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -912,7 +912,6 @@
 		46E7C7F61988382C00CE7AB3 /* eatinghealthyfoods2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = eatinghealthyfoods2.m4a; sourceTree = "<group>"; };
 		46E7C7F71988382C00CE7AB3 /* goodfoodmakes2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = goodfoodmakes2.m4a; sourceTree = "<group>"; };
 		46E7C7FA1988387700CE7AB3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		46E7C7FC19883C7600CE7AB3 /* healthykids2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = healthykids2.m4a; path = "../../../Dropbox/Happy Little Eaters/Exports/audio/social/healthykids2.m4a"; sourceTree = "<group>"; };
 		46E8D17119F2B48000AEF750 /* FoodCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
 		46E8D17319F2B81600AEF750 /* FoodPagePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPagePageViewController.swift; sourceTree = "<group>"; };
 		46E8D17519F2C6F500AEF750 /* SocialStoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialStoryViewController.swift; sourceTree = "<group>"; };
@@ -925,6 +924,7 @@
 		46F6B40419FD348300205F6B /* Bluebird.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bluebird.swift; sourceTree = "<group>"; };
 		46F6B40619FD35FC00205F6B /* GreenDragon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreenDragon.swift; sourceTree = "<group>"; };
 		46F6B40819FD428000205F6B /* RewardDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardDefinition.swift; sourceTree = "<group>"; };
+		68774A111ABD90B70001CA32 /* healthykids.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = healthykids.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1792,12 +1792,12 @@
 		46E7C7F51988381500CE7AB3 /* social */ = {
 			isa = PBXGroup;
 			children = (
+				68774A111ABD90B70001CA32 /* healthykids.wav */,
 				469AC7EE1A506DAB00CDA070 /* finishthesix.m4a */,
 				469AC7EC1A506D9D00CDA070 /* pickanycolour.m4a */,
 				469AC7EA1A506D9200CDA070 /* eachcolour.m4a */,
 				469AC7E81A506D8100CDA070 /* aleisagame.m4a */,
 				469AC7E61A506D7300CDA070 /* whenyouenjoy.m4a */,
-				46E7C7FC19883C7600CE7AB3 /* healthykids2.m4a */,
 				46E7C7F61988382C00CE7AB3 /* eatinghealthyfoods2.m4a */,
 				46E7C7F71988382C00CE7AB3 /* goodfoodmakes2.m4a */,
 			);
@@ -2045,7 +2045,6 @@
 				469AC8181A50789500CDA070 /* whitecabbage.m4a in Resources */,
 				469846ED19D85A6100617FCE /* reward-done.png in Resources */,
 				469AC7BD1A4F1B0B00CDA070 /* strawberry.atlas in Resources */,
-				46E7C7FD19883C7600CE7AB3 /* healthykids2.m4a in Resources */,
 				4626D5F61A1BDC3600D0FB24 /* fishinwater.png in Resources */,
 				4645B12719D9E66700974B39 /* social-story5.png in Resources */,
 				469C9B391A2511B900E49BA5 /* brown-bunny2.png in Resources */,
@@ -2157,6 +2156,7 @@
 				469AC7FB1A50752300CDA070 /* sprouts.m4a in Resources */,
 				46AE6C2E19EAB24F000238F4 /* PURPLE.m4a in Resources */,
 				46E7C7BD19850C0B00CE7AB3 /* start-background.jpg in Resources */,
+				68774A121ABD90B70001CA32 /* healthykids.wav in Resources */,
 				46E7C7D5198545F500CE7AB3 /* home-story.png in Resources */,
 				46C440C51A004F9700C1A6BE /* REWARDS-FOREST-UPDATED_03.png in Resources */,
 				468169BD1A08385C000D19E9 /* bluebells2.png in Resources */,
@@ -2519,7 +2519,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F536965C-EF6E-4E7B-A374-926FC48DFF39";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Appy Little Eaters/Appy Little Eaters-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
@@ -2544,7 +2544,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F536965C-EF6E-4E7B-A374-926FC48DFF39";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Appy Little Eaters/Appy Little Eaters-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;

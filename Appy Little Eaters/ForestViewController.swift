@@ -113,7 +113,7 @@ public class ForestViewController : UIViewController{
 	
 	
 	public override func viewDidLoad() {
-		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 		appDelegate.stopTheUke()
 		appDelegate.playTheForestSounds()
 		appDelegate.speak("Welcome to the forest")
@@ -121,7 +121,7 @@ public class ForestViewController : UIViewController{
 	}
 	
 	public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 		appDelegate.stopTheForestSounds()
 		appDelegate.playTheUke()
 	}

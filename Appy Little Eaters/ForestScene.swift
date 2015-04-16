@@ -41,7 +41,7 @@ public class ForestScene : SKScene{
 	}()
 	
 	lazy var managedObjectContext : NSManagedObjectContext? = {
-		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 		if let managedObjectContext = appDelegate.managedObjectContext {
 			return managedObjectContext
 		}
@@ -51,7 +51,7 @@ public class ForestScene : SKScene{
 		}()
 	
 	lazy var managedObjectModel : NSManagedObjectModel? = {
-		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 		return appDelegate.managedObjectModel
 		}()
 	
@@ -118,26 +118,26 @@ public class ForestScene : SKScene{
 		
 		if (Scrolling){
 			for item in children {
-				var node:SKNode = item as SKNode
+				var node:SKNode = item as! SKNode
 				if node is ScrollableProtocol && node is Forest{
-					var sp = node as ScrollableProtocol
+					var sp = node as! ScrollableProtocol
 					var amount:Float  = _speed * Float(_dt)
 					sp.scrollBy(amount)
 				}
 			}
 			for item in children {
-				var node:SKNode = item as SKNode
+				var node:SKNode = item as! SKNode
 				if node is ScrollableProtocol && !(node is Forest){
-					var sp = node as ScrollableProtocol
+					var sp = node as! ScrollableProtocol
 					var amount:Float  = _speed * Float(_dt)
 					sp.scrollBy(amount)
 				}
 				if node is MoveableProtocol && !(node is Forest){
-					var mp = node as MoveableProtocol
+					var mp = node as! MoveableProtocol
 					mp.moveBy(Float(_dt))
 				}
 				if node is SGG_Spine{
-					let n = node as SGG_Spine
+					let n = node as! SGG_Spine
 					n.activateAnimations()
 				}
 			}
@@ -179,7 +179,7 @@ public class ForestScene : SKScene{
 		
 		var fetchAllRewards = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewards")
 		var error:NSErrorPointer! = NSErrorPointer()
-		for item in managedObjectContext?.executeFetchRequest(fetchAllRewards!, error: error) as [DReward]{
+		for item in managedObjectContext?.executeFetchRequest(fetchAllRewards!, error: error) as! [DReward]{
 			let reward:ForestCreature.CreatureName = ForestCreature.CreatureName(rawValue: Int(item.creatureName))!
 			var creature:ForestCreature = ForestCreature.from(reward)
 			creature.position = forestPoint(CGPoint(x: CGFloat(item.positionX), y: CGFloat(item.positionY)))
@@ -203,7 +203,7 @@ public class ForestScene : SKScene{
 	public override func addChild(node: SKNode) {
 		super.addChild(node)
 		if node is ForestCreature {
-			let fc = node as ForestCreature
+			let fc = node as! ForestCreature
 			fc.didAddToScene()
 		}
 	}
@@ -278,24 +278,25 @@ public class ForestScene : SKScene{
 		CurrentCreature.yScale = abs(scale)
 		CurrentCreature.printGeometry()
 	}
+
 	
-	
-	public override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+	public override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        
+        var touch:UITouch = touches.first! as! UITouch
 		
-		var touch:UITouch = touches.anyObject() as UITouch
 		var location = touch.locationInNode(self)
 		var nodes = nodesAtPoint(location)
 		var creatureTouched:Bool = false
 		for item in nodes{
 			if Scrolling{
 				if item is Performer{
-					var creature:Performer = item as Performer
+					var creature:Performer = item as! Performer
 					creature.perform()
 					creatureTouched = true
 				}
 			}else{
 				if item is ForestCreature{
-					let fc = item as ForestCreature
+					let fc = item as! ForestCreature
 					CurrentCreature = fc
 				}
 			}

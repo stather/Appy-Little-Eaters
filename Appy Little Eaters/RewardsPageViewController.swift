@@ -17,7 +17,7 @@ class RewardsPageViewController: UIViewController{
 	var rhs:DRewardPool!
 	
 	lazy var managedObjectContext : NSManagedObjectContext? = {
-		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 		if let managedObjectContext = appDelegate.managedObjectContext {
 			return managedObjectContext
 		}
@@ -27,7 +27,7 @@ class RewardsPageViewController: UIViewController{
 	}()
 	
 	lazy var managedObjectModel : NSManagedObjectModel? = {
-		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 		return appDelegate.managedObjectModel
 		}()
 	
@@ -36,7 +36,7 @@ class RewardsPageViewController: UIViewController{
 	@IBAction func DonePressed(sender: UIButton) {
 		
 		var rewardDef = RewardDefinition(rewardType: ForestCreature.CreatureName(rawValue: Int(chosen.creatureName))! )
-		let reward = NSEntityDescription.insertNewObjectForEntityForName("DReward", inManagedObjectContext: managedObjectContext!) as DReward
+		let reward = NSEntityDescription.insertNewObjectForEntityForName("DReward", inManagedObjectContext: managedObjectContext!) as! DReward
 		
 		reward.creatureName = NSNumber(integer: Int(chosen.creatureName))
 		reward.positionX = chosen.positionX
@@ -80,17 +80,17 @@ class RewardsPageViewController: UIViewController{
 	}
 	
 	override func viewDidLoad() {
-		var fetchRequest: NSFetchRequest = managedObjectModel?.fetchRequestTemplateForName("FetchAvailableRewards")?.copy() as NSFetchRequest
+		var fetchRequest: NSFetchRequest = managedObjectModel?.fetchRequestTemplateForName("FetchAvailableRewards")?.copy() as! NSFetchRequest
 		fetchRequest.sortDescriptors = [NSSortDescriptor(key: "level", ascending: true)]
 		var error:NSErrorPointer = NSErrorPointer()
 		let count = managedObjectContext?.countForFetchRequest(fetchRequest, error: error)
-		let rewards:[DRewardPool] = managedObjectContext?.executeFetchRequest(fetchRequest, error: error) as [DRewardPool]
+		let rewards:[DRewardPool] = managedObjectContext?.executeFetchRequest(fetchRequest, error: error) as! [DRewardPool]
 		var filepath:NSString =  NSBundle.mainBundle().pathForResource(rewards[0].imageName, ofType: "png")!
-		LeftReward.image = UIImage(contentsOfFile: filepath)
+		LeftReward.image = UIImage(contentsOfFile: filepath as String)
 		lhs = rewards[0]
 
 		filepath =  NSBundle.mainBundle().pathForResource(rewards[1].imageName, ofType: "png")!
-		RightReward.image = UIImage(contentsOfFile: filepath)
+		RightReward.image = UIImage(contentsOfFile: filepath as String)
 		rhs = rewards[1]
 		DoneButton.enabled = false;
 	}

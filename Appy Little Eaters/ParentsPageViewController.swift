@@ -29,7 +29,7 @@ public class ParentsPageViewController : UIViewController{
 	}
 
 	lazy var managedObjectContext : NSManagedObjectContext? = {
-		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 		if let managedObjectContext = appDelegate.managedObjectContext {
 			return managedObjectContext
 		}
@@ -39,7 +39,7 @@ public class ParentsPageViewController : UIViewController{
 		}()
 	
 	lazy var managedObjectModel : NSManagedObjectModel? = {
-		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 		return appDelegate.managedObjectModel
 		}()
 
@@ -89,14 +89,14 @@ public class ParentsPageViewController : UIViewController{
 	@IBAction func fillTheForest(sender: AnyObject) {
 		let fetchAllRewards = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewards")
 		var error:NSErrorPointer! = NSErrorPointer()
-		for item in managedObjectContext?.executeFetchRequest(fetchAllRewards!, error: error) as [DReward]{
+		for item in managedObjectContext?.executeFetchRequest(fetchAllRewards!, error: error) as! [DReward]{
 			managedObjectContext?.deleteObject(item)
 		}
 		managedObjectContext?.save(error)
 		
 		let fetchAllRewardsInPool = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewardsInPool")
-		for item in managedObjectContext?.executeFetchRequest(fetchAllRewardsInPool!, error: error) as [DRewardPool]{
-			let reward = NSEntityDescription.insertNewObjectForEntityForName("DReward", inManagedObjectContext: managedObjectContext!) as DReward
+		for item in managedObjectContext?.executeFetchRequest(fetchAllRewardsInPool!, error: error) as! [DRewardPool]{
+			let reward = NSEntityDescription.insertNewObjectForEntityForName("DReward", inManagedObjectContext: managedObjectContext!) as! DReward
 			
 			reward.creatureName = NSNumber(integer: Int(item.creatureName))
 			reward.positionX = item.positionX
@@ -110,16 +110,16 @@ public class ParentsPageViewController : UIViewController{
 	@IBAction func clearTheForest(sender: AnyObject) {
 		let fetchAllRewards = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewards")
 		var error:NSErrorPointer! = NSErrorPointer()
-		for item in managedObjectContext?.executeFetchRequest(fetchAllRewards!, error: error) as [DReward]{
+		for item in managedObjectContext?.executeFetchRequest(fetchAllRewards!, error: error) as! [DReward]{
 			managedObjectContext?.deleteObject(item)
 		}
 		let fetchAllRewardsInPool = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewardsInPool")
-		for item in managedObjectContext?.executeFetchRequest(fetchAllRewardsInPool!, error: error) as [DRewardPool]{
+		for item in managedObjectContext?.executeFetchRequest(fetchAllRewardsInPool!, error: error) as! [DRewardPool]{
 			managedObjectContext?.deleteObject(item)
 		}
 		
 		managedObjectContext?.save(error)
-		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 		appDelegate.seedDatabase()
 		
 	}

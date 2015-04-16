@@ -17,12 +17,12 @@ public class FoodPagePageViewController : UIViewController, UIPageViewController
 	
 	override public func viewDidLoad() {
 		super.viewDidLoad()
-		pageViewController = storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as UIPageViewController
+		pageViewController = storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
 		pageViewController.dataSource = self;
 		pageViewController.delegate = self;
 		var startingViewController = viewControllerAtInder(0)
 		var viewControllers:NSArray = [startingViewController]
-		pageViewController.setViewControllers(viewControllers, direction:UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
+		pageViewController.setViewControllers(viewControllers as [AnyObject], direction:UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
 		
 		
 		// Change the size of page view controller
@@ -33,8 +33,8 @@ public class FoodPagePageViewController : UIViewController, UIPageViewController
 	}
 	
 	public func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-		var pageContentViewController:FoodPageViewController = storyboard?.instantiateViewControllerWithIdentifier("PageContentViewController") as FoodPageViewController
-		let vc = viewController as FoodPageViewController
+		var pageContentViewController:FoodPageViewController = storyboard?.instantiateViewControllerWithIdentifier("PageContentViewController") as! FoodPageViewController
+		let vc = viewController as! FoodPageViewController
 		var index = (vc.index - 1 + 6)%6
 		pageContentViewController.index = index;
 		pageContentViewController.selectedFoodImage?.hidden = true;
@@ -43,8 +43,8 @@ public class FoodPagePageViewController : UIViewController, UIPageViewController
 	}
 	
 	public func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-		var pageContentViewController:FoodPageViewController = storyboard?.instantiateViewControllerWithIdentifier("PageContentViewController") as FoodPageViewController
-		let vc = viewController as FoodPageViewController
+		var pageContentViewController:FoodPageViewController = storyboard?.instantiateViewControllerWithIdentifier("PageContentViewController") as! FoodPageViewController
+		let vc = viewController as! FoodPageViewController
 		var index = (vc.index + 1)%6
 		pageContentViewController.index = index;
 		pageContentViewController.selectedFoodImage?.hidden = true;
@@ -57,7 +57,7 @@ public class FoodPagePageViewController : UIViewController, UIPageViewController
 			return;
 		}
 		for item in previousViewControllers{
-			var vc = item as FoodPageViewController
+			var vc = item as! FoodPageViewController
 			vc.selectedFoodImage.hidden = true;
 			vc.theCollection.hidden = false;
 			vc.tick.hidden = true;
@@ -66,7 +66,7 @@ public class FoodPagePageViewController : UIViewController, UIPageViewController
 	}
 	
 	func viewControllerAtInder(index: Int) -> FoodPageViewController{
-		var pageContentViewController:FoodPageViewController = storyboard?.instantiateViewControllerWithIdentifier("PageContentViewController") as FoodPageViewController
+		var pageContentViewController:FoodPageViewController = storyboard?.instantiateViewControllerWithIdentifier("PageContentViewController") as! FoodPageViewController
 		pageContentViewController.index = index % 6;
 		return pageContentViewController;
 	}

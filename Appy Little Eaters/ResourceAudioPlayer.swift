@@ -14,7 +14,7 @@ public class ResourceAudioPlayer : AVAudioPlayer{
 	var canPlay:Bool = true
 	
 	convenience init(fromName name:String){
-		var soundFilePath = NSBundle.mainBundle().pathForResource(name, ofType: "m4a")?
+		var soundFilePath = NSBundle.mainBundle().pathForResource(name, ofType: "m4a")
 		if soundFilePath != nil{
 			var fileURL = NSURL(fileURLWithPath: soundFilePath!)
 			self.init(contentsOfURL: fileURL, error: nil)
