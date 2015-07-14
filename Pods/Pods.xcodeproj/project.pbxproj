@@ -1,0 +1,447 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0E223DEA2847CA7C26F74F17 /* GBInfiniteScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73BB4036432E64AA6E166528 /* GBInfiniteScrollView.m */; };
+		1F09ACE187B166D799D9E0B1 /* GBInfiniteScrollViewPage.h in Headers */ = {isa = PBXBuildFile; fileRef = 99B5B6717C7AA04B19D6FD87 /* GBInfiniteScrollViewPage.h */; };
+		2BC8DD4B09B5B5EE058D5FDD /* GBInfiniteScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = AD08D890AE28C74519CDDEB4 /* GBInfiniteScrollView.h */; };
+		3E63A47DFD95DDFAC1519F1B /* GBInfiniteScrollViewPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FABC871455D7D7798AE383A /* GBInfiniteScrollViewPage.m */; };
+		653E5F899F250DE19EDA3645 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1291EC3B787C2BBCA96C24ED /* Foundation.framework */; };
+		830017F22E0FF74CA7FD241F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1291EC3B787C2BBCA96C24ED /* Foundation.framework */; };
+		C02D89B57EAD44A3881497F7 /* Pods-Appy Little Eaters-GBInfiniteScrollView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F3BDDDB0ABA12E8E0F08EF32 /* Pods-Appy Little Eaters-GBInfiniteScrollView-dummy.m */; };
+		C4DB7C1D15AD11A84D62C97F /* Pods-Appy Little Eaters-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 33748208865D6F58C909721A /* Pods-Appy Little Eaters-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6C53A8F9DF1AABF39CD16D91 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81C68E1C7515AC63E51F50CF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0BE23AC7D98A64CA991FB1CF;
+			remoteInfo = "Pods-Appy Little Eaters-GBInfiniteScrollView";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		126970458111B049CE2D38C9 /* Pods-Appy Little Eaters-GBInfiniteScrollView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Appy Little Eaters-GBInfiniteScrollView-prefix.pch"; sourceTree = "<group>"; };
+		1291EC3B787C2BBCA96C24ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		2C794B9A2BA993ADCF32046C /* Pods-Appy Little Eaters-GBInfiniteScrollView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appy Little Eaters-GBInfiniteScrollView.xcconfig"; sourceTree = "<group>"; };
+		33748208865D6F58C909721A /* Pods-Appy Little Eaters-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Appy Little Eaters-dummy.m"; sourceTree = "<group>"; };
+		3FABC871455D7D7798AE383A /* GBInfiniteScrollViewPage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GBInfiniteScrollViewPage.m; path = GBInfiniteScrollView/GBInfiniteScrollView/GBInfiniteScrollViewPage.m; sourceTree = "<group>"; };
+		52CD58D44CB88640395FD4A1 /* Pods-Appy Little Eaters.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appy Little Eaters.release.xcconfig"; sourceTree = "<group>"; };
+		722576A8B1D4F8B47A3DB59D /* Pods-Appy Little Eaters-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Appy Little Eaters-environment.h"; sourceTree = "<group>"; };
+		73BB4036432E64AA6E166528 /* GBInfiniteScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GBInfiniteScrollView.m; path = GBInfiniteScrollView/GBInfiniteScrollView/GBInfiniteScrollView.m; sourceTree = "<group>"; };
+		777D6F5027F0DF5D6C7B2808 /* Pods-Appy Little Eaters.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appy Little Eaters.debug.xcconfig"; sourceTree = "<group>"; };
+		7DA8A2EDD2A837ED7AB82B3B /* libPods-Appy Little Eaters.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Appy Little Eaters.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CAEB861407B90808033933A /* Pods-Appy Little Eaters-GBInfiniteScrollView-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appy Little Eaters-GBInfiniteScrollView-Private.xcconfig"; sourceTree = "<group>"; };
+		99B5B6717C7AA04B19D6FD87 /* GBInfiniteScrollViewPage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GBInfiniteScrollViewPage.h; path = GBInfiniteScrollView/GBInfiniteScrollView/GBInfiniteScrollViewPage.h; sourceTree = "<group>"; };
+		9B459B32A758F7DC1CE7D2CB /* Pods-Appy Little Eaters-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Appy Little Eaters-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A5EE739AE7626677401A74F2 /* Pods-Appy Little Eaters-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Appy Little Eaters-acknowledgements.plist"; sourceTree = "<group>"; };
+		AD08D890AE28C74519CDDEB4 /* GBInfiniteScrollView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GBInfiniteScrollView.h; path = GBInfiniteScrollView/GBInfiniteScrollView/GBInfiniteScrollView.h; sourceTree = "<group>"; };
+		C123B9AF1871E2A20878A168 /* Pods-Appy Little Eaters-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Appy Little Eaters-resources.sh"; sourceTree = "<group>"; };
+		E0F29C8CEE9F5C94CABADCA2 /* libPods-Appy Little Eaters-GBInfiniteScrollView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Appy Little Eaters-GBInfiniteScrollView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E10FB6EBCAF09BC7199BDFFC /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		F3BDDDB0ABA12E8E0F08EF32 /* Pods-Appy Little Eaters-GBInfiniteScrollView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Appy Little Eaters-GBInfiniteScrollView-dummy.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		253CDC6B94A23800E8185A59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				653E5F899F250DE19EDA3645 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A410B5E2100B3A5028CA8CA1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				830017F22E0FF74CA7FD241F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		434017D062E04A59E18DA268 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				1291EC3B787C2BBCA96C24ED /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		52CE8540F534A0877FC294E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				434017D062E04A59E18DA268 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7CEE7D2CCC1474A80BD72F32 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F58ACEEA5896E22D15DF7E1C /* Pods-Appy Little Eaters */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		7E67BD863911660071D40775 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F19F80F1D4DB808698DB9DB9 /* GBInfiniteScrollView */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		90EEF3A4828E9FEDCE42D2A7 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2C794B9A2BA993ADCF32046C /* Pods-Appy Little Eaters-GBInfiniteScrollView.xcconfig */,
+				8CAEB861407B90808033933A /* Pods-Appy Little Eaters-GBInfiniteScrollView-Private.xcconfig */,
+				F3BDDDB0ABA12E8E0F08EF32 /* Pods-Appy Little Eaters-GBInfiniteScrollView-dummy.m */,
+				126970458111B049CE2D38C9 /* Pods-Appy Little Eaters-GBInfiniteScrollView-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-Appy Little Eaters-GBInfiniteScrollView";
+			sourceTree = "<group>";
+		};
+		CE678C40EFE3ECF0D3A6DAF4 = {
+			isa = PBXGroup;
+			children = (
+				E10FB6EBCAF09BC7199BDFFC /* Podfile */,
+				52CE8540F534A0877FC294E4 /* Frameworks */,
+				7E67BD863911660071D40775 /* Pods */,
+				FD18630A8A5E752F0A18AE83 /* Products */,
+				7CEE7D2CCC1474A80BD72F32 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		F02689D8779AB1DB19F5BCFD /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				AD08D890AE28C74519CDDEB4 /* GBInfiniteScrollView.h */,
+				73BB4036432E64AA6E166528 /* GBInfiniteScrollView.m */,
+				99B5B6717C7AA04B19D6FD87 /* GBInfiniteScrollViewPage.h */,
+				3FABC871455D7D7798AE383A /* GBInfiniteScrollViewPage.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		F19F80F1D4DB808698DB9DB9 /* GBInfiniteScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				F02689D8779AB1DB19F5BCFD /* Core */,
+				90EEF3A4828E9FEDCE42D2A7 /* Support Files */,
+			);
+			path = GBInfiniteScrollView;
+			sourceTree = "<group>";
+		};
+		F58ACEEA5896E22D15DF7E1C /* Pods-Appy Little Eaters */ = {
+			isa = PBXGroup;
+			children = (
+				9B459B32A758F7DC1CE7D2CB /* Pods-Appy Little Eaters-acknowledgements.markdown */,
+				A5EE739AE7626677401A74F2 /* Pods-Appy Little Eaters-acknowledgements.plist */,
+				33748208865D6F58C909721A /* Pods-Appy Little Eaters-dummy.m */,
+				722576A8B1D4F8B47A3DB59D /* Pods-Appy Little Eaters-environment.h */,
+				C123B9AF1871E2A20878A168 /* Pods-Appy Little Eaters-resources.sh */,
+				777D6F5027F0DF5D6C7B2808 /* Pods-Appy Little Eaters.debug.xcconfig */,
+				52CD58D44CB88640395FD4A1 /* Pods-Appy Little Eaters.release.xcconfig */,
+			);
+			name = "Pods-Appy Little Eaters";
+			path = "Target Support Files/Pods-Appy Little Eaters";
+			sourceTree = "<group>";
+		};
+		FD18630A8A5E752F0A18AE83 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7DA8A2EDD2A837ED7AB82B3B /* libPods-Appy Little Eaters.a */,
+				E0F29C8CEE9F5C94CABADCA2 /* libPods-Appy Little Eaters-GBInfiniteScrollView.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		ADFF2CE1EC6A6B06B8C4F934 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BC8DD4B09B5B5EE058D5FDD /* GBInfiniteScrollView.h in Headers */,
+				1F09ACE187B166D799D9E0B1 /* GBInfiniteScrollViewPage.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0BE23AC7D98A64CA991FB1CF /* Pods-Appy Little Eaters-GBInfiniteScrollView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 546919AD78AA669FEDB03CFB /* Build configuration list for PBXNativeTarget "Pods-Appy Little Eaters-GBInfiniteScrollView" */;
+			buildPhases = (
+				57C54FD98E7F2FFF3B864912 /* Sources */,
+				253CDC6B94A23800E8185A59 /* Frameworks */,
+				ADFF2CE1EC6A6B06B8C4F934 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Appy Little Eaters-GBInfiniteScrollView";
+			productName = "Pods-Appy Little Eaters-GBInfiniteScrollView";
+			productReference = E0F29C8CEE9F5C94CABADCA2 /* libPods-Appy Little Eaters-GBInfiniteScrollView.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		65FA92442C60C1FE26C917B3 /* Pods-Appy Little Eaters */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A576B387114BD397A9FBCDAC /* Build configuration list for PBXNativeTarget "Pods-Appy Little Eaters" */;
+			buildPhases = (
+				5933836E796185E571C32455 /* Sources */,
+				A410B5E2100B3A5028CA8CA1 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E120D97E7D067038E72F3C59 /* PBXTargetDependency */,
+			);
+			name = "Pods-Appy Little Eaters";
+			productName = "Pods-Appy Little Eaters";
+			productReference = 7DA8A2EDD2A837ED7AB82B3B /* libPods-Appy Little Eaters.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		81C68E1C7515AC63E51F50CF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+			};
+			buildConfigurationList = 20A190FD297172848A91820B /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CE678C40EFE3ECF0D3A6DAF4;
+			productRefGroup = FD18630A8A5E752F0A18AE83 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				65FA92442C60C1FE26C917B3 /* Pods-Appy Little Eaters */,
+				0BE23AC7D98A64CA991FB1CF /* Pods-Appy Little Eaters-GBInfiniteScrollView */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		57C54FD98E7F2FFF3B864912 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E223DEA2847CA7C26F74F17 /* GBInfiniteScrollView.m in Sources */,
+				3E63A47DFD95DDFAC1519F1B /* GBInfiniteScrollViewPage.m in Sources */,
+				C02D89B57EAD44A3881497F7 /* Pods-Appy Little Eaters-GBInfiniteScrollView-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5933836E796185E571C32455 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4DB7C1D15AD11A84D62C97F /* Pods-Appy Little Eaters-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E120D97E7D067038E72F3C59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Appy Little Eaters-GBInfiniteScrollView";
+			target = 0BE23AC7D98A64CA991FB1CF /* Pods-Appy Little Eaters-GBInfiniteScrollView */;
+			targetProxy = 6C53A8F9DF1AABF39CD16D91 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2E662D2F134586287F06496D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		592B227497161064C738A6E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 777D6F5027F0DF5D6C7B2808 /* Pods-Appy Little Eaters.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7DF3C0C6B623BE6990885A3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52CD58D44CB88640395FD4A1 /* Pods-Appy Little Eaters.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		EEF6115364CF771F65CC6B96 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CAEB861407B90808033933A /* Pods-Appy Little Eaters-GBInfiniteScrollView-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Appy Little Eaters-GBInfiniteScrollView/Pods-Appy Little Eaters-GBInfiniteScrollView-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		F477271484B3378CA66F1491 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CAEB861407B90808033933A /* Pods-Appy Little Eaters-GBInfiniteScrollView-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Appy Little Eaters-GBInfiniteScrollView/Pods-Appy Little Eaters-GBInfiniteScrollView-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		F81BC1F37B6F5822A541D345 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		20A190FD297172848A91820B /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E662D2F134586287F06496D /* Debug */,
+				F81BC1F37B6F5822A541D345 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		546919AD78AA669FEDB03CFB /* Build configuration list for PBXNativeTarget "Pods-Appy Little Eaters-GBInfiniteScrollView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEF6115364CF771F65CC6B96 /* Debug */,
+				F477271484B3378CA66F1491 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A576B387114BD397A9FBCDAC /* Build configuration list for PBXNativeTarget "Pods-Appy Little Eaters" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				592B227497161064C738A6E1 /* Debug */,
+				7DF3C0C6B623BE6990885A3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 81C68E1C7515AC63E51F50CF /* Project object */;
+}

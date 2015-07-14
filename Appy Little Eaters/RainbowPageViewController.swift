@@ -14,6 +14,8 @@ import AVFoundation
 @objc
 public class RainbowPageViewController: UIViewController{
 	
+    @IBOutlet weak var Cloud1: Cloud1View!
+    @IBOutlet weak var Cloud2: Cloud2View!
 	@IBOutlet weak var RedBand: UIImageView!
 	@IBOutlet weak var OrangeBand: UIImageView!
 	@IBOutlet weak var YellowBand: UIImageView!
@@ -65,6 +67,7 @@ public class RainbowPageViewController: UIViewController{
 	}
 
 	func countRed(){
+    
 		var cgImage = RedBand.image?.CGImage
 		
 		var sizew = RedBand.image!.size.width
@@ -74,7 +77,8 @@ public class RainbowPageViewController: UIViewController{
 		var s = CGSize(width: sizew, height: sizeh)
 		UIGraphicsBeginImageContext(s)
 		RedBand.image!.drawInRect(CGRect(origin: CGPoint(x: 0, y: 0), size: s))
-		var newImage = UIGraphicsGetImageFromCurrentImageContext().CGImage
+        var i = UIGraphicsGetImageFromCurrentImageContext()
+		var newImage = UIGraphicsGetImageFromCurrentImageContext()?.CGImage
 		UIGraphicsEndImageContext()
 		
 	
@@ -107,6 +111,7 @@ public class RainbowPageViewController: UIViewController{
 			println("Done so lets segue")
 			bandComplete = true
 		}
+        i = nil
 		println("white: " + white.description + " nonwhite: " + nonwhite.description)
 	}
 	
@@ -164,6 +169,8 @@ public class RainbowPageViewController: UIViewController{
 	}
 	
 	public override func viewWillAppear(animated: Bool) {
+        Cloud1.addSwayAnimation()
+        Cloud2.addSwayAnimation()
 		if (NSUserDefaults.standardUserDefaults().boolForKey("RED")){
 			RedBand.hidden = false;
 		}

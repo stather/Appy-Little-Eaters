@@ -1,25 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="FiX-dY-Vvo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="FiX-dY-Vvo">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
+        <!--Splash SCreen-->
+        <scene sceneID="seK-Hc-tyN">
+            <objects>
+                <viewController title="Splash SCreen" id="i9I-gM-A5Y" customClass="SplashscreenViewController" customModule="Appy_Little_Eaters" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LpE-j8-Glj"/>
+                        <viewControllerLayoutGuide type="bottom" id="qbR-5I-vrL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0ui-Oz-Q2f" customClass="SplashscreenView" customModule="Appy_Little_Eaters" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="g5s-X7-DmQ"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <segue destination="IUV-C7-TOK" kind="push" identifier="SplashToStart" id="Aik-fa-2BN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Scg-7K-CAz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3155" y="320"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="YyS-DA-vMc">
             <objects>
                 <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="FiX-dY-Vvo" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="mI5-vB-2uG"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YpU-fk-304">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="IUV-C7-TOK" kind="relationship" relationship="rootViewController" id="xVf-L8-IDm"/>
+                        <segue destination="i9I-gM-A5Y" kind="relationship" relationship="rootViewController" id="phK-RO-uea"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZMQ-Ey-Bzc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2602" y="31"/>
+            <point key="canvasLocation" x="-3670" y="-757"/>
         </scene>
         <!--Start Page-->
         <scene sceneID="6Na-uN-Myc">
@@ -136,6 +160,25 @@
             </objects>
             <point key="canvasLocation" x="-2593" y="1366"/>
         </scene>
+        <!--scroller-->
+        <scene sceneID="38c-jd-so4">
+            <objects>
+                <viewController title="scroller" id="Bcw-Av-uQU" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="r6V-5I-6bV"/>
+                        <viewControllerLayoutGuide type="bottom" id="HRU-xs-y2M"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VJK-V4-fmi">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="E5C-2w-sOD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Led-SV-g0r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-710" y="214"/>
+        </scene>
         <!--Home Page-->
         <scene sceneID="1WD-mr-c1G">
             <objects>
@@ -202,6 +245,15 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="home-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Utx-cg-IgP">
                                 <rect key="frame" x="198" y="108" width="629" height="465"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jeJ-l5-GIr">
+                                <rect key="frame" x="886" y="26" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Bcw-Av-uQU" kind="push" id="zPN-CI-bUv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -648,6 +700,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rainbow-foreground.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ges-SK-Ls3">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wcB-dK-IzL" userLabel="cloud1" customClass="Cloud1View" customModule="Appy_Little_Eaters" customModuleProvider="target">
+                                <rect key="frame" x="683" y="32" width="243" height="171"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rix-w4-K46">
                                 <rect key="frame" x="16" y="20" width="99" height="88"/>
                                 <state key="normal" image="social-home.png">
@@ -657,6 +712,9 @@
                                     <segue destination="Xno-cK-C1u" kind="unwind" unwindAction="unwindToHomeView:" id="A95-qO-lrn"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hKi-uH-hfy" userLabel="cloud2" customClass="Cloud2View" customModule="Appy_Little_Eaters" customModuleProvider="target">
+                                <rect key="frame" x="193" y="20" width="217" height="147"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -668,6 +726,8 @@
                     <navigationItem key="navigationItem" id="EDK-2X-J7C"/>
                     <connections>
                         <outlet property="BrownBand" destination="OkH-QK-n7p" id="aQc-hh-h2M"/>
+                        <outlet property="Cloud1" destination="wcB-dK-IzL" id="G5C-5I-uVs"/>
+                        <outlet property="Cloud2" destination="hKi-uH-hfy" id="QjU-03-jDd"/>
                         <outlet property="GreenBand" destination="oYI-19-FVq" id="dCs-jc-bqI"/>
                         <outlet property="OrangeBand" destination="7w7-ah-Mb6" id="3nz-Gy-Zpr"/>
                         <outlet property="PurpleBand" destination="fhO-Us-1Cq" id="9Yr-i9-2gi"/>
@@ -877,7 +937,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="UDV-Xy-o9A"/>
         <segue reference="PU9-ck-5gQ"/>
-        <segue reference="f2G-Sa-c7h"/>
     </inferredMetricsTieBreakers>
 </document>

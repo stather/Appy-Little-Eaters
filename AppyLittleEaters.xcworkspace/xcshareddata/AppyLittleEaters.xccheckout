@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>5897BDA6-8AAF-48DD-80C4-6B059176E547</string>
+	<key>IDESourceControlProjectName</key>
+	<string>AppyLittleEaters</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>6D2C66C01564780912AC85776A5467CE3C062222</key>
+		<string>https://github.com/stather/Appy-Little-Eaters.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>AppyLittleEaters.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>6D2C66C01564780912AC85776A5467CE3C062222</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/stather/Appy-Little-Eaters.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>6D2C66C01564780912AC85776A5467CE3C062222</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>6D2C66C01564780912AC85776A5467CE3C062222</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Appy-Little-Eaters</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D54B265CCE2746D98DE9987 /* libPods-Appy Little Eaters.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59B3F4BAA60E6F12574AF0D /* libPods-Appy Little Eaters.a */; };
 		460E4A9918AEC7CF00BDC881 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460E4A9818AEC7CF00BDC881 /* SpriteKit.framework */; };
 		461441A619D7081C00CB5A3E /* no.png in Resources */ = {isa = PBXBuildFile; fileRef = 461441A419D7081C00CB5A3E /* no.png */; };
 		461441A719D7081C00CB5A3E /* yes.png in Resources */ = {isa = PBXBuildFile; fileRef = 461441A519D7081C00CB5A3E /* yes.png */; };
@@ -441,7 +442,17 @@
 		46F6B40519FD348300205F6B /* Bluebird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F6B40419FD348300205F6B /* Bluebird.swift */; };
 		46F6B40719FD35FC00205F6B /* GreenDragon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F6B40619FD35FC00205F6B /* GreenDragon.swift */; };
 		46F6B40919FD428000205F6B /* RewardDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F6B40819FD428000205F6B /* RewardDefinition.swift */; };
+		686546DB1B544A9D009FF566 /* GBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686546DA1B544A9D009FF566 /* GBViewController.swift */; };
 		68774A121ABD90B70001CA32 /* healthykids.wav in Resources */ = {isa = PBXBuildFile; fileRef = 68774A111ABD90B70001CA32 /* healthykids.wav */; };
+		68BA94FC1B5597F8005D6A64 /* pea.png in Resources */ = {isa = PBXBuildFile; fileRef = 68BA94F91B5597F8005D6A64 /* pea.png */; };
+		68BA94FD1B5597F8005D6A64 /* SPLASH PAGE.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68BA94FA1B5597F8005D6A64 /* SPLASH PAGE.jpg */; };
+		68BA94FE1B5597F8005D6A64 /* SplashscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BA94FB1B5597F8005D6A64 /* SplashscreenView.swift */; };
+		68BA95001B5598FE005D6A64 /* SplashscreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BA94FF1B5598FE005D6A64 /* SplashscreenViewController.swift */; };
+		68D7C9D61B52FA89005DFA20 /* Cloud1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D7C9D31B52FA89005DFA20 /* Cloud1View.swift */; };
+		68D7C9D71B52FA89005DFA20 /* cloud1.png in Resources */ = {isa = PBXBuildFile; fileRef = 68D7C9D51B52FA89005DFA20 /* cloud1.png */; };
+		68D7C9F11B53018F005DFA20 /* Cloud2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D7C9F01B53018E005DFA20 /* Cloud2View.swift */; };
+		68D7C9F31B53019B005DFA20 /* cloud2.png in Resources */ = {isa = PBXBuildFile; fileRef = 68D7C9F21B53019B005DFA20 /* cloud2.png */; };
+		68D7C9F51B530603005DFA20 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C9F41B530603005DFA20 /* Fabric.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -469,6 +480,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15644A719024CF74052F4967 /* Pods-Appy Little Eaters.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Appy Little Eaters.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Appy Little Eaters/Pods-Appy Little Eaters.debug.xcconfig"; sourceTree = "<group>"; };
+		3C36EAC76D9D5423F127DCBB /* Pods-Appy Little Eaters.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Appy Little Eaters.release.xcconfig"; path = "Pods/Target Support Files/Pods-Appy Little Eaters/Pods-Appy Little Eaters.release.xcconfig"; sourceTree = "<group>"; };
 		460E4A9818AEC7CF00BDC881 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		461441A419D7081C00CB5A3E /* no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no.png; sourceTree = "<group>"; };
 		461441A519D7081C00CB5A3E /* yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yes.png; sourceTree = "<group>"; };
@@ -924,7 +937,19 @@
 		46F6B40419FD348300205F6B /* Bluebird.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bluebird.swift; sourceTree = "<group>"; };
 		46F6B40619FD35FC00205F6B /* GreenDragon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreenDragon.swift; sourceTree = "<group>"; };
 		46F6B40819FD428000205F6B /* RewardDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardDefinition.swift; sourceTree = "<group>"; };
+		686546D91B54483D009FF566 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		686546DA1B544A9D009FF566 /* GBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBViewController.swift; sourceTree = "<group>"; };
 		68774A111ABD90B70001CA32 /* healthykids.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = healthykids.wav; sourceTree = "<group>"; };
+		68BA94F91B5597F8005D6A64 /* pea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pea.png; sourceTree = "<group>"; };
+		68BA94FA1B5597F8005D6A64 /* SPLASH PAGE.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "SPLASH PAGE.jpg"; sourceTree = "<group>"; };
+		68BA94FB1B5597F8005D6A64 /* SplashscreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashscreenView.swift; sourceTree = "<group>"; };
+		68BA94FF1B5598FE005D6A64 /* SplashscreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashscreenViewController.swift; sourceTree = "<group>"; };
+		68D7C9D31B52FA89005DFA20 /* Cloud1View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cloud1View.swift; sourceTree = "<group>"; };
+		68D7C9D51B52FA89005DFA20 /* cloud1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud1.png; sourceTree = "<group>"; };
+		68D7C9F01B53018E005DFA20 /* Cloud2View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cloud2View.swift; sourceTree = "<group>"; };
+		68D7C9F21B53019B005DFA20 /* cloud2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud2.png; sourceTree = "<group>"; };
+		68D7C9F41B530603005DFA20 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		E59B3F4BAA60E6F12574AF0D /* libPods-Appy Little Eaters.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Appy Little Eaters.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -935,10 +960,12 @@
 				46C441101A04E91900C1A6BE /* CoreData.framework in Frameworks */,
 				46E7C7FB1988387700CE7AB3 /* AVFoundation.framework in Frameworks */,
 				460E4A9918AEC7CF00BDC881 /* SpriteKit.framework in Frameworks */,
+				68D7C9F51B530603005DFA20 /* Fabric.framework in Frameworks */,
 				4620FB8E1983EDCD0063AB9E /* Crashlytics.framework in Frameworks */,
 				464F703318A019F000DDA449 /* CoreGraphics.framework in Frameworks */,
 				464F703518A019F000DDA449 /* UIKit.framework in Frameworks */,
 				464F703118A019F000DDA449 /* Foundation.framework in Frameworks */,
+				1D54B265CCE2746D98DE9987 /* libPods-Appy Little Eaters.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1149,11 +1176,15 @@
 		464F702418A019EF00DDA449 = {
 			isa = PBXGroup;
 			children = (
+				68BA94F71B5597F8005D6A64 /* splashscreen */,
+				686546D91B54483D009FF566 /* Podfile */,
+				68D7C9D21B52FA89005DFA20 /* coreanimation */,
 				469AC7931A44C3B000CDA070 /* SpineImporter */,
 				464F703618A019F000DDA449 /* Appy Little Eaters */,
 				464F705818A019F000DDA449 /* Appy Little EatersTests */,
 				464F702F18A019F000DDA449 /* Frameworks */,
 				464F702E18A019F000DDA449 /* Products */,
+				823DC13BC6B98D1230159BF7 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1169,6 +1200,7 @@
 		464F702F18A019F000DDA449 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				68D7C9F41B530603005DFA20 /* Fabric.framework */,
 				46C4410F1A04E91900C1A6BE /* CoreData.framework */,
 				46E7C7FA1988387700CE7AB3 /* AVFoundation.framework */,
 				4620FB8D1983EDCD0063AB9E /* Crashlytics.framework */,
@@ -1177,6 +1209,7 @@
 				464F703218A019F000DDA449 /* CoreGraphics.framework */,
 				464F703418A019F000DDA449 /* UIKit.framework */,
 				464F705218A019F000DDA449 /* XCTest.framework */,
+				E59B3F4BAA60E6F12574AF0D /* libPods-Appy Little Eaters.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1224,6 +1257,7 @@
 				4626D5E71A0FCB8700D0FB24 /* smoke.png */,
 				4626D5ED1A0FD27A00D0FB24 /* bokeh.png */,
 				46E1FCC81A2D107B00651193 /* MoveableProtocol.swift */,
+				686546DA1B544A9D009FF566 /* GBViewController.swift */,
 			);
 			path = "Appy Little Eaters";
 			sourceTree = "<group>";
@@ -1822,6 +1856,55 @@
 			name = parents;
 			sourceTree = "<group>";
 		};
+		68BA94F71B5597F8005D6A64 /* splashscreen */ = {
+			isa = PBXGroup;
+			children = (
+				68BA94F81B5597F8005D6A64 /* images */,
+				68BA94FB1B5597F8005D6A64 /* SplashscreenView.swift */,
+				68BA94FF1B5598FE005D6A64 /* SplashscreenViewController.swift */,
+			);
+			name = splashscreen;
+			path = ../Documents/coreanimatorexports/splashscreen;
+			sourceTree = "<group>";
+		};
+		68BA94F81B5597F8005D6A64 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				68BA94F91B5597F8005D6A64 /* pea.png */,
+				68BA94FA1B5597F8005D6A64 /* SPLASH PAGE.jpg */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		68D7C9D21B52FA89005DFA20 /* coreanimation */ = {
+			isa = PBXGroup;
+			children = (
+				68D7C9F01B53018E005DFA20 /* Cloud2View.swift */,
+				68D7C9D31B52FA89005DFA20 /* Cloud1View.swift */,
+				68D7C9D41B52FA89005DFA20 /* images */,
+			);
+			name = coreanimation;
+			path = "Appy Little Eaters/coreanimation";
+			sourceTree = "<group>";
+		};
+		68D7C9D41B52FA89005DFA20 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				68D7C9F21B53019B005DFA20 /* cloud2.png */,
+				68D7C9D51B52FA89005DFA20 /* cloud1.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		823DC13BC6B98D1230159BF7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				15644A719024CF74052F4967 /* Pods-Appy Little Eaters.debug.xcconfig */,
+				3C36EAC76D9D5423F127DCBB /* Pods-Appy Little Eaters.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1829,10 +1912,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 464F706218A019F000DDA449 /* Build configuration list for PBXNativeTarget "Appy Little Eaters" */;
 			buildPhases = (
+				BA09164A7E393DBF373E1A2D /* Check Pods Manifest.lock */,
 				464F702918A019EF00DDA449 /* Sources */,
 				464F702A18A019EF00DDA449 /* Frameworks */,
 				464F702B18A019EF00DDA449 /* Resources */,
 				4620FB8C1983ED5E0063AB9E /* ShellScript */,
+				FB40A62C995A80884DF61410 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2100,6 +2185,7 @@
 				469C9B191A23CD5500E49BA5 /* brown-squirrel4.png in Resources */,
 				469AC7F11A50709B00CDA070 /* TERMS-AND-CONDITIONS.jpg in Resources */,
 				468169CA1A08385C000D19E9 /* pinkflowers2.png in Resources */,
+				68D7C9F31B53019B005DFA20 /* cloud2.png in Resources */,
 				46E8D17E19F3B97000AEF750 /* PARENTS-PAGE-back_06.png in Resources */,
 				46E15DA71A06430A00B5BAE1 /* pink-flowers_RB.png in Resources */,
 				469C9B2D1A23CEE600E49BA5 /* bunny4.png in Resources */,
@@ -2192,6 +2278,7 @@
 				469C9B171A23CD5500E49BA5 /* brown-squirrel2.png in Resources */,
 				46E1FCB61A25190000651193 /* fish2-2.png in Resources */,
 				469AC84C1A5341C900CDA070 /* honeydew.png in Resources */,
+				68BA94FC1B5597F8005D6A64 /* pea.png in Resources */,
 				469AC82E1A53406B00CDA070 /* cantaloupe.png in Resources */,
 				469AC7E91A506D8100CDA070 /* aleisagame.m4a in Resources */,
 				464205AE18EB357A005EC168 /* bird5_03.png in Resources */,
@@ -2206,6 +2293,7 @@
 				469AC89E1A5345CD00CDA070 /* sweet_potato.png in Resources */,
 				46AE6C0519E970F0000238F4 /* rainbow-background.jpg in Resources */,
 				4642606E19F462610028C878 /* facebook_03.png in Resources */,
+				68D7C9D71B52FA89005DFA20 /* cloud1.png in Resources */,
 				461441A619D7081C00CB5A3E /* no.png in Resources */,
 				46AE6C3E19EAB754000238F4 /* strawberry.m4a in Resources */,
 				469C9B2C1A23CEE600E49BA5 /* bunny3.png in Resources */,
@@ -2233,6 +2321,7 @@
 				46E1FCB81A25190000651193 /* fish2-4.png in Resources */,
 				469AC87A1A53444600CDA070 /* pomegranate.png in Resources */,
 				461441A719D7081C00CB5A3E /* yes.png in Resources */,
+				68BA94FD1B5597F8005D6A64 /* SPLASH PAGE.jpg in Resources */,
 				46E8D17B19F3B96600AEF750 /* PARENTS-PAGE-background.jpg in Resources */,
 				4642606F19F462610028C878 /* pinit_03.png in Resources */,
 				46E1FCC31A251AB800651193 /* blue-dragon-1.png in Resources */,
@@ -2293,6 +2382,36 @@
 			shellPath = /bin/sh;
 			shellScript = "./Crashlytics.framework/run 9151a746d6d01e3cf7ec2a3254ebb0c672760333 fdbe6a6a3f84b4a67580e0ebae7535dc1c1a42f97739ed49a478d6680b1c6087";
 		};
+		BA09164A7E393DBF373E1A2D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FB40A62C995A80884DF61410 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Appy Little Eaters/Pods-Appy Little Eaters-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2319,6 +2438,7 @@
 				469AC7A91A44C3B000CDA070 /* SGG_SpineSkin.m in Sources */,
 				46E15DD61A0687EC00B5BAE1 /* BlueDragon.swift in Sources */,
 				469AC7A81A44C3B000CDA070 /* SGG_SpineJSONTools.m in Sources */,
+				68D7C9D61B52FA89005DFA20 /* Cloud1View.swift in Sources */,
 				46E15D791A0528BA00B5BAE1 /* StandardScroller.swift in Sources */,
 				46E8D17219F2B48000AEF750 /* FoodCell.swift in Sources */,
 				46E7C7CA1985114D00CE7AB3 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
@@ -2346,9 +2466,11 @@
 				46E15DBA1A06856900B5BAE1 /* BrownRabbit.swift in Sources */,
 				4626D5F41A0FEBBA00D0FB24 /* SplashDrop.swift in Sources */,
 				46E7C7C91985114D00CE7AB3 /* TPKeyboardAvoidingTableView.m in Sources */,
+				68D7C9F11B53018F005DFA20 /* Cloud2View.swift in Sources */,
 				46E15DB61A06851D00B5BAE1 /* BlueFlowers.swift in Sources */,
 				46E15DCA1A06872700B5BAE1 /* Foxglove.swift in Sources */,
 				46E1FCC91A2D107B00651193 /* MoveableProtocol.swift in Sources */,
+				686546DB1B544A9D009FF566 /* GBViewController.swift in Sources */,
 				464F704A18A019F000DDA449 /* CViewController.m in Sources */,
 				4642607A19F589210028C878 /* ForestViewController.swift in Sources */,
 				469AC7A41A44C3B000CDA070 /* SGG_SkinSprite.m in Sources */,
@@ -2360,8 +2482,10 @@
 				469AC7C51A503E1A00CDA070 /* Butterfly.swift in Sources */,
 				4642607F19F58EAE0028C878 /* Squirrel.swift in Sources */,
 				46E8D17819F2C86300AEF750 /* ResourceAudioPlayer.swift in Sources */,
+				68BA94FE1B5597F8005D6A64 /* SplashscreenView.swift in Sources */,
 				46E7C7C81985114D00CE7AB3 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				469AC7A51A44C3B000CDA070 /* SGG_Spine.m in Sources */,
+				68BA95001B5598FE005D6A64 /* SplashscreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2503,6 +2627,7 @@
 		};
 		464F706318A019F000DDA449 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15644A719024CF74052F4967 /* Pods-Appy Little Eaters.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2528,6 +2653,7 @@
 		};
 		464F706418A019F000DDA449 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C36EAC76D9D5423F127DCBB /* Pods-Appy Little Eaters.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
