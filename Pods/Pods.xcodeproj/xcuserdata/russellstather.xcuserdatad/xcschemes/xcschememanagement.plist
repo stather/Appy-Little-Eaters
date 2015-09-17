@@ -4,7 +4,22 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-Appy Little Eaters-ANRestOps.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Appy Little Eaters-GBInfiniteScrollView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Appy Little Eaters-ObjectiveSpine.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Appy Little Eaters-SpineSpriteKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0BE23AC7D98A64CA991FB1CF</key>
+		<key>3BFCCE630ED9FA59D039DBDA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>65FA92442C60C1FE26C917B3</key>
+		<key>3F506E661D0000BF13436C59</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>669F8F4B5468BBEF089303CE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9020CF2AF163EA141636AFF0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE81EDC1EA3EB9019F38370B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

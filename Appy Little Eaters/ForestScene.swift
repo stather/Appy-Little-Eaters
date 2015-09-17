@@ -58,8 +58,9 @@ public class ForestScene : SKScene{
 	override public func didMoveToView(view: SKView) {
 		_speed = cStartSpeed
 		
-		var r:CGSize = frame.size
+		let r:CGSize = frame.size
 		fact = Float(r.height) / backgroundHeight
+        scaledWidth = ForestScene.backgroundWidth() * fact
 		anchorPoint = CGPoint(x: 0.5, y: 0.5)
 		userInteractionEnabled = true
 		alpha = 1
@@ -75,28 +76,28 @@ public class ForestScene : SKScene{
 	public func forestPoint(p:CGPoint) -> CGPoint{
 		
 		var width:Float = ForestScene.backgroundWidth()*fact;
-		var height:Float = backgroundHeight*fact;
+		let height:Float = backgroundHeight*fact;
 		
-		var scaledx:Float = (Float(p.x)) * fact
-		var scaledy:Float = Float(p.y) * fact
+		let scaledx:Float = (Float(p.x)) * fact
+		let scaledy:Float = Float(p.y) * fact
 				
 		return CGPointMake(CGFloat(scaledx + leftHandEdge - tileWidth!/2), CGFloat(scaledy - (height/2)))
 	}
 	
 	public func originalPoint(p:CGPoint) -> CGPoint{
 		var width:Float = ForestScene.backgroundWidth()*fact;
-		var height:Float = backgroundHeight*fact;
+		let height:Float = backgroundHeight*fact;
 		
-		var tileWidth:Float = ForestScene.backgroundWidth()/10 * fact
+		let tileWidth:Float = ForestScene.backgroundWidth()/10 * fact
 		
-		var x = Float(p.x)
-		var y = Float(p.y)
+		let x = Float(p.x)
+		let y = Float(p.y)
 		
-		var scaledx = x + tileWidth/2 - leftHandEdge
-		var scaledy = y + height/2
+		let scaledx = x + tileWidth/2 - leftHandEdge
+		let scaledy = y + height/2
 		
 		var origx = scaledx / fact
-		var origy = scaledy / fact
+		let origy = scaledy / fact
 		
 		if origx < 0 {
 			origx += 9000
@@ -115,25 +116,38 @@ public class ForestScene : SKScene{
 		_lastUpdateTime = currentTime;
 		
 		// Scroll
+        //strawb.activateAnimations()
 		
 		if (Scrolling){
 			for item in children {
-				var node:SKNode = item as! SKNode
-				if node is ScrollableProtocol && node is Forest{
-					var sp = node as! ScrollableProtocol
-					var amount:Float  = _speed * Float(_dt)
-					sp.scrollBy(amount)
+				let node:SKNode = item 
+//                if node is ScrollableProtocol && node is Forest{
+                if node.name == "BACK"{
+//					var sp = node as! ScrollableProtocol
+					let amount:Float  = _speed * Float(_dt)
+//					sp.scrollBy(amount)
+                    var x:Float = Float(node.position.x)
+                    let y:Float = Float(node.position.y)
+                    x += amount
+                    if amount < 0 && x < -1000 {
+                        x += 7093
+                    }
+                    if amount > 0 && x > 2000 {
+                        x -= 7093
+                    }
+                    node.position = CGPoint(x: CGFloat(x), y: CGFloat(y))
+
 				}
 			}
 			for item in children {
-				var node:SKNode = item as! SKNode
+				let node:SKNode = item 
 				if node is ScrollableProtocol && !(node is Forest){
-					var sp = node as! ScrollableProtocol
-					var amount:Float  = _speed * Float(_dt)
+					let sp = node as! ScrollableProtocol
+					let amount:Float  = _speed * Float(_dt)
 					sp.scrollBy(amount)
 				}
 				if node is MoveableProtocol && !(node is Forest){
-					var mp = node as! MoveableProtocol
+					let mp = node as! MoveableProtocol
 					mp.moveBy(Float(_dt))
 				}
 				if node is SGG_Spine{
@@ -144,7 +158,7 @@ public class ForestScene : SKScene{
 		}
 		//frog.splash(_dt)
 		if count > 0{
-			var frog = SplashDrop()
+			let frog = SplashDrop()
 			frog.position = self.forestPoint(CGPoint(x: CGFloat(1400), y: CGFloat(500)))
 			self.addChild(frog)
 			count--
@@ -153,16 +167,78 @@ public class ForestScene : SKScene{
 	
 	public override func didSimulatePhysics() {
 		self.enumerateChildNodesWithName("SPLASH", usingBlock: {
-			(node:SKNode!, stop:UnsafeMutablePointer <ObjCBool> ) -> Void in
-			var bottom = -(self.backgroundHeight*self.fact)/2
+			(node:SKNode, stop:UnsafeMutablePointer <ObjCBool> ) -> Void in
+			let bottom = -(self.backgroundHeight*self.fact)/2
 			if node.position.y < CGFloat(bottom) {
 				node.removeFromParent()
 			}
 		})
 	}
 	
+    var strawb:SGG_Spine!
+    
+    func saveContentsOfUrl(name:String, ext:String, srcUrl:String){
+        let fileManager:NSFileManager = NSFileManager.defaultManager()
+        let bundleID:String = NSBundle.mainBundle().bundleIdentifier!
+        
+        let possibleURLS:NSArray = fileManager.URLsForDirectory(NSSearchPathDirectory.ApplicationSupportDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)
+        let appSupportDir:NSURL = possibleURLS[0] as! NSURL
+        let dirPath = appSupportDir.URLByAppendingPathComponent(bundleID)
+        var error:NSError?
+        do {
+			try fileManager.createDirectoryAtURL(dirPath, withIntermediateDirectories: true, attributes: nil)
+		} catch let error1 as NSError {
+			error = error1
+		}
+        let filename = dirPath.URLByAppendingPathComponent(name + "." + ext)
+        let filepath = filename.path
+        //let s = NSBundle.mainBundle().resourcePath?.stringByAppendingPathComponent(name + "." + ext)
+        let u:NSURL = NSURL(string: srcUrl)!
+        let d:NSData = NSData(contentsOfURL: u)!
+        
+        let res = fileManager.createFileAtPath(filepath!, contents: d, attributes: nil)
+        let a = 2
+    }
 	
 	func createSceneContents(){
+        
+        let fullUrl = "http://localhost:8079/Animation/listAnimationsJson"
+        var params:NSDictionary = NSDictionary(objects: ["obj"], forKeys: ["key"])
+        ANRestOps.getInBackground(fullUrl, parameters: params as! [NSObject : AnyObject], beforeRequest: { () -> Void in
+            
+            }, onCompletion: {(response: ANRestOpsResponse!) -> Void in
+                let resp = response.dataAsArray()
+                for item in resp{
+                    let atlas:String = item.objectForKey("atlas") as! String
+                    let texture:String = item.objectForKey("texture") as! String
+                    let json:String = item.objectForKey("json") as! String
+                    let name:String = item.objectForKey("name") as! String
+                    let a = 1
+                    // get and save atlas
+                    self.saveContentsOfUrl(name, ext: "atlas" ,srcUrl: atlas)
+                    self.saveContentsOfUrl(name, ext: "png", srcUrl: texture)
+                    self.saveContentsOfUrl(name, ext: "json", srcUrl: json)
+                    var skel:SpineSkeleton = DZSpineSceneBuilder.loadSkeletonName(name, scale: 0.1)
+                    var builder:DZSpineSceneBuilder = DZSpineSceneBuilder()
+                    var n:SKNode = builder.nodeWithSkeleton(skel, animationName: "waving", loop: true)
+                    var placeholder:SKNode = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: 100, height: 100))
+                    //placeholder.position = CGPoint(x: 0,y: 0)
+                    placeholder.addChild(n)
+                    placeholder.zPosition = 1000
+                    self.addChild(placeholder)
+                    let b = 2
+                }
+        });
+        
+        
+        //strawb = SGG_Spine()
+        //strawb.skeletonFromFileNamed("strawb", andAtlasNamed: "strawb", andUseSkinNamed: nil)
+        //strawb.queuedAnimation = "waving"
+        //strawb.queueIntro = 0.1
+        //strawb.runAnimation("waving", andCount: 0, withIntroPeriodOf: 0, andUseQueue: true)
+        //strawb.xScale = 0.5
+        //strawb.yScale = 0.5
+        //addChild(strawb)
 		//var n = SGG_Spine()
 		//n.skeletonFromFileNamed("deer", andAtlasNamed: "deer", andUseSkinNamed: nil)
 		//n.queuedAnimation = "animation"
@@ -172,14 +248,42 @@ public class ForestScene : SKScene{
 		//n.yScale = 0.5
 		//addChild(n)
 		
-		for index in 1...10{
-			var forest = Forest(parentScene: self, slice: index)
-			addChild(forest)
-		}
+//		for index in 1...10{
+//			var forest = Forest(parentScene: self, slice: index)
+//			addChild(forest)
+//		}
+        
+        leftHandEdge = 0
+        let formatter = NSNumberFormatter()
+        formatter.minimumIntegerDigits = 2
+        var atlas = SKTextureAtlas(named: "newforest")
+        var columnWidth:Int!
+        var x:Int = -512
+        for column in 1...10{
+            let strColumn = formatter.stringFromNumber(column)
+            var y:Int = -384
+            for var row:Int=3; row>0; row=row-1{
+                let strRow = formatter.stringFromNumber(row)
+                let name = "background-gc-" + strColumn! + "-" + strRow!
+                let texture = atlas.textureNamed(name)
+                let size = texture.size()
+                columnWidth = Int(size.width)
+                // add the texture node at x,y
+                let n = SKSpriteNode(texture: texture)
+                let posx:Int = x + columnWidth/2
+                let posy:Int = y + Int(size.height)/2
+                n.position = CGPoint(x: posx,y: posy)
+                n.name = "BACK"
+                addChild(n)
+                y += Int(size.height)
+            }
+            x += columnWidth
+        }
+        
 		
 		var fetchAllRewards = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewards")
 		var error:NSErrorPointer! = NSErrorPointer()
-		for item in managedObjectContext?.executeFetchRequest(fetchAllRewards!, error: error) as! [DReward]{
+		for item in (try! managedObjectContext?.executeFetchRequest(fetchAllRewards!)) as! [DReward]{
 			let reward:ForestCreature.CreatureName = ForestCreature.CreatureName(rawValue: Int(item.creatureName))!
 			var creature:ForestCreature = ForestCreature.from(reward)
 			creature.position = forestPoint(CGPoint(x: CGFloat(item.positionX), y: CGFloat(item.positionY)))
@@ -280,17 +384,17 @@ public class ForestScene : SKScene{
 	}
 
 	
-	public override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+	public override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
-        var touch:UITouch = touches.first! as! UITouch
+        let touch:UITouch = touches.first! 
 		
-		var location = touch.locationInNode(self)
-		var nodes = nodesAtPoint(location)
+		let location = touch.locationInNode(self)
+		let nodes = nodesAtPoint(location)
 		var creatureTouched:Bool = false
 		for item in nodes{
 			if Scrolling{
 				if item is Performer{
-					var creature:Performer = item as! Performer
+					let creature:Performer = item as! Performer
 					creature.perform()
 					creatureTouched = true
 				}

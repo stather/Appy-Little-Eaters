@@ -19,14 +19,20 @@ class StandardScroller : ScrollableProtocol{
 	
 	@objc func scrollBy(amount: Float) {
 		var x:Float = Float(node.position.x)
-		var y:Float = Float(node.position.y)
+		let y:Float = Float(node.position.y)
 		x += amount
-		if x < -howMuch*2{
-			x += howMuch * 10
-		}
-		if x > howMuch*8{
-			x -= howMuch * 10
-		}
+//		if x < -howMuch*2{
+//			x += howMuch * 10
+//		}
+//		if x > howMuch*8{
+//			x -= howMuch * 10
+//		}
+        if amount < 0 && x < -1000 {
+            x += 9000
+        }
+        if amount > 0 && x > 2000 {
+            x -= 9000
+        }
 		node.position = CGPoint(x: CGFloat(x), y: CGFloat(y))
 	}
 }

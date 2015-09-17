@@ -14,12 +14,12 @@ public class SplashDrop : ForestCreature{
 	var count = 5
 	
 	convenience init(){
-		var t:SKTexture = SKTexture(imageNamed: "drop1")
+		let t:SKTexture = SKTexture(imageNamed: "drop1")
 		self.init(texture: t, color:UIColor.blackColor(), size:t.size())
 		name = "SPLASH"
 		physicsBody = SKPhysicsBody(circleOfRadius: size.width/2)
-		var vy:Int = Int(arc4random_uniform(700)) + 400
-		var vx:Int = Int(arc4random_uniform(400)) - 200
+		let vy:Int = Int(arc4random_uniform(700)) + 400
+		let vx:Int = Int(arc4random_uniform(400)) - 200
 		physicsBody?.velocity = CGVector(dx: CGFloat(vx), dy: CGFloat(vy))
 		physicsBody?.linearDamping = 0
 		
@@ -29,21 +29,21 @@ public class SplashDrop : ForestCreature{
 //		if (position.y >= 900){
 //			reachedTop = true
 //		}
-		print("deltat ")
-		println(deltaTime)
+		print("deltat ", terminator: "")
+		print(deltaTime)
 		if (position.y < 900 && count > 0){
-			var f = 200/0.08*Float(deltaTime)
+			let f = 200/0.08*Float(deltaTime)
 			var vec = CGVector(dx: 0.0, dy: CGFloat(f))
 			//physicsBody?.applyImpulse(vec)
-			println("applying impulse")
+			print("applying impulse")
 			reachedTop = true
 			count--
 		}
-		print("velocity ")
-		print(physicsBody?.velocity.dx)
-		print(",")
-		print(physicsBody?.velocity.dy)
-		println()
+		print("velocity ", terminator: "")
+		print(physicsBody?.velocity.dx, terminator: "")
+		print(",", terminator: "")
+		print(physicsBody?.velocity.dy, terminator: "")
+		print("")
 		
 	}
 	

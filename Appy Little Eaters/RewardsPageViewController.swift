@@ -44,8 +44,12 @@ class RewardsPageViewController: UIViewController{
 		reward.scale = chosen.scale
 		chosen.available = false		
 		
-		var error:NSErrorPointer = NSErrorPointer()
-		managedObjectContext?.save(error)
+		let error:NSErrorPointer = NSErrorPointer()
+		do {
+			try managedObjectContext?.save()
+		} catch let error1 as NSError {
+			error.memory = error1
+		}
 		performSegueWithIdentifier("RewardToForest", sender: self)
 	}
 	
@@ -71,7 +75,7 @@ class RewardsPageViewController: UIViewController{
 		DoneButton.enabled = true
 	}
 
-	required init(coder aDecoder: NSCoder) {
+	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder);
 	}
 	
@@ -80,11 +84,11 @@ class RewardsPageViewController: UIViewController{
 	}
 	
 	override func viewDidLoad() {
-		var fetchRequest: NSFetchRequest = managedObjectModel?.fetchRequestTemplateForName("FetchAvailableRewards")?.copy() as! NSFetchRequest
+		let fetchRequest: NSFetchRequest = managedObjectModel?.fetchRequestTemplateForName("FetchAvailableRewards")?.copy() as! NSFetchRequest
 		fetchRequest.sortDescriptors = [NSSortDescriptor(key: "level", ascending: true)]
-		var error:NSErrorPointer = NSErrorPointer()
+		let error:NSErrorPointer = NSErrorPointer()
 		let count = managedObjectContext?.countForFetchRequest(fetchRequest, error: error)
-		let rewards:[DRewardPool] = managedObjectContext?.executeFetchRequest(fetchRequest, error: error) as! [DRewardPool]
+		let rewards:[DRewardPool] = (try! managedObjectContext?.executeFetchRequest(fetchRequest)) as! [DRewardPool]
 		var filepath:NSString =  NSBundle.mainBundle().pathForResource(rewards[0].imageName, ofType: "png")!
 		LeftReward.image = UIImage(contentsOfFile: filepath as String)
 		lhs = rewards[0]

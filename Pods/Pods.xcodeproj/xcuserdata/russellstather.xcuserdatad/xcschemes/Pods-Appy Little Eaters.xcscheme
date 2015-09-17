@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "65FA92442C60C1FE26C917B3"
+               BlueprintIdentifier = "3F506E661D0000BF13436C59"
                BuildableName = "libPods-Appy Little Eaters.a"
                BlueprintName = "Pods-Appy Little Eaters"
                ReferencedContainer = "container:Pods.xcodeproj">

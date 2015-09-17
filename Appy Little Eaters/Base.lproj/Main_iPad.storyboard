@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="FiX-dY-Vvo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="FiX-dY-Vvo">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -354,6 +354,18 @@
                                     <action selector="fillTheForest:" destination="RbU-s2-iag" eventType="touchUpInside" id="4l5-N9-EYG"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jdH-Pw-QR3">
+                                <rect key="frame" x="885" y="77" width="109" height="30"/>
+                                <state key="normal" title="Download Food">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="downloadFood:" destination="RbU-s2-iag" eventType="touchUpInside" id="ZX0-nb-eYK"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qma-wH-2oi">
+                                <rect key="frame" x="873" y="115" width="133" height="3"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -362,6 +374,7 @@
                     <connections>
                         <outlet property="backButton" destination="bA8-fP-wNy" id="KI9-Kw-OwF"/>
                         <outlet property="facebook" destination="GZ8-Ee-O0a" id="iXr-z4-62F"/>
+                        <outlet property="foodProgress" destination="qma-wH-2oi" id="OhL-r8-OUE"/>
                         <outlet property="nextButton" destination="LE1-dM-9pg" id="ajr-Bk-Hli"/>
                         <outlet property="pinit" destination="agh-oC-NVQ" id="uSL-iB-Gls"/>
                         <outlet property="theText" destination="O05-9w-FXh" id="pZU-r4-D3C"/>
@@ -682,19 +695,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <gestureRecognizers/>
                             </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="orangeband.png" translatesAutoresizingMaskIntoConstraints="NO" id="7w7-ah-Mb6">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="orangeband-white.png" translatesAutoresizingMaskIntoConstraints="NO" id="7w7-ah-Mb6">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yellowband.png" translatesAutoresizingMaskIntoConstraints="NO" id="IfM-ce-QkM">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yellowband-white.png" translatesAutoresizingMaskIntoConstraints="NO" id="IfM-ce-QkM">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="greenband.png" translatesAutoresizingMaskIntoConstraints="NO" id="oYI-19-FVq">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="greenband-white.png" translatesAutoresizingMaskIntoConstraints="NO" id="oYI-19-FVq">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="brownband.png" translatesAutoresizingMaskIntoConstraints="NO" id="OkH-QK-n7p">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="brownband-white.png" translatesAutoresizingMaskIntoConstraints="NO" id="OkH-QK-n7p">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="purpleband.png" translatesAutoresizingMaskIntoConstraints="NO" id="fhO-Us-1Cq">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="purpleband-white.png" translatesAutoresizingMaskIntoConstraints="NO" id="fhO-Us-1Cq">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rainbow-foreground.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ges-SK-Ls3">
@@ -898,9 +911,9 @@
         <image name="REWARDS-BOX.png" width="2945" height="2209"/>
         <image name="TERMS-AND-CONDITIONS.jpg" width="2945" height="2209"/>
         <image name="apricots.png" width="200" height="200"/>
-        <image name="brownband.png" width="2048" height="1536"/>
+        <image name="brownband-white.png" width="2048" height="1536"/>
         <image name="facebook_03.png" width="325" height="133"/>
-        <image name="greenband.png" width="2048" height="1536"/>
+        <image name="greenband-white.png" width="2048" height="1536"/>
         <image name="home-background.jpg" width="2048" height="1153"/>
         <image name="home-clouds.png" width="2000" height="693"/>
         <image name="home-forest.png" width="302" height="346"/>
@@ -911,9 +924,9 @@
         <image name="home-yummyfoods.png" width="287" height="335"/>
         <image name="mountainstrees.jpg" width="2048" height="1536"/>
         <image name="no.png" width="823" height="585"/>
-        <image name="orangeband.png" width="2048" height="1536"/>
+        <image name="orangeband-white.png" width="2048" height="1536"/>
         <image name="pinit_03.png" width="287" height="133"/>
-        <image name="purpleband.png" width="2048" height="1536"/>
+        <image name="purpleband-white.png" width="2048" height="1536"/>
         <image name="rainbow-background.jpg" width="2048" height="1536"/>
         <image name="rainbow-foreground.png" width="2048" height="1536"/>
         <image name="rainbow.png" width="2048" height="1536"/>
@@ -928,7 +941,7 @@
         <image name="start-button_06.png" width="1056" height="283"/>
         <image name="start-face_03.png" width="407" height="455"/>
         <image name="weblink_03.png" width="801" height="53"/>
-        <image name="yellowband.png" width="2048" height="1536"/>
+        <image name="yellowband-white.png" width="2048" height="1536"/>
         <image name="yes.png" width="872" height="576"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

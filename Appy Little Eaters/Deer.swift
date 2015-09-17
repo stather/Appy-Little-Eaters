@@ -13,7 +13,7 @@ public class Deer : ForestCreature, Performer{
 
 	
 	convenience init(){
-		var t:SKTexture = SKTexture(imageNamed: "deer1")
+		let t:SKTexture = SKTexture(imageNamed: "deer1")
 		self.init(texture: t, color:UIColor.blackColor(), size:t.size())
 /*
 		var p:CGPoint = parentScene.forestPoint(CGPointMake(645, 200))
@@ -29,19 +29,19 @@ public class Deer : ForestCreature, Performer{
 	}
 	
 	public func perform() {
-		var wait = SKAction.waitForDuration(0.1)
+		let wait = SKAction.waitForDuration(0.1)
 		
-		var eat2 = textureFrom("deer2")
-		var eat3 = textureFrom("deer3")
-		var eat4 = textureFrom("deer4")
-		var eat5 = textureFrom("deer5")
-		var eat6 = textureFrom("deer6")
-		var eat7 = textureFrom("deer7")
-		var eat1 = textureFrom("deer1")
+		let eat2 = textureFrom("deer2")
+		let eat3 = textureFrom("deer3")
+		let eat4 = textureFrom("deer4")
+		let eat5 = textureFrom("deer5")
+		let eat6 = textureFrom("deer6")
+		let eat7 = textureFrom("deer7")
+		let eat1 = textureFrom("deer1")
 		
-		var actions:[SKAction] = [wait, eat2, wait, eat3, wait, eat4, wait, eat5, wait, eat6, wait, eat7, wait, eat6, wait, eat5, wait, eat4, wait, eat3, wait, eat2, wait, eat1]
-		var eatSequence:SKAction = SKAction.sequence(actions);
-		var eating = SKAction.repeatAction(eatSequence, count: 3)
+		let actions:[SKAction] = [wait, eat2, wait, eat3, wait, eat4, wait, eat5, wait, eat6, wait, eat7, wait, eat6, wait, eat5, wait, eat4, wait, eat3, wait, eat2, wait, eat1]
+		let eatSequence:SKAction = SKAction.sequence(actions);
+		let eating = SKAction.repeatAction(eatSequence, count: 3)
 		runAction(eating)
 
 	}

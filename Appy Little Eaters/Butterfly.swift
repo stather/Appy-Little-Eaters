@@ -25,7 +25,7 @@ public class Butterfly : ForestCreature, MoveableProtocol{
 	}
 	
 	func pickRandomDestination(){
-		var current = forestScene.originalPoint(position)
+		let current = forestScene.originalPoint(position)
 		var x = current.x
 		var y = current.y
 		let h = Int(arc4random_uniform(2))

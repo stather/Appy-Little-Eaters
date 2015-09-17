@@ -3,6 +3,8 @@
 
 target 'Appy Little Eaters' do
     pod 'GBInfiniteScrollView', '~> 1.6'
+    pod 'SpineSpriteKit'
+    pod 'ANRestOps', '~> 1.0'
 end
 
 target 'Appy Little EatersTests' do

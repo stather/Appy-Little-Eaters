@@ -23,7 +23,7 @@ class Cloud2View : UIView {
 		self.setupHierarchy()
 	}
 
-	required init(coder aDecoder: NSCoder) {
+	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		self.setupHierarchy()
 	}

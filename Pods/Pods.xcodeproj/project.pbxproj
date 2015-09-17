@@ -7,189 +7,685 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E223DEA2847CA7C26F74F17 /* GBInfiniteScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73BB4036432E64AA6E166528 /* GBInfiniteScrollView.m */; };
-		1F09ACE187B166D799D9E0B1 /* GBInfiniteScrollViewPage.h in Headers */ = {isa = PBXBuildFile; fileRef = 99B5B6717C7AA04B19D6FD87 /* GBInfiniteScrollViewPage.h */; };
-		2BC8DD4B09B5B5EE058D5FDD /* GBInfiniteScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = AD08D890AE28C74519CDDEB4 /* GBInfiniteScrollView.h */; };
-		3E63A47DFD95DDFAC1519F1B /* GBInfiniteScrollViewPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FABC871455D7D7798AE383A /* GBInfiniteScrollViewPage.m */; };
-		653E5F899F250DE19EDA3645 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1291EC3B787C2BBCA96C24ED /* Foundation.framework */; };
-		830017F22E0FF74CA7FD241F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1291EC3B787C2BBCA96C24ED /* Foundation.framework */; };
-		C02D89B57EAD44A3881497F7 /* Pods-Appy Little Eaters-GBInfiniteScrollView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F3BDDDB0ABA12E8E0F08EF32 /* Pods-Appy Little Eaters-GBInfiniteScrollView-dummy.m */; };
-		C4DB7C1D15AD11A84D62C97F /* Pods-Appy Little Eaters-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 33748208865D6F58C909721A /* Pods-Appy Little Eaters-dummy.m */; };
+		046F015DA2ED43E5CAC2656E /* SpineGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F4A0FF783BCFB40A046127 /* SpineGeometry.m */; };
+		0B154A62A23BDA3DAD0AF056 /* Json.c in Sources */ = {isa = PBXBuildFile; fileRef = B8FD4642085609355E9833F3 /* Json.c */; };
+		0B6CC1C3F427E901A28DC140 /* DZSpineSpriteKitMaps.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EC1160A8DA1C453435F3FEF /* DZSpineSpriteKitMaps.h */; };
+		1243E37DED3F1B7F1CBED8A5 /* SpineTimeline.m in Sources */ = {isa = PBXBuildFile; fileRef = AF796DCD8737936C3BD09398 /* SpineTimeline.m */; };
+		13FFA6126FABCEF323CB2008 /* spine_adapt.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A112C4B6D9ACAD0108E2D4 /* spine_adapt.m */; };
+		182BE0D0F84711629B176484 /* Bone.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A9A49B32C0F62C8214C66B3 /* Bone.h */; };
+		1A16B1CBC0148A54BFF9FCC0 /* BoundingBoxAttachment.h in Headers */ = {isa = PBXBuildFile; fileRef = 321BF60B41397007DFF02473 /* BoundingBoxAttachment.h */; };
+		1AA9EC5A4631EF19978F7E1F /* SkeletonJson.c in Sources */ = {isa = PBXBuildFile; fileRef = 241F83ACB10685F209A9CC7A /* SkeletonJson.c */; };
+		1AE7C1D6ADF5AA50E76495B3 /* SpineTimeline.h in Headers */ = {isa = PBXBuildFile; fileRef = D19489F1102EB44D41A4F166 /* SpineTimeline.h */; };
+		1E62B0249BCDEFB1A30D3205 /* ANRestOpsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 2761BA5FD9E4F3D5936B6B18 /* ANRestOpsResponse.m */; };
+		2B4E6EFBF84E88124FCEA359 /* GBInfiniteScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A01F6EE88DD77C5E38CA59 /* GBInfiniteScrollView.m */; };
+		2BF8E83E0914F97F99AD9AAB /* DZSpineTexturePool.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AC6A4495A2440274B20C3B /* DZSpineTexturePool.m */; };
+		2CC63F58FAB9B27BD0211202 /* SpineSlot.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D88300DB61A3C7013FF8F9F /* SpineSlot.h */; };
+		2EE0C4C9D20E66CF26E75514 /* DZSpineSceneDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D5D6BE79C60D8B3E9FEA72 /* DZSpineSceneDescription.m */; };
+		31D080AD36B84368ECAAB365 /* spine.h in Headers */ = {isa = PBXBuildFile; fileRef = 28B45BF413D97D09830BD992 /* spine.h */; };
+		31D4395EF9BC1FFB8FAA0394 /* Pods-Appy Little Eaters-ANRestOps-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EEDD8F5F35801889D3F99A /* Pods-Appy Little Eaters-ANRestOps-dummy.m */; };
+		333A8BB08002CD3F78D897CB /* AnimationState.h in Headers */ = {isa = PBXBuildFile; fileRef = 12239EDB2692D069CCB266BB /* AnimationState.h */; };
+		3630482A3E2B0650D1DAB916 /* RegionAttachment.c in Sources */ = {isa = PBXBuildFile; fileRef = D1007B2764ACD23810D9C7EA /* RegionAttachment.c */; };
+		39C7595A5A71803CA1905B76 /* Attachment.c in Sources */ = {isa = PBXBuildFile; fileRef = 63916020CDECAB56D026C04D /* Attachment.c */; };
+		4107825A8038065014BD4076 /* Atlas.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C06D8290A9E7BE8A3E88569 /* Atlas.h */; };
+		48E4512AC91DA8ABD43CF33E /* SkeletonData.c in Sources */ = {isa = PBXBuildFile; fileRef = FD352FE1F7B5686EF9A1D5C9 /* SkeletonData.c */; };
+		4B4BCA082EA28817B4A621E6 /* SpineSlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 0335D66ADBF7137038ECF9F8 /* SpineSlot.m */; };
+		4B6F9ADD8D39B80819A95E75 /* Event.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAA40002FB2088565E371C6 /* Event.h */; };
+		4B9864CBFFD55A2B653B3F1B /* DZSpineSceneDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = 410F3DEF3D068D3BEBC40DBC /* DZSpineSceneDescription.h */; };
+		4BAB0B4CD0BDB7F290692763 /* DZSpineSpriteKitAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E54E8402CF4BCAA6A59743 /* DZSpineSpriteKitAnimation.m */; };
+		4C5F6C4D8D7362943CE7F32C /* EventData.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DA9961B39648EF169FD4C39 /* EventData.c */; };
+		4DF2439F3ABC1C98732EACDE /* Skin.c in Sources */ = {isa = PBXBuildFile; fileRef = EF036C94184B6050435C8F37 /* Skin.c */; };
+		4F58AD429E8F6C485CFD6D23 /* AtlasAttachmentLoader.c in Sources */ = {isa = PBXBuildFile; fileRef = FDDF0B0B1608328E9FF93101 /* AtlasAttachmentLoader.c */; };
+		507A2D982B242A8E418A1D48 /* SkeletonJson.h in Headers */ = {isa = PBXBuildFile; fileRef = F01D4A76492BF47D1CA2B407 /* SkeletonJson.h */; };
+		5150EDC2963E5C79845572CA /* Pods-Appy Little Eaters-SpineSpriteKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 705BA712C60632BC58D26A26 /* Pods-Appy Little Eaters-SpineSpriteKit-dummy.m */; };
+		516335D82EC5DB91921C0CFF /* ANRestOpsResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = A8009AC4C7C83E77C0AC8C29 /* ANRestOpsResponse.h */; };
+		51A3C341A43CA42379ACE10A /* ANRestOpsClient.h in Headers */ = {isa = PBXBuildFile; fileRef = CF224D7C13CA5D0B3AEBF2BB /* ANRestOpsClient.h */; };
+		5BF08895F22C3E6630C8AD72 /* SpineGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 8735E1EFDC3B475B55F33F3B /* SpineGeometry.h */; };
+		5E3F32A27E682A53A5A5D1F2 /* AtlasAttachmentLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = C6614A03BAA8A867BB51759B /* AtlasAttachmentLoader.h */; };
+		5ED87BA12CB3EC9983A8FCE8 /* AttachmentLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 152D25AD0A70863FA6EC4523 /* AttachmentLoader.h */; };
+		60782D642CA39FA11C262E0D /* Slot.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B4833826453F85FFA2C439 /* Slot.h */; };
+		68CDC95883C23121986B148F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200282F87335FDA2FF9D4A96 /* Foundation.framework */; };
+		6D808A806555259B51E6C159 /* Atlas.c in Sources */ = {isa = PBXBuildFile; fileRef = F01D683DA5740E31905CBDE0 /* Atlas.c */; };
+		75C6997BDE379DEAD1EF9421 /* Json.h in Headers */ = {isa = PBXBuildFile; fileRef = 87255567DF8BF3AF6F229F8F /* Json.h */; };
+		764ADD2582AC5D8E5D1C0F84 /* AnimationState.c in Sources */ = {isa = PBXBuildFile; fileRef = F2D355AE1949A98D1C84C90A /* AnimationState.c */; };
+		7A0675C84DD3412F2D839331 /* Pods-Appy Little Eaters-GBInfiniteScrollView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F09FF222D334390AC5A5D3C5 /* Pods-Appy Little Eaters-GBInfiniteScrollView-dummy.m */; };
+		7C4594C16C578A56DA8FF44D /* DZSpineSpriteKitAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 49B6A2A0C5AED995AF721389 /* DZSpineSpriteKitAnimation.h */; };
+		7C877D87C535B13BB2868152 /* Skeleton.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C6C809A143B804B544B06 /* Skeleton.c */; };
+		7D280F100EE13D496CF25908 /* SkeletonBounds.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC046FAA1DED22E267E20EE /* SkeletonBounds.h */; };
+		80632FF0F94BD908C865715C /* SpineAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFEAD4EC99F98B821B94F7E /* SpineAnimation.m */; };
+		811931CC2EE9BF355A07048E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200282F87335FDA2FF9D4A96 /* Foundation.framework */; };
+		8174019CF5402E2FD065C0A8 /* DZSpineScene.h in Headers */ = {isa = PBXBuildFile; fileRef = C1008EDBBE31AD217DEFBF1B /* DZSpineScene.h */; };
+		874F720EBBCE8FA544B0A64A /* DZSpineSceneTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FE6B6E0250F2EE3C144E41F /* DZSpineSceneTrack.h */; };
+		8769B61AB9CDACB6A623E989 /* DZSpineSceneBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 20011495F8690333FFE80255 /* DZSpineSceneBuilder.m */; };
+		89013C84C4C420D81D5A0E33 /* SpineSkeleton.h in Headers */ = {isa = PBXBuildFile; fileRef = FAEF404FC3D0025E73734C76 /* SpineSkeleton.h */; };
+		890F9977BB74F724C6A7D7BC /* GBInfiniteScrollViewPage.h in Headers */ = {isa = PBXBuildFile; fileRef = 84BC81865BDA4254B1705B42 /* GBInfiniteScrollViewPage.h */; };
+		8B495A83EC36C8DDD5E01F7E /* Animation.h in Headers */ = {isa = PBXBuildFile; fileRef = BB0011FDEE4B968897DE0E8D /* Animation.h */; };
+		8B65F7FAF87F82E569A96BCF /* Attachment.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B7B4AD5EE1782D6207F5535 /* Attachment.h */; };
+		8DFE9A184136F1E355F91B7C /* SpineAttachment.h in Headers */ = {isa = PBXBuildFile; fileRef = 78D8163D2A2D04B4EB18ADDE /* SpineAttachment.h */; };
+		8E8DB9006DF81FC177F0D16A /* GBInfiniteScrollViewPage.m in Sources */ = {isa = PBXBuildFile; fileRef = EADF174B4C2ECD080D8C08BC /* GBInfiniteScrollViewPage.m */; };
+		90E47C3F7D00CEB0E79C62FE /* AnimationStateData.c in Sources */ = {isa = PBXBuildFile; fileRef = 16AAC2534AD6B6BBBFCD9DA0 /* AnimationStateData.c */; };
+		97334194CE1C9534BFA16C8F /* Animation.c in Sources */ = {isa = PBXBuildFile; fileRef = 889EFDA5BF11DF29CAAAC830 /* Animation.c */; };
+		97854033D05DBC18F612C403 /* DZSpineScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFA87E350614AD9409670ED /* DZSpineScene.m */; };
+		9AB5DFF3E7290AA91254F4CD /* EventData.h in Headers */ = {isa = PBXBuildFile; fileRef = ADDF2FC2FDF37D7FA60834EE /* EventData.h */; };
+		9CC24E37482B74752A04178E /* Slot.c in Sources */ = {isa = PBXBuildFile; fileRef = 0191208FE5503E8A168F20CF /* Slot.c */; };
+		9DEBCE24213838EF21A613DB /* Pods-Appy Little Eaters-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F930464030C131F78B352405 /* Pods-Appy Little Eaters-dummy.m */; };
+		9F86576ED723B1DA2A9AFA2E /* DZSpineSpriteKitMaps.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89931F7C0D27F25A2F2F58 /* DZSpineSpriteKitMaps.m */; };
+		A00A68FC040EE5E76A12C4E0 /* extension.h in Headers */ = {isa = PBXBuildFile; fileRef = E0F5DD3ACD427A45941E2E86 /* extension.h */; };
+		A0B4BC82D6193165703D54F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200282F87335FDA2FF9D4A96 /* Foundation.framework */; };
+		A5CB7589EB50108368BC7034 /* ANRestOps.h in Headers */ = {isa = PBXBuildFile; fileRef = FD7CF876C6B35167E6B232B1 /* ANRestOps.h */; };
+		A6439ECDCD88D7D266519196 /* BoneData.c in Sources */ = {isa = PBXBuildFile; fileRef = F0C08F9636439E788A1520E7 /* BoneData.c */; };
+		A6AFD3990B788046B424D80B /* spine_adapt.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C2A81E57180C35267132414 /* spine_adapt.h */; };
+		AA3365FB9396D5C16CDB821B /* Skin.h in Headers */ = {isa = PBXBuildFile; fileRef = E136F7376E602AFC3E03ECE6 /* Skin.h */; };
+		AC2E2B88EA8E3A131C5CB8A5 /* SpineSequence.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CBB7B963746698E02788E71 /* SpineSequence.h */; };
+		AD1AB83A3E36F558A3B3E24C /* Bone.c in Sources */ = {isa = PBXBuildFile; fileRef = D9980BFC72B3D80AD45F522C /* Bone.c */; };
+		AD9F8A8AF64717B76DA7DEEE /* Event.c in Sources */ = {isa = PBXBuildFile; fileRef = 82FFF44C536F8CB106A974D7 /* Event.c */; };
+		AE911670033ECF5C65F81E2C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200282F87335FDA2FF9D4A96 /* Foundation.framework */; };
+		BB6C34C220965806BA23793C /* DZSpineSceneTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 10AD9835E82B317B82443BCC /* DZSpineSceneTrack.m */; };
+		BF750F8233FDC952460ABB44 /* DZSpineTexturePool.h in Headers */ = {isa = PBXBuildFile; fileRef = B52BA7EC319F19B73AA4E583 /* DZSpineTexturePool.h */; };
+		C52E788FD4A3EDFA3F7CAA28 /* AnimationStateData.h in Headers */ = {isa = PBXBuildFile; fileRef = 12F5C8DC2111D23DB089B21F /* AnimationStateData.h */; };
+		C553F570D95A58EF77789867 /* SkeletonData.h in Headers */ = {isa = PBXBuildFile; fileRef = 0907ECCF63CE528816DF42B6 /* SkeletonData.h */; };
+		C7BF3B7CB841B220A83AE647 /* GBInfiniteScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = FC1AA9B705FC5DFD86257B8B /* GBInfiniteScrollView.h */; };
+		C88C4104F9A67964288307FC /* Skeleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D7AA827C844CA4B768A56AF /* Skeleton.h */; };
+		CBC35F85A0BE6AEAC4930093 /* SpineAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD05964E34D0314D4BE5E68 /* SpineAttachment.m */; };
+		CBC8181601AF9D2CA4E57214 /* DZSpineSceneBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 57B521CD683C16877A33CDCA /* DZSpineSceneBuilder.h */; };
+		CC931AF7B3B250399C8B9A96 /* Pods-Appy Little Eaters-ObjectiveSpine-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 380506C865406EC0F6892270 /* Pods-Appy Little Eaters-ObjectiveSpine-dummy.m */; };
+		D1B2A3594B847B886677916E /* RegionAttachment.h in Headers */ = {isa = PBXBuildFile; fileRef = B9F48A75D5132E71CB6742C3 /* RegionAttachment.h */; };
+		D2C77AF67EDBAC26649E8F49 /* BoundingBoxAttachment.c in Sources */ = {isa = PBXBuildFile; fileRef = 94CAF80336646C55F95253BE /* BoundingBoxAttachment.c */; };
+		D7170565309D807AA3FED460 /* SpineSkeleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1051AB1C4384DB3D4A530D16 /* SpineSkeleton.m */; };
+		DA380F20B0AA3AB1E46B7A3C /* BoneData.h in Headers */ = {isa = PBXBuildFile; fileRef = D2A935030AB98FD32A47E333 /* BoneData.h */; };
+		E26800B48959D6E9B7B6DCE9 /* ANRestOps.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2189E73F09636184DD610 /* ANRestOps.m */; };
+		E32F1584F31EB9195BCD395A /* ANRestOpsClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C0527B62D738AD3A85FA353C /* ANRestOpsClient.m */; };
+		E6350C8F739A4EAD2C2C9A78 /* AttachmentLoader.c in Sources */ = {isa = PBXBuildFile; fileRef = 127A474F43072D4F385F1B49 /* AttachmentLoader.c */; };
+		E6E3B44EFAABC4AEEB31B798 /* SpineSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F234A118FD24D39759CF5FC /* SpineSequence.m */; };
+		E749EB7FD5357D673C393ADE /* SlotData.c in Sources */ = {isa = PBXBuildFile; fileRef = 11EF72FB521A86070A90B231 /* SlotData.c */; };
+		E87822ECE6A2F2B53D1813F6 /* SlotData.h in Headers */ = {isa = PBXBuildFile; fileRef = 37CD7B31A6921DA477773F1B /* SlotData.h */; };
+		E88D3120AC092DAF1C752988 /* DZSpineLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B485E012B398CA9B2A0E0197 /* DZSpineLoader.m */; };
+		EB2875F9A53F7D6395F46383 /* SpineAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 55A43612CF3A1999D29B3DDC /* SpineAnimation.h */; };
+		ECF868F734D4C42A64E16E70 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200282F87335FDA2FF9D4A96 /* Foundation.framework */; };
+		ED2F80A20D064F7FB6241E6E /* extension.c in Sources */ = {isa = PBXBuildFile; fileRef = 56B3543A317D75BB76970ADC /* extension.c */; };
+		F5400C4AF0CABDB25BC351BE /* SpineBone.m in Sources */ = {isa = PBXBuildFile; fileRef = A10E84BCA6568B46BFEC9A3C /* SpineBone.m */; };
+		F6CBD88074C468CA9991517A /* DZSpineLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E5586B0ACCD14A972D5F8A3 /* DZSpineLoader.h */; };
+		FBD9D51983C1197339021265 /* SpineBone.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CB3A9015499296C468DAA3 /* SpineBone.h */; };
+		FE6F4A4B1536A90537197E1C /* SkeletonBounds.c in Sources */ = {isa = PBXBuildFile; fileRef = 00AD5E74E1157557AADF6974 /* SkeletonBounds.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6C53A8F9DF1AABF39CD16D91 /* PBXContainerItemProxy */ = {
+		32501B96A669AA2DF9DA3619 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 81C68E1C7515AC63E51F50CF /* Project object */;
+			containerPortal = 752C49214CC96CCB433348A2 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0BE23AC7D98A64CA991FB1CF;
+			remoteGlobalIDString = EE81EDC1EA3EB9019F38370B;
+			remoteInfo = "Pods-Appy Little Eaters-ObjectiveSpine";
+		};
+		7370620F8D0818DB01D3F61D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 752C49214CC96CCB433348A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3BFCCE630ED9FA59D039DBDA;
+			remoteInfo = "Pods-Appy Little Eaters-SpineSpriteKit";
+		};
+		AD93184924EEEA8C68D89DB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 752C49214CC96CCB433348A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 669F8F4B5468BBEF089303CE;
 			remoteInfo = "Pods-Appy Little Eaters-GBInfiniteScrollView";
+		};
+		F04F628A9F08BC54FCD9A3C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 752C49214CC96CCB433348A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE81EDC1EA3EB9019F38370B;
+			remoteInfo = "Pods-Appy Little Eaters-ObjectiveSpine";
+		};
+		F419870A23313168A3FB0F72 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 752C49214CC96CCB433348A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9020CF2AF163EA141636AFF0;
+			remoteInfo = "Pods-Appy Little Eaters-ANRestOps";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		126970458111B049CE2D38C9 /* Pods-Appy Little Eaters-GBInfiniteScrollView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Appy Little Eaters-GBInfiniteScrollView-prefix.pch"; sourceTree = "<group>"; };
-		1291EC3B787C2BBCA96C24ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		2C794B9A2BA993ADCF32046C /* Pods-Appy Little Eaters-GBInfiniteScrollView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appy Little Eaters-GBInfiniteScrollView.xcconfig"; sourceTree = "<group>"; };
-		33748208865D6F58C909721A /* Pods-Appy Little Eaters-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Appy Little Eaters-dummy.m"; sourceTree = "<group>"; };
-		3FABC871455D7D7798AE383A /* GBInfiniteScrollViewPage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GBInfiniteScrollViewPage.m; path = GBInfiniteScrollView/GBInfiniteScrollView/GBInfiniteScrollViewPage.m; sourceTree = "<group>"; };
-		52CD58D44CB88640395FD4A1 /* Pods-Appy Little Eaters.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appy Little Eaters.release.xcconfig"; sourceTree = "<group>"; };
-		722576A8B1D4F8B47A3DB59D /* Pods-Appy Little Eaters-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Appy Little Eaters-environment.h"; sourceTree = "<group>"; };
-		73BB4036432E64AA6E166528 /* GBInfiniteScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GBInfiniteScrollView.m; path = GBInfiniteScrollView/GBInfiniteScrollView/GBInfiniteScrollView.m; sourceTree = "<group>"; };
-		777D6F5027F0DF5D6C7B2808 /* Pods-Appy Little Eaters.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appy Little Eaters.debug.xcconfig"; sourceTree = "<group>"; };
-		7DA8A2EDD2A837ED7AB82B3B /* libPods-Appy Little Eaters.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Appy Little Eaters.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8CAEB861407B90808033933A /* Pods-Appy Little Eaters-GBInfiniteScrollView-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appy Little Eaters-GBInfiniteScrollView-Private.xcconfig"; sourceTree = "<group>"; };
-		99B5B6717C7AA04B19D6FD87 /* GBInfiniteScrollViewPage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GBInfiniteScrollViewPage.h; path = GBInfiniteScrollView/GBInfiniteScrollView/GBInfiniteScrollViewPage.h; sourceTree = "<group>"; };
-		9B459B32A758F7DC1CE7D2CB /* Pods-Appy Little Eaters-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Appy Little Eaters-acknowledgements.markdown"; sourceTree = "<group>"; };
-		A5EE739AE7626677401A74F2 /* Pods-Appy Little Eaters-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Appy Little Eaters-acknowledgements.plist"; sourceTree = "<group>"; };
-		AD08D890AE28C74519CDDEB4 /* GBInfiniteScrollView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GBInfiniteScrollView.h; path = GBInfiniteScrollView/GBInfiniteScrollView/GBInfiniteScrollView.h; sourceTree = "<group>"; };
-		C123B9AF1871E2A20878A168 /* Pods-Appy Little Eaters-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Appy Little Eaters-resources.sh"; sourceTree = "<group>"; };
-		E0F29C8CEE9F5C94CABADCA2 /* libPods-Appy Little Eaters-GBInfiniteScrollView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Appy Little Eaters-GBInfiniteScrollView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E10FB6EBCAF09BC7199BDFFC /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		F3BDDDB0ABA12E8E0F08EF32 /* Pods-Appy Little Eaters-GBInfiniteScrollView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Appy Little Eaters-GBInfiniteScrollView-dummy.m"; sourceTree = "<group>"; };
+		00AD5E74E1157557AADF6974 /* SkeletonBounds.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = SkeletonBounds.c; path = "Libraries/spine-c/SkeletonBounds.c"; sourceTree = "<group>"; };
+		0191208FE5503E8A168F20CF /* Slot.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = Slot.c; path = "Libraries/spine-c/Slot.c"; sourceTree = "<group>"; };
+		02CFC048F5AA8C486A9C5D7A /* Pods-Appy Little Eaters-ANRestOps.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appy Little Eaters-ANRestOps.xcconfig"; sourceTree = "<group>"; };
+		02F4A0FF783BCFB40A046127 /* SpineGeometry.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SpineGeometry.m; path = Classes/SpineGeometry.m; sourceTree = "<group>"; };
+		0335D66ADBF7137038ECF9F8 /* SpineSlot.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SpineSlot.m; path = Classes/SpineSlot.m; sourceTree = "<group>"; };
+		054F5EC1B7A3BE06A3C519F1 /* Pods-Appy Little Eaters-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Appy Little Eaters-environment.h"; sourceTree = "<group>"; };
+		0907ECCF63CE528816DF42B6 /* SkeletonData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SkeletonData.h; path = "Libraries/spine-c/SkeletonData.h"; sourceTree = "<group>"; };
+		0F191FB0996E4547154A621D /* Pods-Appy Little Eaters-ObjectiveSpine-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Appy Little Eaters-ObjectiveSpine-prefix.pch"; sourceTree = "<group>"; };
+		1051AB1C4384DB3D4A530D16 /* SpineSkeleton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SpineSkeleton.m; path = Classes/SpineSkeleton.m; sourceTree = "<group>"; };
+		10AD9835E82B317B82443BCC /* DZSpineSceneTrack.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DZSpineSceneTrack.m; path = Classes/DZSpineSceneTrack.m; sourceTree = "<group>"; };
+		11EF72FB521A86070A90B231 /* SlotData.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = SlotData.c; path = "Libraries/spine-c/SlotData.c"; sourceTree = "<group>"; };
+		12239EDB2692D069CCB266BB /* AnimationState.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AnimationState.h; path = "Libraries/spine-c/AnimationState.h"; sourceTree = "<group>"; };
+		127A474F43072D4F385F1B49 /* AttachmentLoader.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = AttachmentLoader.c; path = "Libraries/spine-c/AttachmentLoader.c"; sourceTree = "<group>"; };
+		12F5C8DC2111D23DB089B21F /* AnimationStateData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AnimationStateData.h; path = "Libraries/spine-c/AnimationStateData.h"; sourceTree = "<group>"; };
+		152D25AD0A70863FA6EC4523 /* AttachmentLoader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AttachmentLoader.h; path = "Libraries/spine-c/AttachmentLoader.h"; sourceTree = "<group>"; };
+		157E9CE51270D97837DDBFDE /* Pods-Appy Little Eaters-SpineSpriteKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appy Little Eaters-SpineSpriteKit.xcconfig"; sourceTree = "<group>"; };
+		16AAC2534AD6B6BBBFCD9DA0 /* AnimationStateData.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = AnimationStateData.c; path = "Libraries/spine-c/AnimationStateData.c"; sourceTree = "<group>"; };
+		19E54E8402CF4BCAA6A59743 /* DZSpineSpriteKitAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DZSpineSpriteKitAnimation.m; path = Classes/DZSpineSpriteKitAnimation.m; sourceTree = "<group>"; };
+		20011495F8690333FFE80255 /* DZSpineSceneBuilder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DZSpineSceneBuilder.m; path = Classes/DZSpineSceneBuilder.m; sourceTree = "<group>"; };
+		200282F87335FDA2FF9D4A96 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		21CB3A9015499296C468DAA3 /* SpineBone.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SpineBone.h; path = Classes/SpineBone.h; sourceTree = "<group>"; };
+		22A01F6EE88DD77C5E38CA59 /* GBInfiniteScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GBInfiniteScrollView.m; path = GBInfiniteScrollView/GBInfiniteScrollView/GBInfiniteScrollView.m; sourceTree = "<group>"; };
+		241F83ACB10685F209A9CC7A /* SkeletonJson.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = SkeletonJson.c; path = "Libraries/spine-c/SkeletonJson.c"; sourceTree = "<group>"; };
+		249C6C809A143B804B544B06 /* Skeleton.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = Skeleton.c; path = "Libraries/spine-c/Skeleton.c"; sourceTree = "<group>"; };
+		2761BA5FD9E4F3D5936B6B18 /* ANRestOpsResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ANRestOpsResponse.m; path = ANRestOps/ANRestOpsResponse.m; sourceTree = "<group>"; };
+		28B45BF413D97D09830BD992 /* spine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = spine.h; path = "Libraries/spine-c/spine.h"; sourceTree = "<group>"; };
+		2B7B4AD5EE1782D6207F5535 /* Attachment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Attachment.h; path = "Libraries/spine-c/Attachment.h"; sourceTree = "<group>"; };
+		2C2A81E57180C35267132414 /* spine_adapt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = spine_adapt.h; path = Classes/spine_adapt.h; sourceTree = "<group>"; };
+		321BF60B41397007DFF02473 /* BoundingBoxAttachment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BoundingBoxAttachment.h; path = "Libraries/spine-c/BoundingBoxAttachment.h"; sourceTree = "<group>"; };
+		353CDF608D8E0E21C841F354 /* Pods-Appy Little Eaters-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Appy Little Eaters-acknowledgements.plist"; sourceTree = "<group>"; };
+		37CD7B31A6921DA477773F1B /* SlotData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SlotData.h; path = "Libraries/spine-c/SlotData.h"; sourceTree = "<group>"; };
+		380506C865406EC0F6892270 /* Pods-Appy Little Eaters-ObjectiveSpine-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Appy Little Eaters-ObjectiveSpine-dummy.m"; sourceTree = "<group>"; };
+		3BAA40002FB2088565E371C6 /* Event.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Event.h; path = "Libraries/spine-c/Event.h"; sourceTree = "<group>"; };
+		410F3DEF3D068D3BEBC40DBC /* DZSpineSceneDescription.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DZSpineSceneDescription.h; path = Classes/DZSpineSceneDescription.h; sourceTree = "<group>"; };
+		412CC84BC5A4AF4E21385719 /* Pods-Appy Little Eaters.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appy Little Eaters.release.xcconfig"; sourceTree = "<group>"; };
+		41DB310D6BB65AF4004D4624 /* Pods-Appy Little Eaters-SpineSpriteKit-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appy Little Eaters-SpineSpriteKit-Private.xcconfig"; sourceTree = "<group>"; };
+		4730730F35F2DBD78F0ECAE0 /* Pods-Appy Little Eaters-ObjectiveSpine-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appy Little Eaters-ObjectiveSpine-Private.xcconfig"; sourceTree = "<group>"; };
+		49B6A2A0C5AED995AF721389 /* DZSpineSpriteKitAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DZSpineSpriteKitAnimation.h; path = Classes/DZSpineSpriteKitAnimation.h; sourceTree = "<group>"; };
+		4CF2189E73F09636184DD610 /* ANRestOps.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ANRestOps.m; path = ANRestOps/ANRestOps.m; sourceTree = "<group>"; };
+		4D88300DB61A3C7013FF8F9F /* SpineSlot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SpineSlot.h; path = Classes/SpineSlot.h; sourceTree = "<group>"; };
+		4DA9961B39648EF169FD4C39 /* EventData.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = EventData.c; path = "Libraries/spine-c/EventData.c"; sourceTree = "<group>"; };
+		532B287B39A9C707A13EDE91 /* Pods-Appy Little Eaters-ANRestOps-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Appy Little Eaters-ANRestOps-prefix.pch"; sourceTree = "<group>"; };
+		55A43612CF3A1999D29B3DDC /* SpineAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SpineAnimation.h; path = Classes/SpineAnimation.h; sourceTree = "<group>"; };
+		55B4833826453F85FFA2C439 /* Slot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Slot.h; path = "Libraries/spine-c/Slot.h"; sourceTree = "<group>"; };
+		56B3543A317D75BB76970ADC /* extension.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = extension.c; path = "Libraries/spine-c/extension.c"; sourceTree = "<group>"; };
+		57B521CD683C16877A33CDCA /* DZSpineSceneBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DZSpineSceneBuilder.h; path = Classes/DZSpineSceneBuilder.h; sourceTree = "<group>"; };
+		59F109483662FBB03BB77AB0 /* Pods-Appy Little Eaters-GBInfiniteScrollView-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appy Little Eaters-GBInfiniteScrollView-Private.xcconfig"; sourceTree = "<group>"; };
+		5CBB7B963746698E02788E71 /* SpineSequence.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SpineSequence.h; path = Classes/SpineSequence.h; sourceTree = "<group>"; };
+		5D7AA827C844CA4B768A56AF /* Skeleton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Skeleton.h; path = "Libraries/spine-c/Skeleton.h"; sourceTree = "<group>"; };
+		5F234A118FD24D39759CF5FC /* SpineSequence.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SpineSequence.m; path = Classes/SpineSequence.m; sourceTree = "<group>"; };
+		63916020CDECAB56D026C04D /* Attachment.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = Attachment.c; path = "Libraries/spine-c/Attachment.c"; sourceTree = "<group>"; };
+		6931CF4A509F6B01478B4B10 /* libPods-Appy Little Eaters-GBInfiniteScrollView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Appy Little Eaters-GBInfiniteScrollView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E5586B0ACCD14A972D5F8A3 /* DZSpineLoader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DZSpineLoader.h; path = Classes/DZSpineLoader.h; sourceTree = "<group>"; };
+		6FE6B6E0250F2EE3C144E41F /* DZSpineSceneTrack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DZSpineSceneTrack.h; path = Classes/DZSpineSceneTrack.h; sourceTree = "<group>"; };
+		705BA712C60632BC58D26A26 /* Pods-Appy Little Eaters-SpineSpriteKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Appy Little Eaters-SpineSpriteKit-dummy.m"; sourceTree = "<group>"; };
+		78D8163D2A2D04B4EB18ADDE /* SpineAttachment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SpineAttachment.h; path = Classes/SpineAttachment.h; sourceTree = "<group>"; };
+		7A9A49B32C0F62C8214C66B3 /* Bone.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Bone.h; path = "Libraries/spine-c/Bone.h"; sourceTree = "<group>"; };
+		7EC1160A8DA1C453435F3FEF /* DZSpineSpriteKitMaps.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DZSpineSpriteKitMaps.h; path = Classes/DZSpineSpriteKitMaps.h; sourceTree = "<group>"; };
+		7F602FAA7EB4A4D2A76E51E5 /* Pods-Appy Little Eaters-ANRestOps-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appy Little Eaters-ANRestOps-Private.xcconfig"; sourceTree = "<group>"; };
+		7FC046FAA1DED22E267E20EE /* SkeletonBounds.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SkeletonBounds.h; path = "Libraries/spine-c/SkeletonBounds.h"; sourceTree = "<group>"; };
+		82FFF44C536F8CB106A974D7 /* Event.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = Event.c; path = "Libraries/spine-c/Event.c"; sourceTree = "<group>"; };
+		84BC81865BDA4254B1705B42 /* GBInfiniteScrollViewPage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GBInfiniteScrollViewPage.h; path = GBInfiniteScrollView/GBInfiniteScrollView/GBInfiniteScrollViewPage.h; sourceTree = "<group>"; };
+		87255567DF8BF3AF6F229F8F /* Json.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Json.h; path = "Libraries/spine-c/Json.h"; sourceTree = "<group>"; };
+		8735E1EFDC3B475B55F33F3B /* SpineGeometry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SpineGeometry.h; path = Classes/SpineGeometry.h; sourceTree = "<group>"; };
+		8810BE0B8A40F0B788C5C052 /* Pods-Appy Little Eaters-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Appy Little Eaters-acknowledgements.markdown"; sourceTree = "<group>"; };
+		889EFDA5BF11DF29CAAAC830 /* Animation.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = Animation.c; path = "Libraries/spine-c/Animation.c"; sourceTree = "<group>"; };
+		90246E313FAA7FC25D65EBBB /* libPods-Appy Little Eaters-SpineSpriteKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Appy Little Eaters-SpineSpriteKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		907DA5E15F6B0B5159CE6DC2 /* Pods-Appy Little Eaters-GBInfiniteScrollView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appy Little Eaters-GBInfiniteScrollView.xcconfig"; sourceTree = "<group>"; };
+		94CAF80336646C55F95253BE /* BoundingBoxAttachment.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = BoundingBoxAttachment.c; path = "Libraries/spine-c/BoundingBoxAttachment.c"; sourceTree = "<group>"; };
+		9C06D8290A9E7BE8A3E88569 /* Atlas.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Atlas.h; path = "Libraries/spine-c/Atlas.h"; sourceTree = "<group>"; };
+		9CFA87E350614AD9409670ED /* DZSpineScene.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DZSpineScene.m; path = Classes/DZSpineScene.m; sourceTree = "<group>"; };
+		9DFAC799CD4A3B53F6F578B2 /* libPods-Appy Little Eaters-ObjectiveSpine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Appy Little Eaters-ObjectiveSpine.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A10E84BCA6568B46BFEC9A3C /* SpineBone.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SpineBone.m; path = Classes/SpineBone.m; sourceTree = "<group>"; };
+		A3D23A43C850AC8CF24C5A8A /* libPods-Appy Little Eaters.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Appy Little Eaters.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8009AC4C7C83E77C0AC8C29 /* ANRestOpsResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ANRestOpsResponse.h; path = ANRestOps/ANRestOpsResponse.h; sourceTree = "<group>"; };
+		ADDF2FC2FDF37D7FA60834EE /* EventData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EventData.h; path = "Libraries/spine-c/EventData.h"; sourceTree = "<group>"; };
+		AF796DCD8737936C3BD09398 /* SpineTimeline.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SpineTimeline.m; path = Classes/SpineTimeline.m; sourceTree = "<group>"; };
+		B485E012B398CA9B2A0E0197 /* DZSpineLoader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DZSpineLoader.m; path = Classes/DZSpineLoader.m; sourceTree = "<group>"; };
+		B52BA7EC319F19B73AA4E583 /* DZSpineTexturePool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DZSpineTexturePool.h; path = Classes/DZSpineTexturePool.h; sourceTree = "<group>"; };
+		B6A112C4B6D9ACAD0108E2D4 /* spine_adapt.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = spine_adapt.m; path = Classes/spine_adapt.m; sourceTree = "<group>"; };
+		B8FD4642085609355E9833F3 /* Json.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = Json.c; path = "Libraries/spine-c/Json.c"; sourceTree = "<group>"; };
+		B9F48A75D5132E71CB6742C3 /* RegionAttachment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RegionAttachment.h; path = "Libraries/spine-c/RegionAttachment.h"; sourceTree = "<group>"; };
+		BB0011FDEE4B968897DE0E8D /* Animation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Animation.h; path = "Libraries/spine-c/Animation.h"; sourceTree = "<group>"; };
+		C0527B62D738AD3A85FA353C /* ANRestOpsClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ANRestOpsClient.m; path = ANRestOps/ANRestOpsClient.m; sourceTree = "<group>"; };
+		C1008EDBBE31AD217DEFBF1B /* DZSpineScene.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DZSpineScene.h; path = Classes/DZSpineScene.h; sourceTree = "<group>"; };
+		C6614A03BAA8A867BB51759B /* AtlasAttachmentLoader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AtlasAttachmentLoader.h; path = "Libraries/spine-c/AtlasAttachmentLoader.h"; sourceTree = "<group>"; };
+		CC4187D6F15F66729117D2AF /* Pods-Appy Little Eaters.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appy Little Eaters.debug.xcconfig"; sourceTree = "<group>"; };
+		CC89931F7C0D27F25A2F2F58 /* DZSpineSpriteKitMaps.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DZSpineSpriteKitMaps.m; path = Classes/DZSpineSpriteKitMaps.m; sourceTree = "<group>"; };
+		CF224D7C13CA5D0B3AEBF2BB /* ANRestOpsClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ANRestOpsClient.h; path = ANRestOps/ANRestOpsClient.h; sourceTree = "<group>"; };
+		D0C4D44D99C628EC1F8A2309 /* Pods-Appy Little Eaters-GBInfiniteScrollView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Appy Little Eaters-GBInfiniteScrollView-prefix.pch"; sourceTree = "<group>"; };
+		D1007B2764ACD23810D9C7EA /* RegionAttachment.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = RegionAttachment.c; path = "Libraries/spine-c/RegionAttachment.c"; sourceTree = "<group>"; };
+		D19489F1102EB44D41A4F166 /* SpineTimeline.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SpineTimeline.h; path = Classes/SpineTimeline.h; sourceTree = "<group>"; };
+		D20EF171020BBB243DC5CFAB /* Pods-Appy Little Eaters-SpineSpriteKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Appy Little Eaters-SpineSpriteKit-prefix.pch"; sourceTree = "<group>"; };
+		D2A935030AB98FD32A47E333 /* BoneData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BoneData.h; path = "Libraries/spine-c/BoneData.h"; sourceTree = "<group>"; };
+		D655ECF6074D17880DB03726 /* libPods-Appy Little Eaters-ANRestOps.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Appy Little Eaters-ANRestOps.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7C8EF567EB4DC6AD01EEB7F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D9980BFC72B3D80AD45F522C /* Bone.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = Bone.c; path = "Libraries/spine-c/Bone.c"; sourceTree = "<group>"; };
+		DC5D991195616F642798F058 /* Pods-Appy Little Eaters-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Appy Little Eaters-resources.sh"; sourceTree = "<group>"; };
+		E0F5DD3ACD427A45941E2E86 /* extension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = extension.h; path = "Libraries/spine-c/extension.h"; sourceTree = "<group>"; };
+		E136F7376E602AFC3E03ECE6 /* Skin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Skin.h; path = "Libraries/spine-c/Skin.h"; sourceTree = "<group>"; };
+		EADF174B4C2ECD080D8C08BC /* GBInfiniteScrollViewPage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GBInfiniteScrollViewPage.m; path = GBInfiniteScrollView/GBInfiniteScrollView/GBInfiniteScrollViewPage.m; sourceTree = "<group>"; };
+		EAFEAD4EC99F98B821B94F7E /* SpineAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SpineAnimation.m; path = Classes/SpineAnimation.m; sourceTree = "<group>"; };
+		EF036C94184B6050435C8F37 /* Skin.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = Skin.c; path = "Libraries/spine-c/Skin.c"; sourceTree = "<group>"; };
+		F01D4A76492BF47D1CA2B407 /* SkeletonJson.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SkeletonJson.h; path = "Libraries/spine-c/SkeletonJson.h"; sourceTree = "<group>"; };
+		F01D683DA5740E31905CBDE0 /* Atlas.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = Atlas.c; path = "Libraries/spine-c/Atlas.c"; sourceTree = "<group>"; };
+		F07688D42A8724EF3B971A11 /* Pods-Appy Little Eaters-ObjectiveSpine.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appy Little Eaters-ObjectiveSpine.xcconfig"; sourceTree = "<group>"; };
+		F09FF222D334390AC5A5D3C5 /* Pods-Appy Little Eaters-GBInfiniteScrollView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Appy Little Eaters-GBInfiniteScrollView-dummy.m"; sourceTree = "<group>"; };
+		F0C08F9636439E788A1520E7 /* BoneData.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = BoneData.c; path = "Libraries/spine-c/BoneData.c"; sourceTree = "<group>"; };
+		F2D355AE1949A98D1C84C90A /* AnimationState.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = AnimationState.c; path = "Libraries/spine-c/AnimationState.c"; sourceTree = "<group>"; };
+		F5AC6A4495A2440274B20C3B /* DZSpineTexturePool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DZSpineTexturePool.m; path = Classes/DZSpineTexturePool.m; sourceTree = "<group>"; };
+		F6D5D6BE79C60D8B3E9FEA72 /* DZSpineSceneDescription.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DZSpineSceneDescription.m; path = Classes/DZSpineSceneDescription.m; sourceTree = "<group>"; };
+		F7EEDD8F5F35801889D3F99A /* Pods-Appy Little Eaters-ANRestOps-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Appy Little Eaters-ANRestOps-dummy.m"; sourceTree = "<group>"; };
+		F930464030C131F78B352405 /* Pods-Appy Little Eaters-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Appy Little Eaters-dummy.m"; sourceTree = "<group>"; };
+		FAEF404FC3D0025E73734C76 /* SpineSkeleton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SpineSkeleton.h; path = Classes/SpineSkeleton.h; sourceTree = "<group>"; };
+		FC1AA9B705FC5DFD86257B8B /* GBInfiniteScrollView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GBInfiniteScrollView.h; path = GBInfiniteScrollView/GBInfiniteScrollView/GBInfiniteScrollView.h; sourceTree = "<group>"; };
+		FCD05964E34D0314D4BE5E68 /* SpineAttachment.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SpineAttachment.m; path = Classes/SpineAttachment.m; sourceTree = "<group>"; };
+		FD352FE1F7B5686EF9A1D5C9 /* SkeletonData.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = SkeletonData.c; path = "Libraries/spine-c/SkeletonData.c"; sourceTree = "<group>"; };
+		FD7CF876C6B35167E6B232B1 /* ANRestOps.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ANRestOps.h; path = ANRestOps/ANRestOps.h; sourceTree = "<group>"; };
+		FDDF0B0B1608328E9FF93101 /* AtlasAttachmentLoader.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = AtlasAttachmentLoader.c; path = "Libraries/spine-c/AtlasAttachmentLoader.c"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		253CDC6B94A23800E8185A59 /* Frameworks */ = {
+		03956E85A49B5FA957F77141 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				653E5F899F250DE19EDA3645 /* Foundation.framework in Frameworks */,
+				ECF868F734D4C42A64E16E70 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A410B5E2100B3A5028CA8CA1 /* Frameworks */ = {
+		0ADEA6619DB3FACA017E383E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				830017F22E0FF74CA7FD241F /* Foundation.framework in Frameworks */,
+				A0B4BC82D6193165703D54F3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25FDDA1200B8574795EC5D67 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68CDC95883C23121986B148F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C776DDD1799B277A76C8FE6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				811931CC2EE9BF355A07048E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99F216426198631E2BF8E5AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE911670033ECF5C65F81E2C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		434017D062E04A59E18DA268 /* iOS */ = {
+		018A9442B016A37E4109B800 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				1291EC3B787C2BBCA96C24ED /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		52CE8540F534A0877FC294E4 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				434017D062E04A59E18DA268 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		7CEE7D2CCC1474A80BD72F32 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				F58ACEEA5896E22D15DF7E1C /* Pods-Appy Little Eaters */,
+				9421BB4A1AEC7CAF5EE6C455 /* Pods-Appy Little Eaters */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		7E67BD863911660071D40775 /* Pods */ = {
+		031AC5882D513002D11F04C8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F19F80F1D4DB808698DB9DB9 /* GBInfiniteScrollView */,
+				DF94F7E315471033B950BA2B /* ANRestOps */,
+				5A1E5B510ADBF0F6DF90055E /* GBInfiniteScrollView */,
+				3F4B7F73D9F94A2AF0442663 /* ObjectiveSpine */,
+				0ACA5D1D9E022E88A6F539EE /* SpineSpriteKit */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		90EEF3A4828E9FEDCE42D2A7 /* Support Files */ = {
+		0ACA5D1D9E022E88A6F539EE /* SpineSpriteKit */ = {
 			isa = PBXGroup;
 			children = (
-				2C794B9A2BA993ADCF32046C /* Pods-Appy Little Eaters-GBInfiniteScrollView.xcconfig */,
-				8CAEB861407B90808033933A /* Pods-Appy Little Eaters-GBInfiniteScrollView-Private.xcconfig */,
-				F3BDDDB0ABA12E8E0F08EF32 /* Pods-Appy Little Eaters-GBInfiniteScrollView-dummy.m */,
-				126970458111B049CE2D38C9 /* Pods-Appy Little Eaters-GBInfiniteScrollView-prefix.pch */,
+				C1008EDBBE31AD217DEFBF1B /* DZSpineScene.h */,
+				9CFA87E350614AD9409670ED /* DZSpineScene.m */,
+				57B521CD683C16877A33CDCA /* DZSpineSceneBuilder.h */,
+				20011495F8690333FFE80255 /* DZSpineSceneBuilder.m */,
+				410F3DEF3D068D3BEBC40DBC /* DZSpineSceneDescription.h */,
+				F6D5D6BE79C60D8B3E9FEA72 /* DZSpineSceneDescription.m */,
+				6FE6B6E0250F2EE3C144E41F /* DZSpineSceneTrack.h */,
+				10AD9835E82B317B82443BCC /* DZSpineSceneTrack.m */,
+				49B6A2A0C5AED995AF721389 /* DZSpineSpriteKitAnimation.h */,
+				19E54E8402CF4BCAA6A59743 /* DZSpineSpriteKitAnimation.m */,
+				7EC1160A8DA1C453435F3FEF /* DZSpineSpriteKitMaps.h */,
+				CC89931F7C0D27F25A2F2F58 /* DZSpineSpriteKitMaps.m */,
+				B52BA7EC319F19B73AA4E583 /* DZSpineTexturePool.h */,
+				F5AC6A4495A2440274B20C3B /* DZSpineTexturePool.m */,
+				DEA54F23A42F2F56472D4222 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/Pods-Appy Little Eaters-GBInfiniteScrollView";
+			path = SpineSpriteKit;
 			sourceTree = "<group>";
 		};
-		CE678C40EFE3ECF0D3A6DAF4 = {
+		34297B3CEB12FEB3188E5533 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				E10FB6EBCAF09BC7199BDFFC /* Podfile */,
-				52CE8540F534A0877FC294E4 /* Frameworks */,
-				7E67BD863911660071D40775 /* Pods */,
-				FD18630A8A5E752F0A18AE83 /* Products */,
-				7CEE7D2CCC1474A80BD72F32 /* Targets Support Files */,
+				200282F87335FDA2FF9D4A96 /* Foundation.framework */,
 			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
-		F02689D8779AB1DB19F5BCFD /* Core */ = {
+		3BC64F7F197F4B4619DED573 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				AD08D890AE28C74519CDDEB4 /* GBInfiniteScrollView.h */,
-				73BB4036432E64AA6E166528 /* GBInfiniteScrollView.m */,
-				99B5B6717C7AA04B19D6FD87 /* GBInfiniteScrollViewPage.h */,
-				3FABC871455D7D7798AE383A /* GBInfiniteScrollViewPage.m */,
+				FC1AA9B705FC5DFD86257B8B /* GBInfiniteScrollView.h */,
+				22A01F6EE88DD77C5E38CA59 /* GBInfiniteScrollView.m */,
+				84BC81865BDA4254B1705B42 /* GBInfiniteScrollViewPage.h */,
+				EADF174B4C2ECD080D8C08BC /* GBInfiniteScrollViewPage.m */,
 			);
 			name = Core;
 			sourceTree = "<group>";
 		};
-		F19F80F1D4DB808698DB9DB9 /* GBInfiniteScrollView */ = {
+		3F4B7F73D9F94A2AF0442663 /* ObjectiveSpine */ = {
 			isa = PBXGroup;
 			children = (
-				F02689D8779AB1DB19F5BCFD /* Core */,
-				90EEF3A4828E9FEDCE42D2A7 /* Support Files */,
+				889EFDA5BF11DF29CAAAC830 /* Animation.c */,
+				BB0011FDEE4B968897DE0E8D /* Animation.h */,
+				F2D355AE1949A98D1C84C90A /* AnimationState.c */,
+				12239EDB2692D069CCB266BB /* AnimationState.h */,
+				16AAC2534AD6B6BBBFCD9DA0 /* AnimationStateData.c */,
+				12F5C8DC2111D23DB089B21F /* AnimationStateData.h */,
+				F01D683DA5740E31905CBDE0 /* Atlas.c */,
+				9C06D8290A9E7BE8A3E88569 /* Atlas.h */,
+				FDDF0B0B1608328E9FF93101 /* AtlasAttachmentLoader.c */,
+				C6614A03BAA8A867BB51759B /* AtlasAttachmentLoader.h */,
+				63916020CDECAB56D026C04D /* Attachment.c */,
+				2B7B4AD5EE1782D6207F5535 /* Attachment.h */,
+				127A474F43072D4F385F1B49 /* AttachmentLoader.c */,
+				152D25AD0A70863FA6EC4523 /* AttachmentLoader.h */,
+				D9980BFC72B3D80AD45F522C /* Bone.c */,
+				7A9A49B32C0F62C8214C66B3 /* Bone.h */,
+				F0C08F9636439E788A1520E7 /* BoneData.c */,
+				D2A935030AB98FD32A47E333 /* BoneData.h */,
+				94CAF80336646C55F95253BE /* BoundingBoxAttachment.c */,
+				321BF60B41397007DFF02473 /* BoundingBoxAttachment.h */,
+				6E5586B0ACCD14A972D5F8A3 /* DZSpineLoader.h */,
+				B485E012B398CA9B2A0E0197 /* DZSpineLoader.m */,
+				82FFF44C536F8CB106A974D7 /* Event.c */,
+				3BAA40002FB2088565E371C6 /* Event.h */,
+				4DA9961B39648EF169FD4C39 /* EventData.c */,
+				ADDF2FC2FDF37D7FA60834EE /* EventData.h */,
+				B8FD4642085609355E9833F3 /* Json.c */,
+				87255567DF8BF3AF6F229F8F /* Json.h */,
+				D1007B2764ACD23810D9C7EA /* RegionAttachment.c */,
+				B9F48A75D5132E71CB6742C3 /* RegionAttachment.h */,
+				249C6C809A143B804B544B06 /* Skeleton.c */,
+				5D7AA827C844CA4B768A56AF /* Skeleton.h */,
+				00AD5E74E1157557AADF6974 /* SkeletonBounds.c */,
+				7FC046FAA1DED22E267E20EE /* SkeletonBounds.h */,
+				FD352FE1F7B5686EF9A1D5C9 /* SkeletonData.c */,
+				0907ECCF63CE528816DF42B6 /* SkeletonData.h */,
+				241F83ACB10685F209A9CC7A /* SkeletonJson.c */,
+				F01D4A76492BF47D1CA2B407 /* SkeletonJson.h */,
+				EF036C94184B6050435C8F37 /* Skin.c */,
+				E136F7376E602AFC3E03ECE6 /* Skin.h */,
+				0191208FE5503E8A168F20CF /* Slot.c */,
+				55B4833826453F85FFA2C439 /* Slot.h */,
+				11EF72FB521A86070A90B231 /* SlotData.c */,
+				37CD7B31A6921DA477773F1B /* SlotData.h */,
+				55A43612CF3A1999D29B3DDC /* SpineAnimation.h */,
+				EAFEAD4EC99F98B821B94F7E /* SpineAnimation.m */,
+				78D8163D2A2D04B4EB18ADDE /* SpineAttachment.h */,
+				FCD05964E34D0314D4BE5E68 /* SpineAttachment.m */,
+				21CB3A9015499296C468DAA3 /* SpineBone.h */,
+				A10E84BCA6568B46BFEC9A3C /* SpineBone.m */,
+				8735E1EFDC3B475B55F33F3B /* SpineGeometry.h */,
+				02F4A0FF783BCFB40A046127 /* SpineGeometry.m */,
+				5CBB7B963746698E02788E71 /* SpineSequence.h */,
+				5F234A118FD24D39759CF5FC /* SpineSequence.m */,
+				FAEF404FC3D0025E73734C76 /* SpineSkeleton.h */,
+				1051AB1C4384DB3D4A530D16 /* SpineSkeleton.m */,
+				4D88300DB61A3C7013FF8F9F /* SpineSlot.h */,
+				0335D66ADBF7137038ECF9F8 /* SpineSlot.m */,
+				D19489F1102EB44D41A4F166 /* SpineTimeline.h */,
+				AF796DCD8737936C3BD09398 /* SpineTimeline.m */,
+				56B3543A317D75BB76970ADC /* extension.c */,
+				E0F5DD3ACD427A45941E2E86 /* extension.h */,
+				28B45BF413D97D09830BD992 /* spine.h */,
+				2C2A81E57180C35267132414 /* spine_adapt.h */,
+				B6A112C4B6D9ACAD0108E2D4 /* spine_adapt.m */,
+				A33BDD56B52EBDB55372D835 /* Support Files */,
+			);
+			path = ObjectiveSpine;
+			sourceTree = "<group>";
+		};
+		5A1E5B510ADBF0F6DF90055E /* GBInfiniteScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				3BC64F7F197F4B4619DED573 /* Core */,
+				C0ACE85921C7B520B690A8CB /* Support Files */,
 			);
 			path = GBInfiniteScrollView;
 			sourceTree = "<group>";
 		};
-		F58ACEEA5896E22D15DF7E1C /* Pods-Appy Little Eaters */ = {
+		918F2D92218C7E9BEC023558 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9B459B32A758F7DC1CE7D2CB /* Pods-Appy Little Eaters-acknowledgements.markdown */,
-				A5EE739AE7626677401A74F2 /* Pods-Appy Little Eaters-acknowledgements.plist */,
-				33748208865D6F58C909721A /* Pods-Appy Little Eaters-dummy.m */,
-				722576A8B1D4F8B47A3DB59D /* Pods-Appy Little Eaters-environment.h */,
-				C123B9AF1871E2A20878A168 /* Pods-Appy Little Eaters-resources.sh */,
-				777D6F5027F0DF5D6C7B2808 /* Pods-Appy Little Eaters.debug.xcconfig */,
-				52CD58D44CB88640395FD4A1 /* Pods-Appy Little Eaters.release.xcconfig */,
+				A3D23A43C850AC8CF24C5A8A /* libPods-Appy Little Eaters.a */,
+				D655ECF6074D17880DB03726 /* libPods-Appy Little Eaters-ANRestOps.a */,
+				6931CF4A509F6B01478B4B10 /* libPods-Appy Little Eaters-GBInfiniteScrollView.a */,
+				9DFAC799CD4A3B53F6F578B2 /* libPods-Appy Little Eaters-ObjectiveSpine.a */,
+				90246E313FAA7FC25D65EBBB /* libPods-Appy Little Eaters-SpineSpriteKit.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9421BB4A1AEC7CAF5EE6C455 /* Pods-Appy Little Eaters */ = {
+			isa = PBXGroup;
+			children = (
+				8810BE0B8A40F0B788C5C052 /* Pods-Appy Little Eaters-acknowledgements.markdown */,
+				353CDF608D8E0E21C841F354 /* Pods-Appy Little Eaters-acknowledgements.plist */,
+				F930464030C131F78B352405 /* Pods-Appy Little Eaters-dummy.m */,
+				054F5EC1B7A3BE06A3C519F1 /* Pods-Appy Little Eaters-environment.h */,
+				DC5D991195616F642798F058 /* Pods-Appy Little Eaters-resources.sh */,
+				CC4187D6F15F66729117D2AF /* Pods-Appy Little Eaters.debug.xcconfig */,
+				412CC84BC5A4AF4E21385719 /* Pods-Appy Little Eaters.release.xcconfig */,
 			);
 			name = "Pods-Appy Little Eaters";
 			path = "Target Support Files/Pods-Appy Little Eaters";
 			sourceTree = "<group>";
 		};
-		FD18630A8A5E752F0A18AE83 /* Products */ = {
+		9B7CAA2022C72A2128D7F0ED /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				7DA8A2EDD2A837ED7AB82B3B /* libPods-Appy Little Eaters.a */,
-				E0F29C8CEE9F5C94CABADCA2 /* libPods-Appy Little Eaters-GBInfiniteScrollView.a */,
+				02CFC048F5AA8C486A9C5D7A /* Pods-Appy Little Eaters-ANRestOps.xcconfig */,
+				7F602FAA7EB4A4D2A76E51E5 /* Pods-Appy Little Eaters-ANRestOps-Private.xcconfig */,
+				F7EEDD8F5F35801889D3F99A /* Pods-Appy Little Eaters-ANRestOps-dummy.m */,
+				532B287B39A9C707A13EDE91 /* Pods-Appy Little Eaters-ANRestOps-prefix.pch */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/Pods-Appy Little Eaters-ANRestOps";
+			sourceTree = "<group>";
+		};
+		A33BDD56B52EBDB55372D835 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F07688D42A8724EF3B971A11 /* Pods-Appy Little Eaters-ObjectiveSpine.xcconfig */,
+				4730730F35F2DBD78F0ECAE0 /* Pods-Appy Little Eaters-ObjectiveSpine-Private.xcconfig */,
+				380506C865406EC0F6892270 /* Pods-Appy Little Eaters-ObjectiveSpine-dummy.m */,
+				0F191FB0996E4547154A621D /* Pods-Appy Little Eaters-ObjectiveSpine-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-Appy Little Eaters-ObjectiveSpine";
+			sourceTree = "<group>";
+		};
+		C0ACE85921C7B520B690A8CB /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				907DA5E15F6B0B5159CE6DC2 /* Pods-Appy Little Eaters-GBInfiniteScrollView.xcconfig */,
+				59F109483662FBB03BB77AB0 /* Pods-Appy Little Eaters-GBInfiniteScrollView-Private.xcconfig */,
+				F09FF222D334390AC5A5D3C5 /* Pods-Appy Little Eaters-GBInfiniteScrollView-dummy.m */,
+				D0C4D44D99C628EC1F8A2309 /* Pods-Appy Little Eaters-GBInfiniteScrollView-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-Appy Little Eaters-GBInfiniteScrollView";
+			sourceTree = "<group>";
+		};
+		C9C2D4CD98D2236E76290496 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				34297B3CEB12FEB3188E5533 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D73A4B5608BB5CA5B80FC51E = {
+			isa = PBXGroup;
+			children = (
+				D7C8EF567EB4DC6AD01EEB7F /* Podfile */,
+				C9C2D4CD98D2236E76290496 /* Frameworks */,
+				031AC5882D513002D11F04C8 /* Pods */,
+				918F2D92218C7E9BEC023558 /* Products */,
+				018A9442B016A37E4109B800 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		DEA54F23A42F2F56472D4222 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				157E9CE51270D97837DDBFDE /* Pods-Appy Little Eaters-SpineSpriteKit.xcconfig */,
+				41DB310D6BB65AF4004D4624 /* Pods-Appy Little Eaters-SpineSpriteKit-Private.xcconfig */,
+				705BA712C60632BC58D26A26 /* Pods-Appy Little Eaters-SpineSpriteKit-dummy.m */,
+				D20EF171020BBB243DC5CFAB /* Pods-Appy Little Eaters-SpineSpriteKit-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-Appy Little Eaters-SpineSpriteKit";
+			sourceTree = "<group>";
+		};
+		DF94F7E315471033B950BA2B /* ANRestOps */ = {
+			isa = PBXGroup;
+			children = (
+				FD7CF876C6B35167E6B232B1 /* ANRestOps.h */,
+				4CF2189E73F09636184DD610 /* ANRestOps.m */,
+				CF224D7C13CA5D0B3AEBF2BB /* ANRestOpsClient.h */,
+				C0527B62D738AD3A85FA353C /* ANRestOpsClient.m */,
+				A8009AC4C7C83E77C0AC8C29 /* ANRestOpsResponse.h */,
+				2761BA5FD9E4F3D5936B6B18 /* ANRestOpsResponse.m */,
+				9B7CAA2022C72A2128D7F0ED /* Support Files */,
+			);
+			path = ANRestOps;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		ADFF2CE1EC6A6B06B8C4F934 /* Headers */ = {
+		005ADED73769C181D3B2D165 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BC8DD4B09B5B5EE058D5FDD /* GBInfiniteScrollView.h in Headers */,
-				1F09ACE187B166D799D9E0B1 /* GBInfiniteScrollViewPage.h in Headers */,
+				C7BF3B7CB841B220A83AE647 /* GBInfiniteScrollView.h in Headers */,
+				890F9977BB74F724C6A7D7BC /* GBInfiniteScrollViewPage.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4471B228F18010D75FB098B7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B495A83EC36C8DDD5E01F7E /* Animation.h in Headers */,
+				333A8BB08002CD3F78D897CB /* AnimationState.h in Headers */,
+				C52E788FD4A3EDFA3F7CAA28 /* AnimationStateData.h in Headers */,
+				4107825A8038065014BD4076 /* Atlas.h in Headers */,
+				5E3F32A27E682A53A5A5D1F2 /* AtlasAttachmentLoader.h in Headers */,
+				8B65F7FAF87F82E569A96BCF /* Attachment.h in Headers */,
+				5ED87BA12CB3EC9983A8FCE8 /* AttachmentLoader.h in Headers */,
+				182BE0D0F84711629B176484 /* Bone.h in Headers */,
+				DA380F20B0AA3AB1E46B7A3C /* BoneData.h in Headers */,
+				1A16B1CBC0148A54BFF9FCC0 /* BoundingBoxAttachment.h in Headers */,
+				F6CBD88074C468CA9991517A /* DZSpineLoader.h in Headers */,
+				4B6F9ADD8D39B80819A95E75 /* Event.h in Headers */,
+				9AB5DFF3E7290AA91254F4CD /* EventData.h in Headers */,
+				75C6997BDE379DEAD1EF9421 /* Json.h in Headers */,
+				D1B2A3594B847B886677916E /* RegionAttachment.h in Headers */,
+				C88C4104F9A67964288307FC /* Skeleton.h in Headers */,
+				7D280F100EE13D496CF25908 /* SkeletonBounds.h in Headers */,
+				C553F570D95A58EF77789867 /* SkeletonData.h in Headers */,
+				507A2D982B242A8E418A1D48 /* SkeletonJson.h in Headers */,
+				AA3365FB9396D5C16CDB821B /* Skin.h in Headers */,
+				60782D642CA39FA11C262E0D /* Slot.h in Headers */,
+				E87822ECE6A2F2B53D1813F6 /* SlotData.h in Headers */,
+				EB2875F9A53F7D6395F46383 /* SpineAnimation.h in Headers */,
+				8DFE9A184136F1E355F91B7C /* SpineAttachment.h in Headers */,
+				FBD9D51983C1197339021265 /* SpineBone.h in Headers */,
+				5BF08895F22C3E6630C8AD72 /* SpineGeometry.h in Headers */,
+				AC2E2B88EA8E3A131C5CB8A5 /* SpineSequence.h in Headers */,
+				89013C84C4C420D81D5A0E33 /* SpineSkeleton.h in Headers */,
+				2CC63F58FAB9B27BD0211202 /* SpineSlot.h in Headers */,
+				1AE7C1D6ADF5AA50E76495B3 /* SpineTimeline.h in Headers */,
+				A00A68FC040EE5E76A12C4E0 /* extension.h in Headers */,
+				31D080AD36B84368ECAAB365 /* spine.h in Headers */,
+				A6AFD3990B788046B424D80B /* spine_adapt.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4ACA17221EBFE8C88E07A51D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8174019CF5402E2FD065C0A8 /* DZSpineScene.h in Headers */,
+				CBC8181601AF9D2CA4E57214 /* DZSpineSceneBuilder.h in Headers */,
+				4B9864CBFFD55A2B653B3F1B /* DZSpineSceneDescription.h in Headers */,
+				874F720EBBCE8FA544B0A64A /* DZSpineSceneTrack.h in Headers */,
+				7C4594C16C578A56DA8FF44D /* DZSpineSpriteKitAnimation.h in Headers */,
+				0B6CC1C3F427E901A28DC140 /* DZSpineSpriteKitMaps.h in Headers */,
+				BF750F8233FDC952460ABB44 /* DZSpineTexturePool.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8AC082BF2028295B10C5485 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5CB7589EB50108368BC7034 /* ANRestOps.h in Headers */,
+				51A3C341A43CA42379ACE10A /* ANRestOpsClient.h in Headers */,
+				516335D82EC5DB91921C0CFF /* ANRestOpsResponse.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0BE23AC7D98A64CA991FB1CF /* Pods-Appy Little Eaters-GBInfiniteScrollView */ = {
+		3BFCCE630ED9FA59D039DBDA /* Pods-Appy Little Eaters-SpineSpriteKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 546919AD78AA669FEDB03CFB /* Build configuration list for PBXNativeTarget "Pods-Appy Little Eaters-GBInfiniteScrollView" */;
+			buildConfigurationList = 2CD429334863B8495E201F04 /* Build configuration list for PBXNativeTarget "Pods-Appy Little Eaters-SpineSpriteKit" */;
 			buildPhases = (
-				57C54FD98E7F2FFF3B864912 /* Sources */,
-				253CDC6B94A23800E8185A59 /* Frameworks */,
-				ADFF2CE1EC6A6B06B8C4F934 /* Headers */,
+				93F3735552146E5993CE381F /* Sources */,
+				03956E85A49B5FA957F77141 /* Frameworks */,
+				4ACA17221EBFE8C88E07A51D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5161A8F14B146B4B070DAE42 /* PBXTargetDependency */,
+			);
+			name = "Pods-Appy Little Eaters-SpineSpriteKit";
+			productName = "Pods-Appy Little Eaters-SpineSpriteKit";
+			productReference = 90246E313FAA7FC25D65EBBB /* libPods-Appy Little Eaters-SpineSpriteKit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		3F506E661D0000BF13436C59 /* Pods-Appy Little Eaters */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8FFF723105B984349F0AA04C /* Build configuration list for PBXNativeTarget "Pods-Appy Little Eaters" */;
+			buildPhases = (
+				05CD2B46B966ED6A10D12CDC /* Sources */,
+				99F216426198631E2BF8E5AD /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				241233032554C439989BDABD /* PBXTargetDependency */,
+				668AA2057D262731566182A2 /* PBXTargetDependency */,
+				C85C365DE6A5ABAD24556085 /* PBXTargetDependency */,
+				B328DB7A2C76965844D3373D /* PBXTargetDependency */,
+			);
+			name = "Pods-Appy Little Eaters";
+			productName = "Pods-Appy Little Eaters";
+			productReference = A3D23A43C850AC8CF24C5A8A /* libPods-Appy Little Eaters.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		669F8F4B5468BBEF089303CE /* Pods-Appy Little Eaters-GBInfiniteScrollView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C793E3E90843B1B05FA7CD1D /* Build configuration list for PBXNativeTarget "Pods-Appy Little Eaters-GBInfiniteScrollView" */;
+			buildPhases = (
+				AAEC5D1E8C91F23B62E42401 /* Sources */,
+				6C776DDD1799B277A76C8FE6 /* Frameworks */,
+				005ADED73769C181D3B2D165 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -197,84 +693,293 @@
 			);
 			name = "Pods-Appy Little Eaters-GBInfiniteScrollView";
 			productName = "Pods-Appy Little Eaters-GBInfiniteScrollView";
-			productReference = E0F29C8CEE9F5C94CABADCA2 /* libPods-Appy Little Eaters-GBInfiniteScrollView.a */;
+			productReference = 6931CF4A509F6B01478B4B10 /* libPods-Appy Little Eaters-GBInfiniteScrollView.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		65FA92442C60C1FE26C917B3 /* Pods-Appy Little Eaters */ = {
+		9020CF2AF163EA141636AFF0 /* Pods-Appy Little Eaters-ANRestOps */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A576B387114BD397A9FBCDAC /* Build configuration list for PBXNativeTarget "Pods-Appy Little Eaters" */;
+			buildConfigurationList = CC01FC270A1024BB22BB575D /* Build configuration list for PBXNativeTarget "Pods-Appy Little Eaters-ANRestOps" */;
 			buildPhases = (
-				5933836E796185E571C32455 /* Sources */,
-				A410B5E2100B3A5028CA8CA1 /* Frameworks */,
+				7D964804D5D4601B51C40197 /* Sources */,
+				0ADEA6619DB3FACA017E383E /* Frameworks */,
+				C8AC082BF2028295B10C5485 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E120D97E7D067038E72F3C59 /* PBXTargetDependency */,
 			);
-			name = "Pods-Appy Little Eaters";
-			productName = "Pods-Appy Little Eaters";
-			productReference = 7DA8A2EDD2A837ED7AB82B3B /* libPods-Appy Little Eaters.a */;
+			name = "Pods-Appy Little Eaters-ANRestOps";
+			productName = "Pods-Appy Little Eaters-ANRestOps";
+			productReference = D655ECF6074D17880DB03726 /* libPods-Appy Little Eaters-ANRestOps.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		EE81EDC1EA3EB9019F38370B /* Pods-Appy Little Eaters-ObjectiveSpine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 234F729819DE3B4A336F41C5 /* Build configuration list for PBXNativeTarget "Pods-Appy Little Eaters-ObjectiveSpine" */;
+			buildPhases = (
+				C941E3B450EFD9BCE080D821 /* Sources */,
+				25FDDA1200B8574795EC5D67 /* Frameworks */,
+				4471B228F18010D75FB098B7 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Appy Little Eaters-ObjectiveSpine";
+			productName = "Pods-Appy Little Eaters-ObjectiveSpine";
+			productReference = 9DFAC799CD4A3B53F6F578B2 /* libPods-Appy Little Eaters-ObjectiveSpine.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		81C68E1C7515AC63E51F50CF /* Project object */ = {
+		752C49214CC96CCB433348A2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
 				LastUpgradeCheck = 0640;
 			};
-			buildConfigurationList = 20A190FD297172848A91820B /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = D1FBDA64A33066697845C7D3 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = CE678C40EFE3ECF0D3A6DAF4;
-			productRefGroup = FD18630A8A5E752F0A18AE83 /* Products */;
+			mainGroup = D73A4B5608BB5CA5B80FC51E;
+			productRefGroup = 918F2D92218C7E9BEC023558 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				65FA92442C60C1FE26C917B3 /* Pods-Appy Little Eaters */,
-				0BE23AC7D98A64CA991FB1CF /* Pods-Appy Little Eaters-GBInfiniteScrollView */,
+				3F506E661D0000BF13436C59 /* Pods-Appy Little Eaters */,
+				9020CF2AF163EA141636AFF0 /* Pods-Appy Little Eaters-ANRestOps */,
+				669F8F4B5468BBEF089303CE /* Pods-Appy Little Eaters-GBInfiniteScrollView */,
+				EE81EDC1EA3EB9019F38370B /* Pods-Appy Little Eaters-ObjectiveSpine */,
+				3BFCCE630ED9FA59D039DBDA /* Pods-Appy Little Eaters-SpineSpriteKit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		57C54FD98E7F2FFF3B864912 /* Sources */ = {
+		05CD2B46B966ED6A10D12CDC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E223DEA2847CA7C26F74F17 /* GBInfiniteScrollView.m in Sources */,
-				3E63A47DFD95DDFAC1519F1B /* GBInfiniteScrollViewPage.m in Sources */,
-				C02D89B57EAD44A3881497F7 /* Pods-Appy Little Eaters-GBInfiniteScrollView-dummy.m in Sources */,
+				9DEBCE24213838EF21A613DB /* Pods-Appy Little Eaters-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5933836E796185E571C32455 /* Sources */ = {
+		7D964804D5D4601B51C40197 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4DB7C1D15AD11A84D62C97F /* Pods-Appy Little Eaters-dummy.m in Sources */,
+				E26800B48959D6E9B7B6DCE9 /* ANRestOps.m in Sources */,
+				E32F1584F31EB9195BCD395A /* ANRestOpsClient.m in Sources */,
+				1E62B0249BCDEFB1A30D3205 /* ANRestOpsResponse.m in Sources */,
+				31D4395EF9BC1FFB8FAA0394 /* Pods-Appy Little Eaters-ANRestOps-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93F3735552146E5993CE381F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97854033D05DBC18F612C403 /* DZSpineScene.m in Sources */,
+				8769B61AB9CDACB6A623E989 /* DZSpineSceneBuilder.m in Sources */,
+				2EE0C4C9D20E66CF26E75514 /* DZSpineSceneDescription.m in Sources */,
+				BB6C34C220965806BA23793C /* DZSpineSceneTrack.m in Sources */,
+				4BAB0B4CD0BDB7F290692763 /* DZSpineSpriteKitAnimation.m in Sources */,
+				9F86576ED723B1DA2A9AFA2E /* DZSpineSpriteKitMaps.m in Sources */,
+				2BF8E83E0914F97F99AD9AAB /* DZSpineTexturePool.m in Sources */,
+				5150EDC2963E5C79845572CA /* Pods-Appy Little Eaters-SpineSpriteKit-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAEC5D1E8C91F23B62E42401 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B4E6EFBF84E88124FCEA359 /* GBInfiniteScrollView.m in Sources */,
+				8E8DB9006DF81FC177F0D16A /* GBInfiniteScrollViewPage.m in Sources */,
+				7A0675C84DD3412F2D839331 /* Pods-Appy Little Eaters-GBInfiniteScrollView-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C941E3B450EFD9BCE080D821 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97334194CE1C9534BFA16C8F /* Animation.c in Sources */,
+				764ADD2582AC5D8E5D1C0F84 /* AnimationState.c in Sources */,
+				90E47C3F7D00CEB0E79C62FE /* AnimationStateData.c in Sources */,
+				6D808A806555259B51E6C159 /* Atlas.c in Sources */,
+				4F58AD429E8F6C485CFD6D23 /* AtlasAttachmentLoader.c in Sources */,
+				39C7595A5A71803CA1905B76 /* Attachment.c in Sources */,
+				E6350C8F739A4EAD2C2C9A78 /* AttachmentLoader.c in Sources */,
+				AD1AB83A3E36F558A3B3E24C /* Bone.c in Sources */,
+				A6439ECDCD88D7D266519196 /* BoneData.c in Sources */,
+				D2C77AF67EDBAC26649E8F49 /* BoundingBoxAttachment.c in Sources */,
+				E88D3120AC092DAF1C752988 /* DZSpineLoader.m in Sources */,
+				AD9F8A8AF64717B76DA7DEEE /* Event.c in Sources */,
+				4C5F6C4D8D7362943CE7F32C /* EventData.c in Sources */,
+				0B154A62A23BDA3DAD0AF056 /* Json.c in Sources */,
+				CC931AF7B3B250399C8B9A96 /* Pods-Appy Little Eaters-ObjectiveSpine-dummy.m in Sources */,
+				3630482A3E2B0650D1DAB916 /* RegionAttachment.c in Sources */,
+				7C877D87C535B13BB2868152 /* Skeleton.c in Sources */,
+				FE6F4A4B1536A90537197E1C /* SkeletonBounds.c in Sources */,
+				48E4512AC91DA8ABD43CF33E /* SkeletonData.c in Sources */,
+				1AA9EC5A4631EF19978F7E1F /* SkeletonJson.c in Sources */,
+				4DF2439F3ABC1C98732EACDE /* Skin.c in Sources */,
+				9CC24E37482B74752A04178E /* Slot.c in Sources */,
+				E749EB7FD5357D673C393ADE /* SlotData.c in Sources */,
+				80632FF0F94BD908C865715C /* SpineAnimation.m in Sources */,
+				CBC35F85A0BE6AEAC4930093 /* SpineAttachment.m in Sources */,
+				F5400C4AF0CABDB25BC351BE /* SpineBone.m in Sources */,
+				046F015DA2ED43E5CAC2656E /* SpineGeometry.m in Sources */,
+				E6E3B44EFAABC4AEEB31B798 /* SpineSequence.m in Sources */,
+				D7170565309D807AA3FED460 /* SpineSkeleton.m in Sources */,
+				4B4BCA082EA28817B4A621E6 /* SpineSlot.m in Sources */,
+				1243E37DED3F1B7F1CBED8A5 /* SpineTimeline.m in Sources */,
+				ED2F80A20D064F7FB6241E6E /* extension.c in Sources */,
+				13FFA6126FABCEF323CB2008 /* spine_adapt.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E120D97E7D067038E72F3C59 /* PBXTargetDependency */ = {
+		241233032554C439989BDABD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Appy Little Eaters-ANRestOps";
+			target = 9020CF2AF163EA141636AFF0 /* Pods-Appy Little Eaters-ANRestOps */;
+			targetProxy = F419870A23313168A3FB0F72 /* PBXContainerItemProxy */;
+		};
+		5161A8F14B146B4B070DAE42 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Appy Little Eaters-ObjectiveSpine";
+			target = EE81EDC1EA3EB9019F38370B /* Pods-Appy Little Eaters-ObjectiveSpine */;
+			targetProxy = 32501B96A669AA2DF9DA3619 /* PBXContainerItemProxy */;
+		};
+		668AA2057D262731566182A2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-Appy Little Eaters-GBInfiniteScrollView";
-			target = 0BE23AC7D98A64CA991FB1CF /* Pods-Appy Little Eaters-GBInfiniteScrollView */;
-			targetProxy = 6C53A8F9DF1AABF39CD16D91 /* PBXContainerItemProxy */;
+			target = 669F8F4B5468BBEF089303CE /* Pods-Appy Little Eaters-GBInfiniteScrollView */;
+			targetProxy = AD93184924EEEA8C68D89DB7 /* PBXContainerItemProxy */;
+		};
+		B328DB7A2C76965844D3373D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Appy Little Eaters-SpineSpriteKit";
+			target = 3BFCCE630ED9FA59D039DBDA /* Pods-Appy Little Eaters-SpineSpriteKit */;
+			targetProxy = 7370620F8D0818DB01D3F61D /* PBXContainerItemProxy */;
+		};
+		C85C365DE6A5ABAD24556085 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Appy Little Eaters-ObjectiveSpine";
+			target = EE81EDC1EA3EB9019F38370B /* Pods-Appy Little Eaters-ObjectiveSpine */;
+			targetProxy = F04F628A9F08BC54FCD9A3C9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		2E662D2F134586287F06496D /* Debug */ = {
+		176A4A9228EDF592A5D7B2E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F602FAA7EB4A4D2A76E51E5 /* Pods-Appy Little Eaters-ANRestOps-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Appy Little Eaters-ANRestOps/Pods-Appy Little Eaters-ANRestOps-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		2893E5CC46209E9D21DD6AE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC4187D6F15F66729117D2AF /* Pods-Appy Little Eaters.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		331998F155C35B9F09E3F3C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4730730F35F2DBD78F0ECAE0 /* Pods-Appy Little Eaters-ObjectiveSpine-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Appy Little Eaters-ObjectiveSpine/Pods-Appy Little Eaters-ObjectiveSpine-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		39E0032B5C62736CCAD29C34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4730730F35F2DBD78F0ECAE0 /* Pods-Appy Little Eaters-ObjectiveSpine-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Appy Little Eaters-ObjectiveSpine/Pods-Appy Little Eaters-ObjectiveSpine-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		71F1D65912A4426744CB2A49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		880D9DC4FE873D6BD5434919 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -313,25 +1018,57 @@
 			};
 			name = Debug;
 		};
-		592B227497161064C738A6E1 /* Debug */ = {
+		92B619D673064482DDC582A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 777D6F5027F0DF5D6C7B2808 /* Pods-Appy Little Eaters.debug.xcconfig */;
+			baseConfigurationReference = 41DB310D6BB65AF4004D4624 /* Pods-Appy Little Eaters-SpineSpriteKit-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Appy Little Eaters-SpineSpriteKit/Pods-Appy Little Eaters-SpineSpriteKit-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		7DF3C0C6B623BE6990885A3C /* Release */ = {
+		93C8995EDB6B7A9DBA26DBC3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52CD58D44CB88640395FD4A1 /* Pods-Appy Little Eaters.release.xcconfig */;
+			baseConfigurationReference = 41DB310D6BB65AF4004D4624 /* Pods-Appy Little Eaters-SpineSpriteKit-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Appy Little Eaters-SpineSpriteKit/Pods-Appy Little Eaters-SpineSpriteKit-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		C04237FC877683A6CAC6976F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F602FAA7EB4A4D2A76E51E5 /* Pods-Appy Little Eaters-ANRestOps-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Appy Little Eaters-ANRestOps/Pods-Appy Little Eaters-ANRestOps-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D991CFE5A985DF7B8CFD6407 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 412CC84BC5A4AF4E21385719 /* Pods-Appy Little Eaters.release.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
@@ -345,25 +1082,9 @@
 			};
 			name = Release;
 		};
-		EEF6115364CF771F65CC6B96 /* Debug */ = {
+		E4CBFDFB3F0C770EBEBD207D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8CAEB861407B90808033933A /* Pods-Appy Little Eaters-GBInfiniteScrollView-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-Appy Little Eaters-GBInfiniteScrollView/Pods-Appy Little Eaters-GBInfiniteScrollView-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		F477271484B3378CA66F1491 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8CAEB861407B90808033933A /* Pods-Appy Little Eaters-GBInfiniteScrollView-Private.xcconfig */;
+			baseConfigurationReference = 59F109483662FBB03BB77AB0 /* Pods-Appy Little Eaters-GBInfiniteScrollView-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Appy Little Eaters-GBInfiniteScrollView/Pods-Appy Little Eaters-GBInfiniteScrollView-prefix.pch";
@@ -377,71 +1098,80 @@
 			};
 			name = Release;
 		};
-		F81BC1F37B6F5822A541D345 /* Release */ = {
+		EB72AE79D2DC7A99A174D0DA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59F109483662FBB03BB77AB0 /* Pods-Appy Little Eaters-GBInfiniteScrollView-Private.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Appy Little Eaters-GBInfiniteScrollView/Pods-Appy Little Eaters-GBInfiniteScrollView-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
-			name = Release;
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		20A190FD297172848A91820B /* Build configuration list for PBXProject "Pods" */ = {
+		234F729819DE3B4A336F41C5 /* Build configuration list for PBXNativeTarget "Pods-Appy Little Eaters-ObjectiveSpine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2E662D2F134586287F06496D /* Debug */,
-				F81BC1F37B6F5822A541D345 /* Release */,
+				331998F155C35B9F09E3F3C6 /* Debug */,
+				39E0032B5C62736CCAD29C34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		546919AD78AA669FEDB03CFB /* Build configuration list for PBXNativeTarget "Pods-Appy Little Eaters-GBInfiniteScrollView" */ = {
+		2CD429334863B8495E201F04 /* Build configuration list for PBXNativeTarget "Pods-Appy Little Eaters-SpineSpriteKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EEF6115364CF771F65CC6B96 /* Debug */,
-				F477271484B3378CA66F1491 /* Release */,
+				92B619D673064482DDC582A6 /* Debug */,
+				93C8995EDB6B7A9DBA26DBC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A576B387114BD397A9FBCDAC /* Build configuration list for PBXNativeTarget "Pods-Appy Little Eaters" */ = {
+		8FFF723105B984349F0AA04C /* Build configuration list for PBXNativeTarget "Pods-Appy Little Eaters" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				592B227497161064C738A6E1 /* Debug */,
-				7DF3C0C6B623BE6990885A3C /* Release */,
+				2893E5CC46209E9D21DD6AE9 /* Debug */,
+				D991CFE5A985DF7B8CFD6407 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C793E3E90843B1B05FA7CD1D /* Build configuration list for PBXNativeTarget "Pods-Appy Little Eaters-GBInfiniteScrollView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB72AE79D2DC7A99A174D0DA /* Debug */,
+				E4CBFDFB3F0C770EBEBD207D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC01FC270A1024BB22BB575D /* Build configuration list for PBXNativeTarget "Pods-Appy Little Eaters-ANRestOps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C04237FC877683A6CAC6976F /* Debug */,
+				176A4A9228EDF592A5D7B2E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1FBDA64A33066697845C7D3 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				880D9DC4FE873D6BD5434919 /* Debug */,
+				71F1D65912A4426744CB2A49 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 81C68E1C7515AC63E51F50CF /* Project object */;
+	rootObject = 752C49214CC96CCB433348A2 /* Project object */;
 }

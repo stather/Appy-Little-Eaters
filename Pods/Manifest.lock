@@ -1,12 +1,21 @@
 PODS:
+  - ANRestOps (1.0.3)
   - GBInfiniteScrollView (1.8):
     - GBInfiniteScrollView/Core (= 1.8)
   - GBInfiniteScrollView/Core (1.8)
+  - ObjectiveSpine (1.0.0)
+  - SpineSpriteKit (1.0.0):
+    - ObjectiveSpine (~> 1.0.0)
 
 DEPENDENCIES:
+  - ANRestOps (~> 1.0)
   - GBInfiniteScrollView (~> 1.6)
+  - SpineSpriteKit
 
 SPEC CHECKSUMS:
+  ANRestOps: 2acc5cffab1151ebbb96c53a945c4fbcc8b45ec5
   GBInfiniteScrollView: aa8dc078cf1c86a10d65bfa4430c8cf324e18672
+  ObjectiveSpine: d78489071cc9fb51afd5e80b97cc826c9c065004
+  SpineSpriteKit: 2d28c3456bbe28833f3297c2703718df774143a9
 
 COCOAPODS: 0.37.2

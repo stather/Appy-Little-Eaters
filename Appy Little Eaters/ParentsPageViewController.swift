@@ -18,6 +18,7 @@ public class ParentsPageViewController : UIViewController{
 	
 	@IBOutlet weak var theText: UIImageView!
 	
+    @IBOutlet weak var foodProgress: UIProgressView!
 	@IBOutlet weak var pinit: UIButton!
 	@IBOutlet weak var facebook: UIButton!
 	@IBOutlet weak var webLink: UIButton!
@@ -28,6 +29,12 @@ public class ParentsPageViewController : UIViewController{
 		webLink.hidden = true
 	}
 
+    @IBAction func downloadFood(sender: AnyObject) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.deleteAllFood()
+        appDelegate.downloadFood(foodProgress)
+    }
+    
 	lazy var managedObjectContext : NSManagedObjectContext? = {
 		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 		if let managedObjectContext = appDelegate.managedObjectContext {
@@ -88,14 +95,17 @@ public class ParentsPageViewController : UIViewController{
 	
 	@IBAction func fillTheForest(sender: AnyObject) {
 		let fetchAllRewards = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewards")
-		var error:NSErrorPointer! = NSErrorPointer()
-		for item in managedObjectContext?.executeFetchRequest(fetchAllRewards!, error: error) as! [DReward]{
+//		var error:NSErrorPointer! = NSErrorPointer()
+		for item in (try! managedObjectContext?.executeFetchRequest(fetchAllRewards!)) as! [DReward]{
 			managedObjectContext?.deleteObject(item)
 		}
-		managedObjectContext?.save(error)
-		
+		do {
+			try managedObjectContext?.save()
+		} catch _ {
+            /* TODO: Finish migration: handle the expression passed to error arg: error */
+		}
 		let fetchAllRewardsInPool = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewardsInPool")
-		for item in managedObjectContext?.executeFetchRequest(fetchAllRewardsInPool!, error: error) as! [DRewardPool]{
+		for item in (try! managedObjectContext?.executeFetchRequest(fetchAllRewardsInPool!)) as! [DRewardPool]{
 			let reward = NSEntityDescription.insertNewObjectForEntityForName("DReward", inManagedObjectContext: managedObjectContext!) as! DReward
 			
 			reward.creatureName = NSNumber(integer: Int(item.creatureName))
@@ -104,21 +114,29 @@ public class ParentsPageViewController : UIViewController{
 			reward.scale = item.scale
 			item.available = false
 		}
-		managedObjectContext?.save(error)
+		do {
+			try managedObjectContext?.save()
+		} catch _ {
+			/* TODO: Finish migration: handle the expression passed to error arg: error */
+		}
 	}
 	
 	@IBAction func clearTheForest(sender: AnyObject) {
 		let fetchAllRewards = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewards")
-		var error:NSErrorPointer! = NSErrorPointer()
-		for item in managedObjectContext?.executeFetchRequest(fetchAllRewards!, error: error) as! [DReward]{
+		//var error:NSErrorPointer! = NSErrorPointer()
+		for item in (try! managedObjectContext?.executeFetchRequest(fetchAllRewards!)) as! [DReward]{
 			managedObjectContext?.deleteObject(item)
 		}
 		let fetchAllRewardsInPool = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewardsInPool")
-		for item in managedObjectContext?.executeFetchRequest(fetchAllRewardsInPool!, error: error) as! [DRewardPool]{
+		for item in (try! managedObjectContext?.executeFetchRequest(fetchAllRewardsInPool!)) as! [DRewardPool]{
 			managedObjectContext?.deleteObject(item)
 		}
 		
-		managedObjectContext?.save(error)
+		do {
+			try managedObjectContext?.save()
+		} catch _ {
+			/* TODO: Finish migration: handle the expression passed to error arg: error */
+		}
 		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 		appDelegate.seedDatabase()
 		

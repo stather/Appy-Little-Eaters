@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var preferredVoice:AVSpeechSynthesisVoice?
 	
 	func speak(text: String){
-		var utter:AVSpeechUtterance = AVSpeechUtterance(string: text)
+		let utter:AVSpeechUtterance = AVSpeechUtterance(string: text)
 		utter.rate = AVSpeechUtteranceMinimumSpeechRate
 		utter.voice = preferredVoice
 		synth?.speakUtterance(utter)
@@ -51,43 +51,114 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		forestSoundsPlayer.stop()
 	}
 	
+    lazy var downloadQueue:NSOperationQueue = {
+        var queue = NSOperationQueue()
+        queue.name = "Download queue"
+        queue.maxConcurrentOperationCount = 1
+        return queue
+        }()
+    
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Override point for customization after application launch.
 		Crashlytics.startWithAPIKey("9151a746d6d01e3cf7ec2a3254ebb0c672760333")
 		synth = AVSpeechSynthesizer()
-		var v2 = filter(AVSpeechSynthesisVoice.speechVoices()) { $0.language == "en-US" }
-		preferredVoice = (v2[0] as! AVSpeechSynthesisVoice)
+		var v2 = AVSpeechSynthesisVoice.speechVoices().filter { $0.language == "en-US" }
+		preferredVoice = (v2[0] )
 		seedDatabase()
 		return true
 	}
+    
+    var foodProgress:UIProgressView?
+    
+    func downloadFood(progress:UIProgressView?){
+        let api = AleApi()
+        progress?.setProgress(0, animated: false)
+        var i:Float = 0
+        api.listFood { (foods) -> Void in
+            for food in foods{
+                let dFood = NSEntityDescription.insertNewObjectForEntityForName("DFood", inManagedObjectContext: self.managedObjectContext!) as! DFood
+                dFood.colour = food.colour
+                dFood.name = food.name
+                dFood.free = food.free
+                let error:NSErrorPointer = NSErrorPointer()
+                do {
+					try self.managedObjectContext?.save()
+				} catch let error1 as NSError {
+					error.memory = error1
+				} catch {
+					fatalError()
+				}
+                let id = ImageDownloader(url: food.image, name: food.name)
+                self.downloadQueue.addOperation(id)
+                let sd = SoundDownloader(url: food.sound, name: food.name)
+                sd.completionBlock = {
+                    i += 1
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        progress?.setProgress(i / Float(foods.count), animated: false)
+                    })
+                }
+                self.downloadQueue.addOperation(sd)
+            }
+            
+        }
+    }
+    
+    func deleteAllFood(){
+        let fetchRequest = NSFetchRequest()
+        fetchRequest.entity = NSEntityDescription.entityForName("DFood", inManagedObjectContext: managedObjectContext!)
+        fetchRequest.includesPropertyValues = false
+        
+        if let results = try? managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject!] {
+            for result in results {
+                managedObjectContext!.deleteObject(result)
+            }
+            let r = try? managedObjectContext?.save()
+            
+            
+        } else {
+
+        }
+    }
 	
 	func seedDatabase(){
-		var fetchAllRewards = managedObjectModel.fetchRequestTemplateForName("FetchAllRewardsInPool")
-		var error:NSErrorPointer = NSErrorPointer()
+		let fetchAllRewards = managedObjectModel.fetchRequestTemplateForName("FetchAllRewardsInPool")
+		let error:NSErrorPointer = NSErrorPointer()
 		let c = managedObjectContext?.countForFetchRequest(fetchAllRewards!, error: error)
 		if c > 0{
 			return
 		}
-		var fname = NSBundle.mainBundle().pathForResource("rewards", ofType: "csv")
-		var data = NSString(contentsOfFile: fname!, encoding: NSUTF8StringEncoding, error: error)
-		var lines:[String] = data?.componentsSeparatedByString("\n") as! [String]
+		let fname = NSBundle.mainBundle().pathForResource("rewards", ofType: "csv")
+		var data: NSString!
+		do {
+			data = try NSString(contentsOfFile: fname!, encoding: NSUTF8StringEncoding)
+		} catch let error1 as NSError {
+			error.memory = error1
+			data = nil
+		}
+        let lines:[String] = data.componentsSeparatedByString("\n")
+        
+		//let lines:[String!] = data.componentsSeparatedByString("\n") as! [String!]
 		for item in lines{
 			var fields:[String] = item.componentsSeparatedByString(",")
 			if fields.count >= 6 {
 				let reward = NSEntityDescription.insertNewObjectForEntityForName("DRewardPool", inManagedObjectContext: managedObjectContext!) as! DRewardPool
 			
-				reward.creatureName = fields[0].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).toInt()!
-				reward.positionX = fields[2].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).toInt()!
-				reward.positionY = fields[3].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).toInt()!
+				reward.creatureName = Int(fields[0].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))!
+				reward.positionX = Int(fields[2].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))!
+				reward.positionY = Int(fields[3].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))!
 				reward.imageName = fields[1].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-				reward.level = fields[4].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).toInt()!
-				var scale = fields[5].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-				var fscale = (scale as NSString).floatValue
+				reward.level = Int(fields[4].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))!
+				let scale = fields[5].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+				let fscale = (scale as NSString).floatValue
 				reward.scale = fscale
-				println("Loaded " + reward.creatureName.stringValue)
+				print("Loaded " + reward.creatureName.stringValue)
 			}
 		}
-		managedObjectContext?.save(error)
+		do {
+			try managedObjectContext?.save()
+		} catch let error1 as NSError {
+			error.memory = error1
+		}
 	}
 	
 	func applicationWillResignActive(application: UIApplication) {
@@ -119,7 +190,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	lazy var applicationDocumentsDirectory: NSURL = {
 		// The directory the application uses to store the Core Data store file. This code uses a directory named "com.readysteadyrainbow.test2" in the application's documents Application Support directory.
 		let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-		return urls[urls.count-1] as! NSURL
+		return urls[urls.count-1] 
 		}()
 	
 	lazy var managedObjectModel: NSManagedObjectModel = {
@@ -135,18 +206,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("AleModel.sqlite")
 		var error: NSError? = nil
 		var failureReason = "There was an error creating or loading the application's saved data."
-		if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: [NSMigratePersistentStoresAutomaticallyOption:true, NSInferMappingModelAutomaticallyOption:true], error: &error) == nil {
+		do {
+			try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: [NSMigratePersistentStoresAutomaticallyOption:true, NSInferMappingModelAutomaticallyOption:true])
+		} catch var error1 as NSError {
+			error = error1
 			coordinator = nil
 			// Report any error we got.
 			let dict = NSMutableDictionary()
 			dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
 			dict[NSLocalizedFailureReasonErrorKey] = failureReason
 			dict[NSUnderlyingErrorKey] = error
-			error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict as [NSObject : AnyObject])
+            //error = NSError(domain: "", code: 9999, userInfo: dict)
+			
+            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: [:])
+            
 			// Replace this with code to handle the error appropriately.
 			// abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
 			NSLog("Unresolved error \(error), \(error!.userInfo)")
 			abort()
+		} catch {
+			fatalError()
 		}
 		
 		return coordinator
@@ -168,11 +247,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func saveContext () {
 		if let moc = self.managedObjectContext {
 			var error: NSError? = nil
-			if moc.hasChanges && !moc.save(&error) {
-				// Replace this implementation with code to handle the error appropriately.
-				// abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-				NSLog("Unresolved error \(error), \(error!.userInfo)")
-				abort()
+			if moc.hasChanges {
+				do {
+					try moc.save()
+				} catch let error1 as NSError {
+					error = error1
+					// Replace this implementation with code to handle the error appropriately.
+					// abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+					NSLog("Unresolved error \(error), \(error!.userInfo)")
+					abort()
+				}
 			}
 		}
 	}

@@ -6,5 +6,8 @@
 
 #import "../SpineImporter/SpineImport.h"
 #import "GBInfiniteScrollView/GBInfiniteScrollView.h"
+#import "SpineSpriteKit/DZSpineSceneBuilder.h"
+#import "ANRestOps/ANRestOps.h"
+
 
 

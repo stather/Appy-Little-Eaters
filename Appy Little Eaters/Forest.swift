@@ -20,16 +20,16 @@ public class Forest : SKSpriteNode, ScrollableProtocol{
 		}()
 	
 	convenience init(parentScene:ForestScene, slice:Int){
-		var imageName:String = "REWARDS-FOREST-UPDATED_0" + slice.description + ".png"
-		var t:SKTexture = SKTexture(imageNamed: imageName)
-		var r:CGSize = parentScene.frame.size
-		var h:Float = Float(r.height)
-		var bh:Float = Float(t.size().height)
-		var fact:Float = h / bh
-		var newHeight:Float = Float(t.size().height) * fact
-		var newWidth:Float = Float(t.size().width) * fact
+		let imageName:String = "REWARDS-FOREST-UPDATED_0" + slice.description + ".png"
+		let t:SKTexture = SKTexture(imageNamed: imageName)
+		let r:CGSize = parentScene.frame.size
+		let h:Float = Float(r.height)
+		let bh:Float = Float(t.size().height)
+		let fact:Float = h / bh
+		let newHeight:Float = Float(t.size().height) * fact
+		let newWidth:Float = Float(t.size().width) * fact
 		
-		var s:CGSize = CGSizeMake(CGFloat(newWidth), CGFloat(newHeight))
+		let s:CGSize = CGSizeMake(CGFloat(newWidth), CGFloat(newHeight))
 		self.init(texture: t, color: UIColor.clearColor(), size: s)
 		
 		self.slice = slice
@@ -44,7 +44,7 @@ public class Forest : SKSpriteNode, ScrollableProtocol{
 		
 	}
 	
-	override init(texture: SKTexture!, color: UIColor!, size: CGSize) {
+	override init(texture: SKTexture?, color: UIColor, size: CGSize) {
 		super.init(texture: texture, color: color, size: size)
 	}
 	

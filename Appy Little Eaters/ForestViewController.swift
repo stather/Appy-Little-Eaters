@@ -36,8 +36,8 @@ public class ForestViewController : UIViewController{
 	var forest:ForestScene!
 	
 	@IBAction func start(sender: AnyObject) {
-		var fmass:Float = (mass.text as NSString).floatValue
-		var fvelocity:Float = (velocity.text as NSString).floatValue
+		let fmass:Float = (mass.text! as NSString).floatValue
+		let fvelocity:Float = (velocity.text! as NSString).floatValue
 		forest.restart(fmass, velocity: fvelocity)
 	}
 	
@@ -88,7 +88,11 @@ public class ForestViewController : UIViewController{
 		var f = mainView.frame
 		spriteView = SKView(frame: CGRect(x: 0, y: 0, width: 1024, height: 768))
 		spriteView.opaque = false
-		spriteView.allowsTransparency = true
+		if #available(iOS 8.0, *) {
+		    spriteView.allowsTransparency = true
+		} else {
+		    // Fallback on earlier versions
+		}
 		spriteView.showsDrawCount = true
 		spriteView.showsNodeCount = true
 		spriteView.showsFPS = true

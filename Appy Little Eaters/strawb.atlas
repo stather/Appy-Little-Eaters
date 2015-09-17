@@ -1,0 +1,68 @@
+
+strawberry.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+leaf1
+  rotate: false
+  xy: 525, 212
+  size: 247, 154
+  orig: 247, 154
+  offset: 0, 0
+  index: -1
+leaf2
+  rotate: false
+  xy: 253, 13
+  size: 122, 132
+  orig: 122, 132
+  offset: 0, 0
+  index: -1
+leaf3
+  rotate: false
+  xy: 377, 15
+  size: 123, 130
+  orig: 123, 130
+  offset: 0, 0
+  index: -1
+leaf4
+  rotate: false
+  xy: 297, 147
+  size: 163, 99
+  orig: 163, 99
+  offset: 0, 0
+  index: -1
+stalk1
+  rotate: false
+  xy: 2, 2
+  size: 249, 175
+  orig: 249, 175
+  offset: 0, 0
+  index: -1
+stalk2
+  rotate: false
+  xy: 525, 368
+  size: 336, 131
+  orig: 336, 131
+  offset: 0, 0
+  index: -1
+strawb1
+  rotate: false
+  xy: 2, 179
+  size: 293, 320
+  orig: 293, 320
+  offset: 0, 0
+  index: -1
+strawb2
+  rotate: false
+  xy: 863, 366
+  size: 133, 133
+  orig: 133, 133
+  offset: 0, 0
+  index: -1
+strawb3
+  rotate: false
+  xy: 297, 248
+  size: 226, 251
+  orig: 226, 251
+  offset: 0, 0
+  index: -1

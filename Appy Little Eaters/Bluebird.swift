@@ -22,24 +22,24 @@ public class BlueBird : ForestCreature, Performer, MoveableProtocol{
 	var location:BirdLocation = BirdLocation.SittingOnRight
 	
 	convenience init(){
-		var t:SKTexture = SKTexture(imageNamed: "bird-sitting_03")
+		let t:SKTexture = SKTexture(imageNamed: "bird-sitting_03")
 		self.init(texture: t, color:UIColor.blackColor(), size:t.size())
 		name = "BLUEBIRD"
 	}
 	
 	func flappingBird() -> SKAction{
-		var wait = SKAction.waitForDuration(0.1)
-		var flap1 = textureFrom("bird1_03")
-		var flap2 = textureFrom("bird2_03")
-		var flap3 = textureFrom("bird3_03")
-		var flap4 = textureFrom("bird4_03")
-		var flap5 = textureFrom("bird5_03")
-		var flap6 = textureFrom("bird4_03")
-		var flap7 = textureFrom("bird3_03")
-		var flap8 = textureFrom("bird2_03")
-		var actions:[SKAction] = [flap1, wait, flap2, wait, flap3, wait, flap4, wait, flap5, wait, flap6, wait, flap7, wait, flap8, wait]
-		var flappingSequence:SKAction = SKAction.sequence(actions)
-		var flapping = SKAction.repeatActionForever(flappingSequence)
+		let wait = SKAction.waitForDuration(0.1)
+		let flap1 = textureFrom("bird1_03")
+		let flap2 = textureFrom("bird2_03")
+		let flap3 = textureFrom("bird3_03")
+		let flap4 = textureFrom("bird4_03")
+		let flap5 = textureFrom("bird5_03")
+		let flap6 = textureFrom("bird4_03")
+		let flap7 = textureFrom("bird3_03")
+		let flap8 = textureFrom("bird2_03")
+		let actions:[SKAction] = [flap1, wait, flap2, wait, flap3, wait, flap4, wait, flap5, wait, flap6, wait, flap7, wait, flap8, wait]
+		let flappingSequence:SKAction = SKAction.sequence(actions)
+		let flapping = SKAction.repeatActionForever(flappingSequence)
 		return flapping
 	}
 	

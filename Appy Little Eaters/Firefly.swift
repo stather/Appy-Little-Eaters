@@ -11,7 +11,7 @@ import SpriteKit
 
 public class Firefly : ForestCreature{
 	convenience init(){
-		var t:SKTexture = SKTexture(imageNamed: "toadstool_03")
+		let t:SKTexture = SKTexture(imageNamed: "toadstool_03")
 		self.init(texture: t, color:UIColor.blackColor(), size:t.size())
 		name = "FIREFLY"
 	}

@@ -11,7 +11,7 @@ import UIKit
 
 public class SocialStoryViewController : UIViewController{
 
-	required public init(coder aDecoder: NSCoder) {
+	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		currentPage = 1;
 	}
@@ -99,7 +99,7 @@ public class SocialStoryViewController : UIViewController{
 		default:
 			break;
 		}
-		var transition:CATransition = CATransition()
+		let transition:CATransition = CATransition()
 //		transition.duration = 1
 		transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
 		transition.type = kCATransitionFade

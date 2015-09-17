@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0BE23AC7D98A64CA991FB1CF"
+               BlueprintIdentifier = "669F8F4B5468BBEF089303CE"
                BuildableName = "libPods-Appy Little Eaters-GBInfiniteScrollView.a"
                BlueprintName = "Pods-Appy Little Eaters-GBInfiniteScrollView"
                ReferencedContainer = "container:Pods.xcodeproj">

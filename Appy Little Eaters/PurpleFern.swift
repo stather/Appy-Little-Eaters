@@ -11,14 +11,14 @@ import SpriteKit
 
 public class PurpleFern : ForestCreature{
 	convenience init(){
-		var t:SKTexture = SKTexture(imageNamed: "purplefern1")
+		let t:SKTexture = SKTexture(imageNamed: "purplefern1")
 		self.init(texture: t, color:UIColor.blackColor(), size:t.size())
 		name = "PURPLEFERN"
 		perform()
 	}
 	
 	func perform() {
-		var atlas = SKTextureAtlas(named: "purplefern")
+		let atlas = SKTextureAtlas(named: "purplefern")
 		var frames = [SKTexture]()
 		for index in 1...9{
 			frames.append(atlas.textureNamed("purple-fern" + String(index)))
@@ -26,8 +26,8 @@ public class PurpleFern : ForestCreature{
 		for var index = 8; index >= 2; index-- {
 			frames.append(atlas.textureNamed("purple-fern" + String(index)))
 		}
-		var action1 = SKAction.animateWithTextures(frames, timePerFrame: 0.2, resize: false, restore: true)
-		var action2 = SKAction.repeatActionForever(action1)
+		let action1 = SKAction.animateWithTextures(frames, timePerFrame: 0.2, resize: false, restore: true)
+		let action2 = SKAction.repeatActionForever(action1)
 		runAction(action2, withKey: "swaying")
 	}
 	

@@ -64,7 +64,7 @@ public class ForestCreature : SKSpriteNode, ScrollableProtocol{
 		return SKAction.setTexture(SKTexture(imageNamed: imageNamed))
 	}
 
-	override init(texture: SKTexture!, color: UIColor!, size: CGSize) {
+	override init(texture: SKTexture?, color: UIColor, size: CGSize) {
 		super.init(texture: texture, color: color, size: size)
 	}
 
@@ -74,20 +74,20 @@ public class ForestCreature : SKSpriteNode, ScrollableProtocol{
 	
 	public func printGeometry(){
 		return
-		var p = forestScene.originalPoint(position)
-		print("x ")
+		let p = forestScene.originalPoint(position)
+		print("x ", terminator: "")
 		if p.x < 0{
-			print(p.x + 9000)
+			print(p.x + 9000, terminator: "")
 		}
 		else{
-			print(p.x)
+			print(p.x, terminator: "")
 		}
-		print(" y ")
-		print(1035 - p.y)
-		print(" scale ")
-		var s = forestScene.fact / Float(xScale)
-		print(s)
-		println()
+		print(" y ", terminator: "")
+		print(1035 - p.y, terminator: "")
+		print(" scale ", terminator: "")
+		let s = forestScene.fact / Float(xScale)
+		print(s, terminator: "")
+		print("")
 	}
 	
 	class func from(creatureName:CreatureName) -> ForestCreature{
@@ -185,7 +185,7 @@ public class ForestCreature : SKSpriteNode, ScrollableProtocol{
 		var x:Float = Float(position.x)
 		var y:Float = Float(position.y)
 		var original = forestScene.originalPoint(position)
-		var howMuch = forestScene.fact * ForestScene.backgroundWidth() / 10
+		let howMuch = forestScene.fact * ForestScene.backgroundWidth() / 10
 		if horizontalDirection == HorizontalDirection.Left{
 			if original.x > destination.x{
 				x -= amount * 25

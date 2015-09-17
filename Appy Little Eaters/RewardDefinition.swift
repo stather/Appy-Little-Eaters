@@ -15,13 +15,13 @@ public class RewardDefinition{
 	
 	init(rewardType:ForestCreature.CreatureName){
 		self.rewardType = rewardType
-		position = CGPoint.zeroPoint
+		position = CGPoint.zero
 	}
 	
 	init(fromDictionary: NSDictionary){
 		rewardType = ForestCreature.CreatureName( rawValue: fromDictionary.valueForKey("rewardType") as! Int )
-		var x:CGFloat = CGFloat(fromDictionary.valueForKey("x") as! Int)
-		var y:CGFloat = CGFloat(fromDictionary.valueForKey("y") as! Int)
+		let x:CGFloat = CGFloat(fromDictionary.valueForKey("x") as! Int)
+		let y:CGFloat = CGFloat(fromDictionary.valueForKey("y") as! Int)
 		
 		position = CGPointMake(x, y)
 		
