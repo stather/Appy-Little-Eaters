@@ -365,6 +365,9 @@
 		46F6B40519FD348300205F6B /* Bluebird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F6B40419FD348300205F6B /* Bluebird.swift */; };
 		46F6B40719FD35FC00205F6B /* GreenDragon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F6B40619FD35FC00205F6B /* GreenDragon.swift */; };
 		46F6B40919FD428000205F6B /* RewardDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F6B40819FD428000205F6B /* RewardDefinition.swift */; };
+		681ADB9C1BBB1DF3009146C2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 681ADB9B1BBB1DF3009146C2 /* StoreKit.framework */; };
+		681ADBA01BBB2FF9009146C2 /* DAnimation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681ADB9E1BBB2FF9009146C2 /* DAnimation+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
+		681ADBA11BBB2FF9009146C2 /* DAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681ADB9F1BBB2FF9009146C2 /* DAnimation.swift */; settings = {ASSET_TAGS = (); }; };
 		682DB2871BA6011D00050F13 /* AleApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682DB2861BA6011D00050F13 /* AleApi.swift */; };
 		682DB2891BA6148900050F13 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682DB2881BA6148900050F13 /* ImageDownloader.swift */; };
 		682DB28E1BA75B4300050F13 /* DFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682DB28D1BA75B4300050F13 /* DFood.swift */; };
@@ -378,6 +381,9 @@
 		684319F01B5EDE9100A622E8 /* purpleband-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 684319EC1B5EDE9100A622E8 /* purpleband-white.png */; };
 		684319F11B5EDE9100A622E8 /* yellowband-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 684319ED1B5EDE9100A622E8 /* yellowband-white.png */; };
 		686546DB1B544A9D009FF566 /* GBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686546DA1B544A9D009FF566 /* GBViewController.swift */; };
+		686CC18C1BBFD996003AA2C2 /* FoodRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686CC18B1BBFD996003AA2C2 /* FoodRepository.swift */; settings = {ASSET_TAGS = (); }; };
+		686CC18E1BC123E1003AA2C2 /* UnitOfWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686CC18D1BC123E1003AA2C2 /* UnitOfWork.swift */; settings = {ASSET_TAGS = (); }; };
+		686CC1901BC1AD92003AA2C2 /* AnimationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686CC18F1BC1AD92003AA2C2 /* AnimationRepository.swift */; settings = {ASSET_TAGS = (); }; };
 		68774A121ABD90B70001CA32 /* healthykids.wav in Resources */ = {isa = PBXBuildFile; fileRef = 68774A111ABD90B70001CA32 /* healthykids.wav */; };
 		68B571CB1B73FDD400C35B52 /* newforest.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 68B571CA1B73FDD400C35B52 /* newforest.atlas */; };
 		68BA94FC1B5597F8005D6A64 /* pea.png in Resources */ = {isa = PBXBuildFile; fileRef = 68BA94F91B5597F8005D6A64 /* pea.png */; };
@@ -797,6 +803,10 @@
 		46F6B40419FD348300205F6B /* Bluebird.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bluebird.swift; sourceTree = "<group>"; };
 		46F6B40619FD35FC00205F6B /* GreenDragon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreenDragon.swift; sourceTree = "<group>"; };
 		46F6B40819FD428000205F6B /* RewardDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardDefinition.swift; sourceTree = "<group>"; };
+		681ADB9B1BBB1DF3009146C2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		681ADB9D1BBB2C88009146C2 /* AleModel 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 6.xcdatamodel"; sourceTree = "<group>"; };
+		681ADB9E1BBB2FF9009146C2 /* DAnimation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DAnimation+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		681ADB9F1BBB2FF9009146C2 /* DAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAnimation.swift; sourceTree = "<group>"; };
 		682DB2861BA6011D00050F13 /* AleApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AleApi.swift; sourceTree = "<group>"; };
 		682DB2881BA6148900050F13 /* ImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		682DB28A1BA7583100050F13 /* AleModel 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 5.xcdatamodel"; sourceTree = "<group>"; };
@@ -813,6 +823,9 @@
 		684319ED1B5EDE9100A622E8 /* yellowband-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellowband-white.png"; sourceTree = "<group>"; };
 		686546D91B54483D009FF566 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		686546DA1B544A9D009FF566 /* GBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBViewController.swift; sourceTree = "<group>"; };
+		686CC18B1BBFD996003AA2C2 /* FoodRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodRepository.swift; sourceTree = "<group>"; };
+		686CC18D1BC123E1003AA2C2 /* UnitOfWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitOfWork.swift; sourceTree = "<group>"; };
+		686CC18F1BC1AD92003AA2C2 /* AnimationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationRepository.swift; sourceTree = "<group>"; };
 		68774A111ABD90B70001CA32 /* healthykids.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = healthykids.wav; sourceTree = "<group>"; };
 		68B571CA1B73FDD400C35B52 /* newforest.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = newforest.atlas; sourceTree = "<group>"; };
 		68BA94F91B5597F8005D6A64 /* pea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pea.png; sourceTree = "<group>"; };
@@ -839,6 +852,7 @@
 				4620FB8E1983EDCD0063AB9E /* Crashlytics.framework in Frameworks */,
 				464F703318A019F000DDA449 /* CoreGraphics.framework in Frameworks */,
 				464F703518A019F000DDA449 /* UIKit.framework in Frameworks */,
+				681ADB9C1BBB1DF3009146C2 /* StoreKit.framework in Frameworks */,
 				464F703118A019F000DDA449 /* Foundation.framework in Frameworks */,
 				1D54B265CCE2746D98DE9987 /* libPods-Appy Little Eaters.a in Frameworks */,
 			);
@@ -967,6 +981,7 @@
 		464F702F18A019F000DDA449 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				681ADB9B1BBB1DF3009146C2 /* StoreKit.framework */,
 				68D7C9F41B530603005DFA20 /* Fabric.framework */,
 				46C4410F1A04E91900C1A6BE /* CoreData.framework */,
 				46E7C7FA1988387700CE7AB3 /* AVFoundation.framework */,
@@ -984,6 +999,7 @@
 		464F703618A019F000DDA449 /* Appy Little Eaters */ = {
 			isa = PBXGroup;
 			children = (
+				686CC18A1BBFD968003AA2C2 /* Repositories */,
 				6841DDA11B812D3400BACEB8 /* strawb.png */,
 				6841DD9F1B812B0800BACEB8 /* strawb.atlas */,
 				6841DD9E1B811FF500BACEB8 /* strawb.spine */,
@@ -1453,6 +1469,8 @@
 		46C440D91A02F27500C1A6BE /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
+				681ADB9E1BBB2FF9009146C2 /* DAnimation+CoreDataProperties.swift */,
+				681ADB9F1BBB2FF9009146C2 /* DAnimation.swift */,
 				682DB28D1BA75B4300050F13 /* DFood.swift */,
 				46E15DAC1A06486700B5BAE1 /* AppyLittleEaters.swift */,
 			);
@@ -1621,6 +1639,16 @@
 			name = parents;
 			sourceTree = "<group>";
 		};
+		686CC18A1BBFD968003AA2C2 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				686CC18B1BBFD996003AA2C2 /* FoodRepository.swift */,
+				686CC18D1BC123E1003AA2C2 /* UnitOfWork.swift */,
+				686CC18F1BC1AD92003AA2C2 /* AnimationRepository.swift */,
+			);
+			name = Repositories;
+			sourceTree = "<group>";
+		};
 		68BA94F71B5597F8005D6A64 /* splashscreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -1727,6 +1755,11 @@
 				TargetAttributes = {
 					464F702C18A019EF00DDA449 = {
 						DevelopmentTeam = 7E4366Z228;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					464F705018A019F000DDA449 = {
 						TestTargetID = 464F702C18A019EF00DDA449;
@@ -2136,7 +2169,9 @@
 				46E15DC01A0685FD00B5BAE1 /* WhiteRabbit.swift in Sources */,
 				46E15DB41A06849400B5BAE1 /* Bluebells.swift in Sources */,
 				469AC7A91A44C3B000CDA070 /* SGG_SpineSkin.m in Sources */,
+				686CC18E1BC123E1003AA2C2 /* UnitOfWork.swift in Sources */,
 				46E15DD61A0687EC00B5BAE1 /* BlueDragon.swift in Sources */,
+				681ADBA01BBB2FF9009146C2 /* DAnimation+CoreDataProperties.swift in Sources */,
 				469AC7A81A44C3B000CDA070 /* SGG_SpineJSONTools.m in Sources */,
 				68D7C9D61B52FA89005DFA20 /* Cloud1View.swift in Sources */,
 				46E15D791A0528BA00B5BAE1 /* StandardScroller.swift in Sources */,
@@ -2146,6 +2181,7 @@
 				46E15DB21A0682E900B5BAE1 /* Blackberries.swift in Sources */,
 				4642608119F598B80028C878 /* Forest.swift in Sources */,
 				46E48BC118A80E66006DCA91 /* CHomeIconView.m in Sources */,
+				686CC18C1BBFD996003AA2C2 /* FoodRepository.swift in Sources */,
 				682DB2871BA6011D00050F13 /* AleApi.swift in Sources */,
 				46F6B40519FD348300205F6B /* Bluebird.swift in Sources */,
 				4642607C19F58D530028C878 /* ForestScene.swift in Sources */,
@@ -2156,6 +2192,7 @@
 				469AC7A61A44C3B000CDA070 /* SGG_SpineBone.m in Sources */,
 				46E15DCE1A06876B00B5BAE1 /* GreenFern.swift in Sources */,
 				46E15DCC1A06874C00B5BAE1 /* Frog.swift in Sources */,
+				686CC1901BC1AD92003AA2C2 /* AnimationRepository.swift in Sources */,
 				46E15DBE1A0685E200B5BAE1 /* BrownToadstool.swift in Sources */,
 				682DB28E1BA75B4300050F13 /* DFood.swift in Sources */,
 				46F6B40719FD35FC00205F6B /* GreenDragon.swift in Sources */,
@@ -2165,6 +2202,7 @@
 				46E15DD41A0687BD00B5BAE1 /* PurpleFern.swift in Sources */,
 				46AE6C1919E979BC000238F4 /* RainbowPageViewController.swift in Sources */,
 				46AE6C4B19EB234C000238F4 /* FoodPageViewController.swift in Sources */,
+				681ADBA11BBB2FF9009146C2 /* DAnimation.swift in Sources */,
 				46E15DBA1A06856900B5BAE1 /* BrownRabbit.swift in Sources */,
 				4626D5F41A0FEBBA00D0FB24 /* SplashDrop.swift in Sources */,
 				46E7C7C91985114D00CE7AB3 /* TPKeyboardAvoidingTableView.m in Sources */,
@@ -2467,13 +2505,14 @@
 		46C440D11A02F12700C1A6BE /* AleModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				681ADB9D1BBB2C88009146C2 /* AleModel 6.xcdatamodel */,
 				682DB28A1BA7583100050F13 /* AleModel 5.xcdatamodel */,
 				4681699F1A082F87000D19E9 /* AleModel 3.xcdatamodel */,
 				4626D5F71A1FE32B00D0FB24 /* AleModel 4.xcdatamodel */,
 				46E15DB01A06710C00B5BAE1 /* AleModel 2.xcdatamodel */,
 				46C440D21A02F12700C1A6BE /* AleModel.xcdatamodel */,
 			);
-			currentVersion = 682DB28A1BA7583100050F13 /* AleModel 5.xcdatamodel */;
+			currentVersion = 681ADB9D1BBB2C88009146C2 /* AleModel 6.xcdatamodel */;
 			path = AleModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

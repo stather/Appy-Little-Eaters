@@ -72,3 +72,30 @@ class SoundDownloader: BaseDownloader {
     }
     
 }
+
+class AtlasDownloader: BaseDownloader{
+    
+    override init(url: String, name: String) {
+        super.init(url: url, name: name)
+    }
+    
+    override func main() {
+        print("Downloading: " + self.url)
+        saveContentsOfUrl(self.filename, ext: "atlas", srcUrl: self.url)
+        print("Done downloading: " + self.url)
+    }
+}
+
+class JsonDownloader: BaseDownloader{
+    
+    override init(url: String, name: String) {
+        super.init(url: url, name: name)
+    }
+    
+    override func main() {
+        print("Downloading: " + self.url)
+        saveContentsOfUrl(self.filename, ext: "json", srcUrl: self.url)
+        print("Done downloading: " + self.url)
+    }
+}
+

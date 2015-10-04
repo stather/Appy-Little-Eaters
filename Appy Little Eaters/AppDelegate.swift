@@ -11,6 +11,7 @@ import AVFoundation
 import UIKit
 import CoreData
 import Crashlytics
+import Fabric
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -60,6 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Override point for customization after application launch.
+        Fabric.with([Crashlytics()])
 		Crashlytics.startWithAPIKey("9151a746d6d01e3cf7ec2a3254ebb0c672760333")
 		synth = AVSpeechSynthesizer()
 		var v2 = AVSpeechSynthesisVoice.speechVoices().filter { $0.language == "en-US" }
@@ -68,7 +70,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		return true
 	}
     
+    var animationProgress:UIProgressView?
     var foodProgress:UIProgressView?
+    
+    func downloadAnimations(progress:UIProgressView?){
+        let api = AleApi()
+        progress?.setProgress(0, animated: false)
+        var i:Float = 0
+        
+        api.listAnimations { (animations) -> Void in
+            for animation in animations{
+                let uow = UnitOfWork()
+                let dAnimation:DAnimation! = uow.animationRepository?.createNewAnimation()
+                dAnimation.name = animation.name
+                dAnimation.atlas = animation.atlas
+                dAnimation.json = animation.json
+                dAnimation.texture = animation.texture
+                uow.saveChanges()
+                let ad = AtlasDownloader(url: animation.atlas, name: animation.name)
+                self.downloadQueue.addOperation(ad)
+                let jd = JsonDownloader(url: animation.json, name: animation.name)
+                self.downloadQueue.addOperation(jd)
+                let td = ImageDownloader(url: animation.texture, name: animation.name)
+                td.completionBlock = {
+                    i += 1
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        progress?.setProgress(i / Float(animations.count), animated: false)
+                    })
+                }
+                self.downloadQueue.addOperation(td)
+            }
+            
+        }
+    }
     
     func downloadFood(progress:UIProgressView?){
         let api = AleApi()
@@ -76,18 +110,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var i:Float = 0
         api.listFood { (foods) -> Void in
             for food in foods{
-                let dFood = NSEntityDescription.insertNewObjectForEntityForName("DFood", inManagedObjectContext: self.managedObjectContext!) as! DFood
+                let uow = UnitOfWork()
+                let dFood:DFood! = uow.foodRepository?.createNewFood()
                 dFood.colour = food.colour
                 dFood.name = food.name
                 dFood.free = food.free
-                let error:NSErrorPointer = NSErrorPointer()
-                do {
-					try self.managedObjectContext?.save()
-				} catch let error1 as NSError {
-					error.memory = error1
-				} catch {
-					fatalError()
-				}
+                uow.saveChanges()
                 let id = ImageDownloader(url: food.image, name: food.name)
                 self.downloadQueue.addOperation(id)
                 let sd = SoundDownloader(url: food.sound, name: food.name)
@@ -103,21 +131,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func deleteAllFood(){
-        let fetchRequest = NSFetchRequest()
-        fetchRequest.entity = NSEntityDescription.entityForName("DFood", inManagedObjectContext: managedObjectContext!)
-        fetchRequest.includesPropertyValues = false
-        
-        if let results = try? managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject!] {
-            for result in results {
-                managedObjectContext!.deleteObject(result)
-            }
-            let r = try? managedObjectContext?.save()
-            
-            
-        } else {
-
+    func deleteAllAnimations(){
+        let uow = UnitOfWork()
+        let animations = uow.animationRepository?.getAllAnimation()
+        for animation in animations!{
+            uow.animationRepository?.deleteAnimation(animation)
         }
+        uow.saveChanges()
+    }
+    
+    func deleteAllFood(){
+        let uow = UnitOfWork()
+        let foods = uow.foodRepository?.getAllFood()
+        for food in foods!{
+            uow.foodRepository?.deleteFood(food)
+        }
+        uow.saveChanges()
     }
 	
 	func seedDatabase(){

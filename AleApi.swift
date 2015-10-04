@@ -17,6 +17,13 @@ public class AleFoodDef{
     public var colour:String!
 }
 
+public class AleAnimationDef{
+    public var atlas:String!
+    public var texture:String!
+    public var json:String!
+    public var name:String!
+}
+
 public class AleApi{
     
     static let BaseUrl = "http://localhost:8079/"
@@ -32,7 +39,6 @@ public class AleApi{
                 let r = response.dataAsArray()
                 var foods = [AleFoodDef]()
                 for item in r{
-                    let a = 1;
                     let afd = AleFoodDef()
                     afd.name = item.objectForKey("name") as! String
                     afd.thumb = item.objectForKey("thumb") as! String
@@ -44,6 +50,30 @@ public class AleApi{
                 }
                 success(foods: foods)
         })
+    }
+    
+    func listAnimations(success:(animations: [AleAnimationDef]) -> Void){
+        let fullUrl = AleApi.BaseUrl + "Animation/listAnimationsJson"
+        let params:NSDictionary = NSDictionary(objects: ["obj"], forKeys: ["key"])
+        ANRestOps.getInBackground(fullUrl, parameters: params as [NSObject : AnyObject], beforeRequest: { () -> Void in
+            
+            }, onCompletion: {(response: ANRestOpsResponse!) -> Void in
+                if response.statusCode() != 200{
+                    return;
+                }
+                let resp = response.dataAsArray()
+                var animations = [AleAnimationDef]()
+                for item in resp{
+                    let aad = AleAnimationDef()
+                    aad.atlas = item.objectForKey("atlas") as! String
+                    aad.texture = item.objectForKey("texture") as! String
+                    aad.json = item.objectForKey("json") as! String
+                    aad.name = item.objectForKey("name") as! String
+                    animations.append(aad)
+                }
+                success(animations: animations)
+        });
+        
     }
    
 }

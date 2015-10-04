@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="FiX-dY-Vvo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="FiX-dY-Vvo">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -279,9 +279,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PARENTS-PAGE-background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="E8Z-cS-4fi">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PARENTS-PAGE-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="O05-9w-FXh">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bA8-fP-wNy" userLabel="Back">
                                 <rect key="frame" x="16" y="663" width="200" height="85"/>
                                 <state key="normal" image="PARENTS-PAGE-back_06.png">
@@ -363,15 +360,29 @@
                                     <action selector="downloadFood:" destination="RbU-s2-iag" eventType="touchUpInside" id="ZX0-nb-eYK"/>
                                 </connections>
                             </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qma-wH-2oi">
-                                <rect key="frame" x="873" y="115" width="133" height="3"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qma-wH-2oi">
+                                <rect key="frame" x="873" y="115" width="133" height="2"/>
                             </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFS-ix-eLo">
+                                <rect key="frame" x="866" y="135" width="147" height="30"/>
+                                <state key="normal" title="Download animations"/>
+                                <connections>
+                                    <action selector="downloadAnimations:" destination="RbU-s2-iag" eventType="touchUpInside" id="Hv0-Xs-Tsb"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nKC-7e-R4L" userLabel="Animation Progress">
+                                <rect key="frame" x="863" y="173" width="150" height="2"/>
+                            </progressView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PARENTS-PAGE-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="O05-9w-FXh">
+                                <rect key="frame" x="34" y="-49" width="1024" height="768"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="mGO-AN-9j9"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="animationProgress" destination="nKC-7e-R4L" id="gSu-ZA-LzC"/>
                         <outlet property="backButton" destination="bA8-fP-wNy" id="KI9-Kw-OwF"/>
                         <outlet property="facebook" destination="GZ8-Ee-O0a" id="iXr-z4-62F"/>
                         <outlet property="foodProgress" destination="qma-wH-2oi" id="OhL-r8-OUE"/>

@@ -18,6 +18,7 @@ public class ParentsPageViewController : UIViewController{
 	
 	@IBOutlet weak var theText: UIImageView!
 	
+    @IBOutlet weak var animationProgress: UIProgressView!
     @IBOutlet weak var foodProgress: UIProgressView!
 	@IBOutlet weak var pinit: UIButton!
 	@IBOutlet weak var facebook: UIButton!
@@ -29,6 +30,12 @@ public class ParentsPageViewController : UIViewController{
 		webLink.hidden = true
 	}
 
+    @IBAction func downloadAnimations(sender: AnyObject) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.deleteAllAnimations()
+        appDelegate.downloadAnimations(animationProgress)
+    }
+    
     @IBAction func downloadFood(sender: AnyObject) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.deleteAllFood()
