@@ -34,6 +34,16 @@ public class UnitOfWork{
         var animationRepository = AnimationRepository(managedObjectContext: self.managedObjectContext!)
         return animationRepository
         }()
+
+    lazy var rewardPoolRepository : RewardPoolRepository? = {
+        var rewardPoolRepository = RewardPoolRepository(managedObjectContext: self.managedObjectContext!)
+        return rewardPoolRepository
+        }()
+
+    lazy var rewardRepository : RewardRepository? = {
+        var rewardRepository = RewardRepository(managedObjectContext: self.managedObjectContext!)
+        return rewardRepository
+        }()
     
     
     public func saveChanges(){

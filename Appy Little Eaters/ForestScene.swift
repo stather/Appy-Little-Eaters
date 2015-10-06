@@ -40,20 +40,6 @@ public class ForestScene : SKScene{
 		return ForestScene.backgroundWidth()/10 * self.fact
 	}()
 	
-	lazy var managedObjectContext : NSManagedObjectContext? = {
-		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-		if let managedObjectContext = appDelegate.managedObjectContext {
-			return managedObjectContext
-		}
-		else {
-			return nil
-		}
-		}()
-	
-	lazy var managedObjectModel : NSManagedObjectModel? = {
-		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-		return appDelegate.managedObjectModel
-		}()
 	
 	override public func didMoveToView(view: SKView) {
 		_speed = cStartSpeed
@@ -177,86 +163,25 @@ public class ForestScene : SKScene{
 	
     var strawb:SGG_Spine!
     
-    func saveContentsOfUrl(name:String, ext:String, srcUrl:String){
-        let fileManager:NSFileManager = NSFileManager.defaultManager()
-        let bundleID:String = NSBundle.mainBundle().bundleIdentifier!
-        
-        let possibleURLS:NSArray = fileManager.URLsForDirectory(NSSearchPathDirectory.ApplicationSupportDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)
-        let appSupportDir:NSURL = possibleURLS[0] as! NSURL
-        let dirPath = appSupportDir.URLByAppendingPathComponent(bundleID)
-        var error:NSError?
-        do {
-			try fileManager.createDirectoryAtURL(dirPath, withIntermediateDirectories: true, attributes: nil)
-		} catch let error1 as NSError {
-			error = error1
-		}
-        let filename = dirPath.URLByAppendingPathComponent(name + "." + ext)
-        let filepath = filename.path
-        //let s = NSBundle.mainBundle().resourcePath?.stringByAppendingPathComponent(name + "." + ext)
-        let u:NSURL = NSURL(string: srcUrl)!
-        let d:NSData = NSData(contentsOfURL: u)!
-        
-        let res = fileManager.createFileAtPath(filepath!, contents: d, attributes: nil)
-        let a = 2
-    }
-	
 	func createSceneContents(){
-        
-        let fullUrl = "http://localhost:8079/Animation/listAnimationsJson"
-        var params:NSDictionary = NSDictionary(objects: ["obj"], forKeys: ["key"])
-        ANRestOps.getInBackground(fullUrl, parameters: params as! [NSObject : AnyObject], beforeRequest: { () -> Void in
-            
-            }, onCompletion: {(response: ANRestOpsResponse!) -> Void in
-                let resp = response.dataAsArray()
-                for item in resp{
-                    let atlas:String = item.objectForKey("atlas") as! String
-                    let texture:String = item.objectForKey("texture") as! String
-                    let json:String = item.objectForKey("json") as! String
-                    let name:String = item.objectForKey("name") as! String
-                    let a = 1
-                    // get and save atlas
-                    self.saveContentsOfUrl(name, ext: "atlas" ,srcUrl: atlas)
-                    self.saveContentsOfUrl(name, ext: "png", srcUrl: texture)
-                    self.saveContentsOfUrl(name, ext: "json", srcUrl: json)
-                    var skel:SpineSkeleton = DZSpineSceneBuilder.loadSkeletonName(name, scale: 0.1)
-                    var builder:DZSpineSceneBuilder = DZSpineSceneBuilder()
-                    var n:SKNode = builder.nodeWithSkeleton(skel, animationName: "waving", loop: true)
-                    var placeholder:SKNode = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: 100, height: 100))
-                    //placeholder.position = CGPoint(x: 0,y: 0)
-                    placeholder.addChild(n)
-                    placeholder.zPosition = 1000
-                    self.addChild(placeholder)
-                    let b = 2
-                }
-        });
-        
-        
-        //strawb = SGG_Spine()
-        //strawb.skeletonFromFileNamed("strawb", andAtlasNamed: "strawb", andUseSkinNamed: nil)
-        //strawb.queuedAnimation = "waving"
-        //strawb.queueIntro = 0.1
-        //strawb.runAnimation("waving", andCount: 0, withIntroPeriodOf: 0, andUseQueue: true)
-        //strawb.xScale = 0.5
-        //strawb.yScale = 0.5
-        //addChild(strawb)
-		//var n = SGG_Spine()
-		//n.skeletonFromFileNamed("deer", andAtlasNamed: "deer", andUseSkinNamed: nil)
-		//n.queuedAnimation = "animation"
-		//n.queueIntro = 0.1
-		//n.runAnimation("animation", andCount: 0, withIntroPeriodOf: 0.1, andUseQueue: true)
-		//n.xScale = 0.5
-		//n.yScale = 0.5
-		//addChild(n)
-		
-//		for index in 1...10{
-//			var forest = Forest(parentScene: self, slice: index)
-//			addChild(forest)
-//		}
+        let uow = UnitOfWork()
+        let animations = uow.animationRepository?.getAllAnimation()
+        for animation in animations!{
+            let name = animation.name
+            let skel:SpineSkeleton = DZSpineSceneBuilder.loadSkeletonName(name, scale: 0.1)
+            let builder:DZSpineSceneBuilder = DZSpineSceneBuilder()
+            let n:SKNode = builder.nodeWithSkeleton(skel, animationName: "waving", loop: true)
+            let placeholder:SKNode = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: 100, height: 100))
+            //placeholder.position = CGPoint(x: 0,y: 0)
+            placeholder.addChild(n)
+            placeholder.zPosition = 1000
+            self.addChild(placeholder)
+        }
         
         leftHandEdge = 0
         let formatter = NSNumberFormatter()
         formatter.minimumIntegerDigits = 2
-        var atlas = SKTextureAtlas(named: "newforest")
+        let atlas = SKTextureAtlas(named: "newforest")
         var columnWidth:Int!
         var x:Int = -512
         for column in 1...10{
@@ -280,12 +205,9 @@ public class ForestScene : SKScene{
             x += columnWidth
         }
         
-		
-		var fetchAllRewards = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewards")
-		var error:NSErrorPointer! = NSErrorPointer()
-		for item in (try! managedObjectContext?.executeFetchRequest(fetchAllRewards!)) as! [DReward]{
+		for item in (uow.rewardRepository?.getAllRewards())!{
 			let reward:ForestCreature.CreatureName = ForestCreature.CreatureName(rawValue: Int(item.creatureName))!
-			var creature:ForestCreature = ForestCreature.from(reward)
+			let creature:ForestCreature = ForestCreature.from(reward)
 			creature.position = forestPoint(CGPoint(x: CGFloat(item.positionX), y: CGFloat(item.positionY)))
 			creature.xScale = CGFloat(fact / Float(item.scale))
 			creature.yScale = CGFloat(abs(fact / Float(item.scale)))

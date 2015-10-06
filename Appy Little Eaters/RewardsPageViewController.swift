@@ -16,40 +16,22 @@ class RewardsPageViewController: UIViewController{
 	var lhs:DRewardPool!
 	var rhs:DRewardPool!
 	
-	lazy var managedObjectContext : NSManagedObjectContext? = {
-		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-		if let managedObjectContext = appDelegate.managedObjectContext {
-			return managedObjectContext
-		}
-		else {
-			return nil
-		}
-	}()
-	
-	lazy var managedObjectModel : NSManagedObjectModel? = {
-		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-		return appDelegate.managedObjectModel
-		}()
 	
 	@IBOutlet weak var DoneButton: UIButton!
 	
 	@IBAction func DonePressed(sender: UIButton) {
 		
-		var rewardDef = RewardDefinition(rewardType: ForestCreature.CreatureName(rawValue: Int(chosen.creatureName))! )
-		let reward = NSEntityDescription.insertNewObjectForEntityForName("DReward", inManagedObjectContext: managedObjectContext!) as! DReward
+//		var rewardDef = RewardDefinition(rewardType: ForestCreature.CreatureName(rawValue: Int(chosen.creatureName))! )
+        let uow = UnitOfWork()
+        let reward = uow.rewardRepository?.createNewReward()
 		
-		reward.creatureName = NSNumber(integer: Int(chosen.creatureName))
-		reward.positionX = chosen.positionX
-		reward.positionY = 1035 - Int(chosen.positionY)
-		reward.scale = chosen.scale
+		reward!.creatureName = NSNumber(integer: Int(chosen.creatureName))
+		reward!.positionX = chosen.positionX
+		reward!.positionY = 1035 - Int(chosen.positionY)
+		reward!.scale = chosen.scale
 		chosen.available = false		
-		
-		let error:NSErrorPointer = NSErrorPointer()
-		do {
-			try managedObjectContext?.save()
-		} catch let error1 as NSError {
-			error.memory = error1
-		}
+		uow.saveChanges()
+        
 		performSegueWithIdentifier("RewardToForest", sender: self)
 	}
 	
@@ -84,11 +66,9 @@ class RewardsPageViewController: UIViewController{
 	}
 	
 	override func viewDidLoad() {
-		let fetchRequest: NSFetchRequest = managedObjectModel?.fetchRequestTemplateForName("FetchAvailableRewards")?.copy() as! NSFetchRequest
-		fetchRequest.sortDescriptors = [NSSortDescriptor(key: "level", ascending: true)]
-		let error:NSErrorPointer = NSErrorPointer()
-		let count = managedObjectContext?.countForFetchRequest(fetchRequest, error: error)
-		let rewards:[DRewardPool] = (try! managedObjectContext?.executeFetchRequest(fetchRequest)) as! [DRewardPool]
+        let uow = UnitOfWork()
+        let rewards:[DRewardPool] = (uow.rewardPoolRepository?.getAvailableRewardsOrderedByLevel())!
+        
 		var filepath:NSString =  NSBundle.mainBundle().pathForResource(rewards[0].imageName, ofType: "png")!
 		LeftReward.image = UIImage(contentsOfFile: filepath as String)
 		lhs = rewards[0]
