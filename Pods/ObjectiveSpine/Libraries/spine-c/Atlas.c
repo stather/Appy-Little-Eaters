@@ -206,6 +206,7 @@ spAtlas* spAtlas_readAtlas (const char* begin, int length, const char* dir) {
 				self->pages = page;
 			lastPage = page;
 
+            readLine(0, end, &str);
 			if (!readValue(end, &str))
                 return abortAtlas(self);
 			page->format = (spAtlasFormat)indexOf(formatNames, 7, &str);

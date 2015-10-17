@@ -387,6 +387,7 @@
 		686CC18E1BC123E1003AA2C2 /* UnitOfWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686CC18D1BC123E1003AA2C2 /* UnitOfWork.swift */; settings = {ASSET_TAGS = (); }; };
 		686CC1901BC1AD92003AA2C2 /* AnimationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686CC18F1BC1AD92003AA2C2 /* AnimationRepository.swift */; settings = {ASSET_TAGS = (); }; };
 		68774A121ABD90B70001CA32 /* healthykids.wav in Resources */ = {isa = PBXBuildFile; fileRef = 68774A111ABD90B70001CA32 /* healthykids.wav */; };
+		689BD6391BD27C3F00B7EF3E /* AnimatedSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */; settings = {ASSET_TAGS = (); }; };
 		68B571CB1B73FDD400C35B52 /* newforest.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 68B571CA1B73FDD400C35B52 /* newforest.atlas */; };
 		68BA94FC1B5597F8005D6A64 /* pea.png in Resources */ = {isa = PBXBuildFile; fileRef = 68BA94F91B5597F8005D6A64 /* pea.png */; };
 		68BA94FD1B5597F8005D6A64 /* SPLASH PAGE.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68BA94FA1B5597F8005D6A64 /* SPLASH PAGE.jpg */; };
@@ -831,6 +832,7 @@
 		686CC18D1BC123E1003AA2C2 /* UnitOfWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitOfWork.swift; sourceTree = "<group>"; };
 		686CC18F1BC1AD92003AA2C2 /* AnimationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationRepository.swift; sourceTree = "<group>"; };
 		68774A111ABD90B70001CA32 /* healthykids.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = healthykids.wav; sourceTree = "<group>"; };
+		689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSprite.swift; sourceTree = "<group>"; };
 		68B571CA1B73FDD400C35B52 /* newforest.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = newforest.atlas; sourceTree = "<group>"; };
 		68BA94F91B5597F8005D6A64 /* pea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pea.png; sourceTree = "<group>"; };
 		68BA94FA1B5597F8005D6A64 /* SPLASH PAGE.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "SPLASH PAGE.jpg"; sourceTree = "<group>"; };
@@ -1051,6 +1053,7 @@
 				46E1FCC81A2D107B00651193 /* MoveableProtocol.swift */,
 				686546DA1B544A9D009FF566 /* GBViewController.swift */,
 				682DB2881BA6148900050F13 /* ImageDownloader.swift */,
+				689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */,
 			);
 			path = "Appy Little Eaters";
 			sourceTree = "<group>";
@@ -2167,6 +2170,7 @@
 				46E15DC41A0686D500B5BAE1 /* Firefly.swift in Sources */,
 				68034D241BC4647500E1951B /* RewardRepository.swift in Sources */,
 				46E8D17619F2C6F500AEF750 /* SocialStoryViewController.swift in Sources */,
+				689BD6391BD27C3F00B7EF3E /* AnimatedSprite.swift in Sources */,
 				46C3102A19FBB917003D71B2 /* ForestCreature.swift in Sources */,
 				46E15D771A05206C00B5BAE1 /* RedToadstool.swift in Sources */,
 				464F703D18A019F000DDA449 /* main.m in Sources */,

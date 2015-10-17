@@ -168,14 +168,8 @@ public class ForestScene : SKScene{
         let animations = uow.animationRepository?.getAllAnimation()
         for animation in animations!{
             let name = animation.name
-            let skel:SpineSkeleton = DZSpineSceneBuilder.loadSkeletonName(name, scale: 0.1)
-            let builder:DZSpineSceneBuilder = DZSpineSceneBuilder()
-            let n:SKNode = builder.nodeWithSkeleton(skel, animationName: "waving", loop: true)
-            let placeholder:SKNode = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: 100, height: 100))
-            //placeholder.position = CGPoint(x: 0,y: 0)
-            placeholder.addChild(n)
-            placeholder.zPosition = 1000
-            self.addChild(placeholder)
+            let anim = AnimatedSprite(withAnimationName: name!)
+            self.addChild(anim)
         }
         
         leftHandEdge = 0
@@ -234,7 +228,7 @@ public class ForestScene : SKScene{
 		}
 	}
 	
-	var CurrentCreature:ForestCreature!
+	var CurrentCreature:AnimatedSprite!
 	
 	var Scrolling:Bool = true
 	
@@ -321,8 +315,8 @@ public class ForestScene : SKScene{
 					creatureTouched = true
 				}
 			}else{
-				if item is ForestCreature{
-					let fc = item as! ForestCreature
+				if item is AnimatedSprite{
+					let fc = item as! AnimatedSprite
 					CurrentCreature = fc
 				}
 			}
