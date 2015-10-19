@@ -388,6 +388,10 @@
 		686CC1901BC1AD92003AA2C2 /* AnimationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686CC18F1BC1AD92003AA2C2 /* AnimationRepository.swift */; settings = {ASSET_TAGS = (); }; };
 		68774A121ABD90B70001CA32 /* healthykids.wav in Resources */ = {isa = PBXBuildFile; fileRef = 68774A111ABD90B70001CA32 /* healthykids.wav */; };
 		689BD6391BD27C3F00B7EF3E /* AnimatedSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */; settings = {ASSET_TAGS = (); }; };
+		689BD63D1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD63B1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
+		689BD63E1BD5764500B7EF3E /* DRewardPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD63C1BD5764500B7EF3E /* DRewardPool.swift */; settings = {ASSET_TAGS = (); }; };
+		689BD6431BD5941700B7EF3E /* DReward+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD6411BD5941700B7EF3E /* DReward+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
+		689BD6441BD5941700B7EF3E /* DReward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD6421BD5941700B7EF3E /* DReward.swift */; settings = {ASSET_TAGS = (); }; };
 		68B571CB1B73FDD400C35B52 /* newforest.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 68B571CA1B73FDD400C35B52 /* newforest.atlas */; };
 		68BA94FC1B5597F8005D6A64 /* pea.png in Resources */ = {isa = PBXBuildFile; fileRef = 68BA94F91B5597F8005D6A64 /* pea.png */; };
 		68BA94FD1B5597F8005D6A64 /* SPLASH PAGE.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68BA94FA1B5597F8005D6A64 /* SPLASH PAGE.jpg */; };
@@ -833,6 +837,13 @@
 		686CC18F1BC1AD92003AA2C2 /* AnimationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationRepository.swift; sourceTree = "<group>"; };
 		68774A111ABD90B70001CA32 /* healthykids.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = healthykids.wav; sourceTree = "<group>"; };
 		689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSprite.swift; sourceTree = "<group>"; };
+		689BD63A1BD575D300B7EF3E /* AleModel 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 7.xcdatamodel"; sourceTree = "<group>"; };
+		689BD63B1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DRewardPool+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		689BD63C1BD5764500B7EF3E /* DRewardPool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DRewardPool.swift; sourceTree = "<group>"; };
+		689BD63F1BD58BDE00B7EF3E /* AleModel 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 8.xcdatamodel"; sourceTree = "<group>"; };
+		689BD6401BD593DC00B7EF3E /* AleModel 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 9.xcdatamodel"; sourceTree = "<group>"; };
+		689BD6411BD5941700B7EF3E /* DReward+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DReward+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		689BD6421BD5941700B7EF3E /* DReward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DReward.swift; sourceTree = "<group>"; };
 		68B571CA1B73FDD400C35B52 /* newforest.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = newforest.atlas; sourceTree = "<group>"; };
 		68BA94F91B5597F8005D6A64 /* pea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pea.png; sourceTree = "<group>"; };
 		68BA94FA1B5597F8005D6A64 /* SPLASH PAGE.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "SPLASH PAGE.jpg"; sourceTree = "<group>"; };
@@ -1476,6 +1487,10 @@
 		46C440D91A02F27500C1A6BE /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
+				689BD6411BD5941700B7EF3E /* DReward+CoreDataProperties.swift */,
+				689BD6421BD5941700B7EF3E /* DReward.swift */,
+				689BD63B1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift */,
+				689BD63C1BD5764500B7EF3E /* DRewardPool.swift */,
 				681ADB9E1BBB2FF9009146C2 /* DAnimation+CoreDataProperties.swift */,
 				681ADB9F1BBB2FF9009146C2 /* DAnimation.swift */,
 				682DB28D1BA75B4300050F13 /* DFood.swift */,
@@ -2176,6 +2191,7 @@
 				464F703D18A019F000DDA449 /* main.m in Sources */,
 				46E15DB81A06854700B5BAE1 /* BrownBird.swift in Sources */,
 				469AC7A71A44C3B000CDA070 /* SGG_SpineBoneAction.m in Sources */,
+				689BD63E1BD5764500B7EF3E /* DRewardPool.swift in Sources */,
 				46F6B40319FD231200205F6B /* Deer.swift in Sources */,
 				46E15DC01A0685FD00B5BAE1 /* WhiteRabbit.swift in Sources */,
 				46E15DB41A06849400B5BAE1 /* Bluebells.swift in Sources */,
@@ -2197,6 +2213,7 @@
 				46F6B40519FD348300205F6B /* Bluebird.swift in Sources */,
 				4642607C19F58D530028C878 /* ForestScene.swift in Sources */,
 				46E15DAD1A06486700B5BAE1 /* AppyLittleEaters.swift in Sources */,
+				689BD6441BD5941700B7EF3E /* DReward.swift in Sources */,
 				46C440CE1A02C55B00C1A6BE /* ScrollableProtocol.swift in Sources */,
 				46E15DD21A0687A400B5BAE1 /* PinkFlowers.swift in Sources */,
 				46E15DC61A0686EF00B5BAE1 /* BlueFish.swift in Sources */,
@@ -2225,12 +2242,14 @@
 				686546DB1B544A9D009FF566 /* GBViewController.swift in Sources */,
 				464F704A18A019F000DDA449 /* CViewController.m in Sources */,
 				4642607A19F589210028C878 /* ForestViewController.swift in Sources */,
+				689BD63D1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift in Sources */,
 				469AC7A41A44C3B000CDA070 /* SGG_SkinSprite.m in Sources */,
 				46E8D17419F2B81600AEF750 /* FoodPagePageViewController.swift in Sources */,
 				68034D221BC460ED00E1951B /* RewardPoolRepository.swift in Sources */,
 				46F6B40919FD428000205F6B /* RewardDefinition.swift in Sources */,
 				46E15DBC1A0685A600B5BAE1 /* BrownSquirrel.swift in Sources */,
 				4642606A19F45F600028C878 /* ParentsPageViewController.swift in Sources */,
+				689BD6431BD5941700B7EF3E /* DReward+CoreDataProperties.swift in Sources */,
 				469AC7A31A44C3B000CDA070 /* SGG_SkinSlot.m in Sources */,
 				469AC7C51A503E1A00CDA070 /* Butterfly.swift in Sources */,
 				4642607F19F58EAE0028C878 /* Squirrel.swift in Sources */,
@@ -2517,6 +2536,9 @@
 		46C440D11A02F12700C1A6BE /* AleModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				689BD6401BD593DC00B7EF3E /* AleModel 9.xcdatamodel */,
+				689BD63F1BD58BDE00B7EF3E /* AleModel 8.xcdatamodel */,
+				689BD63A1BD575D300B7EF3E /* AleModel 7.xcdatamodel */,
 				681ADB9D1BBB2C88009146C2 /* AleModel 6.xcdatamodel */,
 				682DB28A1BA7583100050F13 /* AleModel 5.xcdatamodel */,
 				4681699F1A082F87000D19E9 /* AleModel 3.xcdatamodel */,
@@ -2524,7 +2546,7 @@
 				46E15DB01A06710C00B5BAE1 /* AleModel 2.xcdatamodel */,
 				46C440D21A02F12700C1A6BE /* AleModel.xcdatamodel */,
 			);
-			currentVersion = 681ADB9D1BBB2C88009146C2 /* AleModel 6.xcdatamodel */;
+			currentVersion = 689BD6401BD593DC00B7EF3E /* AleModel 9.xcdatamodel */;
 			path = AleModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -27,6 +27,20 @@ public class RewardPoolRepository{
         return NSEntityDescription.insertNewObjectForEntityForName("DRewardPool", inManagedObjectContext: self._managedObjectContext) as! DRewardPool
     }
     
+    func getAllRewardsInPool() -> [DRewardPool!]!{
+        let fetchRequest = NSFetchRequest()
+        fetchRequest.entity = NSEntityDescription.entityForName("DRewardPool", inManagedObjectContext: _managedObjectContext)
+        
+        let results:[DRewardPool!]! = try? _managedObjectContext.executeFetchRequest(fetchRequest) as! [DRewardPool!]
+        return results
+    }
+    
+    func deleteReward(reward:DRewardPool){
+        _managedObjectContext.deleteObject(reward)
+    }
+    
+
+    
     func getAvailableRewardsOrderedByLevel() -> [DRewardPool]{
         let fetchRequest: NSFetchRequest = managedObjectModel?.fetchRequestTemplateForName("FetchAvailableRewards")?.copy() as! NSFetchRequest
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "level", ascending: true)]

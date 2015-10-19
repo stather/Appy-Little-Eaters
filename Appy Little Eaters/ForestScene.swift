@@ -200,11 +200,11 @@ public class ForestScene : SKScene{
         }
         
 		for item in (uow.rewardRepository?.getAllRewards())!{
-			let reward:ForestCreature.CreatureName = ForestCreature.CreatureName(rawValue: Int(item.creatureName))!
+			let reward:ForestCreature.CreatureName = ForestCreature.CreatureName(rawValue: Int(item.creatureName!))!
 			let creature:ForestCreature = ForestCreature.from(reward)
-			creature.position = forestPoint(CGPoint(x: CGFloat(item.positionX), y: CGFloat(item.positionY)))
-			creature.xScale = CGFloat(fact / Float(item.scale))
-			creature.yScale = CGFloat(abs(fact / Float(item.scale)))
+			creature.position = forestPoint(CGPoint(x: CGFloat(item.positionX!), y: CGFloat(item.positionY!)))
+			creature.xScale = CGFloat(fact / Float(item.scale!))
+			creature.yScale = CGFloat(abs(fact / Float(item.scale!)))
 			
 			addChild(creature)
 			characters.append(creature)

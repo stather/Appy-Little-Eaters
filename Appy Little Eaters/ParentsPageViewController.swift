@@ -20,6 +20,7 @@ public class ParentsPageViewController : UIViewController{
 	
     @IBOutlet weak var animationProgress: UIProgressView!
     @IBOutlet weak var foodProgress: UIProgressView!
+    @IBOutlet weak var rewardProgress: UIProgressView!
 	@IBOutlet weak var pinit: UIButton!
 	@IBOutlet weak var facebook: UIButton!
 	@IBOutlet weak var webLink: UIButton!
@@ -30,6 +31,12 @@ public class ParentsPageViewController : UIViewController{
 		webLink.hidden = true
 	}
 
+    @IBAction func downloadRewards(sender: AnyObject) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.deleteAllRewardsInPool()
+        appDelegate.downloadRewards(rewardProgress)
+    }
+    
     @IBAction func downloadAnimations(sender: AnyObject) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.deleteAllAnimations()
@@ -115,10 +122,10 @@ public class ParentsPageViewController : UIViewController{
 		for item in (try! managedObjectContext?.executeFetchRequest(fetchAllRewardsInPool!)) as! [DRewardPool]{
 			let reward = NSEntityDescription.insertNewObjectForEntityForName("DReward", inManagedObjectContext: managedObjectContext!) as! DReward
 			
-			reward.creatureName = NSNumber(integer: Int(item.creatureName))
-			reward.positionX = item.positionX
-			reward.positionY = 1035 - Int(item.positionY)
-			reward.scale = item.scale
+			reward.creatureName = NSNumber(integer: Int(item.creatureName!))
+			reward.positionX = item.positionX!
+			reward.positionY = 1035 - Int(item.positionY!)
+			reward.scale = item.scale!
 			item.available = false
 		}
 		do {

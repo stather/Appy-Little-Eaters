@@ -1,5 +1,5 @@
 //
-//  DAnimation+CoreDataProperties.swift
+//  DReward+CoreDataProperties.swift
 //  AppyLittleEaters
 //
 //  Created by RUSSELL STATHER on 19/10/2015.
@@ -12,12 +12,12 @@
 import Foundation
 import CoreData
 
-extension DAnimation {
+extension DReward {
 
-    @NSManaged var atlas: String?
-    @NSManaged var json: String?
-    @NSManaged var name: String?
-    @NSManaged var texture: String?
-    @NSManaged var rewardImage: String?
+    @NSManaged var creatureName: NSNumber?
+    @NSManaged var positionX: NSNumber?
+    @NSManaged var positionY: NSNumber?
+    @NSManaged var scale: NSNumber?
+    @NSManaged var animationName: String?
 
 }

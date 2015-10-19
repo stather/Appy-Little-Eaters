@@ -22,6 +22,14 @@ public class AleAnimationDef{
     public var texture:String!
     public var json:String!
     public var name:String!
+    public var rewardImage:String!
+}
+
+public class AleRewardDef{
+    public var name:String!
+    public var scene:String!
+    public var animation:String!
+    public var level:String!
 }
 
 public class AleApi{
@@ -69,9 +77,34 @@ public class AleApi{
                     aad.texture = item.objectForKey("texture") as! String
                     aad.json = item.objectForKey("json") as! String
                     aad.name = item.objectForKey("name") as! String
+                    aad.rewardImage = item.objectForKey("rewardImage") as! String
                     animations.append(aad)
                 }
                 success(animations: animations)
+        });
+        
+    }
+    
+    func listRewardss(success:(rewards: [AleRewardDef]) -> Void){
+        let fullUrl = AleApi.BaseUrl + "Reward/listRewardsJson"
+        let params:NSDictionary = NSDictionary(objects: ["obj"], forKeys: ["key"])
+        ANRestOps.getInBackground(fullUrl, parameters: params as [NSObject : AnyObject], beforeRequest: { () -> Void in
+            
+            }, onCompletion: {(response: ANRestOpsResponse!) -> Void in
+                if response.statusCode() != 200{
+                    return;
+                }
+                let resp = response.dataAsArray()
+                var rewards = [AleRewardDef]()
+                for item in resp{
+                    let aad = AleRewardDef()
+                    aad.name = item.objectForKey("name") as! String
+                    aad.scene = item.objectForKey("scene") as! String
+                    aad.animation = item.objectForKey("animation") as! String
+                    aad.level = item.objectForKey("level") as! String
+                    rewards.append(aad)
+                }
+                success(rewards: rewards)
         });
         
     }

@@ -86,11 +86,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 dAnimation.atlas = animation.atlas
                 dAnimation.json = animation.json
                 dAnimation.texture = animation.texture
+                dAnimation.rewardImage = animation.rewardImage
                 uow.saveChanges()
                 let ad = AtlasDownloader(url: animation.atlas, name: animation.name)
                 self.downloadQueue.addOperation(ad)
                 let jd = JsonDownloader(url: animation.json, name: animation.name)
                 self.downloadQueue.addOperation(jd)
+                let rid = ImageDownloader(url: animation.rewardImage, name: animation.name + "RewardImage")
+                self.downloadQueue.addOperation(rid)
                 let td = ImageDownloader(url: animation.texture, name: animation.name)
                 td.completionBlock = {
                     i += 1
@@ -131,6 +134,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    func downloadRewards(progress:UIProgressView?){
+        let api = AleApi()
+        progress?.setProgress(0, animated: false)
+        var i:Float = 0
+        api.listRewardss { (rewards) -> Void in
+            for reward in rewards{
+                let uow = UnitOfWork()
+                let dRewardPool:DRewardPool! = uow.rewardPoolRepository?.createNewRewardPool()
+                dRewardPool.rewardName = reward.name
+                dRewardPool.imageName = reward.animation
+                dRewardPool.scale = 0.1
+                dRewardPool.available = true
+                dRewardPool.level = Int(reward.level)
+                uow.saveChanges()
+                i += 1
+                progress?.setProgress(i / Float(rewards.count), animated: false)
+            }
+        }
+    }
+    
+    func deleteAllRewardsInPool(){
+        let uow = UnitOfWork()
+        let rewards = uow.rewardPoolRepository?.getAllRewardsInPool()
+        for reward in rewards! {
+            uow.rewardPoolRepository?.deleteReward(reward)
+        }
+        uow.saveChanges()
+    }
+    
     func deleteAllAnimations(){
         let uow = UnitOfWork()
         let animations = uow.animationRepository?.getAllAnimation()
@@ -150,6 +182,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 	
 	func seedDatabase(){
+        return
 		let fetchAllRewards = managedObjectModel.fetchRequestTemplateForName("FetchAllRewardsInPool")
 		let error:NSErrorPointer = NSErrorPointer()
 		let c = managedObjectContext?.countForFetchRequest(fetchAllRewards!, error: error)
@@ -180,7 +213,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				let scale = fields[5].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 				let fscale = (scale as NSString).floatValue
 				reward.scale = fscale
-				print("Loaded " + reward.creatureName.stringValue)
+				print("Loaded " + reward.creatureName!.stringValue)
 			}
 		}
 		do {

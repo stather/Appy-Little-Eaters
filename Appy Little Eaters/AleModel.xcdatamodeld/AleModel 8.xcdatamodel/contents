@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="15A284" minimumToolsVersion="Xcode 4.3">
+    <entity name="DAnimation" representedClassName=".DAnimation" syncable="YES">
+        <attribute name="atlas" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="json" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rewardImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="texture" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="DFood" representedClassName="Appy_Little_Eaters.DFood" syncable="YES">
+        <attribute name="colour" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="free" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="DReward" representedClassName="Appy_Little_Eaters.DReward" syncable="YES">
+        <attribute name="creatureName" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="positionX" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="positionY" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="scale" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <entity name="DRewardPool" representedClassName="Appy_Little_Eaters.DRewardPool" syncable="YES">
+        <attribute name="available" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="creatureName" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="positionX" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="positionY" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="rewardName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="scale" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <fetchRequest name="FetchAllAnimations" entity="DAnimation"/>
+    <fetchRequest name="FetchAllRewards" entity="DReward"/>
+    <fetchRequest name="FetchAllRewardsInPool" entity="DRewardPool"/>
+    <fetchRequest name="FetchAvailableRewards" entity="DRewardPool" predicateString="available == 1"/>
+    <fetchRequest name="FetchFoodByColour" entity="DFood" predicateString="colour == $COLOUR"/>
+    <elements>
+        <element name="DAnimation" positionX="-252" positionY="-747" width="128" height="120"/>
+        <element name="DFood" positionX="-252" positionY="-747" width="128" height="105"/>
+        <element name="DReward" positionX="-63" positionY="-684" width="128" height="105"/>
+        <element name="DRewardPool" positionX="-443" positionY="-871" width="128" height="165"/>
+    </elements>
+</model>

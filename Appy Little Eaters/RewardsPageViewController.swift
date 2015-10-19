@@ -25,10 +25,11 @@ class RewardsPageViewController: UIViewController{
         let uow = UnitOfWork()
         let reward = uow.rewardRepository?.createNewReward()
 		
-		reward!.creatureName = NSNumber(integer: Int(chosen.creatureName))
-		reward!.positionX = chosen.positionX
-		reward!.positionY = 1035 - Int(chosen.positionY)
-		reward!.scale = chosen.scale
+		reward!.creatureName = NSNumber(integer: Int(chosen.creatureName!))
+		reward!.positionX = chosen.positionX!
+		reward!.positionY = chosen.positionY!
+		reward!.scale = chosen.scale!
+        reward!.animationName = chosen.imageName!
 		chosen.available = false		
 		uow.saveChanges()
         
@@ -64,17 +65,32 @@ class RewardsPageViewController: UIViewController{
 	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil);
 	}
+    
+    func loadRewardImage(name:String) -> UIImage{
+        let fileManager:NSFileManager = NSFileManager.defaultManager()
+        let bundleID:String = NSBundle.mainBundle().bundleIdentifier!
+        
+        let possibleURLS:NSArray = fileManager.URLsForDirectory(NSSearchPathDirectory.ApplicationSupportDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)
+        let appSupportDir:NSURL = possibleURLS[0] as! NSURL
+        let dirPath = appSupportDir.URLByAppendingPathComponent(bundleID)
+        let filename = dirPath.URLByAppendingPathComponent(name + "RewardImage." + "png")
+        let filepath = filename.path
+        let image:UIImage = UIImage(contentsOfFile: filepath as String!)!
+        return image;
+        
+    }
+
 	
 	override func viewDidLoad() {
         let uow = UnitOfWork()
         let rewards:[DRewardPool] = (uow.rewardPoolRepository?.getAvailableRewardsOrderedByLevel())!
         
-		var filepath:NSString =  NSBundle.mainBundle().pathForResource(rewards[0].imageName, ofType: "png")!
-		LeftReward.image = UIImage(contentsOfFile: filepath as String)
+//		var filepath:NSString =  NSBundle.mainBundle().pathForResource(rewards[0].imageName, ofType: "png")!
+		LeftReward.image = loadRewardImage(rewards[0].imageName!)
 		lhs = rewards[0]
 
-		filepath =  NSBundle.mainBundle().pathForResource(rewards[1].imageName, ofType: "png")!
-		RightReward.image = UIImage(contentsOfFile: filepath as String)
+//		filepath =  NSBundle.mainBundle().pathForResource(rewards[1].imageName, ofType: "png")!
+		RightReward.image = loadRewardImage(rewards[1].imageName!)
 		rhs = rewards[1]
 		DoneButton.enabled = false;
 	}
