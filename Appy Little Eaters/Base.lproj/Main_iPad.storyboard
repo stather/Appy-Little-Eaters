@@ -989,6 +989,14 @@
                                     <action selector="Left:" destination="Evs-l7-TtO" eventType="touchUpInside" id="R7r-q9-q6X"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCV-bp-GyT">
+                                <rect key="frame" x="803" y="205" width="37" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="done:" destination="Evs-l7-TtO" eventType="touchUpInside" id="EHU-01-cyd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

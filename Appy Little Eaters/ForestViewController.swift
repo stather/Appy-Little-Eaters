@@ -35,6 +35,10 @@ public class ForestViewController : UIViewController{
 	var anchorLimit:CGFloat!
 	var forest:ForestScene!
 	
+    @IBAction func done(sender: AnyObject) {
+        
+    }
+    
 	@IBAction func start(sender: AnyObject) {
 		let fmass:Float = (mass.text! as NSString).floatValue
 		let fvelocity:Float = (velocity.text! as NSString).floatValue

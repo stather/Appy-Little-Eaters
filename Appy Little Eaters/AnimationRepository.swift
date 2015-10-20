@@ -16,6 +16,11 @@ public class AnimationRepository{
         _managedObjectContext = managedObjectContext
     }
     
+    lazy var managedObjectModel : NSManagedObjectModel? = {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        return appDelegate.managedObjectModel
+        }()
+    
     func createNewAnimation() -> DAnimation!{
         return NSEntityDescription.insertNewObjectForEntityForName("DAnimation", inManagedObjectContext: self._managedObjectContext) as! DAnimation
     }
@@ -33,4 +38,11 @@ public class AnimationRepository{
         _managedObjectContext.deleteObject(food)
     }
     
+    func animationByName(byName:String) -> DAnimation!{
+        let fetchByName = managedObjectModel?.fetchRequestFromTemplateWithName("FetchAnimationByName", substitutionVariables: ["NAME":byName])
+        let anim = try! _managedObjectContext.executeFetchRequest(fetchByName!) as! [DAnimation]
+        return anim[0]
+    }
+    
 }
+

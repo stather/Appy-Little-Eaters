@@ -33,6 +33,7 @@
     <fetchRequest name="FetchAllAnimations" entity="DAnimation"/>
     <fetchRequest name="FetchAllRewards" entity="DReward"/>
     <fetchRequest name="FetchAllRewardsInPool" entity="DRewardPool"/>
+    <fetchRequest name="FetchAnimationByName" entity="DAnimation" predicateString="name == $NAME"/>
     <fetchRequest name="FetchAvailableRewards" entity="DRewardPool" predicateString="available == 1"/>
     <fetchRequest name="FetchFoodByColour" entity="DFood" predicateString="colour == $COLOUR"/>
     <elements>

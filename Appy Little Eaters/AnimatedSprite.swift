@@ -8,7 +8,8 @@
 
 import SpriteKit
 
-public class AnimatedSprite: SKSpriteNode {
+public class AnimatedSprite: SKSpriteNode, ScrollableProtocol {
+    
     convenience init(withAnimationName:String){
         self.init(color: UIColor.clearColor(), size: CGSize(width: 100, height: 100))
         let skel:SpineSkeleton? = DZSpineSceneBuilder.loadSkeletonName(withAnimationName, scale: 0.1)
@@ -17,7 +18,9 @@ public class AnimatedSprite: SKSpriteNode {
         self.addChild(n)
         self.zPosition = 1000
     }
-    
+
+    var delegate:ScrollableProtocol?
+
     lazy var forestScene:ForestScene = {
         return self.scene as! ForestScene
         }()
@@ -38,6 +41,14 @@ public class AnimatedSprite: SKSpriteNode {
         let s = forestScene.fact / Float(xScale)
         print(s, terminator: "")
         print("")
+    }
+    
+    func scrollBy(amount: Float) {
+        delegate?.scrollBy(amount)
+    }
+    
+    func didAddToScene(){
+        delegate = StandardScroller(howMuch:forestScene.fact * ForestScene.backgroundWidth() / 10,  node: self)
     }
 
     

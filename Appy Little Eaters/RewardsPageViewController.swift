@@ -25,7 +25,7 @@ class RewardsPageViewController: UIViewController{
         let uow = UnitOfWork()
         let reward = uow.rewardRepository?.createNewReward()
 		
-		reward!.creatureName = NSNumber(integer: Int(chosen.creatureName!))
+		//reward!.creatureName = NSNumber(integer: Int(chosen.creatureName!))
 		reward!.positionX = chosen.positionX!
 		reward!.positionY = chosen.positionY!
 		reward!.scale = chosen.scale!

@@ -34,7 +34,7 @@ public class ForestScene : SKScene{
 	var _speed:Float!
 	
 	
-	var characters: [ForestCreature] = []
+	//var characters: [ForestCreature] = []
 	
 	lazy public var tileWidth : Float? = {
 		return ForestScene.backgroundWidth()/10 * self.fact
@@ -136,10 +136,10 @@ public class ForestScene : SKScene{
 					let mp = node as! MoveableProtocol
 					mp.moveBy(Float(_dt))
 				}
-				if node is SGG_Spine{
-					let n = node as! SGG_Spine
-					n.activateAnimations()
-				}
+//				if node is SGG_Spine{
+//					let n = node as! SGG_Spine
+//					n.activateAnimations()
+//				}
 			}
 		}
 		//frog.splash(_dt)
@@ -164,13 +164,13 @@ public class ForestScene : SKScene{
     var strawb:SGG_Spine!
     
 	func createSceneContents(){
-        let uow = UnitOfWork()
-        let animations = uow.animationRepository?.getAllAnimation()
-        for animation in animations!{
-            let name = animation.name
-            let anim = AnimatedSprite(withAnimationName: name!)
-            self.addChild(anim)
-        }
+          let uow = UnitOfWork()
+//        let animations = uow.animationRepository?.getAllAnimation()
+//        for animation in animations!{
+//            let name = animation.name
+//            let anim = AnimatedSprite(withAnimationName: name!)
+//            self.addChild(anim)
+//        }
         
         leftHandEdge = 0
         let formatter = NSNumberFormatter()
@@ -200,14 +200,16 @@ public class ForestScene : SKScene{
         }
         
 		for item in (uow.rewardRepository?.getAllRewards())!{
-			let reward:ForestCreature.CreatureName = ForestCreature.CreatureName(rawValue: Int(item.creatureName!))!
-			let creature:ForestCreature = ForestCreature.from(reward)
-			creature.position = forestPoint(CGPoint(x: CGFloat(item.positionX!), y: CGFloat(item.positionY!)))
-			creature.xScale = CGFloat(fact / Float(item.scale!))
-			creature.yScale = CGFloat(abs(fact / Float(item.scale!)))
+            let animationName = item.animationName
+            //let uow = UnitOfWork()
+            //let animation = uow.animationRepository?.animationByName(animationName!)
+            let anim = AnimatedSprite(withAnimationName: animationName!)
+			//creature.position = forestPoint(CGPoint(x: CGFloat(item.positionX!), y: CGFloat(item.positionY!)))
+			//creature.xScale = CGFloat(fact / Float(item.scale!))
+			//creature.yScale = CGFloat(abs(fact / Float(item.scale!)))
 			
-			addChild(creature)
-			characters.append(creature)
+			addChild(anim)
+			//characters.append(creature)
 		}
 	}
 	
@@ -226,6 +228,10 @@ public class ForestScene : SKScene{
 			let fc = node as! ForestCreature
 			fc.didAddToScene()
 		}
+        if node is AnimatedSprite{
+            let an = node as! AnimatedSprite
+            an.didAddToScene()
+        }
 	}
 	
 	var CurrentCreature:AnimatedSprite!
