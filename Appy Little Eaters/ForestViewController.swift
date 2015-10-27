@@ -36,7 +36,7 @@ public class ForestViewController : UIViewController{
 	var forest:ForestScene!
 	
     @IBAction func done(sender: AnyObject) {
-        
+        forest.done()
     }
     
 	@IBAction func start(sender: AnyObject) {
@@ -104,7 +104,7 @@ public class ForestViewController : UIViewController{
 		forest = ForestScene(size: CGSize(width: 1024, height: 768))
 		spriteView.presentScene(forest)
         let d = NSProcessInfo.processInfo().environment["SIMULATOR_DEVICE_NAME"]
-		let currentDevice = UIDevice.currentDevice()
+		//let currentDevice = UIDevice.currentDevice()
 //		if currentDevice.model.rangeOfString("Simulator") == nil{
         if d == nil {
 			stopButton.hidden = true

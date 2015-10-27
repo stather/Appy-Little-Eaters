@@ -49,21 +49,6 @@ public class ParentsPageViewController : UIViewController{
         appDelegate.downloadFood(foodProgress)
     }
     
-	lazy var managedObjectContext : NSManagedObjectContext? = {
-		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-		if let managedObjectContext = appDelegate.managedObjectContext {
-			return managedObjectContext
-		}
-		else {
-			return nil
-		}
-		}()
-	
-	lazy var managedObjectModel : NSManagedObjectModel? = {
-		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-		return appDelegate.managedObjectModel
-		}()
-
 	
 	@IBAction func backPressed(sender: AnyObject) {
 		currentPage--
@@ -108,52 +93,32 @@ public class ParentsPageViewController : UIViewController{
 	}
 	
 	@IBAction func fillTheForest(sender: AnyObject) {
-		let fetchAllRewards = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewards")
-//		var error:NSErrorPointer! = NSErrorPointer()
-		for item in (try! managedObjectContext?.executeFetchRequest(fetchAllRewards!)) as! [DReward]{
-			managedObjectContext?.deleteObject(item)
-		}
-		do {
-			try managedObjectContext?.save()
-		} catch _ {
-            /* TODO: Finish migration: handle the expression passed to error arg: error */
-		}
-		let fetchAllRewardsInPool = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewardsInPool")
-		for item in (try! managedObjectContext?.executeFetchRequest(fetchAllRewardsInPool!)) as! [DRewardPool]{
-			let reward = NSEntityDescription.insertNewObjectForEntityForName("DReward", inManagedObjectContext: managedObjectContext!) as! DReward
+        let uow = UnitOfWork()
+        uow.rewardRepository?.deleteAllRewards()
+        let allRewardsInPool = uow.rewardPoolRepository?.getAllRewardsInPool()
+        
+        for item in allRewardsInPool!{
+            let reward = uow.rewardRepository?.createNewReward()
 			
-			reward.creatureName = NSNumber(integer: Int(item.creatureName!))
-			reward.positionX = item.positionX!
-			reward.positionY = 1035 - Int(item.positionY!)
-			reward.scale = item.scale!
+			reward!.creatureName = NSNumber(integer: Int(item.creatureName!))
+			reward!.positionX = item.positionX!
+//            reward!.positionY = 768 - Int(item.positionY!)
+            reward!.positionY = Int(item.positionY!)
+			reward!.scale = item.scale!
+            reward!.animationName = item.imageName
+            reward!.rewardName = item.rewardName
 			item.available = false
 		}
-		do {
-			try managedObjectContext?.save()
-		} catch _ {
-			/* TODO: Finish migration: handle the expression passed to error arg: error */
-		}
+        uow.saveChanges()
 	}
 	
 	@IBAction func clearTheForest(sender: AnyObject) {
-		let fetchAllRewards = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewards")
-		//var error:NSErrorPointer! = NSErrorPointer()
-		for item in (try! managedObjectContext?.executeFetchRequest(fetchAllRewards!)) as! [DReward]{
-			managedObjectContext?.deleteObject(item)
-		}
-		let fetchAllRewardsInPool = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewardsInPool")
-		for item in (try! managedObjectContext?.executeFetchRequest(fetchAllRewardsInPool!)) as! [DRewardPool]{
-			managedObjectContext?.deleteObject(item)
-		}
-		
-		do {
-			try managedObjectContext?.save()
-		} catch _ {
-			/* TODO: Finish migration: handle the expression passed to error arg: error */
-		}
-		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-		appDelegate.seedDatabase()
-		
+        let uow = UnitOfWork()
+
+        uow.rewardRepository?.deleteAllRewards()
+        uow.rewardPoolRepository?.makeAllRewardsAvailable()
+        
+        uow.saveChanges()
 	}
 	
 	@IBAction func facebookPressed(sender: AnyObject) {

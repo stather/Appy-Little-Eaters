@@ -178,14 +178,14 @@ public class ForestCreature : SKSpriteNode, ScrollableProtocol{
 	}
 	
 	func didAddToScene(){
-		delegate = StandardScroller(howMuch:forestScene.fact * ForestScene.backgroundWidth() / 10,  node: self)
+		delegate = StandardScroller(howMuch:forestScene.fact * forestScene.backgroundWidth / 10,  node: self)
 	}
 	
 	func fly(amount: Float){
 		var x:Float = Float(position.x)
 		var y:Float = Float(position.y)
 		var original = forestScene.originalPoint(position)
-		let howMuch = forestScene.fact * ForestScene.backgroundWidth() / 10
+		let howMuch = forestScene.fact * forestScene.backgroundWidth / 10
 		if horizontalDirection == HorizontalDirection.Left{
 			if original.x > destination.x{
 				x -= amount * 25

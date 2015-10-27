@@ -9,9 +9,13 @@
 import SpriteKit
 
 public class AnimatedSprite: SKSpriteNode, ScrollableProtocol {
+    public var animationName:String!
+    public var rewardName:String!
     
-    convenience init(withAnimationName:String){
+    convenience init(withAnimationName:String, rewardName:String){
         self.init(color: UIColor.clearColor(), size: CGSize(width: 100, height: 100))
+        self.animationName = withAnimationName
+        self.rewardName = rewardName
         let skel:SpineSkeleton? = DZSpineSceneBuilder.loadSkeletonName(withAnimationName, scale: 0.1)
         let builder:DZSpineSceneBuilder = DZSpineSceneBuilder()
         let n:SKNode = builder.nodeWithSkeleton(skel, animationName: "Jump", loop: true)
@@ -48,7 +52,7 @@ public class AnimatedSprite: SKSpriteNode, ScrollableProtocol {
     }
     
     func didAddToScene(){
-        delegate = StandardScroller(howMuch:forestScene.fact * ForestScene.backgroundWidth() / 10,  node: self)
+        delegate = StandardScroller(howMuch:forestScene.fact * forestScene.backgroundWidth / 10,  node: self)
     }
 
     

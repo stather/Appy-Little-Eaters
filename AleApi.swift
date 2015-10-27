@@ -30,11 +30,24 @@ public class AleRewardDef{
     public var scene:String!
     public var animation:String!
     public var level:String!
+    public var x:Float!
+    public var y:Float!
+    public var scale:Float!
 }
 
 public class AleApi{
     
     static let BaseUrl = "http://localhost:8079/"
+    
+    func updateRewardPosition(name:String, x:Float, y:Float, scale:Float) -> Void{
+        let FullUrl = AleApi.BaseUrl + "Reward/updateRewardPosition"
+        let params:NSMutableDictionary = NSMutableDictionary(objects: [name, String(x), String(y), String(scale)], forKeys: ["name", "x", "y", "scale"])
+        params.setValue("12345", forKey: "XDEBUG_SESSION_START")
+        ANRestOps.postInBackground(FullUrl, payload: params as [NSObject : AnyObject], payloadFormat: ANRestOpsFormFormat, beforeRequest: { () -> Void in
+            
+            }, onCompletion: {(response: ANRestOpsResponse!) -> Void in
+        })
+    }
     
     func listFood(success:(foods: [AleFoodDef]) -> Void){
         let FullUrl = AleApi.BaseUrl + "Food/listFoodJson"
@@ -81,7 +94,7 @@ public class AleApi{
                     animations.append(aad)
                 }
                 success(animations: animations)
-        });
+        })
         
     }
     
@@ -102,6 +115,9 @@ public class AleApi{
                     aad.scene = item.objectForKey("scene") as! String
                     aad.animation = item.objectForKey("animation") as! String
                     aad.level = item.objectForKey("level") as! String
+                    aad.x = item.objectForKey("x") as! Float
+                    aad.y = item.objectForKey("y") as! Float
+                    aad.scale = item.objectForKey("scale") as! Float
                     rewards.append(aad)
                 }
                 success(rewards: rewards)

@@ -30,6 +30,7 @@ class RewardsPageViewController: UIViewController{
 		reward!.positionY = chosen.positionY!
 		reward!.scale = chosen.scale!
         reward!.animationName = chosen.imageName!
+        reward!.rewardName = chosen.rewardName!
 		chosen.available = false		
 		uow.saveChanges()
         

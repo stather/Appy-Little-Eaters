@@ -28,10 +28,10 @@ class StandardScroller : ScrollableProtocol{
 //			x -= howMuch * 10
 //		}
         if amount < 0 && x < -1000 {
-            x += 9000
+            x += 7093
         }
         if amount > 0 && x > 2000 {
-            x -= 9000
+            x -= 7093
         }
 		node.position = CGPoint(x: CGFloat(x), y: CGFloat(y))
 	}

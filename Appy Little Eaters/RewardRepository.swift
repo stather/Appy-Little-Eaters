@@ -31,5 +31,22 @@ public class RewardRepository{
         return (try! _managedObjectContext.executeFetchRequest(fetchAllRewards!)) as! [DReward]
         
     }
+    
+    func deleteReward(reward: DReward){
+        _managedObjectContext.deleteObject(reward)
+    }
+
+    func deleteAllRewards(){
+        let allRewards = getAllRewards()
+        for item in allRewards{
+            deleteReward(item)
+        }
+    }
+    
+    func findByName(name:String) -> DReward!{
+        let fetchByName = managedObjectModel?.fetchRequestFromTemplateWithName("FetchRewardByName", substitutionVariables: ["NAME":name])
+        let rewards = try! _managedObjectContext.executeFetchRequest(fetchByName!) as! [DReward]
+        return rewards[0]
+    }
 
 }

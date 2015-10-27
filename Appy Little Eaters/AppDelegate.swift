@@ -147,6 +147,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 dRewardPool.scale = 0.1
                 dRewardPool.available = true
                 dRewardPool.level = Int(reward.level)
+                dRewardPool.positionX = reward.x
+                dRewardPool.positionY = reward.y
+                dRewardPool.scale = reward.scale
                 uow.saveChanges()
                 i += 1
                 progress?.setProgress(i / Float(rewards.count), animated: false)
