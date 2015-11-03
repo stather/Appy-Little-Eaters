@@ -1,5 +1,5 @@
 //
-//  SettingsViewController.swift
+//  ChooseFoodController.swift
 //  AppyLittleEaters
 //
 //  Created by RUSSELL STATHER on 03/11/2015.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class FoodSettingsViewController: UITableViewController {
-
-    override func viewDidLoad() {
+public class ChooseFoodController: UITableViewController {
+    public var FoodColour:String = ""
+    
+    override public func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(false, animated: false)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -21,82 +21,43 @@ class FoodSettingsViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 6
+        if InAppPurchaseManager.sharedInstance.allFoodsBought(){
+            return (UnitOfWork().foodRepository?.getCountOfFood(FoodColour))!
+        }else{
+            return (UnitOfWork().foodRepository?.getCountOfFreeFood(FoodColour))!
+        }
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("FoodColourCell", forIndexPath: indexPath)
-        switch indexPath.row{
-        case 0:
-            cell.textLabel?.text = "Red food settings"
-            break
-        case 1:
-            cell.textLabel?.text = "Orange food settings"
-            break
-        case 2:
-            cell.textLabel?.text = "Yellow food settings"
-            break
-        case 3:
-            cell.textLabel?.text = "Purple food settings"
-            break
-        case 4:
-            cell.textLabel?.text = "Green food settings"
-            break
-        case 5:
-            cell.textLabel?.text = "White food settings"
-            break
-        default:
-            break
+    override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("FoodOption", forIndexPath: indexPath) as! FoodSelectCell
+        let uow = UnitOfWork()
+        let rep = uow.foodRepository
+        let foods:[DFood]
+        if InAppPurchaseManager.sharedInstance.allFoodsBought(){
+            foods = (rep?.getFood(FoodColour))!
+        }else{
+            foods = (rep?.getFreeFood(FoodColour))!
         }
+        let name = foods[indexPath.row].name
+        let image = uow.foodAssetRepository?.getFoodImage(name)
+        cell.FoodImage.image = image
+        cell.FoodName.text = name
+        
         return cell
-    }
-    
-    
-    var FoodColour:String!
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch indexPath.row{
-        case 0:
-            FoodColour = "Red"
-            performSegueWithIdentifier("FoodColourSegue", sender: self)
-            break
-        case 1:
-            FoodColour = "Orange"
-            performSegueWithIdentifier("FoodColourSegue", sender: self)
-            break
-        case 2:
-            FoodColour = "Yellow"
-            performSegueWithIdentifier("FoodColourSegue", sender: self)
-            break
-        case 3:
-            FoodColour = "Purple"
-            performSegueWithIdentifier("FoodColourSegue", sender: self)
-            break
-        case 4:
-            FoodColour = "Green"
-            performSegueWithIdentifier("FoodColourSegue", sender: self)
-            break
-        case 5:
-            FoodColour = "White"
-            performSegueWithIdentifier("FoodColourSegue", sender: self)
-            break
-        default:
-            break
-        }
     }
 
     /*
@@ -134,15 +95,14 @@ class FoodSettingsViewController: UITableViewController {
     }
     */
 
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        let vc = segue.destinationViewController as! ChooseFoodController
-        vc.FoodColour = FoodColour
-        
     }
+    */
 
 }

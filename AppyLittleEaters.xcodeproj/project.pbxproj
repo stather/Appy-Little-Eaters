@@ -392,6 +392,8 @@
 		687BDB641BE8112C00735B9D /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB631BE8112C00735B9D /* SettingsController.swift */; };
 		687BDB661BE94A1B00735B9D /* FoodAssettRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB651BE94A1B00735B9D /* FoodAssettRepository.swift */; };
 		687BDB681BE9564B00735B9D /* FoodSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB671BE9564B00735B9D /* FoodSettingsViewController.swift */; };
+		687BDB6A1BE95D5100735B9D /* FoodSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB691BE95D5100735B9D /* FoodSelectCell.swift */; };
+		687BDB6C1BE95E4100735B9D /* ChooseFoodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB6B1BE95E4100735B9D /* ChooseFoodController.swift */; };
 		689BD6391BD27C3F00B7EF3E /* AnimatedSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */; };
 		689BD63D1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD63B1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift */; };
 		689BD63E1BD5764500B7EF3E /* DRewardPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD63C1BD5764500B7EF3E /* DRewardPool.swift */; };
@@ -847,6 +849,8 @@
 		687BDB631BE8112C00735B9D /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		687BDB651BE94A1B00735B9D /* FoodAssettRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodAssettRepository.swift; sourceTree = "<group>"; };
 		687BDB671BE9564B00735B9D /* FoodSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodSettingsViewController.swift; sourceTree = "<group>"; };
+		687BDB691BE95D5100735B9D /* FoodSelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodSelectCell.swift; sourceTree = "<group>"; };
+		687BDB6B1BE95E4100735B9D /* ChooseFoodController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFoodController.swift; sourceTree = "<group>"; };
 		689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSprite.swift; sourceTree = "<group>"; };
 		689BD63A1BD575D300B7EF3E /* AleModel 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 7.xcdatamodel"; sourceTree = "<group>"; };
 		689BD63B1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DRewardPool+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -1082,6 +1086,8 @@
 				687BDB5F1BE7F31000735B9D /* InAppPurchaseManager.swift */,
 				687BDB631BE8112C00735B9D /* SettingsController.swift */,
 				687BDB671BE9564B00735B9D /* FoodSettingsViewController.swift */,
+				687BDB691BE95D5100735B9D /* FoodSelectCell.swift */,
+				687BDB6B1BE95E4100735B9D /* ChooseFoodController.swift */,
 			);
 			path = "Appy Little Eaters";
 			sourceTree = "<group>";
@@ -2219,6 +2225,7 @@
 				686CC18E1BC123E1003AA2C2 /* UnitOfWork.swift in Sources */,
 				46E15DD61A0687EC00B5BAE1 /* BlueDragon.swift in Sources */,
 				681ADBA01BBB2FF9009146C2 /* DAnimation+CoreDataProperties.swift in Sources */,
+				687BDB6A1BE95D5100735B9D /* FoodSelectCell.swift in Sources */,
 				687BDB681BE9564B00735B9D /* FoodSettingsViewController.swift in Sources */,
 				469AC7A81A44C3B000CDA070 /* SGG_SpineJSONTools.m in Sources */,
 				68D7C9D61B52FA89005DFA20 /* Cloud1View.swift in Sources */,
@@ -2272,6 +2279,7 @@
 				687BDB641BE8112C00735B9D /* SettingsController.swift in Sources */,
 				68034D221BC460ED00E1951B /* RewardPoolRepository.swift in Sources */,
 				46F6B40919FD428000205F6B /* RewardDefinition.swift in Sources */,
+				687BDB6C1BE95E4100735B9D /* ChooseFoodController.swift in Sources */,
 				46E15DBC1A0685A600B5BAE1 /* BrownSquirrel.swift in Sources */,
 				4642606A19F45F600028C878 /* ParentsPageViewController.swift in Sources */,
 				689BD6431BD5941700B7EF3E /* DReward+CoreDataProperties.swift in Sources */,
