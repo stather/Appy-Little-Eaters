@@ -20,19 +20,18 @@ class RewardsPageViewController: UIViewController{
 	@IBOutlet weak var DoneButton: UIButton!
 	
 	@IBAction func DonePressed(sender: UIButton) {
+        if chosen != nil{
+            let uow = UnitOfWork()
+            let reward = uow.rewardRepository?.createNewReward()
 		
-//		var rewardDef = RewardDefinition(rewardType: ForestCreature.CreatureName(rawValue: Int(chosen.creatureName))! )
-        let uow = UnitOfWork()
-        let reward = uow.rewardRepository?.createNewReward()
-		
-		//reward!.creatureName = NSNumber(integer: Int(chosen.creatureName!))
-		reward!.positionX = chosen.positionX!
-		reward!.positionY = chosen.positionY!
-		reward!.scale = chosen.scale!
-        reward!.animationName = chosen.imageName!
-        reward!.rewardName = chosen.rewardName!
-		chosen.available = false		
-		uow.saveChanges()
+            reward!.positionX = chosen.positionX!
+            reward!.positionY = chosen.positionY!
+            reward!.scale = chosen.scale!
+            reward!.animationName = chosen.imageName!
+            reward!.rewardName = chosen.rewardName!
+            chosen.available = false
+            uow.saveChanges()
+        }
         
 		performSegueWithIdentifier("RewardToForest", sender: self)
 	}
@@ -86,11 +85,22 @@ class RewardsPageViewController: UIViewController{
         let uow = UnitOfWork()
         let rewards:[DRewardPool] = (uow.rewardPoolRepository?.getAvailableRewardsOrderedByLevel())!
         
-//		var filepath:NSString =  NSBundle.mainBundle().pathForResource(rewards[0].imageName, ofType: "png")!
+        if rewards.count == 0 {
+            let alert = UIAlertController(title: "Rewards", message: "Sorry no more rewards are available", preferredStyle: UIAlertControllerStyle.Alert)
+            let cancelAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel) { (action) in
+                print(action)
+            }
+            alert.addAction(cancelAction)
+            
+            presentViewController(alert, animated: false, completion: { () -> Void in
+            
+            })
+            return
+            
+        }
 		LeftReward.image = loadRewardImage(rewards[0].imageName!)
 		lhs = rewards[0]
 
-//		filepath =  NSBundle.mainBundle().pathForResource(rewards[1].imageName, ofType: "png")!
 		RightReward.image = loadRewardImage(rewards[1].imageName!)
 		rhs = rewards[1]
 		DoneButton.enabled = false;

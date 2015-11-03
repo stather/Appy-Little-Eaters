@@ -63,6 +63,7 @@ public class RainbowPageViewController: UIViewController{
 		//CGContextAddLineToPoint(context, point.x, point.y)
 		//CGContextStrokePath(context)
 		let im2 = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
 		theBand.image = im2
 		theBand.setNeedsDisplay()
 	}

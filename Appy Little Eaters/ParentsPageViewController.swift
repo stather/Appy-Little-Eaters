@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-public class ParentsPageViewController : UIViewController{
+public class ParentsPageViewController : UIViewController, InAppPurchaseDelegate{
 	
 	var currentPage:Int = 1
 	@IBOutlet weak var backButton: UIButton!
@@ -31,6 +31,16 @@ public class ParentsPageViewController : UIViewController{
 		webLink.hidden = true
 	}
 
+    public func FoodPurchased() {
+    }
+    
+    public func FoodNotPurchased() {
+    }
+    
+    @IBAction func BuyFood(sender: AnyObject) {
+        InAppPurchaseManager.sharedInstance.BuyFood(self)
+    }
+    
     @IBAction func downloadRewards(sender: AnyObject) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.deleteAllRewardsInPool()

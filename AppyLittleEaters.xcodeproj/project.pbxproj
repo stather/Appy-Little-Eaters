@@ -387,6 +387,11 @@
 		686CC18E1BC123E1003AA2C2 /* UnitOfWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686CC18D1BC123E1003AA2C2 /* UnitOfWork.swift */; };
 		686CC1901BC1AD92003AA2C2 /* AnimationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686CC18F1BC1AD92003AA2C2 /* AnimationRepository.swift */; };
 		68774A121ABD90B70001CA32 /* healthykids.wav in Resources */ = {isa = PBXBuildFile; fileRef = 68774A111ABD90B70001CA32 /* healthykids.wav */; };
+		687BDB601BE7F31000735B9D /* InAppPurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB5F1BE7F31000735B9D /* InAppPurchaseManager.swift */; };
+		687BDB621BE80CB400735B9D /* settingscog.png in Resources */ = {isa = PBXBuildFile; fileRef = 687BDB611BE80CB300735B9D /* settingscog.png */; };
+		687BDB641BE8112C00735B9D /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB631BE8112C00735B9D /* SettingsController.swift */; };
+		687BDB661BE94A1B00735B9D /* FoodAssettRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB651BE94A1B00735B9D /* FoodAssettRepository.swift */; };
+		687BDB681BE9564B00735B9D /* FoodSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB671BE9564B00735B9D /* FoodSettingsViewController.swift */; };
 		689BD6391BD27C3F00B7EF3E /* AnimatedSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */; };
 		689BD63D1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD63B1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift */; };
 		689BD63E1BD5764500B7EF3E /* DRewardPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD63C1BD5764500B7EF3E /* DRewardPool.swift */; };
@@ -837,6 +842,11 @@
 		686CC18D1BC123E1003AA2C2 /* UnitOfWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitOfWork.swift; sourceTree = "<group>"; };
 		686CC18F1BC1AD92003AA2C2 /* AnimationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationRepository.swift; sourceTree = "<group>"; };
 		68774A111ABD90B70001CA32 /* healthykids.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = healthykids.wav; sourceTree = "<group>"; };
+		687BDB5F1BE7F31000735B9D /* InAppPurchaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchaseManager.swift; sourceTree = "<group>"; };
+		687BDB611BE80CB300735B9D /* settingscog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingscog.png; sourceTree = "<group>"; };
+		687BDB631BE8112C00735B9D /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		687BDB651BE94A1B00735B9D /* FoodAssettRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodAssettRepository.swift; sourceTree = "<group>"; };
+		687BDB671BE9564B00735B9D /* FoodSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodSettingsViewController.swift; sourceTree = "<group>"; };
 		689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSprite.swift; sourceTree = "<group>"; };
 		689BD63A1BD575D300B7EF3E /* AleModel 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 7.xcdatamodel"; sourceTree = "<group>"; };
 		689BD63B1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DRewardPool+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -1069,6 +1079,9 @@
 				682DB2881BA6148900050F13 /* ImageDownloader.swift */,
 				689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */,
 				68D1B5F31BD9784A00233213 /* BackgroundSpriteNode.swift */,
+				687BDB5F1BE7F31000735B9D /* InAppPurchaseManager.swift */,
+				687BDB631BE8112C00735B9D /* SettingsController.swift */,
+				687BDB671BE9564B00735B9D /* FoodSettingsViewController.swift */,
 			);
 			path = "Appy Little Eaters";
 			sourceTree = "<group>";
@@ -1650,6 +1663,7 @@
 		46E8D17919F3B95500AEF750 /* parents */ = {
 			isa = PBXGroup;
 			children = (
+				687BDB611BE80CB300735B9D /* settingscog.png */,
 				4642607119F4626D0028C878 /* PARENTS-PAGE-2.png */,
 				4642607219F4626D0028C878 /* PARENTS-PAGE-3.png */,
 				4642607319F4626D0028C878 /* PARENTS-PAGE4.png */,
@@ -1673,6 +1687,7 @@
 				686CC18F1BC1AD92003AA2C2 /* AnimationRepository.swift */,
 				68034D211BC460ED00E1951B /* RewardPoolRepository.swift */,
 				68034D231BC4647500E1951B /* RewardRepository.swift */,
+				687BDB651BE94A1B00735B9D /* FoodAssettRepository.swift */,
 			);
 			name = Repositories;
 			sourceTree = "<group>";
@@ -2036,6 +2051,7 @@
 				46E15D931A06430A00B5BAE1 /* black_berries_RB.png in Resources */,
 				469C9B1C1A23CD5500E49BA5 /* brown-squirrel7.png in Resources */,
 				469AC7CA1A50641900CDA070 /* apricots.m4a in Resources */,
+				687BDB621BE80CB400735B9D /* settingscog.png in Resources */,
 				469AC7E01A50655F00CDA070 /* corn.m4a in Resources */,
 				46AE6C1519E9777A000238F4 /* purpleband.png in Resources */,
 				4642607519F4626D0028C878 /* PARENTS-PAGE-2.png in Resources */,
@@ -2203,6 +2219,7 @@
 				686CC18E1BC123E1003AA2C2 /* UnitOfWork.swift in Sources */,
 				46E15DD61A0687EC00B5BAE1 /* BlueDragon.swift in Sources */,
 				681ADBA01BBB2FF9009146C2 /* DAnimation+CoreDataProperties.swift in Sources */,
+				687BDB681BE9564B00735B9D /* FoodSettingsViewController.swift in Sources */,
 				469AC7A81A44C3B000CDA070 /* SGG_SpineJSONTools.m in Sources */,
 				68D7C9D61B52FA89005DFA20 /* Cloud1View.swift in Sources */,
 				46E15D791A0528BA00B5BAE1 /* StandardScroller.swift in Sources */,
@@ -2213,6 +2230,7 @@
 				4642608119F598B80028C878 /* Forest.swift in Sources */,
 				46E48BC118A80E66006DCA91 /* CHomeIconView.m in Sources */,
 				686CC18C1BBFD996003AA2C2 /* FoodRepository.swift in Sources */,
+				687BDB601BE7F31000735B9D /* InAppPurchaseManager.swift in Sources */,
 				682DB2871BA6011D00050F13 /* AleApi.swift in Sources */,
 				46F6B40519FD348300205F6B /* Bluebird.swift in Sources */,
 				4642607C19F58D530028C878 /* ForestScene.swift in Sources */,
@@ -2222,6 +2240,7 @@
 				46E15DD21A0687A400B5BAE1 /* PinkFlowers.swift in Sources */,
 				46E15DC61A0686EF00B5BAE1 /* BlueFish.swift in Sources */,
 				469AC7A61A44C3B000CDA070 /* SGG_SpineBone.m in Sources */,
+				687BDB661BE94A1B00735B9D /* FoodAssettRepository.swift in Sources */,
 				46E15DCE1A06876B00B5BAE1 /* GreenFern.swift in Sources */,
 				46E15DCC1A06874C00B5BAE1 /* Frog.swift in Sources */,
 				686CC1901BC1AD92003AA2C2 /* AnimationRepository.swift in Sources */,
@@ -2250,6 +2269,7 @@
 				689BD63D1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift in Sources */,
 				469AC7A41A44C3B000CDA070 /* SGG_SkinSprite.m in Sources */,
 				46E8D17419F2B81600AEF750 /* FoodPagePageViewController.swift in Sources */,
+				687BDB641BE8112C00735B9D /* SettingsController.swift in Sources */,
 				68034D221BC460ED00E1951B /* RewardPoolRepository.swift in Sources */,
 				46F6B40919FD428000205F6B /* RewardDefinition.swift in Sources */,
 				46E15DBC1A0685A600B5BAE1 /* BrownSquirrel.swift in Sources */,
@@ -2422,7 +2442,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Appy Little Eaters/Appy Little Eaters-Prefix.pch";
 				INFOPLIST_FILE = "Appy Little Eaters/Appy Little Eaters-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.readysteadyrainbow.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2450,7 +2470,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Appy Little Eaters/Appy Little Eaters-Prefix.pch";
 				INFOPLIST_FILE = "Appy Little Eaters/Appy Little Eaters-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.readysteadyrainbow.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

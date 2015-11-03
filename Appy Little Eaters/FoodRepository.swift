@@ -15,6 +15,11 @@ public class FoodRepository{
     init(managedObjectContext: NSManagedObjectContext){
         _managedObjectContext = managedObjectContext
     }
+    
+    lazy var managedObjectModel : NSManagedObjectModel? = {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        return appDelegate.managedObjectModel
+    }()
 
     func createNewFood() -> DFood!{
         return NSEntityDescription.insertNewObjectForEntityForName("DFood", inManagedObjectContext: self._managedObjectContext) as! DFood
@@ -23,10 +28,20 @@ public class FoodRepository{
     func getAllFood() -> [DFood!]!{
         let fetchRequest = NSFetchRequest()
         fetchRequest.entity = NSEntityDescription.entityForName("DFood", inManagedObjectContext: _managedObjectContext)
-        //fetchRequest.includesPropertyValues = false
-        
         let results:[DFood!]! = try? _managedObjectContext.executeFetchRequest(fetchRequest) as! [DFood!]
         return results
+    }
+    
+    func getFood(forColour:String) -> [DFood]!{
+        let fetchFoodByColour = managedObjectModel?.fetchRequestFromTemplateWithName("FetchFoodByColour", substitutionVariables: ["COLOUR":forColour])
+        
+        return try! _managedObjectContext.executeFetchRequest(fetchFoodByColour!) as! [DFood]
+    }
+    
+    func getFreeFood(forColour:String) -> [DFood]!{
+        let fetchFoodByColour = managedObjectModel?.fetchRequestFromTemplateWithName("FetchFreeFoodByColour", substitutionVariables: ["COLOUR":forColour])
+        
+        return try! _managedObjectContext.executeFetchRequest(fetchFoodByColour!) as! [DFood]
     }
     
     func deleteFood(food: DFood){

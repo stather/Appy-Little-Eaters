@@ -34,28 +34,21 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 	var player:ResourceAudioPlayer!
 	var endOfPlayAction:Int!
 	
-    lazy var managedObjectContext : NSManagedObjectContext? = {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        if let managedObjectContext = appDelegate.managedObjectContext {
-            return managedObjectContext
-        }
-        else {
-            return nil
-        }
-        }()
-    
-    lazy var managedObjectModel : NSManagedObjectModel? = {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        return appDelegate.managedObjectModel
-        }()
-
     func getFoodForColour(c:String) -> NSArray {
-        let f = NSMutableArray()
-        let fetchFoodByColour = managedObjectModel?.fetchRequestFromTemplateWithName("FetchFoodByColour", substitutionVariables: ["COLOUR":c])
 
-        for item in (try! managedObjectContext?.executeFetchRequest(fetchFoodByColour!)) as! [DFood]{
+        let uow = UnitOfWork()
+        var foods:[DFood]
+        
+        if InAppPurchaseManager.sharedInstance.allFoodsBought(){
+            foods = (uow.foodRepository?.getFood(c))!
+        }else{
+            foods = (uow.foodRepository?.getFreeFood(c))!
+        }
+        let f = NSMutableArray()
+        for item in foods{
             f.addObject(item.name)
         }
+        
         return f
     }
 	
@@ -116,26 +109,13 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 		return foods.count
 	}
     
-    func loadFood(name:String) -> UIImage{
-        let fileManager:NSFileManager = NSFileManager.defaultManager()
-        let bundleID:String = NSBundle.mainBundle().bundleIdentifier!
-        
-        let possibleURLS:NSArray = fileManager.URLsForDirectory(NSSearchPathDirectory.ApplicationSupportDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)
-        let appSupportDir:NSURL = possibleURLS[0] as! NSURL
-        let dirPath = appSupportDir.URLByAppendingPathComponent(bundleID)
-        let filename = dirPath.URLByAppendingPathComponent(name + "." + "png")
-        let filepath = filename.path
-        let image:UIImage = UIImage(contentsOfFile: filepath as String!)!
-        return image;
-        
-    }
 	
 	public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		let cell:FoodCell = collectionView.dequeueReusableCellWithReuseIdentifier("FoodCell", forIndexPath: indexPath) as! FoodCell
 		cell.backgroundColor = UIColor.whiteColor()
 		let index:NSInteger = indexPath.item
 		let name:NSString = foods.objectAtIndex(index) as! NSString
-		cell.foodImage.image = loadFood(name as String)
+		cell.foodImage.image = UnitOfWork().foodAssetRepository?.getFoodImage(name as String)
 		cell.foodImage.backgroundColor = UIColor.clearColor()
 		cell.backgroundColor = UIColor.clearColor()
 		cell.backgroundView = UIView(frame: CGRectZero)
@@ -145,7 +125,7 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 	public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		let index:Int = indexPath.item
 		let name:String = foods.objectAtIndex(index) as! String
-		self.selectedFoodImage.image = loadFood(name)
+		self.selectedFoodImage.image = UnitOfWork().foodAssetRepository?.getFoodImage(name as String)
 		self.selectedFoodImage.hidden = false;
 		self.theCollection.hidden = true;
 		self.tick.hidden = false;

@@ -66,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		synth = AVSpeechSynthesizer()
 		var v2 = AVSpeechSynthesisVoice.speechVoices().filter { $0.language == "en-US" }
 		preferredVoice = (v2[0] )
-		seedDatabase()
+        InAppPurchaseManager.sharedInstance.requestProductInfo()
 		return true
 	}
     

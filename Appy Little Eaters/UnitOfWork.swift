@@ -45,6 +45,11 @@ public class UnitOfWork{
         return rewardRepository
         }()
     
+    lazy var foodAssetRepository : FoodAssetRepository? = {
+       var foodAssetRepository = FoodAssetRepository()
+        return foodAssetRepository
+    }()
+    
     
     public func saveChanges(){
         do {

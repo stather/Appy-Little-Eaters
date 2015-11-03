@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="FiX-dY-Vvo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="FiX-dY-Vvo">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -302,11 +302,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PARENTS-PAGE-background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="E8Z-cS-4fi">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PARENTS-PAGE-background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="E8Z-cS-4fi" propertyAccessControl="none">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <animations/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bA8-fP-wNy" userLabel="Back">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bA8-fP-wNy" userLabel="Back" propertyAccessControl="all">
                                 <rect key="frame" x="16" y="663" width="200" height="85"/>
                                 <animations/>
                                 <state key="normal" image="PARENTS-PAGE-back_06.png">
@@ -367,7 +367,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yC9-e7-nhd">
-                                <rect key="frame" x="878" y="8" width="130" height="30"/>
+                                <rect key="frame" x="783" y="34" width="130" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Clear the forest">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -377,7 +377,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WlK-YT-pXu">
-                                <rect key="frame" x="878" y="46" width="130" height="30"/>
+                                <rect key="frame" x="783" y="72" width="130" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Fill the forest">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -387,7 +387,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jdH-Pw-QR3">
-                                <rect key="frame" x="885" y="77" width="109" height="30"/>
+                                <rect key="frame" x="790" y="103" width="109" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Download Food">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -397,11 +397,11 @@
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qma-wH-2oi">
-                                <rect key="frame" x="873" y="115" width="133" height="2"/>
+                                <rect key="frame" x="778" y="141" width="133" height="2"/>
                                 <animations/>
                             </progressView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFS-ix-eLo">
-                                <rect key="frame" x="866" y="135" width="147" height="30"/>
+                                <rect key="frame" x="771" y="161" width="147" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Download animations"/>
                                 <connections>
@@ -409,15 +409,15 @@
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nKC-7e-R4L" userLabel="Animation Progress">
-                                <rect key="frame" x="863" y="173" width="150" height="2"/>
+                                <rect key="frame" x="768" y="199" width="150" height="2"/>
                                 <animations/>
                             </progressView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PARENTS-PAGE-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="O05-9w-FXh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PARENTS-PAGE-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="O05-9w-FXh" propertyAccessControl="all">
                                 <rect key="frame" x="34" y="-49" width="1024" height="768"/>
                                 <animations/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tA2-Jd-3XH">
-                                <rect key="frame" x="874" y="189" width="131" height="30"/>
+                                <rect key="frame" x="779" y="215" width="131" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Download Rewards"/>
                                 <connections>
@@ -425,9 +425,25 @@
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3NB-KB-bc4" userLabel="Reward Progress">
-                                <rect key="frame" x="863" y="227" width="150" height="2"/>
+                                <rect key="frame" x="768" y="253" width="150" height="2"/>
                                 <animations/>
                             </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCJ-HH-RUP">
+                                <rect key="frame" x="671" y="110" width="101" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Buy more food"/>
+                                <connections>
+                                    <action selector="BuyFood:" destination="RbU-s2-iag" eventType="touchUpInside" id="MwY-xL-H7P"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFS-On-5vs">
+                                <rect key="frame" x="912" y="20" width="92" height="93"/>
+                                <animations/>
+                                <state key="normal" image="settingscog.png"/>
+                                <connections>
+                                    <segue destination="l2D-EH-zCz" kind="push" id="KrE-jS-UQB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -450,6 +466,85 @@
                 <exit id="tLH-oI-akb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1512" y="2368"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="Off-fu-oZd">
+            <objects>
+                <tableViewController title="Settings" id="l2D-EH-zCz" customClass="SettingsController" customModule="Appy_Little_Eaters" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="GVE-u7-Sj9">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SettingsCell" textLabel="oYI-Ng-uKO" style="IBUITableViewCellStyleDefault" id="eZo-pi-MG7">
+                                <rect key="frame" x="0.0" y="28" width="1024" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eZo-pi-MG7" id="y1h-B5-Obs">
+                                    <rect key="frame" x="0.0" y="0.0" width="810" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oYI-Ng-uKO">
+                                            <rect key="frame" x="196" y="0.0" width="614" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="l2D-EH-zCz" id="qA2-uz-zPp"/>
+                            <outlet property="delegate" destination="l2D-EH-zCz" id="kSX-Es-BEn"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="mIx-I8-HGN">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="ZXa-dJ-LIJ"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="ivX-yF-4vF" kind="push" identifier="FoodSettingsSeque" id="8nb-F8-J41"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yUb-zq-AU3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-356" y="2858"/>
+        </scene>
+        <!--FoodSettings-->
+        <scene sceneID="aL3-Gm-uzl">
+            <objects>
+                <tableViewController title="FoodSettings" id="ivX-yF-4vF" customClass="FoodSettingsViewController" customModule="Appy_Little_Eaters" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="SPs-Lq-IWe">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FoodColourCell" id="hwX-bH-EAe">
+                                <rect key="frame" x="0.0" y="28" width="1024" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hwX-bH-EAe" id="unT-Wd-PQ6">
+                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ivX-yF-4vF" id="jaf-2r-Cze"/>
+                            <outlet property="delegate" destination="ivX-yF-4vF" id="k6N-8A-dLI"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="aff-0R-yH0"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NWa-yt-gvc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="800" y="3333"/>
         </scene>
         <!--Social Story-->
         <scene sceneID="fEb-EE-RKf">
@@ -679,7 +774,7 @@
                                     <segue destination="igd-wV-5Ey" kind="unwind" unwindAction="unwindFromConfirmationForm:" id="FWN-UR-0Yw"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="apricots.png" translatesAutoresizingMaskIntoConstraints="NO" id="dxj-jr-QDc" userLabel="EatenFood">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dxj-jr-QDc" userLabel="EatenFood">
                                 <rect key="frame" x="362" y="234" width="300" height="300"/>
                                 <animations/>
                                 <constraints>
@@ -1032,7 +1127,6 @@
         <image name="PARENTS-PAGE-next_03.png" width="264" height="119"/>
         <image name="REWARDS-BOX.png" width="2945" height="2209"/>
         <image name="TERMS-AND-CONDITIONS.jpg" width="2945" height="2209"/>
-        <image name="apricots.png" width="200" height="200"/>
         <image name="brownband-white.png" width="2048" height="1536"/>
         <image name="facebook_03.png" width="325" height="133"/>
         <image name="greenband-white.png" width="2048" height="1536"/>
@@ -1055,6 +1149,7 @@
         <image name="redband-white.png" width="2048" height="1536"/>
         <image name="reward-background.jpg" width="2048" height="1536"/>
         <image name="reward-done.png" width="377" height="169"/>
+        <image name="settingscog.png" width="170" height="170"/>
         <image name="social-background.jpg" width="2048" height="1536"/>
         <image name="social-home.png" width="182" height="208"/>
         <image name="social-next.png" width="260" height="117"/>
@@ -1072,7 +1167,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="UDV-Xy-o9A"/>
         <segue reference="PU9-ck-5gQ"/>
+        <segue reference="f2G-Sa-c7h"/>
     </inferredMetricsTieBreakers>
 </document>

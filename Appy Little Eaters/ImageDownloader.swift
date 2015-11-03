@@ -16,6 +16,14 @@ class BaseDownloader : NSOperation {
         self.url = url
         self.filename = name
     }
+    
+    func downloadData() -> NSData?{
+        let b = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        let u:NSURL = NSURL(string: b!)!
+        
+        let d:NSData? = NSData(contentsOfURL: u)
+        return d
+    }
 
     func saveContentsOfUrl(name:String, ext:String, srcUrl:String){
         let fileManager:NSFileManager = NSFileManager.defaultManager()
@@ -32,10 +40,8 @@ class BaseDownloader : NSOperation {
         }
         let filename = dirPath.URLByAppendingPathComponent(name + "." + ext)
         let filepath = filename.path
-        let b = srcUrl.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
-        let u:NSURL = NSURL(string: b!)!
         
-        let d:NSData? = NSData(contentsOfURL: u)
+        let d:NSData? = downloadData()
         if d != nil {
             let res = fileManager.createFileAtPath(filepath!, contents: d, attributes: nil)
         }
@@ -53,6 +59,12 @@ class ImageDownloader: BaseDownloader {
     
     override func main() {
         print("Downloading: " + self.url)
+        let d = downloadData()
+        if d != nil{
+            let uow = UnitOfWork()
+            let rep = uow.foodAssetRepository
+            rep?.addFoodImage(filename, data: d!)
+        }
         saveContentsOfUrl(self.filename, ext: "png", srcUrl: self.url)
         print("Done downloading: " + self.url)
     }
