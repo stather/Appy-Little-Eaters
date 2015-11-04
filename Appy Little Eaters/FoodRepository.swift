@@ -38,6 +38,12 @@ public class FoodRepository{
         return try! _managedObjectContext.executeFetchRequest(fetchFoodByColour!) as! [DFood]
     }
     
+    func getVisibleFood(forColour:String) -> [DFood]!{
+        let fetchFoodByColour = managedObjectModel?.fetchRequestFromTemplateWithName("FetchVisibleFoodByColour", substitutionVariables: ["COLOUR":forColour])
+        
+        return try! _managedObjectContext.executeFetchRequest(fetchFoodByColour!) as! [DFood]
+    }
+    
     func getCountOfFood(forColour:String) -> Int{
         let fetchFoodByColour = managedObjectModel?.fetchRequestFromTemplateWithName("FetchFoodByColour", substitutionVariables: ["COLOUR":forColour])
         let error:NSErrorPointer = NSErrorPointer()
@@ -56,6 +62,18 @@ public class FoodRepository{
         let fetchFoodByColour = managedObjectModel?.fetchRequestFromTemplateWithName("FetchFreeFoodByColour", substitutionVariables: ["COLOUR":forColour])
         
         return try! _managedObjectContext.executeFetchRequest(fetchFoodByColour!) as! [DFood]
+    }
+    
+    func getFreeVisibleFood(forColour:String) -> [DFood]!{
+        let fetchFoodByColour = managedObjectModel?.fetchRequestFromTemplateWithName("FetchFreeVisibleFoodByColour", substitutionVariables: ["COLOUR":forColour])
+        
+        return try! _managedObjectContext.executeFetchRequest(fetchFoodByColour!) as! [DFood]
+    }
+    
+    func getFood(byName byName:String) -> DFood{
+        let fetchFoodByName = managedObjectModel?.fetchRequestFromTemplateWithName("FetchFoodByName", substitutionVariables: ["NAME":byName])
+        let f = try! _managedObjectContext.executeFetchRequest(fetchFoodByName!)
+        return f[0] as! DFood
     }
     
     func deleteFood(food: DFood){

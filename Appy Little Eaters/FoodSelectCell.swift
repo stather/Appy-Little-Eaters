@@ -11,8 +11,17 @@ import UIKit
 class FoodSelectCell: UITableViewCell {
 
     @IBOutlet weak var FoodImage: UIImageView!
+    @IBOutlet weak var TheSwitdh: UISwitch!
     @IBAction func FoodSwitch(sender: AnyObject) {
-        
+        let s = sender as! UISwitch
+        let uow = UnitOfWork()
+        let food = uow.foodRepository?.getFood(byName: FoodName.text!)
+        if s.on{
+            food!.visible = true
+        }else{
+            food!.visible = false
+        }
+        uow.saveChanges()
     }
     
     @IBOutlet weak var FoodName: UILabel!

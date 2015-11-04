@@ -53,13 +53,15 @@ public class ChooseFoodController: UITableViewController {
             foods = (rep?.getFreeFood(FoodColour))!
         }
         let name = foods[indexPath.row].name
-        let image = uow.foodAssetRepository?.getFoodImage(name)
+        let image = uow.foodAssetRepository?.getFoodImage(name!)
         cell.FoodImage.image = image
         cell.FoodName.text = name
+        cell.TheSwitdh.on = foods[indexPath.row].visible == 1
         
         return cell
     }
 
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

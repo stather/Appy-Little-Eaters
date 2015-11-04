@@ -11,9 +11,5 @@ import CoreData
 
 class DFood: NSManagedObject {
 
-    @NSManaged var name: String
-    @NSManaged var path: String
-    @NSManaged var free: NSNumber
-    @NSManaged var colour: String
 
 }

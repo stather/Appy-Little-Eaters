@@ -118,6 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 dFood.colour = food.colour
                 dFood.name = food.name
                 dFood.free = food.free
+                dFood.visible = true
                 uow.saveChanges()
                 let id = ImageDownloader(url: food.image, name: food.name)
                 self.downloadQueue.addOperation(id)

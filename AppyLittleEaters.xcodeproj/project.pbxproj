@@ -292,7 +292,6 @@
 		46E15DA91A06430A00B5BAE1 /* red-toadstool-RB.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E15D901A06430A00B5BAE1 /* red-toadstool-RB.png */; };
 		46E15DAA1A06430A00B5BAE1 /* squirrel_RB.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E15D911A06430A00B5BAE1 /* squirrel_RB.png */; };
 		46E15DAB1A06430A00B5BAE1 /* strawberry_RB.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E15D921A06430A00B5BAE1 /* strawberry_RB.png */; };
-		46E15DAD1A06486700B5BAE1 /* AppyLittleEaters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E15DAC1A06486700B5BAE1 /* AppyLittleEaters.swift */; };
 		46E15DAF1A066C7700B5BAE1 /* rewards.csv in Resources */ = {isa = PBXBuildFile; fileRef = 46E15DAE1A066C7700B5BAE1 /* rewards.csv */; };
 		46E15DB21A0682E900B5BAE1 /* Blackberries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E15DB11A0682E900B5BAE1 /* Blackberries.swift */; };
 		46E15DB41A06849400B5BAE1 /* Bluebells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E15DB31A06849400B5BAE1 /* Bluebells.swift */; };
@@ -394,6 +393,7 @@
 		687BDB681BE9564B00735B9D /* FoodSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB671BE9564B00735B9D /* FoodSettingsViewController.swift */; };
 		687BDB6A1BE95D5100735B9D /* FoodSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB691BE95D5100735B9D /* FoodSelectCell.swift */; };
 		687BDB6C1BE95E4100735B9D /* ChooseFoodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB6B1BE95E4100735B9D /* ChooseFoodController.swift */; };
+		687BDB6F1BEA9D1A00735B9D /* DFood+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB6E1BEA9D1A00735B9D /* DFood+CoreDataProperties.swift */; };
 		689BD6391BD27C3F00B7EF3E /* AnimatedSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */; };
 		689BD63D1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD63B1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift */; };
 		689BD63E1BD5764500B7EF3E /* DRewardPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD63C1BD5764500B7EF3E /* DRewardPool.swift */; };
@@ -739,7 +739,6 @@
 		46E15D901A06430A00B5BAE1 /* red-toadstool-RB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-toadstool-RB.png"; sourceTree = "<group>"; };
 		46E15D911A06430A00B5BAE1 /* squirrel_RB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = squirrel_RB.png; sourceTree = "<group>"; };
 		46E15D921A06430A00B5BAE1 /* strawberry_RB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberry_RB.png; sourceTree = "<group>"; };
-		46E15DAC1A06486700B5BAE1 /* AppyLittleEaters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppyLittleEaters.swift; sourceTree = "<group>"; };
 		46E15DAE1A066C7700B5BAE1 /* rewards.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rewards.csv; sourceTree = "<group>"; };
 		46E15DB01A06710C00B5BAE1 /* AleModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		46E15DB11A0682E900B5BAE1 /* Blackberries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blackberries.swift; sourceTree = "<group>"; };
@@ -851,6 +850,8 @@
 		687BDB671BE9564B00735B9D /* FoodSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodSettingsViewController.swift; sourceTree = "<group>"; };
 		687BDB691BE95D5100735B9D /* FoodSelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodSelectCell.swift; sourceTree = "<group>"; };
 		687BDB6B1BE95E4100735B9D /* ChooseFoodController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFoodController.swift; sourceTree = "<group>"; };
+		687BDB6D1BEA9CDA00735B9D /* AleModel 11.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 11.xcdatamodel"; sourceTree = "<group>"; };
+		687BDB6E1BEA9D1A00735B9D /* DFood+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DFood+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSprite.swift; sourceTree = "<group>"; };
 		689BD63A1BD575D300B7EF3E /* AleModel 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 7.xcdatamodel"; sourceTree = "<group>"; };
 		689BD63B1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DRewardPool+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -1510,6 +1511,7 @@
 		46C440D91A02F27500C1A6BE /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
+				687BDB6E1BEA9D1A00735B9D /* DFood+CoreDataProperties.swift */,
 				689BD6411BD5941700B7EF3E /* DReward+CoreDataProperties.swift */,
 				689BD6421BD5941700B7EF3E /* DReward.swift */,
 				689BD63B1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift */,
@@ -1517,7 +1519,6 @@
 				681ADB9E1BBB2FF9009146C2 /* DAnimation+CoreDataProperties.swift */,
 				681ADB9F1BBB2FF9009146C2 /* DAnimation.swift */,
 				682DB28D1BA75B4300050F13 /* DFood.swift */,
-				46E15DAC1A06486700B5BAE1 /* AppyLittleEaters.swift */,
 			);
 			name = ManagedObjects;
 			sourceTree = "<group>";
@@ -2202,6 +2203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				687BDB6F1BEA9D1A00735B9D /* DFood+CoreDataProperties.swift in Sources */,
 				469846EB19D84BEF00617FCE /* RewardsPageViewController.swift in Sources */,
 				46E15DD01A06878700B5BAE1 /* PinkButterfly.swift in Sources */,
 				46E15DC81A06870B00B5BAE1 /* GreenFish.swift in Sources */,
@@ -2241,7 +2243,6 @@
 				682DB2871BA6011D00050F13 /* AleApi.swift in Sources */,
 				46F6B40519FD348300205F6B /* Bluebird.swift in Sources */,
 				4642607C19F58D530028C878 /* ForestScene.swift in Sources */,
-				46E15DAD1A06486700B5BAE1 /* AppyLittleEaters.swift in Sources */,
 				689BD6441BD5941700B7EF3E /* DReward.swift in Sources */,
 				46C440CE1A02C55B00C1A6BE /* ScrollableProtocol.swift in Sources */,
 				46E15DD21A0687A400B5BAE1 /* PinkFlowers.swift in Sources */,
@@ -2569,6 +2570,7 @@
 		46C440D11A02F12700C1A6BE /* AleModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				687BDB6D1BEA9CDA00735B9D /* AleModel 11.xcdatamodel */,
 				68C003DD1BD81F3B00D54DEA /* AleModel 10.xcdatamodel */,
 				689BD6401BD593DC00B7EF3E /* AleModel 9.xcdatamodel */,
 				689BD63F1BD58BDE00B7EF3E /* AleModel 8.xcdatamodel */,
@@ -2580,7 +2582,7 @@
 				46E15DB01A06710C00B5BAE1 /* AleModel 2.xcdatamodel */,
 				46C440D21A02F12700C1A6BE /* AleModel.xcdatamodel */,
 			);
-			currentVersion = 68C003DD1BD81F3B00D54DEA /* AleModel 10.xcdatamodel */;
+			currentVersion = 687BDB6D1BEA9CDA00735B9D /* AleModel 11.xcdatamodel */;
 			path = AleModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

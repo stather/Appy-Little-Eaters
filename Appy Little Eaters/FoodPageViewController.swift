@@ -40,13 +40,13 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
         var foods:[DFood]
         
         if InAppPurchaseManager.sharedInstance.allFoodsBought(){
-            foods = (uow.foodRepository?.getFood(c))!
+            foods = (uow.foodRepository?.getVisibleFood(c))!
         }else{
-            foods = (uow.foodRepository?.getFreeFood(c))!
+            foods = (uow.foodRepository?.getFreeVisibleFood(c))!
         }
         let f = NSMutableArray()
         for item in foods{
-            f.addObject(item.name)
+            f.addObject(item.name!)
         }
         
         return f

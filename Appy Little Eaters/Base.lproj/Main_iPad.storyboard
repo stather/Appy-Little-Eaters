@@ -647,6 +647,7 @@
                                 <connections>
                                     <outlet property="FoodImage" destination="eYa-Kh-bD9" id="mMm-ov-raN"/>
                                     <outlet property="FoodName" destination="E6n-mg-MLU" id="3Ea-db-bFn"/>
+                                    <outlet property="TheSwitdh" destination="OUK-xY-bZm" id="QST-IR-z0I"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
