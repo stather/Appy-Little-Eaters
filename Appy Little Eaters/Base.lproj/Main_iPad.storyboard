@@ -1060,6 +1060,7 @@
                         <outlet property="PurpleBand" destination="fhO-Us-1Cq" id="9Yr-i9-2gi"/>
                         <outlet property="RedBand" destination="DGn-L9-S25" id="GVx-vI-0IZ"/>
                         <outlet property="YellowBand" destination="IfM-ce-QkM" id="cDT-FI-8g3"/>
+                        <outlet property="home" destination="Rix-w4-K46" id="Ywj-fX-pbB"/>
                         <segue destination="5f9-ea-XB8" kind="push" identifier="RainbowToReward" id="Xxf-cL-8cu"/>
                     </connections>
                 </viewController>

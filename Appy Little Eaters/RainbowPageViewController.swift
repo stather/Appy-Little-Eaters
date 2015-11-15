@@ -22,6 +22,7 @@ public class RainbowPageViewController: UIViewController{
 	@IBOutlet weak var GreenBand: UIImageView!
 	@IBOutlet weak var BrownBand: UIImageView!
 	@IBOutlet weak var PurpleBand: UIImageView!
+    @IBOutlet weak var home: UIButton!
 	
 	public var colour: Int = 0
 	public var foodEaten: Bool = false
@@ -173,6 +174,11 @@ public class RainbowPageViewController: UIViewController{
 	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil);
 	}
+    
+    public override func viewDidAppear(animated: Bool) {
+        theBand.startGlowingWithColor(UIColor.redColor(), intensity: 1.0)
+        home.startGlowing()
+    }
 	
 	public override func viewWillAppear(animated: Bool) {
         Cloud1.addSwayAnimation()

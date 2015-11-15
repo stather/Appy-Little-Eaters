@@ -10,8 +10,9 @@ import Foundation
 import AVFoundation
 import UIKit
 import CoreData
-import Crashlytics
 import Fabric
+import Crashlytics
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -61,8 +62,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Override point for customization after application launch.
-        Fabric.with([Crashlytics()])
-		Crashlytics.startWithAPIKey("9151a746d6d01e3cf7ec2a3254ebb0c672760333")
+        Fabric.with([Crashlytics.self])
+		//Crashlytics.startWithAPIKey("9151a746d6d01e3cf7ec2a3254ebb0c672760333")
 		synth = AVSpeechSynthesizer()
 		var v2 = AVSpeechSynthesisVoice.speechVoices().filter { $0.language == "en-US" }
 		preferredVoice = (v2[0] )

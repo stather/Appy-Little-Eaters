@@ -11,16 +11,21 @@ import SpriteKit
 public class AnimatedSprite: SKSpriteNode, ScrollableProtocol {
     public var animationName:String!
     public var rewardName:String!
+    private var skeleton:SpineSkeleton!
     
     convenience init(withAnimationName:String, rewardName:String){
         self.init(color: UIColor.clearColor(), size: CGSize(width: 100, height: 100))
         self.animationName = withAnimationName
         self.rewardName = rewardName
-        let skel:SpineSkeleton? = DZSpineSceneBuilder.loadSkeletonName(withAnimationName, scale: 0.1)
-        let builder:DZSpineSceneBuilder = DZSpineSceneBuilder()
-        let n:SKNode = builder.nodeWithSkeleton(skel, animationName: "Jump", loop: true)
+        self.skeleton = DZSpineSceneBuilder.loadSkeletonName(withAnimationName, scale: 0.1)
+        let n:SKNode = CreateLoopingNode(withAnimationName: "Random1")
         self.addChild(n)
         self.zPosition = 1000
+    }
+    
+    private func CreateLoopingNode(withAnimationName withAnimationName:String) -> SKNode{
+        let builder:DZSpineSceneBuilder = DZSpineSceneBuilder()
+        return builder.nodeWithSkeleton(skeleton, animationName: withAnimationName, loop: true)
     }
 
     var delegate:ScrollableProtocol?

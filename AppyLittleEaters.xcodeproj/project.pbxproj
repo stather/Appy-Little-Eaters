@@ -394,6 +394,7 @@
 		687BDB6A1BE95D5100735B9D /* FoodSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB691BE95D5100735B9D /* FoodSelectCell.swift */; };
 		687BDB6C1BE95E4100735B9D /* ChooseFoodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB6B1BE95E4100735B9D /* ChooseFoodController.swift */; };
 		687BDB6F1BEA9D1A00735B9D /* DFood+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB6E1BEA9D1A00735B9D /* DFood+CoreDataProperties.swift */; };
+		687BDB721BEAAB8400735B9D /* UIView+Glow.m in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB711BEAAB8400735B9D /* UIView+Glow.m */; };
 		689BD6391BD27C3F00B7EF3E /* AnimatedSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */; };
 		689BD63D1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD63B1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift */; };
 		689BD63E1BD5764500B7EF3E /* DRewardPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD63C1BD5764500B7EF3E /* DRewardPool.swift */; };
@@ -852,6 +853,8 @@
 		687BDB6B1BE95E4100735B9D /* ChooseFoodController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFoodController.swift; sourceTree = "<group>"; };
 		687BDB6D1BEA9CDA00735B9D /* AleModel 11.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 11.xcdatamodel"; sourceTree = "<group>"; };
 		687BDB6E1BEA9D1A00735B9D /* DFood+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DFood+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		687BDB701BEAAB8400735B9D /* UIView+Glow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Glow.h"; sourceTree = "<group>"; };
+		687BDB711BEAAB8400735B9D /* UIView+Glow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Glow.m"; sourceTree = "<group>"; };
 		689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSprite.swift; sourceTree = "<group>"; };
 		689BD63A1BD575D300B7EF3E /* AleModel 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 7.xcdatamodel"; sourceTree = "<group>"; };
 		689BD63B1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DRewardPool+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -1034,6 +1037,8 @@
 		464F703618A019F000DDA449 /* Appy Little Eaters */ = {
 			isa = PBXGroup;
 			children = (
+				687BDB701BEAAB8400735B9D /* UIView+Glow.h */,
+				687BDB711BEAAB8400735B9D /* UIView+Glow.m */,
 				686CC18A1BBFD968003AA2C2 /* Repositories */,
 				6841DDA11B812D3400BACEB8 /* strawb.png */,
 				6841DD9F1B812B0800BACEB8 /* strawb.atlas */,
@@ -2164,7 +2169,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run 9151a746d6d01e3cf7ec2a3254ebb0c672760333 fdbe6a6a3f84b4a67580e0ebae7535dc1c1a42f97739ed49a478d6680b1c6087";
+			shellScript = "./Fabric.framework/run 9151a746d6d01e3cf7ec2a3254ebb0c672760333 fdbe6a6a3f84b4a67580e0ebae7535dc1c1a42f97739ed49a478d6680b1c6087";
 		};
 		BA09164A7E393DBF373E1A2D /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2230,6 +2235,7 @@
 				687BDB6A1BE95D5100735B9D /* FoodSelectCell.swift in Sources */,
 				687BDB681BE9564B00735B9D /* FoodSettingsViewController.swift in Sources */,
 				469AC7A81A44C3B000CDA070 /* SGG_SpineJSONTools.m in Sources */,
+				687BDB721BEAAB8400735B9D /* UIView+Glow.m in Sources */,
 				68D7C9D61B52FA89005DFA20 /* Cloud1View.swift in Sources */,
 				46E15D791A0528BA00B5BAE1 /* StandardScroller.swift in Sources */,
 				46E8D17219F2B48000AEF750 /* FoodCell.swift in Sources */,
