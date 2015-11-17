@@ -41,7 +41,10 @@ public class AnimationRepository{
     func animationByName(byName:String) -> DAnimation!{
         let fetchByName = managedObjectModel?.fetchRequestFromTemplateWithName("FetchAnimationByName", substitutionVariables: ["NAME":byName])
         let anim = try! _managedObjectContext.executeFetchRequest(fetchByName!) as! [DAnimation]
-        return anim[0]
+        if anim.count > 0{
+            return anim[0]
+        }
+        return nil
     }
     
 }

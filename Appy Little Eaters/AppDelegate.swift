@@ -82,29 +82,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         api.listAnimations { (animations) -> Void in
             for animation in animations{
                 let uow = UnitOfWork()
-                let dAnimation:DAnimation! = uow.animationRepository?.createNewAnimation()
-                dAnimation.name = animation.name
-                dAnimation.atlas = animation.atlas
-                dAnimation.json = animation.json
-                dAnimation.texture = animation.texture
-                dAnimation.rewardImage = animation.rewardImage
-                uow.saveChanges()
-                let ad = AtlasDownloader(url: animation.atlas, name: animation.name)
-                self.downloadQueue.addOperation(ad)
-                let jd = JsonDownloader(url: animation.json, name: animation.name)
-                self.downloadQueue.addOperation(jd)
-                let rid = ImageDownloader(url: animation.rewardImage, name: animation.name + "RewardImage")
-                self.downloadQueue.addOperation(rid)
-                let td = ImageDownloader(url: animation.texture, name: animation.name)
-                td.completionBlock = {
-                    i += 1
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        progress?.setProgress(i / Float(animations.count), animated: false)
-                    })
+                var dAnimation:DAnimation?
+                dAnimation = (uow.animationRepository?.animationByName(animation.name))
+                if dAnimation == nil || dAnimation?.version?.integerValue < animation.version{
+                    if dAnimation == nil{
+                        dAnimation = (uow.animationRepository?.createNewAnimation())
+                    }
+                    dAnimation!.name = animation.name
+                    dAnimation!.atlas = animation.atlas
+                    dAnimation!.json = animation.json
+                    dAnimation!.texture = animation.texture
+                    dAnimation!.rewardImage = animation.rewardImage
+                    dAnimation!.version = animation.version
+                    uow.saveChanges()
+                    let ad = AtlasDownloader(url: animation.atlas, name: animation.name)
+                    self.downloadQueue.addOperation(ad)
+                    let jd = JsonDownloader(url: animation.json, name: animation.name)
+                    self.downloadQueue.addOperation(jd)
+                    let rid = ImageDownloader(url: animation.rewardImage, name: animation.name + "RewardImage")
+                    self.downloadQueue.addOperation(rid)
+                    let td = ImageDownloader(url: animation.texture, name: animation.name)
+                    td.completionBlock = {
+                        i += 1
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            progress?.setProgress(i / Float(animations.count), animated: false)
+                        })
+                    }
+                    self.downloadQueue.addOperation(td)
                 }
-                self.downloadQueue.addOperation(td)
             }
-            
         }
     }
     

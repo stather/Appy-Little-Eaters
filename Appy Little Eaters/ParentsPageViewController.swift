@@ -49,7 +49,7 @@ public class ParentsPageViewController : UIViewController, InAppPurchaseDelegate
     
     @IBAction func downloadAnimations(sender: AnyObject) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.deleteAllAnimations()
+//        appDelegate.deleteAllAnimations()
         appDelegate.downloadAnimations(animationProgress)
     }
     

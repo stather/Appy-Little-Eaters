@@ -23,6 +23,7 @@ public class AleAnimationDef{
     public var json:String!
     public var name:String!
     public var rewardImage:String!
+    public var version:Int!
 }
 
 public class AleRewardDef{
@@ -37,8 +38,8 @@ public class AleRewardDef{
 
 public class AleApi{
     
-//    static let BaseUrl = "http://localhost:8079/"
-    static let BaseUrl = "http://rsrapi-dev2.elasticbeanstalk.com/"
+    static let BaseUrl = "http://localhost:8079/"
+//    static let BaseUrl = "http://rsrapi-dev2.elasticbeanstalk.com/"
     
     func updateRewardPosition(name:String, x:Float, y:Float, scale:Float) -> Void{
         let FullUrl = AleApi.BaseUrl + "Reward/updateRewardPosition"
@@ -92,6 +93,7 @@ public class AleApi{
                     aad.json = item.objectForKey("json") as! String
                     aad.name = item.objectForKey("name") as! String
                     aad.rewardImage = item.objectForKey("rewardImage") as! String
+                    aad.version = item.objectForKey("version") as! Int
                     animations.append(aad)
                 }
                 success(animations: animations)

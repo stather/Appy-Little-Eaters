@@ -863,6 +863,7 @@
 		689BD6401BD593DC00B7EF3E /* AleModel 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 9.xcdatamodel"; sourceTree = "<group>"; };
 		689BD6411BD5941700B7EF3E /* DReward+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DReward+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		689BD6421BD5941700B7EF3E /* DReward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DReward.swift; sourceTree = "<group>"; };
+		68AE6C9F1BFBD16200B64622 /* AleModel 12.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 12.xcdatamodel"; sourceTree = "<group>"; };
 		68B571CA1B73FDD400C35B52 /* newforest.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = newforest.atlas; sourceTree = "<group>"; };
 		68BA94F91B5597F8005D6A64 /* pea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pea.png; sourceTree = "<group>"; };
 		68BA94FA1B5597F8005D6A64 /* SPLASH PAGE.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "SPLASH PAGE.jpg"; sourceTree = "<group>"; };
@@ -2576,6 +2577,7 @@
 		46C440D11A02F12700C1A6BE /* AleModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				68AE6C9F1BFBD16200B64622 /* AleModel 12.xcdatamodel */,
 				687BDB6D1BEA9CDA00735B9D /* AleModel 11.xcdatamodel */,
 				68C003DD1BD81F3B00D54DEA /* AleModel 10.xcdatamodel */,
 				689BD6401BD593DC00B7EF3E /* AleModel 9.xcdatamodel */,
@@ -2588,7 +2590,7 @@
 				46E15DB01A06710C00B5BAE1 /* AleModel 2.xcdatamodel */,
 				46C440D21A02F12700C1A6BE /* AleModel.xcdatamodel */,
 			);
-			currentVersion = 687BDB6D1BEA9CDA00735B9D /* AleModel 11.xcdatamodel */;
+			currentVersion = 68AE6C9F1BFBD16200B64622 /* AleModel 12.xcdatamodel */;
 			path = AleModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
