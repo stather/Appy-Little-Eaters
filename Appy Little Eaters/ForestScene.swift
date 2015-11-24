@@ -161,12 +161,12 @@ public class ForestScene : SKScene{
 			}
 		}
 		//frog.splash(_dt)
-		if count > 0{
-			let frog = SplashDrop()
-			frog.position = self.forestPoint(CGPoint(x: CGFloat(1400), y: CGFloat(500)))
-			self.addChild(frog)
-			count--
-		}
+//		if count > 0{
+//			let frog = SplashDrop()
+//			frog.position = self.forestPoint(CGPoint(x: CGFloat(1400), y: CGFloat(500)))
+//			self.addChild(frog)
+//			count--
+//		}
 	}
 	
 	public override func didSimulatePhysics() {
@@ -247,10 +247,6 @@ public class ForestScene : SKScene{
 	
 	public override func addChild(node: SKNode) {
 		super.addChild(node)
-		if node is ForestCreature {
-			let fc = node as! ForestCreature
-			fc.didAddToScene()
-		}
         if node is AnimatedSprite{
             let an = node as! AnimatedSprite
             an.didAddToScene()

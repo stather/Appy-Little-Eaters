@@ -74,6 +74,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var animationProgress:UIProgressView?
     var foodProgress:UIProgressView?
     
+    func checkForUpdates(progress:UIProgressView?){
+        downloadAnimations(progress)
+    }
+    
     func downloadAnimations(progress:UIProgressView?){
         let api = AleApi()
         progress?.setProgress(0, animated: false)

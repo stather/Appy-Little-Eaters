@@ -26,7 +26,7 @@ class SettingsController: UITableViewController, InAppPurchaseDelegate {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -37,6 +37,9 @@ class SettingsController: UITableViewController, InAppPurchaseDelegate {
             break
         case 1:
             cell?.textLabel?.text = "Choose foods to eat"
+            break
+        case 2:
+            cell?.textLabel?.text = "Check for updates"
             break
         default:
             break
@@ -51,6 +54,10 @@ class SettingsController: UITableViewController, InAppPurchaseDelegate {
             break
         case 1:
             performSegueWithIdentifier("FoodSettingsSeque", sender: self)
+            break
+        case 2:
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.checkForUpdates(nil)
             break
         default:
             break
