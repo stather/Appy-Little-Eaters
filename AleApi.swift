@@ -15,6 +15,7 @@ public class AleFoodDef{
     public var sound:String!
     public var free:Bool!
     public var colour:String!
+    public var version:Int!
 }
 
 public class AleAnimationDef{
@@ -69,6 +70,7 @@ public class AleApi{
                     afd.sound = item.objectForKey("sound") as! String
                     afd.free = item.objectForKey("free") as! Bool
                     afd.colour = item.objectForKey("colour") as! String
+                    afd.version = item.objectForKey("version") as! Int
                     foods.append(afd)
                 }
                 success(foods: foods)

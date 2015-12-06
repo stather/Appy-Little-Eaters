@@ -182,6 +182,8 @@
 		46E8D18319F3BAEA00AEF750 /* PARENTS-PAGE-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E8D18219F3BAEA00AEF750 /* PARENTS-PAGE-1.png */; };
 		68034D221BC460ED00E1951B /* RewardPoolRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68034D211BC460ED00E1951B /* RewardPoolRepository.swift */; };
 		68034D241BC4647500E1951B /* RewardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68034D231BC4647500E1951B /* RewardRepository.swift */; };
+		680993951C08F64E002AAD87 /* Settings-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6809938D1C08F64E002AAD87 /* Settings-Icon.png */; };
+		680993961C08F64E002AAD87 /* Watercolour Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6809938E1C08F64E002AAD87 /* Watercolour Background.jpg */; };
 		681ADB9C1BBB1DF3009146C2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 681ADB9B1BBB1DF3009146C2 /* StoreKit.framework */; };
 		681ADBA01BBB2FF9009146C2 /* DAnimation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681ADB9E1BBB2FF9009146C2 /* DAnimation+CoreDataProperties.swift */; };
 		681ADBA11BBB2FF9009146C2 /* DAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681ADB9F1BBB2FF9009146C2 /* DAnimation.swift */; };
@@ -193,6 +195,13 @@
 		684319EF1B5EDE9100A622E8 /* greenband-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 684319EB1B5EDE9100A622E8 /* greenband-white.png */; };
 		684319F01B5EDE9100A622E8 /* purpleband-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 684319EC1B5EDE9100A622E8 /* purpleband-white.png */; };
 		684319F11B5EDE9100A622E8 /* yellowband-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 684319ED1B5EDE9100A622E8 /* yellowband-white.png */; };
+		686316481C14CDA700F8BB74 /* Buy-Complete-Food-Selection.png in Resources */ = {isa = PBXBuildFile; fileRef = 686316411C14CDA700F8BB74 /* Buy-Complete-Food-Selection.png */; };
+		686316491C14CDA800F8BB74 /* Check-for-Updates.png in Resources */ = {isa = PBXBuildFile; fileRef = 686316421C14CDA700F8BB74 /* Check-for-Updates.png */; };
+		6863164A1C14CDA800F8BB74 /* Choose-Foods-to-Eat.png in Resources */ = {isa = PBXBuildFile; fileRef = 686316431C14CDA700F8BB74 /* Choose-Foods-to-Eat.png */; };
+		6863164B1C14CDA800F8BB74 /* Clear-All-Rewards.png in Resources */ = {isa = PBXBuildFile; fileRef = 686316441C14CDA700F8BB74 /* Clear-All-Rewards.png */; };
+		6863164C1C14CDA800F8BB74 /* Reset-&-Download-All-Content.png in Resources */ = {isa = PBXBuildFile; fileRef = 686316451C14CDA700F8BB74 /* Reset-&-Download-All-Content.png */; };
+		6863164D1C14CDA800F8BB74 /* Set-Special-Rewards.png in Resources */ = {isa = PBXBuildFile; fileRef = 686316461C14CDA700F8BB74 /* Set-Special-Rewards.png */; };
+		6863164E1C14CDA800F8BB74 /* Settings-Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 686316471C14CDA700F8BB74 /* Settings-Banner.png */; };
 		686546DB1B544A9D009FF566 /* GBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686546DA1B544A9D009FF566 /* GBViewController.swift */; };
 		686CC18C1BBFD996003AA2C2 /* FoodRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686CC18B1BBFD996003AA2C2 /* FoodRepository.swift */; };
 		686CC18E1BC123E1003AA2C2 /* UnitOfWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686CC18D1BC123E1003AA2C2 /* UnitOfWork.swift */; };
@@ -447,6 +456,8 @@
 		46E8D18219F3BAEA00AEF750 /* PARENTS-PAGE-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PARENTS-PAGE-1.png"; sourceTree = "<group>"; };
 		68034D211BC460ED00E1951B /* RewardPoolRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardPoolRepository.swift; sourceTree = "<group>"; };
 		68034D231BC4647500E1951B /* RewardRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardRepository.swift; sourceTree = "<group>"; };
+		6809938D1C08F64E002AAD87 /* Settings-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings-Icon.png"; sourceTree = "<group>"; };
+		6809938E1C08F64E002AAD87 /* Watercolour Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Watercolour Background.jpg"; sourceTree = "<group>"; };
 		681ADB9B1BBB1DF3009146C2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		681ADB9D1BBB2C88009146C2 /* AleModel 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 6.xcdatamodel"; sourceTree = "<group>"; };
 		681ADB9E1BBB2FF9009146C2 /* DAnimation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DAnimation+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -460,6 +471,14 @@
 		684319EB1B5EDE9100A622E8 /* greenband-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greenband-white.png"; sourceTree = "<group>"; };
 		684319EC1B5EDE9100A622E8 /* purpleband-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purpleband-white.png"; sourceTree = "<group>"; };
 		684319ED1B5EDE9100A622E8 /* yellowband-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellowband-white.png"; sourceTree = "<group>"; };
+		686316401C14C9B900F8BB74 /* AleModel 13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 13.xcdatamodel"; sourceTree = "<group>"; };
+		686316411C14CDA700F8BB74 /* Buy-Complete-Food-Selection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Buy-Complete-Food-Selection.png"; sourceTree = "<group>"; };
+		686316421C14CDA700F8BB74 /* Check-for-Updates.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Check-for-Updates.png"; sourceTree = "<group>"; };
+		686316431C14CDA700F8BB74 /* Choose-Foods-to-Eat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Choose-Foods-to-Eat.png"; sourceTree = "<group>"; };
+		686316441C14CDA700F8BB74 /* Clear-All-Rewards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Clear-All-Rewards.png"; sourceTree = "<group>"; };
+		686316451C14CDA700F8BB74 /* Reset-&-Download-All-Content.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reset-&-Download-All-Content.png"; sourceTree = "<group>"; };
+		686316461C14CDA700F8BB74 /* Set-Special-Rewards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Set-Special-Rewards.png"; sourceTree = "<group>"; };
+		686316471C14CDA700F8BB74 /* Settings-Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings-Banner.png"; sourceTree = "<group>"; };
 		686546D91B54483D009FF566 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		686546DA1B544A9D009FF566 /* GBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBViewController.swift; sourceTree = "<group>"; };
 		686CC18B1BBFD996003AA2C2 /* FoodRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodRepository.swift; sourceTree = "<group>"; };
@@ -703,6 +722,7 @@
 		464F706818A2F0C200DDA449 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				680993861C08F5A9002AAD87 /* Settings */,
 				68B571CA1B73FDD400C35B52 /* newforest.atlas */,
 				469AC7F01A50709B00CDA070 /* TERMS-AND-CONDITIONS.jpg */,
 				46E8D17919F3B95500AEF750 /* parents */,
@@ -996,6 +1016,22 @@
 			name = parents;
 			sourceTree = "<group>";
 		};
+		680993861C08F5A9002AAD87 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				686316411C14CDA700F8BB74 /* Buy-Complete-Food-Selection.png */,
+				686316421C14CDA700F8BB74 /* Check-for-Updates.png */,
+				686316431C14CDA700F8BB74 /* Choose-Foods-to-Eat.png */,
+				686316441C14CDA700F8BB74 /* Clear-All-Rewards.png */,
+				686316451C14CDA700F8BB74 /* Reset-&-Download-All-Content.png */,
+				686316461C14CDA700F8BB74 /* Set-Special-Rewards.png */,
+				686316471C14CDA700F8BB74 /* Settings-Banner.png */,
+				6809938D1C08F64E002AAD87 /* Settings-Icon.png */,
+				6809938E1C08F64E002AAD87 /* Watercolour Background.jpg */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		686CC18A1BBFD968003AA2C2 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
@@ -1173,6 +1209,7 @@
 				469AC7CC1A50645400CDA070 /* carrot.m4a in Resources */,
 				46AE6C1B19EAA26F000238F4 /* intro.m4a in Resources */,
 				469AC8001A50752300CDA070 /* peas.m4a in Resources */,
+				686316491C14CDA800F8BB74 /* Check-for-Updates.png in Resources */,
 				4645B12619D9E66700974B39 /* social-story4.png in Resources */,
 				469AC7E21A50655F00CDA070 /* pear.m4a in Resources */,
 				46AE6C3F19EAB754000238F4 /* tomato.m4a in Resources */,
@@ -1185,6 +1222,7 @@
 				469AC81D1A50789500CDA070 /* nuts.m4a in Resources */,
 				46AE6C3C19EAB754000238F4 /* raspberry.m4a in Resources */,
 				46E7C7DA1985487A00CE7AB3 /* home-logo.png in Resources */,
+				680993961C08F64E002AAD87 /* Watercolour Background.jpg in Resources */,
 				684319F01B5EDE9100A622E8 /* purpleband-white.png in Resources */,
 				469AC7EB1A506D9200CDA070 /* eachcolour.m4a in Resources */,
 				469AC7FF1A50752300CDA070 /* lime.m4a in Resources */,
@@ -1201,10 +1239,12 @@
 				469846ED19D85A6100617FCE /* reward-done.png in Resources */,
 				4645B12719D9E66700974B39 /* social-story5.png in Resources */,
 				46E7C7D1198545F500CE7AB3 /* home-background.jpg in Resources */,
+				686316481C14CDA700F8BB74 /* Buy-Complete-Food-Selection.png in Resources */,
 				469AC7E41A50655F00CDA070 /* yellowapple.m4a in Resources */,
 				469AC81C1A50789500CDA070 /* lentils.m4a in Resources */,
 				469AC80B1A50763D00CDA070 /* grapes.m4a in Resources */,
 				46AE6C4219EAC804000238F4 /* REWARDS-BOX.png in Resources */,
+				6863164A1C14CDA800F8BB74 /* Choose-Foods-to-Eat.png in Resources */,
 				46AE6C2A19EAB24F000238F4 /* BROWN.m4a in Resources */,
 				46AE6C0919E97263000238F4 /* rainbow.png in Resources */,
 				46E48BCB18A8FDC4006DCA91 /* Localizable.strings in Resources */,
@@ -1232,6 +1272,7 @@
 				464F704C18A019F000DDA449 /* Images.xcassets in Resources */,
 				4642607719F4626D0028C878 /* PARENTS-PAGE4.png in Resources */,
 				469AC81E1A50789500CDA070 /* potato.m4a in Resources */,
+				6863164D1C14CDA800F8BB74 /* Set-Special-Rewards.png in Resources */,
 				46AE6C2F19EAB24F000238F4 /* RED.m4a in Resources */,
 				469AC7FB1A50752300CDA070 /* sprouts.m4a in Resources */,
 				46AE6C2E19EAB24F000238F4 /* PURPLE.m4a in Resources */,
@@ -1256,6 +1297,7 @@
 				46AE6C4019EAB754000238F4 /* watermelon.m4a in Resources */,
 				46E7C7F01986E4CD00CE7AB3 /* social-next.png in Resources */,
 				469AC7E71A506D7300CDA070 /* whenyouenjoy.m4a in Resources */,
+				6863164C1C14CDA800F8BB74 /* Reset-&-Download-All-Content.png in Resources */,
 				46AE6C0519E970F0000238F4 /* rainbow-background.jpg in Resources */,
 				4642606E19F462610028C878 /* facebook_03.png in Resources */,
 				68D7C9D71B52FA89005DFA20 /* cloud1.png in Resources */,
@@ -1271,6 +1313,7 @@
 				469AC7D41A5064BC00CDA070 /* peach.m4a in Resources */,
 				469AC7ED1A506D9D00CDA070 /* pickanycolour.m4a in Resources */,
 				46E7C7EF1986E4CD00CE7AB3 /* social-home.png in Resources */,
+				6863164B1C14CDA800F8BB74 /* Clear-All-Rewards.png in Resources */,
 				469AC81A1A50789500CDA070 /* chicken.m4a in Resources */,
 				46E7C7F3198830A600CE7AB3 /* social-story3.png in Resources */,
 				461441A719D7081C00CB5A3E /* yes.png in Resources */,
@@ -1281,11 +1324,13 @@
 				684319E91B5EDA6F00A622E8 /* orangeband-white.png in Resources */,
 				469AC8191A50789500CDA070 /* cauliflower.m4a in Resources */,
 				46AE6C2119EAAEA5000238F4 /* uke1_01.m4a in Resources */,
+				6863164E1C14CDA800F8BB74 /* Settings-Banner.png in Resources */,
 				46AE6C3D19EAB754000238F4 /* redpepper.m4a in Resources */,
 				46AE6C1619E9777A000238F4 /* redband.png in Resources */,
 				464F704418A019F000DDA449 /* Main_iPhone.storyboard in Resources */,
 				46E7C7F91988382C00CE7AB3 /* goodfoodmakes2.m4a in Resources */,
 				469AC7DF1A50655F00CDA070 /* banana.m4a in Resources */,
+				680993951C08F64E002AAD87 /* Settings-Icon.png in Resources */,
 				46E7C7D6198545F500CE7AB3 /* home-yummyfoods.png in Resources */,
 				469AC7C71A50606C00CDA070 /* forestsounds.m4a in Resources */,
 				464F703B18A019F000DDA449 /* InfoPlist.strings in Resources */,
@@ -1693,6 +1738,7 @@
 		46C440D11A02F12700C1A6BE /* AleModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				686316401C14C9B900F8BB74 /* AleModel 13.xcdatamodel */,
 				68AE6C9F1BFBD16200B64622 /* AleModel 12.xcdatamodel */,
 				687BDB6D1BEA9CDA00735B9D /* AleModel 11.xcdatamodel */,
 				68C003DD1BD81F3B00D54DEA /* AleModel 10.xcdatamodel */,
@@ -1706,7 +1752,7 @@
 				46E15DB01A06710C00B5BAE1 /* AleModel 2.xcdatamodel */,
 				46C440D21A02F12700C1A6BE /* AleModel.xcdatamodel */,
 			);
-			currentVersion = 68AE6C9F1BFBD16200B64622 /* AleModel 12.xcdatamodel */;
+			currentVersion = 686316401C14C9B900F8BB74 /* AleModel 13.xcdatamodel */;
 			path = AleModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

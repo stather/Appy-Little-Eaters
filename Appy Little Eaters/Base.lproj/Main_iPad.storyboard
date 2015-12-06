@@ -485,7 +485,7 @@
                                 <animations/>
                                 <state key="normal" image="settingscog.png"/>
                                 <connections>
-                                    <segue destination="l2D-EH-zCz" kind="push" id="KrE-jS-UQB"/>
+                                    <segue destination="Ln6-r5-vIt" kind="push" id="UpM-6c-380"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -512,51 +512,78 @@
             <point key="canvasLocation" x="-1512" y="2368"/>
         </scene>
         <!--Settings-->
-        <scene sceneID="Off-fu-oZd">
+        <scene sceneID="wv2-Bg-mM2">
             <objects>
-                <tableViewController title="Settings" id="l2D-EH-zCz" customClass="SettingsController" customModule="Appy_Little_Eaters" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="GVE-u7-Sj9">
+                <viewController id="Ln6-r5-vIt" userLabel="Settings" customClass="SettingsController" customModule="Appy_Little_Eaters" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5le-mj-vkr"/>
+                        <viewControllerLayoutGuide type="bottom" id="lcc-Xk-7at"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HyL-1I-Y1a">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Watercolour Background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="uBa-bB-S3p">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                                <animations/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYY-Mx-3fz" userLabel="choosefoods">
+                                <rect key="frame" x="62" y="110" width="176" height="161"/>
+                                <animations/>
+                                <state key="normal" image="Choose-Foods-to-Eat.png"/>
+                                <connections>
+                                    <segue destination="ivX-yF-4vF" kind="push" id="sPO-Tz-MeX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiB-He-LXw" userLabel="parentsreward">
+                                <rect key="frame" x="697" y="110" width="181" height="161"/>
+                                <animations/>
+                                <state key="normal" title="Button" image="Set-Special-Rewards.png"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYV-eQ-dgd" userLabel="buymorefood">
+                                <rect key="frame" x="720" y="545" width="174" height="151"/>
+                                <animations/>
+                                <state key="normal" image="Buy-Complete-Food-Selection.png"/>
+                                <connections>
+                                    <action selector="buyFood:" destination="Ln6-r5-vIt" eventType="touchUpInside" id="ann-vB-dgd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zz2-Of-jRI" userLabel="checkforupdates">
+                                <rect key="frame" x="697" y="321" width="197" height="178"/>
+                                <animations/>
+                                <state key="normal" image="Check-for-Updates.png"/>
+                                <connections>
+                                    <action selector="checkForUpdates:" destination="Ln6-r5-vIt" eventType="touchUpInside" id="IxH-MB-km1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UzP-bl-yjJ" userLabel="resetanddownload">
+                                <rect key="frame" x="62" y="527" width="176" height="149"/>
+                                <animations/>
+                                <state key="normal" image="Reset-&amp;-Download-All-Content.png"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AoX-78-xMW" userLabel="clearforest">
+                                <rect key="frame" x="51" y="299" width="202" height="173"/>
+                                <animations/>
+                                <state key="normal" image="Clear-All-Rewards.png"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDY-zp-ELw" userLabel="back">
+                                <rect key="frame" x="434" y="20" width="156" height="125"/>
+                                <animations/>
+                                <state key="normal" title="Button" image="social-home.png"/>
+                                <connections>
+                                    <segue destination="EMN-Ja-NBR" kind="unwind" unwindAction="unwindToHomeView:" id="VQT-kf-wMP"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SettingsCell" textLabel="oYI-Ng-uKO" style="IBUITableViewCellStyleDefault" id="eZo-pi-MG7">
-                                <rect key="frame" x="0.0" y="28" width="1024" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eZo-pi-MG7" id="y1h-B5-Obs">
-                                    <rect key="frame" x="0.0" y="0.0" width="810" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oYI-Ng-uKO">
-                                            <rect key="frame" x="196" y="0.0" width="614" height="43"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="l2D-EH-zCz" id="qA2-uz-zPp"/>
-                            <outlet property="delegate" destination="l2D-EH-zCz" id="kSX-Es-BEn"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Settings" id="mIx-I8-HGN">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="ZXa-dJ-LIJ"/>
-                    </navigationItem>
-                    <connections>
-                        <segue destination="ivX-yF-4vF" kind="push" identifier="FoodSettingsSeque" id="8nb-F8-J41"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yUb-zq-AU3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2ZA-P9-6Pa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hME-eR-Z6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="EMN-Ja-NBR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-356" y="2858"/>
+            <point key="canvasLocation" x="-292" y="3369"/>
         </scene>
         <!--FoodSettings-->
         <scene sceneID="aL3-Gm-uzl">
@@ -1240,12 +1267,19 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Buy-Complete-Food-Selection.png" width="250" height="250"/>
+        <image name="Check-for-Updates.png" width="250" height="250"/>
+        <image name="Choose-Foods-to-Eat.png" width="250" height="250"/>
+        <image name="Clear-All-Rewards.png" width="250" height="250"/>
         <image name="PARENTS-PAGE-1.png" width="2048" height="1536"/>
         <image name="PARENTS-PAGE-back_06.png" width="266" height="117"/>
         <image name="PARENTS-PAGE-background.jpg" width="2048" height="1536"/>
         <image name="PARENTS-PAGE-next_03.png" width="264" height="119"/>
         <image name="REWARDS-BOX.png" width="2945" height="2209"/>
+        <image name="Reset-&amp;-Download-All-Content.png" width="250" height="250"/>
+        <image name="Set-Special-Rewards.png" width="250" height="250"/>
         <image name="TERMS-AND-CONDITIONS.jpg" width="2945" height="2209"/>
+        <image name="Watercolour Background.jpg" width="2048" height="1536"/>
         <image name="brownband-white.png" width="2048" height="1536"/>
         <image name="facebook_03.png" width="325" height="133"/>
         <image name="greenband-white.png" width="2048" height="1536"/>

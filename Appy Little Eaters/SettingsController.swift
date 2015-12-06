@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsController: UITableViewController, InAppPurchaseDelegate {
+class SettingsController: UIViewController, InAppPurchaseDelegate {
 
     
     override func viewDidLoad() {
@@ -21,48 +21,18 @@ class SettingsController: UITableViewController, InAppPurchaseDelegate {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+    @IBAction func chooseFoods(sender: UIButton) {
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+    @IBAction func buyFood(sender: UIButton) {
+        InAppPurchaseManager.sharedInstance.BuyFood(self)
+    }
+
+    @IBAction func checkForUpdates(sender: AnyObject) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.checkForUpdates(nil)
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SettingsCell")
-        switch indexPath.row{
-        case 0:
-            cell?.textLabel?.text = "Buy complete food selection"
-            break
-        case 1:
-            cell?.textLabel?.text = "Choose foods to eat"
-            break
-        case 2:
-            cell?.textLabel?.text = "Check for updates"
-            break
-        default:
-            break
-        }
-        return cell!
-    }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch indexPath.row{
-        case 0:
-            InAppPurchaseManager.sharedInstance.BuyFood(self)
-            break
-        case 1:
-            performSegueWithIdentifier("FoodSettingsSeque", sender: self)
-            break
-        case 2:
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            appDelegate.checkForUpdates(nil)
-            break
-        default:
-            break
-        }
-    }
     
     func FoodNotPurchased() {
         

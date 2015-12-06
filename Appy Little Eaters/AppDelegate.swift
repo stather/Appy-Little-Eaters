@@ -75,6 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var foodProgress:UIProgressView?
     
     func checkForUpdates(progress:UIProgressView?){
+        downloadFood(progress)
         downloadAnimations(progress)
     }
     
@@ -125,22 +126,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         api.listFood { (foods) -> Void in
             for food in foods{
                 let uow = UnitOfWork()
-                let dFood:DFood! = uow.foodRepository?.createNewFood()
-                dFood.colour = food.colour
-                dFood.name = food.name
-                dFood.free = food.free
-                dFood.visible = true
-                uow.saveChanges()
-                let id = ImageDownloader(url: food.image, name: food.name)
-                self.downloadQueue.addOperation(id)
-                let sd = SoundDownloader(url: food.sound, name: food.name)
-                sd.completionBlock = {
-                    i += 1
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        progress?.setProgress(i / Float(foods.count), animated: false)
-                    })
+                var dFood:DFood?
+                dFood = uow.foodRepository?.getFood(byName: food.name)
+                if dFood == nil || dFood?.version?.integerValue < food.version{
+                    if dFood == nil{
+                        dFood = uow.foodRepository?.createNewFood()
+                    }
+                    dFood!.colour = food.colour
+                    dFood!.name = food.name
+                    dFood!.free = food.free
+                    dFood!.visible = true
+                    dFood!.version = food.version
+                    uow.saveChanges()
+                    let id = ImageDownloader(url: food.image, name: food.name)
+                    self.downloadQueue.addOperation(id)
+                    let sd = SoundDownloader(url: food.sound, name: food.name)
+                    sd.completionBlock = {
+                        i += 1
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            progress?.setProgress(i / Float(foods.count), animated: false)
+                        })
+                    }
+                    self.downloadQueue.addOperation(sd)
                 }
-                self.downloadQueue.addOperation(sd)
             }
             
         }
@@ -196,47 +204,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         uow.saveChanges()
     }
 	
-	func seedDatabase(){
-        return
-		let fetchAllRewards = managedObjectModel.fetchRequestTemplateForName("FetchAllRewardsInPool")
-		let error:NSErrorPointer = NSErrorPointer()
-		let c = managedObjectContext?.countForFetchRequest(fetchAllRewards!, error: error)
-		if c > 0{
-			return
-		}
-		let fname = NSBundle.mainBundle().pathForResource("rewards", ofType: "csv")
-		var data: NSString!
-		do {
-			data = try NSString(contentsOfFile: fname!, encoding: NSUTF8StringEncoding)
-		} catch let error1 as NSError {
-			error.memory = error1
-			data = nil
-		}
-        let lines:[String] = data.componentsSeparatedByString("\n")
-        
-		//let lines:[String!] = data.componentsSeparatedByString("\n") as! [String!]
-		for item in lines{
-			var fields:[String] = item.componentsSeparatedByString(",")
-			if fields.count >= 6 {
-				let reward = NSEntityDescription.insertNewObjectForEntityForName("DRewardPool", inManagedObjectContext: managedObjectContext!) as! DRewardPool
-			
-				reward.creatureName = Int(fields[0].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))!
-				reward.positionX = Int(fields[2].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))!
-				reward.positionY = Int(fields[3].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))!
-				reward.imageName = fields[1].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-				reward.level = Int(fields[4].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))!
-				let scale = fields[5].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-				let fscale = (scale as NSString).floatValue
-				reward.scale = fscale
-				print("Loaded " + reward.creatureName!.stringValue)
-			}
-		}
-		do {
-			try managedObjectContext?.save()
-		} catch let error1 as NSError {
-			error.memory = error1
-		}
-	}
 	
 	func applicationWillResignActive(application: UIApplication) {
 		// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

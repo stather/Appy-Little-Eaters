@@ -2,7 +2,7 @@
 //  DFood+CoreDataProperties.swift
 //  AppyLittleEaters
 //
-//  Created by RUSSELL STATHER on 04/11/2015.
+//  Created by RUSSELL STATHER on 06/12/2015.
 //  Copyright © 2015 Ready Steady Rainbow. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -19,5 +19,6 @@ extension DFood {
     @NSManaged var name: String?
     @NSManaged var path: String?
     @NSManaged var visible: NSNumber?
+    @NSManaged var version: NSNumber?
 
 }
