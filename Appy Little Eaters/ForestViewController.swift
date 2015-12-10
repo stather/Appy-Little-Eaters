@@ -22,6 +22,7 @@ public class ForestViewController : UIViewController{
 	@IBOutlet weak var smallerButton: UIButton!
 	@IBOutlet weak var mirrorButton: UIButton!
 	@IBOutlet weak var StartStopButton: UIButton!
+    @IBOutlet weak var DoneButton: UIButton!
 	
 	@IBOutlet weak var mass: UITextField!
 	
@@ -103,8 +104,8 @@ public class ForestViewController : UIViewController{
 		mainView.insertSubview(spriteView, belowSubview: homeButton)
 		forest = ForestScene(size: CGSize(width: 1024, height: 768))
 		spriteView.presentScene(forest)
-        let d = NSProcessInfo.processInfo().environment["SIMULATOR_DEVICE_NAME"]
-        if d == nil {
+        
+        if !NSUserDefaults.standardUserDefaults().boolForKey("AnimationControls"){
 			stopButton.hidden = true
 			upButton.hidden = true
 			downButton.hidden = true
@@ -116,6 +117,7 @@ public class ForestViewController : UIViewController{
 			StartStopButton.hidden = true
 			mass.hidden = true
 			velocity.hidden = true
+            DoneButton.hidden = true
 		}
 	}
 	

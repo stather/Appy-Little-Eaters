@@ -529,12 +529,43 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oj3-QZ-uFC" userLabel="AdminHolder">
+                                <rect key="frame" x="262" y="504" width="441" height="192"/>
+                                <subviews>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MXf-KR-mjj">
+                                        <rect key="frame" x="32" y="24" width="51" height="31"/>
+                                        <animations/>
+                                        <connections>
+                                            <action selector="ControlsToggle:" destination="Ln6-r5-vIt" eventType="valueChanged" id="ukd-Zx-aNU"/>
+                                        </connections>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Animation controls" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6I-gX-a6E">
+                                        <rect key="frame" x="103" y="29" width="143" height="21"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVZ-bq-RLX">
+                                        <rect key="frame" x="32" y="63" width="89" height="30"/>
+                                        <animations/>
+                                        <state key="normal" title="Fill the forest"/>
+                                        <connections>
+                                            <action selector="FillTheForest:" destination="Ln6-r5-vIt" eventType="touchUpInside" id="bnf-B8-55a"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="2ZA-P9-6Pa"/>
                     <connections>
+                        <outlet property="AdminHolder" destination="Oj3-QZ-uFC" id="eOm-a2-V3o"/>
+                        <outlet property="ControlsToggleSwitch" destination="MXf-KR-mjj" id="hPj-L6-ofX"/>
                         <outlet property="StatusHolder" destination="sPR-O1-Qlt" id="o2x-6M-rAB"/>
                         <outlet property="StatusProgress" destination="V39-9w-jHS" id="vYb-5W-dwR"/>
                         <outlet property="StatusText" destination="kbW-Sn-rNb" id="lRa-6b-VwY"/>
@@ -1205,6 +1236,7 @@
                     <navigationItem key="navigationItem" id="Acg-OO-Dsp"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="DoneButton" destination="eCV-bp-GyT" id="BDs-sM-up2"/>
                         <outlet property="StartStopButton" destination="rk5-XB-wCc" id="BrK-Y2-Wfh"/>
                         <outlet property="biggerButton" destination="kkX-tM-2m9" id="fQT-Ff-Y5q"/>
                         <outlet property="downButton" destination="lHW-jL-Hsi" id="21Y-YL-mYa"/>

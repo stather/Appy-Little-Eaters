@@ -14,9 +14,41 @@ class SettingsController: UIViewController, InAppPurchaseDelegate {
     @IBOutlet weak var StatusText: UILabel!
     @IBOutlet weak var StatusProgress: UIProgressView!
     
+    @IBOutlet weak var AdminHolder: UIView!
+    @IBOutlet weak var ControlsToggleSwitch: UISwitch!
+    
+    @IBAction func ControlsToggle(sender: UISwitch) {
+        if ControlsToggleSwitch.on{
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "AnimationControls")
+        }else{
+            NSUserDefaults.standardUserDefaults().setBool(false, forKey: "AnimationControls")
+        }
+    }
+    
+    @IBAction func FillTheForest(sender: AnyObject) {
+        let uow = UnitOfWork()
+        uow.rewardRepository?.deleteAllRewards()
+        let allRewardsInPool = uow.rewardPoolRepository?.getAllRewardsInPool()
+        
+        for item in allRewardsInPool!{
+            let reward = uow.rewardRepository?.createNewReward()
+            
+            reward!.creatureName = NSNumber(integer: Int(item.creatureName!))
+            reward!.positionX = item.positionX!
+            //            reward!.positionY = 768 - Int(item.positionY!)
+            reward!.positionY = Int(item.positionY!)
+            reward!.scale = item.scale!
+            reward!.animationName = item.imageName
+            reward!.rewardName = item.rewardName
+            item.available = false
+        }
+        uow.saveChanges()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
+        ControlsToggleSwitch.on = NSUserDefaults.standardUserDefaults().boolForKey("AnimationControls")
     }
     
     @IBAction func ClearRewards(sender: AnyObject) {
@@ -36,6 +68,10 @@ class SettingsController: UIViewController, InAppPurchaseDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
+        let d = NSProcessInfo.processInfo().environment["SIMULATOR_DEVICE_NAME"]
+        if d == nil {
+            
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -64,26 +100,6 @@ class SettingsController: UIViewController, InAppPurchaseDelegate {
     func FoodPurchased() {
         
         
-    }
-    
-    @IBAction func fillTheForest(sender: AnyObject) {
-        let uow = UnitOfWork()
-        uow.rewardRepository?.deleteAllRewards()
-        let allRewardsInPool = uow.rewardPoolRepository?.getAllRewardsInPool()
-        
-        for item in allRewardsInPool!{
-            let reward = uow.rewardRepository?.createNewReward()
-            
-            reward!.creatureName = NSNumber(integer: Int(item.creatureName!))
-            reward!.positionX = item.positionX!
-            //            reward!.positionY = 768 - Int(item.positionY!)
-            reward!.positionY = Int(item.positionY!)
-            reward!.scale = item.scale!
-            reward!.animationName = item.imageName
-            reward!.rewardName = item.rewardName
-            item.available = false
-        }
-        uow.saveChanges()
     }
     
 }
