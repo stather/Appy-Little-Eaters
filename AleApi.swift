@@ -39,8 +39,8 @@ public class AleRewardDef{
 
 public class AleApi{
     
-    static let BaseUrl = "http://localhost:8079/"
-//    static let BaseUrl = "http://rsrapi-dev2.elasticbeanstalk.com/"
+//    static let BaseUrl = "http://localhost:8079/"
+    static let BaseUrl = "http://rsrapi-dev2.elasticbeanstalk.com/"
     
     func updateRewardPosition(name:String, x:Float, y:Float, scale:Float) -> Void{
         let FullUrl = AleApi.BaseUrl + "Reward/updateRewardPosition"

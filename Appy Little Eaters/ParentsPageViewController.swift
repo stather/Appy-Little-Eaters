@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-public class ParentsPageViewController : UIViewController, InAppPurchaseDelegate{
+public class ParentsPageViewController : UIViewController{
 	
 	var currentPage:Int = 1
 	@IBOutlet weak var backButton: UIButton!
@@ -30,34 +30,6 @@ public class ParentsPageViewController : UIViewController, InAppPurchaseDelegate
 		pinit.hidden = true
 		webLink.hidden = true
 	}
-
-    public func FoodPurchased() {
-    }
-    
-    public func FoodNotPurchased() {
-    }
-    
-    @IBAction func BuyFood(sender: AnyObject) {
-        InAppPurchaseManager.sharedInstance.BuyFood(self)
-    }
-    
-    @IBAction func downloadRewards(sender: AnyObject) {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.deleteAllRewardsInPool()
-        appDelegate.downloadRewards(rewardProgress)
-    }
-    
-    @IBAction func downloadAnimations(sender: AnyObject) {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        appDelegate.deleteAllAnimations()
-        appDelegate.downloadAnimations(animationProgress)
-    }
-    
-    @IBAction func downloadFood(sender: AnyObject) {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.deleteAllFood()
-        appDelegate.downloadFood(foodProgress)
-    }
     
 	
 	@IBAction func backPressed(sender: AnyObject) {
@@ -102,34 +74,7 @@ public class ParentsPageViewController : UIViewController, InAppPurchaseDelegate
 		}
 	}
 	
-	@IBAction func fillTheForest(sender: AnyObject) {
-        let uow = UnitOfWork()
-        uow.rewardRepository?.deleteAllRewards()
-        let allRewardsInPool = uow.rewardPoolRepository?.getAllRewardsInPool()
-        
-        for item in allRewardsInPool!{
-            let reward = uow.rewardRepository?.createNewReward()
-			
-			reward!.creatureName = NSNumber(integer: Int(item.creatureName!))
-			reward!.positionX = item.positionX!
-//            reward!.positionY = 768 - Int(item.positionY!)
-            reward!.positionY = Int(item.positionY!)
-			reward!.scale = item.scale!
-            reward!.animationName = item.imageName
-            reward!.rewardName = item.rewardName
-			item.available = false
-		}
-        uow.saveChanges()
-	}
 	
-	@IBAction func clearTheForest(sender: AnyObject) {
-        let uow = UnitOfWork()
-
-        uow.rewardRepository?.deleteAllRewards()
-        uow.rewardPoolRepository?.makeAllRewardsAvailable()
-        
-        uow.saveChanges()
-	}
 	
 	@IBAction func facebookPressed(sender: AnyObject) {
 		

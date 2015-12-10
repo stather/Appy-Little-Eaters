@@ -74,14 +74,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var animationProgress:UIProgressView?
     var foodProgress:UIProgressView?
     
-    func checkForUpdates(progress:UIProgressView?){
-        downloadFood(progress)
-        downloadAnimations(progress)
+    func resetAll(progress:UIProgressView?, text:UILabel?, done:()->Void){
+        text?.text = "Deleting rewards"
+        let uow = UnitOfWork()
+        uow.rewardRepository?.deleteAllRewards()
+        uow.saveChanges()
+        text?.text = "Deleting animations"
+        deleteAllAnimations()
+        text?.text = "Deleting available rewards"
+        deleteAllRewardsInPool()
+        text?.text = "Deleting food"
+        deleteAllFood()
+        checkForUpdates(progress, text: text, done: done)
     }
     
-    func downloadAnimations(progress:UIProgressView?){
+    func checkForUpdates(progress:UIProgressView?, text:UILabel?, done:()->Void){
+        let uow = UnitOfWork()
+        uow.rewardRepository?.deleteAllRewards()
+        uow.saveChanges()
+        text?.text = "Downloading food updates"
+        
+        
+        downloadFood(progress) { () -> Void in
+            text?.text = "Downloading animation updates"
+            self.downloadAnimations(progress, done: { () -> Void in
+                text?.text = "Downloading reward updates"
+                self.downloadRewards(progress, done: { () -> Void in
+                    done()
+                })
+            })
+        }
+    }
+    
+    func downloadAnimations(progress:UIProgressView?, done:() -> Void){
         let api = AleApi()
-        progress?.setProgress(0, animated: false)
+        progress?.setProgress(0, animated: true)
         var i:Float = 0
         
         api.listAnimations { (animations) -> Void in
@@ -110,18 +137,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     td.completionBlock = {
                         i += 1
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            progress?.setProgress(i / Float(animations.count), animated: false)
+                            progress?.setProgress(i / Float(animations.count), animated: true)
                         })
+                        if i == Float(animations.count){
+                            done()
+                        }
                     }
                     self.downloadQueue.addOperation(td)
+                }else{
+                    i += 1
+                    progress?.setProgress(i / Float(animations.count), animated: true)
+                    if i == Float(animations.count){
+                        done()
+                    }
                 }
             }
         }
     }
-    
-    func downloadFood(progress:UIProgressView?){
+
+    func downloadFood(progress:UIProgressView?, done:()->Void){
         let api = AleApi()
-        progress?.setProgress(0, animated: false)
+        progress?.setProgress(0, animated: true)
         var i:Float = 0
         api.listFood { (foods) -> Void in
             for food in foods{
@@ -144,19 +180,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     sd.completionBlock = {
                         i += 1
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            progress?.setProgress(i / Float(foods.count), animated: false)
+                            progress?.setProgress(i / Float(foods.count), animated: true)
                         })
+                        if i == Float(foods.count){
+                            done()
+                        }
                     }
                     self.downloadQueue.addOperation(sd)
+                }else{
+                    i += 1
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        progress?.setProgress(i / Float(foods.count), animated: true)
+                    })
+                    if i == Float(foods.count){
+                        done()
+                    }
                 }
             }
             
         }
     }
     
-    func downloadRewards(progress:UIProgressView?){
+    func downloadRewards(progress:UIProgressView?, done:() -> Void){
         let api = AleApi()
-        progress?.setProgress(0, animated: false)
+        progress?.setProgress(0, animated: true)
         var i:Float = 0
         api.listRewardss { (rewards) -> Void in
             for reward in rewards{
@@ -172,8 +219,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 dRewardPool.scale = reward.scale
                 uow.saveChanges()
                 i += 1
-                progress?.setProgress(i / Float(rewards.count), animated: false)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    progress?.setProgress(i / Float(rewards.count), animated: true)
+                })
             }
+            done()
         }
     }
     

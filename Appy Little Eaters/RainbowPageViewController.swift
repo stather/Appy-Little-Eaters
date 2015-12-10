@@ -38,6 +38,25 @@ public class RainbowPageViewController: UIViewController{
     var segued:Bool = false
     var paintColour:UIColor!
 	
+    func fillBand(bandView:UIImageView, colour:UIColor){
+        let r = bandView.bounds
+        let image:UIImage = bandView.image!
+        let imageWidth = image.size.width
+        let imageHeight = image.size.height
+        let r2 = CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight)
+        UIGraphicsBeginImageContext(image.size)
+        
+        image.drawAtPoint(CGPoint.zero)
+        let context = UIGraphicsGetCurrentContext()
+        CGContextSetBlendMode(context, CGBlendMode.SourceIn)
+        CGContextSetFillColorWithColor(context, colour.CGColor)
+        CGContextSetLineCap(context, CGLineCap.Round)
+        CGContextFillRect(context, r2)
+        let im2 = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        bandView.image = im2
+        bandView.setNeedsDisplay()
+    }
 	
 	func drawAt(point: CGPoint){
 		let r = theBand.bounds
@@ -176,30 +195,45 @@ public class RainbowPageViewController: UIViewController{
 	}
     
     public override func viewDidAppear(animated: Bool) {
-        theBand.startGlowingWithColor(UIColor.redColor(), intensity: 1.0)
-        home.startGlowing()
+//        if foodEaten{
+//            fillBand(theBand, colour: paintColour)
+//            theBand.startGlowingWithColor(UIColor.redColor(), intensity: 1.0)
+//        }
+        //home.startGlowing()
     }
 	
 	public override func viewWillAppear(animated: Bool) {
         Cloud1.addSwayAnimation()
         Cloud2.addSwayAnimation()
 		if (NSUserDefaults.standardUserDefaults().boolForKey("RED")){
-			RedBand.hidden = false;
+			RedBand.hidden = false
+            RedBand.alpha = 1.0
+            fillBand(RedBand, colour: UIColor.redColor())
 		}
 		if (NSUserDefaults.standardUserDefaults().boolForKey("ORANGE")){
-			OrangeBand.hidden = false;
+			OrangeBand.hidden = false
+            OrangeBand.alpha = 1.0
+            fillBand(OrangeBand, colour: UIColor.orangeColor())
 		}
 		if (NSUserDefaults.standardUserDefaults().boolForKey("YELLOW")){
-			YellowBand.hidden = false;
+			YellowBand.hidden = false
+            YellowBand.alpha = 1.0
+            fillBand(YellowBand, colour: UIColor.yellowColor())
 		}
 		if (NSUserDefaults.standardUserDefaults().boolForKey("GREEN")){
-			GreenBand.hidden = false;
+			GreenBand.hidden = false
+            GreenBand.alpha = 1.0
+            fillBand(GreenBand, colour: UIColor.greenColor())
 		}
 		if (NSUserDefaults.standardUserDefaults().boolForKey("BROWN")){
-			BrownBand.hidden = false;
+			BrownBand.hidden = false
+            BrownBand.alpha = 1.0
+            fillBand(BrownBand, colour: UIColor.brownColor())
 		}
 		if (NSUserDefaults.standardUserDefaults().boolForKey("PURPLE")){
-			PurpleBand.hidden = false;
+			PurpleBand.hidden = false
+            PurpleBand.alpha = 1.0
+            fillBand(PurpleBand, colour: UIColor.purpleColor())
 		}
 		if (foodEaten){
 			switch colour
@@ -237,13 +271,16 @@ public class RainbowPageViewController: UIViewController{
 			default:
 				return;
 			}
-			theBand.hidden = false;
-			theBand.alpha = 1.0;
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: theColour as String)
+			theBand.hidden = false
+			theBand.alpha = 1.0
+            fillBand(theBand, colour: paintColour)
 			UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.Autoreverse, animations: {UIView.setAnimationRepeatCount(5);self.theBand.alpha = 0;}, completion:{
 				(Bool finished)-> Void in
 				self.allowColouring = true
 				self.theBand.alpha = 1
 				self.theBand.hidden = false
+                self.fillBand(self.theBand, colour: UIColor.whiteColor())
 			});
 
 		}else{

@@ -10,10 +10,32 @@ import UIKit
 
 class SettingsController: UIViewController, InAppPurchaseDelegate {
 
+    @IBOutlet weak var StatusHolder: UIView!
+    @IBOutlet weak var StatusText: UILabel!
+    @IBOutlet weak var StatusProgress: UIProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    @IBAction func ClearRewards(sender: AnyObject) {
+        let uow = UnitOfWork()
+        uow.rewardRepository?.deleteAllRewards()
+        uow.saveChanges()
+    }
+    
+    @IBAction func ResetAll(sender: AnyObject) {
+        StatusHolder.hidden = false
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.resetAll(StatusProgress, text: StatusText, done: {()->Void in
+            self.StatusHolder.hidden = true
+        })
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -21,16 +43,16 @@ class SettingsController: UIViewController, InAppPurchaseDelegate {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    @IBAction func chooseFoods(sender: UIButton) {
-    }
-    
     @IBAction func buyFood(sender: UIButton) {
         InAppPurchaseManager.sharedInstance.BuyFood(self)
     }
 
     @IBAction func checkForUpdates(sender: AnyObject) {
+        StatusHolder.hidden = false
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.checkForUpdates(nil)
+        appDelegate.checkForUpdates(StatusProgress, text: StatusText, done: { () -> Void in
+            self.StatusHolder.hidden = true
+        })
     }
     
     
@@ -43,4 +65,25 @@ class SettingsController: UIViewController, InAppPurchaseDelegate {
         
         
     }
+    
+    @IBAction func fillTheForest(sender: AnyObject) {
+        let uow = UnitOfWork()
+        uow.rewardRepository?.deleteAllRewards()
+        let allRewardsInPool = uow.rewardPoolRepository?.getAllRewardsInPool()
+        
+        for item in allRewardsInPool!{
+            let reward = uow.rewardRepository?.createNewReward()
+            
+            reward!.creatureName = NSNumber(integer: Int(item.creatureName!))
+            reward!.positionX = item.positionX!
+            //            reward!.positionY = 768 - Int(item.positionY!)
+            reward!.positionY = Int(item.positionY!)
+            reward!.scale = item.scale!
+            reward!.animationName = item.imageName
+            reward!.rewardName = item.rewardName
+            item.available = false
+        }
+        uow.saveChanges()
+    }
+    
 }

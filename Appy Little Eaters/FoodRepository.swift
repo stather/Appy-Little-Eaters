@@ -70,10 +70,14 @@ public class FoodRepository{
         return try! _managedObjectContext.executeFetchRequest(fetchFoodByColour!) as! [DFood]
     }
     
-    func getFood(byName byName:String) -> DFood{
+    func getFood(byName byName:String) -> DFood?{
         let fetchFoodByName = managedObjectModel?.fetchRequestFromTemplateWithName("FetchFoodByName", substitutionVariables: ["NAME":byName])
         let f = try! _managedObjectContext.executeFetchRequest(fetchFoodByName!)
-        return f[0] as! DFood
+        if f.count > 0 {
+            return f[0] as? DFood
+        }else{
+            return nil
+        }
     }
     
     func deleteFood(food: DFood){
