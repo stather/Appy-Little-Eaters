@@ -37,7 +37,8 @@ public class ForestScene : SKScene{
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         userInteractionEnabled = true
         alpha = 1
-        backgroundColor = SKColor.blueColor()
+        //backgroundColor = SKColor.blueColor()
+        backgroundColor = SKColor.clearColor()
         scaleMode = SKSceneScaleMode.Fill
         if (!self.contentCreated)
         {
@@ -182,6 +183,61 @@ public class ForestScene : SKScene{
     var strawb:SGG_Spine!
     
     func createBackground(){
+        let back = NSUserDefaults.standardUserDefaults().integerForKey("backgroundId")
+        switch (back){
+        case 0:
+            createForestBackground()
+            break
+        case 1:
+            createPlanetBackground()
+            break
+        default:
+            createForestBackground()
+        }
+        
+    }
+
+    func createPlanetBackground(){
+        let formatter = NSNumberFormatter()
+        formatter.minimumIntegerDigits = 2
+        let atlas = SKTextureAtlas(named: "planet")
+        var columnWidth:Int!
+        var x:Int = -512
+        backgroundWidth = 0
+        var isKey = true
+        for column in 1...10{
+            let strColumn = formatter.stringFromNumber(column)
+            var y:Int = -384
+            for var row:Int=3; row>0; row=row-1{
+                let strRow = formatter.stringFromNumber(row)
+                let name = "spacerewards-" + strColumn! + "-" + strRow! + ".png"
+                let texture = atlas.textureNamed(name)
+                let size = texture.size()
+                columnWidth = Int(size.width)
+                if row == 3 {
+                    backgroundWidth += Float(columnWidth)
+                }
+                // add the texture node at x,y
+                let n = BackgroundSpriteNode(texture: texture)
+                let posx:Int = x + columnWidth/2
+                if isKey {
+                    leftHandEdge = Float(-512)
+                    edgeOffest = Float(columnWidth)/2
+                }
+                let posy:Int = y + Int(size.height)/2
+                n.position = CGPoint(x: posx,y: posy)
+                n.name = "BACK"
+                n.IsKey = isKey
+                isKey = false
+                addChild(n)
+                y += Int(size.height)
+            }
+            x += columnWidth
+        }
+    }
+    
+    
+    func createForestBackground(){
         let formatter = NSNumberFormatter()
         formatter.minimumIntegerDigits = 2
         let atlas = SKTextureAtlas(named: "newforest")

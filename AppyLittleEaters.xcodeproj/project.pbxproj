@@ -216,6 +216,7 @@
 		687BDB6C1BE95E4100735B9D /* ChooseFoodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB6B1BE95E4100735B9D /* ChooseFoodController.swift */; };
 		687BDB6F1BEA9D1A00735B9D /* DFood+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB6E1BEA9D1A00735B9D /* DFood+CoreDataProperties.swift */; };
 		687BDB721BEAAB8400735B9D /* UIView+Glow.m in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB711BEAAB8400735B9D /* UIView+Glow.m */; };
+		688D20351C28A1C4005977B6 /* planet.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 688D20341C28A1C4005977B6 /* planet.atlas */; };
 		689BD6391BD27C3F00B7EF3E /* AnimatedSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */; };
 		689BD63D1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD63B1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift */; };
 		689BD63E1BD5764500B7EF3E /* DRewardPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD63C1BD5764500B7EF3E /* DRewardPool.swift */; };
@@ -227,6 +228,7 @@
 		68BA94FE1B5597F8005D6A64 /* SplashscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BA94FB1B5597F8005D6A64 /* SplashscreenView.swift */; };
 		68BA95001B5598FE005D6A64 /* SplashscreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BA94FF1B5598FE005D6A64 /* SplashscreenViewController.swift */; };
 		68D1B5F41BD9784A00233213 /* BackgroundSpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D1B5F31BD9784A00233213 /* BackgroundSpriteNode.swift */; };
+		68D422101C289AE4006CB703 /* ChooseBackgroundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D4220F1C289AE4006CB703 /* ChooseBackgroundController.swift */; };
 		68D7C9D61B52FA89005DFA20 /* Cloud1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D7C9D31B52FA89005DFA20 /* Cloud1View.swift */; };
 		68D7C9D71B52FA89005DFA20 /* cloud1.png in Resources */ = {isa = PBXBuildFile; fileRef = 68D7C9D51B52FA89005DFA20 /* cloud1.png */; };
 		68D7C9F11B53018F005DFA20 /* Cloud2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D7C9F01B53018E005DFA20 /* Cloud2View.swift */; };
@@ -496,6 +498,7 @@
 		687BDB6E1BEA9D1A00735B9D /* DFood+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DFood+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		687BDB701BEAAB8400735B9D /* UIView+Glow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Glow.h"; sourceTree = "<group>"; };
 		687BDB711BEAAB8400735B9D /* UIView+Glow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Glow.m"; sourceTree = "<group>"; };
+		688D20341C28A1C4005977B6 /* planet.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = planet.atlas; sourceTree = "<group>"; };
 		689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSprite.swift; sourceTree = "<group>"; };
 		689BD63A1BD575D300B7EF3E /* AleModel 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 7.xcdatamodel"; sourceTree = "<group>"; };
 		689BD63B1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DRewardPool+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -512,6 +515,7 @@
 		68BA94FF1B5598FE005D6A64 /* SplashscreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashscreenViewController.swift; sourceTree = "<group>"; };
 		68C003DD1BD81F3B00D54DEA /* AleModel 10.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 10.xcdatamodel"; sourceTree = "<group>"; };
 		68D1B5F31BD9784A00233213 /* BackgroundSpriteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundSpriteNode.swift; sourceTree = "<group>"; };
+		68D4220F1C289AE4006CB703 /* ChooseBackgroundController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseBackgroundController.swift; sourceTree = "<group>"; };
 		68D7C9D31B52FA89005DFA20 /* Cloud1View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cloud1View.swift; sourceTree = "<group>"; };
 		68D7C9D51B52FA89005DFA20 /* cloud1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud1.png; sourceTree = "<group>"; };
 		68D7C9F01B53018E005DFA20 /* Cloud2View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cloud2View.swift; sourceTree = "<group>"; };
@@ -686,6 +690,7 @@
 				687BDB671BE9564B00735B9D /* FoodSettingsViewController.swift */,
 				687BDB691BE95D5100735B9D /* FoodSelectCell.swift */,
 				687BDB6B1BE95E4100735B9D /* ChooseFoodController.swift */,
+				68D4220F1C289AE4006CB703 /* ChooseBackgroundController.swift */,
 			);
 			path = "Appy Little Eaters";
 			sourceTree = "<group>";
@@ -722,6 +727,7 @@
 		464F706818A2F0C200DDA449 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				688D20341C28A1C4005977B6 /* planet.atlas */,
 				680993861C08F5A9002AAD87 /* Settings */,
 				68B571CA1B73FDD400C35B52 /* newforest.atlas */,
 				469AC7F01A50709B00CDA070 /* TERMS-AND-CONDITIONS.jpg */,
@@ -1194,6 +1200,7 @@
 				469AC7E51A50655F00CDA070 /* yellowpepper.m4a in Resources */,
 				4615CCF219D1F5C5007994EC /* white-background.jpg in Resources */,
 				4642607019F462610028C878 /* weblink_03.png in Resources */,
+				688D20351C28A1C4005977B6 /* planet.atlas in Resources */,
 				4615CCEF19D1F5C5007994EC /* orange-background.jpg in Resources */,
 				46AE6C1D19EAA2F5000238F4 /* myfoodrainbow.m4a in Resources */,
 				469AC7FD1A50752300CDA070 /* greenapple.m4a in Resources */,
@@ -1428,6 +1435,7 @@
 				689BD6441BD5941700B7EF3E /* DReward.swift in Sources */,
 				46C440CE1A02C55B00C1A6BE /* ScrollableProtocol.swift in Sources */,
 				469AC7A61A44C3B000CDA070 /* SGG_SpineBone.m in Sources */,
+				68D422101C289AE4006CB703 /* ChooseBackgroundController.swift in Sources */,
 				687BDB661BE94A1B00735B9D /* FoodAssettRepository.swift in Sources */,
 				686CC1901BC1AD92003AA2C2 /* AnimationRepository.swift in Sources */,
 				682DB28E1BA75B4300050F13 /* DFood.swift in Sources */,
