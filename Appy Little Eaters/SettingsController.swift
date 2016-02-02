@@ -25,6 +25,10 @@ class SettingsController: UIViewController, InAppPurchaseDelegate {
         }
     }
     
+    @IBAction func resetUser(sender: AnyObject) {
+        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "TC_Accepted")
+    }
+    
     @IBAction func FillTheForest(sender: AnyObject) {
         let uow = UnitOfWork()
         uow.rewardRepository?.deleteAllRewards()

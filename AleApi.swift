@@ -42,6 +42,16 @@ public class AleApi{
 //    static let BaseUrl = "http://localhost:8079/"
     static let BaseUrl = "http://rsrapi-dev2.elasticbeanstalk.com/"
     
+    func addUser(name:String) -> Void {
+        let FullUrl = AleApi.BaseUrl + "User/addUser"
+        let params:NSMutableDictionary = NSMutableDictionary(objects: [name], forKeys: ["email"])
+        params.setValue("12345", forKey: "XDEBUG_SESSION_START")
+        ANRestOps.postInBackground(FullUrl, payload: params as [NSObject : AnyObject], payloadFormat: ANRestOpsFormFormat, beforeRequest: { () -> Void in
+            
+            }, onCompletion: {(response: ANRestOpsResponse!) -> Void in
+        })
+    }
+    
     func updateRewardPosition(name:String, x:Float, y:Float, scale:Float) -> Void{
         let FullUrl = AleApi.BaseUrl + "Reward/updateRewardPosition"
         let params:NSMutableDictionary = NSMutableDictionary(objects: [name, String(x), String(y), String(scale)], forKeys: ["name", "x", "y", "scale"])

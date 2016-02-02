@@ -31,7 +31,7 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 	@IBOutlet weak public var selectedFoodImage: UIImageView!
 	@IBOutlet weak public var tick: UIButton!
 	@IBOutlet weak public var cross: UIButton!
-	var player:ResourceAudioPlayer!
+	var player:AVAudioPlayer?
 	var endOfPlayAction:Int!
 	
     func getFoodForColour(c:String) -> NSArray {
@@ -96,7 +96,7 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 		}
 		self.backgroundImage.image = UIImage(contentsOfFile: filepath)
 		player = ResourceAudioPlayer(fromName: "yummyfoods")
-		player.play()
+		player?.play()
 	
 	}
 	
@@ -119,6 +119,7 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 		cell.foodImage.backgroundColor = UIColor.clearColor()
 		cell.backgroundColor = UIColor.clearColor()
 		cell.backgroundView = UIView(frame: CGRectZero)
+        cell.FoodLabel.text = name as String
 		return cell;
 	}
 
@@ -131,11 +132,11 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 		self.tick.hidden = false;
 		self.cross.hidden = false;
 		
-		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-		appDelegate.speak("Have you eaten a " + name)
+		//let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+		//appDelegate.speak("Have you eaten a " + name)
 		
-		//player = ResourceAudioPlayer(fromName: name)
-		//player.play()
+		player = DownloadedAudioPlayer(fromName: name)
+		player?.play()
 		
 	}
 	
@@ -152,8 +153,8 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 	@IBAction func crossClicked(sender: AnyObject){
 		self.endOfPlayAction = 0;
 		player = ResourceAudioPlayer(fromName: "NOIHAVENOTEATEN")
-		player.delegate = self
-		player.play()
+		player?.delegate = self
+		player?.play()
 	}
 	
 	public func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
@@ -179,8 +180,8 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 	@IBAction func tickClicked(sender: AnyObject){
 		self.endOfPlayAction = 1;
 		player = ResourceAudioPlayer(fromName: "YESIHAVEEATEN")
-		player.delegate = self
-		player.play()
+		player?.delegate = self
+		player?.play()
 	}
 	
 	override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

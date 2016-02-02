@@ -66,46 +66,12 @@
 		469AC7A81A44C3B000CDA070 /* SGG_SpineJSONTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC79F1A44C3B000CDA070 /* SGG_SpineJSONTools.m */; };
 		469AC7A91A44C3B000CDA070 /* SGG_SpineSkin.m in Sources */ = {isa = PBXBuildFile; fileRef = 469AC7A11A44C3B000CDA070 /* SGG_SpineSkin.m */; };
 		469AC7C71A50606C00CDA070 /* forestsounds.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7C61A505D6300CDA070 /* forestsounds.m4a */; };
-		469AC7CA1A50641900CDA070 /* apricots.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7C91A50641900CDA070 /* apricots.m4a */; };
-		469AC7CC1A50645400CDA070 /* carrot.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7CB1A50645400CDA070 /* carrot.m4a */; };
-		469AC7CE1A50645F00CDA070 /* mango.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7CD1A50645F00CDA070 /* mango.m4a */; };
-		469AC7D21A5064A800CDA070 /* pawpaw.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7D11A5064A800CDA070 /* pawpaw.m4a */; };
-		469AC7D41A5064BC00CDA070 /* peach.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7D31A5064BC00CDA070 /* peach.m4a */; };
-		469AC7D61A5064CB00CDA070 /* pumpkin.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7D51A5064CB00CDA070 /* pumpkin.m4a */; };
-		469AC7DF1A50655F00CDA070 /* banana.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7D81A50655F00CDA070 /* banana.m4a */; };
-		469AC7E01A50655F00CDA070 /* corn.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7D91A50655F00CDA070 /* corn.m4a */; };
-		469AC7E11A50655F00CDA070 /* lemon.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7DA1A50655F00CDA070 /* lemon.m4a */; };
-		469AC7E21A50655F00CDA070 /* pear.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7DB1A50655F00CDA070 /* pear.m4a */; };
-		469AC7E31A50655F00CDA070 /* pineapple.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7DC1A50655F00CDA070 /* pineapple.m4a */; };
-		469AC7E41A50655F00CDA070 /* yellowapple.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7DD1A50655F00CDA070 /* yellowapple.m4a */; };
-		469AC7E51A50655F00CDA070 /* yellowpepper.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7DE1A50655F00CDA070 /* yellowpepper.m4a */; };
 		469AC7E71A506D7300CDA070 /* whenyouenjoy.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7E61A506D7300CDA070 /* whenyouenjoy.m4a */; };
 		469AC7E91A506D8100CDA070 /* aleisagame.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7E81A506D8100CDA070 /* aleisagame.m4a */; };
 		469AC7EB1A506D9200CDA070 /* eachcolour.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7EA1A506D9200CDA070 /* eachcolour.m4a */; };
 		469AC7ED1A506D9D00CDA070 /* pickanycolour.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7EC1A506D9D00CDA070 /* pickanycolour.m4a */; };
 		469AC7EF1A506DAB00CDA070 /* finishthesix.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7EE1A506DAB00CDA070 /* finishthesix.m4a */; };
 		469AC7F11A50709B00CDA070 /* TERMS-AND-CONDITIONS.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7F01A50709B00CDA070 /* TERMS-AND-CONDITIONS.jpg */; };
-		469AC7FA1A50752300CDA070 /* broccoli.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7F31A50752300CDA070 /* broccoli.m4a */; };
-		469AC7FB1A50752300CDA070 /* sprouts.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7F41A50752300CDA070 /* sprouts.m4a */; };
-		469AC7FC1A50752300CDA070 /* cucumber.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7F51A50752300CDA070 /* cucumber.m4a */; };
-		469AC7FD1A50752300CDA070 /* greenapple.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7F61A50752300CDA070 /* greenapple.m4a */; };
-		469AC7FE1A50752300CDA070 /* greengrapes.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7F71A50752300CDA070 /* greengrapes.m4a */; };
-		469AC7FF1A50752300CDA070 /* lime.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7F81A50752300CDA070 /* lime.m4a */; };
-		469AC8001A50752300CDA070 /* peas.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC7F91A50752300CDA070 /* peas.m4a */; };
-		469AC8091A50763D00CDA070 /* eggplant.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC8021A50763D00CDA070 /* eggplant.m4a */; };
-		469AC80A1A50763D00CDA070 /* blackberry.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC8031A50763D00CDA070 /* blackberry.m4a */; };
-		469AC80B1A50763D00CDA070 /* grapes.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC8041A50763D00CDA070 /* grapes.m4a */; };
-		469AC80C1A50763D00CDA070 /* olives.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC8051A50763D00CDA070 /* olives.m4a */; };
-		469AC80D1A50763D00CDA070 /* plum.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC8061A50763D00CDA070 /* plum.m4a */; };
-		469AC80E1A50763D00CDA070 /* redcabbage.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC8071A50763D00CDA070 /* redcabbage.m4a */; };
-		469AC80F1A50763D00CDA070 /* raisins.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC8081A50763D00CDA070 /* raisins.m4a */; };
-		469AC8181A50789500CDA070 /* whitecabbage.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC8111A50789500CDA070 /* whitecabbage.m4a */; };
-		469AC8191A50789500CDA070 /* cauliflower.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC8121A50789500CDA070 /* cauliflower.m4a */; };
-		469AC81A1A50789500CDA070 /* chicken.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC8131A50789500CDA070 /* chicken.m4a */; };
-		469AC81B1A50789500CDA070 /* dates.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC8141A50789500CDA070 /* dates.m4a */; };
-		469AC81C1A50789500CDA070 /* lentils.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC8151A50789500CDA070 /* lentils.m4a */; };
-		469AC81D1A50789500CDA070 /* nuts.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC8161A50789500CDA070 /* nuts.m4a */; };
-		469AC81E1A50789500CDA070 /* potato.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469AC8171A50789500CDA070 /* potato.m4a */; };
 		46AE6C0519E970F0000238F4 /* rainbow-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C0319E970F0000238F4 /* rainbow-background.jpg */; };
 		46AE6C0719E97183000238F4 /* mountainstrees.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C0619E97183000238F4 /* mountainstrees.jpg */; };
 		46AE6C0919E97263000238F4 /* rainbow.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C0819E97263000238F4 /* rainbow.png */; };
@@ -129,13 +95,6 @@
 		46AE6C2F19EAB24F000238F4 /* RED.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C2719EAB24F000238F4 /* RED.m4a */; };
 		46AE6C3019EAB24F000238F4 /* YELLOW.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C2819EAB24F000238F4 /* YELLOW.m4a */; };
 		46AE6C3119EAB24F000238F4 /* YESIHAVEEATEN.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C2919EAB24F000238F4 /* YESIHAVEEATEN.m4a */; };
-		46AE6C3419EAB5CE000238F4 /* apple.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C3319EAB5CE000238F4 /* apple.m4a */; };
-		46AE6C3B19EAB754000238F4 /* cherry.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C3519EAB754000238F4 /* cherry.m4a */; };
-		46AE6C3C19EAB754000238F4 /* raspberry.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C3619EAB754000238F4 /* raspberry.m4a */; };
-		46AE6C3D19EAB754000238F4 /* redpepper.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C3719EAB754000238F4 /* redpepper.m4a */; };
-		46AE6C3E19EAB754000238F4 /* strawberry.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C3819EAB754000238F4 /* strawberry.m4a */; };
-		46AE6C3F19EAB754000238F4 /* tomato.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C3919EAB754000238F4 /* tomato.m4a */; };
-		46AE6C4019EAB754000238F4 /* watermelon.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C3A19EAB754000238F4 /* watermelon.m4a */; };
 		46AE6C4219EAC804000238F4 /* REWARDS-BOX.png in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C4119EAC804000238F4 /* REWARDS-BOX.png */; };
 		46AE6C4919EAF773000238F4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AE6C4819EAF773000238F4 /* HomeViewController.swift */; };
 		46AE6C4B19EB234C000238F4 /* FoodPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AE6C4A19EB234C000238F4 /* FoodPageViewController.swift */; };
@@ -206,7 +165,6 @@
 		686CC18C1BBFD996003AA2C2 /* FoodRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686CC18B1BBFD996003AA2C2 /* FoodRepository.swift */; };
 		686CC18E1BC123E1003AA2C2 /* UnitOfWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686CC18D1BC123E1003AA2C2 /* UnitOfWork.swift */; };
 		686CC1901BC1AD92003AA2C2 /* AnimationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686CC18F1BC1AD92003AA2C2 /* AnimationRepository.swift */; };
-		68774A121ABD90B70001CA32 /* healthykids.wav in Resources */ = {isa = PBXBuildFile; fileRef = 68774A111ABD90B70001CA32 /* healthykids.wav */; };
 		687BDB601BE7F31000735B9D /* InAppPurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB5F1BE7F31000735B9D /* InAppPurchaseManager.swift */; };
 		687BDB621BE80CB400735B9D /* settingscog.png in Resources */ = {isa = PBXBuildFile; fileRef = 687BDB611BE80CB300735B9D /* settingscog.png */; };
 		687BDB641BE8112C00735B9D /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB631BE8112C00735B9D /* SettingsController.swift */; };
@@ -222,11 +180,15 @@
 		689BD63E1BD5764500B7EF3E /* DRewardPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD63C1BD5764500B7EF3E /* DRewardPool.swift */; };
 		689BD6431BD5941700B7EF3E /* DReward+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD6411BD5941700B7EF3E /* DReward+CoreDataProperties.swift */; };
 		689BD6441BD5941700B7EF3E /* DReward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD6421BD5941700B7EF3E /* DReward.swift */; };
+		68B2A1FC1C3025D00036A03B /* healthykids.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 68B2A1FB1C3025D00036A03B /* healthykids.m4a */; };
 		68B571CB1B73FDD400C35B52 /* newforest.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 68B571CA1B73FDD400C35B52 /* newforest.atlas */; };
 		68BA94FC1B5597F8005D6A64 /* pea.png in Resources */ = {isa = PBXBuildFile; fileRef = 68BA94F91B5597F8005D6A64 /* pea.png */; };
 		68BA94FD1B5597F8005D6A64 /* SPLASH PAGE.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68BA94FA1B5597F8005D6A64 /* SPLASH PAGE.jpg */; };
 		68BA94FE1B5597F8005D6A64 /* SplashscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BA94FB1B5597F8005D6A64 /* SplashscreenView.swift */; };
 		68BA95001B5598FE005D6A64 /* SplashscreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BA94FF1B5598FE005D6A64 /* SplashscreenViewController.swift */; };
+		68D131B41C5175B4001D8115 /* Select-Reward-Button-New-(Yellow).png in Resources */ = {isa = PBXBuildFile; fileRef = 68D131B31C5175B4001D8115 /* Select-Reward-Button-New-(Yellow).png */; };
+		68D131B61C56C60A001D8115 /* DownloadedAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D131B51C56C60A001D8115 /* DownloadedAudioPlayer.swift */; };
+		68D131B81C6144F0001D8115 /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D131B71C6144F0001D8115 /* StartupViewController.swift */; };
 		68D1B5F41BD9784A00233213 /* BackgroundSpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D1B5F31BD9784A00233213 /* BackgroundSpriteNode.swift */; };
 		68D422101C289AE4006CB703 /* ChooseBackgroundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D4220F1C289AE4006CB703 /* ChooseBackgroundController.swift */; };
 		68D7C9D61B52FA89005DFA20 /* Cloud1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D7C9D31B52FA89005DFA20 /* Cloud1View.swift */; };
@@ -336,46 +298,12 @@
 		469AC7A11A44C3B000CDA070 /* SGG_SpineSkin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGG_SpineSkin.m; sourceTree = "<group>"; };
 		469AC7A21A44C3B000CDA070 /* SpineImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpineImport.h; sourceTree = "<group>"; };
 		469AC7C61A505D6300CDA070 /* forestsounds.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = forestsounds.m4a; sourceTree = "<group>"; };
-		469AC7C91A50641900CDA070 /* apricots.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = apricots.m4a; sourceTree = "<group>"; };
-		469AC7CB1A50645400CDA070 /* carrot.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = carrot.m4a; sourceTree = "<group>"; };
-		469AC7CD1A50645F00CDA070 /* mango.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = mango.m4a; sourceTree = "<group>"; };
-		469AC7D11A5064A800CDA070 /* pawpaw.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = pawpaw.m4a; sourceTree = "<group>"; };
-		469AC7D31A5064BC00CDA070 /* peach.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = peach.m4a; sourceTree = "<group>"; };
-		469AC7D51A5064CB00CDA070 /* pumpkin.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = pumpkin.m4a; sourceTree = "<group>"; };
-		469AC7D81A50655F00CDA070 /* banana.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = banana.m4a; sourceTree = "<group>"; };
-		469AC7D91A50655F00CDA070 /* corn.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = corn.m4a; sourceTree = "<group>"; };
-		469AC7DA1A50655F00CDA070 /* lemon.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = lemon.m4a; sourceTree = "<group>"; };
-		469AC7DB1A50655F00CDA070 /* pear.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = pear.m4a; sourceTree = "<group>"; };
-		469AC7DC1A50655F00CDA070 /* pineapple.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = pineapple.m4a; sourceTree = "<group>"; };
-		469AC7DD1A50655F00CDA070 /* yellowapple.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = yellowapple.m4a; sourceTree = "<group>"; };
-		469AC7DE1A50655F00CDA070 /* yellowpepper.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = yellowpepper.m4a; sourceTree = "<group>"; };
 		469AC7E61A506D7300CDA070 /* whenyouenjoy.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = whenyouenjoy.m4a; sourceTree = "<group>"; };
 		469AC7E81A506D8100CDA070 /* aleisagame.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = aleisagame.m4a; sourceTree = "<group>"; };
 		469AC7EA1A506D9200CDA070 /* eachcolour.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = eachcolour.m4a; sourceTree = "<group>"; };
 		469AC7EC1A506D9D00CDA070 /* pickanycolour.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = pickanycolour.m4a; sourceTree = "<group>"; };
 		469AC7EE1A506DAB00CDA070 /* finishthesix.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = finishthesix.m4a; sourceTree = "<group>"; };
 		469AC7F01A50709B00CDA070 /* TERMS-AND-CONDITIONS.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "TERMS-AND-CONDITIONS.jpg"; sourceTree = "<group>"; };
-		469AC7F31A50752300CDA070 /* broccoli.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = broccoli.m4a; sourceTree = "<group>"; };
-		469AC7F41A50752300CDA070 /* sprouts.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sprouts.m4a; sourceTree = "<group>"; };
-		469AC7F51A50752300CDA070 /* cucumber.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = cucumber.m4a; sourceTree = "<group>"; };
-		469AC7F61A50752300CDA070 /* greenapple.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = greenapple.m4a; sourceTree = "<group>"; };
-		469AC7F71A50752300CDA070 /* greengrapes.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = greengrapes.m4a; sourceTree = "<group>"; };
-		469AC7F81A50752300CDA070 /* lime.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = lime.m4a; sourceTree = "<group>"; };
-		469AC7F91A50752300CDA070 /* peas.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = peas.m4a; sourceTree = "<group>"; };
-		469AC8021A50763D00CDA070 /* eggplant.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = eggplant.m4a; sourceTree = "<group>"; };
-		469AC8031A50763D00CDA070 /* blackberry.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = blackberry.m4a; sourceTree = "<group>"; };
-		469AC8041A50763D00CDA070 /* grapes.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = grapes.m4a; sourceTree = "<group>"; };
-		469AC8051A50763D00CDA070 /* olives.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = olives.m4a; sourceTree = "<group>"; };
-		469AC8061A50763D00CDA070 /* plum.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = plum.m4a; sourceTree = "<group>"; };
-		469AC8071A50763D00CDA070 /* redcabbage.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = redcabbage.m4a; sourceTree = "<group>"; };
-		469AC8081A50763D00CDA070 /* raisins.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = raisins.m4a; sourceTree = "<group>"; };
-		469AC8111A50789500CDA070 /* whitecabbage.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = whitecabbage.m4a; sourceTree = "<group>"; };
-		469AC8121A50789500CDA070 /* cauliflower.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = cauliflower.m4a; sourceTree = "<group>"; };
-		469AC8131A50789500CDA070 /* chicken.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = chicken.m4a; sourceTree = "<group>"; };
-		469AC8141A50789500CDA070 /* dates.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = dates.m4a; sourceTree = "<group>"; };
-		469AC8151A50789500CDA070 /* lentils.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = lentils.m4a; sourceTree = "<group>"; };
-		469AC8161A50789500CDA070 /* nuts.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = nuts.m4a; sourceTree = "<group>"; };
-		469AC8171A50789500CDA070 /* potato.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = potato.m4a; sourceTree = "<group>"; };
 		46AE6C0319E970F0000238F4 /* rainbow-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "rainbow-background.jpg"; sourceTree = "<group>"; };
 		46AE6C0619E97183000238F4 /* mountainstrees.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mountainstrees.jpg; sourceTree = "<group>"; };
 		46AE6C0819E97263000238F4 /* rainbow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rainbow.png; sourceTree = "<group>"; };
@@ -399,13 +327,6 @@
 		46AE6C2719EAB24F000238F4 /* RED.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = RED.m4a; sourceTree = "<group>"; };
 		46AE6C2819EAB24F000238F4 /* YELLOW.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = YELLOW.m4a; sourceTree = "<group>"; };
 		46AE6C2919EAB24F000238F4 /* YESIHAVEEATEN.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = YESIHAVEEATEN.m4a; sourceTree = "<group>"; };
-		46AE6C3319EAB5CE000238F4 /* apple.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = apple.m4a; sourceTree = "<group>"; };
-		46AE6C3519EAB754000238F4 /* cherry.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = cherry.m4a; sourceTree = "<group>"; };
-		46AE6C3619EAB754000238F4 /* raspberry.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = raspberry.m4a; sourceTree = "<group>"; };
-		46AE6C3719EAB754000238F4 /* redpepper.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = redpepper.m4a; sourceTree = "<group>"; };
-		46AE6C3819EAB754000238F4 /* strawberry.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = strawberry.m4a; sourceTree = "<group>"; };
-		46AE6C3919EAB754000238F4 /* tomato.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = tomato.m4a; sourceTree = "<group>"; };
-		46AE6C3A19EAB754000238F4 /* watermelon.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = watermelon.m4a; sourceTree = "<group>"; };
 		46AE6C4119EAC804000238F4 /* REWARDS-BOX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "REWARDS-BOX.png"; sourceTree = "<group>"; };
 		46AE6C4819EAF773000238F4 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		46AE6C4A19EB234C000238F4 /* FoodPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPageViewController.swift; sourceTree = "<group>"; };
@@ -486,7 +407,6 @@
 		686CC18B1BBFD996003AA2C2 /* FoodRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodRepository.swift; sourceTree = "<group>"; };
 		686CC18D1BC123E1003AA2C2 /* UnitOfWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitOfWork.swift; sourceTree = "<group>"; };
 		686CC18F1BC1AD92003AA2C2 /* AnimationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationRepository.swift; sourceTree = "<group>"; };
-		68774A111ABD90B70001CA32 /* healthykids.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = healthykids.wav; sourceTree = "<group>"; };
 		687BDB5F1BE7F31000735B9D /* InAppPurchaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchaseManager.swift; sourceTree = "<group>"; };
 		687BDB611BE80CB300735B9D /* settingscog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingscog.png; sourceTree = "<group>"; };
 		687BDB631BE8112C00735B9D /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
@@ -508,12 +428,16 @@
 		689BD6411BD5941700B7EF3E /* DReward+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DReward+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		689BD6421BD5941700B7EF3E /* DReward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DReward.swift; sourceTree = "<group>"; };
 		68AE6C9F1BFBD16200B64622 /* AleModel 12.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 12.xcdatamodel"; sourceTree = "<group>"; };
+		68B2A1FB1C3025D00036A03B /* healthykids.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = healthykids.m4a; sourceTree = "<group>"; };
 		68B571CA1B73FDD400C35B52 /* newforest.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = newforest.atlas; sourceTree = "<group>"; };
 		68BA94F91B5597F8005D6A64 /* pea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pea.png; sourceTree = "<group>"; };
 		68BA94FA1B5597F8005D6A64 /* SPLASH PAGE.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "SPLASH PAGE.jpg"; sourceTree = "<group>"; };
 		68BA94FB1B5597F8005D6A64 /* SplashscreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashscreenView.swift; sourceTree = "<group>"; };
 		68BA94FF1B5598FE005D6A64 /* SplashscreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashscreenViewController.swift; sourceTree = "<group>"; };
 		68C003DD1BD81F3B00D54DEA /* AleModel 10.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 10.xcdatamodel"; sourceTree = "<group>"; };
+		68D131B31C5175B4001D8115 /* Select-Reward-Button-New-(Yellow).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Select-Reward-Button-New-(Yellow).png"; sourceTree = "<group>"; };
+		68D131B51C56C60A001D8115 /* DownloadedAudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadedAudioPlayer.swift; sourceTree = "<group>"; };
+		68D131B71C6144F0001D8115 /* StartupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
 		68D1B5F31BD9784A00233213 /* BackgroundSpriteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundSpriteNode.swift; sourceTree = "<group>"; };
 		68D4220F1C289AE4006CB703 /* ChooseBackgroundController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseBackgroundController.swift; sourceTree = "<group>"; };
 		68D7C9D31B52FA89005DFA20 /* Cloud1View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cloud1View.swift; sourceTree = "<group>"; };
@@ -599,6 +523,7 @@
 		464F702418A019EF00DDA449 = {
 			isa = PBXGroup;
 			children = (
+				68D131B51C56C60A001D8115 /* DownloadedAudioPlayer.swift */,
 				682DB2861BA6011D00050F13 /* AleApi.swift */,
 				68BA94F71B5597F8005D6A64 /* splashscreen */,
 				686546D91B54483D009FF566 /* Podfile */,
@@ -691,6 +616,7 @@
 				687BDB691BE95D5100735B9D /* FoodSelectCell.swift */,
 				687BDB6B1BE95E4100735B9D /* ChooseFoodController.swift */,
 				68D4220F1C289AE4006CB703 /* ChooseBackgroundController.swift */,
+				68D131B71C6144F0001D8115 /* StartupViewController.swift */,
 			);
 			path = "Appy Little Eaters";
 			sourceTree = "<group>";
@@ -799,75 +725,6 @@
 			path = SpineImporter;
 			sourceTree = "<group>";
 		};
-		469AC7C81A50640700CDA070 /* orange */ = {
-			isa = PBXGroup;
-			children = (
-				469AC7D51A5064CB00CDA070 /* pumpkin.m4a */,
-				469AC7D31A5064BC00CDA070 /* peach.m4a */,
-				469AC7D11A5064A800CDA070 /* pawpaw.m4a */,
-				469AC7CD1A50645F00CDA070 /* mango.m4a */,
-				469AC7CB1A50645400CDA070 /* carrot.m4a */,
-				469AC7C91A50641900CDA070 /* apricots.m4a */,
-			);
-			name = orange;
-			sourceTree = "<group>";
-		};
-		469AC7D71A50653800CDA070 /* yellow */ = {
-			isa = PBXGroup;
-			children = (
-				469AC7D81A50655F00CDA070 /* banana.m4a */,
-				469AC7D91A50655F00CDA070 /* corn.m4a */,
-				469AC7DA1A50655F00CDA070 /* lemon.m4a */,
-				469AC7DB1A50655F00CDA070 /* pear.m4a */,
-				469AC7DC1A50655F00CDA070 /* pineapple.m4a */,
-				469AC7DD1A50655F00CDA070 /* yellowapple.m4a */,
-				469AC7DE1A50655F00CDA070 /* yellowpepper.m4a */,
-			);
-			name = yellow;
-			sourceTree = "<group>";
-		};
-		469AC7F21A5074FE00CDA070 /* green */ = {
-			isa = PBXGroup;
-			children = (
-				469AC7F31A50752300CDA070 /* broccoli.m4a */,
-				469AC7F41A50752300CDA070 /* sprouts.m4a */,
-				469AC7F51A50752300CDA070 /* cucumber.m4a */,
-				469AC7F61A50752300CDA070 /* greenapple.m4a */,
-				469AC7F71A50752300CDA070 /* greengrapes.m4a */,
-				469AC7F81A50752300CDA070 /* lime.m4a */,
-				469AC7F91A50752300CDA070 /* peas.m4a */,
-			);
-			name = green;
-			sourceTree = "<group>";
-		};
-		469AC8011A50760200CDA070 /* purple */ = {
-			isa = PBXGroup;
-			children = (
-				469AC8021A50763D00CDA070 /* eggplant.m4a */,
-				469AC8031A50763D00CDA070 /* blackberry.m4a */,
-				469AC8041A50763D00CDA070 /* grapes.m4a */,
-				469AC8051A50763D00CDA070 /* olives.m4a */,
-				469AC8061A50763D00CDA070 /* plum.m4a */,
-				469AC8071A50763D00CDA070 /* redcabbage.m4a */,
-				469AC8081A50763D00CDA070 /* raisins.m4a */,
-			);
-			name = purple;
-			sourceTree = "<group>";
-		};
-		469AC8101A50786A00CDA070 /* white */ = {
-			isa = PBXGroup;
-			children = (
-				469AC8111A50789500CDA070 /* whitecabbage.m4a */,
-				469AC8121A50789500CDA070 /* cauliflower.m4a */,
-				469AC8131A50789500CDA070 /* chicken.m4a */,
-				469AC8141A50789500CDA070 /* dates.m4a */,
-				469AC8151A50789500CDA070 /* lentils.m4a */,
-				469AC8161A50789500CDA070 /* nuts.m4a */,
-				469AC8171A50789500CDA070 /* potato.m4a */,
-			);
-			name = white;
-			sourceTree = "<group>";
-		};
 		46AE6BFF19E96F5F000238F4 /* Rainbow */ = {
 			isa = PBXGroup;
 			children = (
@@ -889,20 +746,6 @@
 				46AE6C0319E970F0000238F4 /* rainbow-background.jpg */,
 			);
 			name = Rainbow;
-			sourceTree = "<group>";
-		};
-		46AE6C3219EAB5C1000238F4 /* red */ = {
-			isa = PBXGroup;
-			children = (
-				46AE6C3519EAB754000238F4 /* cherry.m4a */,
-				46AE6C3619EAB754000238F4 /* raspberry.m4a */,
-				46AE6C3719EAB754000238F4 /* redpepper.m4a */,
-				46AE6C3819EAB754000238F4 /* strawberry.m4a */,
-				46AE6C3919EAB754000238F4 /* tomato.m4a */,
-				46AE6C3A19EAB754000238F4 /* watermelon.m4a */,
-				46AE6C3319EAB5CE000238F4 /* apple.m4a */,
-			);
-			name = red;
 			sourceTree = "<group>";
 		};
 		46C440D91A02F27500C1A6BE /* ManagedObjects */ = {
@@ -964,13 +807,7 @@
 		46E7C7F41988380E00CE7AB3 /* audio */ = {
 			isa = PBXGroup;
 			children = (
-				469AC8101A50786A00CDA070 /* white */,
-				469AC8011A50760200CDA070 /* purple */,
-				469AC7F21A5074FE00CDA070 /* green */,
-				469AC7D71A50653800CDA070 /* yellow */,
-				469AC7C81A50640700CDA070 /* orange */,
 				469AC7C61A505D6300CDA070 /* forestsounds.m4a */,
-				46AE6C3219EAB5C1000238F4 /* red */,
 				46AE6C2219EAB24F000238F4 /* BROWN.m4a */,
 				46AE6C2319EAB24F000238F4 /* GREEN.m4a */,
 				46AE6C2419EAB24F000238F4 /* NOIHAVENOTEATEN.m4a */,
@@ -991,7 +828,7 @@
 		46E7C7F51988381500CE7AB3 /* social */ = {
 			isa = PBXGroup;
 			children = (
-				68774A111ABD90B70001CA32 /* healthykids.wav */,
+				68B2A1FB1C3025D00036A03B /* healthykids.m4a */,
 				469AC7EE1A506DAB00CDA070 /* finishthesix.m4a */,
 				469AC7EC1A506D9D00CDA070 /* pickanycolour.m4a */,
 				469AC7EA1A506D9200CDA070 /* eachcolour.m4a */,
@@ -1025,6 +862,7 @@
 		680993861C08F5A9002AAD87 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				68D131B31C5175B4001D8115 /* Select-Reward-Button-New-(Yellow).png */,
 				686316411C14CDA700F8BB74 /* Buy-Complete-Food-Selection.png */,
 				686316421C14CDA700F8BB74 /* Check-for-Updates.png */,
 				686316431C14CDA700F8BB74 /* Choose-Foods-to-Eat.png */,
@@ -1193,63 +1031,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				4615CCEE19D1F5C5007994EC /* green-background.jpg in Resources */,
-				469AC8091A50763D00CDA070 /* eggplant.m4a in Resources */,
-				469AC7E31A50655F00CDA070 /* pineapple.m4a in Resources */,
 				4645B12819D9E66700974B39 /* social-story6.png in Resources */,
 				684319EF1B5EDE9100A622E8 /* greenband-white.png in Resources */,
-				469AC7E51A50655F00CDA070 /* yellowpepper.m4a in Resources */,
 				4615CCF219D1F5C5007994EC /* white-background.jpg in Resources */,
 				4642607019F462610028C878 /* weblink_03.png in Resources */,
 				688D20351C28A1C4005977B6 /* planet.atlas in Resources */,
 				4615CCEF19D1F5C5007994EC /* orange-background.jpg in Resources */,
+				68D131B41C5175B4001D8115 /* Select-Reward-Button-New-(Yellow).png in Resources */,
 				46AE6C1D19EAA2F5000238F4 /* myfoodrainbow.m4a in Resources */,
-				469AC7FD1A50752300CDA070 /* greenapple.m4a in Resources */,
 				46E7C7BB19850C0B00CE7AB3 /* start-button_06.png in Resources */,
 				4626D5E51A0FAE8200D0FB24 /* drop1.png in Resources */,
-				469AC81B1A50789500CDA070 /* dates.m4a in Resources */,
 				46AE6C0B19E972B6000238F4 /* rainbow-foreground.png in Resources */,
 				46AE6C1719E9777A000238F4 /* yellowband.png in Resources */,
-				469AC7FC1A50752300CDA070 /* cucumber.m4a in Resources */,
 				684319EE1B5EDE9100A622E8 /* brownband-white.png in Resources */,
 				46E7C7D91985487A00CE7AB3 /* home-clouds.png in Resources */,
-				469AC7CE1A50645F00CDA070 /* mango.m4a in Resources */,
-				469AC7CC1A50645400CDA070 /* carrot.m4a in Resources */,
 				46AE6C1B19EAA26F000238F4 /* intro.m4a in Resources */,
-				469AC8001A50752300CDA070 /* peas.m4a in Resources */,
 				686316491C14CDA800F8BB74 /* Check-for-Updates.png in Resources */,
 				4645B12619D9E66700974B39 /* social-story4.png in Resources */,
-				469AC7E21A50655F00CDA070 /* pear.m4a in Resources */,
-				46AE6C3F19EAB754000238F4 /* tomato.m4a in Resources */,
 				46E7C7D4198545F500CE7AB3 /* home-rainbow.png in Resources */,
 				4626D5E91A0FCB8700D0FB24 /* smoke.png in Resources */,
-				469AC7FE1A50752300CDA070 /* greengrapes.m4a in Resources */,
 				68B571CB1B73FDD400C35B52 /* newforest.atlas in Resources */,
 				4626D5EF1A0FD27A00D0FB24 /* bokeh.png in Resources */,
 				46E7C7EE1986E4CD00CE7AB3 /* social-background.jpg in Resources */,
-				469AC81D1A50789500CDA070 /* nuts.m4a in Resources */,
-				46AE6C3C19EAB754000238F4 /* raspberry.m4a in Resources */,
 				46E7C7DA1985487A00CE7AB3 /* home-logo.png in Resources */,
 				680993961C08F64E002AAD87 /* Watercolour Background.jpg in Resources */,
 				684319F01B5EDE9100A622E8 /* purpleband-white.png in Resources */,
 				469AC7EB1A506D9200CDA070 /* eachcolour.m4a in Resources */,
-				469AC7FF1A50752300CDA070 /* lime.m4a in Resources */,
 				46E8D18319F3BAEA00AEF750 /* PARENTS-PAGE-1.png in Resources */,
 				469AC7EF1A506DAB00CDA070 /* finishthesix.m4a in Resources */,
 				4642607819F4626D0028C878 /* PARENTS-PAGE5.png in Resources */,
-				469AC7D21A5064A800CDA070 /* pawpaw.m4a in Resources */,
 				4642607619F4626D0028C878 /* PARENTS-PAGE-3.png in Resources */,
 				4645B12019D9E2A400974B39 /* social-story1.png in Resources */,
 				461C64FE1A90EF680084B8B2 /* redband-white.png in Resources */,
 				46AE6C3119EAB24F000238F4 /* YESIHAVEEATEN.m4a in Resources */,
-				469AC80A1A50763D00CDA070 /* blackberry.m4a in Resources */,
-				469AC8181A50789500CDA070 /* whitecabbage.m4a in Resources */,
 				469846ED19D85A6100617FCE /* reward-done.png in Resources */,
 				4645B12719D9E66700974B39 /* social-story5.png in Resources */,
 				46E7C7D1198545F500CE7AB3 /* home-background.jpg in Resources */,
 				686316481C14CDA700F8BB74 /* Buy-Complete-Food-Selection.png in Resources */,
-				469AC7E41A50655F00CDA070 /* yellowapple.m4a in Resources */,
-				469AC81C1A50789500CDA070 /* lentils.m4a in Resources */,
-				469AC80B1A50763D00CDA070 /* grapes.m4a in Resources */,
 				46AE6C4219EAC804000238F4 /* REWARDS-BOX.png in Resources */,
 				6863164A1C14CDA800F8BB74 /* Choose-Foods-to-Eat.png in Resources */,
 				46AE6C2A19EAB24F000238F4 /* BROWN.m4a in Resources */,
@@ -1258,42 +1076,31 @@
 				46AE6C1319E9777A000238F4 /* greenband.png in Resources */,
 				4626D5E31A0E9C6A00D0FB24 /* spark.png in Resources */,
 				46E7C7F81988382C00CE7AB3 /* eatinghealthyfoods2.m4a in Resources */,
-				469AC80D1A50763D00CDA070 /* plum.m4a in Resources */,
 				46E7C7F11986E4CD00CE7AB3 /* social-story2.png in Resources */,
 				46AE6C1419E9777A000238F4 /* orangeband.png in Resources */,
-				469AC80C1A50763D00CDA070 /* olives.m4a in Resources */,
 				469AC7F11A50709B00CDA070 /* TERMS-AND-CONDITIONS.jpg in Resources */,
 				68D7C9F31B53019B005DFA20 /* cloud2.png in Resources */,
 				46E8D17E19F3B97000AEF750 /* PARENTS-PAGE-back_06.png in Resources */,
 				464F704718A019F000DDA449 /* Main_iPad.storyboard in Resources */,
 				46E7C7D2198545F500CE7AB3 /* home-forest.png in Resources */,
-				469AC7FA1A50752300CDA070 /* broccoli.m4a in Resources */,
-				469AC80F1A50763D00CDA070 /* raisins.m4a in Resources */,
 				46AE6C3019EAB24F000238F4 /* YELLOW.m4a in Resources */,
 				4615CCF019D1F5C5007994EC /* purple-background.jpg in Resources */,
 				469846E819D8481400617FCE /* reward-background.jpg in Resources */,
 				46E15DAF1A066C7700B5BAE1 /* rewards.csv in Resources */,
 				46E8D17F19F3B97000AEF750 /* PARENTS-PAGE-next_03.png in Resources */,
 				4615CCF119D1F5C5007994EC /* red-background.jpg in Resources */,
-				46AE6C3B19EAB754000238F4 /* cherry.m4a in Resources */,
 				464F704C18A019F000DDA449 /* Images.xcassets in Resources */,
 				4642607719F4626D0028C878 /* PARENTS-PAGE4.png in Resources */,
-				469AC81E1A50789500CDA070 /* potato.m4a in Resources */,
 				6863164D1C14CDA800F8BB74 /* Set-Special-Rewards.png in Resources */,
 				46AE6C2F19EAB24F000238F4 /* RED.m4a in Resources */,
-				469AC7FB1A50752300CDA070 /* sprouts.m4a in Resources */,
 				46AE6C2E19EAB24F000238F4 /* PURPLE.m4a in Resources */,
 				46E7C7BD19850C0B00CE7AB3 /* start-background.jpg in Resources */,
-				68774A121ABD90B70001CA32 /* healthykids.wav in Resources */,
 				46E7C7D5198545F500CE7AB3 /* home-story.png in Resources */,
 				46AE6C2C19EAB24F000238F4 /* NOIHAVENOTEATEN.m4a in Resources */,
 				46AE6C0719E97183000238F4 /* mountainstrees.jpg in Resources */,
-				46AE6C3419EAB5CE000238F4 /* apple.m4a in Resources */,
 				4645B12A19D9E66700974B39 /* social-story8.png in Resources */,
 				46E7C7BC19850C0B00CE7AB3 /* start-face_03.png in Resources */,
-				469AC7CA1A50641900CDA070 /* apricots.m4a in Resources */,
 				687BDB621BE80CB400735B9D /* settingscog.png in Resources */,
-				469AC7E01A50655F00CDA070 /* corn.m4a in Resources */,
 				46AE6C1519E9777A000238F4 /* purpleband.png in Resources */,
 				4642607519F4626D0028C878 /* PARENTS-PAGE-2.png in Resources */,
 				4645B12919D9E66700974B39 /* social-story7.png in Resources */,
@@ -1301,7 +1108,6 @@
 				68BA94FC1B5597F8005D6A64 /* pea.png in Resources */,
 				469AC7E91A506D8100CDA070 /* aleisagame.m4a in Resources */,
 				46AE6C2D19EAB24F000238F4 /* ORANGE.m4a in Resources */,
-				46AE6C4019EAB754000238F4 /* watermelon.m4a in Resources */,
 				46E7C7F01986E4CD00CE7AB3 /* social-next.png in Resources */,
 				469AC7E71A506D7300CDA070 /* whenyouenjoy.m4a in Resources */,
 				6863164C1C14CDA800F8BB74 /* Reset-&-Download-All-Content.png in Resources */,
@@ -1309,19 +1115,14 @@
 				4642606E19F462610028C878 /* facebook_03.png in Resources */,
 				68D7C9D71B52FA89005DFA20 /* cloud1.png in Resources */,
 				461441A619D7081C00CB5A3E /* no.png in Resources */,
-				46AE6C3E19EAB754000238F4 /* strawberry.m4a in Resources */,
 				46E7C7D3198545F500CE7AB3 /* home-parents.png in Resources */,
-				469AC7E11A50655F00CDA070 /* lemon.m4a in Resources */,
-				469AC7D61A5064CB00CDA070 /* pumpkin.m4a in Resources */,
 				4615CCF319D1F5C5007994EC /* yellow-background.jpg in Resources */,
-				469AC80E1A50763D00CDA070 /* redcabbage.m4a in Resources */,
 				684319F11B5EDE9100A622E8 /* yellowband-white.png in Resources */,
 				46AE6C1F19EAA7C3000238F4 /* yummyfoods.m4a in Resources */,
-				469AC7D41A5064BC00CDA070 /* peach.m4a in Resources */,
 				469AC7ED1A506D9D00CDA070 /* pickanycolour.m4a in Resources */,
 				46E7C7EF1986E4CD00CE7AB3 /* social-home.png in Resources */,
 				6863164B1C14CDA800F8BB74 /* Clear-All-Rewards.png in Resources */,
-				469AC81A1A50789500CDA070 /* chicken.m4a in Resources */,
+				68B2A1FC1C3025D00036A03B /* healthykids.m4a in Resources */,
 				46E7C7F3198830A600CE7AB3 /* social-story3.png in Resources */,
 				461441A719D7081C00CB5A3E /* yes.png in Resources */,
 				68BA94FD1B5597F8005D6A64 /* SPLASH PAGE.jpg in Resources */,
@@ -1329,14 +1130,11 @@
 				4642606F19F462610028C878 /* pinit_03.png in Resources */,
 				46AE6C1219E9777A000238F4 /* brownband.png in Resources */,
 				684319E91B5EDA6F00A622E8 /* orangeband-white.png in Resources */,
-				469AC8191A50789500CDA070 /* cauliflower.m4a in Resources */,
 				46AE6C2119EAAEA5000238F4 /* uke1_01.m4a in Resources */,
 				6863164E1C14CDA800F8BB74 /* Settings-Banner.png in Resources */,
-				46AE6C3D19EAB754000238F4 /* redpepper.m4a in Resources */,
 				46AE6C1619E9777A000238F4 /* redband.png in Resources */,
 				464F704418A019F000DDA449 /* Main_iPhone.storyboard in Resources */,
 				46E7C7F91988382C00CE7AB3 /* goodfoodmakes2.m4a in Resources */,
-				469AC7DF1A50655F00CDA070 /* banana.m4a in Resources */,
 				680993951C08F64E002AAD87 /* Settings-Icon.png in Resources */,
 				46E7C7D6198545F500CE7AB3 /* home-yummyfoods.png in Resources */,
 				469AC7C71A50606C00CDA070 /* forestsounds.m4a in Resources */,
@@ -1427,6 +1225,7 @@
 				46E8D17219F2B48000AEF750 /* FoodCell.swift in Sources */,
 				46E7C7CA1985114D00CE7AB3 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				4642608119F598B80028C878 /* Forest.swift in Sources */,
+				68D131B61C56C60A001D8115 /* DownloadedAudioPlayer.swift in Sources */,
 				46E48BC118A80E66006DCA91 /* CHomeIconView.m in Sources */,
 				686CC18C1BBFD996003AA2C2 /* FoodRepository.swift in Sources */,
 				687BDB601BE7F31000735B9D /* InAppPurchaseManager.swift in Sources */,
@@ -1458,6 +1257,7 @@
 				469AC7A41A44C3B000CDA070 /* SGG_SkinSprite.m in Sources */,
 				46E8D17419F2B81600AEF750 /* FoodPagePageViewController.swift in Sources */,
 				687BDB641BE8112C00735B9D /* SettingsController.swift in Sources */,
+				68D131B81C6144F0001D8115 /* StartupViewController.swift in Sources */,
 				68034D221BC460ED00E1951B /* RewardPoolRepository.swift in Sources */,
 				687BDB6C1BE95E4100735B9D /* ChooseFoodController.swift in Sources */,
 				4642606A19F45F600028C878 /* ParentsPageViewController.swift in Sources */,

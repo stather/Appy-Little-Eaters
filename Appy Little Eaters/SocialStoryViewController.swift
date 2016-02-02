@@ -66,7 +66,7 @@ public class SocialStoryViewController : UIViewController{
 			break;
 		case 3:
 			self.storyImage.image = UIImage(named: "social-story3.png")
-			player = ResourceAudioPlayer(fromName: "healthykids2")
+			player = ResourceAudioPlayer(fromName: "healthykids")
 			player.play()
 			break;
 		case 4:

@@ -16,5 +16,6 @@ public class FoodCell : UICollectionViewCell{
 	}
 	
 	@IBOutlet weak var foodImage:UIImageView!
+    @IBOutlet weak var FoodLabel: UILabel!
 	
 }
