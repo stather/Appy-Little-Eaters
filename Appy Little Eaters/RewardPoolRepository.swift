@@ -35,6 +35,12 @@ public class RewardPoolRepository{
         return results
     }
     
+    func getAllRewardsInPool(forScene:String) -> [DRewardPool!]{
+        let fetchByName = managedObjectModel?.fetchRequestFromTemplateWithName("FetchRewardPoolByScene", substitutionVariables: ["SCENE":forScene])
+        let rewards = try! _managedObjectContext.executeFetchRequest(fetchByName!) as! [DRewardPool]
+        return rewards
+    }
+    
     func deleteReward(reward:DRewardPool){
         _managedObjectContext.deleteObject(reward)
     }

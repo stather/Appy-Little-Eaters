@@ -32,8 +32,24 @@ class SettingsController: UIViewController, InAppPurchaseDelegate {
     @IBAction func FillTheForest(sender: AnyObject) {
         let uow = UnitOfWork()
         uow.rewardRepository?.deleteAllRewards()
-        let allRewardsInPool = uow.rewardPoolRepository?.getAllRewardsInPool()
         
+        let back = NSUserDefaults.standardUserDefaults().integerForKey("backgroundId")
+        var backName:String
+        switch back{
+        case 0:
+            backName = "Magic Forest"
+            break
+        case 1:
+            backName = "Magic Planet"
+            break
+        default:
+            backName = "Magic Forest"
+            break
+        
+        }
+        
+        let allRewardsInPool = uow.rewardPoolRepository?.getAllRewardsInPool(backName)
+
         for item in allRewardsInPool!{
             let reward = uow.rewardRepository?.createNewReward()
             

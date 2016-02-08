@@ -30,6 +30,7 @@ public class ForestScene : SKScene{
     public var edgeOffest:Float!
 	
 	var _speed:Float!
+    static var debugRewardCounter = 0
 		
 	
 	override public func didMoveToView(view: SKView) {
@@ -160,6 +161,7 @@ public class ForestScene : SKScene{
 					mp.moveBy(Float(_dt))
 				}
 			}
+            let b = 27
 		}
 		//frog.splash(_dt)
 //		if count > 0{
@@ -278,18 +280,32 @@ public class ForestScene : SKScene{
     
 	func createSceneContents(){
         let uow = UnitOfWork()
+        var counter = 0
         
 		for item in (uow.rewardRepository?.getAllRewards())!{
-            let animationName = item.animationName
-            let rewardName = item.rewardName
-            let anim = AnimatedSprite(withAnimationName: animationName!, rewardName: rewardName!)
-            let op = CGPoint(x: Double(item.positionX!), y: Double(item.positionY!))
-            let fp = forestPoint(op)
-            anim.position = fp
-            anim.xScale = CGFloat(item.scale!)
-            anim.yScale = CGFloat(item.scale!)
-			addChild(anim)
+            if true || counter == ForestScene.debugRewardCounter {
+                ForestScene.debugRewardCounter++
+                let animationName = item.animationName
+                print("################ Animation:" + animationName!)
+                if animationName == "...RocketAnimation"{
+                    counter++
+                    continue
+                }
+                let rewardName = item.rewardName
+                let anim = AnimatedSprite(withAnimationName: animationName!, rewardName: rewardName!)
+                let op = CGPoint(x: Double(item.positionX!), y: Double(item.positionY!))
+                let fp = forestPoint(op)
+                anim.position = fp
+                anim.xScale = CGFloat(item.scale!)
+                anim.yScale = CGFloat(item.scale!)
+                addChild(anim)
+                if false{
+                    return
+                }
+            }
+            counter++
 		}
+        let a = 27
 	}
 	
 	public func restart(mass:Float, velocity:Float){

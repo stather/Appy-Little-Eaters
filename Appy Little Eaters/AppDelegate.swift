@@ -217,6 +217,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 dRewardPool.positionX = reward.x
                 dRewardPool.positionY = reward.y
                 dRewardPool.scale = reward.scale
+                dRewardPool.scene = reward.scene
                 uow.saveChanges()
                 i += 1
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in

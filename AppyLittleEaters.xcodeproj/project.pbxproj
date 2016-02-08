@@ -385,6 +385,7 @@
 		681ADB9D1BBB2C88009146C2 /* AleModel 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 6.xcdatamodel"; sourceTree = "<group>"; };
 		681ADB9E1BBB2FF9009146C2 /* DAnimation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DAnimation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		681ADB9F1BBB2FF9009146C2 /* DAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAnimation.swift; sourceTree = "<group>"; };
+		681C2BBA1C67E358004FFE98 /* AleModel 14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 14.xcdatamodel"; sourceTree = "<group>"; };
 		682DB2861BA6011D00050F13 /* AleApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AleApi.swift; sourceTree = "<group>"; };
 		682DB2881BA6148900050F13 /* ImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		682DB28A1BA7583100050F13 /* AleModel 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 5.xcdatamodel"; sourceTree = "<group>"; };
@@ -1548,6 +1549,7 @@
 		46C440D11A02F12700C1A6BE /* AleModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				681C2BBA1C67E358004FFE98 /* AleModel 14.xcdatamodel */,
 				686316401C14C9B900F8BB74 /* AleModel 13.xcdatamodel */,
 				68AE6C9F1BFBD16200B64622 /* AleModel 12.xcdatamodel */,
 				687BDB6D1BEA9CDA00735B9D /* AleModel 11.xcdatamodel */,
@@ -1562,7 +1564,7 @@
 				46E15DB01A06710C00B5BAE1 /* AleModel 2.xcdatamodel */,
 				46C440D21A02F12700C1A6BE /* AleModel.xcdatamodel */,
 			);
-			currentVersion = 686316401C14C9B900F8BB74 /* AleModel 13.xcdatamodel */;
+			currentVersion = 681C2BBA1C67E358004FFE98 /* AleModel 14.xcdatamodel */;
 			path = AleModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
