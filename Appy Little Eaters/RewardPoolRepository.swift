@@ -47,8 +47,8 @@ public class RewardPoolRepository{
     
 
     
-    func getAvailableRewardsOrderedByLevel() -> [DRewardPool]{
-        let fetchRequest: NSFetchRequest = managedObjectModel?.fetchRequestTemplateForName("FetchAvailableRewards")?.copy() as! NSFetchRequest
+    func getAvailableRewardsOrderedByLevel(forScene:String) -> [DRewardPool]{
+        let fetchRequest: NSFetchRequest = managedObjectModel?.fetchRequestFromTemplateWithName("FetchAvailableRewards", substitutionVariables: ["SCENE":forScene])?.copy() as! NSFetchRequest
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "level", ascending: true)]
         return (try! _managedObjectContext.executeFetchRequest(fetchRequest)) as! [DRewardPool]
     }

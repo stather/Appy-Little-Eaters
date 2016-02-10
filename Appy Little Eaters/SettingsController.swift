@@ -33,20 +33,7 @@ class SettingsController: UIViewController, InAppPurchaseDelegate {
         let uow = UnitOfWork()
         uow.rewardRepository?.deleteAllRewards()
         
-        let back = NSUserDefaults.standardUserDefaults().integerForKey("backgroundId")
-        var backName:String
-        switch back{
-        case 0:
-            backName = "Magic Forest"
-            break
-        case 1:
-            backName = "Magic Planet"
-            break
-        default:
-            backName = "Magic Forest"
-            break
-        
-        }
+        let backName = SettingsRepository().getCurrentBackground()
         
         let allRewardsInPool = uow.rewardPoolRepository?.getAllRewardsInPool(backName)
 
@@ -74,6 +61,7 @@ class SettingsController: UIViewController, InAppPurchaseDelegate {
     @IBAction func ClearRewards(sender: AnyObject) {
         let uow = UnitOfWork()
         uow.rewardRepository?.deleteAllRewards()
+        uow.rewardPoolRepository?.makeAllRewardsAvailable()
         uow.saveChanges()
     }
     

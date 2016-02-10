@@ -83,7 +83,8 @@ class RewardsPageViewController: UIViewController{
 	
 	override func viewDidLoad() {
         let uow = UnitOfWork()
-        let rewards:[DRewardPool] = (uow.rewardPoolRepository?.getAvailableRewardsOrderedByLevel())!
+        let backName = SettingsRepository().getCurrentBackground()
+        let rewards:[DRewardPool] = (uow.rewardPoolRepository?.getAvailableRewardsOrderedByLevel(backName))!
         
         if rewards.count == 0 {
             let alert = UIAlertController(title: "Rewards", message: "Sorry no more rewards are available", preferredStyle: UIAlertControllerStyle.Alert)
