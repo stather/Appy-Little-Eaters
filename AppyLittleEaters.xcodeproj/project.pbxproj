@@ -146,6 +146,10 @@
 		681ADB9C1BBB1DF3009146C2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 681ADB9B1BBB1DF3009146C2 /* StoreKit.framework */; };
 		681ADBA01BBB2FF9009146C2 /* DAnimation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681ADB9E1BBB2FF9009146C2 /* DAnimation+CoreDataProperties.swift */; };
 		681ADBA11BBB2FF9009146C2 /* DAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681ADB9F1BBB2FF9009146C2 /* DAnimation.swift */; };
+		681AF9ED1C7E484C00039AC8 /* Airplane-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 681AF9EC1C7E484C00039AC8 /* Airplane-01.png */; };
+		681AF9F11C7E492900039AC8 /* SpecialRewardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681AF9F01C7E492900039AC8 /* SpecialRewardViewController.swift */; };
+		681AF9F61C84E22000039AC8 /* Airplane-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 681AF9F41C84E22000039AC8 /* Airplane-01.png */; };
+		681AF9F71C84E22000039AC8 /* ParentsrewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681AF9F51C84E22000039AC8 /* ParentsrewardView.swift */; };
 		681C2BBC1C6BD673004FFE98 /* SettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C2BBB1C6BD673004FFE98 /* SettingsRepository.swift */; };
 		682DB2871BA6011D00050F13 /* AleApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682DB2861BA6011D00050F13 /* AleApi.swift */; };
 		682DB2891BA6148900050F13 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682DB2881BA6148900050F13 /* ImageDownloader.swift */; };
@@ -386,6 +390,10 @@
 		681ADB9D1BBB2C88009146C2 /* AleModel 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 6.xcdatamodel"; sourceTree = "<group>"; };
 		681ADB9E1BBB2FF9009146C2 /* DAnimation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DAnimation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		681ADB9F1BBB2FF9009146C2 /* DAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAnimation.swift; sourceTree = "<group>"; };
+		681AF9EC1C7E484C00039AC8 /* Airplane-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Airplane-01.png"; sourceTree = "<group>"; };
+		681AF9F01C7E492900039AC8 /* SpecialRewardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialRewardViewController.swift; sourceTree = "<group>"; };
+		681AF9F41C84E22000039AC8 /* Airplane-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Airplane-01.png"; sourceTree = "<group>"; };
+		681AF9F51C84E22000039AC8 /* ParentsrewardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentsrewardView.swift; sourceTree = "<group>"; };
 		681C2BBA1C67E358004FFE98 /* AleModel 14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 14.xcdatamodel"; sourceTree = "<group>"; };
 		681C2BBB1C6BD673004FFE98 /* SettingsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsRepository.swift; sourceTree = "<group>"; };
 		682DB2861BA6011D00050F13 /* AleApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AleApi.swift; sourceTree = "<group>"; };
@@ -526,6 +534,8 @@
 		464F702418A019EF00DDA449 = {
 			isa = PBXGroup;
 			children = (
+				681AF9F21C84E22000039AC8 /* parentsanimation */,
+				681AF9F01C7E492900039AC8 /* SpecialRewardViewController.swift */,
 				68D131B51C56C60A001D8115 /* DownloadedAudioPlayer.swift */,
 				682DB2861BA6011D00050F13 /* AleApi.swift */,
 				68BA94F71B5597F8005D6A64 /* splashscreen */,
@@ -865,6 +875,7 @@
 		680993861C08F5A9002AAD87 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				681AF9EC1C7E484C00039AC8 /* Airplane-01.png */,
 				68D131B31C5175B4001D8115 /* Select-Reward-Button-New-(Yellow).png */,
 				686316411C14CDA700F8BB74 /* Buy-Complete-Food-Selection.png */,
 				686316421C14CDA700F8BB74 /* Check-for-Updates.png */,
@@ -877,6 +888,24 @@
 				6809938E1C08F64E002AAD87 /* Watercolour Background.jpg */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		681AF9F21C84E22000039AC8 /* parentsanimation */ = {
+			isa = PBXGroup;
+			children = (
+				681AF9F31C84E22000039AC8 /* images */,
+				681AF9F51C84E22000039AC8 /* ParentsrewardView.swift */,
+			);
+			name = parentsanimation;
+			path = "Appy Little Eaters/parentsanimation";
+			sourceTree = "<group>";
+		};
+		681AF9F31C84E22000039AC8 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				681AF9F41C84E22000039AC8 /* Airplane-01.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 		686CC18A1BBFD968003AA2C2 /* Repositories */ = {
@@ -1082,6 +1111,7 @@
 				46E7C7F81988382C00CE7AB3 /* eatinghealthyfoods2.m4a in Resources */,
 				46E7C7F11986E4CD00CE7AB3 /* social-story2.png in Resources */,
 				46AE6C1419E9777A000238F4 /* orangeband.png in Resources */,
+				681AF9ED1C7E484C00039AC8 /* Airplane-01.png in Resources */,
 				469AC7F11A50709B00CDA070 /* TERMS-AND-CONDITIONS.jpg in Resources */,
 				68D7C9F31B53019B005DFA20 /* cloud2.png in Resources */,
 				46E8D17E19F3B97000AEF750 /* PARENTS-PAGE-back_06.png in Resources */,
@@ -1095,6 +1125,7 @@
 				4615CCF119D1F5C5007994EC /* red-background.jpg in Resources */,
 				464F704C18A019F000DDA449 /* Images.xcassets in Resources */,
 				4642607719F4626D0028C878 /* PARENTS-PAGE4.png in Resources */,
+				681AF9F61C84E22000039AC8 /* Airplane-01.png in Resources */,
 				6863164D1C14CDA800F8BB74 /* Set-Special-Rewards.png in Resources */,
 				46AE6C2F19EAB24F000238F4 /* RED.m4a in Resources */,
 				46AE6C2E19EAB24F000238F4 /* PURPLE.m4a in Resources */,
@@ -1214,6 +1245,7 @@
 				68034D241BC4647500E1951B /* RewardRepository.swift in Sources */,
 				46E8D17619F2C6F500AEF750 /* SocialStoryViewController.swift in Sources */,
 				689BD6391BD27C3F00B7EF3E /* AnimatedSprite.swift in Sources */,
+				681AF9F71C84E22000039AC8 /* ParentsrewardView.swift in Sources */,
 				464F703D18A019F000DDA449 /* main.m in Sources */,
 				469AC7A71A44C3B000CDA070 /* SGG_SpineBoneAction.m in Sources */,
 				689BD63E1BD5764500B7EF3E /* DRewardPool.swift in Sources */,
@@ -1251,6 +1283,7 @@
 				4626D5F41A0FEBBA00D0FB24 /* SplashDrop.swift in Sources */,
 				68D1B5F41BD9784A00233213 /* BackgroundSpriteNode.swift in Sources */,
 				46E7C7C91985114D00CE7AB3 /* TPKeyboardAvoidingTableView.m in Sources */,
+				681AF9F11C7E492900039AC8 /* SpecialRewardViewController.swift in Sources */,
 				68D7C9F11B53018F005DFA20 /* Cloud2View.swift in Sources */,
 				682DB2891BA6148900050F13 /* ImageDownloader.swift in Sources */,
 				46E1FCC91A2D107B00651193 /* MoveableProtocol.swift in Sources */,

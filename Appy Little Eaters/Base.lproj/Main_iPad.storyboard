@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="FiX-dY-Vvo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="FiX-dY-Vvo">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -433,6 +433,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiB-He-LXw" userLabel="parentsreward">
                                 <rect key="frame" x="697" y="110" width="181" height="161"/>
                                 <state key="normal" title="Button" image="Set-Special-Rewards.png"/>
+                                <connections>
+                                    <segue destination="Lsr-jc-lcd" kind="push" id="aup-ua-9dg"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYV-eQ-dgd" userLabel="buymorefood">
                                 <rect key="frame" x="720" y="545" width="174" height="151"/>
@@ -539,6 +542,45 @@
                 <exit id="EMN-Ja-NBR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-292" y="3369"/>
+        </scene>
+        <!--Parent Reward-->
+        <scene sceneID="beA-80-5fp">
+            <objects>
+                <viewController title="Parent Reward" id="Lsr-jc-lcd" customClass="SpecialRewardViewController" customModule="Appy_Little_Eaters" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qOS-ne-lxf"/>
+                        <viewControllerLayoutGuide type="bottom" id="4y3-bg-mLI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pxo-WX-3Tw">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Watercolour Background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="iiA-EB-6Ky">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Airplane-01.png" translatesAutoresizingMaskIntoConstraints="NO" id="oRT-FV-P9R">
+                                <rect key="frame" x="161" y="161" width="703" height="135"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hbt-OL-hhM">
+                                <rect key="frame" x="389" y="214" width="452" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6A-nx-hQ3">
+                                <rect key="frame" x="815" y="20" width="189" height="104"/>
+                                <state key="normal" image="PARENTS-PAGE-back_06.png"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="CQ3-xz-I2z"/>
+                    <connections>
+                        <outlet property="RewardText" destination="Hbt-OL-hhM" id="nyF-9J-L9Y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H4L-Wb-VfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1535" y="4064"/>
         </scene>
         <!--FoodSettings-->
         <scene sceneID="aL3-Gm-uzl">
@@ -758,7 +800,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reward-background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="qTS-3D-Pb3">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2n-We-nF3" userLabel="Done">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2n-We-nF3" userLabel="Done">
                                 <rect key="frame" x="808" y="20" width="200" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="KQl-2k-dv2"/>
@@ -1026,6 +1068,9 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hKi-uH-hfy" userLabel="cloud2" customClass="Cloud2View" customModule="Appy_Little_Eaters" customModuleProvider="target">
                                 <rect key="frame" x="193" y="20" width="217" height="147"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SB6-tT-7ot" userLabel="plane" customClass="ParentsrewardView" customModule="Appy_Little_Eaters" customModuleProvider="target">
+                                <rect key="frame" x="311" y="-82" width="1115" height="400"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -1041,6 +1086,7 @@
                         <outlet property="Cloud2" destination="hKi-uH-hfy" id="QjU-03-jDd"/>
                         <outlet property="GreenBand" destination="oYI-19-FVq" id="dCs-jc-bqI"/>
                         <outlet property="OrangeBand" destination="7w7-ah-Mb6" id="3nz-Gy-Zpr"/>
+                        <outlet property="Plane" destination="SB6-tT-7ot" id="AnO-CH-9Pn"/>
                         <outlet property="PurpleBand" destination="fhO-Us-1Cq" id="9Yr-i9-2gi"/>
                         <outlet property="RedBand" destination="DGn-L9-S25" id="GVx-vI-0IZ"/>
                         <outlet property="YellowBand" destination="IfM-ce-QkM" id="cDT-FI-8g3"/>
@@ -1211,6 +1257,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Airplane-01.png" width="1115" height="196"/>
         <image name="Buy-Complete-Food-Selection.png" width="250" height="250"/>
         <image name="Check-for-Updates.png" width="250" height="250"/>
         <image name="Choose-Foods-to-Eat.png" width="250" height="250"/>

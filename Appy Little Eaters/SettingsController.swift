@@ -25,6 +25,10 @@ class SettingsController: UIViewController, InAppPurchaseDelegate {
         }
     }
     
+    @IBAction func unwindToSettings(segue: UIStoryboardSegue ){
+        
+    }
+
     @IBAction func resetUser(sender: AnyObject) {
         NSUserDefaults.standardUserDefaults().setBool(false, forKey: "TC_Accepted")
     }
