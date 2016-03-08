@@ -206,25 +206,6 @@
             </objects>
             <point key="canvasLocation" x="-2593" y="1366"/>
         </scene>
-        <!--scroller-->
-        <scene sceneID="38c-jd-so4">
-            <objects>
-                <viewController title="scroller" id="Bcw-Av-uQU" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="r6V-5I-6bV"/>
-                        <viewControllerLayoutGuide type="bottom" id="HRU-xs-y2M"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="VJK-V4-fmi">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="E5C-2w-sOD"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Led-SV-g0r" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-326" y="-370"/>
-        </scene>
         <!--Home Page-->
         <scene sceneID="1WD-mr-c1G">
             <objects>
@@ -291,15 +272,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="home-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Utx-cg-IgP">
                                 <rect key="frame" x="198" y="108" width="629" height="465"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jeJ-l5-GIr">
-                                <rect key="frame" x="886" y="26" width="46" height="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Bcw-Av-uQU" kind="push" id="zPN-CI-bUv"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -569,6 +541,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6A-nx-hQ3">
                                 <rect key="frame" x="815" y="20" width="189" height="104"/>
                                 <state key="normal" image="PARENTS-PAGE-back_06.png"/>
+                                <connections>
+                                    <segue destination="uUz-yK-l3q" kind="unwind" unwindAction="unwindToSettings:" id="Qka-bm-aa5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -579,6 +554,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H4L-Wb-VfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="uUz-yK-l3q" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1535" y="4064"/>
         </scene>
@@ -1313,6 +1289,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="UDV-Xy-o9A"/>
-        <segue reference="Htw-xd-Exa"/>
+        <segue reference="PU9-ck-5gQ"/>
     </inferredMetricsTieBreakers>
 </document>

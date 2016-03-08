@@ -243,11 +243,13 @@ public class RainbowPageViewController: UIViewController{
         Cloud1.addSwayAnimation()
         Cloud2.addSwayAnimation()
         let pview:UIImageView = Plane.viewsByName["Airplane-01"] as! UIImageView
-        let newimage = drawText("Hello world", inImage: pview.image!, atPoint: CGPoint(x: 350,y: 75))
-        pview.image = newimage
-        //Plane.viewsByName["Airplane-01"] = newview
+        let rewardText = NSUserDefaults.standardUserDefaults().stringForKey("SpecialReward")
+        if rewardText != nil && rewardText?.characters.count > 0{
+            let newimage = drawText(rewardText!, inImage: pview.image!, atPoint: CGPoint(x: 350,y: 75))
+            pview.image = newimage
+            Plane.addSwayAnimation()
+        }
         
-        Plane.addSwayAnimation()
 		if (NSUserDefaults.standardUserDefaults().boolForKey("RED")){
 			RedBand.hidden = false
             RedBand.alpha = 1.0
