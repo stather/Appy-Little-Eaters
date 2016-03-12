@@ -320,7 +320,7 @@ public class RainbowPageViewController: UIViewController{
 			theBand.hidden = false
 			theBand.alpha = 1.0
             fillBand(theBand, colour: paintColour)
-			UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.Autoreverse, animations: {UIView.setAnimationRepeatCount(5);self.theBand.alpha = 0;}, completion:{
+			UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.Autoreverse, animations: {UIView.setAnimationRepeatCount(5);self.theBand.alpha = 0;}, completion:{
 				(Bool finished)-> Void in
 				self.allowColouring = true
 				self.theBand.alpha = 1
