@@ -23,6 +23,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <segue destination="IUV-C7-TOK" kind="push" identifier="SplashToStart" id="Aik-fa-2BN"/>
+                        <segue destination="Gqw-aq-bB9" kind="push" identifier="Splash2Home" id="BB4-Vk-ssi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Scg-7K-CAz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1283,7 +1284,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="UDV-Xy-o9A"/>
         <segue reference="PU9-ck-5gQ"/>
+        <segue reference="BB4-Vk-ssi"/>
+        <segue reference="UDV-Xy-o9A"/>
     </inferredMetricsTieBreakers>
 </document>
