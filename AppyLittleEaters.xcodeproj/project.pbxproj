@@ -20,7 +20,6 @@
 		461C64FE1A90EF680084B8B2 /* redband-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 461C64FD1A90EF680084B8B2 /* redband-white.png */; };
 		4620FB8E1983EDCD0063AB9E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4620FB8D1983EDCD0063AB9E /* Crashlytics.framework */; };
 		4626D5E31A0E9C6A00D0FB24 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 4626D5E11A0E9C6A00D0FB24 /* spark.png */; };
-		4626D5E51A0FAE8200D0FB24 /* drop1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4626D5E41A0FAE8200D0FB24 /* drop1.png */; };
 		4626D5E91A0FCB8700D0FB24 /* smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = 4626D5E71A0FCB8700D0FB24 /* smoke.png */; };
 		4626D5EF1A0FD27A00D0FB24 /* bokeh.png in Resources */ = {isa = PBXBuildFile; fileRef = 4626D5ED1A0FD27A00D0FB24 /* bokeh.png */; };
 		4626D5F41A0FEBBA00D0FB24 /* SplashDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626D5F31A0FEBBA00D0FB24 /* SplashDrop.swift */; };
@@ -242,7 +241,6 @@
 		461C64FD1A90EF680084B8B2 /* redband-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redband-white.png"; sourceTree = "<group>"; };
 		4620FB8D1983EDCD0063AB9E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		4626D5E11A0E9C6A00D0FB24 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
-		4626D5E41A0FAE8200D0FB24 /* drop1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drop1.png; sourceTree = "<group>"; };
 		4626D5E71A0FCB8700D0FB24 /* smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke.png; sourceTree = "<group>"; };
 		4626D5ED1A0FD27A00D0FB24 /* bokeh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bokeh.png; sourceTree = "<group>"; };
 		4626D5F31A0FEBBA00D0FB24 /* SplashDrop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashDrop.swift; sourceTree = "<group>"; };
@@ -583,7 +581,6 @@
 				687BDB701BEAAB8400735B9D /* UIView+Glow.h */,
 				687BDB711BEAAB8400735B9D /* UIView+Glow.m */,
 				686CC18A1BBFD968003AA2C2 /* Repositories */,
-				4626D5E41A0FAE8200D0FB24 /* drop1.png */,
 				46C440D91A02F27500C1A6BE /* ManagedObjects */,
 				4642607D19F58E820028C878 /* animations */,
 				46E7C7F41988380E00CE7AB3 /* audio */,
@@ -1073,7 +1070,6 @@
 				68D131B41C5175B4001D8115 /* Select-Reward-Button-New-(Yellow).png in Resources */,
 				46AE6C1D19EAA2F5000238F4 /* myfoodrainbow.m4a in Resources */,
 				46E7C7BB19850C0B00CE7AB3 /* start-button_06.png in Resources */,
-				4626D5E51A0FAE8200D0FB24 /* drop1.png in Resources */,
 				46AE6C0B19E972B6000238F4 /* rainbow-foreground.png in Resources */,
 				46AE6C1719E9777A000238F4 /* yellowband.png in Resources */,
 				684319EE1B5EDE9100A622E8 /* brownband-white.png in Resources */,
