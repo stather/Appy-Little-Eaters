@@ -333,15 +333,6 @@
                                     <action selector="webLinkPressed:" destination="RbU-s2-iag" eventType="touchUpInside" id="c6y-TS-X1Q"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agh-oC-NVQ" userLabel="pinit">
-                                <rect key="frame" x="549" y="617" width="150" height="62"/>
-                                <state key="normal" image="pinit_03.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="pinitPressed:" destination="RbU-s2-iag" eventType="touchUpInside" id="nG5-7w-RrV"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZ8-Ee-O0a" userLabel="facebook">
                                 <rect key="frame" x="707" y="617" width="150" height="62"/>
                                 <state key="normal" image="facebook_03.png">
@@ -376,7 +367,6 @@
                         <outlet property="backButton" destination="bA8-fP-wNy" id="KI9-Kw-OwF"/>
                         <outlet property="facebook" destination="GZ8-Ee-O0a" id="iXr-z4-62F"/>
                         <outlet property="nextButton" destination="LE1-dM-9pg" id="ajr-Bk-Hli"/>
-                        <outlet property="pinit" destination="agh-oC-NVQ" id="uSL-iB-Gls"/>
                         <outlet property="theText" destination="O05-9w-FXh" id="pZU-r4-D3C"/>
                         <outlet property="webLink" destination="5Ml-Ai-GTh" id="YBF-AX-BHa"/>
                     </connections>
@@ -1268,7 +1258,6 @@
         <image name="mountainstrees.jpg" width="2048" height="1536"/>
         <image name="no.png" width="823" height="585"/>
         <image name="orangeband-white.png" width="2048" height="1536"/>
-        <image name="pinit_03.png" width="287" height="133"/>
         <image name="purpleband-white.png" width="2048" height="1536"/>
         <image name="rainbow-background.jpg" width="2048" height="1536"/>
         <image name="rainbow-foreground.png" width="2048" height="1536"/>
