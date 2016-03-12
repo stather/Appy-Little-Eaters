@@ -31,6 +31,11 @@ public class ParentsPageViewController : UIViewController{
 		webLink.hidden = true
 	}
     
+    @IBAction func linkPressed(sender: AnyObject) {
+        if currentPage == 1 {
+            UIApplication.sharedApplication().openURL(NSURL(string: "http://www.readysteadyrainbow.com")!)
+        }
+    }
 	
 	@IBAction func backPressed(sender: AnyObject) {
 		currentPage--
