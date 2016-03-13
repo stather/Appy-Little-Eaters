@@ -21,13 +21,11 @@ public class ParentsPageViewController : UIViewController{
     @IBOutlet weak var animationProgress: UIProgressView!
     @IBOutlet weak var foodProgress: UIProgressView!
     @IBOutlet weak var rewardProgress: UIProgressView!
-	@IBOutlet weak var pinit: UIButton!
 	@IBOutlet weak var facebook: UIButton!
 	@IBOutlet weak var webLink: UIButton!
 	override public func viewDidLoad() {
 		backButton.hidden = true
 		facebook.hidden = true
-		pinit.hidden = true
 		webLink.hidden = true
 	}
     
@@ -64,14 +62,12 @@ public class ParentsPageViewController : UIViewController{
 			theText.image = UIImage(named: "PARENTS-PAGE4.png")
 			nextButton.hidden = false
 			facebook.hidden = true
-			pinit.hidden = true
 			webLink.hidden = true
 			break
 		case 5:
 			theText.image = UIImage(named: "PARENTS-PAGE5.png")
 			nextButton.hidden = true
 			facebook.hidden = false
-			pinit.hidden = false
 			webLink.hidden = false
 			break
 		default:
