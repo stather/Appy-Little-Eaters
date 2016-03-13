@@ -106,7 +106,7 @@ class ParentsrewardView : UIView {
 		let linearTiming = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
 		if let complete = completion {
 			let representativeAnimation = CABasicAnimation(keyPath: "not.a.real.key")
-			representativeAnimation.duration = 7.000
+			representativeAnimation.duration = 14.000
 			representativeAnimation.delegate = self
 			self.layer.addAnimation(representativeAnimation, forKey: "Sway")
 			self.animationCompletions[layer.animationForKey("Sway")!] = complete

@@ -38,6 +38,7 @@ public class RainbowPageViewController: UIViewController{
     var counting:Bool = false
     var segued:Bool = false
     var paintColour:UIColor!
+    var RainbowComplete:Bool = false
 	
     func fillBand(bandView:UIImageView, colour:UIColor){
         let r = bandView.bounds
@@ -141,7 +142,11 @@ public class RainbowPageViewController: UIViewController{
 	@IBAction func RedBandPanned(sender: UIPanGestureRecognizer) {
 		if bandComplete && !segued{
             segued = true
-			performSegueWithIdentifier("RainbowToReward", sender: self);
+            if RainbowComplete {
+                DoThePlane()
+            }else{
+                performSegueWithIdentifier("RainbowToReward", sender: self);
+            }
 			return
 		}
 		if !allowColouring{
@@ -238,10 +243,19 @@ public class RainbowPageViewController: UIViewController{
         
     }
     
-	
-	public override func viewWillAppear(animated: Bool) {
-        Cloud1.addSwayAnimation()
-        Cloud2.addSwayAnimation()
+    func DoThePlane() -> Void {
+        let pview:UIImageView = Plane.viewsByName["Airplane-01"] as! UIImageView
+        let rewardText = NSUserDefaults.standardUserDefaults().stringForKey("SpecialReward")
+        if rewardText != nil && rewardText?.characters.count > 0{
+            let newimage = drawText(rewardText!, inImage: pview.image!, atPoint: CGPoint(x: 350,y: 75))
+            pview.image = newimage
+            Plane.addSwayAnimation({ (Bool) -> Void in
+                self.performSegueWithIdentifier("RainbowToReward", sender: self);
+            })
+        }
+    }
+    
+    func DoThePlaneForever() -> Void {
         let pview:UIImageView = Plane.viewsByName["Airplane-01"] as! UIImageView
         let rewardText = NSUserDefaults.standardUserDefaults().stringForKey("SpecialReward")
         if rewardText != nil && rewardText?.characters.count > 0{
@@ -249,37 +263,56 @@ public class RainbowPageViewController: UIViewController{
             pview.image = newimage
             Plane.addSwayAnimation()
         }
-        
-		if (NSUserDefaults.standardUserDefaults().boolForKey("RED")){
+    }
+    
+	
+	public override func viewWillAppear(animated: Bool) {
+        Cloud1.addSwayAnimation()
+        Cloud2.addSwayAnimation()
+        var NumberOfBands = 0
+
+        if (NSUserDefaults.standardUserDefaults().boolForKey("RED")){
 			RedBand.hidden = false
             RedBand.alpha = 1.0
             fillBand(RedBand, colour: UIColor.redColor())
+            NumberOfBands++
 		}
 		if (NSUserDefaults.standardUserDefaults().boolForKey("ORANGE")){
 			OrangeBand.hidden = false
             OrangeBand.alpha = 1.0
             fillBand(OrangeBand, colour: UIColor.orangeColor())
+            NumberOfBands++
 		}
 		if (NSUserDefaults.standardUserDefaults().boolForKey("YELLOW")){
 			YellowBand.hidden = false
             YellowBand.alpha = 1.0
             fillBand(YellowBand, colour: UIColor.yellowColor())
+            NumberOfBands++
 		}
 		if (NSUserDefaults.standardUserDefaults().boolForKey("GREEN")){
 			GreenBand.hidden = false
             GreenBand.alpha = 1.0
             fillBand(GreenBand, colour: UIColor.greenColor())
+            NumberOfBands++
 		}
 		if (NSUserDefaults.standardUserDefaults().boolForKey("BROWN")){
 			BrownBand.hidden = false
             BrownBand.alpha = 1.0
             fillBand(BrownBand, colour: UIColor.brownColor())
+            NumberOfBands++
 		}
 		if (NSUserDefaults.standardUserDefaults().boolForKey("PURPLE")){
 			PurpleBand.hidden = false
             PurpleBand.alpha = 1.0
             fillBand(PurpleBand, colour: UIColor.purpleColor())
+            NumberOfBands++
 		}
+        if NumberOfBands == 6{
+            RainbowComplete = true
+            if !foodEaten {
+                DoThePlaneForever()
+            }
+        }
 		if (foodEaten){
 			switch colour
 				{
@@ -287,35 +320,56 @@ public class RainbowPageViewController: UIViewController{
 				theBand = RedBand
 				theColour = "RED"
                 paintColour = UIColor.redColor()
+                if (!NSUserDefaults.standardUserDefaults().boolForKey("RED")){
+                    NumberOfBands++;
+                }
 				break;
 			case 1:
 				theBand = OrangeBand
 				theColour = "ORANGE"
                 paintColour = UIColor.orangeColor()
+                if (!NSUserDefaults.standardUserDefaults().boolForKey("ORANGE")){
+                    NumberOfBands++;
+                }
 				break;
 			case 2:
 				theBand = YellowBand
 				theColour = "YELLOW"
                 paintColour = UIColor.yellowColor()
+                if (!NSUserDefaults.standardUserDefaults().boolForKey("YELLOW")){
+                    NumberOfBands++;
+                }
 				break;
 			case 3:
 				theBand = GreenBand
 				theColour = "GREEN"
                 paintColour = UIColor.greenColor()
+                if (!NSUserDefaults.standardUserDefaults().boolForKey("GREEN")){
+                    NumberOfBands++;
+                }
 				break;
 			case 4:
 				theBand = BrownBand
 				theColour = "BROWN"
                 paintColour = UIColor.brownColor()
+                if (!NSUserDefaults.standardUserDefaults().boolForKey("BROWN")){
+                    NumberOfBands++;
+                }
 				break;
 			case 5:
 				theBand = PurpleBand
 				theColour = "PURPLE"
                 paintColour = UIColor.purpleColor()
+                if (!NSUserDefaults.standardUserDefaults().boolForKey("PURPLE")){
+                    NumberOfBands++;
+                }
 				break;
 			default:
 				return;
 			}
+            if NumberOfBands == 6{
+                RainbowComplete = true
+            }
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: theColour as String)
 			theBand.hidden = false
 			theBand.alpha = 1.0
