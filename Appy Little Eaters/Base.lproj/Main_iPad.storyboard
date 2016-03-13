@@ -193,7 +193,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="a1R-Jq-Mba" kind="unwind" unwindAction="unwindFromConfirmationForm:" id="X0b-d6-mrh"/>
+                                    <segue destination="a1R-Jq-Mba" kind="unwind" unwindAction="unwindToStartPage:" id="VKw-O0-qcN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1285,7 +1285,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="PU9-ck-5gQ"/>
-        <segue reference="BB4-Vk-ssi"/>
+        <segue reference="Co3-Fl-RrI"/>
         <segue reference="UDV-Xy-o9A"/>
     </inferredMetricsTieBreakers>
 </document>
