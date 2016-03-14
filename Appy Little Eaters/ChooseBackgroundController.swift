@@ -9,11 +9,13 @@
 import UIKit
 
 class ChooseBackgroundController: UITableViewController {
-
+    var currentScene:Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(false, animated: false)
 
+        currentScene = NSUserDefaults.standardUserDefaults().integerForKey("backgroundId")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -56,9 +58,21 @@ class ChooseBackgroundController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.row{
         case 0:
+            if currentScene != 0 {
+                let uow = UnitOfWork()
+                uow.rewardRepository?.deleteAllRewards()
+                uow.rewardPoolRepository?.makeAllRewardsAvailable()
+                uow.saveChanges()
+            }
             NSUserDefaults.standardUserDefaults().setInteger(0, forKey: "backgroundId")
             break
         case 1:
+            if currentScene != 1 {
+                let uow = UnitOfWork()
+                uow.rewardRepository?.deleteAllRewards()
+                uow.rewardPoolRepository?.makeAllRewardsAvailable()
+                uow.saveChanges()
+            }
             NSUserDefaults.standardUserDefaults().setInteger(1, forKey: "backgroundId")
             break
         default:
