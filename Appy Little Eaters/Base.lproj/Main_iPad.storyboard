@@ -251,7 +251,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="st1-pk-YBW">
                                 <rect key="frame" x="607" y="588" width="181" height="160"/>
-                                <state key="normal" image="home-forest.png">
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -278,6 +278,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="pLM-LC-n5Z"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="ForestButton" destination="st1-pk-YBW" id="Qd6-2U-Kdf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wiO-EY-QHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1251,7 +1254,6 @@
         <image name="greenband-white.png" width="2048" height="1536"/>
         <image name="home-background.jpg" width="2048" height="1153"/>
         <image name="home-clouds.png" width="2000" height="693"/>
-        <image name="home-forest.png" width="302" height="346"/>
         <image name="home-logo.png" width="1373" height="962"/>
         <image name="home-parents.png" width="408" height="305"/>
         <image name="home-rainbow.png" width="341" height="285"/>

@@ -179,6 +179,7 @@
 		687BDB6F1BEA9D1A00735B9D /* DFood+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB6E1BEA9D1A00735B9D /* DFood+CoreDataProperties.swift */; };
 		687BDB721BEAAB8400735B9D /* UIView+Glow.m in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB711BEAAB8400735B9D /* UIView+Glow.m */; };
 		688376501C974FAE000A1596 /* spaceback.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6883764F1C974FAE000A1596 /* spaceback.jpg */; };
+		688376521C975663000A1596 /* My-Alien-World-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 688376511C975663000A1596 /* My-Alien-World-2.png */; };
 		688D20351C28A1C4005977B6 /* planet.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 688D20341C28A1C4005977B6 /* planet.atlas */; };
 		689BD6391BD27C3F00B7EF3E /* AnimatedSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */; };
 		689BD63D1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD63B1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift */; };
@@ -429,6 +430,7 @@
 		687BDB701BEAAB8400735B9D /* UIView+Glow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Glow.h"; sourceTree = "<group>"; };
 		687BDB711BEAAB8400735B9D /* UIView+Glow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Glow.m"; sourceTree = "<group>"; };
 		6883764F1C974FAE000A1596 /* spaceback.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spaceback.jpg; sourceTree = "<group>"; };
+		688376511C975663000A1596 /* My-Alien-World-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "My-Alien-World-2.png"; sourceTree = "<group>"; };
 		688D20341C28A1C4005977B6 /* planet.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = planet.atlas; sourceTree = "<group>"; };
 		689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSprite.swift; sourceTree = "<group>"; };
 		689BD63A1BD575D300B7EF3E /* AleModel 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 7.xcdatamodel"; sourceTree = "<group>"; };
@@ -683,6 +685,7 @@
 		469846E419D8474400617FCE /* homepage */ = {
 			isa = PBXGroup;
 			children = (
+				688376511C975663000A1596 /* My-Alien-World-2.png */,
 				46E7C7D71985487A00CE7AB3 /* home-clouds.png */,
 				46E7C7D81985487A00CE7AB3 /* home-logo.png */,
 				46E7C7CB198545F500CE7AB3 /* home-background.jpg */,
@@ -1102,6 +1105,7 @@
 				686316481C14CDA700F8BB74 /* Buy-Complete-Food-Selection.png in Resources */,
 				46AE6C4219EAC804000238F4 /* REWARDS-BOX.png in Resources */,
 				6863164A1C14CDA800F8BB74 /* Choose-Foods-to-Eat.png in Resources */,
+				688376521C975663000A1596 /* My-Alien-World-2.png in Resources */,
 				46AE6C2A19EAB24F000238F4 /* BROWN.m4a in Resources */,
 				46AE6C0919E97263000238F4 /* rainbow.png in Resources */,
 				46E48BCB18A8FDC4006DCA91 /* Localizable.strings in Resources */,

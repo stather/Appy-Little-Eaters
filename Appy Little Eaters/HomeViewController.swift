@@ -14,6 +14,18 @@ import AVFoundation
 public class HomeViewController : UIViewController{
 	var player:ResourceAudioPlayer!
 
+    @IBOutlet weak var ForestButton: UIButton!
+    
+    override public func viewWillAppear(animated: Bool) {
+        let back = NSUserDefaults.standardUserDefaults().integerForKey("backgroundId")
+        if back == 0 {
+            let i = UIImage(named: "home-forest.png", inBundle: nil, compatibleWithTraitCollection: nil)
+            ForestButton.setBackgroundImage(i, forState: UIControlState.Normal)
+        }else{
+            let i = UIImage(named: "My-Alien-World-2.png", inBundle: nil, compatibleWithTraitCollection: nil)
+            ForestButton.setBackgroundImage(i, forState: UIControlState.Normal)
+        }
+    }
 	
 	override public func viewDidLoad() {
 		player = ResourceAudioPlayer(fromName: "intro")
