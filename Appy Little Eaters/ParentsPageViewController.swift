@@ -78,6 +78,7 @@ public class ParentsPageViewController : UIViewController{
 	
 	
 	@IBAction func facebookPressed(sender: AnyObject) {
+        UIApplication.sharedApplication().openURL(NSURL(string: "https://www.facebook.com/Appy-Little-Eaters-513014552138440/")!)
 		
 	}
 	
@@ -85,6 +86,4 @@ public class ParentsPageViewController : UIViewController{
 		UIApplication.sharedApplication().openURL(NSURL(string: "http://www.readysteadyrainbow.com")!)
 	}
 	
-	@IBAction func pinitPressed(sender: AnyObject) {
-	}
 }
