@@ -1099,7 +1099,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36t-mz-bjD" userLabel="home">
-                                <rect key="frame" x="16" y="20" width="152" height="127"/>
+                                <rect key="frame" x="16" y="20" width="88" height="74"/>
                                 <state key="normal" image="social-home.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
