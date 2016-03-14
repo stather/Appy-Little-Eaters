@@ -126,7 +126,7 @@ public class ForestViewController : UIViewController{
 		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 		appDelegate.stopTheUke()
 		appDelegate.playTheForestSounds()
-		appDelegate.speak("Welcome to the forest")
+		//appDelegate.speak("Welcome to the forest")
 		
 	}
 	
