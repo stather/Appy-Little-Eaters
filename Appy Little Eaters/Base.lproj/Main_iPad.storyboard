@@ -817,6 +817,7 @@
                     <navigationItem key="navigationItem" id="bJc-RD-pJY"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="BackgroundImage" destination="qTS-3D-Pb3" id="Lcr-qE-0Y6"/>
                         <outlet property="DoneButton" destination="h2n-We-nF3" id="xEv-xw-W2l"/>
                         <outlet property="LeftReward" destination="a8s-Yc-4MA" id="64V-7R-2oJ"/>
                         <outlet property="RightReward" destination="kuA-LB-3Yr" id="MKR-4U-IgW"/>
@@ -1286,6 +1287,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="PU9-ck-5gQ"/>
         <segue reference="Co3-Fl-RrI"/>
-        <segue reference="UDV-Xy-o9A"/>
+        <segue reference="f2G-Sa-c7h"/>
     </inferredMetricsTieBreakers>
 </document>

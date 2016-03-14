@@ -16,6 +16,7 @@ class RewardsPageViewController: UIViewController{
 	var lhs:DRewardPool!
 	var rhs:DRewardPool!
 	
+    @IBOutlet weak var BackgroundImage: UIImageView!
 	
 	@IBOutlet weak var DoneButton: UIButton!
 	
@@ -78,6 +79,16 @@ class RewardsPageViewController: UIViewController{
         let image:UIImage = UIImage(contentsOfFile: filepath as String!)!
         return image;
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        let back = NSUserDefaults.standardUserDefaults().integerForKey("backgroundId")
+        if back == 0 {
+            BackgroundImage.image = UIImage(named: "reward-background.jpg", inBundle: nil, compatibleWithTraitCollection: nil)
+        }else{
+            BackgroundImage.image = UIImage(named: "spaceback.jpg", inBundle: nil, compatibleWithTraitCollection: nil)
+        }
     }
 
 	

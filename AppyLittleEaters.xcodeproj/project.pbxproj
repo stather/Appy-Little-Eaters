@@ -178,6 +178,7 @@
 		687BDB6C1BE95E4100735B9D /* ChooseFoodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB6B1BE95E4100735B9D /* ChooseFoodController.swift */; };
 		687BDB6F1BEA9D1A00735B9D /* DFood+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB6E1BEA9D1A00735B9D /* DFood+CoreDataProperties.swift */; };
 		687BDB721BEAAB8400735B9D /* UIView+Glow.m in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB711BEAAB8400735B9D /* UIView+Glow.m */; };
+		688376501C974FAE000A1596 /* spaceback.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6883764F1C974FAE000A1596 /* spaceback.jpg */; };
 		688D20351C28A1C4005977B6 /* planet.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 688D20341C28A1C4005977B6 /* planet.atlas */; };
 		689BD6391BD27C3F00B7EF3E /* AnimatedSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */; };
 		689BD63D1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD63B1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift */; };
@@ -427,6 +428,7 @@
 		687BDB6E1BEA9D1A00735B9D /* DFood+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DFood+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		687BDB701BEAAB8400735B9D /* UIView+Glow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Glow.h"; sourceTree = "<group>"; };
 		687BDB711BEAAB8400735B9D /* UIView+Glow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Glow.m"; sourceTree = "<group>"; };
+		6883764F1C974FAE000A1596 /* spaceback.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spaceback.jpg; sourceTree = "<group>"; };
 		688D20341C28A1C4005977B6 /* planet.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = planet.atlas; sourceTree = "<group>"; };
 		689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSprite.swift; sourceTree = "<group>"; };
 		689BD63A1BD575D300B7EF3E /* AleModel 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 7.xcdatamodel"; sourceTree = "<group>"; };
@@ -706,6 +708,7 @@
 		469846E619D8480800617FCE /* rewardspage */ = {
 			isa = PBXGroup;
 			children = (
+				6883764F1C974FAE000A1596 /* spaceback.jpg */,
 				46AE6C4119EAC804000238F4 /* REWARDS-BOX.png */,
 				469846EC19D85A6100617FCE /* reward-done.png */,
 				469846E719D8481400617FCE /* reward-background.jpg */,
@@ -1164,6 +1167,7 @@
 				46AE6C2119EAAEA5000238F4 /* uke1_01.m4a in Resources */,
 				6863164E1C14CDA800F8BB74 /* Settings-Banner.png in Resources */,
 				46AE6C1619E9777A000238F4 /* redband.png in Resources */,
+				688376501C974FAE000A1596 /* spaceback.jpg in Resources */,
 				464F704418A019F000DDA449 /* Main_iPhone.storyboard in Resources */,
 				46E7C7F91988382C00CE7AB3 /* goodfoodmakes2.m4a in Resources */,
 				680993951C08F64E002AAD87 /* Settings-Icon.png in Resources */,
