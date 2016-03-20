@@ -12,7 +12,8 @@ import AVFoundation
 import CoreData
 
 
-public class FoodPageViewController : UIViewController, UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, AVAudioPlayerDelegate{
+public class FoodPageViewController : UIViewController, UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, AVAudioPlayerDelegate, InAppPurchaseDelegate{
+    @IBOutlet weak var BuyFoodsButton: UIButton!
 
 	public enum FoodColour:Int{
 		case red = 0, orange, yellow, green, white, purple
@@ -34,6 +35,20 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 	var player:AVAudioPlayer?
 	var endOfPlayAction:Int!
 	
+    @IBAction func BuyFoods(sender: AnyObject) {
+        InAppPurchaseManager.sharedInstance.BuyFood(self)
+    }
+    
+    public func FoodNotPurchased() {
+        
+        
+    }
+    
+    public func FoodPurchased() {
+        
+        
+    }
+    
     func getFoodForColour(c:String) -> NSArray {
 
         let uow = UnitOfWork()
@@ -53,12 +68,18 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
     }
 	
 	override public func viewDidLoad() {
-		self.selectedFoodImage.hidden = true;
-		self.tick.hidden = true;
-		self.cross.hidden = true;
+        
+        if InAppPurchaseManager.sharedInstance.allFoodsBought(){
+            BuyFoodsButton.hidden = true
+        }
+
+        
+		self.selectedFoodImage.hidden = true
+		self.tick.hidden = true
+		self.cross.hidden = true
 		
-		super.viewDidLoad();
-		self.theCollection.backgroundColor = UIColor.clearColor();
+		super.viewDidLoad()
+		self.theCollection.backgroundColor = UIColor.clearColor()
 		self.theCollection.backgroundView = UIView(frame: CGRectZero)
 		
 		let lc:NSLayoutConstraint = NSLayoutConstraint(item: self.theCollection, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: self.mainView, attribute: NSLayoutAttribute.Height, multiplier: 0.333, constant: 0)
