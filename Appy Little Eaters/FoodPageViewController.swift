@@ -70,32 +70,37 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 		case FoodColour.red.rawValue:
 			filepath = NSBundle.mainBundle().pathForResource("red-background", ofType: "jpg")
             foods = getFoodForColour("Red")
+            player = ResourceAudioPlayer(fromName: "RED")
 			break;
 		case FoodColour.orange.rawValue:
 			filepath = NSBundle.mainBundle().pathForResource("orange-background", ofType: "jpg")
             foods = getFoodForColour("Orange")
+            player = ResourceAudioPlayer(fromName: "ORANGE")
 			break;
 		case FoodColour.yellow.rawValue:
 			filepath = NSBundle.mainBundle().pathForResource("yellow-background", ofType: "jpg")
             foods = getFoodForColour("Yellow")
+            player = ResourceAudioPlayer(fromName: "YELLOW")
 			break;
 		case FoodColour.green.rawValue:
 			filepath = NSBundle.mainBundle().pathForResource("green-background", ofType: "jpg")
             foods = getFoodForColour("Green")
+            player = ResourceAudioPlayer(fromName: "GREEN")
 			break;
 		case FoodColour.white.rawValue:
 			filepath = NSBundle.mainBundle().pathForResource("white-background", ofType: "jpg")
             foods = getFoodForColour("White")
+            player = ResourceAudioPlayer(fromName: "BROWN")
 			break;
 		case FoodColour.purple.rawValue:
 			filepath = NSBundle.mainBundle().pathForResource("purple-background", ofType: "jpg")
             foods = getFoodForColour("Purple")
+            player = ResourceAudioPlayer(fromName: "PURPLE")
 			break;
 		default:
 			return;
 		}
 		self.backgroundImage.image = UIImage(contentsOfFile: filepath)
-		player = ResourceAudioPlayer(fromName: "yummyfoods")
 		player?.play()
 	
 	}

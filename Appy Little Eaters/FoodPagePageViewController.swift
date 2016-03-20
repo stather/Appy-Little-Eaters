@@ -8,12 +8,14 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 public class FoodPagePageViewController : UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate{
 	
 
 	
 	public weak var pageViewController:UIPageViewController!
+    var player:AVAudioPlayer?
 	
 	override public func viewDidLoad() {
 		super.viewDidLoad()
@@ -30,6 +32,10 @@ public class FoodPagePageViewController : UIViewController, UIPageViewController
 		addChildViewController(pageViewController)
 		view.addSubview(pageViewController.view)
 		pageViewController.didMoveToParentViewController(self)
+        
+        player = ResourceAudioPlayer(fromName: "yummyfoods")
+        player?.play()
+
 	}
 	
 	public func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
