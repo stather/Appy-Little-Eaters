@@ -545,6 +545,19 @@
                                     <segue destination="uUz-yK-l3q" kind="unwind" unwindAction="unwindToSettings:" id="Qka-bm-aa5"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="15" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENx-WT-Bpq">
+                                <rect key="frame" x="46" y="345" width="894" height="398"/>
+                                <mutableString key="text">The goal of Appy Little Eaters is to get children to eat a colourful and varied diet.   
+
+However, you might find your child is fixated on a particular colour group, happy to repetitively eat strawberries, for example.   In this instance, the game allows you to offer an extra incentive or reward in order to get your child to complete the entire rainbow.  
+
+To use this function please decide, along with your child perhaps, on a suitable reward.  The reward can take the form of a physical activity that you would like to do together e.g. riding bikes or a walk in the park etc.   Or it can be a physical reward e.g. a toy or extra pocket money (sometimes only hard cash will do ☺).  Type the reward in the space below.  Once the entire rainbow is completed, you will see this reward appear on the rainbow page.
+
+If you choose not to offer an additional reward, please leave the space blank.</mutableString>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
