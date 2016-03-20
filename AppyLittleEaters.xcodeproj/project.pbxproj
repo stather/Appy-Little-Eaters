@@ -85,7 +85,6 @@
 		46AE6C1B19EAA26F000238F4 /* intro.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C1A19EAA149000238F4 /* intro.m4a */; };
 		46AE6C1D19EAA2F5000238F4 /* myfoodrainbow.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C1C19EAA2F5000238F4 /* myfoodrainbow.m4a */; };
 		46AE6C1F19EAA7C3000238F4 /* yummyfoods.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C1E19EAA7C3000238F4 /* yummyfoods.m4a */; };
-		46AE6C2119EAAEA5000238F4 /* uke1_01.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C2019EAAEA5000238F4 /* uke1_01.m4a */; };
 		46AE6C2A19EAB24F000238F4 /* BROWN.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C2219EAB24F000238F4 /* BROWN.m4a */; };
 		46AE6C2B19EAB24F000238F4 /* GREEN.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C2319EAB24F000238F4 /* GREEN.m4a */; };
 		46AE6C2C19EAB24F000238F4 /* NOIHAVENOTEATEN.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46AE6C2419EAB24F000238F4 /* NOIHAVENOTEATEN.m4a */; };
@@ -180,6 +179,8 @@
 		687BDB721BEAAB8400735B9D /* UIView+Glow.m in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB711BEAAB8400735B9D /* UIView+Glow.m */; };
 		688376501C974FAE000A1596 /* spaceback.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6883764F1C974FAE000A1596 /* spaceback.jpg */; };
 		688376521C975663000A1596 /* My-Alien-World-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 688376511C975663000A1596 /* My-Alien-World-2.png */; };
+		688376541C9F3CA3000A1596 /* My_Life_Is_Good_full.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 688376531C9F3CA3000A1596 /* My_Life_Is_Good_full.m4a */; };
+		688376561C9F3CC7000A1596 /* space.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 688376551C9F3CC7000A1596 /* space.m4a */; };
 		688D20351C28A1C4005977B6 /* planet.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 688D20341C28A1C4005977B6 /* planet.atlas */; };
 		689BD6391BD27C3F00B7EF3E /* AnimatedSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */; };
 		689BD63D1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD63B1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift */; };
@@ -323,7 +324,6 @@
 		46AE6C1A19EAA149000238F4 /* intro.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro.m4a; sourceTree = "<group>"; };
 		46AE6C1C19EAA2F5000238F4 /* myfoodrainbow.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = myfoodrainbow.m4a; sourceTree = "<group>"; };
 		46AE6C1E19EAA7C3000238F4 /* yummyfoods.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = yummyfoods.m4a; sourceTree = "<group>"; };
-		46AE6C2019EAAEA5000238F4 /* uke1_01.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = uke1_01.m4a; sourceTree = "<group>"; };
 		46AE6C2219EAB24F000238F4 /* BROWN.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = BROWN.m4a; sourceTree = "<group>"; };
 		46AE6C2319EAB24F000238F4 /* GREEN.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = GREEN.m4a; sourceTree = "<group>"; };
 		46AE6C2419EAB24F000238F4 /* NOIHAVENOTEATEN.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = NOIHAVENOTEATEN.m4a; sourceTree = "<group>"; };
@@ -431,6 +431,8 @@
 		687BDB711BEAAB8400735B9D /* UIView+Glow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Glow.m"; sourceTree = "<group>"; };
 		6883764F1C974FAE000A1596 /* spaceback.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spaceback.jpg; sourceTree = "<group>"; };
 		688376511C975663000A1596 /* My-Alien-World-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "My-Alien-World-2.png"; sourceTree = "<group>"; };
+		688376531C9F3CA3000A1596 /* My_Life_Is_Good_full.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = My_Life_Is_Good_full.m4a; sourceTree = "<group>"; };
+		688376551C9F3CC7000A1596 /* space.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = space.m4a; sourceTree = "<group>"; };
 		688D20341C28A1C4005977B6 /* planet.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = planet.atlas; sourceTree = "<group>"; };
 		689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSprite.swift; sourceTree = "<group>"; };
 		689BD63A1BD575D300B7EF3E /* AleModel 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 7.xcdatamodel"; sourceTree = "<group>"; };
@@ -823,6 +825,8 @@
 		46E7C7F41988380E00CE7AB3 /* audio */ = {
 			isa = PBXGroup;
 			children = (
+				688376551C9F3CC7000A1596 /* space.m4a */,
+				688376531C9F3CA3000A1596 /* My_Life_Is_Good_full.m4a */,
 				469AC7C61A505D6300CDA070 /* forestsounds.m4a */,
 				46AE6C2219EAB24F000238F4 /* BROWN.m4a */,
 				46AE6C2319EAB24F000238F4 /* GREEN.m4a */,
@@ -832,7 +836,6 @@
 				46AE6C2719EAB24F000238F4 /* RED.m4a */,
 				46AE6C2819EAB24F000238F4 /* YELLOW.m4a */,
 				46AE6C2919EAB24F000238F4 /* YESIHAVEEATEN.m4a */,
-				46AE6C2019EAAEA5000238F4 /* uke1_01.m4a */,
 				46AE6C1E19EAA7C3000238F4 /* yummyfoods.m4a */,
 				46AE6C1C19EAA2F5000238F4 /* myfoodrainbow.m4a */,
 				46AE6C1A19EAA149000238F4 /* intro.m4a */,
@@ -1066,6 +1069,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				688376561C9F3CC7000A1596 /* space.m4a in Resources */,
 				4615CCEE19D1F5C5007994EC /* green-background.jpg in Resources */,
 				4645B12819D9E66700974B39 /* social-story6.png in Resources */,
 				684319EF1B5EDE9100A622E8 /* greenband-white.png in Resources */,
@@ -1137,6 +1141,7 @@
 				46AE6C2C19EAB24F000238F4 /* NOIHAVENOTEATEN.m4a in Resources */,
 				46AE6C0719E97183000238F4 /* mountainstrees.jpg in Resources */,
 				4645B12A19D9E66700974B39 /* social-story8.png in Resources */,
+				688376541C9F3CA3000A1596 /* My_Life_Is_Good_full.m4a in Resources */,
 				46E7C7BC19850C0B00CE7AB3 /* start-face_03.png in Resources */,
 				687BDB621BE80CB400735B9D /* settingscog.png in Resources */,
 				46AE6C1519E9777A000238F4 /* purpleband.png in Resources */,
@@ -1168,7 +1173,6 @@
 				4642606F19F462610028C878 /* pinit_03.png in Resources */,
 				46AE6C1219E9777A000238F4 /* brownband.png in Resources */,
 				684319E91B5EDA6F00A622E8 /* orangeband-white.png in Resources */,
-				46AE6C2119EAAEA5000238F4 /* uke1_01.m4a in Resources */,
 				6863164E1C14CDA800F8BB74 /* Settings-Banner.png in Resources */,
 				46AE6C1619E9777A000238F4 /* redband.png in Resources */,
 				688376501C974FAE000A1596 /* spaceback.jpg in Resources */,

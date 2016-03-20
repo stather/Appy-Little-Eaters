@@ -30,28 +30,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		synth?.speakUtterance(utter)
 		
 	}
-
-	func playTheUke(){
-		ukeplayer = ResourceAudioPlayer(fromName: "uke1_01")
-		ukeplayer.volume = 0.2
-		ukeplayer.numberOfLoops = -1
-		ukeplayer.play()
-	}
+    
+    func playTheUke(){
+        ukeplayer = ResourceAudioPlayer(fromName: "My_Life_Is_Good_full")
+        ukeplayer.volume = 0.2
+        ukeplayer.numberOfLoops = -1
+        ukeplayer.play()
+    }
+    
+    func stopTheUke(){
+        ukeplayer.stop()
+    }
+    
+    func playSceneSound(){
+        let back = NSUserDefaults.standardUserDefaults().integerForKey("backgroundId")
+        switch (back){
+        case 0:
+            playTheForestSounds()
+            break
+        case 1:
+            playTheSpaceSound()
+            break
+        default:
+            playTheForestSounds()
+        }
+    }
+    
+    func stopSceneSound(){
+        forestSoundsPlayer.stop()
+    }
+    
+    private func playTheSpaceSound(){
+        forestSoundsPlayer = ResourceAudioPlayer(fromName: "space")
+        forestSoundsPlayer.volume = 0.4
+        forestSoundsPlayer.numberOfLoops = -1
+        forestSoundsPlayer.play()
+    }
+    
 	
-	func stopTheUke(){
-		ukeplayer.stop()
-	}
-	
-	func playTheForestSounds(){
+	private func playTheForestSounds(){
 		forestSoundsPlayer = ResourceAudioPlayer(fromName: "forestsounds")
 		forestSoundsPlayer.volume = 0.3
 		forestSoundsPlayer.numberOfLoops = -1
 		forestSoundsPlayer.play()
 	}
 	
-	func stopTheForestSounds(){
-		forestSoundsPlayer.stop()
-	}
 	
     lazy var downloadQueue:NSOperationQueue = {
         var queue = NSOperationQueue()
