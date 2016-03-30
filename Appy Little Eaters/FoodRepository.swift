@@ -46,14 +46,14 @@ public class FoodRepository{
     
     func getCountOfFood(forColour:String) -> Int{
         let fetchFoodByColour = managedObjectModel?.fetchRequestFromTemplateWithName("FetchFoodByColour", substitutionVariables: ["COLOUR":forColour])
-        let error:NSErrorPointer = NSErrorPointer()
+        let error:NSErrorPointer = nil
         let c = _managedObjectContext.countForFetchRequest(fetchFoodByColour!, error: error)
         return c
     }
 
     func getCountOfFreeFood(forColour:String) -> Int{
         let fetchFoodByColour = managedObjectModel?.fetchRequestFromTemplateWithName("FetchFreeFoodByColour", substitutionVariables: ["COLOUR":forColour])
-        let error:NSErrorPointer = NSErrorPointer()
+        let error:NSErrorPointer = nil
         let c = _managedObjectContext.countForFetchRequest(fetchFoodByColour!, error: error)
         return c
     }

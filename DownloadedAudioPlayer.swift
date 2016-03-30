@@ -13,13 +13,20 @@ public class DownloadedAudioPlayer : AVAudioPlayer{
     
     var canPlay:Bool = true
     
-    convenience init(fromName name:String){
+    convenience init?(fromName name:String) throws{
         let soundFilePath = DownloadedAudioPlayer.getAudioFile(name)
         let fileURL = NSURL(fileURLWithPath: soundFilePath)
-        do{
+        let error:NSErrorPointer = nil
+        if fileURL.checkResourceIsReachableAndReturnError(error){
             try self.init(contentsOfURL: fileURL)
-        }catch{
+        }else{
+            return nil
         }
+        
+//        do{
+//            try self.init(contentsOfURL: fileURL)
+//        }catch{
+//        }
     }
 
 

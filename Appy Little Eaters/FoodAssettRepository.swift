@@ -23,13 +23,8 @@ public class FoodAssetRepository{
         let possibleURLS:NSArray = _fileManager.URLsForDirectory(NSSearchPathDirectory.ApplicationSupportDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)
         let appSupportDir:NSURL = possibleURLS[0] as! NSURL
         let dirPath = appSupportDir.URLByAppendingPathComponent(bundleID)
-        var error:NSError?
-        do {
-            try _fileManager.createDirectoryAtURL(dirPath, withIntermediateDirectories: true, attributes: nil)
-        } catch let error1 as NSError {
-            error = error1
-        }
-
+        try! _fileManager.createDirectoryAtURL(dirPath, withIntermediateDirectories: true, attributes: nil)
+ 
         return dirPath
     }
     

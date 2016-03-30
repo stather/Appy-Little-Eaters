@@ -41,7 +41,6 @@ public class RainbowPageViewController: UIViewController{
     var RainbowComplete:Bool = false
 	
     func fillBand(bandView:UIImageView, colour:UIColor){
-        let r = bandView.bounds
         let image:UIImage = bandView.image!
         let imageWidth = image.size.width
         let imageHeight = image.size.height
@@ -92,8 +91,6 @@ public class RainbowPageViewController: UIViewController{
 
 	func countRed(){
     
-		var cgImage = theBand.image?.CGImage
-		
 		var sizew = theBand.image!.size.width
 		var sizeh = theBand.image!.size.height
 		sizew /= 10
@@ -116,7 +113,7 @@ public class RainbowPageViewController: UIViewController{
 		var white = 0
 		var nonwhite = 0
 		while total > 0{
-			total--
+			total -= 1
 			let vr = Float(data[0])/255.0
 			let r = CGFloat(vr)
 			let vg = Float(data[1])/255.0
@@ -129,7 +126,7 @@ public class RainbowPageViewController: UIViewController{
 				nonwhite += 1
 			}
 			data += 4
-			var returnColor = UIColor(red: r, green: g, blue: b, alpha: 1.0)
+			_ = UIColor(red: r, green: g, blue: b, alpha: 1.0)
 		}
 		if white > 0 && nonwhite / white > 18{
 			print("Done so lets segue")
@@ -160,14 +157,10 @@ public class RainbowPageViewController: UIViewController{
                 return
             }
             counting = true
-			if #available(iOS 8.0, *) {
-			    dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.rawValue), 0)){
-    				self.countRed()
-                    self.counting = false
-    			}
-			} else {
-			    // Fallback on earlier versions
-			}
+            dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.rawValue), 0)){
+                self.countRed()
+                self.counting = false
+            }
 		}
 		
 		
@@ -275,37 +268,37 @@ public class RainbowPageViewController: UIViewController{
 			RedBand.hidden = false
             RedBand.alpha = 1.0
             fillBand(RedBand, colour: UIColor(red: 216/256, green: 73/256, blue: 69/256, alpha: 1))
-            NumberOfBands++
+            NumberOfBands += 1
 		}
 		if (NSUserDefaults.standardUserDefaults().boolForKey("ORANGE")){
 			OrangeBand.hidden = false
             OrangeBand.alpha = 1.0
             fillBand(OrangeBand, colour: UIColor(red: 234/256, green: 156/256, blue: 52/256, alpha: 1))
-            NumberOfBands++
+            NumberOfBands += 1
 		}
 		if (NSUserDefaults.standardUserDefaults().boolForKey("YELLOW")){
 			YellowBand.hidden = false
             YellowBand.alpha = 1.0
             fillBand(YellowBand, colour: UIColor(red: 249/256, green: 237/256, blue: 98/256, alpha: 1))
-            NumberOfBands++
+            NumberOfBands += 1
 		}
 		if (NSUserDefaults.standardUserDefaults().boolForKey("GREEN")){
 			GreenBand.hidden = false
             GreenBand.alpha = 1.0
             fillBand(GreenBand, colour: UIColor(red: 163/256, green: 207/256, blue: 97/256, alpha: 1))
-            NumberOfBands++
+            NumberOfBands += 1
 		}
 		if (NSUserDefaults.standardUserDefaults().boolForKey("BROWN")){
 			BrownBand.hidden = false
             BrownBand.alpha = 1.0
             fillBand(BrownBand, colour: UIColor(red: 147/256, green: 103/256, blue: 72/256, alpha: 1))
-            NumberOfBands++
+            NumberOfBands += 1
 		}
 		if (NSUserDefaults.standardUserDefaults().boolForKey("PURPLE")){
 			PurpleBand.hidden = false
             PurpleBand.alpha = 1.0
             fillBand(PurpleBand, colour: UIColor(red: 65/256, green: 83/256, blue: 191/256, alpha: 1))
-            NumberOfBands++
+            NumberOfBands += 1
 		}
         if NumberOfBands == 6{
             RainbowComplete = true
@@ -321,7 +314,7 @@ public class RainbowPageViewController: UIViewController{
 				theColour = "RED"
                 paintColour = UIColor(red: 216/256, green: 73/256, blue: 69/256, alpha: 1)
                 if (!NSUserDefaults.standardUserDefaults().boolForKey("RED")){
-                    NumberOfBands++;
+                    NumberOfBands += 1;
                 }
 				break;
 			case 1:
@@ -329,7 +322,7 @@ public class RainbowPageViewController: UIViewController{
 				theColour = "ORANGE"
                 paintColour = UIColor(red: 234/256, green: 156/256, blue: 52/256, alpha: 1)
                 if (!NSUserDefaults.standardUserDefaults().boolForKey("ORANGE")){
-                    NumberOfBands++;
+                    NumberOfBands += 1;
                 }
 				break;
 			case 2:
@@ -337,7 +330,7 @@ public class RainbowPageViewController: UIViewController{
 				theColour = "YELLOW"
                 paintColour = UIColor(red: 249/256, green: 237/256, blue: 98/256, alpha: 1)
                 if (!NSUserDefaults.standardUserDefaults().boolForKey("YELLOW")){
-                    NumberOfBands++;
+                    NumberOfBands += 1;
                 }
 				break;
 			case 3:
@@ -345,7 +338,7 @@ public class RainbowPageViewController: UIViewController{
 				theColour = "GREEN"
                 paintColour = UIColor(red: 163/256, green: 207/256, blue: 97/256, alpha: 1)
                 if (!NSUserDefaults.standardUserDefaults().boolForKey("GREEN")){
-                    NumberOfBands++;
+                    NumberOfBands += 1;
                 }
 				break;
 			case 4:
@@ -353,7 +346,7 @@ public class RainbowPageViewController: UIViewController{
 				theColour = "BROWN"
                 paintColour = UIColor(red: 147/256, green: 103/256, blue: 72/256, alpha: 1)
                 if (!NSUserDefaults.standardUserDefaults().boolForKey("BROWN")){
-                    NumberOfBands++;
+                    NumberOfBands += 1;
                 }
 				break;
 			case 5:
@@ -361,7 +354,7 @@ public class RainbowPageViewController: UIViewController{
 				theColour = "PURPLE"
                 paintColour = UIColor(red: 65/256, green: 83/256, blue: 191/256, alpha: 1)
                 if (!NSUserDefaults.standardUserDefaults().boolForKey("PURPLE")){
-                    NumberOfBands++;
+                    NumberOfBands += 1;
                 }
 				break;
 			default:
@@ -375,7 +368,7 @@ public class RainbowPageViewController: UIViewController{
 			theBand.alpha = 1.0
             fillBand(theBand, colour: paintColour)
 			UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.Autoreverse, animations: {UIView.setAnimationRepeatCount(5);self.theBand.alpha = 0;}, completion:{
-				(Bool finished)-> Void in
+				(finished)-> Void in
 				self.allowColouring = true
 				self.theBand.alpha = 1
 				self.theBand.hidden = false
@@ -383,7 +376,6 @@ public class RainbowPageViewController: UIViewController{
 			});
 
 		}else{
-			var soundFilePath:NSString
 			player = ResourceAudioPlayer(fromName: "myfoodrainbow")
 			player.play()
 			

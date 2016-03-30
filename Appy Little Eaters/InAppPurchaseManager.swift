@@ -105,24 +105,24 @@ public class InAppPurchaseManager : NSObject, SKProductsRequestDelegate, SKPayme
                 
             case SKPaymentTransactionState.Failed:
                 print("Transaction Failed");
-                let e:Int! = transaction.error?.code
+                let e:SKErrorCode = SKErrorCode(rawValue: (transaction.error?.code)!)!
                 switch (e){
-                case SKErrorUnknown:
+                case SKErrorCode.Unknown:
                     break
                     
-                case SKErrorClientInvalid:
+                case SKErrorCode.ClientInvalid:
                     break
                     
-                case SKErrorPaymentCancelled:
+                case SKErrorCode.PaymentCancelled:
                     break
                     
-                case SKErrorPaymentInvalid:
+                case SKErrorCode.PaymentInvalid:
                     break
                     
-                case SKErrorPaymentNotAllowed:
+                case SKErrorCode.PaymentNotAllowed:
                     break
                     
-                case SKErrorStoreProductNotAvailable:
+                case SKErrorCode.StoreProductNotAvailable:
                     break
                     
                 default:

@@ -36,12 +36,12 @@ public class ParentsPageViewController : UIViewController{
     }
 	
 	@IBAction func backPressed(sender: AnyObject) {
-		currentPage--
+		currentPage -= 1
 		setupPage()
 	}
 	
 	@IBAction func nextPressed(sender: AnyObject) {
-		currentPage++
+		currentPage += 1
 		setupPage()
 	}
 	

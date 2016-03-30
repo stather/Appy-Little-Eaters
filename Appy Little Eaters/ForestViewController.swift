@@ -90,14 +90,9 @@ public class ForestViewController : UIViewController{
 	}
 	
 	override public func viewWillAppear(animated: Bool) {
-		var f = mainView.frame
 		spriteView = SKView(frame: CGRect(x: 0, y: 0, width: 1024, height: 768))
 		spriteView.opaque = false
-		if #available(iOS 8.0, *) {
-		    spriteView.allowsTransparency = true
-		} else {
-		    // Fallback on earlier versions
-		}
+        spriteView.allowsTransparency = true
 		spriteView.showsDrawCount = true
 		spriteView.showsNodeCount = true
 		spriteView.showsFPS = true

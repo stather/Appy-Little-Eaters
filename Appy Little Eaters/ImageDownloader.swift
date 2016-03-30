@@ -32,18 +32,13 @@ class BaseDownloader : NSOperation {
         let possibleURLS:NSArray = fileManager.URLsForDirectory(NSSearchPathDirectory.ApplicationSupportDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)
         let appSupportDir:NSURL = possibleURLS[0] as! NSURL
         let dirPath = appSupportDir.URLByAppendingPathComponent(bundleID)
-        var error:NSError?
-        do {
-            try fileManager.createDirectoryAtURL(dirPath, withIntermediateDirectories: true, attributes: nil)
-        } catch let error1 as NSError {
-            error = error1
-        }
+        try! fileManager.createDirectoryAtURL(dirPath, withIntermediateDirectories: true, attributes: nil)
         let filename = dirPath.URLByAppendingPathComponent(name + "." + ext)
         let filepath = filename.path
         
         let d:NSData? = downloadData()
         if d != nil {
-            let res = fileManager.createFileAtPath(filepath!, contents: d, attributes: nil)
+            _ = fileManager.createFileAtPath(filepath!, contents: d, attributes: nil)
         }
         
         

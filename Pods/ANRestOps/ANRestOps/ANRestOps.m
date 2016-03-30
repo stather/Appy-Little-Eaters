@@ -109,6 +109,15 @@ typedef enum
     [[ANRestOpsClient sharedClient] sendAsynchronousRequest:request withCompletionHandler:completionBlock];
 }
 
++ (void)postInBackgroundForm:(NSString *)urlString
+                 payload:(NSDictionary *)payload
+           beforeRequest:(void (^)(void))startingBlock
+            onCompletion:(ANRestOpsCompletionHandler)completionBlock
+{
+    [ANRestOps postInBackground:urlString payload:payload payloadFormat:ANRestOpsFormFormat beforeRequest:startingBlock onCompletion:completionBlock];
+}
+
+
 + (void)postInBackground:(NSString *)urlString
                  payload:(NSDictionary *)payload
            payloadFormat:(ANRestOpsDataFormat)format

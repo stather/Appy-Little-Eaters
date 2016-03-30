@@ -161,7 +161,6 @@ public class ForestScene : SKScene{
 					mp.moveBy(Float(_dt))
 				}
 			}
-            let b = 27
 		}
 		//frog.splash(_dt)
 //		if count > 0{
@@ -284,11 +283,11 @@ public class ForestScene : SKScene{
         
 		for item in (uow.rewardRepository?.getAllRewards())!{
             if true || counter == ForestScene.debugRewardCounter {
-                ForestScene.debugRewardCounter++
+                ForestScene.debugRewardCounter += 1
                 let animationName = item.animationName
                 print("################ Animation:" + animationName!)
                 if animationName == "...RocketAnimation"{
-                    counter++
+                    counter += 1
                     continue
                 }
                 let rewardName = item.rewardName
@@ -303,9 +302,8 @@ public class ForestScene : SKScene{
                     return
                 }
             }
-            counter++
+            counter += 1
 		}
-        let a = 27
 	}
 	
 	public func restart(mass:Float, velocity:Float){

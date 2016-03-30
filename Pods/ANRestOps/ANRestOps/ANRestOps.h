@@ -12,6 +12,7 @@
 
 @interface ANRestOps : NSObject
 
+
 typedef enum
 {
     ANRestOpsJSONFormat,
@@ -107,6 +108,11 @@ typedef enum
 + (void)postInBackground:(NSString *)urlString
                  payload:(NSDictionary *)payload
            payloadFormat:(ANRestOpsDataFormat)format
+           beforeRequest:(void (^)(void))startingBlock
+            onCompletion:(ANRestOpsCompletionHandler)completionBlock;
+
++ (void)postInBackgroundForm:(NSString *)urlString
+                 payload:(NSDictionary *)payload
            beforeRequest:(void (^)(void))startingBlock
             onCompletion:(ANRestOpsCompletionHandler)completionBlock;
 

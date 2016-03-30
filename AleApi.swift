@@ -46,7 +46,9 @@ public class AleApi{
         let FullUrl = AleApi.BaseUrl + "User/addUser"
         let params:NSMutableDictionary = NSMutableDictionary(objects: [name], forKeys: ["email"])
         params.setValue("12345", forKey: "XDEBUG_SESSION_START")
-        ANRestOps.postInBackground(FullUrl, payload: params as [NSObject : AnyObject], payloadFormat: ANRestOpsFormFormat, beforeRequest: { () -> Void in
+        
+        
+        ANRestOps.postInBackgroundForm(FullUrl, payload: params as [NSObject : AnyObject], beforeRequest: { () -> Void in
             
             }, onCompletion: {(response: ANRestOpsResponse!) -> Void in
         })
@@ -56,7 +58,7 @@ public class AleApi{
         let FullUrl = AleApi.BaseUrl + "Reward/updateRewardPosition"
         let params:NSMutableDictionary = NSMutableDictionary(objects: [name, String(x), String(y), String(scale)], forKeys: ["name", "x", "y", "scale"])
         params.setValue("12345", forKey: "XDEBUG_SESSION_START")
-        ANRestOps.postInBackground(FullUrl, payload: params as [NSObject : AnyObject], payloadFormat: ANRestOpsFormFormat, beforeRequest: { () -> Void in
+        ANRestOps.postInBackgroundForm(FullUrl, payload: params as [NSObject : AnyObject], beforeRequest: { () -> Void in
             
             }, onCompletion: {(response: ANRestOpsResponse!) -> Void in
         })
