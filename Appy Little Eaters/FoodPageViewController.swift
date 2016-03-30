@@ -35,6 +35,7 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 	var player:AVAudioPlayer?
 	var endOfPlayAction:Int!
 	
+    
     @IBAction func BuyFoods(sender: AnyObject) {
         InAppPurchaseManager.sharedInstance.BuyFood(self)
     }

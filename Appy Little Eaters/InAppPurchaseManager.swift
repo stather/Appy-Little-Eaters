@@ -54,6 +54,16 @@ public class InAppPurchaseManager : NSObject, SKProductsRequestDelegate, SKPayme
         }
         return allFoods
     }
+    
+    public func setFoodsBought(){
+        let storage = NSUserDefaults.standardUserDefaults()
+        storage.setBool(true, forKey: "AllFoods")
+    }
+    
+    public func setFoodsNotBought(){
+        let storage = NSUserDefaults.standardUserDefaults()
+        storage.setBool(false, forKey: "AllFoods")
+    }
 
     
     func requestProductInfo() {

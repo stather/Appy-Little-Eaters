@@ -16,12 +16,22 @@ class SettingsController: UIViewController, InAppPurchaseDelegate {
     
     @IBOutlet weak var AdminHolder: UIView!
     @IBOutlet weak var ControlsToggleSwitch: UISwitch!
+    @IBOutlet weak var AllFoodsToggle: UISwitch!
     
     @IBAction func ControlsToggle(sender: UISwitch) {
         if ControlsToggleSwitch.on{
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "AnimationControls")
         }else{
             NSUserDefaults.standardUserDefaults().setBool(false, forKey: "AnimationControls")
+        }
+    }
+    
+    @IBAction func AllFoodsToggled(sender: AnyObject) {
+        
+        if AllFoodsToggle.on{
+            InAppPurchaseManager.sharedInstance.setFoodsBought()
+        }else{
+            InAppPurchaseManager.sharedInstance.setFoodsNotBought()
         }
     }
     
@@ -60,6 +70,7 @@ class SettingsController: UIViewController, InAppPurchaseDelegate {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
         ControlsToggleSwitch.on = NSUserDefaults.standardUserDefaults().boolForKey("AnimationControls")
+        AllFoodsToggle.on = InAppPurchaseManager.sharedInstance.allFoodsBought()
     }
     
     @IBAction func ClearRewards(sender: AnyObject) {

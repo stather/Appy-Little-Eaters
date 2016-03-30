@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="FiX-dY-Vvo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="FiX-dY-Vvo">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -488,6 +488,18 @@
                                             <action selector="resetUser:" destination="Ln6-r5-vIt" eventType="touchUpInside" id="WRG-fy-Bxd"/>
                                         </connections>
                                     </button>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3yb-eY-nBO">
+                                        <rect key="frame" x="32" y="139" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="AllFoodsToggled:" destination="Ln6-r5-vIt" eventType="valueChanged" id="Tkm-rB-2Hq"/>
+                                        </connections>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All foods available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbF-3y-Wm2">
+                                        <rect key="frame" x="103" y="144" width="180" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -504,6 +516,7 @@
                     <navigationItem key="navigationItem" id="2ZA-P9-6Pa"/>
                     <connections>
                         <outlet property="AdminHolder" destination="Oj3-QZ-uFC" id="eOm-a2-V3o"/>
+                        <outlet property="AllFoodsToggle" destination="3yb-eY-nBO" id="BKf-xA-Qh7"/>
                         <outlet property="ControlsToggleSwitch" destination="MXf-KR-mjj" id="hPj-L6-ofX"/>
                         <outlet property="StatusHolder" destination="sPR-O1-Qlt" id="o2x-6M-rAB"/>
                         <outlet property="StatusProgress" destination="V39-9w-jHS" id="vYb-5W-dwR"/>
@@ -547,13 +560,13 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="15" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENx-WT-Bpq">
                                 <rect key="frame" x="46" y="345" width="894" height="398"/>
-                                <mutableString key="text">The goal of Appy Little Eaters is to get children to eat a colourful and varied diet.   
+                                <string key="text">The goal of Appy Little Eaters is to get children to eat a colourful and varied diet.   
 
 However, you might find your child is fixated on a particular colour group, happy to repetitively eat strawberries, for example.   In this instance, the game allows you to offer an extra incentive or reward in order to get your child to complete the entire rainbow.  
 
 To use this function please decide, along with your child perhaps, on a suitable reward.  The reward can take the form of a physical activity that you would like to do together e.g. riding bikes or a walk in the park etc.   Or it can be a physical reward e.g. a toy or extra pocket money (sometimes only hard cash will do ☺).  Type the reward in the space below.  Once the entire rainbow is completed, you will see this reward appear on the rainbow page.
 
-If you choose not to offer an additional reward, please leave the space blank.</mutableString>
+If you choose not to offer an additional reward, please leave the space blank.</string>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="19"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -984,7 +997,7 @@ If you choose not to offer an additional reward, please leave the space blank.</
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="BuyFoodsButton" destination="Sug-bN-Zmw" id="MiY-HU-XlB"/>
+                        <outlet property="BuyFoodsButton" destination="Sug-bN-Zmw" id="QIu-Ps-tyO"/>
                         <outlet property="backgroundImage" destination="K6T-6E-cPE" id="6bc-YL-QPO"/>
                         <outlet property="cross" destination="CDS-qw-2YQ" id="xCe-6R-b9Y"/>
                         <outlet property="mainView" destination="kgF-hO-DzS" id="kOa-T3-FeT"/>
