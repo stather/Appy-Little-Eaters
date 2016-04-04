@@ -25,6 +25,10 @@ public class HomeViewController : UIViewController{
             let i = UIImage(named: "My-Alien-World-2.png", inBundle: nil, compatibleWithTraitCollection: nil)
             ForestButton.setBackgroundImage(i, forState: UIControlState.Normal)
         }
+        if !NSUserDefaults.standardUserDefaults().boolForKey("ContentDownloaded"){
+            performSegueWithIdentifier("Home2Download", sender: self)
+        }
+
     }
 	
 	override public func viewDidLoad() {
@@ -33,6 +37,8 @@ public class HomeViewController : UIViewController{
 		
 		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 		appDelegate.playTheUke()
+        
+    
 	}
 	
 	@IBAction func unwindFromConfirmationForm(segue: UIStoryboardSegue ){
@@ -42,6 +48,12 @@ public class HomeViewController : UIViewController{
 	@IBAction func unwindToHomeView(segue: UIStoryboardSegue ){
 		
 	}
+    
+    @IBAction func unwindFromDownload(sender: UIStoryboardSegue)
+    {
+        //let sourceViewController = sender.sourceViewController
+    }
+
 }
 
 

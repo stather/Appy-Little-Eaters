@@ -155,6 +155,7 @@
 		684319EF1B5EDE9100A622E8 /* greenband-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 684319EB1B5EDE9100A622E8 /* greenband-white.png */; };
 		684319F01B5EDE9100A622E8 /* purpleband-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 684319EC1B5EDE9100A622E8 /* purpleband-white.png */; };
 		684319F11B5EDE9100A622E8 /* yellowband-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 684319ED1B5EDE9100A622E8 /* yellowband-white.png */; };
+		6855FF1E1CB302CE00B2F3BC /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6855FF1D1CB302CE00B2F3BC /* DownloadViewController.swift */; };
 		686316481C14CDA700F8BB74 /* Buy-Complete-Food-Selection.png in Resources */ = {isa = PBXBuildFile; fileRef = 686316411C14CDA700F8BB74 /* Buy-Complete-Food-Selection.png */; };
 		686316491C14CDA800F8BB74 /* Check-for-Updates.png in Resources */ = {isa = PBXBuildFile; fileRef = 686316421C14CDA700F8BB74 /* Check-for-Updates.png */; };
 		6863164A1C14CDA800F8BB74 /* Choose-Foods-to-Eat.png in Resources */ = {isa = PBXBuildFile; fileRef = 686316431C14CDA700F8BB74 /* Choose-Foods-to-Eat.png */; };
@@ -403,6 +404,7 @@
 		684319EB1B5EDE9100A622E8 /* greenband-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greenband-white.png"; sourceTree = "<group>"; };
 		684319EC1B5EDE9100A622E8 /* purpleband-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purpleband-white.png"; sourceTree = "<group>"; };
 		684319ED1B5EDE9100A622E8 /* yellowband-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellowband-white.png"; sourceTree = "<group>"; };
+		6855FF1D1CB302CE00B2F3BC /* DownloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
 		686316401C14C9B900F8BB74 /* AleModel 13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 13.xcdatamodel"; sourceTree = "<group>"; };
 		686316411C14CDA700F8BB74 /* Buy-Complete-Food-Selection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Buy-Complete-Food-Selection.png"; sourceTree = "<group>"; };
 		686316421C14CDA700F8BB74 /* Check-for-Updates.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Check-for-Updates.png"; sourceTree = "<group>"; };
@@ -633,6 +635,7 @@
 				687BDB6B1BE95E4100735B9D /* ChooseFoodController.swift */,
 				68D4220F1C289AE4006CB703 /* ChooseBackgroundController.swift */,
 				68D131B71C6144F0001D8115 /* StartupViewController.swift */,
+				6855FF1D1CB302CE00B2F3BC /* DownloadViewController.swift */,
 			);
 			path = "Appy Little Eaters";
 			sourceTree = "<group>";
@@ -1283,6 +1286,7 @@
 				686CC1901BC1AD92003AA2C2 /* AnimationRepository.swift in Sources */,
 				682DB28E1BA75B4300050F13 /* DFood.swift in Sources */,
 				46E15D751A051FC800B5BAE1 /* Performer.swift in Sources */,
+				6855FF1E1CB302CE00B2F3BC /* DownloadViewController.swift in Sources */,
 				46C440D31A02F12700C1A6BE /* AleModel.xcdatamodeld in Sources */,
 				46C4410C1A02F57200C1A6BE /* AppDelegate.swift in Sources */,
 				46AE6C1919E979BC000238F4 /* RainbowPageViewController.swift in Sources */,

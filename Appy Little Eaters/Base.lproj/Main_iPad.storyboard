@@ -280,6 +280,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="ForestButton" destination="st1-pk-YBW" id="Qd6-2U-Kdf"/>
+                        <segue destination="005-Lr-Gm5" kind="push" identifier="Home2Download" id="QRg-uA-xzC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wiO-EY-QHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -427,7 +428,7 @@
                                 <rect key="frame" x="62" y="527" width="176" height="149"/>
                                 <state key="normal" image="Reset-&amp;-Download-All-Content.png"/>
                                 <connections>
-                                    <action selector="ResetAll:" destination="Ln6-r5-vIt" eventType="touchUpInside" id="25q-ky-5Z3"/>
+                                    <segue destination="005-Lr-Gm5" kind="push" identifier="Settings2Download" id="aIB-zx-coe"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AoX-78-xMW" userLabel="clearforest">
@@ -497,9 +498,16 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All foods available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbF-3y-Wm2">
                                         <rect key="frame" x="103" y="144" width="180" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NYa-HQ-a2r">
+                                        <rect key="frame" x="191" y="63" width="234" height="30"/>
+                                        <state key="normal" title="Mark content not downloaded"/>
+                                        <connections>
+                                            <action selector="MarkContentNotDownloaded:" destination="Ln6-r5-vIt" eventType="touchUpInside" id="kmL-1n-5GL"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -568,7 +576,7 @@ To use this function please decide, along with your child perhaps, on a suitable
 
 If you choose not to offer an additional reward, please leave the space blank.</string>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="19"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -904,7 +912,7 @@ If you choose not to offer an additional reward, please leave the space blank.</
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbr-Ky-sIu">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1266,6 +1274,51 @@ If you choose not to offer an additional reward, please leave the space blank.</
             </objects>
             <point key="canvasLocation" x="2488" y="1240"/>
         </scene>
+        <!--Dowload-->
+        <scene sceneID="Vpf-Bf-zPx">
+            <objects>
+                <viewController id="005-Lr-Gm5" userLabel="Dowload" customClass="DownloadViewController" customModule="Appy_Little_Eaters" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Trh-Rp-EBC"/>
+                        <viewControllerLayoutGuide type="bottom" id="3KU-zH-n7d"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="H59-BO-Dh2">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Watercolour Background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="kAH-Vi-VcD">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Au7-ns-0DI" userLabel="StatusHolder">
+                                <rect key="frame" x="370" y="320" width="284" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qtP-eb-J4A" userLabel="StatusText">
+                                        <rect key="frame" x="8" y="8" width="268" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="48f-QP-eoN" userLabel="Progress">
+                                        <rect key="frame" x="8" y="69" width="268" height="2"/>
+                                    </progressView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Btd-8F-nxl"/>
+                    <connections>
+                        <outlet property="StatusProgress" destination="48f-QP-eoN" id="imm-g2-g4I"/>
+                        <outlet property="StatusText" destination="qtP-eb-J4A" id="BKu-NO-glq"/>
+                        <segue destination="UcV-2Q-n45" kind="unwind" identifier="UnwindFromDownload" unwindAction="unwindFromDownload:" id="UfW-rg-Ij5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VdF-yV-VQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="UcV-2Q-n45" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1933" y="2316"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Airplane-01.png" width="1115" height="196"/>
@@ -1321,8 +1374,9 @@ If you choose not to offer an additional reward, please leave the space blank.</
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Htw-xd-Exa"/>
-        <segue reference="f2G-Sa-c7h"/>
         <segue reference="Co3-Fl-RrI"/>
+        <segue reference="9VM-Oh-9fp"/>
+        <segue reference="UDV-Xy-o9A"/>
+        <segue reference="aIB-zx-coe"/>
     </inferredMetricsTieBreakers>
 </document>

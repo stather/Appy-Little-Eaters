@@ -26,6 +26,10 @@ class SettingsController: UIViewController, InAppPurchaseDelegate {
         }
     }
     
+    @IBAction func MarkContentNotDownloaded(sender: AnyObject) {
+        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "ContentDownloaded")
+    }
+    
     @IBAction func AllFoodsToggled(sender: AnyObject) {
         
         if AllFoodsToggle.on{
@@ -123,6 +127,11 @@ class SettingsController: UIViewController, InAppPurchaseDelegate {
     func FoodPurchased() {
         
         
+    }
+    
+    @IBAction func unwindFromDownload(sender: UIStoryboardSegue)
+    {
+        //let sourceViewController = sender.sourceViewController
     }
     
 }

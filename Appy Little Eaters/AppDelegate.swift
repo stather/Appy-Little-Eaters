@@ -119,9 +119,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         downloadFood(progress) { () -> Void in
-            text?.text = "Downloading animation updates"
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                text?.text = "Downloading animation updates"
+            })
             self.downloadAnimations(progress, done: { () -> Void in
-                text?.text = "Downloading reward updates"
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    text?.text = "Downloading reward updates"
+                })
                 self.downloadRewards(progress, done: { () -> Void in
                     done()
                 })
