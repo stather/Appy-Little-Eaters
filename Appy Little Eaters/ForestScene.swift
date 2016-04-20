@@ -23,7 +23,7 @@ public class ForestScene : SKScene{
 	
 	var _lastUpdateTime:NSTimeInterval!
 	var _dt:NSTimeInterval!
-	let cStartSpeed:Float = 5
+	let cStartSpeed:Float = 15
 	let cMaxSpeed:Float = 80
 	
 	public var leftHandEdge:Float!
@@ -129,18 +129,25 @@ public class ForestScene : SKScene{
 		// Scroll
 		
 		if (Scrolling){
+            var amount:Int  = Int(_speed * Float(_dt))
+            if amount == 0{
+                if _speed < 0 {
+                    amount = -1;
+                }else{
+                    amount = 1;
+                }
+            }
 			for item in children {
 				let node:SKNode = item 
                 if node.name == "BACK"{
-					let amount:Float  = _speed * Float(_dt)
-                    var x:Float = Float(node.position.x)
-                    let y:Float = Float(node.position.y)
+                    var x:Int = Int(node.position.x)
+                    let y:Int = Int(node.position.y)
                     x += amount
                     if amount < 0 && x < -1000 {
-                        x += backgroundWidth
+                        x += Int(backgroundWidth)
                     }
                     if amount > 0 && x > 2000 {
-                        x -= backgroundWidth
+                        x -= Int(backgroundWidth)
                     }
                     node.position = CGPoint(x: CGFloat(x), y: CGFloat(y))
                     let bn = node as! BackgroundSpriteNode
@@ -153,8 +160,7 @@ public class ForestScene : SKScene{
 				let node:SKNode = item 
 				if node is ScrollableProtocol && !(node is Forest){
 					let sp = node as! ScrollableProtocol
-					let amount:Float  = _speed * Float(_dt)
-					sp.scrollBy(amount)
+					sp.scrollBy(Float(amount))
 				}
 				if node is MoveableProtocol && !(node is Forest){
 					let mp = node as! MoveableProtocol
@@ -162,13 +168,6 @@ public class ForestScene : SKScene{
 				}
 			}
 		}
-		//frog.splash(_dt)
-//		if count > 0{
-//			let frog = SplashDrop()
-//			frog.position = self.forestPoint(CGPoint(x: CGFloat(1400), y: CGFloat(500)))
-//			self.addChild(frog)
-//			count--
-//		}
 	}
 	
 	public override func didSimulatePhysics() {
@@ -211,7 +210,7 @@ public class ForestScene : SKScene{
             var y:Int = -384
             for var row:Int=3; row>0; row=row-1{
                 let strRow = formatter.stringFromNumber(row)
-                let name = "spacerewards-" + strColumn! + "-" + strRow! + ".png"
+                let name = "Space-Rewards-Background-" + strColumn! + "-" + strRow! + ".png"
                 let texture = atlas.textureNamed(name)
                 let size = texture.size()
                 columnWidth = Int(size.width)

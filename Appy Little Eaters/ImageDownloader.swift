@@ -22,6 +22,9 @@ class BaseDownloader : NSOperation {
         let u:NSURL = NSURL(string: b!)!
         
         let d:NSData? = NSData(contentsOfURL: u)
+        if d == nil{
+            DownloadErrorManager.sharedInstance.AddError(url)
+        }
         return d
     }
 

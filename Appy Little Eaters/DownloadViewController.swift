@@ -20,10 +20,26 @@ class DownloadViewController: UIViewController {
         // Do any additional setup after loading the view.
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.resetAll(StatusProgress, text: StatusText, done: {()->Void in
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "ContentDownloaded")
-            self.performSegueWithIdentifier("UnwindFromDownload", sender: self)
+            self.presentNextMessage()
+            
         })
 
+    }
+    
+    func presentNextMessage(){
+        let message = DownloadErrorManager.sharedInstance.Errors.popLast()
+        if message == nil{
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "ContentDownloaded")
+            performSegueWithIdentifier("UnwindFromDownload", sender: self)
+        }
+        let alert = UIAlertController(title: "Download", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let cancelAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel) { (action) in
+            self.presentNextMessage()
+        }
+        alert.addAction(cancelAction)
+        
+        self.presentViewController(alert, animated: false, completion: { () -> Void in
+        })
     }
 
     override func didReceiveMemoryWarning() {

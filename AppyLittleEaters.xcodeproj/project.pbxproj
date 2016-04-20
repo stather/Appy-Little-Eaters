@@ -182,6 +182,7 @@
 		688376561C9F3CC7000A1596 /* space.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 688376551C9F3CC7000A1596 /* space.m4a */; };
 		688376581C9F4CE8000A1596 /* social-story7.png in Resources */ = {isa = PBXBuildFile; fileRef = 688376571C9F4CE8000A1596 /* social-story7.png */; };
 		6883765A1C9F4D3E000A1596 /* pickanycolour.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 688376591C9F4D3E000A1596 /* pickanycolour.m4a */; };
+		688B61FB1CBC467C00A2B695 /* DownloadErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688B61FA1CBC467C00A2B695 /* DownloadErrorManager.swift */; };
 		688D20351C28A1C4005977B6 /* planet.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 688D20341C28A1C4005977B6 /* planet.atlas */; };
 		689BD6391BD27C3F00B7EF3E /* AnimatedSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */; };
 		689BD63D1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BD63B1BD5764500B7EF3E /* DRewardPool+CoreDataProperties.swift */; };
@@ -435,6 +436,7 @@
 		688376551C9F3CC7000A1596 /* space.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = space.m4a; sourceTree = "<group>"; };
 		688376571C9F4CE8000A1596 /* social-story7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "social-story7.png"; sourceTree = "<group>"; };
 		688376591C9F4D3E000A1596 /* pickanycolour.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = pickanycolour.m4a; sourceTree = "<group>"; };
+		688B61FA1CBC467C00A2B695 /* DownloadErrorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadErrorManager.swift; sourceTree = "<group>"; };
 		688D20341C28A1C4005977B6 /* planet.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = planet.atlas; sourceTree = "<group>"; };
 		689BD6381BD27C3E00B7EF3E /* AnimatedSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSprite.swift; sourceTree = "<group>"; };
 		689BD63A1BD575D300B7EF3E /* AleModel 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AleModel 7.xcdatamodel"; sourceTree = "<group>"; };
@@ -636,6 +638,7 @@
 				68D4220F1C289AE4006CB703 /* ChooseBackgroundController.swift */,
 				68D131B71C6144F0001D8115 /* StartupViewController.swift */,
 				6855FF1D1CB302CE00B2F3BC /* DownloadViewController.swift */,
+				688B61FA1CBC467C00A2B695 /* DownloadErrorManager.swift */,
 			);
 			path = "Appy Little Eaters";
 			sourceTree = "<group>";
@@ -1311,6 +1314,7 @@
 				687BDB6C1BE95E4100735B9D /* ChooseFoodController.swift in Sources */,
 				4642606A19F45F600028C878 /* ParentsPageViewController.swift in Sources */,
 				689BD6431BD5941700B7EF3E /* DReward+CoreDataProperties.swift in Sources */,
+				688B61FB1CBC467C00A2B695 /* DownloadErrorManager.swift in Sources */,
 				469AC7A31A44C3B000CDA070 /* SGG_SkinSlot.m in Sources */,
 				46E8D17819F2C86300AEF750 /* ResourceAudioPlayer.swift in Sources */,
 				68BA94FE1B5597F8005D6A64 /* SplashscreenView.swift in Sources */,

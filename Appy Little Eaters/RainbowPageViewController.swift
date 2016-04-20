@@ -243,6 +243,13 @@ public class RainbowPageViewController: UIViewController{
             let newimage = drawText(rewardText!, inImage: pview.image!, atPoint: CGPoint(x: 350,y: 75))
             pview.image = newimage
             Plane.addSwayAnimation({ (Bool) -> Void in
+                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "RED")
+                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "ORANGE")
+                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "YELLOW")
+                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "GREEN")
+                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "BROWN")
+                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "PURPLE")
+                NSUserDefaults.standardUserDefaults().setValue("", forKey: "SpecialReward")
                 self.performSegueWithIdentifier("RainbowToReward", sender: self);
             })
         }
