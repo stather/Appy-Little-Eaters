@@ -13,7 +13,6 @@ import SpriteKit
 
 public class ForestViewController : UIViewController{
 
-	@IBOutlet weak var stopButton: UIButton!
 	@IBOutlet weak var upButton: UIButton!
 	@IBOutlet weak var downButton: UIButton!
 	@IBOutlet weak var leftButton: UIButton!
@@ -23,10 +22,8 @@ public class ForestViewController : UIViewController{
 	@IBOutlet weak var mirrorButton: UIButton!
 	@IBOutlet weak var StartStopButton: UIButton!
     @IBOutlet weak var DoneButton: UIButton!
-	
-	@IBOutlet weak var mass: UITextField!
-	
-	@IBOutlet weak var velocity: UITextField!
+    @IBOutlet weak var LeftLotsButton: UIButton!
+    @IBOutlet weak var RightsLotsButton: UIButton!
 	
 	
 	var spriteView:SKView!
@@ -40,11 +37,6 @@ public class ForestViewController : UIViewController{
         forest.done()
     }
     
-	@IBAction func start(sender: AnyObject) {
-		let fmass:Float = (mass.text! as NSString).floatValue
-		let fvelocity:Float = (velocity.text! as NSString).floatValue
-		forest.restart(fmass, velocity: fvelocity)
-	}
 	
 	var StartStop:Bool = true
 	
@@ -76,10 +68,17 @@ public class ForestViewController : UIViewController{
 		forest.MoveRight()
 	}
 	
+    @IBAction func RightLots(sender: AnyObject) {
+        forest.MoveRightLots()
+    }
+    
 	@IBAction func Left(sender: AnyObject) {
 		forest.MoveLeft()
 	}
 	
+    @IBAction func LeftLots(sender: AnyObject) {
+        forest.MoveLeftLots()
+    }
 	
 	@IBAction func Smaller(sender: AnyObject) {
 		forest.Smaller()
@@ -98,10 +97,12 @@ public class ForestViewController : UIViewController{
 		spriteView.showsFPS = true
 		mainView.insertSubview(spriteView, belowSubview: homeButton)
 		forest = ForestScene(size: CGSize(width: 1024, height: 768))
+        if NSUserDefaults.standardUserDefaults().boolForKey("AnimationControls"){
+            forest.AnimateCreatures = false
+        }
 		spriteView.presentScene(forest)
         
         if !NSUserDefaults.standardUserDefaults().boolForKey("AnimationControls"){
-			stopButton.hidden = true
 			upButton.hidden = true
 			downButton.hidden = true
 			leftButton.hidden = true
@@ -110,9 +111,9 @@ public class ForestViewController : UIViewController{
 			smallerButton.hidden = true
 			mirrorButton.hidden = true
 			StartStopButton.hidden = true
-			mass.hidden = true
-			velocity.hidden = true
             DoneButton.hidden = true
+            LeftLotsButton.hidden = true
+            RightsLotsButton.hidden = true
 		}
 	}
 	

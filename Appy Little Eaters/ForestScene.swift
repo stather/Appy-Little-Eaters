@@ -31,6 +31,8 @@ public class ForestScene : SKScene{
 	
 	var _speed:Float!
     static var debugRewardCounter = 0
+    
+    public var AnimateCreatures = true
 		
 	
 	override public func didMoveToView(view: SKView) {
@@ -139,34 +141,42 @@ public class ForestScene : SKScene{
             }
 			for item in children {
 				let node:SKNode = item 
+                var x:Int = Int(node.position.x)
+                let y:Int = Int(node.position.y)
+                x += amount
+                if amount < 0 && x < -1000 {
+                    x += Int(backgroundWidth)
+                }
+                if amount > 0 && x > 2000 {
+                    x -= Int(backgroundWidth)
+                }
+                node.position = CGPoint(x: CGFloat(x), y: CGFloat(y))
                 if node.name == "BACK"{
-                    var x:Int = Int(node.position.x)
-                    let y:Int = Int(node.position.y)
-                    x += amount
-                    if amount < 0 && x < -1000 {
-                        x += Int(backgroundWidth)
-                    }
-                    if amount > 0 && x > 2000 {
-                        x -= Int(backgroundWidth)
-                    }
-                    node.position = CGPoint(x: CGFloat(x), y: CGFloat(y))
                     let bn = node as! BackgroundSpriteNode
                     if (bn.IsKey){
                         leftHandEdge = Float(bn.position.x) - edgeOffest
                     }
 				}
 			}
-			for item in children {
-				let node:SKNode = item 
-				if node is ScrollableProtocol && !(node is Forest){
-					let sp = node as! ScrollableProtocol
-					sp.scrollBy(Float(amount))
-				}
-				if node is MoveableProtocol && !(node is Forest){
-					let mp = node as! MoveableProtocol
-					mp.moveBy(Float(_dt))
-				}
-			}
+//			for item in children {
+//				let node:SKNode = item 
+//				if !(node is Forest){
+//                    var x:Int = Int(node.position.x)
+//                    let y:Int = Int(node.position.y)
+//                    x += amount
+//                    if amount < 0 && x < -1000 {
+//                        x += Int(backgroundWidth)
+//                    }
+//                    if amount > 0 && x > 2000 {
+//                        x -= Int(backgroundWidth)
+//                    }
+//                    node.position = CGPoint(x: CGFloat(x), y: CGFloat(y))
+//				}
+//				if node is MoveableProtocol && !(node is Forest){
+//					let mp = node as! MoveableProtocol
+//					mp.moveBy(Float(_dt))
+//				}
+//			}
 		}
 	}
 	
@@ -283,19 +293,23 @@ public class ForestScene : SKScene{
 		for item in (uow.rewardRepository?.getAllRewards())!{
             if true || counter == ForestScene.debugRewardCounter {
                 ForestScene.debugRewardCounter += 1
-                let animationName = item.animationName
-                print("################ Animation:" + animationName!)
-                if animationName == "...RocketAnimation"{
+                var skeletonName = item.animationName
+                print("################ Animation:" + skeletonName!)
+                if skeletonName == "...RocketAnimation"{
                     counter += 1
                     continue
                 }
                 let rewardName = item.rewardName
-                let anim = AnimatedSprite(withAnimationName: animationName!, rewardName: rewardName!)
+                var animationName = "Random1"
+                if !AnimateCreatures{
+                    animationName = ""
+                }
+                let anim = AnimatedSprite(withSkeletonName: skeletonName!, rewardName: rewardName!, withAnimationName: animationName)
                 let op = CGPoint(x: Double(item.positionX!), y: Double(item.positionY!))
                 let fp = forestPoint(op)
                 anim.position = fp
                 anim.xScale = CGFloat(item.scale!)
-                anim.yScale = CGFloat(item.scale!)
+                anim.yScale = abs(CGFloat(item.scale!))
                 addChild(anim)
                 if false{
                     return
@@ -359,36 +373,54 @@ public class ForestScene : SKScene{
 		CurrentCreature.printGeometry()
 	}
 	
-	public func MoveRight(){
-		var p = CurrentCreature.position
-		var x = p.x
-		x += 10
-		p.x = x
-		CurrentCreature.position = p
-		CurrentCreature.printGeometry()
-	}
-	
-	public func MoveLeft(){
-		var p = CurrentCreature.position
-		var x = p.x
-		x -= 10
-		p.x = x
-		CurrentCreature.position = p
-		CurrentCreature.printGeometry()
-	}
+    public func MoveRight(){
+        var p = CurrentCreature.position
+        var x = p.x
+        x += 10
+        p.x = x
+        CurrentCreature.position = p
+        CurrentCreature.printGeometry()
+    }
+    
+    public func MoveLeft(){
+        var p = CurrentCreature.position
+        var x = p.x
+        x -= 10
+        p.x = x
+        CurrentCreature.position = p
+        CurrentCreature.printGeometry()
+    }
+    
+    public func MoveRightLots(){
+        var p = CurrentCreature.position
+        var x = p.x
+        x += 500
+        p.x = x
+        CurrentCreature.position = p
+        CurrentCreature.printGeometry()
+    }
+    
+    public func MoveLeftLots(){
+        var p = CurrentCreature.position
+        var x = p.x
+        x -= 500
+        p.x = x
+        CurrentCreature.position = p
+        CurrentCreature.printGeometry()
+    }
 	
 	public func Bigger(){
-		var scale = CurrentCreature.xScale
+		var scale = abs(CurrentCreature.xScale)
 		scale *= 1.1
-		CurrentCreature.xScale = scale
+        CurrentCreature.xScale = CurrentCreature.xScale < 0 ? -scale : scale
 		CurrentCreature.yScale = abs(scale)
 		CurrentCreature.printGeometry()
 	}
 	
 	public func Smaller(){
-		var scale = CurrentCreature.xScale
+		var scale = abs(CurrentCreature.xScale)
 		scale /= 1.1
-		CurrentCreature.xScale = scale
+        CurrentCreature.xScale = CurrentCreature.xScale < 0 ? -scale : scale
 		CurrentCreature.yScale = abs(scale)
 		CurrentCreature.printGeometry()
 	}

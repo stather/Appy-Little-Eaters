@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Xcode 4.3">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15E65" minimumToolsVersion="Xcode 4.3">
     <entity name="DAnimation" representedClassName=".DAnimation" syncable="YES">
         <attribute name="atlas" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="json" optional="YES" attributeType="String" syncable="YES"/>
@@ -50,7 +50,7 @@
     <fetchRequest name="FetchVisibleFoodByColour" entity="DFood" predicateString="colour == $COLOUR AND visible == 1"/>
     <elements>
         <element name="DAnimation" positionX="-252" positionY="-747" width="128" height="135"/>
-        <element name="DFood" positionX="-252" positionY="-747" width="128" height="135"/>
+        <element name="DFood" positionX="-83" positionY="-945" width="128" height="135"/>
         <element name="DReward" positionX="-63" positionY="-684" width="128" height="135"/>
         <element name="DRewardPool" positionX="-443" positionY="-871" width="128" height="180"/>
     </elements>

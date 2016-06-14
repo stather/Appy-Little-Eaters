@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="FiX-dY-Vvo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="FiX-dY-Vvo">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -810,7 +810,7 @@ If you choose not to offer an additional reward, please leave the space blank.</
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reward-background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="qTS-3D-Pb3">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2n-We-nF3" userLabel="Done">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2n-We-nF3" userLabel="Done">
                                 <rect key="frame" x="808" y="20" width="200" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="KQl-2k-dv2"/>
@@ -1149,25 +1149,6 @@ If you choose not to offer an additional reward, please leave the space blank.</
                                     <segue destination="3rn-rV-BR7" kind="unwind" unwindAction="unwindToHomeView:" id="fLa-gX-1e1"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v2s-FO-vOA">
-                                <rect key="frame" x="226" y="589" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rk5-XB-wCc">
-                                <rect key="frame" x="581" y="588" width="33" height="30"/>
-                                <state key="normal" title="Start">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="start:" destination="Evs-l7-TtO" eventType="touchUpInside" id="tK0-E5-eQ0"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z89-Lq-22C">
-                                <rect key="frame" x="366" y="589" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L91-S4-E0N">
                                 <rect key="frame" x="798" y="20" width="46" height="30"/>
                                 <state key="normal" title="Stop">
@@ -1231,6 +1212,28 @@ If you choose not to offer an additional reward, please leave the space blank.</
                                     <action selector="Mirror:" destination="Evs-l7-TtO" eventType="touchUpInside" id="CCy-yd-FV9"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCV-bp-GyT">
+                                <rect key="frame" x="773" y="205" width="107" height="45"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="done:" destination="Evs-l7-TtO" eventType="touchUpInside" id="EHU-01-cyd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GsY-JW-tu0">
+                                <rect key="frame" x="653" y="78" width="80" height="30"/>
+                                <state key="normal" title="Left Lots"/>
+                                <connections>
+                                    <action selector="LeftLots:" destination="Evs-l7-TtO" eventType="touchUpInside" id="zLZ-vi-v3c"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PzI-Pn-1FJ">
+                                <rect key="frame" x="906" y="78" width="87" height="30"/>
+                                <state key="normal" title="Right Lots"/>
+                                <connections>
+                                    <action selector="RightLots:" destination="Evs-l7-TtO" eventType="touchUpInside" id="JkA-FR-Njk"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohn-nn-rhx">
                                 <rect key="frame" x="744" y="78" width="46" height="30"/>
                                 <state key="normal" title="Left">
@@ -1240,13 +1243,6 @@ If you choose not to offer an additional reward, please leave the space blank.</
                                     <action selector="Left:" destination="Evs-l7-TtO" eventType="touchUpInside" id="R7r-q9-q6X"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCV-bp-GyT">
-                                <rect key="frame" x="803" y="205" width="37" height="30"/>
-                                <state key="normal" title="Done"/>
-                                <connections>
-                                    <action selector="done:" destination="Evs-l7-TtO" eventType="touchUpInside" id="EHU-01-cyd"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1254,19 +1250,18 @@ If you choose not to offer an additional reward, please leave the space blank.</
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="DoneButton" destination="eCV-bp-GyT" id="BDs-sM-up2"/>
-                        <outlet property="StartStopButton" destination="rk5-XB-wCc" id="BrK-Y2-Wfh"/>
+                        <outlet property="LeftLotsButton" destination="GsY-JW-tu0" id="dtL-6S-Tgy"/>
+                        <outlet property="RightsLotsButton" destination="PzI-Pn-1FJ" id="K9o-SD-a17"/>
+                        <outlet property="StartStopButton" destination="L91-S4-E0N" id="bN8-t9-P2e"/>
                         <outlet property="biggerButton" destination="kkX-tM-2m9" id="fQT-Ff-Y5q"/>
                         <outlet property="downButton" destination="lHW-jL-Hsi" id="21Y-YL-mYa"/>
                         <outlet property="homeButton" destination="36t-mz-bjD" id="d0j-9G-k72"/>
                         <outlet property="leftButton" destination="ohn-nn-rhx" id="N02-VE-CKS"/>
                         <outlet property="mainView" destination="sUQ-Qz-m8g" id="rZa-Fw-f4X"/>
-                        <outlet property="mass" destination="v2s-FO-vOA" id="ceW-Si-1Rg"/>
                         <outlet property="mirrorButton" destination="d6s-VR-8y0" id="xxd-3R-Z45"/>
                         <outlet property="rightButton" destination="FIi-CP-dGM" id="Jd6-iD-K3c"/>
                         <outlet property="smallerButton" destination="QIq-4v-y6z" id="vpw-L3-fhA"/>
-                        <outlet property="stopButton" destination="L91-S4-E0N" id="Wpd-VT-DkP"/>
                         <outlet property="upButton" destination="Ije-ny-193" id="aIh-R1-hTZ"/>
-                        <outlet property="velocity" destination="Z89-Lq-22C" id="3Nh-XI-eX6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ct-tX-EOV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1375,8 +1370,8 @@ If you choose not to offer an additional reward, please leave the space blank.</
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="Co3-Fl-RrI"/>
-        <segue reference="9VM-Oh-9fp"/>
         <segue reference="UDV-Xy-o9A"/>
-        <segue reference="aIB-zx-coe"/>
+        <segue reference="QRg-uA-xzC"/>
+        <segue reference="9VM-Oh-9fp"/>
     </inferredMetricsTieBreakers>
 </document>

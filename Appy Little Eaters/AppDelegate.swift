@@ -108,6 +108,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         deleteAllRewardsInPool()
         text?.text = "Deleting food"
         deleteAllFood()
+        let c = uow.animationRepository!.count()
+        let c2 = uow.rewardPoolRepository!.count()
+        let c3 = uow.rewardRepository!.count()
+        
         checkForUpdates(progress, text: text, done: done)
     }
     

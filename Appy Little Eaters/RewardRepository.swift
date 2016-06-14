@@ -48,5 +48,13 @@ public class RewardRepository{
         let rewards = try! _managedObjectContext.executeFetchRequest(fetchByName!) as! [DReward]
         return rewards[0]
     }
+    
+    func count() -> Int{
+        let fetchRequest = NSFetchRequest()
+        fetchRequest.entity = NSEntityDescription.entityForName("DReward", inManagedObjectContext: _managedObjectContext)
+        let c = _managedObjectContext.countForFetchRequest(fetchRequest, error: nil)
+        return c
+    }
+
 
 }

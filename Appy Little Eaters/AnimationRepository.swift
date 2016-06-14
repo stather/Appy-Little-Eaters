@@ -47,5 +47,13 @@ public class AnimationRepository{
         return nil
     }
     
+    func count() -> Int{
+        let fetchRequest = NSFetchRequest()
+        fetchRequest.entity = NSEntityDescription.entityForName("DAnimation", inManagedObjectContext: _managedObjectContext)
+        let c = _managedObjectContext.countForFetchRequest(fetchRequest, error: nil)
+        return c
+    }
+
+    
 }
 

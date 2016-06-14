@@ -13,12 +13,12 @@ public class AnimatedSprite: SKSpriteNode, ScrollableProtocol {
     public var rewardName:String!
     private var skeleton:SpineSkeleton!
     
-    convenience init(withAnimationName:String, rewardName:String){
+    convenience init(withSkeletonName:String, rewardName:String, withAnimationName:String){
         self.init(color: UIColor.clearColor(), size: CGSize(width: 100, height: 100))
-        self.animationName = withAnimationName
+        self.animationName = withSkeletonName
         self.rewardName = rewardName
-        self.skeleton = DZSpineSceneBuilder.loadSkeletonName(withAnimationName, scale: 0.1)
-        let n:SKNode = CreateLoopingNode(withAnimationName: "Random1")
+        self.skeleton = DZSpineSceneBuilder.loadSkeletonName(withSkeletonName, scale: 0.1)
+        let n:SKNode = CreateLoopingNode(withAnimationName: withAnimationName)
         self.addChild(n)
         self.zPosition = 1000
     }

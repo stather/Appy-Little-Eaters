@@ -252,6 +252,8 @@ public class RainbowPageViewController: UIViewController{
                 NSUserDefaults.standardUserDefaults().setValue("", forKey: "SpecialReward")
                 self.performSegueWithIdentifier("RainbowToReward", sender: self);
             })
+        }else{
+            self.performSegueWithIdentifier("RainbowToReward", sender: self);
         }
     }
     
