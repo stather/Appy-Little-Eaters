@@ -21,6 +21,7 @@ class StartupViewController : UIViewController {
     
     @IBAction func acceptClicked(sender: AnyObject) {
         if accept.on{
+            /*
             if !isValidEmail(emailAddress.text!){
                 let al = UIAlertController(title: "Error", message: "You must enter a valid email address", preferredStyle: UIAlertControllerStyle.Alert)
                 al.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
@@ -28,6 +29,7 @@ class StartupViewController : UIViewController {
                 accept.on = false
                 return
             }
+ */
             if childsName.text!.characters.count == 0{
                 let al = UIAlertController(title: "Error", message: "You must enter your childs name", preferredStyle: UIAlertControllerStyle.Alert)
                 al.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))

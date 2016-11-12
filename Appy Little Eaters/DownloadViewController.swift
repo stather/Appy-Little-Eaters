@@ -27,7 +27,9 @@ class DownloadViewController: UIViewController {
     }
     
     func presentNextMessage(){
-        let message = DownloadErrorManager.sharedInstance.Errors.popLast()
+        var message = DownloadErrorManager.sharedInstance.Errors.popLast()
+        // Force for prod
+        message = nil
         if message == nil{
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "ContentDownloaded")
             performSegueWithIdentifier("UnwindFromDownload", sender: self)

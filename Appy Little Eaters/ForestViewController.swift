@@ -92,9 +92,9 @@ public class ForestViewController : UIViewController{
 		spriteView = SKView(frame: CGRect(x: 0, y: 0, width: 1024, height: 768))
 		spriteView.opaque = false
         spriteView.allowsTransparency = true
-		spriteView.showsDrawCount = true
-		spriteView.showsNodeCount = true
-		spriteView.showsFPS = true
+		spriteView.showsDrawCount = false
+		spriteView.showsNodeCount = false
+		spriteView.showsFPS = false
 		mainView.insertSubview(spriteView, belowSubview: homeButton)
 		forest = ForestScene(size: CGSize(width: 1024, height: 768))
         if NSUserDefaults.standardUserDefaults().boolForKey("AnimationControls"){
