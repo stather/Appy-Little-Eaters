@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class SocialStoryViewController : UIViewController{
+open class SocialStoryViewController : UIViewController{
 
 	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
@@ -25,7 +25,7 @@ public class SocialStoryViewController : UIViewController{
 
 	@IBOutlet weak var nextButton: UIButton!
 
-	@IBAction func previousPage(sender: AnyObject){
+	@IBAction func previousPage(_ sender: AnyObject){
 		currentPage = currentPage - 1
 		if (currentPage == 0){
 			currentPage = 8;
@@ -33,7 +33,7 @@ public class SocialStoryViewController : UIViewController{
 		setup()
 	}
 
-	@IBAction func nextPage(sender: AnyObject){
+	@IBAction func nextPage(_ sender: AnyObject){
 		currentPage = currentPage + 1
 		if (currentPage == 9){
 			currentPage = 1;
@@ -45,7 +45,7 @@ public class SocialStoryViewController : UIViewController{
 
 	var player:ResourceAudioPlayer!
 
-	override public func viewDidLoad() {
+	override open func viewDidLoad() {
 		super.viewDidLoad()
 		player = ResourceAudioPlayer(fromName: "eatinghealthyfoods2")
 		player.play()
@@ -57,7 +57,7 @@ public class SocialStoryViewController : UIViewController{
 			self.storyImage.image = UIImage(named: "social-story1.png")
 			player = ResourceAudioPlayer(fromName: "eatinghealthyfoods2")
 			player.play()
-			nextButton.hidden = false
+			nextButton.isHidden = false
 			break;
 		case 2:
 			self.storyImage.image = UIImage(named: "social-story2.png")
@@ -93,7 +93,7 @@ public class SocialStoryViewController : UIViewController{
 			self.storyImage.image = UIImage(named: "social-story8.png")
 			player = ResourceAudioPlayer(fromName: "finishthesix")
 			player.play()
-			nextButton.hidden = true
+			nextButton.isHidden = true
 			break;
 			
 		default:
@@ -103,7 +103,7 @@ public class SocialStoryViewController : UIViewController{
 //		transition.duration = 1
 		transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
 		transition.type = kCATransitionFade
-		storyImage.layer.addAnimation(transition, forKey: nil)
+		storyImage.layer.add(transition, forKey: nil)
 		
 	}
 

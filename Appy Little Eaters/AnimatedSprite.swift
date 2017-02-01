@@ -8,13 +8,13 @@
 
 import SpriteKit
 
-public class AnimatedSprite: SKSpriteNode, ScrollableProtocol {
-    public var animationName:String!
-    public var rewardName:String!
-    private var skeleton:SpineSkeleton!
+open class AnimatedSprite: SKSpriteNode, ScrollableProtocol {
+    open var animationName:String!
+    open var rewardName:String!
+    fileprivate var skeleton:SpineSkeleton!
     
     convenience init(withSkeletonName:String, rewardName:String, withAnimationName:String){
-        self.init(color: UIColor.clearColor(), size: CGSize(width: 100, height: 100))
+        self.init(color: UIColor.clear, size: CGSize(width: 100, height: 100))
         self.animationName = withSkeletonName
         self.rewardName = rewardName
         self.skeleton = DZSpineSceneBuilder.loadSkeletonName(withSkeletonName, scale: 0.1)
@@ -23,9 +23,9 @@ public class AnimatedSprite: SKSpriteNode, ScrollableProtocol {
         self.zPosition = 1000
     }
     
-    private func CreateLoopingNode(withAnimationName withAnimationName:String) -> SKNode{
+    fileprivate func CreateLoopingNode(withAnimationName:String) -> SKNode{
         let builder:DZSpineSceneBuilder = DZSpineSceneBuilder()
-        return builder.nodeWithSkeleton(skeleton, animationName: withAnimationName, loop: true)
+        return builder.node(with: skeleton, animationName: withAnimationName, loop: true)
     }
 
     var delegate:ScrollableProtocol?
@@ -34,7 +34,7 @@ public class AnimatedSprite: SKSpriteNode, ScrollableProtocol {
         return self.scene as! ForestScene
         }()
 
-    public func printGeometry(){
+    open func printGeometry(){
         return
         let p = forestScene.originalPoint(position)
         print("x ", terminator: "")
@@ -52,7 +52,7 @@ public class AnimatedSprite: SKSpriteNode, ScrollableProtocol {
         print("")
     }
     
-    func scrollBy(amount: Float) {
+    func scrollBy(_ amount: Float) {
         delegate?.scrollBy(amount)
     }
     

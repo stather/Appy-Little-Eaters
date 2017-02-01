@@ -9,10 +9,10 @@
 import Foundation
 
 
-public class SettingsRepository{
+open class SettingsRepository{
     
     func getCurrentBackground() -> String{
-        let back = NSUserDefaults.standardUserDefaults().integerForKey("backgroundId")
+        let back = UserDefaults.standard.integer(forKey: "backgroundId")
         var backName:String
         switch back{
         case 0:

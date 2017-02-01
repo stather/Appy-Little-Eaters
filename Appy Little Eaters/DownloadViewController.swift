@@ -18,7 +18,7 @@ class DownloadViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.resetAll(StatusProgress, text: StatusText, done: {()->Void in
             self.presentNextMessage()
             
@@ -31,16 +31,16 @@ class DownloadViewController: UIViewController {
         // Force for prod
         message = nil
         if message == nil{
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "ContentDownloaded")
-            performSegueWithIdentifier("UnwindFromDownload", sender: self)
+            UserDefaults.standard.set(true, forKey: "ContentDownloaded")
+            performSegue(withIdentifier: "UnwindFromDownload", sender: self)
         }
-        let alert = UIAlertController(title: "Download", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        let cancelAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel) { (action) in
+        let alert = UIAlertController(title: "Download", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let cancelAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel) { (action) in
             self.presentNextMessage()
         }
         alert.addAction(cancelAction)
         
-        self.presentViewController(alert, animated: false, completion: { () -> Void in
+        self.present(alert, animated: false, completion: { () -> Void in
         })
     }
 

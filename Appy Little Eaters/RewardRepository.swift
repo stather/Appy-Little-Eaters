@@ -10,30 +10,30 @@ import Foundation
 import CoreData
 
 
-public class RewardRepository{
-    private var _managedObjectContext:NSManagedObjectContext
+open class RewardRepository{
+    fileprivate var _managedObjectContext:NSManagedObjectContext
     
     init(managedObjectContext: NSManagedObjectContext){
         _managedObjectContext = managedObjectContext
     }
     
     lazy var managedObjectModel : NSManagedObjectModel? = {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.managedObjectModel
         }()
     
     func createNewReward() -> DReward!{
-        return NSEntityDescription.insertNewObjectForEntityForName("DReward", inManagedObjectContext: self._managedObjectContext) as! DReward
+        return NSEntityDescription.insertNewObject(forEntityName: "DReward", into: self._managedObjectContext) as! DReward
     }
     
     func getAllRewards() ->[DReward]{
-        let fetchAllRewards = managedObjectModel?.fetchRequestTemplateForName("FetchAllRewards")
-        return (try! _managedObjectContext.executeFetchRequest(fetchAllRewards!)) as! [DReward]
+        let fetchAllRewards = managedObjectModel?.fetchRequestTemplate(forName: "FetchAllRewards")
+        return (try! _managedObjectContext.fetch(fetchAllRewards!)) as! [DReward]
         
     }
     
-    func deleteReward(reward: DReward){
-        _managedObjectContext.deleteObject(reward)
+    func deleteReward(_ reward: DReward){
+        _managedObjectContext.delete(reward)
     }
 
     func deleteAllRewards(){
@@ -43,16 +43,16 @@ public class RewardRepository{
         }
     }
     
-    func findByName(name:String) -> DReward!{
-        let fetchByName = managedObjectModel?.fetchRequestFromTemplateWithName("FetchRewardByName", substitutionVariables: ["NAME":name])
-        let rewards = try! _managedObjectContext.executeFetchRequest(fetchByName!) as! [DReward]
+    func findByName(_ name:String) -> DReward!{
+        let fetchByName = managedObjectModel?.fetchRequestFromTemplate(withName: "FetchRewardByName", substitutionVariables: ["NAME":name])
+        let rewards = try! _managedObjectContext.fetch(fetchByName!) as! [DReward]
         return rewards[0]
     }
     
     func count() -> Int{
-        let fetchRequest = NSFetchRequest()
-        fetchRequest.entity = NSEntityDescription.entityForName("DReward", inManagedObjectContext: _managedObjectContext)
-        let c = _managedObjectContext.countForFetchRequest(fetchRequest, error: nil)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        fetchRequest.entity = NSEntityDescription.entity(forEntityName: "DReward", in: _managedObjectContext)
+        let c = try! _managedObjectContext.count(for: fetchRequest)
         return c
     }
 

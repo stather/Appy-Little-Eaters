@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class FoodCell : UICollectionViewCell{
+open class FoodCell : UICollectionViewCell{
 
 	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)

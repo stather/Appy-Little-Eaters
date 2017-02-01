@@ -10,37 +10,37 @@ import Foundation
 import UIKit
 
 
-public class FoodAssetRepository{
-    private var _fileManager:NSFileManager
+open class FoodAssetRepository{
+    fileprivate var _fileManager:FileManager
     
     public init(){
-        _fileManager = NSFileManager.defaultManager()
+        _fileManager = FileManager.default
     }
     
-    private func foodImagePath() -> NSURL{
-        let bundleID:String = NSBundle.mainBundle().bundleIdentifier!
+    fileprivate func foodImagePath() -> URL{
+        let bundleID:String = Bundle.main.bundleIdentifier!
         
-        let possibleURLS:NSArray = _fileManager.URLsForDirectory(NSSearchPathDirectory.ApplicationSupportDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)
-        let appSupportDir:NSURL = possibleURLS[0] as! NSURL
-        let dirPath = appSupportDir.URLByAppendingPathComponent(bundleID)
-        try! _fileManager.createDirectoryAtURL(dirPath, withIntermediateDirectories: true, attributes: nil)
+        let possibleURLS:NSArray = _fileManager.urls(for: FileManager.SearchPathDirectory.applicationSupportDirectory, in: FileManager.SearchPathDomainMask.userDomainMask) as NSArray
+        let appSupportDir:URL = possibleURLS[0] as! URL
+        let dirPath = appSupportDir.appendingPathComponent(bundleID)
+        try! _fileManager.createDirectory(at: dirPath, withIntermediateDirectories: true, attributes: nil)
  
         return dirPath
     }
     
-    public func getFoodImage(forName:String) -> UIImage{
+    open func getFoodImage(_ forName:String) -> UIImage{
         let dirPath = foodImagePath()
-        let filename = dirPath.URLByAppendingPathComponent(forName + ".png")
+        let filename = dirPath.appendingPathComponent(forName + ".png")
         let filepath = filename.path
         let image:UIImage = UIImage(contentsOfFile: filepath as String!)!
         return image;
     }
     
-    public func addFoodImage(foodName:String, data:NSData){
+    open func addFoodImage(_ foodName:String, data:Data){
         let dirPath = foodImagePath()
-        let filename = dirPath.URLByAppendingPathComponent(foodName + ".png")
+        let filename = dirPath.appendingPathComponent(foodName + ".png")
         let filepath = filename.path
-        _ = _fileManager.createFileAtPath(filepath!, contents: data, attributes: nil)
+        _ = _fileManager.createFile(atPath: filepath, contents: data, attributes: nil)
     }
     
 

@@ -8,6 +8,7 @@
 #import "GBInfiniteScrollView/GBInfiniteScrollView.h"
 #import "SpineSpriteKit/DZSpineSceneBuilder.h"
 #import "ANRestOps/ANRestOps.h"
+#import "../ParentalGate/Classes/ParentalGate.h"
 
 #import "UIView+Glow.h"
 

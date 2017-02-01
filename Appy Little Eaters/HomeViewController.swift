@@ -11,45 +11,45 @@ import UIKit
 import AVFoundation
 
 
-public class HomeViewController : UIViewController{
+open class HomeViewController : UIViewController{
 	var player:ResourceAudioPlayer!
 
     @IBOutlet weak var ForestButton: UIButton!
     
-    override public func viewWillAppear(animated: Bool) {
-        let back = NSUserDefaults.standardUserDefaults().integerForKey("backgroundId")
+    override open func viewWillAppear(_ animated: Bool) {
+        let back = UserDefaults.standard.integer(forKey: "backgroundId")
         if back == 0 {
-            let i = UIImage(named: "home-forest.png", inBundle: nil, compatibleWithTraitCollection: nil)
-            ForestButton.setBackgroundImage(i, forState: UIControlState.Normal)
+            let i = UIImage(named: "home-forest.png", in: nil, compatibleWith: nil)
+            ForestButton.setBackgroundImage(i, for: UIControlState())
         }else{
-            let i = UIImage(named: "My-Alien-World-2.png", inBundle: nil, compatibleWithTraitCollection: nil)
-            ForestButton.setBackgroundImage(i, forState: UIControlState.Normal)
+            let i = UIImage(named: "My-Alien-World-2.png", in: nil, compatibleWith: nil)
+            ForestButton.setBackgroundImage(i, for: UIControlState())
         }
-        if !NSUserDefaults.standardUserDefaults().boolForKey("ContentDownloaded"){
-            performSegueWithIdentifier("Home2Download", sender: self)
+        if !UserDefaults.standard.bool(forKey: "ContentDownloaded"){
+            performSegue(withIdentifier: "Home2Download", sender: self)
         }
 
     }
 	
-	override public func viewDidLoad() {
+	override open func viewDidLoad() {
 		player = ResourceAudioPlayer(fromName: "intro")
 		player.play()
 		
-		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+		let appDelegate = UIApplication.shared.delegate as! AppDelegate
 		appDelegate.playTheUke()
         
     
 	}
 	
-	@IBAction func unwindFromConfirmationForm(segue: UIStoryboardSegue ){
+	@IBAction func unwindFromConfirmationForm(_ segue: UIStoryboardSegue ){
 		
 	}
 	
-	@IBAction func unwindToHomeView(segue: UIStoryboardSegue ){
+	@IBAction func unwindToHomeView(_ segue: UIStoryboardSegue ){
 		
 	}
     
-    @IBAction func unwindFromDownload(sender: UIStoryboardSegue)
+    @IBAction func unwindFromDownload(_ sender: UIStoryboardSegue)
     {
         //let sourceViewController = sender.sourceViewController
     }

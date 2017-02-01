@@ -9,48 +9,43 @@
 import Foundation
 import AVFoundation
 
-public class DownloadedAudioPlayer : AVAudioPlayer{
+open class DownloadedAudioPlayer : AVAudioPlayer{
     
     var canPlay:Bool = true
     
     convenience init?(fromName name:String) throws{
         let soundFilePath = DownloadedAudioPlayer.getAudioFile(name)
-        let fileURL = NSURL(fileURLWithPath: soundFilePath)
-        let error:NSErrorPointer = nil
-        if fileURL.checkResourceIsReachableAndReturnError(error){
-            try self.init(contentsOfURL: fileURL)
+        let fileURL = URL(fileURLWithPath: soundFilePath)
+        var error:NSError? = nil
+        if (fileURL as NSURL).checkResourceIsReachableAndReturnError(&error){
+            try self.init(contentsOf: fileURL)
         }else{
             return nil
         }
-        
-//        do{
-//            try self.init(contentsOfURL: fileURL)
-//        }catch{
-//        }
     }
 
 
-    static private func audioFilePath() -> NSURL{
-        let bundleID:String = NSBundle.mainBundle().bundleIdentifier!
+    static fileprivate func audioFilePath() -> URL{
+        let bundleID:String = Bundle.main.bundleIdentifier!
         
-        let possibleURLS:NSArray = NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.ApplicationSupportDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)
-        let appSupportDir:NSURL = possibleURLS[0] as! NSURL
-        let dirPath = appSupportDir.URLByAppendingPathComponent(bundleID)
-        try! NSFileManager.defaultManager().createDirectoryAtURL(dirPath, withIntermediateDirectories: true, attributes: nil)
+        let possibleURLS:NSArray = FileManager.default.urls(for: FileManager.SearchPathDirectory.applicationSupportDirectory, in: FileManager.SearchPathDomainMask.userDomainMask) as NSArray
+        let appSupportDir:URL = possibleURLS[0] as! URL
+        let dirPath = appSupportDir.appendingPathComponent(bundleID)
+        try! FileManager.default.createDirectory(at: dirPath, withIntermediateDirectories: true, attributes: nil)
         
         return dirPath
     }
     
-    static private func getAudioFile(forName:String) -> String{
+    static fileprivate func getAudioFile(_ forName:String) -> String{
         let dirPath = audioFilePath()
-        let filename = dirPath.URLByAppendingPathComponent(forName + ".m4a")
+        let filename = dirPath.appendingPathComponent(forName + ".m4a")
         let filepath = filename.path
-        return filepath!;
+        return filepath;
     }
     
     
     
-    override public func play() -> Bool {
+    override open func play() -> Bool {
         if canPlay{
             return super.play()
         }else{

@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-public class Forest : SKSpriteNode, ScrollableProtocol{
+open class Forest : SKSpriteNode, ScrollableProtocol{
 	var tileWidth:Float!
 	var slice:Int!
 	
@@ -29,14 +29,14 @@ public class Forest : SKSpriteNode, ScrollableProtocol{
 		let newHeight:Float = Float(t.size().height) * fact
 		let newWidth:Float = Float(t.size().width) * fact
 		
-		let s:CGSize = CGSizeMake(CGFloat(newWidth), CGFloat(newHeight))
-		self.init(texture: t, color: UIColor.clearColor(), size: s)
+		let s:CGSize = CGSize(width: CGFloat(newWidth), height: CGFloat(newHeight))
+		self.init(texture: t, color: UIColor.clear, size: s)
 		
 		self.slice = slice
 
 		tileWidth = newWidth
 		delegate = StandardScroller(howMuch:tileWidth, node:self)
-		position = CGPointMake(CGFloat(Float((slice-2))*newWidth), 0)
+		position = CGPoint(x: CGFloat(Float((slice-2))*newWidth), y: 0)
 		if slice == 1 {
 			parentScene.leftHandEdge = Float(position.x)
 		}
@@ -53,7 +53,7 @@ public class Forest : SKSpriteNode, ScrollableProtocol{
 		super.init(coder: aDecoder)
 	}
 	
-	func scrollBy(amount: Float) {
+	func scrollBy(_ amount: Float) {
 		delegate?.scrollBy(amount)
 		if slice == 1 {
 			forestScene.leftHandEdge = Float(position.x)

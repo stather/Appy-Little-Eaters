@@ -9,13 +9,13 @@
 import Foundation
 import CoreData
 
-public class UnitOfWork{
+open class UnitOfWork{
     
     public init(){
     }
     
     lazy var managedObjectContext : NSManagedObjectContext? = {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if let managedObjectContext = appDelegate.managedObjectContext {
             return managedObjectContext
         }
@@ -51,7 +51,7 @@ public class UnitOfWork{
     }()
     
     
-    public func saveChanges(){
+    open func saveChanges(){
         do {
             try managedObjectContext!.save()
         }catch{

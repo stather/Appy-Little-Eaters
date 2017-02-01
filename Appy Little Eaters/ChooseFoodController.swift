@@ -8,10 +8,10 @@
 
 import UIKit
 
-public class ChooseFoodController: UITableViewController {
-    public var FoodColour:String = ""
+open class ChooseFoodController: UITableViewController {
+    open var FoodColour:String = ""
     
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -21,19 +21,19 @@ public class ChooseFoodController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
-    override public func didReceiveMemoryWarning() {
+    override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
-    override public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override open func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if InAppPurchaseManager.sharedInstance.allFoodsBought(){
             return (UnitOfWork().foodRepository?.getCountOfFood(FoodColour))!
@@ -42,8 +42,8 @@ public class ChooseFoodController: UITableViewController {
         }
     }
 
-    override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("FoodOption", forIndexPath: indexPath) as! FoodSelectCell
+    override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FoodOption", for: indexPath) as! FoodSelectCell
         let uow = UnitOfWork()
         let rep = uow.foodRepository
         let foods:[DFood]
@@ -56,7 +56,7 @@ public class ChooseFoodController: UITableViewController {
         let image = uow.foodAssetRepository?.getFoodImage(name!)
         cell.FoodImage.image = image
         cell.FoodName.text = name
-        cell.TheSwitdh.on = foods[indexPath.row].visible == 1
+        cell.TheSwitdh.isOn = foods[indexPath.row].visible == 1
         
         return cell
     }

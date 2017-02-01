@@ -15,7 +15,7 @@ class ChooseBackgroundController: UITableViewController {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(false, animated: false)
 
-        currentScene = NSUserDefaults.standardUserDefaults().integerForKey("backgroundId")
+        currentScene = UserDefaults.standard.integer(forKey: "backgroundId")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -30,16 +30,16 @@ class ChooseBackgroundController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BackgroundCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BackgroundCell", for: indexPath)
 
         switch indexPath.row{
         case 0:
@@ -55,7 +55,7 @@ class ChooseBackgroundController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row{
         case 0:
             if currentScene != 0 {
@@ -64,7 +64,7 @@ class ChooseBackgroundController: UITableViewController {
                 uow.rewardPoolRepository?.makeAllRewardsAvailable()
                 uow.saveChanges()
             }
-            NSUserDefaults.standardUserDefaults().setInteger(0, forKey: "backgroundId")
+            UserDefaults.standard.set(0, forKey: "backgroundId")
             break
         case 1:
             if currentScene != 1 {
@@ -73,7 +73,7 @@ class ChooseBackgroundController: UITableViewController {
                 uow.rewardPoolRepository?.makeAllRewardsAvailable()
                 uow.saveChanges()
             }
-            NSUserDefaults.standardUserDefaults().setInteger(1, forKey: "backgroundId")
+            UserDefaults.standard.set(1, forKey: "backgroundId")
             break
         default:
             break

@@ -9,6 +9,6 @@
 import Foundation
 
 @objc protocol ScrollableProtocol{
-	func scrollBy(amount: Float)
+	func scrollBy(_ amount: Float)
 	
 }

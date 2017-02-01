@@ -12,6 +12,19 @@ import UIKit
 import CoreData
 import Fabric
 import Crashlytics
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
 
 
 @UIApplicationMain
@@ -23,11 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var synth:AVSpeechSynthesizer?
 	var preferredVoice:AVSpeechSynthesisVoice?
 	
-	func speak(text: String){
+	func speak(_ text: String){
 		let utter:AVSpeechUtterance = AVSpeechUtterance(string: text)
 		utter.rate = AVSpeechUtteranceMinimumSpeechRate
 		utter.voice = preferredVoice
-		synth?.speakUtterance(utter)
+		synth?.speak(utter)
 		
 	}
     
@@ -43,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func playSceneSound(){
-        let back = NSUserDefaults.standardUserDefaults().integerForKey("backgroundId")
+        let back = UserDefaults.standard.integer(forKey: "backgroundId")
         switch (back){
         case 0:
             playTheForestSounds()
@@ -60,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         forestSoundsPlayer.stop()
     }
     
-    private func playTheSpaceSound(){
+    fileprivate func playTheSpaceSound(){
         forestSoundsPlayer = ResourceAudioPlayer(fromName: "space")
         forestSoundsPlayer.volume = 0.4
         forestSoundsPlayer.numberOfLoops = -1
@@ -68,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
 	
-	private func playTheForestSounds(){
+	fileprivate func playTheForestSounds(){
 		forestSoundsPlayer = ResourceAudioPlayer(fromName: "forestsounds")
 		forestSoundsPlayer.volume = 0.3
 		forestSoundsPlayer.numberOfLoops = -1
@@ -76,14 +89,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 	
 	
-    lazy var downloadQueue:NSOperationQueue = {
-        var queue = NSOperationQueue()
+    lazy var downloadQueue:OperationQueue = {
+        var queue = OperationQueue()
         queue.name = "Download queue"
         queue.maxConcurrentOperationCount = 1
         return queue
         }()
     
-	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
         Fabric.with([Crashlytics.self])
 		//Crashlytics.startWithAPIKey("9151a746d6d01e3cf7ec2a3254ebb0c672760333")
@@ -97,7 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var animationProgress:UIProgressView?
     var foodProgress:UIProgressView?
     
-    func resetAll(progress:UIProgressView?, text:UILabel?, done:()->Void){
+    func resetAll(_ progress:UIProgressView?, text:UILabel?, done:@escaping ()->Void){
         text?.text = "Deleting rewards"
         let uow = UnitOfWork()
         uow.rewardRepository?.deleteAllRewards()
@@ -115,7 +128,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         checkForUpdates(progress, text: text, done: done)
     }
     
-    func checkForUpdates(progress:UIProgressView?, text:UILabel?, done:()->Void){
+    func checkForUpdates(_ progress:UIProgressView?, text:UILabel?, done:@escaping ()->Void){
         let uow = UnitOfWork()
         uow.rewardRepository?.deleteAllRewards()
         uow.saveChanges()
@@ -123,11 +136,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         downloadFood(progress) { () -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
                 text?.text = "Downloading animation updates"
             })
             self.downloadAnimations(progress, done: { () -> Void in
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                DispatchQueue.main.async(execute: { () -> Void in
                     text?.text = "Downloading reward updates"
                 })
                 self.downloadRewards(progress, done: { () -> Void in
@@ -137,7 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func downloadAnimations(progress:UIProgressView?, done:() -> Void){
+    func downloadAnimations(_ progress:UIProgressView?, done:@escaping () -> Void){
         let api = AleApi()
         progress?.setProgress(0, animated: true)
         var i:Float = 0
@@ -147,7 +160,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let uow = UnitOfWork()
                 var dAnimation:DAnimation?
                 dAnimation = (uow.animationRepository?.animationByName(animation.name))
-                if dAnimation == nil || dAnimation?.version?.integerValue < animation.version{
+                if dAnimation == nil || dAnimation?.version?.intValue < animation.version{
                     if dAnimation == nil{
                         dAnimation = (uow.animationRepository?.createNewAnimation())
                     }
@@ -156,7 +169,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     dAnimation!.json = animation.json
                     dAnimation!.texture = animation.texture
                     dAnimation!.rewardImage = animation.rewardImage
-                    dAnimation!.version = animation.version
+                    dAnimation!.version = animation.version as NSNumber?
                     uow.saveChanges()
                     let ad = AtlasDownloader(url: animation.atlas, name: animation.name)
                     self.downloadQueue.addOperation(ad)
@@ -167,7 +180,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let td = ImageDownloader(url: animation.texture, name: animation.name)
                     td.completionBlock = {
                         i += 1
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        DispatchQueue.main.async(execute: { () -> Void in
                             progress?.setProgress(i / Float(animations.count), animated: true)
                         })
                         if i == Float(animations.count){
@@ -186,7 +199,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    func downloadFood(progress:UIProgressView?, done:()->Void){
+    func downloadFood(_ progress:UIProgressView?, done:@escaping ()->Void){
         let api = AleApi()
         progress?.setProgress(0, animated: true)
         var i:Float = 0
@@ -195,22 +208,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let uow = UnitOfWork()
                 var dFood:DFood?
                 dFood = uow.foodRepository?.getFood(byName: food.name)
-                if dFood == nil || dFood?.version?.integerValue < food.version{
+                if dFood == nil || dFood?.version?.intValue < food.version{
                     if dFood == nil{
                         dFood = uow.foodRepository?.createNewFood()
                     }
                     dFood!.colour = food.colour
                     dFood!.name = food.name
-                    dFood!.free = food.free
+                    dFood!.free = food.free as NSNumber?
                     dFood!.visible = true
-                    dFood!.version = food.version
+                    dFood!.version = food.version as NSNumber?
                     uow.saveChanges()
                     let id = ImageDownloader(url: food.image, name: food.name)
                     self.downloadQueue.addOperation(id)
                     let sd = SoundDownloader(url: food.sound, name: food.name)
                     sd.completionBlock = {
                         i += 1
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        DispatchQueue.main.async(execute: { () -> Void in
                             progress?.setProgress(i / Float(foods.count), animated: true)
                         })
                         if i == Float(foods.count){
@@ -220,7 +233,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.downloadQueue.addOperation(sd)
                 }else{
                     i += 1
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    DispatchQueue.main.async(execute: { () -> Void in
                         progress?.setProgress(i / Float(foods.count), animated: true)
                     })
                     if i == Float(foods.count){
@@ -232,11 +245,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func downloadRewards(progress:UIProgressView?, done:() -> Void){
+    func downloadRewards(_ progress:UIProgressView?, done:@escaping () -> Void){
         let api = AleApi()
         progress?.setProgress(0, animated: true)
         var i:Float = 0
-        api.listRewardss { (rewards) -> Void in
+        api.listRewards { (rewards) -> Void in
             for reward in rewards{
                 let uow = UnitOfWork()
                 let dRewardPool:DRewardPool! = uow.rewardPoolRepository?.createNewRewardPool()
@@ -244,14 +257,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 dRewardPool.imageName = reward.animation
                 dRewardPool.scale = 0.1
                 dRewardPool.available = true
-                dRewardPool.level = Int(reward.level)
-                dRewardPool.positionX = reward.x
-                dRewardPool.positionY = reward.y
-                dRewardPool.scale = reward.scale
+                dRewardPool.level = (reward.level as NSString).integerValue as NSNumber?
+                dRewardPool.positionX = reward.x as NSNumber?
+                dRewardPool.positionY = reward.y as NSNumber?
+                dRewardPool.scale = reward.scale as NSNumber?
                 dRewardPool.scene = reward.scene
                 uow.saveChanges()
                 i += 1
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                DispatchQueue.main.async(execute: { () -> Void in
                     progress?.setProgress(i / Float(rewards.count), animated: true)
                 })
             }
@@ -263,7 +276,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let uow = UnitOfWork()
         let rewards = uow.rewardPoolRepository?.getAllRewardsInPool()
         for reward in rewards! {
-            uow.rewardPoolRepository?.deleteReward(reward)
+            uow.rewardPoolRepository?.deleteReward(reward!)
         }
         uow.saveChanges()
     }
@@ -272,7 +285,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let uow = UnitOfWork()
         let animations = uow.animationRepository?.getAllAnimation()
         for animation in animations!{
-            uow.animationRepository?.deleteAnimation(animation)
+            uow.animationRepository?.deleteAnimation(animation!)
         }
         uow.saveChanges()
     }
@@ -281,31 +294,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let uow = UnitOfWork()
         let foods = uow.foodRepository?.getAllFood()
         for food in foods!{
-            uow.foodRepository?.deleteFood(food)
+            uow.foodRepository?.deleteFood(food!)
         }
         uow.saveChanges()
     }
 	
 	
-	func applicationWillResignActive(application: UIApplication) {
+	func applicationWillResignActive(_ application: UIApplication) {
 		// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
 		// Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 	}
 	
-	func applicationDidEnterBackground(application: UIApplication) {
+	func applicationDidEnterBackground(_ application: UIApplication) {
 		// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
 		// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 	}
 	
-	func applicationWillEnterForeground(application: UIApplication) {
+	func applicationWillEnterForeground(_ application: UIApplication) {
 		// Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 	}
 	
-	func applicationDidBecomeActive(application: UIApplication) {
+	func applicationDidBecomeActive(_ application: UIApplication) {
 		// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 	}
 	
-	func applicationWillTerminate(application: UIApplication) {
+	func applicationWillTerminate(_ application: UIApplication) {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 		// Saves changes in the application's managed object context before the application terminates.
 		self.saveContext()
@@ -313,27 +326,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	// MARK: - Core Data stack
 	
-	lazy var applicationDocumentsDirectory: NSURL = {
+	lazy var applicationDocumentsDirectory: URL = {
 		// The directory the application uses to store the Core Data store file. This code uses a directory named "com.readysteadyrainbow.test2" in the application's documents Application Support directory.
-		let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+		let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
 		return urls[urls.count-1] 
 		}()
 	
 	lazy var managedObjectModel: NSManagedObjectModel = {
 		// The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-		let modelURL = NSBundle.mainBundle().URLForResource("AleModel", withExtension: "momd")!
-		return NSManagedObjectModel(contentsOfURL: modelURL)!
+		let modelURL = Bundle.main.url(forResource: "AleModel", withExtension: "momd")!
+		return NSManagedObjectModel(contentsOf: modelURL)!
 		}()
 	
 	lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
 		// The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
 		// Create the coordinator and store
 		var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-		let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("AleModel.sqlite")
+		let url = self.applicationDocumentsDirectory.appendingPathComponent("AleModel.sqlite")
 		var error: NSError? = nil
 		var failureReason = "There was an error creating or loading the application's saved data."
 		do {
-			try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: [NSMigratePersistentStoresAutomaticallyOption:true, NSInferMappingModelAutomaticallyOption:true])
+			try coordinator!.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: [NSMigratePersistentStoresAutomaticallyOption:true, NSInferMappingModelAutomaticallyOption:true])
 		} catch var error1 as NSError {
 			error = error1
 			coordinator = nil

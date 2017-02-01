@@ -9,7 +9,7 @@
 import Foundation
 
 
-public class DownloadErrorManager{
+open class DownloadErrorManager{
     static let sharedInstance = DownloadErrorManager()
     
     var Errors:[String]
@@ -18,7 +18,7 @@ public class DownloadErrorManager{
         Errors = [String]()
     }
     
-    func AddError(Message: String)  {
+    func AddError(_ Message: String)  {
         Errors.append(Message)
     }
     

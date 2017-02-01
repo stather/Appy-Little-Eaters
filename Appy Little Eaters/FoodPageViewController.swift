@@ -12,7 +12,7 @@ import AVFoundation
 import CoreData
 
 
-public class FoodPageViewController : UIViewController, UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, AVAudioPlayerDelegate, InAppPurchaseDelegate{
+open class FoodPageViewController : UIViewController, UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, AVAudioPlayerDelegate, InAppPurchaseDelegate{
     @IBOutlet weak var BuyFoodsButton: UIButton!
 
 	public enum FoodColour:Int{
@@ -23,34 +23,41 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 	    super.init(coder: aDecoder)
 	}
 
-	@IBOutlet weak public var mainView: UIView!
-	@IBOutlet weak public var theCollection: UICollectionView!
-	@IBOutlet weak public var backgroundImage: UIImageView!
+	@IBOutlet weak open var mainView: UIView!
+	@IBOutlet weak open var theCollection: UICollectionView!
+	@IBOutlet weak open var backgroundImage: UIImageView!
 	
-	public var index:NSInteger = 0
+	open var index:NSInteger = 0
 	var foods:NSArray!
-	@IBOutlet weak public var selectedFoodImage: UIImageView!
-	@IBOutlet weak public var tick: UIButton!
-	@IBOutlet weak public var cross: UIButton!
+	@IBOutlet weak open var selectedFoodImage: UIImageView!
+	@IBOutlet weak open var tick: UIButton!
+	@IBOutlet weak open var cross: UIButton!
 	var player:AVAudioPlayer?
 	var endOfPlayAction:Int!
 	
     
-    @IBAction func BuyFoods(sender: AnyObject) {
-        InAppPurchaseManager.sharedInstance.BuyFood(self)
+    @IBAction func BuyFoods(_ sender: AnyObject) {
+        let pg = ParentalGate.new { (success) in
+            if success{
+                InAppPurchaseManager.sharedInstance.BuyFood(self)
+            }else{
+                
+            }
+        }
+        pg?.show()
     }
     
-    public func FoodNotPurchased() {
+    open func FoodNotPurchased() {
         
         
     }
     
-    public func FoodPurchased() {
+    open func FoodPurchased() {
         
         
     }
     
-    func getFoodForColour(c:String) -> NSArray {
+    func getFoodForColour(_ c:String) -> NSArray {
 
         let uow = UnitOfWork()
         var foods:[DFood]
@@ -62,60 +69,60 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
         }
         let f = NSMutableArray()
         for item in foods{
-            f.addObject(item.name!)
+            f.add(item.name!)
         }
         
         return f
     }
 	
-	override public func viewDidLoad() {
+	override open func viewDidLoad() {
         
         if InAppPurchaseManager.sharedInstance.allFoodsBought(){
-            BuyFoodsButton.hidden = true
+            BuyFoodsButton.isHidden = true
         }
 
         
-		self.selectedFoodImage.hidden = true
-		self.tick.hidden = true
-		self.cross.hidden = true
+		self.selectedFoodImage.isHidden = true
+		self.tick.isHidden = true
+		self.cross.isHidden = true
 		
 		super.viewDidLoad()
-		self.theCollection.backgroundColor = UIColor.clearColor()
-		self.theCollection.backgroundView = UIView(frame: CGRectZero)
+		self.theCollection.backgroundColor = UIColor.clear
+		self.theCollection.backgroundView = UIView(frame: CGRect.zero)
 		
-		let lc:NSLayoutConstraint = NSLayoutConstraint(item: self.theCollection, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: self.mainView, attribute: NSLayoutAttribute.Height, multiplier: 0.333, constant: 0)
+		let lc:NSLayoutConstraint = NSLayoutConstraint(item: self.theCollection, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: self.mainView, attribute: NSLayoutAttribute.height, multiplier: 0.333, constant: 0)
 		self.mainView.addConstraint(lc)
 		
 		var filepath:String!
 		
 		switch (self.index){
 		case FoodColour.red.rawValue:
-			filepath = NSBundle.mainBundle().pathForResource("red-background", ofType: "jpg")
+			filepath = Bundle.main.path(forResource: "red-background", ofType: "jpg")
             foods = getFoodForColour("Red")
             player = ResourceAudioPlayer(fromName: "RED")
 			break;
 		case FoodColour.orange.rawValue:
-			filepath = NSBundle.mainBundle().pathForResource("orange-background", ofType: "jpg")
+			filepath = Bundle.main.path(forResource: "orange-background", ofType: "jpg")
             foods = getFoodForColour("Orange")
             player = ResourceAudioPlayer(fromName: "ORANGE")
 			break;
 		case FoodColour.yellow.rawValue:
-			filepath = NSBundle.mainBundle().pathForResource("yellow-background", ofType: "jpg")
+			filepath = Bundle.main.path(forResource: "yellow-background", ofType: "jpg")
             foods = getFoodForColour("Yellow")
             player = ResourceAudioPlayer(fromName: "YELLOW")
 			break;
 		case FoodColour.green.rawValue:
-			filepath = NSBundle.mainBundle().pathForResource("green-background", ofType: "jpg")
+			filepath = Bundle.main.path(forResource: "green-background", ofType: "jpg")
             foods = getFoodForColour("Green")
             player = ResourceAudioPlayer(fromName: "GREEN")
 			break;
 		case FoodColour.white.rawValue:
-			filepath = NSBundle.mainBundle().pathForResource("white-background", ofType: "jpg")
+			filepath = Bundle.main.path(forResource: "white-background", ofType: "jpg")
             foods = getFoodForColour("White")
             player = ResourceAudioPlayer(fromName: "BROWN")
 			break;
 		case FoodColour.purple.rawValue:
-			filepath = NSBundle.mainBundle().pathForResource("purple-background", ofType: "jpg")
+			filepath = Bundle.main.path(forResource: "purple-background", ofType: "jpg")
             foods = getFoodForColour("Purple")
             player = ResourceAudioPlayer(fromName: "PURPLE")
 			break;
@@ -128,36 +135,36 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 	}
 	
 	
-	public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+	open func numberOfSections(in collectionView: UICollectionView) -> Int {
 		return 1
 	}
 	
-	public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+	open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return foods.count
 	}
     
 	
-	public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		let cell:FoodCell = collectionView.dequeueReusableCellWithReuseIdentifier("FoodCell", forIndexPath: indexPath) as! FoodCell
-		cell.backgroundColor = UIColor.whiteColor()
+	open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		let cell:FoodCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodCell", for: indexPath) as! FoodCell
+		cell.backgroundColor = UIColor.white
 		let index:NSInteger = indexPath.item
-		let name:NSString = foods.objectAtIndex(index) as! NSString
+		let name:NSString = foods.object(at: index) as! NSString
 		cell.foodImage.image = UnitOfWork().foodAssetRepository?.getFoodImage(name as String)
-		cell.foodImage.backgroundColor = UIColor.clearColor()
-		cell.backgroundColor = UIColor.clearColor()
-		cell.backgroundView = UIView(frame: CGRectZero)
+		cell.foodImage.backgroundColor = UIColor.clear
+		cell.backgroundColor = UIColor.clear
+		cell.backgroundView = UIView(frame: CGRect.zero)
         cell.FoodLabel.text = name as String
 		return cell;
 	}
 
-	public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+	open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		let index:Int = indexPath.item
-		let name:String = foods.objectAtIndex(index) as! String
+		let name:String = foods.object(at: index) as! String
 		self.selectedFoodImage.image = UnitOfWork().foodAssetRepository?.getFoodImage(name as String)
-		self.selectedFoodImage.hidden = false;
-		self.theCollection.hidden = true;
-		self.tick.hidden = false;
-		self.cross.hidden = false;
+		self.selectedFoodImage.isHidden = false;
+		self.theCollection.isHidden = true;
+		self.tick.isHidden = false;
+		self.cross.isHidden = false;
 		
 		//let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 		//appDelegate.speak("Have you eaten a " + name)
@@ -167,53 +174,53 @@ public class FoodPageViewController : UIViewController, UITextFieldDelegate, UIC
 		
 	}
 	
-	public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+	open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		let height = self.theCollection.bounds.size.height;
-		return CGSizeMake(height, height);
+		return CGSize(width: height, height: height);
 	}
 	
-	public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+	open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 		return UIEdgeInsetsMake(0, 0, 0, 0);
 		
 	}
 	
-	@IBAction func crossClicked(sender: AnyObject){
+	@IBAction func crossClicked(_ sender: AnyObject){
 		self.endOfPlayAction = 0;
 		player = ResourceAudioPlayer(fromName: "NOIHAVENOTEATEN")
 		player?.delegate = self
 		player?.play()
 	}
 	
-	public func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
+	open func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
 		if (self.endOfPlayAction == 0)
 		{
-			self.selectedFoodImage.hidden = true;
-			self.theCollection.hidden = false;
-			self.tick.hidden = true;
-			self.cross.hidden = true;
+			self.selectedFoodImage.isHidden = true;
+			self.theCollection.isHidden = false;
+			self.tick.isHidden = true;
+			self.cross.isHidden = true;
 			
 		}
 		else if (self.endOfPlayAction == 1)
 		{
-			self.selectedFoodImage.hidden = true;
-			self.theCollection.hidden = false;
-			self.tick.hidden = true;
-			self.cross.hidden = true;
-			performSegueWithIdentifier("ToRainbowFromFood", sender: self)
+			self.selectedFoodImage.isHidden = true;
+			self.theCollection.isHidden = false;
+			self.tick.isHidden = true;
+			self.cross.isHidden = true;
+			performSegue(withIdentifier: "ToRainbowFromFood", sender: self)
 		}
 		
 	}
 	
-	@IBAction func tickClicked(sender: AnyObject){
+	@IBAction func tickClicked(_ sender: AnyObject){
 		self.endOfPlayAction = 1;
 		player = ResourceAudioPlayer(fromName: "YESIHAVEEATEN")
 		player?.delegate = self
 		player?.play()
 	}
 	
-	override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		if segue.destinationViewController.isKindOfClass(RainbowPageViewController){
-			let vc:RainbowPageViewController = segue.destinationViewController as! RainbowPageViewController
+	override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.destination.isKind(of: RainbowPageViewController.self){
+			let vc:RainbowPageViewController = segue.destination as! RainbowPageViewController
 			vc.colour = index
 			vc.foodEaten = true
 		}

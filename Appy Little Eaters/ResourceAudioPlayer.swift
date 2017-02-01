@@ -9,22 +9,22 @@
 import Foundation
 import AVFoundation
 
-public class ResourceAudioPlayer : AVAudioPlayer{
+open class ResourceAudioPlayer : AVAudioPlayer{
     
     var canPlay:Bool = true
     
     convenience init(fromName name:String){
-        let soundFilePath = NSBundle.mainBundle().pathForResource(name, ofType: "m4a")
+        let soundFilePath = Bundle.main.path(forResource: name, ofType: "m4a")
         if soundFilePath != nil{
-            let fileURL = NSURL(fileURLWithPath: soundFilePath!)
-            try! self.init(contentsOfURL: fileURL)
+            let fileURL = URL(fileURLWithPath: soundFilePath!)
+            try! self.init(contentsOf: fileURL)
         }else{
             self.init()
             canPlay = false
         }
     }
     
-    override public func play() -> Bool {
+    override open func play() -> Bool {
         if canPlay{
             return super.play()
         }else{

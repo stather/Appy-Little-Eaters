@@ -37,9 +37,9 @@ class Cloud1View : UIView {
 			var xScale = self.bounds.size.width / scalingView.bounds.size.width
 			var yScale = self.bounds.size.height / scalingView.bounds.size.height
 			switch contentMode {
-			case .ScaleToFill:
+			case .scaleToFill:
 				break
-			case .ScaleAspectFill:
+			case .scaleAspectFill:
 				let scale = max(xScale, yScale)
 				xScale = scale
 				yScale = scale
@@ -48,8 +48,8 @@ class Cloud1View : UIView {
 				xScale = scale
 				yScale = scale
 			}
-			scalingView.transform = CGAffineTransformMakeScale(xScale, yScale)
-			scalingView.center = CGPoint(x:CGRectGetMidX(self.bounds), y:CGRectGetMidY(self.bounds))
+			scalingView.transform = CGAffineTransform(scaleX: xScale, y: yScale)
+			scalingView.center = CGPoint(x:self.bounds.midX, y:self.bounds.midY)
 		}
 	}
 
@@ -57,7 +57,7 @@ class Cloud1View : UIView {
 
 	func setupHierarchy() {
 		var viewsByName: [String : UIView] = [:]
-		let bundle = NSBundle(forClass:self.dynamicType)
+		let bundle = Bundle(for:type(of: self))
 		let __scaling__ = UIView()
 		__scaling__.bounds = CGRect(x:0, y:0, width:556, height:368)
 		__scaling__.center = CGPoint(x:278.0, y:184.0)
@@ -67,11 +67,11 @@ class Cloud1View : UIView {
 		let cloud1 = UIImageView()
 		cloud1.bounds = CGRect(x:0, y:0, width:444.0, height:275.0)
 		var imgCloud1: UIImage!
-		if let imagePath = bundle.pathForResource("cloud1.png", ofType:nil) {
+		if let imagePath = bundle.path(forResource: "cloud1.png", ofType:nil) {
 			imgCloud1 = UIImage(contentsOfFile:imagePath)
 		}
 		cloud1.image = imgCloud1
-		cloud1.contentMode = .Center;
+		cloud1.contentMode = .center;
 		cloud1.layer.position = CGPoint(x:274.285, y:197.565)
 		__scaling__.addSubview(cloud1)
 		viewsByName["cloud1"] = cloud1
@@ -85,76 +85,76 @@ class Cloud1View : UIView {
 		addSwayAnimationWithBeginTime(0, fillMode: kCAFillModeBoth, removedOnCompletion: false)
 	}
 
-	func addSwayAnimation(removedOnCompletion removedOnCompletion: Bool) {
+	func addSwayAnimation(removedOnCompletion: Bool) {
 		addSwayAnimationWithBeginTime(0, fillMode: removedOnCompletion ? kCAFillModeRemoved : kCAFillModeBoth, removedOnCompletion: removedOnCompletion)
 	}
 
-	func addSwayAnimationWithBeginTime(beginTime: CFTimeInterval, fillMode: String, removedOnCompletion: Bool) {
+	func addSwayAnimationWithBeginTime(_ beginTime: CFTimeInterval, fillMode: String, removedOnCompletion: Bool) {
 		let linearTiming = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
 		let anticipateTiming = CAMediaTimingFunction(controlPoints: 0.42, -0.30, 1.00, 1.00)
 
 		let cloud1RotationAnimation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
 		cloud1RotationAnimation.duration = 10.000
 		cloud1RotationAnimation.values = [0.000 as Float, 0.044 as Float, -0.082 as Float, 0.000 as Float]
-		cloud1RotationAnimation.keyTimes = [0.000 as Float, 0.300 as Float, 0.700 as Float, 1.000 as Float]
+        cloud1RotationAnimation.keyTimes = [NSNumber(value:0.000 as Float), NSNumber(value: 0.300 as Float), NSNumber(value: 0.700 as Float), NSNumber(value: 1.000 as Float)]
 		cloud1RotationAnimation.timingFunctions = [linearTiming, linearTiming, linearTiming]
 		cloud1RotationAnimation.repeatCount = HUGE
 		cloud1RotationAnimation.beginTime = beginTime
 		cloud1RotationAnimation.fillMode = fillMode
-		cloud1RotationAnimation.removedOnCompletion = removedOnCompletion
-		self.viewsByName["cloud1"]?.layer.addAnimation(cloud1RotationAnimation, forKey:"sway_Rotation")
+		cloud1RotationAnimation.isRemovedOnCompletion = removedOnCompletion
+		self.viewsByName["cloud1"]?.layer.add(cloud1RotationAnimation, forKey:"sway_Rotation")
 
 		let cloud1ScaleXAnimation = CAKeyframeAnimation(keyPath: "transform.scale.x")
 		cloud1ScaleXAnimation.duration = 10.000
 		cloud1ScaleXAnimation.values = [1.000 as Float, 1.100 as Float, 1.000 as Float, 1.000 as Float]
-		cloud1ScaleXAnimation.keyTimes = [0.000 as Float, 0.100 as Float, 0.200 as Float, 1.000 as Float]
+        cloud1ScaleXAnimation.keyTimes = [NSNumber(value: 0.000 as Float), NSNumber(value:0.100 as Float), NSNumber(value:0.200 as Float), NSNumber(value:1.000 as Float)]
 		cloud1ScaleXAnimation.timingFunctions = [linearTiming, linearTiming, linearTiming]
 		cloud1ScaleXAnimation.repeatCount = HUGE
 		cloud1ScaleXAnimation.beginTime = beginTime
 		cloud1ScaleXAnimation.fillMode = fillMode
-		cloud1ScaleXAnimation.removedOnCompletion = removedOnCompletion
-		self.viewsByName["cloud1"]?.layer.addAnimation(cloud1ScaleXAnimation, forKey:"sway_ScaleX")
+		cloud1ScaleXAnimation.isRemovedOnCompletion = removedOnCompletion
+		self.viewsByName["cloud1"]?.layer.add(cloud1ScaleXAnimation, forKey:"sway_ScaleX")
 
 		let cloud1ScaleYAnimation = CAKeyframeAnimation(keyPath: "transform.scale.y")
 		cloud1ScaleYAnimation.duration = 10.000
 		cloud1ScaleYAnimation.values = [1.000 as Float, 1.100 as Float, 1.000 as Float, 1.000 as Float]
-		cloud1ScaleYAnimation.keyTimes = [0.000 as Float, 0.100 as Float, 0.200 as Float, 1.000 as Float]
+        cloud1ScaleYAnimation.keyTimes = [NSNumber(value:0.000 as Float), NSNumber(value:0.100 as Float), NSNumber(value:0.200 as Float), NSNumber(value:1.000 as Float)]
 		cloud1ScaleYAnimation.timingFunctions = [linearTiming, linearTiming, linearTiming]
 		cloud1ScaleYAnimation.repeatCount = HUGE
 		cloud1ScaleYAnimation.beginTime = beginTime
 		cloud1ScaleYAnimation.fillMode = fillMode
-		cloud1ScaleYAnimation.removedOnCompletion = removedOnCompletion
-		self.viewsByName["cloud1"]?.layer.addAnimation(cloud1ScaleYAnimation, forKey:"sway_ScaleY")
+		cloud1ScaleYAnimation.isRemovedOnCompletion = removedOnCompletion
+		self.viewsByName["cloud1"]?.layer.add(cloud1ScaleYAnimation, forKey:"sway_ScaleY")
 
 		let cloud1TranslationXAnimation = CAKeyframeAnimation(keyPath: "transform.translation.x")
 		cloud1TranslationXAnimation.duration = 10.000
 		cloud1TranslationXAnimation.values = [0.000 as Float, -27.615 as Float, 54.773 as Float, 35.120 as Float, -22.826 as Float, 0.000 as Float]
-		cloud1TranslationXAnimation.keyTimes = [0.000 as Float, 0.200 as Float, 0.400 as Float, 0.600 as Float, 0.800 as Float, 1.000 as Float]
+        cloud1TranslationXAnimation.keyTimes = [NSNumber(value:0.000 as Float), NSNumber(value:0.200 as Float), NSNumber(value:0.400 as Float), NSNumber(value:0.600 as Float), NSNumber(value:0.800 as Float), NSNumber(value:1.000 as Float)]
 		cloud1TranslationXAnimation.timingFunctions = [anticipateTiming, anticipateTiming, anticipateTiming, anticipateTiming, anticipateTiming]
 		cloud1TranslationXAnimation.repeatCount = HUGE
 		cloud1TranslationXAnimation.beginTime = beginTime
 		cloud1TranslationXAnimation.fillMode = fillMode
-		cloud1TranslationXAnimation.removedOnCompletion = removedOnCompletion
-		self.viewsByName["cloud1"]?.layer.addAnimation(cloud1TranslationXAnimation, forKey:"sway_TranslationX")
+		cloud1TranslationXAnimation.isRemovedOnCompletion = removedOnCompletion
+		self.viewsByName["cloud1"]?.layer.add(cloud1TranslationXAnimation, forKey:"sway_TranslationX")
 
 		let cloud1TranslationYAnimation = CAKeyframeAnimation(keyPath: "transform.translation.y")
 		cloud1TranslationYAnimation.duration = 10.000
 		cloud1TranslationYAnimation.values = [0.000 as Float, 21.583 as Float, -11.427 as Float, 48.132 as Float, -53.861 as Float, 0.000 as Float]
-		cloud1TranslationYAnimation.keyTimes = [0.000 as Float, 0.200 as Float, 0.400 as Float, 0.600 as Float, 0.800 as Float, 1.000 as Float]
+        cloud1TranslationYAnimation.keyTimes = [NSNumber(value:0.000 as Float), NSNumber(value:0.200 as Float), NSNumber(value:0.400 as Float), NSNumber(value:0.600 as Float), NSNumber(value:0.800 as Float), NSNumber(value:1.000 as Float)]
 		cloud1TranslationYAnimation.timingFunctions = [anticipateTiming, anticipateTiming, anticipateTiming, anticipateTiming, anticipateTiming]
 		cloud1TranslationYAnimation.repeatCount = HUGE
 		cloud1TranslationYAnimation.beginTime = beginTime
 		cloud1TranslationYAnimation.fillMode = fillMode
-		cloud1TranslationYAnimation.removedOnCompletion = removedOnCompletion
-		self.viewsByName["cloud1"]?.layer.addAnimation(cloud1TranslationYAnimation, forKey:"sway_TranslationY")
+		cloud1TranslationYAnimation.isRemovedOnCompletion = removedOnCompletion
+		self.viewsByName["cloud1"]?.layer.add(cloud1TranslationYAnimation, forKey:"sway_TranslationY")
 	}
 
 	func removeSwayAnimation() {
-		self.viewsByName["cloud1"]?.layer.removeAnimationForKey("sway_Rotation")
-		self.viewsByName["cloud1"]?.layer.removeAnimationForKey("sway_ScaleX")
-		self.viewsByName["cloud1"]?.layer.removeAnimationForKey("sway_ScaleY")
-		self.viewsByName["cloud1"]?.layer.removeAnimationForKey("sway_TranslationX")
-		self.viewsByName["cloud1"]?.layer.removeAnimationForKey("sway_TranslationY")
+		self.viewsByName["cloud1"]?.layer.removeAnimation(forKey: "sway_Rotation")
+		self.viewsByName["cloud1"]?.layer.removeAnimation(forKey: "sway_ScaleX")
+		self.viewsByName["cloud1"]?.layer.removeAnimation(forKey: "sway_ScaleY")
+		self.viewsByName["cloud1"]?.layer.removeAnimation(forKey: "sway_TranslationX")
+		self.viewsByName["cloud1"]?.layer.removeAnimation(forKey: "sway_TranslationY")
 	}
 
 	func removeAllAnimations() {

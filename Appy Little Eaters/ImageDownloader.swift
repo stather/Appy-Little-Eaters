@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseDownloader : NSOperation {
+class BaseDownloader : Operation {
     var url:String
     var filename:String
     
@@ -17,31 +17,31 @@ class BaseDownloader : NSOperation {
         self.filename = name
     }
     
-    func downloadData() -> NSData?{
-        let b = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
-        let u:NSURL = NSURL(string: b!)!
+    func downloadData() -> Data?{
+        let b = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        let u:URL = URL(string: b!)!
         
-        let d:NSData? = NSData(contentsOfURL: u)
+        let d:Data? = try? Data(contentsOf: u)
         if d == nil{
             DownloadErrorManager.sharedInstance.AddError(url)
         }
         return d
     }
 
-    func saveContentsOfUrl(name:String, ext:String, srcUrl:String){
-        let fileManager:NSFileManager = NSFileManager.defaultManager()
-        let bundleID:String = NSBundle.mainBundle().bundleIdentifier!
+    func saveContentsOfUrl(_ name:String, ext:String, srcUrl:String){
+        let fileManager:FileManager = FileManager.default
+        let bundleID:String = Bundle.main.bundleIdentifier!
         
-        let possibleURLS:NSArray = fileManager.URLsForDirectory(NSSearchPathDirectory.ApplicationSupportDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)
-        let appSupportDir:NSURL = possibleURLS[0] as! NSURL
-        let dirPath = appSupportDir.URLByAppendingPathComponent(bundleID)
-        try! fileManager.createDirectoryAtURL(dirPath, withIntermediateDirectories: true, attributes: nil)
-        let filename = dirPath.URLByAppendingPathComponent(name + "." + ext)
+        let possibleURLS:NSArray = fileManager.urls(for: FileManager.SearchPathDirectory.applicationSupportDirectory, in: FileManager.SearchPathDomainMask.userDomainMask) as NSArray
+        let appSupportDir:URL = possibleURLS[0] as! URL
+        let dirPath = appSupportDir.appendingPathComponent(bundleID)
+        try! fileManager.createDirectory(at: dirPath, withIntermediateDirectories: true, attributes: nil)
+        let filename = dirPath.appendingPathComponent(name + "." + ext)
         let filepath = filename.path
         
-        let d:NSData? = downloadData()
+        let d:Data? = downloadData()
         if d != nil {
-            _ = fileManager.createFileAtPath(filepath!, contents: d, attributes: nil)
+            _ = fileManager.createFile(atPath: filepath, contents: d, attributes: nil)
         }
         
         

@@ -19,8 +19,8 @@ class StartupViewController : UIViewController {
     
     @IBOutlet weak var startEating: UIButton!
     
-    @IBAction func acceptClicked(sender: AnyObject) {
-        if accept.on{
+    @IBAction func acceptClicked(_ sender: AnyObject) {
+        if accept.isOn{
             /*
             if !isValidEmail(emailAddress.text!){
                 let al = UIAlertController(title: "Error", message: "You must enter a valid email address", preferredStyle: UIAlertControllerStyle.Alert)
@@ -31,19 +31,19 @@ class StartupViewController : UIViewController {
             }
  */
             if childsName.text!.characters.count == 0{
-                let al = UIAlertController(title: "Error", message: "You must enter your childs name", preferredStyle: UIAlertControllerStyle.Alert)
-                al.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
-                presentViewController(al, animated: true, completion: nil)
-                accept.on = false
+                let al = UIAlertController(title: "Error", message: "You must enter your childs name", preferredStyle: UIAlertControllerStyle.alert)
+                al.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
+                present(al, animated: true, completion: nil)
+                accept.isOn = false
                 return
             }
-            startEating.enabled = true
+            startEating.isEnabled = true
         }else{
-            startEating.enabled = false
+            startEating.isEnabled = false
         }
     }
     
-    func isValidEmail(testStr:String) -> Bool {
+    func isValidEmail(_ testStr:String) -> Bool {
         
         print("validate emilId: \(testStr)")
         
@@ -51,29 +51,29 @@ class StartupViewController : UIViewController {
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         
-        let result = emailTest.evaluateWithObject(testStr)
+        let result = emailTest.evaluate(with: testStr)
         
         return result
         
     }
     
-    override func viewWillAppear(animated: Bool) {
-        if NSUserDefaults.standardUserDefaults().boolForKey("TC_Accepted"){
-            performSegueWithIdentifier("Start2Home", sender: self)
+    override func viewWillAppear(_ animated: Bool) {
+        if UserDefaults.standard.bool(forKey: "TC_Accepted"){
+            performSegue(withIdentifier: "Start2Home", sender: self)
         }
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "Start2Home" && !NSUserDefaults.standardUserDefaults().boolForKey("TC_Accepted"){
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Start2Home" && !UserDefaults.standard.bool(forKey: "TC_Accepted"){
             let api = AleApi()
             api.addUser(emailAddress.text!)
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "TC_Accepted")
+            UserDefaults.standard.set(true, forKey: "TC_Accepted")
         }
         
     }
     
-    @IBAction func unwindToStartPage(segue: UIStoryboardSegue ){
+    @IBAction func unwindToStartPage(_ segue: UIStoryboardSegue ){
         
     }
 

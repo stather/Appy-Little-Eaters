@@ -14,12 +14,12 @@ public protocol InAppPurchaseDelegate{
     func FoodNotPurchased()
 }
 
-public class InAppPurchaseManager : NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserver{
+open class InAppPurchaseManager : NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserver{
     static let sharedInstance = InAppPurchaseManager()
 
-    var productIDs: Array<String!> = []
+    var productIDs: Array<String?> = []
     
-    var productsArray: Array<SKProduct!> = []
+    var productsArray: Array<SKProduct?> = []
     var transactionInProgress = false
     
     var purchaseDelegate:InAppPurchaseDelegate?
@@ -28,16 +28,16 @@ public class InAppPurchaseManager : NSObject, SKProductsRequestDelegate, SKPayme
         super.init()
         productIDs.append("ALLFOOD")
         requestProductInfo()
-        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+        SKPaymentQueue.default().add(self)
         
     }
 
-    public func BuyFood(delegate: InAppPurchaseDelegate) {
+    open func BuyFood(_ delegate: InAppPurchaseDelegate) {
         purchaseDelegate = delegate
         for product in productsArray{
-            if product.productIdentifier == "ALLFOOD"{
-                let payment = SKPayment(product: product)
-                SKPaymentQueue.defaultQueue().addPayment(payment)
+            if product?.productIdentifier == "ALLFOOD"{
+                let payment = SKPayment(product: product!)
+                SKPaymentQueue.default().add(payment)
                 self.transactionInProgress = true
                 return
             }
@@ -46,23 +46,23 @@ public class InAppPurchaseManager : NSObject, SKProductsRequestDelegate, SKPayme
         purchaseDelegate?.FoodNotPurchased()
     }
     
-    public func allFoodsBought() -> Bool{
-        let storage = NSUserDefaults.standardUserDefaults()
+    open func allFoodsBought() -> Bool{
+        let storage = UserDefaults.standard
         var allFoods:Bool = false
-        if storage.objectForKey("AllFoods") != nil{
-            allFoods = storage.boolForKey("AllFoods")
+        if storage.object(forKey: "AllFoods") != nil{
+            allFoods = storage.bool(forKey: "AllFoods")
         }
         return allFoods
     }
     
-    public func setFoodsBought(){
-        let storage = NSUserDefaults.standardUserDefaults()
-        storage.setBool(true, forKey: "AllFoods")
+    open func setFoodsBought(){
+        let storage = UserDefaults.standard
+        storage.set(true, forKey: "AllFoods")
     }
     
-    public func setFoodsNotBought(){
-        let storage = NSUserDefaults.standardUserDefaults()
-        storage.setBool(false, forKey: "AllFoods")
+    open func setFoodsNotBought(){
+        let storage = UserDefaults.standard
+        storage.set(false, forKey: "AllFoods")
     }
 
     
@@ -78,7 +78,7 @@ public class InAppPurchaseManager : NSObject, SKProductsRequestDelegate, SKPayme
         }
     }
     
-    public func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
+    open func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         if response.products.count != 0 {
             for product in response.products {
                 productsArray.append(product )
@@ -89,56 +89,35 @@ public class InAppPurchaseManager : NSObject, SKProductsRequestDelegate, SKPayme
         }
     }
     
-    public func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+    open func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
             switch transaction.transactionState {
-            case SKPaymentTransactionState.Purchased:
+            case SKPaymentTransactionState.purchased:
                 print("Transaction completed successfully.")
-                SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+                SKPaymentQueue.default().finishTransaction(transaction)
                 transactionInProgress = false
 //                let storage = NSUbiquitousKeyValueStore.defaultStore()
-                let storage = NSUserDefaults.standardUserDefaults()
-                storage.setBool(true, forKey: "AllFoods")
-                let receiptURL = NSBundle.mainBundle().appStoreReceiptURL
-                let req = NSURLRequest.init(URL: receiptURL!)
-                let receipt = try? NSURLConnection.sendSynchronousRequest(req, returningResponse: nil)
-                var savedReceipts = storage.arrayForKey("receipts")
+                let storage = UserDefaults.standard
+                storage.set(true, forKey: "AllFoods")
+                let receiptURL = Bundle.main.appStoreReceiptURL
+                let req = URLRequest.init(url: receiptURL!)
+                let receipt = try? NSURLConnection.sendSynchronousRequest(req, returning: nil)
+                var savedReceipts = storage.array(forKey: "receipts")
                 if savedReceipts == nil{
-                    storage.setObject(receipt, forKey: "receipts")
+                    storage.set(receipt, forKey: "receipts")
                 }else{
-                    let updatedReceipts = savedReceipts?.append(receipt!) as! AnyObject
-                    storage.setObject(updatedReceipts, forKey: "receipts")
+                    let updatedReceipts = savedReceipts?.append(receipt!) as AnyObject
+                    storage.set(updatedReceipts, forKey: "receipts")
                 }
                 storage.synchronize()
                 purchaseDelegate?.FoodPurchased()
                 break
                 
-            case SKPaymentTransactionState.Failed:
+            case SKPaymentTransactionState.failed:
                 print("Transaction Failed");
-                let e:SKErrorCode = SKErrorCode(rawValue: (transaction.error?.code)!)!
-                switch (e){
-                case SKErrorCode.Unknown:
-                    break
-                    
-                case SKErrorCode.ClientInvalid:
-                    break
-                    
-                case SKErrorCode.PaymentCancelled:
-                    break
-                    
-                case SKErrorCode.PaymentInvalid:
-                    break
-                    
-                case SKErrorCode.PaymentNotAllowed:
-                    break
-                    
-                case SKErrorCode.StoreProductNotAvailable:
-                    break
-                    
-                default:
-                    break
-                }
-                SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+                print(transaction.error.debugDescription)
+                print(transaction.error?.localizedDescription)
+                SKPaymentQueue.default().finishTransaction(transaction)
                 transactionInProgress = false
                 purchaseDelegate?.FoodNotPurchased()
                 break

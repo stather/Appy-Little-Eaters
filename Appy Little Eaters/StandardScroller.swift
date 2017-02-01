@@ -17,7 +17,7 @@ class StandardScroller : ScrollableProtocol{
 		self.node = node
 	}
 	
-	@objc func scrollBy(amount: Float) {
+	@objc func scrollBy(_ amount: Float) {
 		var x:Float = Float(node.position.x)
 		let y:Float = Float(node.position.y)
 		x += amount

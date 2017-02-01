@@ -11,7 +11,7 @@ import AVFoundation
 import SpriteKit
 
 
-public class ForestViewController : UIViewController{
+open class ForestViewController : UIViewController{
 
 	@IBOutlet weak var upButton: UIButton!
 	@IBOutlet weak var downButton: UIButton!
@@ -33,14 +33,14 @@ public class ForestViewController : UIViewController{
 	var anchorLimit:CGFloat!
 	var forest:ForestScene!
 	
-    @IBAction func done(sender: AnyObject) {
+    @IBAction func done(_ sender: AnyObject) {
         forest.done()
     }
     
 	
 	var StartStop:Bool = true
 	
-	@IBAction func StartStop(sender: AnyObject) {
+	@IBAction func StartStop(_ sender: AnyObject) {
 		if StartStop {
 			forest.StopScrolling()
 			StartStopButton.titleLabel?.text = "Start"
@@ -51,83 +51,83 @@ public class ForestViewController : UIViewController{
 		StartStop = !StartStop
 	}
 	
-	@IBAction func Mirror(sender: AnyObject) {
+	@IBAction func Mirror(_ sender: AnyObject) {
 		forest.Mirror()
 	}
 	
-	@IBAction func Up(sender: AnyObject) {
+	@IBAction func Up(_ sender: AnyObject) {
 		forest.MoveUp()
 	}
 	
 	
-	@IBAction func Down(sender: AnyObject) {
+	@IBAction func Down(_ sender: AnyObject) {
 		forest.MoveDown()
 	}
 	
-	@IBAction func Right(sender: AnyObject) {
+	@IBAction func Right(_ sender: AnyObject) {
 		forest.MoveRight()
 	}
 	
-    @IBAction func RightLots(sender: AnyObject) {
+    @IBAction func RightLots(_ sender: AnyObject) {
         forest.MoveRightLots()
     }
     
-	@IBAction func Left(sender: AnyObject) {
+	@IBAction func Left(_ sender: AnyObject) {
 		forest.MoveLeft()
 	}
 	
-    @IBAction func LeftLots(sender: AnyObject) {
+    @IBAction func LeftLots(_ sender: AnyObject) {
         forest.MoveLeftLots()
     }
 	
-	@IBAction func Smaller(sender: AnyObject) {
+	@IBAction func Smaller(_ sender: AnyObject) {
 		forest.Smaller()
 	}
 	
-	@IBAction func Bigger(sender: AnyObject) {
+	@IBAction func Bigger(_ sender: AnyObject) {
 		forest.Bigger()
 	}
 	
-	override public func viewWillAppear(animated: Bool) {
+	override open func viewWillAppear(_ animated: Bool) {
 		spriteView = SKView(frame: CGRect(x: 0, y: 0, width: 1024, height: 768))
-		spriteView.opaque = false
+		spriteView.isOpaque = false
         spriteView.allowsTransparency = true
 		spriteView.showsDrawCount = false
 		spriteView.showsNodeCount = false
 		spriteView.showsFPS = false
 		mainView.insertSubview(spriteView, belowSubview: homeButton)
 		forest = ForestScene(size: CGSize(width: 1024, height: 768))
-        if NSUserDefaults.standardUserDefaults().boolForKey("AnimationControls"){
+        if UserDefaults.standard.bool(forKey: "AnimationControls"){
             forest.AnimateCreatures = false
         }
 		spriteView.presentScene(forest)
         
-        if !NSUserDefaults.standardUserDefaults().boolForKey("AnimationControls"){
-			upButton.hidden = true
-			downButton.hidden = true
-			leftButton.hidden = true
-			rightButton.hidden = true
-			biggerButton.hidden = true
-			smallerButton.hidden = true
-			mirrorButton.hidden = true
-			StartStopButton.hidden = true
-            DoneButton.hidden = true
-            LeftLotsButton.hidden = true
-            RightsLotsButton.hidden = true
+        if !UserDefaults.standard.bool(forKey: "AnimationControls"){
+			upButton.isHidden = true
+			downButton.isHidden = true
+			leftButton.isHidden = true
+			rightButton.isHidden = true
+			biggerButton.isHidden = true
+			smallerButton.isHidden = true
+			mirrorButton.isHidden = true
+			StartStopButton.isHidden = true
+            DoneButton.isHidden = true
+            LeftLotsButton.isHidden = true
+            RightsLotsButton.isHidden = true
 		}
 	}
 	
 	
-	public override func viewDidLoad() {
-		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+	open override func viewDidLoad() {
+		let appDelegate = UIApplication.shared.delegate as! AppDelegate
 		appDelegate.stopTheUke()
 		appDelegate.playSceneSound()
 		//appDelegate.speak("Welcome to the forest")
 		
 	}
 	
-	public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+	open override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		let appDelegate = UIApplication.shared.delegate as! AppDelegate
 		appDelegate.stopSceneSound()
 		appDelegate.playTheUke()
 	}

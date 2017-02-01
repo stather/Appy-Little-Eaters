@@ -176,6 +176,12 @@
 		687BDB6C1BE95E4100735B9D /* ChooseFoodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB6B1BE95E4100735B9D /* ChooseFoodController.swift */; };
 		687BDB6F1BEA9D1A00735B9D /* DFood+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB6E1BEA9D1A00735B9D /* DFood+CoreDataProperties.swift */; };
 		687BDB721BEAAB8400735B9D /* UIView+Glow.m in Sources */ = {isa = PBXBuildFile; fileRef = 687BDB711BEAAB8400735B9D /* UIView+Glow.m */; };
+		687C4B331DD78954008525C6 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 687C4B211DD78954008525C6 /* .gitkeep */; };
+		687C4B341DD78954008525C6 /* ParentalGate.strings in Resources */ = {isa = PBXBuildFile; fileRef = 687C4B221DD78954008525C6 /* ParentalGate.strings */; };
+		687C4B351DD78954008525C6 /* ParentalGate.xib in Resources */ = {isa = PBXBuildFile; fileRef = 687C4B281DD78954008525C6 /* ParentalGate.xib */; };
+		687C4B361DD78954008525C6 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 687C4B2D1DD78954008525C6 /* .gitkeep */; };
+		687C4B371DD78954008525C6 /* BlockBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 687C4B2F1DD78954008525C6 /* BlockBackground.m */; };
+		687C4B381DD78954008525C6 /* ParentalGate.m in Sources */ = {isa = PBXBuildFile; fileRef = 687C4B321DD78954008525C6 /* ParentalGate.m */; };
 		688376501C974FAE000A1596 /* spaceback.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6883764F1C974FAE000A1596 /* spaceback.jpg */; };
 		688376521C975663000A1596 /* My-Alien-World-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 688376511C975663000A1596 /* My-Alien-World-2.png */; };
 		688376541C9F3CA3000A1596 /* My_Life_Is_Good_full.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 688376531C9F3CA3000A1596 /* My_Life_Is_Good_full.m4a */; };
@@ -430,6 +436,22 @@
 		687BDB6E1BEA9D1A00735B9D /* DFood+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DFood+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		687BDB701BEAAB8400735B9D /* UIView+Glow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Glow.h"; sourceTree = "<group>"; };
 		687BDB711BEAAB8400735B9D /* UIView+Glow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Glow.m"; sourceTree = "<group>"; };
+		687C4B211DD78954008525C6 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		687C4B231DD78954008525C6 /* cn */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cn; path = cn.lproj/ParentalGate.strings; sourceTree = "<group>"; };
+		687C4B241DD78954008525C6 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/ParentalGate.strings"; sourceTree = "<group>"; };
+		687C4B251DD78954008525C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ParentalGate.strings; sourceTree = "<group>"; };
+		687C4B261DD78954008525C6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ParentalGate.strings; sourceTree = "<group>"; };
+		687C4B271DD78954008525C6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ParentalGate.strings; sourceTree = "<group>"; };
+		687C4B281DD78954008525C6 /* ParentalGate.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParentalGate.xib; sourceTree = "<group>"; };
+		687C4B291DD78954008525C6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ParentalGate.strings"; sourceTree = "<group>"; };
+		687C4B2A1DD78954008525C6 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ParentalGate.strings"; sourceTree = "<group>"; };
+		687C4B2B1DD78954008525C6 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/ParentalGate.strings; sourceTree = "<group>"; };
+		687C4B2D1DD78954008525C6 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		687C4B2E1DD78954008525C6 /* BlockBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockBackground.h; sourceTree = "<group>"; };
+		687C4B2F1DD78954008525C6 /* BlockBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockBackground.m; sourceTree = "<group>"; };
+		687C4B301DD78954008525C6 /* BlockUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockUI.h; sourceTree = "<group>"; };
+		687C4B311DD78954008525C6 /* ParentalGate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentalGate.h; sourceTree = "<group>"; };
+		687C4B321DD78954008525C6 /* ParentalGate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentalGate.m; sourceTree = "<group>"; };
 		6883764F1C974FAE000A1596 /* spaceback.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spaceback.jpg; sourceTree = "<group>"; };
 		688376511C975663000A1596 /* My-Alien-World-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "My-Alien-World-2.png"; sourceTree = "<group>"; };
 		688376531C9F3CA3000A1596 /* My_Life_Is_Good_full.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = My_Life_Is_Good_full.m4a; sourceTree = "<group>"; };
@@ -542,6 +564,7 @@
 		464F702418A019EF00DDA449 = {
 			isa = PBXGroup;
 			children = (
+				687C4B1F1DD78954008525C6 /* ParentalGate */,
 				681AF9F21C84E22000039AC8 /* parentsanimation */,
 				681AF9F01C7E492900039AC8 /* SpecialRewardViewController.swift */,
 				68D131B51C56C60A001D8115 /* DownloadedAudioPlayer.swift */,
@@ -934,6 +957,38 @@
 			name = Repositories;
 			sourceTree = "<group>";
 		};
+		687C4B1F1DD78954008525C6 /* ParentalGate */ = {
+			isa = PBXGroup;
+			children = (
+				687C4B201DD78954008525C6 /* Assets */,
+				687C4B2C1DD78954008525C6 /* Classes */,
+			);
+			path = ParentalGate;
+			sourceTree = "<group>";
+		};
+		687C4B201DD78954008525C6 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				687C4B211DD78954008525C6 /* .gitkeep */,
+				687C4B221DD78954008525C6 /* ParentalGate.strings */,
+				687C4B281DD78954008525C6 /* ParentalGate.xib */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		687C4B2C1DD78954008525C6 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				687C4B2D1DD78954008525C6 /* .gitkeep */,
+				687C4B2E1DD78954008525C6 /* BlockBackground.h */,
+				687C4B2F1DD78954008525C6 /* BlockBackground.m */,
+				687C4B301DD78954008525C6 /* BlockUI.h */,
+				687C4B311DD78954008525C6 /* ParentalGate.h */,
+				687C4B321DD78954008525C6 /* ParentalGate.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		68BA94F71B5597F8005D6A64 /* splashscreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -1040,6 +1095,7 @@
 				TargetAttributes = {
 					464F702C18A019EF00DDA449 = {
 						DevelopmentTeam = 7E4366Z228;
+						LastSwiftMigration = 0820;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -1058,6 +1114,13 @@
 			knownRegions = (
 				en,
 				Base,
+				cn,
+				"en-GB",
+				es,
+				fr,
+				"zh-Hans",
+				"zh-Hant",
+				zh,
 			);
 			mainGroup = 464F702418A019EF00DDA449;
 			productRefGroup = 464F702E18A019F000DDA449 /* Products */;
@@ -1096,6 +1159,7 @@
 				46E7C7D4198545F500CE7AB3 /* home-rainbow.png in Resources */,
 				4626D5E91A0FCB8700D0FB24 /* smoke.png in Resources */,
 				68B571CB1B73FDD400C35B52 /* newforest.atlas in Resources */,
+				687C4B361DD78954008525C6 /* .gitkeep in Resources */,
 				4626D5EF1A0FD27A00D0FB24 /* bokeh.png in Resources */,
 				46E7C7EE1986E4CD00CE7AB3 /* social-background.jpg in Resources */,
 				46E7C7DA1985487A00CE7AB3 /* home-logo.png in Resources */,
@@ -1108,6 +1172,7 @@
 				4642607619F4626D0028C878 /* PARENTS-PAGE-3.png in Resources */,
 				4645B12019D9E2A400974B39 /* social-story1.png in Resources */,
 				461C64FE1A90EF680084B8B2 /* redband-white.png in Resources */,
+				687C4B341DD78954008525C6 /* ParentalGate.strings in Resources */,
 				46AE6C3119EAB24F000238F4 /* YESIHAVEEATEN.m4a in Resources */,
 				469846ED19D85A6100617FCE /* reward-done.png in Resources */,
 				4645B12719D9E66700974B39 /* social-story5.png in Resources */,
@@ -1119,6 +1184,7 @@
 				46AE6C2A19EAB24F000238F4 /* BROWN.m4a in Resources */,
 				46AE6C0919E97263000238F4 /* rainbow.png in Resources */,
 				46E48BCB18A8FDC4006DCA91 /* Localizable.strings in Resources */,
+				687C4B351DD78954008525C6 /* ParentalGate.xib in Resources */,
 				46AE6C1319E9777A000238F4 /* greenband.png in Resources */,
 				4626D5E31A0E9C6A00D0FB24 /* spark.png in Resources */,
 				46E7C7F81988382C00CE7AB3 /* eatinghealthyfoods2.m4a in Resources */,
@@ -1174,6 +1240,7 @@
 				68B2A1FC1C3025D00036A03B /* healthykids.m4a in Resources */,
 				46E7C7F3198830A600CE7AB3 /* social-story3.png in Resources */,
 				461441A719D7081C00CB5A3E /* yes.png in Resources */,
+				687C4B331DD78954008525C6 /* .gitkeep in Resources */,
 				68BA94FD1B5597F8005D6A64 /* SPLASH PAGE.jpg in Resources */,
 				46E8D17B19F3B96600AEF750 /* PARENTS-PAGE-background.jpg in Resources */,
 				4642606F19F462610028C878 /* pinit_03.png in Resources */,
@@ -1253,6 +1320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				687BDB6F1BEA9D1A00735B9D /* DFood+CoreDataProperties.swift in Sources */,
+				687C4B381DD78954008525C6 /* ParentalGate.m in Sources */,
 				469846EB19D84BEF00617FCE /* RewardsPageViewController.swift in Sources */,
 				46E7C7C71985114D00CE7AB3 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				46AE6C4919EAF773000238F4 /* HomeViewController.swift in Sources */,
@@ -1280,6 +1348,7 @@
 				686CC18C1BBFD996003AA2C2 /* FoodRepository.swift in Sources */,
 				687BDB601BE7F31000735B9D /* InAppPurchaseManager.swift in Sources */,
 				682DB2871BA6011D00050F13 /* AleApi.swift in Sources */,
+				687C4B371DD78954008525C6 /* BlockBackground.m in Sources */,
 				4642607C19F58D530028C878 /* ForestScene.swift in Sources */,
 				689BD6441BD5941700B7EF3E /* DReward.swift in Sources */,
 				46C440CE1A02C55B00C1A6BE /* ScrollableProtocol.swift in Sources */,
@@ -1386,6 +1455,21 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		687C4B221DD78954008525C6 /* ParentalGate.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				687C4B231DD78954008525C6 /* cn */,
+				687C4B241DD78954008525C6 /* en-GB */,
+				687C4B251DD78954008525C6 /* en */,
+				687C4B261DD78954008525C6 /* es */,
+				687C4B271DD78954008525C6 /* fr */,
+				687C4B291DD78954008525C6 /* zh-Hans */,
+				687C4B2A1DD78954008525C6 /* zh-Hant */,
+				687C4B2B1DD78954008525C6 /* zh */,
+			);
+			name = ParentalGate.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1488,6 +1572,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Appy Little Eaters/Appy Little Eaters-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1517,6 +1602,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Appy Little Eaters/Appy Little Eaters-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};

@@ -9,10 +9,34 @@
 import Foundation
 import UIKit
 import AVFoundation
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 
 @objc
-public class RainbowPageViewController: UIViewController{
+open class RainbowPageViewController: UIViewController{
 	
     @IBOutlet weak var Cloud1: Cloud1View!
     @IBOutlet weak var Cloud2: Cloud2View!
@@ -25,8 +49,8 @@ public class RainbowPageViewController: UIViewController{
     @IBOutlet weak var home: UIButton!
     @IBOutlet weak var Plane: ParentsrewardView!
 	
-	public var colour: Int = 0
-	public var foodEaten: Bool = false
+	open var colour: Int = 0
+	open var foodEaten: Bool = false
 	var theBand:UIImageView!
 	var theColour:NSString!
 	var player:ResourceAudioPlayer!
@@ -40,26 +64,26 @@ public class RainbowPageViewController: UIViewController{
     var paintColour:UIColor!
     var RainbowComplete:Bool = false
 	
-    func fillBand(bandView:UIImageView, colour:UIColor){
+    func fillBand(_ bandView:UIImageView, colour:UIColor){
         let image:UIImage = bandView.image!
         let imageWidth = image.size.width
         let imageHeight = image.size.height
         let r2 = CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight)
         UIGraphicsBeginImageContext(image.size)
         
-        image.drawAtPoint(CGPoint.zero)
+        image.draw(at: CGPoint.zero)
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetBlendMode(context, CGBlendMode.SourceIn)
-        CGContextSetFillColorWithColor(context, colour.CGColor)
-        CGContextSetLineCap(context, CGLineCap.Round)
-        CGContextFillRect(context, r2)
+        context?.setBlendMode(CGBlendMode.sourceIn)
+        context?.setFillColor(colour.cgColor)
+        context?.setLineCap(CGLineCap.round)
+        context?.fill(r2)
         let im2 = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         bandView.image = im2
         bandView.setNeedsDisplay()
     }
 	
-	func drawAt(point: CGPoint){
+	func drawAt(_ point: CGPoint){
 		let r = theBand.bounds
 		let image:UIImage = theBand.image!
 		let imageWidth = image.size.width
@@ -70,15 +94,15 @@ public class RainbowPageViewController: UIViewController{
 		let y = point.y * yfact
 		let newPoint = CGPoint(x: x, y: y)
 		UIGraphicsBeginImageContext(image.size)
-		image.drawAtPoint(CGPoint.zero)
+		image.draw(at: CGPoint.zero)
 		let context = UIGraphicsGetCurrentContext()
-		CGContextSetBlendMode(context, CGBlendMode.SourceIn)
+		context?.setBlendMode(CGBlendMode.sourceIn)
 //		var colour = UIColor.redColor()
-		CGContextSetStrokeColorWithColor(context, paintColour.CGColor)
-		CGContextSetLineCap(context, CGLineCap.Round)
+		context?.setStrokeColor(paintColour.cgColor)
+		context?.setLineCap(CGLineCap.round)
 		let rect = CGRect(x: (newPoint.x - (circleSize/2)), y: (newPoint.y - (circleSize/2)), width: circleSize, height: circleSize)
-		CGContextSetFillColorWithColor(context, paintColour.CGColor)
-		CGContextFillEllipseInRect(context, rect)
+		context?.setFillColor(paintColour.cgColor)
+		context?.fillEllipse(in: rect)
 		//CGContextSetLineWidth(context, 15)
 		//CGContextMoveToPoint(context, 0, 0)
 		//CGContextAddLineToPoint(context, point.x, point.y)
@@ -97,35 +121,35 @@ public class RainbowPageViewController: UIViewController{
 		sizeh /= 10
 		let s = CGSize(width: sizew, height: sizeh)
 		UIGraphicsBeginImageContext(s)
-		theBand.image!.drawInRect(CGRect(origin: CGPoint(x: 0, y: 0), size: s))
+		theBand.image!.draw(in: CGRect(origin: CGPoint(x: 0, y: 0), size: s))
         var i = UIGraphicsGetImageFromCurrentImageContext()
-		let newImage = UIGraphicsGetImageFromCurrentImageContext()?.CGImage
+		let newImage = UIGraphicsGetImageFromCurrentImageContext()?.cgImage
 		UIGraphicsEndImageContext()
 		
 	
 		
-		let provider = CGImageGetDataProvider(newImage)
-		let bitmapData = CGDataProviderCopyData(provider)
+		let provider = newImage?.dataProvider
+		let bitmapData = provider?.data
 		var data = CFDataGetBytePtr(bitmapData)
-		let width = CGImageGetWidth(newImage)
-		let height = CGImageGetHeight(newImage)
-		var total = width * height
+		let width = newImage?.width
+		let height = newImage?.height
+		var total = width! * height!
 		var white = 0
 		var nonwhite = 0
 		while total > 0{
 			total -= 1
-			let vr = Float(data[0])/255.0
+			let vr = Float((data?[0])!)/255.0
 			let r = CGFloat(vr)
-			let vg = Float(data[1])/255.0
+			let vg = Float((data?[1])!)/255.0
 			let g = CGFloat(vg)
-			let vb = Float(data[2])/255.0
+			let vb = Float((data?[2])!)/255.0
 			let b = CGFloat(vb)
 			if r == 1 && g == 1 && b == 1 {
 				white += 1
 			}else if r > 0 || g > 0 || b > 0 {
 				nonwhite += 1
 			}
-			data += 4
+			data = data! + 4
 			_ = UIColor(red: r, green: g, blue: b, alpha: 1.0)
 		}
 		if white > 0 && nonwhite / white > 18{
@@ -136,28 +160,28 @@ public class RainbowPageViewController: UIViewController{
 		print("white: " + white.description + " nonwhite: " + nonwhite.description)
 	}
 	
-	@IBAction func RedBandPanned(sender: UIPanGestureRecognizer) {
+	@IBAction func RedBandPanned(_ sender: UIPanGestureRecognizer) {
 		if bandComplete && !segued{
             segued = true
             if RainbowComplete {
                 DoThePlane()
             }else{
-                performSegueWithIdentifier("RainbowToReward", sender: self);
+                performSegue(withIdentifier: "RainbowToReward", sender: self);
             }
 			return
 		}
 		if !allowColouring{
 			return
 		}
-		if sender.numberOfTouches() > 0 {
-			let p = sender.locationOfTouch(0, inView: theBand)
+		if sender.numberOfTouches > 0 {
+			let p = sender.location(ofTouch: 0, in: theBand)
 			drawAt(p)
             if (counting){
                 print("Already counting")
                 return
             }
             counting = true
-            dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.rawValue), 0)){
+            DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async{
                 self.countRed()
                 self.counting = false
             }
@@ -168,7 +192,7 @@ public class RainbowPageViewController: UIViewController{
 	
 	
 	
-	@IBAction func tapped(sender: UITapGestureRecognizer) {
+	@IBAction func tapped(_ sender: UITapGestureRecognizer) {
 		/*
 		theBand.hidden = false;
 		theBand.alpha = 1.0;
@@ -189,11 +213,11 @@ public class RainbowPageViewController: UIViewController{
 		super.init(coder: aDecoder);
 	}
 	
-	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil);
 	}
     
-    public override func viewDidAppear(animated: Bool) {
+    open override func viewDidAppear(_ animated: Bool) {
 //        if foodEaten{
 //            fillBand(theBand, colour: paintColour)
 //            theBand.startGlowingWithColor(UIColor.redColor(), intensity: 1.0)
@@ -201,9 +225,9 @@ public class RainbowPageViewController: UIViewController{
         //home.startGlowing()
     }
     
-    func drawText(text:NSString, inImage:UIImage, atPoint:CGPoint) -> UIImage{
+    func drawText(_ text:NSString, inImage:UIImage, atPoint:CGPoint) -> UIImage{
         // Setup the font specific variables
-        let textColor: UIColor = UIColor.redColor()
+        let textColor: UIColor = UIColor.red
         let textFont: UIFont = UIFont(name: "Helvetica Bold", size: 36)!
         
         //Setup the image context using the passed image.
@@ -216,16 +240,16 @@ public class RainbowPageViewController: UIViewController{
         ]
         
         //Put the image into a rectangle as large as the original image.
-        inImage.drawInRect(CGRectMake(0, 0, inImage.size.width, inImage.size.height))
+        inImage.draw(in: CGRect(x: 0, y: 0, width: inImage.size.width, height: inImage.size.height))
         
         // Creating a point within the space that is as bit as the image.
-        let rect: CGRect = CGRectMake(atPoint.x, atPoint.y, inImage.size.width, inImage.size.height)
+        let rect: CGRect = CGRect(x: atPoint.x, y: atPoint.y, width: inImage.size.width, height: inImage.size.height)
         
         //Now Draw the text into an image.
-        text.drawInRect(rect, withAttributes: textFontAttributes)
+        text.draw(in: rect, withAttributes: textFontAttributes)
         
         // Create a new image out of the images we have created
-        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         
         // End the context now that we have the image we need
         UIGraphicsEndImageContext()
@@ -238,73 +262,73 @@ public class RainbowPageViewController: UIViewController{
     
     func DoThePlane() -> Void {
         let pview:UIImageView = Plane.viewsByName["Airplane-01"] as! UIImageView
-        let rewardText = NSUserDefaults.standardUserDefaults().stringForKey("SpecialReward")
+        let rewardText = UserDefaults.standard.string(forKey: "SpecialReward")
         if rewardText != nil && rewardText?.characters.count > 0{
-            let newimage = drawText(rewardText!, inImage: pview.image!, atPoint: CGPoint(x: 350,y: 75))
+            let newimage = drawText(rewardText! as NSString, inImage: pview.image!, atPoint: CGPoint(x: 350,y: 75))
             pview.image = newimage
             Plane.addSwayAnimation({ (Bool) -> Void in
-                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "RED")
-                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "ORANGE")
-                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "YELLOW")
-                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "GREEN")
-                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "BROWN")
-                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "PURPLE")
-                NSUserDefaults.standardUserDefaults().setValue("", forKey: "SpecialReward")
-                self.performSegueWithIdentifier("RainbowToReward", sender: self);
+                UserDefaults.standard.set(false, forKey: "RED")
+                UserDefaults.standard.set(false, forKey: "ORANGE")
+                UserDefaults.standard.set(false, forKey: "YELLOW")
+                UserDefaults.standard.set(false, forKey: "GREEN")
+                UserDefaults.standard.set(false, forKey: "BROWN")
+                UserDefaults.standard.set(false, forKey: "PURPLE")
+                UserDefaults.standard.setValue("", forKey: "SpecialReward")
+                self.performSegue(withIdentifier: "RainbowToReward", sender: self);
             })
         }else{
-            self.performSegueWithIdentifier("RainbowToReward", sender: self);
+            self.performSegue(withIdentifier: "RainbowToReward", sender: self);
         }
     }
     
     func DoThePlaneForever() -> Void {
         let pview:UIImageView = Plane.viewsByName["Airplane-01"] as! UIImageView
-        let rewardText = NSUserDefaults.standardUserDefaults().stringForKey("SpecialReward")
+        let rewardText = UserDefaults.standard.string(forKey: "SpecialReward")
         if rewardText != nil && rewardText?.characters.count > 0{
-            let newimage = drawText(rewardText!, inImage: pview.image!, atPoint: CGPoint(x: 350,y: 75))
+            let newimage = drawText(rewardText! as NSString, inImage: pview.image!, atPoint: CGPoint(x: 350,y: 75))
             pview.image = newimage
             Plane.addSwayAnimation()
         }
     }
     
 	
-	public override func viewWillAppear(animated: Bool) {
+	open override func viewWillAppear(_ animated: Bool) {
         Cloud1.addSwayAnimation()
         Cloud2.addSwayAnimation()
         var NumberOfBands = 0
 
-        if (NSUserDefaults.standardUserDefaults().boolForKey("RED")){
-			RedBand.hidden = false
+        if (UserDefaults.standard.bool(forKey: "RED")){
+			RedBand.isHidden = false
             RedBand.alpha = 1.0
             fillBand(RedBand, colour: UIColor(red: 216/256, green: 73/256, blue: 69/256, alpha: 1))
             NumberOfBands += 1
 		}
-		if (NSUserDefaults.standardUserDefaults().boolForKey("ORANGE")){
-			OrangeBand.hidden = false
+		if (UserDefaults.standard.bool(forKey: "ORANGE")){
+			OrangeBand.isHidden = false
             OrangeBand.alpha = 1.0
             fillBand(OrangeBand, colour: UIColor(red: 234/256, green: 156/256, blue: 52/256, alpha: 1))
             NumberOfBands += 1
 		}
-		if (NSUserDefaults.standardUserDefaults().boolForKey("YELLOW")){
-			YellowBand.hidden = false
+		if (UserDefaults.standard.bool(forKey: "YELLOW")){
+			YellowBand.isHidden = false
             YellowBand.alpha = 1.0
             fillBand(YellowBand, colour: UIColor(red: 249/256, green: 237/256, blue: 98/256, alpha: 1))
             NumberOfBands += 1
 		}
-		if (NSUserDefaults.standardUserDefaults().boolForKey("GREEN")){
-			GreenBand.hidden = false
+		if (UserDefaults.standard.bool(forKey: "GREEN")){
+			GreenBand.isHidden = false
             GreenBand.alpha = 1.0
             fillBand(GreenBand, colour: UIColor(red: 163/256, green: 207/256, blue: 97/256, alpha: 1))
             NumberOfBands += 1
 		}
-		if (NSUserDefaults.standardUserDefaults().boolForKey("BROWN")){
-			BrownBand.hidden = false
+		if (UserDefaults.standard.bool(forKey: "BROWN")){
+			BrownBand.isHidden = false
             BrownBand.alpha = 1.0
             fillBand(BrownBand, colour: UIColor(red: 147/256, green: 103/256, blue: 72/256, alpha: 1))
             NumberOfBands += 1
 		}
-		if (NSUserDefaults.standardUserDefaults().boolForKey("PURPLE")){
-			PurpleBand.hidden = false
+		if (UserDefaults.standard.bool(forKey: "PURPLE")){
+			PurpleBand.isHidden = false
             PurpleBand.alpha = 1.0
             fillBand(PurpleBand, colour: UIColor(red: 65/256, green: 83/256, blue: 191/256, alpha: 1))
             NumberOfBands += 1
@@ -322,7 +346,7 @@ public class RainbowPageViewController: UIViewController{
 				theBand = RedBand
 				theColour = "RED"
                 paintColour = UIColor(red: 216/256, green: 73/256, blue: 69/256, alpha: 1)
-                if (!NSUserDefaults.standardUserDefaults().boolForKey("RED")){
+                if (!UserDefaults.standard.bool(forKey: "RED")){
                     NumberOfBands += 1;
                 }
 				break;
@@ -330,7 +354,7 @@ public class RainbowPageViewController: UIViewController{
 				theBand = OrangeBand
 				theColour = "ORANGE"
                 paintColour = UIColor(red: 234/256, green: 156/256, blue: 52/256, alpha: 1)
-                if (!NSUserDefaults.standardUserDefaults().boolForKey("ORANGE")){
+                if (!UserDefaults.standard.bool(forKey: "ORANGE")){
                     NumberOfBands += 1;
                 }
 				break;
@@ -338,7 +362,7 @@ public class RainbowPageViewController: UIViewController{
 				theBand = YellowBand
 				theColour = "YELLOW"
                 paintColour = UIColor(red: 249/256, green: 237/256, blue: 98/256, alpha: 1)
-                if (!NSUserDefaults.standardUserDefaults().boolForKey("YELLOW")){
+                if (!UserDefaults.standard.bool(forKey: "YELLOW")){
                     NumberOfBands += 1;
                 }
 				break;
@@ -346,7 +370,7 @@ public class RainbowPageViewController: UIViewController{
 				theBand = GreenBand
 				theColour = "GREEN"
                 paintColour = UIColor(red: 163/256, green: 207/256, blue: 97/256, alpha: 1)
-                if (!NSUserDefaults.standardUserDefaults().boolForKey("GREEN")){
+                if (!UserDefaults.standard.bool(forKey: "GREEN")){
                     NumberOfBands += 1;
                 }
 				break;
@@ -354,7 +378,7 @@ public class RainbowPageViewController: UIViewController{
 				theBand = BrownBand
 				theColour = "BROWN"
                 paintColour = UIColor(red: 147/256, green: 103/256, blue: 72/256, alpha: 1)
-                if (!NSUserDefaults.standardUserDefaults().boolForKey("BROWN")){
+                if (!UserDefaults.standard.bool(forKey: "BROWN")){
                     NumberOfBands += 1;
                 }
 				break;
@@ -362,7 +386,7 @@ public class RainbowPageViewController: UIViewController{
 				theBand = PurpleBand
 				theColour = "PURPLE"
                 paintColour = UIColor(red: 65/256, green: 83/256, blue: 191/256, alpha: 1)
-                if (!NSUserDefaults.standardUserDefaults().boolForKey("PURPLE")){
+                if (!UserDefaults.standard.bool(forKey: "PURPLE")){
                     NumberOfBands += 1;
                 }
 				break;
@@ -372,16 +396,16 @@ public class RainbowPageViewController: UIViewController{
             if NumberOfBands == 6{
                 RainbowComplete = true
             }
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: theColour as String)
-			theBand.hidden = false
+            UserDefaults.standard.set(true, forKey: theColour as String)
+			theBand.isHidden = false
 			theBand.alpha = 1.0
             fillBand(theBand, colour: paintColour)
-			UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.Autoreverse, animations: {UIView.setAnimationRepeatCount(5);self.theBand.alpha = 0;}, completion:{
+			UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.autoreverse, animations: {UIView.setAnimationRepeatCount(5);self.theBand.alpha = 0;}, completion:{
 				(finished)-> Void in
 				self.allowColouring = true
 				self.theBand.alpha = 1
-				self.theBand.hidden = false
-                self.fillBand(self.theBand, colour: UIColor.whiteColor())
+				self.theBand.isHidden = false
+                self.fillBand(self.theBand, colour: UIColor.white)
 			});
 
 		}else{

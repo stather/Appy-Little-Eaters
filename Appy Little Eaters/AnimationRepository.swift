@@ -9,38 +9,38 @@
 import Foundation
 import CoreData
 
-public class AnimationRepository{
-    private var _managedObjectContext:NSManagedObjectContext
+open class AnimationRepository{
+    fileprivate var _managedObjectContext:NSManagedObjectContext
     
     init(managedObjectContext: NSManagedObjectContext){
         _managedObjectContext = managedObjectContext
     }
     
     lazy var managedObjectModel : NSManagedObjectModel? = {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.managedObjectModel
         }()
     
     func createNewAnimation() -> DAnimation!{
-        return NSEntityDescription.insertNewObjectForEntityForName("DAnimation", inManagedObjectContext: self._managedObjectContext) as! DAnimation
+        return NSEntityDescription.insertNewObject(forEntityName: "DAnimation", into: self._managedObjectContext) as! DAnimation
     }
     
-    func getAllAnimation() -> [DAnimation!]!{
-        let fetchRequest = NSFetchRequest()
-        fetchRequest.entity = NSEntityDescription.entityForName("DAnimation", inManagedObjectContext: _managedObjectContext)
+    func getAllAnimation() -> [DAnimation?]!{
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        fetchRequest.entity = NSEntityDescription.entity(forEntityName: "DAnimation", in: _managedObjectContext)
         //fetchRequest.includesPropertyValues = false
         
-        let results:[DAnimation!]! = try? _managedObjectContext.executeFetchRequest(fetchRequest) as! [DAnimation!]
+        let results:[DAnimation?]! = try? _managedObjectContext.fetch(fetchRequest) as! [DAnimation?]
         return results
     }
     
-    func deleteAnimation(food: DAnimation){
-        _managedObjectContext.deleteObject(food)
+    func deleteAnimation(_ food: DAnimation){
+        _managedObjectContext.delete(food)
     }
     
-    func animationByName(byName:String) -> DAnimation!{
-        let fetchByName = managedObjectModel?.fetchRequestFromTemplateWithName("FetchAnimationByName", substitutionVariables: ["NAME":byName])
-        let anim = try! _managedObjectContext.executeFetchRequest(fetchByName!) as! [DAnimation]
+    func animationByName(_ byName:String) -> DAnimation!{
+        let fetchByName = managedObjectModel?.fetchRequestFromTemplate(withName: "FetchAnimationByName", substitutionVariables: ["NAME":byName])
+        let anim = try! _managedObjectContext.fetch(fetchByName!) as! [DAnimation]
         if anim.count > 0{
             return anim[0]
         }
@@ -48,9 +48,9 @@ public class AnimationRepository{
     }
     
     func count() -> Int{
-        let fetchRequest = NSFetchRequest()
-        fetchRequest.entity = NSEntityDescription.entityForName("DAnimation", inManagedObjectContext: _managedObjectContext)
-        let c = _managedObjectContext.countForFetchRequest(fetchRequest, error: nil)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        fetchRequest.entity = NSEntityDescription.entity(forEntityName: "DAnimation", in: _managedObjectContext)
+        let c = try! _managedObjectContext.count(for: fetchRequest)
         return c
     }
 

@@ -9,6 +9,6 @@
 import Foundation
 
 @objc protocol MoveableProtocol{
-	func moveBy(amount: Float)
+	func moveBy(_ amount: Float)
 	
 }

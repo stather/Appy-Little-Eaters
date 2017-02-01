@@ -10,66 +10,69 @@ import Foundation
 import CoreData
 
 
-public class RewardPoolRepository{
-    private var _managedObjectContext:NSManagedObjectContext
+open class RewardPoolRepository{
+    fileprivate var _managedObjectContext:NSManagedObjectContext
     
     init(managedObjectContext: NSManagedObjectContext){
         _managedObjectContext = managedObjectContext
     }
     
     lazy var managedObjectModel : NSManagedObjectModel? = {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.managedObjectModel
         }()
 
     
     func createNewRewardPool() -> DRewardPool!{
-        return NSEntityDescription.insertNewObjectForEntityForName("DRewardPool", inManagedObjectContext: self._managedObjectContext) as! DRewardPool
+        return NSEntityDescription.insertNewObject(forEntityName: "DRewardPool", into: self._managedObjectContext) as! DRewardPool
     }
     
-    func getAllRewardsInPool() -> [DRewardPool!]!{
-        let fetchRequest = NSFetchRequest()
-        fetchRequest.entity = NSEntityDescription.entityForName("DRewardPool", inManagedObjectContext: _managedObjectContext)
+    func getAllRewardsInPool() -> [DRewardPool?]!{
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        fetchRequest.entity = NSEntityDescription.entity(forEntityName: "DRewardPool", in: _managedObjectContext)
         
-        let results:[DRewardPool!]! = try? _managedObjectContext.executeFetchRequest(fetchRequest) as! [DRewardPool!]
+        let results:[DRewardPool?]! = try? _managedObjectContext.fetch(fetchRequest) as! [DRewardPool?]
         return results
     }
     
-    func getAllRewardsInPool(forScene:String) -> [DRewardPool!]{
-        let fetchByName = managedObjectModel?.fetchRequestFromTemplateWithName("FetchRewardPoolByScene", substitutionVariables: ["SCENE":forScene])
-        let rewards = try! _managedObjectContext.executeFetchRequest(fetchByName!) as! [DRewardPool]
+    func getAllRewardsInPool(_ forScene:String) -> [DRewardPool?]{
+        let fetchByName = managedObjectModel?.fetchRequestFromTemplate(withName: "FetchRewardPoolByScene", substitutionVariables: ["SCENE":forScene])
+        let rewards = try! _managedObjectContext.fetch(fetchByName!) as! [DRewardPool]
         return rewards
     }
     
-    func deleteReward(reward:DRewardPool){
-        _managedObjectContext.deleteObject(reward)
+    func deleteReward(_ reward:DRewardPool){
+        _managedObjectContext.delete(reward)
     }
     
 
     
-    func getAvailableRewardsOrderedByLevel(forScene:String) -> [DRewardPool]{
-        let fetchRequest: NSFetchRequest = managedObjectModel?.fetchRequestFromTemplateWithName("FetchAvailableRewards", substitutionVariables: ["SCENE":forScene])?.copy() as! NSFetchRequest
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "level", ascending: true)]
-        return (try! _managedObjectContext.executeFetchRequest(fetchRequest)) as! [DRewardPool]
+    func getAvailableRewardsOrderedByLevel(_ forScene:String) -> [DRewardPool]{
+        let fetchRequest1 = managedObjectModel?.fetchRequestFromTemplate(withName: "FetchAvailableRewards", substitutionVariables: ["SCENE":forScene])
+        
+//        let fetchRequest = fetchRequest1?.copy() as NSFetchRequest
+//            ?.copy() as! NSFetchRequest
+        fetchRequest1?.sortDescriptors = [NSSortDescriptor(key: "level", ascending: true)]
+        return (try! _managedObjectContext.fetch(fetchRequest1!)) as! [DRewardPool]
     }
     
     func makeAllRewardsAvailable(){
         let allRewardsInPool = getAllRewardsInPool()
         for item in allRewardsInPool!{
-            item.available = true
+            item?.available = true
         }
     }
     
-    func findByName(name:String) -> DRewardPool!{
-        let fetchByName = managedObjectModel?.fetchRequestFromTemplateWithName("FetchRewardPoolByName", substitutionVariables: ["NAME":name])
-        let rewards = try! _managedObjectContext.executeFetchRequest(fetchByName!) as! [DRewardPool]
+    func findByName(_ name:String) -> DRewardPool!{
+        let fetchByName = managedObjectModel?.fetchRequestFromTemplate(withName: "FetchRewardPoolByName", substitutionVariables: ["NAME":name])
+        let rewards = try! _managedObjectContext.fetch(fetchByName!) as! [DRewardPool]
         return rewards[0]
     }
     
     func count() -> Int{
-        let fetchRequest = NSFetchRequest()
-        fetchRequest.entity = NSEntityDescription.entityForName("DRewardPool", inManagedObjectContext: _managedObjectContext)
-        let c = _managedObjectContext.countForFetchRequest(fetchRequest, error: nil)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        fetchRequest.entity = NSEntityDescription.entity(forEntityName: "DRewardPool", in: _managedObjectContext)
+        let c = try! _managedObjectContext.count(for: fetchRequest)
         return c
     }
 

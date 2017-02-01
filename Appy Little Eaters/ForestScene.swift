@@ -11,38 +11,38 @@ import UIKit
 import SpriteKit
 import CoreData
 
-public class ForestScene : SKScene{
+open class ForestScene : SKScene{
 	var contentCreated:Bool = false
 	
     var backgroundWidth:Float = 0
 	
-	public let backgroundHeight:Float = 768
-	public var scaledWidth:Float!
-	public var fact:Float!
+	open let backgroundHeight:Float = 768
+	open var scaledWidth:Float!
+	open var fact:Float!
 	var count:Int = 0
 	
-	var _lastUpdateTime:NSTimeInterval!
-	var _dt:NSTimeInterval!
+	var _lastUpdateTime:TimeInterval!
+	var _dt:TimeInterval!
 	let cStartSpeed:Float = 15
 	let cMaxSpeed:Float = 80
 	
-	public var leftHandEdge:Float!
-    public var edgeOffest:Float!
+	open var leftHandEdge:Float!
+    open var edgeOffest:Float!
 	
 	var _speed:Float!
     static var debugRewardCounter = 0
     
-    public var AnimateCreatures = true
+    open var AnimateCreatures = true
 		
 	
-	override public func didMoveToView(view: SKView) {
+	override open func didMove(to view: SKView) {
 		_speed = cStartSpeed
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        userInteractionEnabled = true
+        isUserInteractionEnabled = true
         alpha = 1
         //backgroundColor = SKColor.blueColor()
-        backgroundColor = SKColor.clearColor()
-        scaleMode = SKSceneScaleMode.Fill
+        backgroundColor = SKColor.clear
+        scaleMode = SKSceneScaleMode.fill
         if (!self.contentCreated)
         {
             createBackground()
@@ -92,7 +92,7 @@ public class ForestScene : SKScene{
 //        
 //    }
     
-    public func forestPoint(p:CGPoint) -> CGPoint{
+    open func forestPoint(_ p:CGPoint) -> CGPoint{
         var x = Float(p.x) + leftHandEdge;
         if x < -1000 {
             x += backgroundWidth
@@ -101,10 +101,10 @@ public class ForestScene : SKScene{
             x -= backgroundWidth
         }
 
-        return CGPointMake(CGFloat(x), CGFloat(p.y))
+        return CGPoint(x: CGFloat(x), y: CGFloat(p.y))
     }
     
-    public func originalPoint(p:CGPoint) -> CGPoint{
+    open func originalPoint(_ p:CGPoint) -> CGPoint{
         
         var x = Float(p.x) - leftHandEdge
         
@@ -120,7 +120,7 @@ public class ForestScene : SKScene{
         
     }
 	
-	public override func update(currentTime: NSTimeInterval) {
+	open override func update(_ currentTime: TimeInterval) {
 		if ((_lastUpdateTime) != nil) {
 			_dt = currentTime - _lastUpdateTime;
 		} else {
@@ -180,8 +180,8 @@ public class ForestScene : SKScene{
 		}
 	}
 	
-	public override func didSimulatePhysics() {
-		self.enumerateChildNodesWithName("SPLASH", usingBlock: {
+	open override func didSimulatePhysics() {
+		self.enumerateChildNodes(withName: "SPLASH", using: {
 			(node:SKNode, stop:UnsafeMutablePointer <ObjCBool> ) -> Void in
 			let bottom = -(self.backgroundHeight*self.fact)/2
 			if node.position.y < CGFloat(bottom) {
@@ -193,7 +193,7 @@ public class ForestScene : SKScene{
     var strawb:SGG_Spine!
     
     func createBackground(){
-        let back = NSUserDefaults.standardUserDefaults().integerForKey("backgroundId")
+        let back = UserDefaults.standard.integer(forKey: "backgroundId")
         switch (back){
         case 0:
             createForestBackground()
@@ -208,7 +208,7 @@ public class ForestScene : SKScene{
     }
 
     func createPlanetBackground(){
-        let formatter = NSNumberFormatter()
+        let formatter = NumberFormatter()
         formatter.minimumIntegerDigits = 2
         let atlas = SKTextureAtlas(named: "planet")
         var columnWidth:Int!
@@ -216,10 +216,11 @@ public class ForestScene : SKScene{
         backgroundWidth = 0
         var isKey = true
         for column in 1...10{
-            let strColumn = formatter.stringFromNumber(column)
+            let strColumn = formatter.string(from: NSNumber(value:column))
             var y:Int = -384
-            for var row:Int=3; row>0; row=row-1{
-                let strRow = formatter.stringFromNumber(row)
+            let rows = [3,2,1]
+            for row in rows{
+                let strRow = formatter.string(from: NSNumber(value:row))
                 let name = "Space-Rewards-Background-" + strColumn! + "-" + strRow! + ".png"
                 let texture = atlas.textureNamed(name)
                 let size = texture.size()
@@ -248,7 +249,7 @@ public class ForestScene : SKScene{
     
     
     func createForestBackground(){
-        let formatter = NSNumberFormatter()
+        let formatter = NumberFormatter()
         formatter.minimumIntegerDigits = 2
         let atlas = SKTextureAtlas(named: "newforest")
         var columnWidth:Int!
@@ -256,10 +257,11 @@ public class ForestScene : SKScene{
         backgroundWidth = 0
         var isKey = true
         for column in 1...10{
-            let strColumn = formatter.stringFromNumber(column)
+            let strColumn = formatter.string(from: NSNumber(value:column))
             var y:Int = -384
-            for var row:Int=3; row>0; row=row-1{
-                let strRow = formatter.stringFromNumber(row)
+            let rows = [3,2,1]
+            for row in rows{
+                let strRow = formatter.string(from: NSNumber(value:row))
                 let name = "background-gc-" + strColumn! + "-" + strRow!
                 let texture = atlas.textureNamed(name)
                 let size = texture.size()
@@ -293,7 +295,7 @@ public class ForestScene : SKScene{
 		for item in (uow.rewardRepository?.getAllRewards())!{
             if true || counter == ForestScene.debugRewardCounter {
                 ForestScene.debugRewardCounter += 1
-                var skeletonName = item.animationName
+                let skeletonName = item.animationName
                 print("################ Animation:" + skeletonName!)
                 if skeletonName == "...RocketAnimation"{
                     counter += 1
@@ -319,7 +321,7 @@ public class ForestScene : SKScene{
 		}
 	}
 	
-	public func restart(mass:Float, velocity:Float){
+	open func restart(_ mass:Float, velocity:Float){
 		count = 20
 		//var frog = SplashDrop()
 		//frog.position = forestPoint(CGPoint(x: CGFloat(1400), y: CGFloat(500)))
@@ -328,7 +330,7 @@ public class ForestScene : SKScene{
 		//frog.physicsBody?.mass = CGFloat(mass)
 	}
 	
-	public override func addChild(node: SKNode) {
+	open override func addChild(_ node: SKNode) {
 		super.addChild(node)
         if node is AnimatedSprite{
             let an = node as! AnimatedSprite
@@ -340,22 +342,22 @@ public class ForestScene : SKScene{
 	
 	var Scrolling:Bool = true
 	
-	public func StopScrolling(){
+	open func StopScrolling(){
 		Scrolling = false
 	}
 	
-	public func StartScrolling(){
+	open func StartScrolling(){
 		Scrolling = true
 	}
 	
-	public func Mirror(){
+	open func Mirror(){
 		var scale = CurrentCreature.xScale
 		scale *= -1
 		CurrentCreature.xScale = scale
 		CurrentCreature.printGeometry()
 	}
 	
-	public func MoveDown(){
+	open func MoveDown(){
 		var p = CurrentCreature.position
 		var y = p.y
 		y -= 10
@@ -364,7 +366,7 @@ public class ForestScene : SKScene{
 		CurrentCreature.printGeometry()
 	}
 	
-	public func MoveUp(){
+	open func MoveUp(){
 		var p = CurrentCreature.position
 		var y = p.y
 		y += 10
@@ -373,7 +375,7 @@ public class ForestScene : SKScene{
 		CurrentCreature.printGeometry()
 	}
 	
-    public func MoveRight(){
+    open func MoveRight(){
         var p = CurrentCreature.position
         var x = p.x
         x += 10
@@ -382,7 +384,7 @@ public class ForestScene : SKScene{
         CurrentCreature.printGeometry()
     }
     
-    public func MoveLeft(){
+    open func MoveLeft(){
         var p = CurrentCreature.position
         var x = p.x
         x -= 10
@@ -391,7 +393,7 @@ public class ForestScene : SKScene{
         CurrentCreature.printGeometry()
     }
     
-    public func MoveRightLots(){
+    open func MoveRightLots(){
         var p = CurrentCreature.position
         var x = p.x
         x += 500
@@ -400,7 +402,7 @@ public class ForestScene : SKScene{
         CurrentCreature.printGeometry()
     }
     
-    public func MoveLeftLots(){
+    open func MoveLeftLots(){
         var p = CurrentCreature.position
         var x = p.x
         x -= 500
@@ -409,7 +411,7 @@ public class ForestScene : SKScene{
         CurrentCreature.printGeometry()
     }
 	
-	public func Bigger(){
+	open func Bigger(){
 		var scale = abs(CurrentCreature.xScale)
 		scale *= 1.1
         CurrentCreature.xScale = CurrentCreature.xScale < 0 ? -scale : scale
@@ -417,7 +419,7 @@ public class ForestScene : SKScene{
 		CurrentCreature.printGeometry()
 	}
 	
-	public func Smaller(){
+	open func Smaller(){
 		var scale = abs(CurrentCreature.xScale)
 		scale /= 1.1
         CurrentCreature.xScale = CurrentCreature.xScale < 0 ? -scale : scale
@@ -425,31 +427,31 @@ public class ForestScene : SKScene{
 		CurrentCreature.printGeometry()
 	}
     
-    public func done(){
+    open func done(){
         let api = AleApi()
         let op = originalPoint(CurrentCreature.position)
         api.updateRewardPosition(CurrentCreature.rewardName, x:Float(op.x), y: Float(op.y), scale: Float(CurrentCreature.xScale))
         let uow = UnitOfWork()
         let reward = uow.rewardRepository?.findByName(CurrentCreature.rewardName)
-        reward?.positionX = op.x
-        reward?.positionY = op.y
-        reward?.scale = CurrentCreature.xScale
+        reward?.positionX = op.x as NSNumber?
+        reward?.positionY = op.y as NSNumber?
+        reward?.scale = CurrentCreature.xScale as NSNumber?
         let rewardPool = uow.rewardPoolRepository?.findByName(CurrentCreature.rewardName)
-        rewardPool?.positionX = op.x
-        rewardPool?.positionY = op.y
-        rewardPool?.scale = CurrentCreature.xScale
+        rewardPool?.positionX = op.x as NSNumber?
+        rewardPool?.positionY = op.y as NSNumber?
+        rewardPool?.scale = CurrentCreature.xScale as NSNumber?
         uow.saveChanges()
-        CurrentCreature.color = UIColor.clearColor()
+        CurrentCreature.color = UIColor.clear
         CurrentCreature = nil
     }
 
 	
-	public override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+	open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         let touch:UITouch = touches.first! 
 		
-		let location = touch.locationInNode(self)
-		let nodes = nodesAtPoint(location)
+		let location = touch.location(in: self)
+		let nodes = self.nodes(at: location)
 		var creatureTouched:Bool = false
 		for item in nodes{
 			if Scrolling{
@@ -463,16 +465,16 @@ public class ForestScene : SKScene{
                     creatureTouched = true
 					let fc = item as! AnimatedSprite
                     if CurrentCreature != nil{
-                        CurrentCreature.color = UIColor.clearColor()
+                        CurrentCreature.color = UIColor.clear
                     }
 					CurrentCreature = fc
-                    CurrentCreature.color = UIColor.blueColor()
+                    CurrentCreature.color = UIColor.blue
 				}
 			}
 		}
         if !creatureTouched{
             if CurrentCreature != nil{
-                CurrentCreature.color = UIColor.clearColor()
+                CurrentCreature.color = UIColor.clear
             }
         }
 		if creatureTouched{

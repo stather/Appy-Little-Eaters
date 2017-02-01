@@ -20,7 +20,7 @@ class RewardsPageViewController: UIViewController{
 	
 	@IBOutlet weak var DoneButton: UIButton!
 	
-	@IBAction func DonePressed(sender: UIButton) {
+	@IBAction func DonePressed(_ sender: UIButton) {
         if chosen != nil{
             let uow = UnitOfWork()
             let reward = uow.rewardRepository?.createNewReward()
@@ -34,10 +34,10 @@ class RewardsPageViewController: UIViewController{
             uow.saveChanges()
         }
         
-		performSegueWithIdentifier("RewardToForest", sender: self)
+		performSegue(withIdentifier: "RewardToForest", sender: self)
 	}
 	
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
 	}
 	
@@ -45,49 +45,49 @@ class RewardsPageViewController: UIViewController{
 	
 	@IBOutlet weak var LeftReward: UIImageView!
 	
-	@IBAction func LeftImageTapped(sender: UITapGestureRecognizer) {
-		LeftReward.backgroundColor = UIColor.redColor()
-		RightReward.backgroundColor = UIColor.clearColor()
+	@IBAction func LeftImageTapped(_ sender: UITapGestureRecognizer) {
+		LeftReward.backgroundColor = UIColor.red
+		RightReward.backgroundColor = UIColor.clear
 		chosen = lhs
-		DoneButton.enabled = true
+		DoneButton.isEnabled = true
 	}
 	
-	@IBAction func RightImageTapped(sender: UITapGestureRecognizer) {
-		RightReward.backgroundColor = UIColor.redColor()
-		LeftReward.backgroundColor = UIColor.clearColor()
+	@IBAction func RightImageTapped(_ sender: UITapGestureRecognizer) {
+		RightReward.backgroundColor = UIColor.red
+		LeftReward.backgroundColor = UIColor.clear
 		chosen = rhs
-		DoneButton.enabled = true
+		DoneButton.isEnabled = true
 	}
 
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder);
 	}
 	
-	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil);
 	}
     
-    func loadRewardImage(name:String) -> UIImage{
-        let fileManager:NSFileManager = NSFileManager.defaultManager()
-        let bundleID:String = NSBundle.mainBundle().bundleIdentifier!
+    func loadRewardImage(_ name:String) -> UIImage{
+        let fileManager:FileManager = FileManager.default
+        let bundleID:String = Bundle.main.bundleIdentifier!
         
-        let possibleURLS:NSArray = fileManager.URLsForDirectory(NSSearchPathDirectory.ApplicationSupportDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)
-        let appSupportDir:NSURL = possibleURLS[0] as! NSURL
-        let dirPath = appSupportDir.URLByAppendingPathComponent(bundleID)
-        let filename = dirPath.URLByAppendingPathComponent(name + "RewardImage." + "png")
+        let possibleURLS:NSArray = fileManager.urls(for: FileManager.SearchPathDirectory.applicationSupportDirectory, in: FileManager.SearchPathDomainMask.userDomainMask) as NSArray
+        let appSupportDir:URL = possibleURLS[0] as! URL
+        let dirPath = appSupportDir.appendingPathComponent(bundleID)
+        let filename = dirPath.appendingPathComponent(name + "RewardImage." + "png")
         let filepath = filename.path
         let image:UIImage = UIImage(contentsOfFile: filepath as String!)!
         return image;
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
-        let back = NSUserDefaults.standardUserDefaults().integerForKey("backgroundId")
+        let back = UserDefaults.standard.integer(forKey: "backgroundId")
         if back == 0 {
-            BackgroundImage.image = UIImage(named: "reward-background.jpg", inBundle: nil, compatibleWithTraitCollection: nil)
+            BackgroundImage.image = UIImage(named: "reward-background.jpg", in: nil, compatibleWith: nil)
         }else{
-            BackgroundImage.image = UIImage(named: "spaceback.jpg", inBundle: nil, compatibleWithTraitCollection: nil)
+            BackgroundImage.image = UIImage(named: "spaceback.jpg", in: nil, compatibleWith: nil)
         }
     }
 
@@ -98,13 +98,13 @@ class RewardsPageViewController: UIViewController{
         let rewards:[DRewardPool] = (uow.rewardPoolRepository?.getAvailableRewardsOrderedByLevel(backName))!
         
         if rewards.count == 0 {
-            let alert = UIAlertController(title: "Rewards", message: "Sorry no more rewards are available", preferredStyle: UIAlertControllerStyle.Alert)
-            let cancelAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel) { (action) in
+            let alert = UIAlertController(title: "Rewards", message: "Sorry no more rewards are available", preferredStyle: UIAlertControllerStyle.alert)
+            let cancelAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel) { (action) in
                 print(action)
             }
             alert.addAction(cancelAction)
             
-            presentViewController(alert, animated: false, completion: { () -> Void in
+            present(alert, animated: false, completion: { () -> Void in
             
             })
             return
@@ -115,6 +115,6 @@ class RewardsPageViewController: UIViewController{
 
 		RightReward.image = loadRewardImage(rewards[1].imageName!)
 		rhs = rewards[1]
-		DoneButton.enabled = false;
+		DoneButton.isEnabled = false;
 	}
 }
