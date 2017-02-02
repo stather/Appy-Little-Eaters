@@ -1,0 +1,20 @@
+
+Deer2Animation.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Deer2_Body
+  rotate: false
+  xy: 2, 2
+  size: 374, 359
+  orig: 374, 359
+  offset: 0, 0
+  index: -1
+Deer2_Head
+  rotate: false
+  xy: 378, 118
+  size: 203, 243
+  orig: 203, 243
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,139 @@
+
+foxgloveAnimation.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+pink-flower-plant-stalk
+  rotate: true
+  xy: 2, 210
+  size: 42, 284
+  orig: 42, 284
+  offset: 0, 0
+  index: -1
+pink-flower-plant1
+  rotate: false
+  xy: 2, 56
+  size: 172, 152
+  orig: 172, 152
+  offset: 0, 0
+  index: -1
+pink-flower-plant10
+  rotate: false
+  xy: 944, 150
+  size: 68, 102
+  orig: 68, 102
+  offset: 0, 0
+  index: -1
+pink-flower-plant11
+  rotate: true
+  xy: 92, 12
+  size: 42, 64
+  orig: 42, 64
+  offset: 0, 0
+  index: -1
+pink-flower-plant12
+  rotate: false
+  xy: 404, 34
+  size: 60, 69
+  orig: 60, 69
+  offset: 0, 0
+  index: -1
+pink-flower-plant13
+  rotate: false
+  xy: 463, 140
+  size: 52, 42
+  orig: 52, 42
+  offset: 0, 0
+  index: -1
+pink-flower-plant14
+  rotate: true
+  xy: 570, 137
+  size: 40, 41
+  orig: 40, 41
+  offset: 0, 0
+  index: -1
+pink-flower-plant15
+  rotate: true
+  xy: 463, 107
+  size: 31, 38
+  orig: 31, 38
+  offset: 0, 0
+  index: -1
+pink-flower-plant16
+  rotate: false
+  xy: 517, 139
+  size: 51, 38
+  orig: 51, 38
+  offset: 0, 0
+  index: -1
+pink-flower-plant17
+  rotate: false
+  xy: 404, 12
+  size: 39, 20
+  orig: 39, 20
+  offset: 0, 0
+  index: -1
+pink-flower-plant18
+  rotate: false
+  xy: 288, 223
+  size: 16, 29
+  orig: 16, 29
+  offset: 0, 0
+  index: -1
+pink-flower-plant2
+  rotate: true
+  xy: 176, 45
+  size: 163, 128
+  orig: 163, 128
+  offset: 0, 0
+  index: -1
+pink-flower-plant3
+  rotate: true
+  xy: 306, 184
+  size: 68, 209
+  orig: 68, 209
+  offset: 0, 0
+  index: -1
+pink-flower-plant4
+  rotate: true
+  xy: 306, 105
+  size: 77, 155
+  orig: 77, 155
+  offset: 0, 0
+  index: -1
+pink-flower-plant5
+  rotate: true
+  xy: 808, 154
+  size: 98, 134
+  orig: 98, 134
+  offset: 0, 0
+  index: -1
+pink-flower-plant6
+  rotate: true
+  xy: 517, 179
+  size: 73, 149
+  orig: 73, 149
+  offset: 0, 0
+  index: -1
+pink-flower-plant7
+  rotate: true
+  xy: 668, 162
+  size: 90, 138
+  orig: 90, 138
+  offset: 0, 0
+  index: -1
+pink-flower-plant8
+  rotate: true
+  xy: 306, 9
+  size: 94, 96
+  orig: 94, 96
+  offset: 0, 0
+  index: -1
+pink-flower-plant9
+  rotate: true
+  xy: 2, 2
+  size: 52, 88
+  orig: 52, 88
+  offset: 0, 0
+  index: -1

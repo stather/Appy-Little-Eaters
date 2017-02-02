@@ -1,0 +1,48 @@
+
+pink-robotAnimation.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+pink-robot-body
+  rotate: false
+  xy: 660, 94
+  size: 144, 138
+  orig: 144, 138
+  offset: 0, 0
+  index: -1
+pink-robot-feet
+  rotate: false
+  xy: 806, 176
+  size: 142, 56
+  orig: 142, 56
+  offset: 0, 0
+  index: -1
+pink-robot-left-arm1
+  rotate: false
+  xy: 2, 2
+  size: 220, 100
+  orig: 220, 100
+  offset: 0, 0
+  index: -1
+pink-robot-left-arm2
+  rotate: true
+  xy: 234, 88
+  size: 144, 212
+  orig: 144, 212
+  offset: 0, 0
+  index: -1
+pink-robot-right-arm1
+  rotate: false
+  xy: 2, 104
+  size: 230, 128
+  orig: 230, 128
+  offset: 0, 0
+  index: -1
+pink-robot-right-arm2
+  rotate: true
+  xy: 448, 94
+  size: 138, 210
+  orig: 138, 210
+  offset: 0, 0
+  index: -1

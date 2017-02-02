@@ -1,0 +1,41 @@
+
+blue-alien-animation.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+blue-alien-body
+  rotate: false
+  xy: 2, 2
+  size: 313, 443
+  orig: 313, 443
+  offset: 0, 0
+  index: -1
+blue-alien-left-arm1
+  rotate: false
+  xy: 440, 189
+  size: 149, 256
+  orig: 149, 256
+  offset: 0, 0
+  index: -1
+blue-alien-left-arm2
+  rotate: false
+  xy: 317, 81
+  size: 121, 364
+  orig: 121, 364
+  offset: 0, 0
+  index: -1
+blue-alien-right-arm-2
+  rotate: false
+  xy: 882, 216
+  size: 140, 229
+  orig: 140, 229
+  offset: 0, 0
+  index: -1
+blue-alien-right-arm1
+  rotate: true
+  xy: 591, 333
+  size: 112, 289
+  orig: 112, 289
+  offset: 0, 0
+  index: -1

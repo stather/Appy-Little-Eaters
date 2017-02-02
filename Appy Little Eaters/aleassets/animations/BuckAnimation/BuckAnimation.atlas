@@ -1,0 +1,27 @@
+
+BuckAnimation.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Buck_Antlers
+  rotate: false
+  xy: 2, 2
+  size: 272, 171
+  orig: 272, 171
+  offset: 0, 0
+  index: -1
+Buck_Body
+  rotate: false
+  xy: 2, 175
+  size: 309, 259
+  orig: 309, 259
+  offset: 0, 0
+  index: -1
+Buck_Head
+  rotate: false
+  xy: 313, 253
+  size: 140, 181
+  orig: 140, 181
+  offset: 0, 0
+  index: -1

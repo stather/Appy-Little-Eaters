@@ -1,0 +1,62 @@
+
+Squirrel1Animation.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Squirrel_Back-Leg
+  rotate: false
+  xy: 240, 274
+  size: 190, 222
+  orig: 190, 222
+  offset: 0, 0
+  index: -1
+Squirrel_Back-arm
+  rotate: false
+  xy: 792, 292
+  size: 64, 81
+  orig: 64, 81
+  offset: 0, 0
+  index: -1
+Squirrel_Ears
+  rotate: false
+  xy: 792, 375
+  size: 160, 121
+  orig: 160, 121
+  offset: 0, 0
+  index: -1
+Squirrel_Front-Leg
+  rotate: false
+  xy: 432, 280
+  size: 177, 216
+  orig: 177, 216
+  offset: 0, 0
+  index: -1
+Squirrel_Front-arm
+  rotate: false
+  xy: 2, 2
+  size: 72, 101
+  orig: 72, 101
+  offset: 0, 0
+  index: -1
+Squirrel_Head
+  rotate: false
+  xy: 240, 130
+  size: 165, 142
+  orig: 165, 142
+  offset: 0, 0
+  index: -1
+Squirrel_Tail
+  rotate: false
+  xy: 2, 105
+  size: 236, 391
+  orig: 236, 391
+  offset: 0, 0
+  index: -1
+Squirrel_Upper-body
+  rotate: false
+  xy: 611, 283
+  size: 179, 213
+  orig: 179, 213
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,62 @@
+
+Squirrel2Animation.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Head
+  rotate: false
+  xy: 235, 218
+  size: 238, 213
+  orig: 238, 213
+  offset: 0, 0
+  index: -1
+Squirrel2_Back-Leg
+  rotate: false
+  xy: 604, 294
+  size: 110, 137
+  orig: 110, 137
+  offset: 0, 0
+  index: -1
+Squirrel2_Back-arm
+  rotate: false
+  xy: 830, 339
+  size: 108, 92
+  orig: 108, 92
+  offset: 0, 0
+  index: -1
+Squirrel2_Front-Arm
+  rotate: false
+  xy: 716, 329
+  size: 112, 102
+  orig: 112, 102
+  offset: 0, 0
+  index: -1
+Squirrel2_Front-Leg
+  rotate: false
+  xy: 475, 271
+  size: 127, 160
+  orig: 127, 160
+  offset: 0, 0
+  index: -1
+Squirrel2_Nut
+  rotate: false
+  xy: 940, 338
+  size: 78, 93
+  orig: 78, 93
+  offset: 0, 0
+  index: -1
+Squirrel2_Tail
+  rotate: false
+  xy: 2, 2
+  size: 231, 429
+  orig: 231, 429
+  offset: 0, 0
+  index: -1
+Squirrel2_Tummy
+  rotate: true
+  xy: 235, 44
+  size: 172, 237
+  orig: 172, 237
+  offset: 0, 0
+  index: -1

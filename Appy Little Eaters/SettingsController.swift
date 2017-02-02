@@ -118,11 +118,11 @@ class SettingsController: UIViewController, InAppPurchaseDelegate {
     }
 
     @IBAction func checkForUpdates(_ sender: AnyObject) {
-        StatusHolder.isHidden = false
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.checkForUpdates(StatusProgress, text: StatusText, done: { () -> Void in
-            self.StatusHolder.isHidden = true
-        })
+//        StatusHolder.isHidden = false
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        appDelegate.checkForUpdates(StatusProgress, text: StatusText, done: { () -> Void in
+//            self.StatusHolder.isHidden = true
+//        })
     }
     
     

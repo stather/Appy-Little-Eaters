@@ -1,0 +1,20 @@
+
+shooting-starAnimation.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+shooting-star
+  rotate: false
+  xy: 410, 50
+  size: 111, 104
+  orig: 111, 104
+  offset: 0, 0
+  index: -1
+shooting-star-trail
+  rotate: false
+  xy: 2, 2
+  size: 406, 152
+  orig: 406, 152
+  offset: 0, 0
+  index: -1

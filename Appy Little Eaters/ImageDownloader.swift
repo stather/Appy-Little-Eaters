@@ -57,13 +57,13 @@ class ImageDownloader: BaseDownloader {
     
     override func main() {
         print("Downloading: " + self.url)
-        let d = downloadData()
-        if d != nil{
-            let uow = UnitOfWork()
-            let rep = uow.foodAssetRepository
-            rep?.addFoodImage(filename, data: d!)
-        }
-        saveContentsOfUrl(self.filename, ext: "png", srcUrl: self.url)
+//        let d = downloadData()
+//        if d != nil{
+//            let uow = UnitOfWork()
+//            let rep = uow.foodAssetRepository
+//            rep?.addFoodImage(filename, data: d!)
+//        }
+//        saveContentsOfUrl(self.filename, ext: "png", srcUrl: self.url)
         print("Done downloading: " + self.url)
     }
 
@@ -77,7 +77,7 @@ class SoundDownloader: BaseDownloader {
     
     override func main() {
         print("Downloading: " + self.url)
-        saveContentsOfUrl(self.filename, ext: "m4a", srcUrl: self.url)
+//        saveContentsOfUrl(self.filename, ext: "m4a", srcUrl: self.url)
         print("Done downloading: " + self.url)
     }
     
@@ -91,7 +91,7 @@ class AtlasDownloader: BaseDownloader{
     
     override func main() {
         print("Downloading: " + self.url)
-        saveContentsOfUrl(self.filename, ext: "atlas", srcUrl: self.url)
+//        saveContentsOfUrl(self.filename, ext: "atlas", srcUrl: self.url)
         print("Done downloading: " + self.url)
     }
 }
@@ -104,7 +104,7 @@ class JsonDownloader: BaseDownloader{
     
     override func main() {
         print("Downloading: " + self.url)
-        saveContentsOfUrl(self.filename, ext: "json", srcUrl: self.url)
+//        saveContentsOfUrl(self.filename, ext: "json", srcUrl: self.url)
         print("Done downloading: " + self.url)
     }
 }

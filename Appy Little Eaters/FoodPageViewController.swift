@@ -169,7 +169,8 @@ open class FoodPageViewController : UIViewController, UITextFieldDelegate, UICol
 		//let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 		//appDelegate.speak("Have you eaten a " + name)
 		
-		player = try! DownloadedAudioPlayer(fromName: name)
+//		player = try! DownloadedAudioPlayer(fromName: name)
+        player = ResourceAudioPlayer(fromName: name)
 		player?.play()
 		
 	}

@@ -1,0 +1,34 @@
+
+planet2Animation.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+planet2-circle
+  rotate: false
+  xy: 425, 2
+  size: 262, 250
+  orig: 262, 250
+  offset: 0, 0
+  index: -1
+planet2-ring2
+  rotate: false
+  xy: 2, 23
+  size: 421, 229
+  orig: 421, 229
+  offset: 0, 0
+  index: -1
+planet2-stars1
+  rotate: false
+  xy: 802, 110
+  size: 102, 142
+  orig: 102, 142
+  offset: 0, 0
+  index: -1
+planet2-stars2
+  rotate: false
+  xy: 689, 102
+  size: 111, 150
+  orig: 111, 150
+  offset: 0, 0
+  index: -1

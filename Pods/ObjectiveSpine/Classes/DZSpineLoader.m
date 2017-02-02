@@ -19,14 +19,15 @@
 + (void) loadTimelinesFromSkeletonName:(NSString *) skelName skeleton:(SpineSkeleton *) skeleton scale:(CGFloat) scale
 {
     
-    //NSURL *URL = [[NSBundle mainBundle] URLForResource:skelName withExtension:nil];
+    NSURL *URL = [[NSBundle mainBundle] URLForResource:skelName withExtension:nil];
+    
     NSFileManager* fileManager = [NSFileManager defaultManager];
     NSString* bundleId = [[NSBundle mainBundle] bundleIdentifier];
     NSArray* possibleURLS = [fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask];
     NSURL* appSupportDir = possibleURLS[0];
     NSURL* dirPath = [appSupportDir URLByAppendingPathComponent:bundleId];
     //NSString* s = [NSString stringWithUTF8String:skelName];
-    NSURL* URL = [dirPath URLByAppendingPathComponent:skelName];
+    //NSURL* URL = [dirPath URLByAppendingPathComponent:skelName];
 
     
     NSData *data = [NSData dataWithContentsOfURL:URL];

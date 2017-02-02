@@ -179,7 +179,7 @@ void _spAtlasPage_disposeTexture (spAtlasPage* self) {
 }
 
 char* _spUtil_readFile (const char* path, int* length) {
-    //NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@(path) ofType:nil];
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@(path) ofType:nil];
     NSFileManager* fileManager = [NSFileManager defaultManager];
     NSString* bundleId = [[NSBundle mainBundle] bundleIdentifier];
     NSArray* possibleURLS = [fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask];
@@ -189,7 +189,7 @@ char* _spUtil_readFile (const char* path, int* length) {
     NSURL* filename = [dirPath URLByAppendingPathComponent:s];
     NSString* filepath = [filename path];
     
-	return _readFile([filepath UTF8String], length);
+	return _readFile([bundlePath UTF8String], length);
 }
 
 void spine_set_handler_createtexture(spine_adapt_createtexture_t handler)

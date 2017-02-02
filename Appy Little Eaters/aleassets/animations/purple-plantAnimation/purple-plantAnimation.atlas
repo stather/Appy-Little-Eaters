@@ -1,0 +1,27 @@
+
+purple-plantAnimation.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+purple-plant2
+  rotate: false
+  xy: 315, 164
+  size: 96, 345
+  orig: 96, 345
+  offset: 0, 0
+  index: -1
+purple-plant3
+  rotate: false
+  xy: 2, 155
+  size: 311, 354
+  orig: 311, 354
+  offset: 0, 0
+  index: -1
+purple-plant4
+  rotate: false
+  xy: 2, 2
+  size: 248, 151
+  orig: 248, 151
+  offset: 0, 0
+  index: -1

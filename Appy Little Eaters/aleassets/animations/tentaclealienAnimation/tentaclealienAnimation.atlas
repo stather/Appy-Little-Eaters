@@ -1,0 +1,20 @@
+
+tentaclealienAnimation.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tentacle-green-alien-head
+  rotate: false
+  xy: 340, 9
+  size: 232, 221
+  orig: 232, 221
+  offset: 0, 0
+  index: -1
+tentacle-green-alien-legs
+  rotate: true
+  xy: 2, 2
+  size: 228, 336
+  orig: 228, 336
+  offset: 0, 0
+  index: -1

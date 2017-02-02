@@ -1,0 +1,62 @@
+
+yellow-green-plantAnimation.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+yellow-green-plant1
+  rotate: false
+  xy: 528, 682
+  size: 229, 240
+  orig: 229, 240
+  offset: 0, 0
+  index: -1
+yellow-green-plant2
+  rotate: false
+  xy: 759, 700
+  size: 188, 222
+  orig: 188, 222
+  offset: 0, 0
+  index: -1
+yellow-green-plant3
+  rotate: false
+  xy: 2, 561
+  size: 368, 361
+  orig: 368, 361
+  offset: 0, 0
+  index: -1
+yellow-green-plant4
+  rotate: false
+  xy: 2, 223
+  size: 154, 336
+  orig: 154, 336
+  offset: 0, 0
+  index: -1
+yellow-green-plant5
+  rotate: true
+  xy: 528, 606
+  size: 74, 154
+  orig: 74, 154
+  offset: 0, 0
+  index: -1
+yellow-green-plant6
+  rotate: false
+  xy: 372, 586
+  size: 154, 336
+  orig: 154, 336
+  offset: 0, 0
+  index: -1
+yellow-green-plant7
+  rotate: false
+  xy: 158, 307
+  size: 211, 252
+  orig: 211, 252
+  offset: 0, 0
+  index: -1
+yellow-green-plant8
+  rotate: true
+  xy: 2, 2
+  size: 219, 152
+  orig: 219, 152
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,20 @@
+
+RedMushroomAnimation.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+mushroom-left
+  rotate: false
+  xy: 2, 2
+  size: 411, 401
+  orig: 411, 401
+  offset: 0, 0
+  index: -1
+mushroom-right
+  rotate: false
+  xy: 415, 169
+  size: 209, 234
+  orig: 209, 234
+  offset: 0, 0
+  index: -1

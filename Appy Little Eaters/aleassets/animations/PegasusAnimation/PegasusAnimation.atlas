@@ -1,0 +1,27 @@
+
+PegasusAnimation.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Pegasus_Body
+  rotate: false
+  xy: 2, 104
+  size: 273, 327
+  orig: 273, 327
+  offset: 0, 0
+  index: -1
+Pegasus_Left-Wing
+  rotate: true
+  xy: 2, 2
+  size: 100, 215
+  orig: 100, 215
+  offset: 0, 0
+  index: -1
+Pegasus_Right-Wing
+  rotate: true
+  xy: 277, 190
+  size: 241, 340
+  orig: 241, 340
+  offset: 0, 0
+  index: -1

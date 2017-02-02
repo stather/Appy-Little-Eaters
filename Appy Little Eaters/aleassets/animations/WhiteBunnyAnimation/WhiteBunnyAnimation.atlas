@@ -1,0 +1,34 @@
+
+WhiteBunnyAnimation.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+WhiteBunny_Ears
+  rotate: false
+  xy: 279, 45
+  size: 241, 185
+  orig: 241, 185
+  offset: 0, 0
+  index: -1
+WhiteBunny_Head
+  rotate: false
+  xy: 707, 99
+  size: 156, 131
+  orig: 156, 131
+  offset: 0, 0
+  index: -1
+WhiteBunny_Lower-Body
+  rotate: false
+  xy: 2, 2
+  size: 275, 228
+  orig: 275, 228
+  offset: 0, 0
+  index: -1
+WhiteBunny_Upper-Body
+  rotate: false
+  xy: 522, 116
+  size: 183, 114
+  orig: 183, 114
+  offset: 0, 0
+  index: -1

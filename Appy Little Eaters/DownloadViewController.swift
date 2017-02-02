@@ -33,6 +33,7 @@ class DownloadViewController: UIViewController {
         if message == nil{
             UserDefaults.standard.set(true, forKey: "ContentDownloaded")
             performSegue(withIdentifier: "UnwindFromDownload", sender: self)
+            return
         }
         let alert = UIAlertController(title: "Download", message: message, preferredStyle: UIAlertControllerStyle.alert)
         let cancelAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel) { (action) in

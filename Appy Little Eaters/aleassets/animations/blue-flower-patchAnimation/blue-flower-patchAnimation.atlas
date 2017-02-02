@@ -1,0 +1,34 @@
+
+blue-flower-patchAnimation.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+blue-flower-patch1
+  rotate: false
+  xy: 259, 43
+  size: 233, 157
+  orig: 233, 157
+  offset: 0, 0
+  index: -1
+blue-flower-patch2
+  rotate: false
+  xy: 2, 2
+  size: 255, 198
+  orig: 255, 198
+  offset: 0, 0
+  index: -1
+blue-flower-patch3
+  rotate: false
+  xy: 717, 106
+  size: 137, 94
+  orig: 137, 94
+  offset: 0, 0
+  index: -1
+blue-flower-patch4
+  rotate: false
+  xy: 494, 45
+  size: 221, 155
+  orig: 221, 155
+  offset: 0, 0
+  index: -1

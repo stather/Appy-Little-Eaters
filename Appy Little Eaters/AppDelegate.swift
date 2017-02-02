@@ -155,7 +155,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         progress?.setProgress(0, animated: true)
         var i:Float = 0
         
-        api.listAnimations { (animations) -> Void in
+        let animations = api.listAnimations()
             for animation in animations{
                 let uow = UnitOfWork()
                 var dAnimation:DAnimation?
@@ -195,7 +195,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         done()
                     }
                 }
-            }
         }
     }
 
@@ -203,7 +202,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let api = AleApi()
         progress?.setProgress(0, animated: true)
         var i:Float = 0
-        api.listFood { (foods) -> Void in
+        let foods = api.listFood()
             for food in foods{
                 let uow = UnitOfWork()
                 var dFood:DFood?
@@ -242,14 +241,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
             
-        }
     }
     
     func downloadRewards(_ progress:UIProgressView?, done:@escaping () -> Void){
         let api = AleApi()
         progress?.setProgress(0, animated: true)
         var i:Float = 0
-        api.listRewards { (rewards) -> Void in
+        let rewards = api.listRewards()
             for reward in rewards{
                 let uow = UnitOfWork()
                 let dRewardPool:DRewardPool! = uow.rewardPoolRepository?.createNewRewardPool()
@@ -269,7 +267,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 })
             }
             done()
-        }
     }
     
     func deleteAllRewardsInPool(){

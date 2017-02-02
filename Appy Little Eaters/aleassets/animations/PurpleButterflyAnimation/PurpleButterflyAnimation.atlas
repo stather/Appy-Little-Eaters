@@ -1,0 +1,27 @@
+
+PurpleButterflyAnimation.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+purple-butterfly body
+  rotate: true
+  xy: 2, 2
+  size: 258, 294
+  orig: 258, 294
+  offset: 0, 0
+  index: -1
+purple-butterfly left wing
+  rotate: false
+  xy: 2, 262
+  size: 327, 230
+  orig: 327, 230
+  offset: 0, 0
+  index: -1
+purple-butterfly right wing
+  rotate: true
+  xy: 331, 287
+  size: 205, 347
+  orig: 205, 347
+  offset: 0, 0
+  index: -1

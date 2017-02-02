@@ -1,0 +1,34 @@
+
+ElfAnimation.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Elf_Ears
+  rotate: false
+  xy: 234, 82
+  size: 268, 113
+  orig: 268, 113
+  offset: 0, 0
+  index: -1
+Elf_Head-no-ears
+  rotate: false
+  xy: 697, 21
+  size: 170, 174
+  orig: 170, 174
+  offset: 0, 0
+  index: -1
+Elf_Lower-Body
+  rotate: false
+  xy: 2, 2
+  size: 230, 193
+  orig: 230, 193
+  offset: 0, 0
+  index: -1
+Elf_Upper-Body
+  rotate: true
+  xy: 504, 18
+  size: 177, 191
+  orig: 177, 191
+  offset: 0, 0
+  index: -1

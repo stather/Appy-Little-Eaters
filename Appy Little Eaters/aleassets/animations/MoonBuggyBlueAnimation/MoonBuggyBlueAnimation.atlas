@@ -1,0 +1,20 @@
+
+MoonBuggyBlueAnimation.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+MoonBuggyBlue
+  rotate: false
+  xy: 2, 59
+  size: 498, 397
+  orig: 498, 397
+  offset: 0, 0
+  index: -1
+MoonBuggyYellowRadar
+  rotate: false
+  xy: 2, 2
+  size: 76, 55
+  orig: 76, 55
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,62 @@
+
+FairyAnimation.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Dress
+  rotate: false
+  xy: 2, 71
+  size: 248, 489
+  orig: 248, 489
+  offset: 0, 0
+  index: -1
+Head
+  rotate: true
+  xy: 369, 562
+  size: 305, 337
+  orig: 305, 337
+  offset: 0, 0
+  index: -1
+LeftArm
+  rotate: false
+  xy: 252, 255
+  size: 322, 305
+  orig: 322, 305
+  offset: 0, 0
+  index: -1
+LeftLeg
+  rotate: true
+  xy: 369, 869
+  size: 135, 546
+  orig: 135, 546
+  offset: 0, 0
+  index: -1
+RightArm
+  rotate: false
+  xy: 252, 2
+  size: 283, 251
+  orig: 283, 251
+  offset: 0, 0
+  index: -1
+RightLeg
+  rotate: true
+  xy: 576, 283
+  size: 277, 229
+  orig: 277, 229
+  offset: 0, 0
+  index: -1
+Wand
+  rotate: false
+  xy: 708, 582
+  size: 247, 285
+  orig: 247, 285
+  offset: 0, 0
+  index: -1
+Wings
+  rotate: false
+  xy: 2, 562
+  size: 365, 442
+  orig: 365, 442
+  offset: 0, 0
+  index: -1

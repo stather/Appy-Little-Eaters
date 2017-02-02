@@ -1,0 +1,20 @@
+
+WoodpeckerAnimation.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+woodpecker body
+  rotate: true
+  xy: 2, 2
+  size: 176, 355
+  orig: 176, 355
+  offset: 0, 0
+  index: -1
+woodpecker head
+  rotate: false
+  xy: 359, 26
+  size: 168, 152
+  orig: 168, 152
+  offset: 0, 0
+  index: -1

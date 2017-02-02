@@ -76,7 +76,9 @@ class RewardsPageViewController: UIViewController{
         let dirPath = appSupportDir.appendingPathComponent(bundleID)
         let filename = dirPath.appendingPathComponent(name + "RewardImage." + "png")
         let filepath = filename.path
-        let image:UIImage = UIImage(contentsOfFile: filepath as String!)!
+        
+        let newpath = Bundle.main.path(forResource: name + "RewardImage", ofType: "png")
+        let image:UIImage = UIImage(contentsOfFile: newpath as String!)!
         return image;
         
     }

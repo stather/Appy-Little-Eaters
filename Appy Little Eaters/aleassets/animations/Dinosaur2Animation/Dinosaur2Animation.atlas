@@ -1,0 +1,27 @@
+
+Dinosaur2Animation.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Dinosaur2_Body
+  rotate: false
+  xy: 2, 2
+  size: 460, 164
+  orig: 460, 164
+  offset: 0, 0
+  index: -1
+Dinosaur2_Head
+  rotate: true
+  xy: 682, 13
+  size: 153, 204
+  orig: 153, 204
+  offset: 0, 0
+  index: -1
+Dinosaur2_Wings
+  rotate: false
+  xy: 464, 22
+  size: 216, 144
+  orig: 216, 144
+  offset: 0, 0
+  index: -1

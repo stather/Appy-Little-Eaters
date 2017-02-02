@@ -1,0 +1,48 @@
+
+silver-blue-robotAnimation.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+silver-blue-robot-body
+  rotate: false
+  xy: 2, 36
+  size: 262, 433
+  orig: 262, 433
+  offset: 0, 0
+  index: -1
+silver-blue-robot-feet
+  rotate: false
+  xy: 266, 96
+  size: 114, 99
+  orig: 114, 99
+  offset: 0, 0
+  index: -1
+silver-blue-robot-left-arm
+  rotate: false
+  xy: 266, 321
+  size: 232, 148
+  orig: 232, 148
+  offset: 0, 0
+  index: -1
+silver-blue-robot-left-hand
+  rotate: false
+  xy: 266, 197
+  size: 162, 122
+  orig: 162, 122
+  offset: 0, 0
+  index: -1
+silver-blue-robot-right-arm
+  rotate: true
+  xy: 266, 2
+  size: 92, 96
+  orig: 92, 96
+  offset: 0, 0
+  index: -1
+silver-blue-robot-right-hand
+  rotate: false
+  xy: 430, 251
+  size: 66, 68
+  orig: 66, 68
+  offset: 0, 0
+  index: -1

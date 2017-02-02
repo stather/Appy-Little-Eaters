@@ -52,7 +52,8 @@
         NSURL* filename = [dirPath URLByAppendingPathComponent:name];
         NSString* filepath = [filename path];
 
-        UIImage* image = [UIImage imageWithContentsOfFile:filepath];
+        NSString* newpath = [[NSBundle mainBundle] pathForResource:name ofType:nil];
+        UIImage* image = [UIImage imageWithContentsOfFile:newpath];
         texture = [SKTexture textureWithImage:image];
         if ( texture ) {
             self.mapTextures[name] = texture;

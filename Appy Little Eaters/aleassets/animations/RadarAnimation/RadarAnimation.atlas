@@ -1,0 +1,27 @@
+
+RadarAnimation.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Raydar_Dish
+  rotate: false
+  xy: 2, 37
+  size: 338, 283
+  orig: 338, 283
+  offset: 0, 0
+  index: -1
+Raydar_Single-Light
+  rotate: false
+  xy: 2, 2
+  size: 25, 33
+  orig: 25, 33
+  offset: 0, 0
+  index: -1
+Raydar_Squared
+  rotate: false
+  xy: 342, 95
+  size: 334, 225
+  orig: 334, 225
+  offset: 0, 0
+  index: -1

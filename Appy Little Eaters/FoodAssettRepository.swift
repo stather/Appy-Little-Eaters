@@ -29,18 +29,19 @@ open class FoodAssetRepository{
     }
     
     open func getFoodImage(_ forName:String) -> UIImage{
-        let dirPath = foodImagePath()
-        let filename = dirPath.appendingPathComponent(forName + ".png")
-        let filepath = filename.path
-        let image:UIImage = UIImage(contentsOfFile: filepath as String!)!
+//        let dirPath = foodImagePath()
+//        let filename = dirPath.appendingPathComponent(forName + ".png")
+//        let filepath = filename.path
+        let newpath = Bundle.main.path(forResource: forName, ofType: "png")
+        let image:UIImage = UIImage(contentsOfFile: newpath as String!)!
         return image;
     }
     
     open func addFoodImage(_ foodName:String, data:Data){
-        let dirPath = foodImagePath()
-        let filename = dirPath.appendingPathComponent(foodName + ".png")
-        let filepath = filename.path
-        _ = _fileManager.createFile(atPath: filepath, contents: data, attributes: nil)
+//        let dirPath = foodImagePath()
+//        let filename = dirPath.appendingPathComponent(foodName + ".png")
+//        let filepath = filename.path
+//        _ = _fileManager.createFile(atPath: filepath, contents: data, attributes: nil)
     }
     
 

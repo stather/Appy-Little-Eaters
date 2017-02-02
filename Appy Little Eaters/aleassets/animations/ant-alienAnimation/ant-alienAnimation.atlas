@@ -1,0 +1,76 @@
+
+ant-alienAnimation.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ant-alien-body
+  rotate: false
+  xy: 2, 2
+  size: 313, 449
+  orig: 313, 449
+  offset: 0, 0
+  index: -1
+ant-alien-left-arm
+  rotate: false
+  xy: 317, 357
+  size: 147, 94
+  orig: 147, 94
+  offset: 0, 0
+  index: -1
+ant-alien-left-claw1
+  rotate: true
+  xy: 466, 359
+  size: 92, 125
+  orig: 92, 125
+  offset: 0, 0
+  index: -1
+ant-alien-left-claw2
+  rotate: true
+  xy: 844, 352
+  size: 99, 102
+  orig: 99, 102
+  offset: 0, 0
+  index: -1
+ant-alien-left-eye
+  rotate: false
+  xy: 317, 248
+  size: 128, 107
+  orig: 128, 107
+  offset: 0, 0
+  index: -1
+ant-alien-legs
+  rotate: false
+  xy: 593, 370
+  size: 123, 81
+  orig: 123, 81
+  offset: 0, 0
+  index: -1
+ant-alien-right-arm
+  rotate: false
+  xy: 718, 391
+  size: 124, 60
+  orig: 124, 60
+  offset: 0, 0
+  index: -1
+ant-alien-right-claw1
+  rotate: false
+  xy: 317, 23
+  size: 96, 117
+  orig: 96, 117
+  offset: 0, 0
+  index: -1
+ant-alien-right-claw2
+  rotate: true
+  xy: 415, 44
+  size: 96, 93
+  orig: 96, 93
+  offset: 0, 0
+  index: -1
+ant-alien-right-eye
+  rotate: false
+  xy: 317, 142
+  size: 124, 104
+  orig: 124, 104
+  offset: 0, 0
+  index: -1

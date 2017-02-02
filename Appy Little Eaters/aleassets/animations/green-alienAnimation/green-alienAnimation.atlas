@@ -1,0 +1,34 @@
+
+green-alienAnimation.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+green-alien-body
+  rotate: false
+  xy: 2, 2
+  size: 265, 446
+  orig: 265, 446
+  offset: 0, 0
+  index: -1
+green-alien-left-arm
+  rotate: false
+  xy: 269, 86
+  size: 188, 362
+  orig: 188, 362
+  offset: 0, 0
+  index: -1
+green-alien-legs
+  rotate: false
+  xy: 639, 315
+  size: 252, 133
+  orig: 252, 133
+  offset: 0, 0
+  index: -1
+green-alien-right-arm
+  rotate: false
+  xy: 459, 112
+  size: 178, 336
+  orig: 178, 336
+  offset: 0, 0
+  index: -1

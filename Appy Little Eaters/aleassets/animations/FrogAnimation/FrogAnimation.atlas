@@ -1,0 +1,27 @@
+
+FrogAnimation.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Frog_Body-withou-throat-and-eyes
+  rotate: false
+  xy: 504, 637
+  size: 428, 367
+  orig: 428, 367
+  offset: 0, 0
+  index: -1
+Frog_Eyes
+  rotate: false
+  xy: 2, 504
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+Frog_Throat
+  rotate: false
+  xy: 2, 2
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1

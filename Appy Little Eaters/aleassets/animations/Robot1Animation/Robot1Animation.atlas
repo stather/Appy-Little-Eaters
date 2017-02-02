@@ -1,0 +1,83 @@
+
+Robot1Animation.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Robot1_Body-No-Dot-No-Arms-No-Legs
+  rotate: false
+  xy: 263, 156
+  size: 113, 96
+  orig: 113, 96
+  offset: 0, 0
+  index: -1
+Robot1_Eyes
+  rotate: false
+  xy: 378, 134
+  size: 71, 31
+  orig: 71, 31
+  offset: 0, 0
+  index: -1
+Robot1_Head-No-Static-No-Eyes
+  rotate: false
+  xy: 2, 24
+  size: 124, 91
+  orig: 124, 91
+  offset: 0, 0
+  index: -1
+Robot1_Left-Lower-Arm
+  rotate: false
+  xy: 128, 34
+  size: 83, 81
+  orig: 83, 81
+  offset: 0, 0
+  index: -1
+Robot1_Left-Upper-Arm
+  rotate: false
+  xy: 459, 153
+  size: 51, 99
+  orig: 51, 99
+  offset: 0, 0
+  index: -1
+Robot1_Lower-body
+  rotate: true
+  xy: 2, 117
+  size: 135, 259
+  orig: 135, 259
+  offset: 0, 0
+  index: -1
+Robot1_Middle-Extender
+  rotate: false
+  xy: 213, 49
+  size: 43, 66
+  orig: 43, 66
+  offset: 0, 0
+  index: -1
+Robot1_Red-dot
+  rotate: false
+  xy: 2, 2
+  size: 21, 20
+  orig: 21, 20
+  offset: 0, 0
+  index: -1
+Robot1_Right-Lower-Arm
+  rotate: false
+  xy: 378, 167
+  size: 79, 85
+  orig: 79, 85
+  offset: 0, 0
+  index: -1
+Robot1_Right-Upper-Arm
+  rotate: true
+  xy: 263, 98
+  size: 56, 106
+  orig: 56, 106
+  offset: 0, 0
+  index: -1
+Robot1_Yellow-static-line
+  rotate: false
+  xy: 258, 44
+  size: 92, 52
+  orig: 92, 52
+  offset: 0, 0
+  index: -1

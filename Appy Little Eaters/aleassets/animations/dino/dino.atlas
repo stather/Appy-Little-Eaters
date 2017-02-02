@@ -1,0 +1,27 @@
+
+skeleton.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Dinosaur1_Body
+  rotate: false
+  xy: 2, 504
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+Dinosaur1_Head
+  rotate: false
+  xy: 2, 2
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+Dinosaur1_Wings
+  rotate: false
+  xy: 504, 504
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1

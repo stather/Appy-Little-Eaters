@@ -1,0 +1,41 @@
+
+purple-fluffy-alienAnimation.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+purple-fluffy-alien-body
+  rotate: false
+  xy: 2, 216
+  size: 244, 260
+  orig: 244, 260
+  offset: 0, 0
+  index: -1
+purple-fluffy-alien-feet
+  rotate: true
+  xy: 426, 264
+  size: 212, 61
+  orig: 212, 61
+  offset: 0, 0
+  index: -1
+purple-fluffy-alien-left-eye
+  rotate: false
+  xy: 248, 157
+  size: 176, 319
+  orig: 176, 319
+  offset: 0, 0
+  index: -1
+purple-fluffy-alien-mid-eye
+  rotate: false
+  xy: 2, 2
+  size: 132, 212
+  orig: 132, 212
+  offset: 0, 0
+  index: -1
+purple-fluffy-alien-right-eye
+  rotate: true
+  xy: 136, 3
+  size: 152, 323
+  orig: 152, 323
+  offset: 0, 0
+  index: -1

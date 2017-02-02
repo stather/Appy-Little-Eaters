@@ -1,0 +1,48 @@
+
+mouseAnimation.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+mouse back foot
+  rotate: false
+  xy: 337, 395
+  size: 127, 70
+  orig: 127, 70
+  offset: 0, 0
+  index: -1
+mouse body
+  rotate: false
+  xy: 2, 203
+  size: 333, 262
+  orig: 333, 262
+  offset: 0, 0
+  index: -1
+mouse front foot
+  rotate: false
+  xy: 337, 233
+  size: 62, 62
+  orig: 62, 62
+  offset: 0, 0
+  index: -1
+mouse left ear
+  rotate: false
+  xy: 274, 117
+  size: 58, 84
+  orig: 58, 84
+  offset: 0, 0
+  index: -1
+mouse right ear
+  rotate: false
+  xy: 337, 297
+  size: 80, 96
+  orig: 80, 96
+  offset: 0, 0
+  index: -1
+mouse tail
+  rotate: true
+  xy: 2, 2
+  size: 199, 270
+  orig: 199, 270
+  offset: 0, 0
+  index: -1

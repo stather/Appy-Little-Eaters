@@ -1,0 +1,34 @@
+
+FireflyAnimation.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Firefly_Back-Wings
+  rotate: false
+  xy: 2, 193
+  size: 304, 283
+  orig: 304, 283
+  offset: 0, 0
+  index: -1
+Firefly_Body-without-bulb-or-wings
+  rotate: false
+  xy: 2, 478
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+Firefly_Bulb
+  rotate: false
+  xy: 2, 2
+  size: 204, 189
+  orig: 204, 189
+  offset: 0, 0
+  index: -1
+Firefly_Front-Wings
+  rotate: false
+  xy: 504, 691
+  size: 298, 287
+  orig: 298, 287
+  offset: 0, 0
+  index: -1

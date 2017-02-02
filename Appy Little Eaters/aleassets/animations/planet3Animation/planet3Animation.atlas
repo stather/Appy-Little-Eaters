@@ -1,0 +1,27 @@
+
+planet3.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+planet2-stars1
+  rotate: false
+  xy: 379, 110
+  size: 102, 142
+  orig: 102, 142
+  offset: 0, 0
+  index: -1
+planet2-stars2
+  rotate: false
+  xy: 266, 102
+  size: 111, 150
+  orig: 111, 150
+  offset: 0, 0
+  index: -1
+planet3-circle
+  rotate: false
+  xy: 2, 2
+  size: 262, 250
+  orig: 262, 250
+  offset: 0, 0
+  index: -1

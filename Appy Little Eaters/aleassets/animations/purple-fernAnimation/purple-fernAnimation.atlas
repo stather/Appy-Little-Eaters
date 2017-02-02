@@ -1,0 +1,27 @@
+
+purple-fernAnimation.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+purple-fern1
+  rotate: true
+  xy: 282, 2
+  size: 190, 253
+  orig: 190, 253
+  offset: 0, 0
+  index: -1
+purple-fern2
+  rotate: true
+  xy: 2, 3
+  size: 189, 278
+  orig: 189, 278
+  offset: 0, 0
+  index: -1
+purple-fern3
+  rotate: false
+  xy: 537, 16
+  size: 197, 176
+  orig: 197, 176
+  offset: 0, 0
+  index: -1

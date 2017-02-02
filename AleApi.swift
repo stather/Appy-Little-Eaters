@@ -98,7 +98,7 @@ open class AleApi{
         return try! Data(contentsOf: (u?.absoluteURL)!)
     }
     
-    func listFood(success: ([AleFoodDef]) -> Void){
+    func listFood() -> [AleFoodDef]{
         let j = getJSON(urlToRequest: "http://rsrapi-dev2.elasticbeanstalk.com/Food/listFoodJson")
         let p = parseJSONArray(inputData: j)
         var foods = [AleFoodDef]()
@@ -114,10 +114,10 @@ open class AleApi{
             afd.version = d.object(forKey: "version") as! Int
             foods.append(afd)
         }
-        success(foods)
+        return foods
     }
     
-    func listAnimations(success: ([AleAnimationDef]) -> Void){
+    func listAnimations() -> [AleAnimationDef]{
         let j = getJSON(urlToRequest: "http://rsrapi-dev2.elasticbeanstalk.com/Animation/listAnimationsJson")
         let p = parseJSONArray(inputData: j)
         var animations = [AleAnimationDef]()
@@ -132,36 +132,11 @@ open class AleApi{
             aad.version = d.object(forKey: "version") as! Int
             animations.append(aad)
         }
-        success(animations)
+        return animations
     }
-/*
-    func listAnimationsold(_ success:@escaping (_ animations: [AleAnimationDef]) -> Void){
-        let fullUrl = AleApi.BaseUrl + "Animation/listAnimationsJson"
-        let params:NSDictionary = NSDictionary(objects: ["obj"], forKeys: ["key" as NSCopying])
-        ANRestOps.getInBackground(fullUrl, parameters: params as! [AnyHashable: Any], beforeRequest: { () -> Void in
-            
-            }, onCompletion: {(response: ANRestOpsResponse!) -> Void in
-                if response.statusCode() != 200{
-                    return;
-                }
-                let resp = response.dataAsArray()
-                var animations = [AleAnimationDef]()
-                for item in resp{
-                    let aad = AleAnimationDef()
-                    aad.atlas = item.object(forKey: "atlas") as! String
-                    aad.texture = item.object(forKey: "texture") as! String
-                    aad.json = item.object(forKey: "json") as! String
-                    aad.name = item.object(forKey: "name") as! String
-                    aad.rewardImage = item.object(forKey: "rewardImage") as! String
-                    aad.version = item.object(forKey: "version") as! Int
-                    animations.append(aad)
-                }
-                success(animations: animations)
-        })
-        
-    }
-*/
-    func listRewards(success: ([AleRewardDef]) -> Void){
+
+    
+    func listRewards() -> [AleRewardDef]{
         let j = getJSON(urlToRequest: "http://rsrapi-dev2.elasticbeanstalk.com/Reward/listRewardsJson")
         let p = parseJSONArray(inputData: j)
         var rewards = [AleRewardDef]()
@@ -177,35 +152,8 @@ open class AleApi{
             aad.scale = d.object(forKey: "scale") as! Float
             rewards.append(aad)
         }
-        success(rewards)
+        return rewards
 
     }
-/*
-    func listRewardss(_ success:@escaping (_ rewards: [AleRewardDef]) -> Void){
-        let fullUrl = AleApi.BaseUrl + "Reward/listRewardsJson"
-        let params:NSDictionary = NSDictionary(objects: ["obj"], forKeys: ["key" as NSCopying])
-        ANRestOps.getInBackground(fullUrl, parameters: params as! [AnyHashable: Any], beforeRequest: { () -> Void in
-            
-            }, onCompletion: {(response: ANRestOpsResponse!) -> Void in
-                if response.statusCode() != 200{
-                    return;
-                }
-                let resp = response.dataAsArray()
-                var rewards = [AleRewardDef]()
-                for item in resp{
-                    let aad = AleRewardDef()
-                    aad.name = item.object(forKey: "name") as! String
-                    aad.scene = item.object(forKey: "scene") as! String
-                    aad.animation = item.object(forKey: "animation") as! String
-                    aad.level = item.object(forKey: "level") as! String
-                    aad.x = item.object(forKey: "x") as! Float
-                    aad.y = item.object(forKey: "y") as! Float
-                    aad.scale = item.object(forKey: "scale") as! Float
-                    rewards.append(aad)
-                }
-                success(rewards: rewards)
-        });
-        
-    }
-*/
+
 }

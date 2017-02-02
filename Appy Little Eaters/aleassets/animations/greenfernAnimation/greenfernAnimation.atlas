@@ -1,0 +1,27 @@
+
+greenfernAnimation.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+green-fern-1
+  rotate: false
+  xy: 2, 2
+  size: 295, 223
+  orig: 295, 223
+  offset: 0, 0
+  index: -1
+green-fern-2
+  rotate: true
+  xy: 299, 9
+  size: 216, 285
+  orig: 216, 285
+  offset: 0, 0
+  index: -1
+green-fern-3
+  rotate: false
+  xy: 586, 113
+  size: 191, 112
+  orig: 191, 112
+  offset: 0, 0
+  index: -1

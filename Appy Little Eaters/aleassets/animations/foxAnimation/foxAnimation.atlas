@@ -1,0 +1,20 @@
+
+foxAnimation.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fox body
+  rotate: false
+  xy: 2, 2
+  size: 436, 379
+  orig: 436, 379
+  offset: 0, 0
+  index: -1
+fox tail
+  rotate: false
+  xy: 440, 56
+  size: 256, 325
+  orig: 256, 325
+  offset: 0, 0
+  index: -1
